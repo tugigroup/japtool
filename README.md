@@ -23,7 +23,8 @@ Branches are created for the development of each function. Currently has the fol
 <h2>2. Using cases </h2>
 <h3>2.1 Start developing new feature</h3>
 clone from master brach <br>
-<code>git clone -b master https://github.com/tugigroup/japtool.git</code>
+<code>git clone -b master https://github.com/tugigroup/japtool.git</code><br>
+<code>cd japtool</code><br>
 
 create new feature brach. test branch for example<br>
 <code>git checkout -b test</code>
