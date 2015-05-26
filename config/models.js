@@ -18,7 +18,7 @@ module.exports.models = {
   *                                                                          *
   ***************************************************************************/
   // connection: 'localDiskDb',
-  connection: 'taittMongodbServer'
+  connection: 'someMongodbServer',
 
   /***************************************************************************
   *                                                                          *
@@ -29,7 +29,6 @@ module.exports.models = {
   *                                                                          *
   ***************************************************************************/
   // migrate: 'alter'
-  connection: 'someMongodbServer',
-  migrate: 'safe'
+  migrate: 'alter'
 
 };
