@@ -1,1 +1,3 @@
-# japaneselearning
+# japtool
+
+a [Sails](http://sailsjs.org) application
