@@ -37,7 +37,7 @@ module.exports.routes = {
   },
   'get /tranning': 'QuestionsController.showAction',
   '/tranningindex': {view: 'trainning_index'},
-  'post /confirm': 'QuestionsController.confirmAction'
+  'post /confirm': 'QuestionsController.confirmAction',
 
   /***************************************************************************
   *                                                                          *
@@ -66,7 +66,7 @@ module.exports.routes = {
   'get /vocabulary/flashcard': {
       view: 'vocabulary/flashcard'
   },
-  'get /vocabulary/flashcard': 'VocabularyController.flashcard'
+  'get /vocabulary/flashcard': 'VocabularyController.flashcard',
   
   
 };
