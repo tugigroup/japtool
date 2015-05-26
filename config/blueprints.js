@@ -16,10 +16,10 @@
  * logic in the form of a JSON API, including support for sort, pagination, and filtering.
  *
  * For more information on the blueprint API, check out:
- * http://sailsjs.org/#/documentation/reference/blueprint-api
+ * http://sailsjs.org/#!/documentation/reference/blueprint-api
  *
  * For more information on the settings in this file, see:
- * http://sailsjs.org/#/documentation/reference/sails.config/sails.config.blueprints.html
+ * http://sailsjs.org/#!/documentation/reference/sails.config/sails.config.blueprints.html
  *
  */
 
@@ -45,6 +45,7 @@ module.exports.blueprints = {
   ***************************************************************************/
 
   // actions: true,
+  action: false,
 
   /***************************************************************************
   *                                                                          *
@@ -70,6 +71,7 @@ module.exports.blueprints = {
   ***************************************************************************/
 
   // rest: true,
+  rest: false,
 
   /***************************************************************************
   *                                                                          *
@@ -84,6 +86,7 @@ module.exports.blueprints = {
   ***************************************************************************/
 
   // shortcuts: true,
+  shortcuts: false
 
   /***************************************************************************
   *                                                                          *
@@ -98,6 +101,17 @@ module.exports.blueprints = {
   ***************************************************************************/
 
   // prefix: '',
+
+  /***************************************************************************
+   *                                                                          *
+   * An optional mount path for all REST blueprint routes on a controller.    *
+   * And it do not include `actions` and `shortcuts` routes.                  *
+   * This allows you to take advantage of REST blueprint routing,             *
+   * even if you need to namespace your RESTful API methods                   *
+   *                                                                          *
+   ***************************************************************************/
+
+  // restPrefix: '',
 
   /***************************************************************************
   *                                                                          *

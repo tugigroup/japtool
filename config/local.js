@@ -24,7 +24,7 @@
  *
  *
  * For more information, check out:
- * http://sailsjs.org/#/documentation/reference/sails.config/sails.config.local.html
+ * http://sailsjs.org/#!/documentation/anatomy/myApp/config/local.js.html
  */
 
 module.exports = {
@@ -61,6 +61,7 @@ module.exports = {
    ***************************************************************************/
 
   // port: process.env.PORT || 1337,
+  port: process.env.PORT || 1908
 
   /***************************************************************************
    * The runtime "environment" of your Sails app is either typically         *

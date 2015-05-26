@@ -17,7 +17,7 @@
  * CoffeeScript for the front-end.
  *
  * For more information on configuring custom routes, check out:
- * http://sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html
+ * http://sailsjs.org/#!/documentation/concepts/Routes/RouteTargetSyntax.html
  */
 
 module.exports.routes = {
@@ -34,16 +34,36 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
-  }
+  },
 
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *
   *                                                                          *
-  *  If a request to a URL doesn't match any of the custom routes above, it  *
+  * If a request to a URL doesn't match any of the custom routes above, it   *
   * is matched against Sails route blueprints. See `config/blueprints.js`    *
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
-
+  'get /user': {
+	   view: 'user/index'
+  },
+  'get /user/view': 'UserController.findAll',
+  'post /user/create': 'UserController.create',
+  'get /user/upload': {
+	   view: 'user/upload'
+  },
+  'post /user/upload': 'UserController.uploadFile',
+  'get /user/viewfile': 'UserController.viewfile',
+  'get /vocabulary': 'VocabularyController.index',
+  'get /vocabulary/list': {
+      view: 'vocabulary/list'
+  },
+  'get /vocabulary/list': 'VocabularyController.list',
+  'get /vocabulary/flashcard': {
+      view: 'vocabulary/flashcard'
+  },
+  'get /vocabulary/flashcard': 'VocabularyController.flashcard'
+  
+  
 };

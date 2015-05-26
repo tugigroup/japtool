@@ -16,7 +16,7 @@
  * (this is to prevent you inadvertently sensitive credentials up to your repository.)
  *
  * For more information on configuration, check out:
- * http://sailsjs.org/#/documentation/reference/sails.config/sails.config.connections.html
+ * http://sailsjs.org/#!/documentation/reference/sails.config/sails.config.connections.html
  */
 
 module.exports.connections = {
@@ -56,13 +56,16 @@ module.exports.connections = {
   * Run: npm install sails-mongo                                             *
   *                                                                          *
   ***************************************************************************/
-  someMongodbServer: {
+  taittMongodbServer: {
     adapter: 'sails-mongo',
     host: 'localhost',
     port: 27017,
     // user: 'username',
+	user: 'taitt',
     // password: 'password',
+	password: 'taitt',
     // database: 'your_mongo_db_name_here'
+	database: 'taitt'
   },
 
   /***************************************************************************
