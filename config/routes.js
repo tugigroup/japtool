@@ -33,8 +33,11 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': {
-    view: 'homepage'
+    view: 'index'
   },
+  'get /tranning': 'QuestionsController.showAction',
+  '/tranningindex': {view: 'trainning_index'},
+  'post /confirm': 'QuestionsController.confirmAction'
 
   /***************************************************************************
   *                                                                          *
