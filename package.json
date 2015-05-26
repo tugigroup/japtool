@@ -1,5 +1,5 @@
 {
-  "name": "sails-project",
+  "name": "sailsProject",
   "private": true,
   "version": "0.0.0",
   "description": "a Sails application",
@@ -22,7 +22,7 @@
     "rc": "~0.5.0",
     "sails": "~0.11.0",
     "sails-disk": "~0.10.0",
-    "sails-mongo": "^0.10.8"
+    "sails-mongo": "^0.11.2"
   },
   "scripts": {
     "debug": "node debug app.js",
@@ -31,7 +31,7 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/anonymous node/sails user/sails-project.git"
+    "url": "git://github.com/anonymous node/sails user/sailsProject.git"
   },
   "author": "anonymous node/sails user",
   "license": ""

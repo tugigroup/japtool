@@ -61,7 +61,6 @@ module.exports = {
    ***************************************************************************/
 
   // port: process.env.PORT || 1337,
-  port: process.env.PORT || 80
 
   /***************************************************************************
    * The runtime "environment" of your Sails app is either typically         *

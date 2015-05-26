@@ -24,7 +24,7 @@ module.exports.routes = {
 
   /***************************************************************************
   *                                                                          *
-  * Make the view located at `views/homepage.ejs` (or `views/homepage.jade`, *
+  * Make the view located at `views/index.ejs` (or `views/homepage.jade`, *
   * etc. depending on your default view engine) your home page.              *
   *                                                                          *
   * (Alternatively, remove this and add an `index.html` file in your         *
@@ -34,10 +34,7 @@ module.exports.routes = {
 
   '/': {
     view: 'index'
-  },
-  'get /tranning': 'QuestionsController.showAction',
-  '/tranningindex': {view: 'trainning_index'},
-  'post /confirm': 'QuestionsController.confirmAction',
+  }
 
   /***************************************************************************
   *                                                                          *
@@ -48,25 +45,5 @@ module.exports.routes = {
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
-  'get /user': {
-	   view: 'user/index'
-  },
-  'get /user/view': 'UserController.findAll',
-  'post /user/create': 'UserController.create',
-  'get /user/upload': {
-	   view: 'user/upload'
-  },
-  'post /user/upload': 'UserController.uploadFile',
-  'get /user/viewfile': 'UserController.viewfile',
-  'get /vocabulary': 'VocabularyController.index',
-  'get /vocabulary/list': {
-      view: 'vocabulary/list'
-  },
-  'get /vocabulary/list': 'VocabularyController.list',
-  'get /vocabulary/flashcard': {
-      view: 'vocabulary/flashcard'
-  },
-  'get /vocabulary/flashcard': 'VocabularyController.flashcard',
-  
-  
+
 };
