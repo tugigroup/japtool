@@ -11,7 +11,7 @@ module.exports = {
         content: "string",
         result: "boolean",
         question: {
-            model: "questions"
+            model: "question"
         }
     }
 };
