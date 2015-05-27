@@ -1,6 +1,6 @@
 body {
 }
-.content,#content{margin-top:70px; }
+.content,#content{padding-top:70px; }
 .resgiter {
     margin: 0 auto;
     max-width: 600px
