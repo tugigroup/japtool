@@ -1,15 +1,44 @@
-<h1>Welcome user page</h1>
-<form class="form" method="post" action="create">
-    <div>
-	<input type="submit" class="submit" value="Register">
-	</div>
+<div class="col-sm-12">
+    <h1>List User</h1>
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% _.each(users, function(user){ %>
+        <tr data-id="<%= user.id %>" data-model="user">
+            <td><%= user.id %></td>
+            <td><%= user.username %></td>
+            <td><%= user.firstname %></td>
+            <td><%= user.lastname %></td>
+            <td><%= user.email %></td>
+            <td><%= user.address %></td>
+            <td class="text-center"><a href="/user/show/<%= user.id %>" class="btn btn-success btn-sm">Show</a>
+            </td>
+            <td class="text-center"><a href="/user/edit/<%= user.id %>" class="btn btn-warning btn-sm">Edit</a>
+            </td>
+            <td>
+                <form action="/user/destroy/<%= user.id %>" method="POST">
+                    <input type="hidden" name="_method" value="delete"/>
+                    <input type='hidden' name='_csrf' value='<%= _csrf %>'>
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+            </td>
 
-</form>
-<form id="uploadForm"
-      enctype="multipart/form-data"
-      action="/user/upload"
-      method="post">
-    	<input type="file" name="file" />
-    	<input type="submit" value="submit"/>
-    </form>
 
+        </tr>
+        <% }) %>
+        </tbody>
+    </table>
+
+</div>
