@@ -52,6 +52,8 @@ for example you want to try running master brach version source on local <br>
 <code>git clone -b master https://github.com/tugigroup/japtool.git</code><br>
 <code>cd japtool</code><br>
 <code>npm install</code><br>
+change database connection to fit with your local enviroment in config/connection.js file.<br>
+Then launch your app. <br>
 <code>sails lift</code><br>
 
 
@@ -59,6 +61,8 @@ for example you want to try running master brach version source on local <br>
 
 get latest to HEAD on local<br>
 <code>git fetch</code><br>
+change to your branch. For example test feature branch<br>
+<code>git checkout test</code><br>
 check current branch. You need standing in your branch.<br>
 <code>git branch</code><br>
 merge master branch into your current branch<br>
