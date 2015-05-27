@@ -34,7 +34,7 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
-  },
+  }
 
   /***************************************************************************
   *                                                                          *
@@ -45,25 +45,5 @@ module.exports.routes = {
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
-  'get /user': {
-	   view: 'user/index'
-  },
-  'get /user/view': 'UserController.findAll',
-  'post /user/create': 'UserController.create',
-  'get /user/upload': {
-	   view: 'user/upload'
-  },
-  'post /user/upload': 'UserController.uploadFile',
-  'get /user/viewfile': 'UserController.viewfile',
-  'get /vocabulary': 'VocabularyController.index',
-  'get /vocabulary/list': {
-      view: 'vocabulary/list'
-  },
-  'get /vocabulary/list': 'VocabularyController.list',
-  'get /vocabulary/flashcard': {
-      view: 'vocabulary/flashcard'
-  },
-  'get /vocabulary/flashcard': 'VocabularyController.flashcard'
-  
   
 };
