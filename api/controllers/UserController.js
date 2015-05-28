@@ -22,6 +22,10 @@ module.exports = {
                 //if error redirect back to sign-up page
                 return res.redirect('/user/new');
             }
+
+            //Long user in
+            req.session.authenticated = true;
+            req.session.User = user;
             //affter successfuly creating the user
             //redirect to the show action
             //res.json(user);
@@ -81,16 +85,16 @@ module.exports = {
         });
     },
     //Delete user
-    destroy:function(req,res,next){
-        User.findOne(req.param('id'), function foundUser(err,user){
-            if(err){
+    destroy: function (req, res, next) {
+        User.findOne(req.param('id'), function foundUser(err, user) {
+            if (err) {
                 return next(err);
             }
-            if(!user){
+            if (!user) {
                 return next('User doesn\'t exit.');
             }
-            User.destroy(req.param('id'), function userDestroyed(err){
-                if(err){
+            User.destroy(req.param('id'), function userDestroyed(err) {
+                if (err) {
                     return next(err);
                 }
             });

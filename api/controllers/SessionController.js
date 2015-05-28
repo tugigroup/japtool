@@ -70,6 +70,12 @@ module.exports = {
                 // Log user in
                 req.session.authenticated = true;
                 req.session.User = user;
+                //If the user is also an admin redirect to the user list(/view/user/index.ejs)
+                //This is user in conjuntion with config/policies.js file
+                if(req.session.User.admin){
+                    res.redirect('/user');
+                    return;
+                }
 
                 // Change status to online
                 user.online = true;

@@ -53,6 +53,8 @@
 			<ul class="nav navbar-nav">
 				<% if(session.authenticated){ %>
 				<li class="active"><a href="/user/show/<%= session.User.id %>"><%= session.User.username %></a></li>
+				<% } %>
+				<% if(session.authenticated && session.User.admin){ %>
 				<li><a href="/user">User Administrator</a></li>
 				<li><a href="#">Placeholder2</a></li>
 				<% } %>
