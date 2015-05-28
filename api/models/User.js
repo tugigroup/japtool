@@ -31,6 +31,7 @@ module.exports = {
         encryptedPassword: {
             type: 'string'
         },
+
         address: {
             type: 'string'
         },
@@ -52,6 +53,7 @@ module.exports = {
             //values.online = true;
             next();
         });
+
     }
 };
 

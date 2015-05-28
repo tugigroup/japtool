@@ -23,12 +23,14 @@ module.exports = {
                 return res.redirect('/user/new');
             }
 
+
             //Long user in
             req.session.authenticated = true;
             req.session.User = user;
+
+
             //affter successfuly creating the user
             //redirect to the show action
-            //res.json(user);
             res.redirect('/user/show/' + user.id);
 
         });
@@ -47,7 +49,7 @@ module.exports = {
             });
         });
     },
-    //show list user to index.ejs
+    //display all list user to index.ejs
     index: function (req, res, next) {
         //Get an array of all user in the user collection (ex: SQL select table)
         User.find(function foundUsers(err, users) {
@@ -84,6 +86,7 @@ module.exports = {
             res.redirect('/user/show/' + req.param('id'));
         });
     },
+
     //Delete user
     destroy: function (req, res, next) {
         User.findOne(req.param('id'), function foundUser(err, user) {
@@ -103,4 +106,3 @@ module.exports = {
     }
 
 };
-
