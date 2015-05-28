@@ -8,9 +8,8 @@
 module.exports = {
 	//select vacabulary
 	index: function(red,res) {
-	  //var id=req.param("id",null);
 	  
-      Vocabulary.selectByCourse({work_code: "N5001"},function(err,vocabularies){
+      Vocabulary.selectByLevel({level: "N5"},function(err,vocabularies){
         //res.view(vocabularies);
 		if(err) return res.send(500);
 		return res.view('vocabulary/index',{'vocabularies':vocabularies});   	
@@ -19,9 +18,8 @@ module.exports = {
 
     //select vacabulary
 	list: function(red,res) {
-	  //var id=req.param("id",null);
 	  
-      Vocabulary.selectByCourse({work_code: "N5001"},function(err,vocabularies){
+      Vocabulary.selectByLevel({level: "N5"},function(err,vocabularies){
         //res.view(vocabularies);
 		if(err) return res.send(500);
 		return res.view('vocabulary/list',{'vocabularies':vocabularies});   	
@@ -30,14 +28,14 @@ module.exports = {
 
 	//select vacabulary
 	flashcard: function(red,res) {
-	  //var id=req.param("id",null);
 	  
-      Vocabulary.selectByCourse({work_code: "N5001"},function(err,vocabularies){
+      Vocabulary.selectByLevel({level: "N5"},function(err,vocabularies){
         //res.view(vocabularies);
 		if(err) return res.send(500);
 		return res.view('vocabulary/flashcard',{'vocabularies':vocabularies});   	
       });
 	},
+	
 	vocabulary: function(req,res) {
 		var gfs = req.gfs;
 		// body...

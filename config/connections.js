@@ -61,11 +61,9 @@ module.exports.connections = {
     host: 'localhost',
     port: 27017,
     // user: 'username',
-	user: 'taitt',
     // password: 'password',
-	password: 'taitt',
     // database: 'your_mongo_db_name_here'
-	database: 'taitt'
+	database: 'test'
   },
 
   /***************************************************************************

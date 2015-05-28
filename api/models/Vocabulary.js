@@ -7,42 +7,59 @@
 
 module.exports = {
 
-  attributes: {
-        no: {
-			type: 'integer',
-			autoIncrement: true
-		},
-        _id: {
-		   type : 'string'
-		}, 
-		work_code: {
-		   type : 'string'
-        },
+  attributes: { 
 		word: {
 		   type : 'string'
+        },
+		reading: {
+		   type : 'string'
 		},
-　　　    read: {
+　　　    type: {
 			type : 'string'
         },		
 		meaning: {
 			type : 'string'
 		},
-        example:　{
+        examples:　{
 		    type : 'string' 
 		},
-		image: {
+		synonymous: {
 		    type : 'string'
 		},
+		antonymous: {
+			type : 'string'
+		},
 		other: {
+			type : 'string'
+		},
+		image: {
+			type : 'string'
+		},
+		audio: {
+			type : 'string'
+		},
+		video: {
+			type : 'string'
+		},
+		level: {
+			type : 'string'
+		},
+		sort: {
+			type : 'string'
+		},
+		tag: {
+			type : 'string'
+		},
+		category: {
 			type : 'string'
 		}
   },
   
-  //select vocabulary by course
-  selectByCourse: function(opts,cb) {
-	var tag = opts.work_code;
+  //select vocabulary by Level
+  selectByLevel: function(opts,cb) {
+	var tag = opts.level;
 	
-	 Vocabulary.find({work_code: tag}).exec(function(err,vocabularies){
+	 Vocabulary.find({level: tag}).exec(function(err,vocabularies){
 		if(err) return cb(err);
 		return cb(null,vocabularies);
 	 });
