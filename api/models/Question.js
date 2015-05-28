@@ -8,39 +8,37 @@
 module.exports = {
 
     attributes: {
-        attributes: {
-            content: {
-                type: "string",
-                required: true
-            },
-            answers: {
-                collection: "answer",
-                via: "question"
-            },
-            image: {
-                type: "string"
-            },
-            audio: {
-                type: "string"
-            },
-            video: {
-                type: "string"
-            },
-            level: {
-                type: "string"
-            },
-            sort: {
-                type: "integer"
-            },
-            tab: {
-                type: "string"
-            },
-            category: {
-                type: "string"
-            },
-            other: {
-                type: "string"
-            }
+        content: {
+            type: "string",
+            required: true
+        },
+        answers: {
+            collection: "answer",
+            via: "idQuestion"
+        },
+        image: {
+            type: "string"
+        },
+        audio: {
+            type: "string"
+        },
+        video: {
+            type: "string"
+        },
+        level: {
+            type: "string"
+        },
+        sort: {
+            type: "integer"
+        },
+        tab: {
+            type: "string"
+        },
+        category: {
+            type: "string"
+        },
+        other: {
+            type: "string"
         }
     }
 };

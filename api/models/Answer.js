@@ -10,7 +10,7 @@ module.exports = {
     attributes: {
         content: "string",
         result: "boolean",
-        question: {
+        idQuestion: {
             model: "question"
         }
     }
