@@ -4,8 +4,11 @@
         <h2> Category <%= question.category %></h2>
 
         <div class="panel panel-primary">
-            <div class="panel-heading">
+            <div class="panel-heading" style="position: relative">
                 <h3 class="panel-title"><%= question.content %></h3>
+                <button type="button" style="position: absolute; top: 10px; right: 10px;" class="close delete-question"
+                        data-dismiss="alert" name="<%= question.id %>">x
+                </button>
             </div>
             <div class="panel-body">
                 <div class="row">
@@ -32,7 +35,7 @@
             $(this).click(function () {
                 var _arr_data = [];
                 var _id = $(this).attr("id");
-                $('.my-checkbox').each(function () {
+                $(this).parent().find('.my-checkbox').each(function () {
                     if ($(this).prop("checked")) {
                         _arr_data.push($(this).attr("name"));
                     }
@@ -51,5 +54,20 @@
                 }
             })
         });
+
+        $('.delete-question').each(function () {
+            $(this).click(function () {
+                var _id = $(this).attr('name');
+                $.ajax({
+                    method: "POST",
+                    url: "deleteQuestion",
+                    data: {id: _id}
+                })
+                        .done(function (msg) {
+                            alert(msg);
+                        });
+            })
+
+        })
     })
 </script>

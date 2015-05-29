@@ -42,7 +42,8 @@ module.exports.routes = {
     'post /submitTest': 'QuestionController.submitTestAction',
     'get /showAnswer': 'QuestionController.answerAction',
     'get /showQuestion': 'QuestionController.questionAction',
-    'post /inputAnswer': 'QuestionController.inputAnswerAction'
+    'post /inputAnswer': 'QuestionController.inputAnswerAction',
+    'post /deleteQuestion': 'QuestionController.deleteQuestionAction'
     /*End QuyetND2*/
 
     /***************************************************************************
