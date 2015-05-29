@@ -27,27 +27,29 @@
     <% }); %>
 </div>
 <script>
-    $('.btn-answer-ok').each(function () {
-        $(this).click(function () {
-            var _arr_data = [];
-            var _id = $(this).attr("id");
-            $('.my-checkbox').each(function () {
-                if ($(this).prop("checked")) {
-                    _arr_data.push($(this).attr("name"));
+    $(document).ready(function () {
+        $('.btn-answer-ok').each(function () {
+            $(this).click(function () {
+                var _arr_data = [];
+                var _id = $(this).attr("id");
+                $('.my-checkbox').each(function () {
+                    if ($(this).prop("checked")) {
+                        _arr_data.push($(this).attr("name"));
+                    }
+                });
+                if (_arr_data != '' && _id != '') {
+                    $.ajax({
+                        method: "POST",
+                        url: "confirm",
+                        data: {data: _arr_data, id: _id}
+                    })
+                            .done(function (msg) {
+                                alert(msg);
+                            });
+                } else {
+                    alert('Please choose your option');
                 }
-            });
-            if (_arr_data != '' && _id != '') {
-                $.ajax({
-                    method: "POST",
-                    url: "confirm",
-                    data: {data: _arr_data, id: _id}
-                })
-                        .done(function (msg) {
-                            alert(msg);
-                        });
-            } else {
-                alert('Please choose your option');
-            }
-        })
-    });
+            })
+        });
+    })
 </script>

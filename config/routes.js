@@ -35,21 +35,24 @@ module.exports.routes = {
     '/': {
         view: 'index'
     },
-    'get /tranning': 'QuestionController.showAction',
-    '/tranningindex': {view: 'trainning_index'},
+    /*Router by QuyetND2*/
+    'get /showTest': 'QuestionController.showAction',
+    '/testIndex': {view: 'test/index-test'},
     'post /confirm': 'QuestionController.confirmAction',
     'post /submitTest': 'QuestionController.submitTestAction',
-    'get /answerShow': 'QuestionController.answerAction',
+    'get /showAnswer': 'QuestionController.answerAction',
+    'get /showQuestion': 'QuestionController.questionAction',
     'post /inputAnswer': 'QuestionController.inputAnswerAction'
+    /*End QuyetND2*/
 
-/***************************************************************************
- *                                                                          *
- * Custom routes here...                                                    *
- *                                                                          *
- * If a request to a URL doesn't match any of the custom routes above, it   *
- * is matched against Sails route blueprints. See `config/blueprints.js`    *
- * for configuration options and examples.                                  *
- *                                                                          *
- ***************************************************************************/
+    /***************************************************************************
+     *                                                                          *
+     * Custom routes here...                                                    *
+     *                                                                          *
+     * If a request to a URL doesn't match any of the custom routes above, it   *
+     * is matched against Sails route blueprints. See `config/blueprints.js`    *
+     * for configuration options and examples.                                  *
+     *                                                                          *
+     ***************************************************************************/
 
 };

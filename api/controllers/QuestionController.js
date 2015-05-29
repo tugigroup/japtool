@@ -8,7 +8,7 @@
 module.exports = {
     showAction: function (req, res) {
         Question.find().populate('answers').exec(function createCB(err, created) {
-            res.render('trainning', {data: created});
+            res.render('test/show-test', {data: created});
         })
     },
 
@@ -72,8 +72,12 @@ module.exports = {
 
     answerAction: function (req, res) {
         Question.find().exec(function createCB(err, data) {
-            res.render('answer_input', {data: data});
+            res.render('test/input-answer', {data: data});
         })
+    },
+
+    questionAction: function (req, res) {
+        res.render('test/input-question');
     },
 
     inputAnswerAction: function (req, res) {
