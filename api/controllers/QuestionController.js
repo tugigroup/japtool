@@ -37,6 +37,56 @@ module.exports = {
                 })
             });
         }
+    },
+
+    submitTestAction: function (req, res) {
+        var _content = req.param('content');
+        var _image = req.param('image');
+        var _audio = req.param('audio');
+        var _video = req.param('video');
+        var _level = req.param('level');
+        var _sort = req.param('sort');
+        var _tab = req.param('tab');
+        var _category = req.param('category');
+        var _other = req.param('other');
+
+        Question.create({
+            content: _content,
+            image: _image,
+            audio: _audio,
+            video: _video,
+            level: _level,
+            sort: _sort,
+            tab: _tab,
+            category: _category,
+            other: _other
+        }).exec(function createCB(err, created) {
+            if (err) {
+                sails.log(err)
+            }
+            else {
+                res.send('successfully!!');
+            }
+        })
+    },
+
+    answerAction: function (req, res) {
+        Question.find().exec(function createCB(err, data) {
+            res.render('answer_input', {data: data});
+        })
+    },
+
+    inputAnswerAction: function (req, res) {
+        var _id = req.param('id');
+        var _content = req.param('content');
+        var _result = req.param('result');
+        Answer.create({content: _content, result: _result, idQuestion: _id}).exec(function createCB(err, created) {
+            if (err) {
+                sails.log(err)
+            } else {
+                res.send('Answer is created !');
+            }
+        })
     }
 };
 
