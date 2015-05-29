@@ -1,4 +1,6 @@
+
 <h1>JapTool project collaboration rule</h1>
+
 
 <h2>1. Git-branch Branching strategy</h2>
 
