@@ -22,7 +22,7 @@ module.exports = {
       Vocabulary.selectByLevel({level: "N5"},function(err,vocabularies){
         //res.view(vocabularies);
 		if(err) return res.send(500);
-		return res.view('vocabulary/list',{'vocabularies':vocabularies});   	
+		return res.render('vocabulary/list',{'vocabularies':vocabularies});   	
       });
 	},
 
@@ -32,7 +32,7 @@ module.exports = {
       Vocabulary.selectByLevel({level: "N5"},function(err,vocabularies){
         //res.view(vocabularies);
 		if(err) return res.send(500);
-		return res.view('vocabulary/flashcard',{'vocabularies':vocabularies});   	
+		return res.render('vocabulary/flashcard',{'vocabularies':vocabularies});   	
       });
 	},
 	

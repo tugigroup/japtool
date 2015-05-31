@@ -1,76 +1,137 @@
-<!DOCTYPE html>
-<html lang="en">
-  	<head>
-    <!--
-	<meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	-->
-		<!-- Bootstrap -->
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<script src="/js/dependencies/jquery-1.9.1.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<div class="row">
+  <div class="col-md-8">
 
-		<!-- Optional theme -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-	
-		<style>
-  			.carousel-inner > .item > img,
-  			.carousel-inner > .item > a > img {
-      			width: 70%;
-      			margin: auto;
-  			}
-  		</style>
-  	</head>
-  	<body>
+    <div class="carousel slide" id="carouselID" data-ride="carousel" data-wrap="false" >
+      <div class="carousel-inner" >
+        <div class="item active" >
 
-	<div class="carousel slide" id="myCarousel" data-ride="carousel" >
-  		<div class="carousel-inner" >
-    		<div class="item active" >
-    			<img src="" class="">
-      			<div class="">
-        			<p><%=vocabularies[0].word%></p>
-        			<p><%=vocabularies[0].read%></p>
-        			<p><%=vocabularies[0].meaning%></p>
-        			<p><%=vocabularies[0].example%></p>
-      			</div>
-      		</div>
-    		<% vocabularies.forEach( function( vocabulary, index){ %>
-            <% if(index > 0){ %>
-    		<div class="item">
-      			<div class="">
-        			<p><%=vocabulary.word%></p>
-        			<p><%=vocabulary.word%></p>
-        			<p><%=vocabulary.word%></p>
-        			<p><%=vocabulary.word%></p>
-      			</div>
-    		</div>
-    		<% } %>
-    		<% }); %>
-    	</div>
-  				
-  		<!-- Left and right controls -->
-  		<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-    		<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    		<span class="sr-only">Previous</span>
-  		</a>
-  		<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-    		<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    		<span class="sr-only">Next</span>
-  		</a>
-  	</div>
-  </body>
-<!-- Bootstrap core JavaScript
-    ================================================== -->
-	 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-	<script>
-  		$(document).ready(function(){
-    		$('.carousel').carousel({
-    			interval: 10000
-    		});
-  		});
-	</script>
+          <div class="flip"> 
+            <div class="card"> 
+              <div class="face front">
+                <div class="col-md-12">
+                  <img src="/images/<%=vocabularies[0].word%>.jpg" alt="" class="image_card" ></img>
+                </div> 
+                <div class="col-md-12 word_card">
+                  <p><%=vocabularies[0].word%>(<%=vocabularies[0].type%>)</p>
+                </div>
+              </div> 
 
-</html>
+              <div class="face back">
+                <%i=1%>
+                <% if (vocabularies[0].reading!=""){%>
+                  <p><%=i%>.読み方</p>
+                  <p><%=vocabularies[0].reading%></p>
+                  <%i=i+1%>
+                <%}%>
+                <% if (vocabularies[0].meaning!=""){%>
+                  <p><%=i%>.意味</p>
+                  <p><%=vocabularies[0].meaning%></p>
+                  <%i=i+1%>
+                <%}%>
+                <% if (vocabularies[0].examples!=""){%>
+                  <p><%=i%>.例文</p>
+                  <p><%=vocabularies[0].examples%></p>
+                  <%i=i+1%>
+                <%}%>
+                <% if (vocabularies[0].synonymous!=""){%>
+                  <p><%=i%>.同義語</p>
+                  <p><%=vocabularies[0].synonymous%></p>
+                  <%i=i+1%>
+                <%}%>
+                <% if (vocabularies[0].antonymous!=""){%>
+                  <p><%=i%>.反対語</p>
+                  <p><%=vocabularies[0].antonymous%></p>
+                  <%i=i+1%>
+                <%}%>
+              </div> 
+            </div> 
+          </div>
+        </div>
+        <% vocabularies.forEach( function( vocabulary, index){ %>
+        <% if(index > 0){ %>
+          <div class="item">
+            <div class="flip"> 
+              <div class="card"> 
+                <div class="face front">
+                  <div class="col-md-12">
+                    <img src="/images/<%=vocabulary.word%>.jpg" alt="" class="image_card" ></img>
+                  </div>
+                  <div class="col-md-12 word_card">
+                    <p><%=vocabulary.word%>(<%=vocabulary.type%>)</p>
+                  </div>
+                </div> 
+
+                <div class="face back">
+                  <%i=1%>
+                  <% if (vocabulary.reading!=""){%>
+                    <p><%=i%>.読み方</p>
+                    <p><%=vocabulary.reading%></p>
+                    <%i=i+1%>
+                  <%}%>
+                  <% if (vocabulary.meaning!=""){%>
+                    <p><%=i%>.意味</p>
+                    <p><%=vocabulary.meaning%></p>
+                    <%i=i+1%>
+                  <%}%>
+                  <% if (vocabulary.examples!=""){%>
+                    <p><%=i%>.例文</p>
+                    <p><%=vocabulary.examples%></p>
+                    <%i=i+1%>
+                  <%}%>
+                  <% if (vocabulary.synonymous!=""){%>
+                    <p><%=i%>.同義語</p>
+                    <p><%=vocabulary.synonymous%></p>
+                    <%i=i+1%>
+                  <%}%>
+                  <% if (vocabulary.antonymous!=""){%>
+                    <p><%=i%>.反対語</p>
+                    <p><%=vocabulary.antonymous%></p>
+                    <%i=i+1%>
+                  <%}%>
+                </div> 
+              </div> 
+            </div>
+          </div>
+        <% } %>
+        <% }); %>
+      </div>
+      <!-- Left and right controls -->
+      <a class="left carousel-control" href="#carouselID"  data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" ></span>
+      </a>
+      <a class="right carousel-control" href="#carouselID" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" ></span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="col-md-4"></div>
+</div>
+
+<script>
+  $(function () {
+    $("#carouselID").ready(function(){
+      $('.carousel').carousel({
+        interval: false,
+        wrap: false
+      });
+    });
+
+    $('.carousel-control.right').click(function(){
+      if ($("#carouselID .carousel-inner .item:last").hasClass("active")) {
+          /*$('#modalID').modal('show');*/
+        } 
+    });
+
+    $("#agreeTestID").click(function() {
+      alert('Test');
+    });
+
+    $('.flip').click(function(){
+      $(this).find(".card").toggleClass("flipped");
+      return false;
+    });
+  });
+</script>
