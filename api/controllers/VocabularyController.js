@@ -45,6 +45,18 @@ module.exports = {
             res.send(new Buffer(results));
             //res.view({image:results});
 		});
-	}
+	},
+
+  	//pronounce word
+  	pronounce: function(req,res){
+  		VocabularyService.translate('ja','難しい',function(result){
+			console.log(result); 
+		    if(result.success) { //check for success
+		        var response = { 'audio' : result.data };
+		        sails.sockets.broadcast('ttsResult', response); //emit the audio to client
+		    }
+  		});
+  	}
+
 };
 
