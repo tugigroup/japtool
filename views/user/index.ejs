@@ -1,44 +1,55 @@
-<div class="col-sm-12">
-    <h1>List User</h1>
-    <table class="table table-bordered table-striped table-hover">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>FirstName</th>
-            <th>LastName</th>
-            <th>Email</th>
-            <th>Address</th>
-            <th></th>
-            <th></th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        <% _.each(users, function(user){ %>
-        <tr data-id="<%= user.id %>" data-model="user">
-            <td><%= user.id %></td>
-            <td><%= user.username %></td>
-            <td><%= user.firstname %></td>
-            <td><%= user.lastname %></td>
-            <td><%= user.email %></td>
-            <td><%= user.address %></td>
-            <td class="text-center"><a href="/user/show/<%= user.id %>" class="btn btn-success btn-sm">Show</a>
-            </td>
-            <td class="text-center"><a href="/user/edit/<%= user.id %>" class="btn btn-warning btn-sm">Edit</a>
-            </td>
-            <td>
-                <form action="/user/destroy/<%= user.id %>" method="POST">
-                    <input type="hidden" name="_method" value="delete"/>
-                    <input type='hidden' name='_csrf' value='<%= _csrf %>'>
-                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                </form>
-            </td>
+
+<div class="col-sm-12 content">
+	<h1>List User</h1>
+
+	<div class="table-responsive">
+		<table class="table table-bordered table-striped table-hover">
+			<thead>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>FirstName</th>
+				<th>LastName</th>
+				<th>Email</th>
+				<th>Address</th>
+				<th></th>
+				<th></th>
+				<th></th>
+			</tr>
+			</thead>
+			<tbody>
+			<% _.each(users, function(user){ %>
+			<tr data-id="<%= user.id %>" data-model="user">
+				<td><%= user.id %></td>
+				<td><%= user.username %></td>
+				<td><%= user.firstname %></td>
+				<td><%= user.lastname %></td>
+				<td><%= user.email %></td>
+				<td><%= user.address %></td>
+				<% if(user.admin){ %>
+				<td><img src="/images/admin.png"/></td>
+				<% } else{ %>
+				<td><img src="/images/pawn.png"/></td>
+				<% } %>
+				<td class="text-center"><a href="/user/show/<%= user.id %>" class="btn btn-success btn-sm">Show</a>
+				</td>
+				<td class="text-center"><a href="/user/edit/<%= user.id %>" class="btn btn-warning btn-sm">Edit</a>
+				</td>
+				<td>
+					<form action="/user/destroy/<%= user.id %>" method="POST">
+						<input type="hidden" name="_method" value="delete"/>
+						<input type='hidden' name='_csrf' value='<%= _csrf %>'>
+						<button type="submit" class="btn btn-danger btn-sm">Delete</button>
+					</form>
+				</td>
 
 
-        </tr>
-        <% }) %>
-        </tbody>
-    </table>
+			</tr>
+			<% }) %>
+			</tbody>
+		</table>
+	</div>
+
+
 
 </div>

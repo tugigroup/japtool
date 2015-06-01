@@ -1,5 +1,12 @@
-<div class="col-sm-12"><h1>Infomation user <%- user.username %></h1></div>
+
+<div class="col-sm-12 content"><h1>Infomation user <%- user.username %></h1></div>
 <div class="col-sm-2">
+    <% if(user.admin){ %>
+    <td><img src="/images/admin.png"/> Admin</td>
+    <% } else{ %>
+    <td><img src="/images/pawn.png"/>Member</td>
+    <% } %>
+
     <p><%- user.firstname %> <%- user.lastname %></p>
     <p>Email: <%- user.email %></p>
     <p>Address: <%- user.address %></p>

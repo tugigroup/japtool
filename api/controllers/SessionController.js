@@ -4,7 +4,7 @@
  * @description :: Server-side logic for managing sessions
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
-
+var bcrypt = require('bcrypt');
 module.exports = {
     'new': function (req, res) {
         res.view('session/new');
@@ -18,7 +18,9 @@ module.exports = {
 
             var usernamePasswordRequiredError = [{
                 name: 'usernamePasswordRequired',
-                message: 'You must enter both a username and password.'
+
+                message: 'You must enter both a email and password.'
+
             }]
 
             // Remember that err is the object being passed down, whose value is another object with
@@ -66,11 +68,16 @@ module.exports = {
                     res.redirect('/session/new');
                     return;
                 }
-
                 // Log user in
                 req.session.authenticated = true;
                 req.session.User = user;
 
+                //If the user is also an admin redirect to the user list(/view/user/index.ejs)
+                //This is user in conjuntion with config/policies.js file
+                if (req.session.User.admin) {
+                    res.redirect('/user');
+                    return;
+                }
                 // Change status to online
                 user.online = true;
                 user.save(function (err, user) {
@@ -96,6 +103,14 @@ module.exports = {
                 });
             });
         });
+
+    },
+    destroy: function (req, res, next) {
+        //wipe out the session (log out)
+        req.session.destroy();
+        //redirect the browser to the sign-in screen
+        res.redirect('/session/new');
+
     }
 };
 
