@@ -36,14 +36,15 @@ module.exports.routes = {
         view: 'index'
     },
     /*Router by QuyetND2*/
-    'get /showTest': 'QuestionController.showAction',
+    'get /showTest': 'test/QuestionController.showAction',
     '/testIndex': {view: 'test/index-test'},
-    'post /confirm': 'QuestionController.confirmAction',
-    'post /submitTest': 'QuestionController.submitTestAction',
-    'get /showAnswer': 'QuestionController.answerAction',
-    'get /showQuestion': 'QuestionController.questionAction',
-    'post /inputAnswer': 'QuestionController.inputAnswerAction',
-    'post /deleteQuestion': 'QuestionController.deleteQuestionAction'
+    'post /confirm': 'test/QuestionController.confirmAction',
+    'post /submitTest': 'test/QuestionController.submitTestAction',
+    'get /showAnswer': 'test/QuestionController.answerAction',
+    'get /showQuestion': 'test/QuestionController.questionAction',
+    'post /inputAnswer': 'test/QuestionController.inputAnswerAction',
+    'post /deleteQuestion': 'test/QuestionController.deleteQuestionAction',
+    'post /deleteAnswer': 'test/QuestionAnswer.deleteAnswerAction'
     /*End QuyetND2*/
 
     /***************************************************************************

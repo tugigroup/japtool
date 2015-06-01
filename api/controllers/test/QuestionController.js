@@ -105,17 +105,6 @@ module.exports = {
             if (err) {
                 sails.log(err)
             } else {
-                /*Answer.find({idQuestion: _id}).exec(function createCB(err, answer) {
-                 answer.forEach(function (item) {
-                 item.destroy({}).exec(function (err, created) {
-                 if (err) {
-                 sails.log(err)
-                 } else {
-                 res.send('Question has been deleted!');
-                 }
-                 })
-                 })
-                 });*/
                 res.send('Question has been deleted!');
             }
         })
