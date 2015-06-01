@@ -1,0 +1,48 @@
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="/styles/bootstrap.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="/styles/bootstrap-theme.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="/js/bootstrap.js"></script>
+
+<div class="container">
+
+<div class="jumbotron">
+    <h1>Sửa thông tin</h1> 
+</div>
+
+<a class="btn btn-info btn-xs" href="/vocabadmin/index">Trở lại danh sách từ vựng</a>
+
+<!-- 
+<h2>vocabadmin Update form</h2>
+<form action="/vocabadmin/update/<%=vocabulary.id%>" method="POST">
+ <table class='table'>
+	<tr><td>word   <td><input type="text" name="vocabulary[word]" value="<%=vocabulary.word %>">
+	<tr><td>Meaning<td><input type="text" name="vocabulary[meaning]" value="<%=vocabulary.meaning %>">
+	<tr><td>Example<td><input type="text" name="vocabulary[example]" value="<%=vocabulary.example %>">
+	<tr><td>Other  <td><input type="text" name="vocabulary[other]" value="<%=vocabulary.other %>" >
+	<tr ><td><td><input type="submit" value="UPDATE">
+</form>
+-->
+
+<form action="/vocabadmin/update/<%=vocabulary.id%>" 
+   enctype="multipart/form-data"
+   method="POST">
+ 
+ <table class='table'>
+	<tr><td>word           <td><input type="text" name="word"  value="<%=vocabulary.word %>">
+	<tr><td>Meaning        <td><input type="text" name="meaning"  value="<%=vocabulary.meaning %>">
+	<tr><td>Example        <td><input type="text" name="example"  value="<%=vocabulary.example %>"> 
+	<tr><td>Level          <td><input type="text" name="level"  value="<%=vocabulary.level %>">
+	<tr><td>Tag          <td><input type="text" name="tag"  value="<%=vocabulary.tag %>">
+	<tr><td>Other          <td><input type="text" name="other"  value="<%=vocabulary.other %>">
+	
+	<tr><td>Image for word <td><input type="file" name="avatar">
+	<tr><td>               <td><img class="img-rounded" src="/images/<%=vocabulary.image%>" height="400" width="400">
+	<tr ><td>              <td><input class="btn btn-warning btn-xs" type="submit" value="Cập nhật">
+</form>
+
+
+ </div>
