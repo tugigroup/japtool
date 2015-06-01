@@ -1,0 +1,119 @@
+<form class="form-horizontal test-form">
+    <fieldset>
+        <legend>Question Form</legend>
+        <div class="form-group">
+            <label for="inputContent" class="col-lg-2 control-label">Content</label>
+
+            <div class="col-lg-10">
+                <input class="form-control" id="inputContent" placeholder="Content" type="text" name="inputContent">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputImage" class="col-lg-2 control-label">Image</label>
+
+            <div class="col-lg-10">
+                <input class="form-control" id="inputImage" placeholder="Image" type="text">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputAudio" class="col-lg-2 control-label">Audio</label>
+
+            <div class="col-lg-10">
+                <input class="form-control" id="inputAudio" placeholder="Audio" type="text">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputVideo" class="col-lg-2 control-label">Video</label>
+
+            <div class="col-lg-10">
+                <input class="form-control" id="inputVideo" placeholder="Video" type="text">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputLevel" class="col-lg-2 control-label">Level</label>
+
+            <div class="col-lg-10">
+                <input class="form-control" id="inputLevel" placeholder="Level" type="text">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputSort" class="col-lg-2 control-label">Sort</label>
+
+            <div class="col-lg-10">
+                <input class="form-control" id="inputSort" placeholder="Sort" type="number" name="inputSort">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputCategory" class="col-lg-2 control-label">Category</label>
+
+            <div class="col-lg-10">
+                <input class="form-control" id="inputCategory" placeholder="Category" type="text">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputOther" class="col-lg-2 control-label">Other</label>
+
+            <div class="col-lg-10">
+                <input class="form-control" id="inputOther" placeholder="Other" type="text">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+                <button id="submit-test" class="btn btn-primary" type="submit">Ok</button>
+            </div>
+        </div>
+    </fieldset>
+</form>
+<script>
+    $(document).ready(function () {
+        $('#submit-test').click(function () {
+            var _content = $("#inputContent").val();
+            var _image = $("#inputimage").val();
+            var _audio = $("#inputAudio").val();
+            var _video = $("#inputVideo").val();
+            var _level = $("#inputLevel").val();
+            var _sort = $("#inputSort").val();
+            var _tab = $("#inputTab").val();
+            var _category = $("#inputCategory").val();
+            var _other = $("#inputOther").val();
+            if ($.isNumeric(_sort) && _content != "") {
+                $.ajax({
+                    method: "POST",
+                    url: "submitTest",
+                    data: {
+                        content: _content,
+                        image: _image,
+                        audio: _audio,
+                        video: _video,
+                        level: _level,
+                        sort: _sort,
+                        tab: _tab,
+                        category: _category,
+                        other: _other
+                    }
+                })
+                        .done(function (msg) {
+                            alert(msg);
+                        });
+            }
+            $('.test-form').validate({
+                rules: {
+                    inputContent: {
+                        required: true,
+                        minlength: 6
+                    },
+                    inputSort: {
+                        number: true,
+                        required: true
+                    }
+                },
+                submitHandler: function (form) {
+
+                },
+                success: function (element) {
+                    element.text('OK!').addClass('valid')
+                }
+            });
+        });
+    })
+</script>

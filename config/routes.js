@@ -22,28 +22,44 @@
 
 module.exports.routes = {
 
-  /***************************************************************************
-  *                                                                          *
-  * Make the view located at `views/index.ejs` (or `views/homepage.jade`, *
-  * etc. depending on your default view engine) your home page.              *
-  *                                                                          *
-  * (Alternatively, remove this and add an `index.html` file in your         *
-  * `assets` directory)                                                      *
-  *                                                                          *
-  ***************************************************************************/
+    /***************************************************************************
+     *                                                                          *
+     * Make the view located at `views/index.ejs` (or `views/homepage.jade`, *
+     * etc. depending on your default view engine) your home page.              *
+     *                                                                          *
+     * (Alternatively, remove this and add an `index.html` file in your         *
+     * `assets` directory)                                                      *
+     *                                                                          *
+     ***************************************************************************/
 
-  '/': {
-    view: 'index'
-  }
+    '/': {
+        view: 'index'
+    },
+    /*Router by QuyetND2*/
+    'get /showTest': 'QuestionController.showAction',
+    '/testIndex': {view: 'test/index-test'},
+    'post /confirm': 'QuestionController.confirmAction',
+    'post /submitTest': 'QuestionController.submitTestAction',
+    'get /showAnswer': 'QuestionController.answerAction',
+    'get /showQuestion': 'QuestionController.questionAction',
+    'post /inputAnswer': 'QuestionController.inputAnswerAction',
+    /*End QuyetND2*/
 
-  /***************************************************************************
-  *                                                                          *
-  * Custom routes here...                                                    *
-  *                                                                          *
-  * If a request to a URL doesn't match any of the custom routes above, it   *
-  * is matched against Sails route blueprints. See `config/blueprints.js`    *
-  * for configuration options and examples.                                  *
-  *                                                                          *
-  ***************************************************************************/
+    /***************************************************************************
+     *                                                                          *
+     * Custom routes here...                                                    *
+     *                                                                          *
+     * If a request to a URL doesn't match any of the custom routes above, it   *
+     * is matched against Sails route blueprints. See `config/blueprints.js`    *
+     * for configuration options and examples.                                  *
+     *                                                                          *
+     ***************************************************************************/
 
+
+    'get /vocabulary': {
+      view: '/vocabulary/index'
+    },
+
+    'get /vocabulary/flashcard': 'VocabularyController.flashcard',
+    'get /vocabulary/list': 'VocabularyController.list',
 };

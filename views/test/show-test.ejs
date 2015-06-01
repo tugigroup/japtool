@@ -1,0 +1,55 @@
+<div class="row">
+    <% data.forEach(function(question) { %>
+    <div class="col-lg-4">
+        <h2> Category <%= question.category %></h2>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title"><%= question.content %></h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <% question.answers.forEach(function(item) { %>
+                    <div class="col-lg-6">
+                        <div class="checkbox">
+                            <label>
+                                <input class="my-checkbox" type="checkbox"
+                                       name="<%= item.content %>"> <%= item.content %>
+                            </label>
+                        </div>
+                    </div>
+                    <% }); %>
+                </div>
+                <div id="<%= question.id %>" class="btn btn-info pull-right btn-answer-ok">Ok</div>
+            </div>
+        </div>
+    </div>
+    <% }); %>
+</div>
+<script>
+    $(document).ready(function () {
+        $('.btn-answer-ok').each(function () {
+            $(this).click(function () {
+                var _arr_data = [];
+                var _id = $(this).attr("id");
+                $('.my-checkbox').each(function () {
+                    if ($(this).prop("checked")) {
+                        _arr_data.push($(this).attr("name"));
+                    }
+                });
+                if (_arr_data != '' && _id != '') {
+                    $.ajax({
+                        method: "POST",
+                        url: "confirm",
+                        data: {data: _arr_data, id: _id}
+                    })
+                            .done(function (msg) {
+                                alert(msg);
+                            });
+                } else {
+                    alert('Please choose your option');
+                }
+            })
+        });
+    })
+</script>
