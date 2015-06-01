@@ -47,7 +47,7 @@
                         data: {data: _arr_data, id: _id}
                     })
                             .done(function (msg) {
-                                alert(msg);
+                                console.log(msg);
                             });
                 } else {
                     alert('Please choose your option');
@@ -63,18 +63,16 @@
                     url: "deleteQuestion",
                     data: {id: _id}
                 }).done(function (msg) {
-                    alert(msg);
-                });
-
-                $.ajax({
-                    method: "POST",
-                    url: "deleteAnswer",
-                    data: {id: _id}
-                }).done(function (msg) {
-                    alert(msg);
+                    console.log(msg);
+                    $.ajax({
+                        method: "POST",
+                        url: "deleteAnswer",
+                        data: {id: _id}
+                    }).done(function (msg) {
+                        alert(msg);
+                    });
                 });
             })
-
         })
     })
 </script>

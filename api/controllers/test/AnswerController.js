@@ -8,18 +8,16 @@
 module.exports = {
     deleteAnswerAction: function (req, res) {
         var _id = req.param('id');
-        Answer.find({idQuestion: _id}).exec(function createCB(err, answer) {
-            answer.forEach(function (item) {
-                sails.log(item);
-                item.destroy().exec(function (err, created) {
-                    if (err) {
-                        sails.log(err)
-                    } else {
-                        res.send('Answer of question has been deleted!');
+        Answer.find({idQuestion: _id}).exec(function createCB(err, answers) {
+            answers.forEach(function (item, index) {
+                Answer.destroy({id: item.id}).exec(function createCB(err, result) {
+                    if (err) sails.log(err)
+                    else {
+                        if (index == answers.length - 1)
+                            res.send('Answers of message have been deleted too!');
                     }
                 })
             })
         });
     }
 };
-

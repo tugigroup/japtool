@@ -44,7 +44,7 @@ module.exports.routes = {
     'get /showQuestion': 'test/QuestionController.questionAction',
     'post /inputAnswer': 'test/QuestionController.inputAnswerAction',
     'post /deleteQuestion': 'test/QuestionController.deleteQuestionAction',
-    'post /deleteAnswer': 'test/QuestionAnswer.deleteAnswerAction',
+    'post /deleteAnswer': 'test/AnswerController.deleteAnswerAction',
     /*End QuyetND2*/
 
     /***************************************************************************
@@ -63,5 +63,5 @@ module.exports.routes = {
     },
 
     'get /vocabulary/flashcard': 'VocabularyController.flashcard',
-    'get /vocabulary/list': 'VocabularyController.list',
+    'get /vocabulary/list': 'VocabularyController.list'
 };
