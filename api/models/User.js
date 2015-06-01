@@ -67,7 +67,8 @@ module.exports = {
         // Add a reference to User
         buddyGroup: {
             collection: "buddyGroup",
-            via: "users"
+            via: "users",
+            dominate: true
         }
 
 
