@@ -61,7 +61,20 @@ module.exports = {
    ***************************************************************************/
 
   // port: process.env.PORT || 1337,
-  port: process.env.PORT || 1908
+  port: process.env.PORT || 1908,
+
+
+  connections: {
+        someMongodbServer: {
+            module: 'sails-mongo',
+            host: 'localhost',
+            port: 27017,
+            //user: '',
+            //password: '',
+            database: 'test'
+        }
+    },
+
 
   /***************************************************************************
    * The runtime "environment" of your Sails app is either typically         *
