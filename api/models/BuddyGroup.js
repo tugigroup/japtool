@@ -6,7 +6,6 @@
  */
 
 module.exports = {
-
     attributes: {
         groupName: {
             type: 'string'
@@ -21,5 +20,4 @@ module.exports = {
         }
     }
 };
-
 

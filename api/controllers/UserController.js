@@ -34,6 +34,7 @@ module.exports = {
             res.redirect('/user/show/' + user.id);
 
         });
+
     },
     //render the profile view (show.ejs)
     show: function (req, res, next) {
