@@ -1,3 +1,4 @@
+
 /**
  * Route Mappings
  * (sails.config.routes)
@@ -35,6 +36,8 @@ module.exports.routes = {
     '/': {
         view: 'index'
     },
+    /* Router by tuyentv1*/
+    'get/ new_group':'BuddyGroupController.create',
     /*Router by QuyetND2*/
     'get /showTest': 'QuestionController.showAction',
     '/testIndex': {view: 'test/index-test'},

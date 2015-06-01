@@ -35,6 +35,13 @@ module.exports.policies = {
         edit: "userSeeProfile",
         update: "userSeeProfile",
         '*': "admin"
+    },
+    BuddyGroup: {
+        'new_group': "flash",
+         create: 'flash',
+        show: "userSeeProfile",
+        create: "userSeeProfile"
+
     }
 
     /***************************************************************************
