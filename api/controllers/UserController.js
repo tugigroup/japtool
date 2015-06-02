@@ -104,6 +104,16 @@ module.exports = {
             });
             res.redirect('/user');
         });
+    },
+    searchUser: function (req, res, next) {
+        sails.log('loi sasdfsdfg');
+        User.findByName(req.param('searchUser'), function searchUser(err, user) {
+            if (err) {
+                sails.log('fsdfsfsf');
+            } else {
+                sails.log('ket qua sasdfsdfg');
+            }
+        })
     }
 
 };
