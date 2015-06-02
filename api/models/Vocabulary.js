@@ -57,9 +57,9 @@ module.exports = {
   
   //select vocabulary by Level
   selectByLevel: function(opts,cb) {
-	var tag = opts.level;
+	var level = opts.level;
 	
-	 Vocabulary.find({level: tag}).exec(function(err,vocabularies){
+	 Vocabulary.find({level: level}).exec(function(err,vocabularies){
 		if(err) return cb(err);
 		return cb(null,vocabularies);
 	 });

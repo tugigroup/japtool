@@ -1,5 +1,5 @@
 /**
- * translate Response
+ * translate Response service
  * 
  */
 
@@ -9,7 +9,7 @@ module.exports = {
 	translate: function(languageLocale, word, callback) {
 		var request = require('request');
 		var streamBuffers = require("stream-buffers");
-	    var url = "http://translate.google.com/translate_tts?tl=" + languageLocale + "&q=" + word;
+	    var url = "http://translate.google.com/translate_tts?ie=utf-8&tl=" + languageLocale + "&q=" + word;
 	      
 	    var myWritableStreamBuffer = new streamBuffers.WritableStreamBuffer({
 	        initialSize: (100 * 1024),      // start as 100 kilobytes.

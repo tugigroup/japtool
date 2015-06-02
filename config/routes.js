@@ -65,4 +65,5 @@ module.exports.routes = {
 
     'get /vocabulary/flashcard': 'VocabularyController.flashcard',
     'get /vocabulary/list': 'VocabularyController.list',
+    'post /vocabulary/pronounce': 'VocabularyController.pronounce',
 };
