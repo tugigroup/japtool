@@ -6,9 +6,22 @@
  */
 
 module.exports = {
-    deleteAnswerAction: function (req, res) {
-        var _id = req.param('id');
-        Answer.find({idQuestion: _id}).exec(function createCB(err, answers) {
+    create: function (req, res) {
+        var id = req.param('id');
+        var content = req.param('content');
+        var result = req.param('result');
+        Answer.create({content: content, result: result, idQuestion: id}).exec(function createCB(err, created) {
+            if (err) {
+                sails.log(err)
+            } else {
+                res.send('Answer has been created!');
+            }
+        })
+    },
+
+    delete: function (req, res) {
+        var id = req.param('id');
+        Answer.find({idQuestion: id}).exec(function createCB(err, answers) {
             answers.forEach(function (item, index) {
                 Answer.destroy({id: item.id}).exec(function createCB(err, result) {
                     if (err) sails.log(err)

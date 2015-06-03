@@ -38,16 +38,17 @@ module.exports.routes = {
     },
     /* Router by tuyentv1*/
     'get/ new_group':'BuddyGroupController.create',
+
     /*Router by QuyetND2*/
-    'get /showTest': 'test/QuestionController.showAction',
-    '/testIndex': {view: 'test/index-test'},
-    'post /confirm': 'test/QuestionController.confirmAction',
-    'post /submitTest': 'test/QuestionController.submitTestAction',
-    'get /showAnswer': 'test/QuestionController.answerAction',
-    'get /showQuestion': 'test/QuestionController.questionAction',
-    'post /inputAnswer': 'test/QuestionController.inputAnswerAction',
-    'post /deleteQuestion': 'test/QuestionController.deleteQuestionAction',
-    'post /deleteAnswer': 'test/AnswerController.deleteAnswerAction',
+    '/testIndex':{view:'test/index-test'},
+    'get /showTest': 'test/QuestionController.show',
+    'post /confirmResult': 'test/QuestionController.confirm',
+    'post /submitTest': 'test/QuestionController.create',
+    'get /showAnswer': 'test/QuestionController.getFormAnswer',
+    'get /showQuestion': 'test/QuestionController.getForm',
+    'post /inputAnswer': 'test/AnswerController.create',
+    'post /deleteQuestion': 'test/QuestionController.delete',
+    'post /deleteAnswer': 'test/AnswerController.delete',
     /*End QuyetND2*/
 
     /***************************************************************************

@@ -43,7 +43,7 @@
                 if (_arr_data != '' && _id != '') {
                     $.ajax({
                         method: "POST",
-                        url: "confirm",
+                        url: "confirmResult",
                         data: {data: _arr_data, id: _id}
                     })
                             .done(function (msg) {

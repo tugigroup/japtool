@@ -6,33 +6,33 @@
  */
 
 module.exports = {
-    showAction: function (req, res) {
+    show: function (req, res) {
         Question.find().populate('answers').exec(function createCB(err, created) {
             res.render('test/show-test', {data: created});
         })
     },
 
-    confirmAction: function (req, res) {
-        var _data = req.param('data');
-        var _id = req.param('id');
-        if (_data != undefined && _id != undefined) {
-            Question.findOne({id: _id}).populate('answers').exec(function createCB(err, created) {
-                var _flag_asw_choose = true;
-                var _i = 0;
+    confirm: function (req, res) {
+        var data = req.param('data');
+        var id = req.param('id');
+        if (data != undefined && id != undefined) {
+            Question.findOne({id: id}).populate('answers').exec(function createCB(err, created) {
+                var flag_asw_choose = true;
+                var i = 0;
                 created.answers.forEach(function (item) {
-                    if (item.result) _i++;
+                    if (item.result) i++;
                 });
 
-                if (_data.length != _i) {
+                if (data.length != i) {
                     res.send("Incorrect");
                 } else {
-                    _data.forEach(function (data_item, data_index) {
+                    data.forEach(function (data_item, data_index) {
                         created.answers.forEach(function (answer, answer_index) {
                             if (data_item == answer.content && !answer.result) {
-                                _flag_asw_choose = false;
+                                flag_asw_choose = false;
                             }
-                            if ((_data.length - 1) == data_index && (created.answers.length - 1) == answer_index) {
-                                if (_flag_asw_choose) {
+                            if ((data.length - 1) == data_index && (created.answers.length - 1) == answer_index) {
+                                if (flag_asw_choose) {
                                     res.send("Correct");
                                 } else {
                                     res.send("Incorrect");
@@ -45,27 +45,43 @@ module.exports = {
         }
     },
 
-    submitTestAction: function (req, res) {
-        var _content = req.param('content');
-        var _image = req.param('image');
-        var _audio = req.param('audio');
-        var _video = req.param('video');
-        var _level = req.param('level');
-        var _sort = req.param('sort');
-        var _tab = req.param('tab');
-        var _category = req.param('category');
-        var _other = req.param('other');
+    create: function (req, res) {
+        var content = req.param('content');
+        //var image = req.param('image');
+        var audio = req.param('audio');
+        var video = req.param('video');
+        var level = req.param('level');
+        var sort = req.param('sort');
+        var tab = req.param('tab');
+        var category = req.param('category');
+        var other = req.param('other');
+
+
+        req.file('image').upload({
+            adapter: require('skipper-gridfs'),
+            uri: 'mongodb://localhost:27017/japtool.fs'
+        },function (err, files) {
+            if (err)
+                return res.serverError(err);
+
+            else{
+                sails.log( files.length + ' file(s) uploaded successfully!');
+                sails.log( files);
+                return res.ok();
+            }
+
+        });
 
         Question.create({
-            content: _content,
-            image: _image,
-            audio: _audio,
-            video: _video,
-            level: _level,
-            sort: _sort,
-            tab: _tab,
-            category: _category,
-            other: _other
+            content: content,
+            //image: image,
+            audio: audio,
+            video: video,
+            level: level,
+            sort: sort,
+            tab: tab,
+            category: category,
+            other: other
         }).exec(function createCB(err, created) {
             if (err) {
                 sails.log(err)
@@ -76,32 +92,68 @@ module.exports = {
         })
     },
 
-    answerAction: function (req, res) {
+    /*create: function (req, res) {
+        path = require('path');
+        var urlImage = path.basename('D:\hello\TBL114.gif');
+        var content = req.param('content');
+        var image = req.param('image');
+        var audio = req.param('audio');
+        var video = req.param('video');
+        var level = req.param('level');
+        var sort = req.param('sort');
+        var tab = req.param('tab');
+        var category = req.param('category');
+        var other = req.param('other');
+
+        req.file(urlImage).upload(function (err, files) {
+            if (err){
+                return res.serverError(err);
+                sails.log(res.headersSent)
+            }
+            else{
+                sails.log(res.headersSent);
+                return res.json({
+                    message: files.length + ' file(s) uploaded successfully!',
+                    files: files
+                });
+            }
+
+        });
+
+        Question.create({
+            content: content,
+            image: image,
+            audio: audio,
+            video: video,
+            level: level,
+            sort: sort,
+            tab: tab,
+            category: category,
+            other: other
+        }).exec(function createCB(err, created) {
+            if (err) {
+                sails.log(err)
+            }
+            else {
+                res.send('Question has been created!');
+            }
+        })
+    },*/
+
+    getFormAnswer: function (req, res) {
         Question.find().exec(function createCB(err, data) {
             res.render('test/input-answer', {data: data});
         })
     },
 
-    questionAction: function (req, res) {
+    getForm: function (req, res) {
         res.render('test/input-question');
     },
 
-    inputAnswerAction: function (req, res) {
-        var _id = req.param('id');
-        var _content = req.param('content');
-        var _result = req.param('result');
-        Answer.create({content: _content, result: _result, idQuestion: _id}).exec(function createCB(err, created) {
-            if (err) {
-                sails.log(err)
-            } else {
-                res.send('Answer has been created!');
-            }
-        })
-    },
 
-    deleteQuestionAction: function (req, res) {
-        var _id = req.param('id');
-        Question.destroy({id: _id}).exec(function (err, question) {
+    delete: function (req, res) {
+        var id = req.param('id');
+        Question.destroy({id: id}).exec(function (err, question) {
             if (err) {
                 sails.log(err)
             } else {
