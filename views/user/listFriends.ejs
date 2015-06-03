@@ -1,7 +1,5 @@
-
-
-<div class="col-sm-12 content">
-	<h1>List User</h1>
+<div class="col-sm-12">
+	<h2>Search List Friends</h2>
 
 	<div class="table-responsive">
 		<table class="table table-bordered table-striped table-hover">
@@ -9,36 +7,29 @@
 			<tr>
 				<th>ID</th>
 				<th>Name</th>
-				<th>FirstName</th>
-				<th>LastName</th>
 				<th>Email</th>
-				<th>Address</th>
-				<th></th>
-				<th></th>
-				<th></th>
-				<th></th>
+				<th>Add Friends</th>
+
 			</tr>
 			</thead>
 			<tbody>
-			<% _.each(ob, function(obitem){ %>
-			<tr data-id="<%= obitem.id %>" data-model="user">
-				<td><%= obitem.id %></td>
-				<td><%= obitem.username %></td>
-				<td><%= obitem.firstname %></td>
-				<td><%= obitem.lastname %></td>
-				<td><%= obitem.email %></td>
-				<td><%= obitem.address %></td>
+			<form action="/buddy/addBuddy" method="POST">
+				<% _.each(ob, function(obitem){ %>
+				<tr data-id="<%= obitem.id %>" data-model="user">
+					<td><input type="hidden" name="<%= obitem.id %>"><%= obitem.id %></td>
+					<td><input type="hidden" name="<%= obitem.username %>"><%= obitem.username %></td>
+					<td><%= obitem.email %></td>
+					<td>
+						<button type="submit" class="btn btn-danger" id="add-friend-<%= obitem.id %>">Add Friend
+						</button>
 
 
-
-
-
-			</tr>
-			<% }) %>
+					</td>
+				</tr>
+				<% }) %>
+			</form>
 			</tbody>
 		</table>
 	</div>
-
-
-
 </div>
+

@@ -105,21 +105,29 @@ module.exports = {
             res.redirect('/user');
         });
     },
-    searchUser:function(req,res,next){
+    searchUser: function (req, res, next) {
         //var username = req.param('username');
         //sails.log(' dang o ben ngoai' + username);
         //res.send('/user/listFriends');
-        User.findByUsername(req.param('username'), function searchUser(err, user){
+        User.findByUsername(req.param('username'), function searchUser(err, user) {
             //sails.log('vo trong roi' + username);
             if (err) {
                 res.send(400);
             } else {
-                res.render('user/listFriends',{ob: user});
+                res.render('user/listFriends', {ob: user});
             }
-
         })
-
-
+    },
+    addBuddy:function(req,res){
+        sails.log('da vao dau');
+        Buddy.create(req.params.all(), function userCreated(err, buddy) {
+            sails.log('da vao dau');
+            if (err) {
+                res.send(400);
+            } else {
+                res.send(buddy);
+            }
+        })
     }
 
 }

@@ -33,8 +33,6 @@
             </form>
         </div>
     </div>
-    <h2>Search List Friends</h2>
-
     <div id="info-User"></div>
 </div>
 <script src="/js/dependencies/jquery-1.9.1.js"></script>
@@ -43,57 +41,17 @@
         $('#submit').click(function () {
             var username = $('#username').val();
             $.ajax({
-                method: "POST",
-                url: "/user/searchUser",
-                data: {username: username}
-            })
-                    .done(function (msg) {
-                        console.log(msg);
-                    });
-
-
-
-//
-//            $.ajax({
-//                url: '/user/searchUser',
-//                type: 'POST',
-//                data: {username: username},
-//                dataType: 'json',
-//                cache: false,
-//                success: function (data) {
-//                    var html = '';
-//                    html += '<table class="table table-bordered">';
-//                    html += '<tbody>';
-//                    $.each(data.ob, function (key, obj) {
-//                        html += '<tr>';
-//                        html += '<td>' + obj.username + '</td>';
-//                        html += '<td>' + obj.email + '</td>';
-//                        html += '<td>' + obj.address + '</td>';
-//                        html += '<td><button type="button" class="btn btn-danger" id="addFriend">Add Friend</button></td>';
-//                        html += '</tr>';
-//                    });
-//                    html += '</tbody>';
-//                    html += '</table>';
-//                    console.log(data);
-//                    //$('#info-User').append(data);
-//
-//                },
-//                error: function (xhr, status, text) {
-//                    alert('loi roi nhe');
-//                    var response = jQuery.parseJSON(xhr, responseText);
-//                    alert(response.error);
-//                }
-//
-//            });
-        });
-
-
-    })
-    $(document).ready(function () {
-
-        $('#addFriend').click(function () {
-            alert('sdkfjsklfjs');
+                url: '/user/searchUser',
+                type: 'POST',
+                data: {username: username},
+                cache: false,
+                success: function (data) {
+                    $('#info-User').append(data);
+                },
+                error: function() {
+                    alert('loi roi nhe');
+                }
+            });
         });
     })
-
 </script>
