@@ -1,0 +1,44 @@
+
+
+<div class="col-sm-12 content">
+	<h1>List User</h1>
+
+	<div class="table-responsive">
+		<table class="table table-bordered table-striped table-hover">
+			<thead>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>FirstName</th>
+				<th>LastName</th>
+				<th>Email</th>
+				<th>Address</th>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th></th>
+			</tr>
+			</thead>
+			<tbody>
+			<% _.each(ob, function(obitem){ %>
+			<tr data-id="<%= obitem.id %>" data-model="user">
+				<td><%= obitem.id %></td>
+				<td><%= obitem.username %></td>
+				<td><%= obitem.firstname %></td>
+				<td><%= obitem.lastname %></td>
+				<td><%= obitem.email %></td>
+				<td><%= obitem.address %></td>
+
+
+
+
+
+			</tr>
+			<% }) %>
+			</tbody>
+		</table>
+	</div>
+
+
+
+</div>
