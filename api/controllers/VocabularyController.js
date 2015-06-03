@@ -44,9 +44,10 @@ module.exports = {
 
   	//pronounce word
   	pronounce: function(req,res){
-  		
-  		VocabularyService.translate('ja','今日はいい天気ですね。',function(result){
-			console.log(result); 
+  		var vocabulary = req.allParams();
+  		console.log(vocabulary);
+  		VocabularyService.translate('ja',vocabulary.word,function(result){
+			//console.log(result); 
 		    if(result.success) {
 		        res.json(result);
 		    }
