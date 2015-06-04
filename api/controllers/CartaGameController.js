@@ -47,7 +47,7 @@ module.exports = {
       console.log("-----------------------");
       console.log("Data (random): " + JSON.stringify(ranWords));
 
-      return res.view('vocabulary/cartagame',{'ranWords':ranWords});
+      return res.render('vocabulary/cartagame',{'ranWords':ranWords});
     });
   }
 };
