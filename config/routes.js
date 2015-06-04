@@ -66,12 +66,5 @@ module.exports.routes = {
     'get /vocabulary/flashcard': 'VocabularyController.flashcard',
     'get /vocabulary/list': 'VocabularyController.list',
     'post /vocabulary/pronounce': 'VocabularyController.pronounce',
-
-    //Nino added
-    'GET /vocabulary/cartagame': {
-        controller: 'CartaGameController',
-        action: 'wordgen'
-    }
-    //Nino added
-    
+    'get /vocabulary/cartagame': 'CartaGameController.wordgen',
 };

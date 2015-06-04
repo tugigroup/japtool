@@ -71,16 +71,22 @@
   <table class="table table-striped" border="1">
     <tbody>
     <% index = 0 %>
+    <% genFlg = true %>
     <% for (row = 0; row < 6; row++) { %>
-      <tr>
-        <% for (col = 0; col < 4; col++) { %>
-          <% index = col+row*4 %>
-          <td width="25%" id="<%= index %>">
-            <% if (index < ranWords.length) { %>
-              <%= ranWords[index].word %>
-              <input type="hidden" id="input<%= index %>" value=" <%= ranWords[index].meaning %> ">
-            <% } %> 
-        <% } %>
+      <% if (genFlg) { %>
+        <tr>
+          <% for (col = 0; col < 4; col++) { %>
+            <% index = col+row*4 %>
+            <td width="25%" id="<%= index %>">
+              <% if (index < ranWords.length) { %>
+                <%= ranWords[index].word %>
+                <input type="hidden" id="input<%= index %>" value=" <%= ranWords[index].meaning %> ">
+              <% } else { %>
+                <% genFlg = false %>
+                <% break %>
+              <% }%> 
+          <% } %>
+      <% } %>
     <% } %>
 </form>
 </div>
