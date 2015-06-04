@@ -38,7 +38,10 @@
                   <%}%>
                   <% if (vocabularies[0].examples!=""){%>
                     <p><%=i%>.例文</p>
-                    <p class="examples left-space"><%=vocabularies[0].examples%></p>
+                    <p  class="examples left-space" 
+                        data-toggle="tooltip" 
+                        data-placement="right" 
+                        title="Tooltip on right"><%=vocabularies[0].examples%></p>
                     <%i=i+1%>
                   <%}%>
                   <% if (vocabularies[0].synonymous!=""){%>
@@ -88,7 +91,10 @@
                     <%}%>
                     <% if (vocabulary.examples!=""){%>
                       <p><%=i%>.例文</p>
-                      <p class="examples left-space"><%=vocabulary.examples%></p>
+                      <p  class="examples left-space" 
+                        data-toggle="tooltip" 
+                        data-placement="right" 
+                        title="Tooltip on right"><%=vocabulary.examples%></p>
                       <%i=i+1%>
                     <%}%>
                     <% if (vocabulary.synonymous!=""){%>

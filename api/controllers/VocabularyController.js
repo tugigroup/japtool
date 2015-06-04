@@ -11,7 +11,7 @@ module.exports = {
 		return res.view('vocabulary/index');   	
 	},
 
-    //select list vocabulary
+    //select vocabulary for [list] style
 	list: function(red,res) {
 	  
       Vocabulary.selectByLevel({level: "N5"},function(err,vocabularies){
@@ -21,7 +21,7 @@ module.exports = {
 
 	},
 
-	//select flash card vocabulary
+	//select vocabulary for [flash card] style
 	flashcard: function(red,res) {
 	  
       Vocabulary.selectByLevel({level: "N5"},function(err,vocabularies){
@@ -30,7 +30,15 @@ module.exports = {
       });
 
 	},
-	
+
+	//select vocabulary for [quick learning] style
+	quicklearning: function(req,res){
+
+		Vocabulary.selectByLevel({level: "N5"},function(err,vocabularies){
+		if(err) return res.send(500);
+		return res.render('vocabulary/quicklearning',{'vocabularies':vocabularies});   	
+      });
+	},
 	/*vocabulary: function(req,res) {
 		var gfs = req.gfs;
 		// body...

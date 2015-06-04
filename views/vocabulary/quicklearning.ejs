@@ -1,0 +1,43 @@
+
+<script src="/js/dependencies/jquery-1.9.1.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+<div class="row">
+  <div class="col-md-8"　border="1px">
+    <div class="top-space"></div>
+    <div class="top-space"></div>
+    <div clas="col-md-12">
+      <div><%=vocabularies[0].word%></div>
+      <div class="hide-children">
+        <p>読み方</p>
+        <p class="left-space"><%=vocabularies[0].reading%></p>
+        <p>意味</p>
+        <p class="left-space"><%=vocabularies[0].meaning%></p>
+        <button type="button" class="btn btn-default" id="next-button">
+          <span>Next</span>
+        </button>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <button type="button" class="btn btn-default" aria-label="Left Align" id="unknow-button">
+        <span>知らない</span>
+      </button>
+      <button type="button" class="btn btn-default" aria-label="Left Align" id="know-button">
+        <span>知っている</span>
+      </button>
+    </div>
+  </div> 
+  <div class="col-md-4"></div>
+</div>
+
+<script>
+  $(function(){
+    // $("#unknow-button").click(function(){
+    //   console.log("hello");
+    //   $('.hide-children').show();
+    //   $('.hide-children').children().show();
+    // });
+    // $("#know-button").click(function{
+    // });
+  });
+</script>
