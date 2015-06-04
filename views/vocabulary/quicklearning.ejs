@@ -3,16 +3,16 @@
 <script src="/js/bootstrap.min.js"></script>
 
 <div class="row">
-  <div class="col-md-8"　border="1px">
+  <div class="col-md-8">
     <div class="top-space"></div>
     <div class="top-space"></div>
     <div clas="col-md-12">
-      <div><%=vocabularies[0].word%></div>
+      <div id="word"></div>
       <div class="hide-children">
         <p>読み方</p>
-        <p class="left-space"><%=vocabularies[0].reading%></p>
+        <p class="left-space" id="reading"></p>
         <p>意味</p>
-        <p class="left-space"><%=vocabularies[0].meaning%></p>
+        <p class="left-space" id="meaning"></p>
         <button type="button" class="btn btn-default" id="next-button">
           <span>Next</span>
         </button>
@@ -32,12 +32,41 @@
 
 <script>
   $(function(){
-    // $("#unknow-button").click(function(){
-    //   console.log("hello");
-    //   $('.hide-children').show();
-    //   $('.hide-children').children().show();
-    // });
-    // $("#know-button").click(function{
-    // });
+    //Get value from VocabularyController.quicklearning
+    var vocabularies=<%- JSON.stringify(vocabularies) %>;
+
+    //Next vvocabulary function
+    var next = function(vocabulary){
+      var index = vocabularies.indexOf(vocabulary);
+      index++;
+      if(index >= vocabularies.length)
+          index = 0;
+
+      return vocabularies[index];
+    };
+    console.log(next(vocabularies[2]));
+    
+    //Pass value to view(id="word")
+    $("#word").text(vocabularies[0].word);
+
+    //Pass value to view(id="reading")
+    $("#reading").text(vocabularies[0].reading);
+
+    //Pass value to view(id="meaning")
+    $("#meaning").text(vocabularies[0].meaning);       
+
+    $("#unknow-button").click(function(){
+      $('.hide-children').show();
+      $('.hide-children').children().show();
+      $("#know-button").attr("disabled", true);
+    });
+    $("#know-button").click(function(){
+      $("#word").text(vocabularies[1].word);
+      $("#reading").text(vocabularies[1].reading);
+      $("#meaning").text(vocabularies[1].meaning);
+    });
+    $("#next-button").click(function(){
+      $.ajax
+    });
   });
 </script>
