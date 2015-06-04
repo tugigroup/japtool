@@ -105,29 +105,41 @@ module.exports = {
             res.redirect('/user');
         });
     },
+    //Find user with data from input
     searchUser: function (req, res, next) {
-        //var username = req.param('username');
-        //sails.log(' dang o ben ngoai' + username);
-        //res.send('/user/listFriends');
+        var id_origin = req.param('id_origin');
         User.findByUsername(req.param('username'), function searchUser(err, user) {
-            //sails.log('vo trong roi' + username);
             if (err) {
                 res.send(400);
             } else {
-                res.render('user/listFriends', {ob: user});
+                res.render('user/list-find-friends', {id_origin:id_origin, ob: user});
             }
         })
     },
+    //Add Friend of user to collection with module "One to Many"
     addBuddy:function(req,res){
-        sails.log('da vao dau');
-        Buddy.create(req.params.all(), function userCreated(err, buddy) {
-            sails.log('da vao dau');
+        var users = req.param('users');
+        var user_id = req.param('user_id');
+        var username = req.param('name');
+        Buddy.create({name:username, user_id:user_id,buddyOf:users}, function userCreated(err, buddy) {
             if (err) {
                 res.send(400);
             } else {
-                res.send(buddy);
+                res.redirect('/user/show/' + users);
             }
         })
+    },
+    //Find all Friend of User
+    findBuddy:function(req,res){
+        var id = req.param('idUser');
+        User.findOne(id).populate('buddy').exec(function findBuddy(err, buddys) {
+            if (err) {
+                res.send(400);
+            } else {
+           //res.send(buddys);
+            res.view('user/list-friends',{buddys:buddys})
+            }
+        });
     }
 
 }

@@ -5,7 +5,7 @@
     <% } else{ %>
     <td><img src="/images/pawn.png"/>Member</td>
     <% } %>
-
+    <input type="hidden" value="<%- user.id %>" id="hiddien_Id">
     <p><%- user.firstname %> <%- user.lastname %></p>
 
     <p>Email: <%- user.email %></p>
@@ -18,6 +18,10 @@
 </div>
 <div class="col-sm-6">
     <div class="row">
+     <form action="/user/findBuddy" method="POST">
+         <input type="hidden" value="<%- user.id %>" name="idUser">
+         <button type="submit" class="btn btn-warning">List Friends</button>
+     </form>
         <div class="col-sm-4">
             Search Friend:
         </div>
@@ -40,10 +44,14 @@
     $(document).ready(function () {
         $('#submit').click(function () {
             var username = $('#username').val();
+            var id = $('#hiddien_Id').val();
             $.ajax({
                 url: '/user/searchUser',
                 type: 'POST',
-                data: {username: username},
+                data: {
+                    username: username,
+                    id_origin: id
+                },
                 cache: false,
                 success: function (data) {
                     $('#info-User').append(data);

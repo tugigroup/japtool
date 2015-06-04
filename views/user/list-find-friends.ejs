@@ -1,0 +1,33 @@
+<div class="col-sm-12">
+    <h2>Search List Friends</h2>
+    <div class="table-responsive">
+        <form action="/user/addBuddy" method="POST">
+
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Add Friends</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% _.each(ob, function(obitem){ var i=1; %>
+                <input type="hidden" name="users" value="<%= id_origin %>">
+                <tr data-id="<%= obitem.id %>" data-model="user">
+                    <td><input type="hidden" name="user_id" value="<%= obitem.id %>"><%= obitem.id %></td>
+                    <td><input type="hidden" name="name" value="<%= obitem.username %>"><%= obitem.username %></td>
+                    <td><%= obitem.email %></td>
+                    <td>
+                        <button type="submit" class="btn btn-danger" id="add-friend-<%= i++ %>">Add Friend
+                        </button>
+                    </td>
+                </tr>
+                <% }) %>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+

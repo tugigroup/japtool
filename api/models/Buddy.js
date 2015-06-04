@@ -14,7 +14,7 @@ module.exports = {
         user_id: {
             type: 'string'
         },
-        users: {
+        buddyOf: {
             model: 'User'
         }
     }
