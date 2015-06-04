@@ -11,9 +11,9 @@ module.exports = {
    */
   index: function (req, res) {
 
-      Vocabulary.find().exec(function findCB(err,vocabularies){
+      Vocabulary.find().exec(function findCB(err,sentences){
    
-        res.render('vocabadmin/index',{'vocabularies':vocabularies});   
+        res.render('speech/index',{'sentences':sentences});   
       });
 
   },
