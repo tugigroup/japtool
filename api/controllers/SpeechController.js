@@ -22,7 +22,7 @@ module.exports = {
 
       Vocabulary.find({level:'N5'},{word:1,example:1}).exec(function findCB(err,sentences){
    
-   		console.log('Found word for speech practise ' + JSON.stringify(sentences));
+        console.log('Found word for speech practise ' + JSON.stringify(sentences));
 
         res.render('speech/speak',{'sentences':sentences});   
       });
