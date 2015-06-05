@@ -52,7 +52,6 @@
   -o-backface-visibility: hidden; /* Opera */
 }
 .flip .card .front {
-  position: absolute;
   z-index: 1;
   background: gray;
   cursor: pointer;
@@ -84,6 +83,7 @@
   background: none repeat scroll 0 0 #F27B00;
   color: white;
   font-size: 30px;
+  text-align: center;
 }
 .flip .card .back .title_card {
   background: none repeat scroll 0 0 #F27B00;
@@ -93,6 +93,11 @@
 }
 .flip .card .back .content_card {
   font-size: 1.3em;
+}
+.flip .card .front .footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 /*
@@ -178,4 +183,5 @@
 .hide-children{
   display: none;
 }
+
 
