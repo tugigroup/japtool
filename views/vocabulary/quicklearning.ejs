@@ -8,8 +8,6 @@
       <div class="card">
         <div class="face front">
           <div class="top-space"></div>
-          <div class="top-space"></div>
-          <div class="top-space"></div>
           <div clas="col-md-12" >
             <div class="word_card" id="word"></div>
             <div id="children">
@@ -23,16 +21,16 @@
             </div>
           </div>
           <div class="row footer">
-          <div class="col-md-6">
-            <button type="button" class="btn btn-default" aria-label="Left Align" id="unknow-button">
-              <span>知らない</span>
-            </button>
-          </div>
-          <div class="col-md-6">
-            <button type="button" class="btn btn-default" aria-label="Left Align" id="know-button">
-              <span>知っている</span>
-            </button>
-          </div>
+            <div class="col-md-6">
+              <button type="button" class="btn btn-default" aria-label="Left Align" id="unknow-button">
+                <span>知らない</span>
+              </button>
+            </div>
+            <div class="col-md-6">
+              <button type="button" class="btn btn-default" aria-label="Left Align" id="know-button">
+                <span>知っている</span>
+              </button>
+            </div>
         </div>
        </div> 
       </div>
@@ -103,7 +101,9 @@
           reload(vocabularies,unknowVocabularies);
           setVocabulary(vocabularies[i]);
         }else {
-          alert("Finish");
+          $("#word").text("Finish!!!");
+          $("#unknow-button").hide();
+          $("#know-button").hide();
         }
       }
     });

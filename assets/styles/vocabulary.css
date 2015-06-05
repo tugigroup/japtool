@@ -4,7 +4,6 @@
  *
 */
 .flip {
-
   position: relative;
   width: 190px;
   height: 470px;
@@ -44,6 +43,8 @@
   z-index: 2;
   font-family: Georgia;
   line-height: 100%;
+  border-radius: 8px;
+  box-shadow: 4px 4px 4px #888888;
 
   backface-visibility: hidden;  /* W3C */
   -webkit-backface-visibility: hidden; /* Safari & Chrome */
@@ -57,8 +58,6 @@
   cursor: pointer;
   text-align: center;
   font-size: 3em;
-  border-radius: 8px;
-  box-shadow: 4px 4px 4px #888888;
 }
 .flip .card .back {
   background: gray;
@@ -66,8 +65,6 @@
   text-align: left;
   font-size: 1.3em;
   color: white;
-  border-radius: 8px;
-  box-shadow: 4px 4px 4px #888888;
     
   transform:rotatey(-180deg);
   -ms-transform:rotatey(-180deg); /* IE 9 */
@@ -98,6 +95,8 @@
   position: absolute;
   bottom: 0;
   width: 100%;
+  text-align: center;
+  font-size: 20px;
 }
 
 /*
