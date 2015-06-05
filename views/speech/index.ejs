@@ -299,13 +299,6 @@ if (!('webkitSpeechRecognition' in window)) {
     console.log('onresult ...');
   };
 
-// onaudiostart
-// soundstart
-// speechstart
-// speechend
-// soundend
-// audioend
-// nomatch
 
   recognition.onaudiostart = function(event) {
     console.log('on audiostart');
@@ -324,7 +317,15 @@ if (!('webkitSpeechRecognition' in window)) {
   };
 
   recognition.onsoundend = function(event) {
-    console.log('soud end');
+    console.log('on soudend');
+  };
+
+  recognition.onaudioend = function(event) {
+    console.log('on audioend');
+  };
+
+  recognition.onnomatch = function(event) {
+    console.log('on nomatch');
   };
 
   

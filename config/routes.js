@@ -65,4 +65,7 @@ module.exports.routes = {
 
     'get /vocabulary/flashcard': 'VocabularyController.flashcard',
     'get /vocabulary/list': 'VocabularyController.list',
+
+    /* Router by dulv*/
+    //'get/ new_group':'BuddyGroupController.create',
 };
