@@ -4,7 +4,6 @@
  * @description :: Server-side logic for managing questions
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
-
 module.exports = {
     show: function (req, res) {
         Question.find().populate('answers').exec(function createCB(err, created) {
@@ -47,98 +46,140 @@ module.exports = {
 
     create: function (req, res) {
         var content = req.param('content');
-        //var image = req.param('image');
-        var audio = req.param('audio');
-        var video = req.param('video');
         var level = req.param('level');
         var sort = req.param('sort');
         var tab = req.param('tab');
         var category = req.param('category');
         var other = req.param('other');
 
-
-        req.file('image').upload({
+        req.file('video').upload({
             adapter: require('skipper-gridfs'),
-            uri: 'mongodb://localhost:27017/japtool.fs'
-        },function (err, files) {
-            if (err)
-                return res.serverError(err);
-
-            else{
-                sails.log( files.length + ' file(s) uploaded successfully!');
-                sails.log( files);
-                return res.ok();
-            }
-
-        });
-
-        Question.create({
-            content: content,
-            //image: image,
-            audio: audio,
-            video: video,
-            level: level,
-            sort: sort,
-            tab: tab,
-            category: category,
-            other: other
-        }).exec(function createCB(err, created) {
-            if (err) {
-                sails.log(err)
-            }
+            uri: 'mongodb://localhost:27017/japtool.videos'
+        }, function (errVideo, videos) {
+            if (errVideo)
+                return res.serverError(errVideo);
             else {
-                res.send('Question has been created!');
+                req.file('audio').upload({
+                    adapter: require('skipper-gridfs'),
+                    uri: 'mongodb://localhost:27017/japtool.audios'
+                }, function (errAudio, audios) {
+                    if (errAudio)
+                        return res.serverError(errAudio);
+                    else {
+                        req.file('image').upload({
+                            adapter: require('skipper-gridfs'),
+                            uri: 'mongodb://localhost:27017/japtool.images'
+                        }, function (errImage, images) {
+                            if (errImage)
+                                return res.serverError(errImage);
+                            else {
+                                sails.log(videos.length, 'video has been uploaded!');
+                                sails.log(audios.length, 'audio has been uploaded!');
+                                sails.log(images.length, 'image has been uploaded!');
+                                var audio = null;
+                                var image = null;
+                                var video = null;
+                                if (images.length != 0) image = images[0].fd;
+                                if (audios.length != 0) audio = audios[0].fd;
+                                if (videos.length != 0) video = videos[0].fd;
+                                if (image != null || audio != null || video != null) {
+                                    Question.create({
+                                        content: content,
+                                        image: image,
+                                        audio: audio,
+                                        video: video,
+                                        level: level,
+                                        sort: sort,
+                                        tab: tab,
+                                        category: category,
+                                        other: other
+                                    }).exec(function createCB(err, created) {
+                                        if (err) {
+                                            sails.log(err)
+                                        }
+                                        else {
+                                            res.send("Question has been created!");
+                                        }
+                                    })
+                                } else {
+                                    Question.create({
+                                        content: content,
+                                        level: level,
+                                        sort: sort,
+                                        tab: tab,
+                                        category: category,
+                                        other: other
+                                    }).exec(function createCB(err, created) {
+                                        if (err) {
+                                            sails.log(err)
+                                        }
+                                        else {
+                                            res.send("Question has been created!");
+                                        }
+                                    })
+                                }
+                            }
+                        })
+                    }
+                })
             }
-        })
+        });
     },
 
-    /*create: function (req, res) {
-        path = require('path');
-        var urlImage = path.basename('D:\hello\TBL114.gif');
-        var content = req.param('content');
-        var image = req.param('image');
-        var audio = req.param('audio');
-        var video = req.param('video');
-        var level = req.param('level');
-        var sort = req.param('sort');
-        var tab = req.param('tab');
-        var category = req.param('category');
-        var other = req.param('other');
+    getImg: function (req, res) {
+        var fd = req.param('fd');
+        if (fd == null) {
+            res.send('');
+        } else {
+            var comm = require('../../common/common');
+            var skipperAdapter = comm.skipperAdapter('images');
+            skipperAdapter.read(fd, function (error, file) {
+                if (error) {
+                    res.json(error);
+                } else {
+                    res.contentType('image/jpg');
+                    res.send(new Buffer(file));
+                }
+            });
+        }
+    },
 
-        req.file(urlImage).upload(function (err, files) {
-            if (err){
-                return res.serverError(err);
-                sails.log(res.headersSent)
-            }
-            else{
-                sails.log(res.headersSent);
-                return res.json({
-                    message: files.length + ' file(s) uploaded successfully!',
-                    files: files
-                });
-            }
+    getAudio: function (req, res) {
+        var fd = req.param('fd');
+        if (fd == null) {
+            res.send('');
+        } else {
+            var comm = require('../../common/common');
+            var skipperAdapter = comm.skipperAdapter('audios');
+            skipperAdapter.read(fd, function (error, file) {
+                if (error) {
+                    res.json(error);
+                } else {
+                    res.contentType('audio/wav');
+                    res.send(new Buffer(file));
+                }
+            });
+        }
+    },
 
-        });
+    getVideo: function (req, res) {
+        var fd = req.param('fd');
+        if (fd == null) {
+            res.send('');
+        } else {
+            var comm = require('../../common/common');
+            var skipperAdapter = comm.skipperAdapter('videos');
 
-        Question.create({
-            content: content,
-            image: image,
-            audio: audio,
-            video: video,
-            level: level,
-            sort: sort,
-            tab: tab,
-            category: category,
-            other: other
-        }).exec(function createCB(err, created) {
-            if (err) {
-                sails.log(err)
-            }
-            else {
-                res.send('Question has been created!');
-            }
-        })
-    },*/
+            skipperAdapter.read(fd, function (error, file) {
+                if (error) {
+                    res.json(error);
+                } else {
+                    res.contentType('video/mp4');
+                    res.send(new Buffer(file));
+                }
+            });
+        }
+    },
 
     getFormAnswer: function (req, res) {
         Question.find().exec(function createCB(err, data) {
@@ -150,13 +191,45 @@ module.exports = {
         res.render('test/input-question');
     },
 
-
     delete: function (req, res) {
         var id = req.param('id');
+        var comm = require('../../common/common');
         Question.destroy({id: id}).exec(function (err, question) {
             if (err) {
                 sails.log(err)
             } else {
+                if (question[0].image != null) {
+                    var skipperAdapter = comm.skipperAdapter('images');
+                    skipperAdapter.rm(question[0].image, function (err, image) {
+                        if (err) sails.log(err);
+                        else {
+                            sails.log(question[0].image, 'has been deleted!');
+                        }
+
+                    })
+                }
+
+                if (question[0].audio != null) {
+                    var skipperAdapter = comm.skipperAdapter('audios');
+                    skipperAdapter.rm(question[0].audio, function (err, audio) {
+                        if (err) sails.log(err);
+                        else {
+                            sails.log(question[0].audio, 'has been deleted!');
+                        }
+
+                    })
+                }
+
+                if (question[0].video != null) {
+                    var skipperAdapter = comm.skipperAdapter('videos');
+                    skipperAdapter.rm(question[0].video, function (err, video) {
+                        if (err) sails.log(err);
+                        else {
+                            sails.log(question[0].video, 'has been deleted!');
+                        }
+                    })
+                }
+
                 res.send('Question has been deleted!');
             }
         })
