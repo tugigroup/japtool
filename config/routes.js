@@ -37,7 +37,10 @@ module.exports.routes = {
         view: 'index'
     },
     /* Router by tuyentv1*/
-    'get/ new_group':'BuddyGroupController.create',
+    //'/new_group':{view: 'user/new_group'},
+    //'POST /searchUser': 'UserController.searchUser',
+    /*End tuyentv1*/
+
     /*Router by QuyetND2*/
     'get /showTest': 'QuestionController.showAction',
     '/testIndex': {view: 'test/index-test'},
@@ -47,6 +50,8 @@ module.exports.routes = {
     'get /showQuestion': 'QuestionController.questionAction',
     'post /inputAnswer': 'QuestionController.inputAnswerAction',
     /*End QuyetND2*/
+
+
 
     /***************************************************************************
      *                                                                          *

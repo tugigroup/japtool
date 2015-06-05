@@ -68,7 +68,7 @@ module.exports = {
                     res.redirect('/session/new');
                     return;
                 }
-                // Log user in
+
                 req.session.authenticated = true;
                 req.session.User = user;
 
