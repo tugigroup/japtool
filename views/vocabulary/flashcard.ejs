@@ -130,6 +130,7 @@
 
 <script>
   $(function () {
+    // slide show 
     $('#carouselID').ready(function(){
       $('.carousel').carousel({
         interval: false,
@@ -143,65 +144,48 @@
         } 
     });
 
-    $('#agreeTestID').click(function() {
-      //alert('Test');
-    });
-
+    // Flip flashcard when click
     $('.flip').click(function(event){
       $(this).find('.card').toggleClass('flipped');
       return false;
     });
 
-    $('.flip .glyphicon-play').click(function(e) {
+    // Disable flip flashcard action when click
+    $('.flip .glyphicon-play,.flip .back .examples,.flip .back .synonymous,.flip .back .antonymous').click(function(e) {
         e.stopPropagation();
     });
 
-    $('.flip .back .examples').click(function(e) {
-        e.stopPropagation();
-    });
+    // pronounce vocabulary function
+    var playAudio = function(word){
+      io.socket.post('/vocabulary/pronounce',{word: word}, function(data) {
+        var audio = new Audio("data:audio/mpeg;base64," + data.audio);
+        audio.play();
+      });
+    };
 
-    $('.flip .back .synonymous').click(function(e) {
-        e.stopPropagation();
-    });
-
-    $('.flip .back .antonymous').click(function(e) {
-        e.stopPropagation();
-    });
-
+    // pronounce word which display in front of flash card
     $('.glyphicon-play').click(function(){
       var word= $('.active .front .word').text();
-      io.socket.post('/vocabulary/pronounce',{word: word}, function(data) {
-        var audio = new Audio("data:audio/mpeg;base64," + data.audio);
-        audio.play();
-      });
+      playAudio(word);
     });
 
+    // pronounce example which display in back of flash card
     $('.back .examples').click(function(){
       var word= $('.active .back .examples').text();
-      console.log("hello" + word);
-      io.socket.post('/vocabulary/pronounce',{word: word}, function(data) {
-        var audio = new Audio("data:audio/mpeg;base64," + data.audio);
-        audio.play();
-      });
-
+      playAudio(word);
     });
 
+    // pronounce synonymous which display in back of flash card
     $('.back .synonymous').click(function(){
       var word= $('.active .back .synonymous').text();
-      io.socket.post('/vocabulary/pronounce',{word: word}, function(data) {
-        var audio = new Audio("data:audio/mpeg;base64," + data.audio);
-        audio.play();
-      });
+      playAudio(word);
 
     });
-
+    
+    // pronounce antonymous which display in back of flash card
     $('.back .antonymous').click(function(){
       var word= $('.active .back .antonymous').text();
-      io.socket.post('/vocabulary/pronounce',{word: word}, function(data) {
-        var audio = new Audio("data:audio/mpeg;base64," + data.audio);
-        audio.play();
-      });
-
+      playAudio(word);
     });
   });
 </script>

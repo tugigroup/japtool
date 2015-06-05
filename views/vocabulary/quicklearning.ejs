@@ -4,27 +4,30 @@
 
 <div class="row">
   <div class="col-md-8">
-    <div class="top-space"></div>
-    <div class="top-space"></div>
-    <div clas="col-md-12">
-      <div id="word"></div>
-      <div class="hide-children">
-        <p>読み方</p>
-        <p class="left-space" id="reading"></p>
-        <p>意味</p>
-        <p class="left-space" id="meaning"></p>
-        <button type="button" class="btn btn-default" id="next-button">
-          <span>Next</span>
+    <div class="flip">
+    <div class="card"></div>
+      <div class="top-space"></div>
+      <div class="top-space"></div>
+      <div clas="col-md-12" >
+        <div id="word"></div>
+        <div id="children">
+          <p>読み方</p>
+          <p class="left-space" id="reading"></p>
+          <p>意味</p>
+          <p class="left-space" id="meaning"></p>
+          <button type="button" class="btn btn-default" id="next-button">
+            <span>次</span>
+          </button>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <button type="button" class="btn btn-default" aria-label="Left Align" id="unknow-button">
+          <span>知らない</span>
+        </button>
+        <button type="button" class="btn btn-default" aria-label="Left Align" id="know-button">
+          <span>知っている</span>
         </button>
       </div>
-    </div>
-    <div class="col-md-12">
-      <button type="button" class="btn btn-default" aria-label="Left Align" id="unknow-button">
-        <span>知らない</span>
-      </button>
-      <button type="button" class="btn btn-default" aria-label="Left Align" id="know-button">
-        <span>知っている</span>
-      </button>
     </div>
   </div> 
   <div class="col-md-4"></div>
@@ -33,40 +36,87 @@
 <script>
   $(function(){
     //Get value from VocabularyController.quicklearning
-    var vocabularies=<%- JSON.stringify(vocabularies) %>;
+    var vocabularies = <%- JSON.stringify(vocabularies) %>;
+    var unknowVocabularies = [];
+    var i = 0;
 
-    //Next vvocabulary function
-    var next = function(vocabulary){
-      var index = vocabularies.indexOf(vocabulary);
-      index++;
-      if(index >= vocabularies.length)
-          index = 0;
-
-      return vocabularies[index];
+    // reload vocabulary
+    var reload = function(array1,array2){
+      if(array2.length > 0){
+        i = 0;
+        // remove all elements of array1
+        array1.length = 0;
+        // push all elements of array2 to array1
+        $.each(array2,function(index,value){
+          array1.push(value);
+        });
+        // remove all elements of array2
+        array2.length = 0;
+      }
     };
-    console.log(next(vocabularies[2]));
-    
-    //Pass value to view(id="word")
-    $("#word").text(vocabularies[0].word);
 
-    //Pass value to view(id="reading")
-    $("#reading").text(vocabularies[0].reading);
+    // set values of vocabulary
+    var setVocabulary = function(vocabulary){
+      //Pass value to view(id="word")
+      $("#word").text(vocabulary.word);
+      //Pass value to view(id="reading")
+      $("#reading").text(vocabulary.reading);
+      //Pass value to view(id="meaning")
+      $("#meaning").text(vocabulary.meaning); 
+    };
 
-    //Pass value to view(id="meaning")
-    $("#meaning").text(vocabularies[0].meaning);       
+    //view first vocabulary
+    $(document).ready(function(){
+      //init array vocabularies
+      reload(vocabularies,unknowVocabularies);
 
+      setVocabulary(vocabularies[0]); 
+      //hide reaading, meaning of vocabulary
+      $("#children").hide();
+    });
+         
+    //When [知らない] button click
     $("#unknow-button").click(function(){
-      $('.hide-children').show();
-      $('.hide-children').children().show();
+      //show reaading, meaning of vocabulary
+      $("#children").show();
+      //disable [知っている] button
       $("#know-button").attr("disabled", true);
+      //add value to [unknowVocabularies] array
+      unknowVocabularies.splice(i,1,vocabularies[i]);
     });
+
+    //When [知っている] button click
     $("#know-button").click(function(){
-      $("#word").text(vocabularies[1].word);
-      $("#reading").text(vocabularies[1].reading);
-      $("#meaning").text(vocabularies[1].meaning);
+      i = i +1;
+      if(i < vocabularies.length) {
+        setVocabulary(vocabularies[i]); 
+      }else {
+        if(unknowVocabularies.length > 0) {
+          reload(vocabularies,unknowVocabularies);
+          setVocabulary(vocabularies[i]);
+        }else {
+          alert("Finish");
+        }
+      }
     });
+
+    // When [次] button click
     $("#next-button").click(function(){
-      $.ajax
+      i = i +1;
+      if(i < vocabularies.length) {
+        setVocabulary(vocabularies[i]); 
+        $("#children").hide();
+        $("#know-button").attr("disabled", false);
+      }else {
+        if(unknowVocabularies.length > 0) {
+          $("#children").hide();
+          $("#know-button").attr("disabled", false);
+          reload(vocabularies,unknowVocabularies);
+          setVocabulary(vocabularies[i]);
+        }else {
+          alert("Finish");
+        }
+      }
     });
   });
 </script>
