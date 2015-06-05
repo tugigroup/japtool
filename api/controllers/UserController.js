@@ -121,7 +121,7 @@ module.exports = {
     searchUser: function (req, res, next) {
         var id_origin = req.param('id_origin');
         var username = req.param('username');
-        Buddy.findByName(username, function buddyUser(err, user) {
+        
             User.find({username: '%' + username + '%'}, function searchUser(err, user) {
                 if (err) {
                     res.send(400);
@@ -129,7 +129,7 @@ module.exports = {
                     res.render('user/list-find-friends', {id_origin: id_origin, ob: user});
                 }
             });
-        })
+
     },
 
     //Add Friend of user to collection with module "One to Many"
