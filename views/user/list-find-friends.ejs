@@ -1,5 +1,7 @@
 <div class="col-sm-12">
     <h2>Search List Friends</h2>
+
+
     <div class="table-responsive">
         <form action="/user/addBuddy" method="POST">
 
@@ -13,7 +15,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <% _.each(ob, function(obitem){ var i=1; %>
+                <% _.each(ob, function(obitem){ var i = 1; %>
                 <input type="hidden" name="users" value="<%= id_origin %>">
                 <tr data-id="<%= obitem.id %>" data-model="user">
                     <td><input type="hidden" name="user_id" value="<%= obitem.id %>"><%= obitem.id %></td>
@@ -29,5 +31,7 @@
             </table>
         </form>
     </div>
+
+
 </div>
 
