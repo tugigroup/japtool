@@ -3,12 +3,12 @@
 <script src="/js/bootstrap.min.js"></script>
 
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-3"></div>
+  <div class="col-sm-6 col-md-5">
 
     <div class="carousel slide" id="carouselID" data-wrap="false" data-interval="false" >
-      <div class="carousel-inner" >
-        <div class="item active" >
-
+      <div class="carousel-inner">
+        <div class="item active">
           <div class="flip"> 
             <div class="card"> 
               <div class="face front">
@@ -118,20 +118,21 @@
               </div> 
             </div>
           </div>
+        
         <% } %>
         <% }); %>
       </div>
       <!-- Left and right controls -->
-      <a class="left carousel-control" href="#carouselID"  data-slide="prev">
+      <a class="left carousel-control" href="#carouselID" role="button" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left" ></span>
       </a>
-      <a class="right carousel-control" href="#carouselID" data-slide="next">
+      <a class="right carousel-control" href="#carouselID" role="button" data-slide="next">
         <span class="glyphicon glyphicon-chevron-right" ></span>
       </a>
     </div>
   </div>
   
-  <div class="col-md-4"></div>
+  <div class="col-sm-6 col-md-4"></div>
 </div>
 
 <script>
