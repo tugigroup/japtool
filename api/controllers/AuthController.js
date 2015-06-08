@@ -132,11 +132,11 @@ module.exports = {
     facebook: function (req, res, next) {
         passport.authenticate('facebook', { scope: ['email', 'user_about_me']},
             function (err, user) {
+                console.log(user)
                 req.logIn(user, function (err) {
                     //sails.log(user);
                     if(err) {
-                        req.session.flash = 'There was an error';
-                        res.redirect('auth/login');
+                        res.send(err);
                     } else {
                         req.session.user = user;
                         res.redirect('/user');

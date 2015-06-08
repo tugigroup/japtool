@@ -28,7 +28,10 @@ var verifyHandler = function (token, tokenSecret, profile, done) {
                     data.lastname = profile.name.familyName;
                 }
 
-                User.create(data, function userCreated(err, user) {
+                User.create(data, function (err, user) {
+                    if (err){
+                        return console.log( err)
+                    }
                     return done(err, user);
                 });
             }

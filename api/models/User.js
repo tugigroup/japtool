@@ -81,6 +81,9 @@ module.exports = {
 
     },
     beforeCreate: function (values, next) {
+        if (typeof values.provider !== 'undefined'){
+            return next();
+        }
         //This checks to make sure the password confirmation match before creating record
         if (!values.password || values.password != values.confirmation) {
             return next({err: ["Password doesn't match password confirmation."]});
