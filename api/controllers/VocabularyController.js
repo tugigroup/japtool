@@ -50,11 +50,23 @@ module.exports = {
 	},
 	*/
 
-  	//pronounce word
+  	// //pronounce word by google translate
+  	// pronounce: function(req,res){
+  	// 	var vocabulary = req.allParams();
+  	// 	console.log(vocabulary);
+  	// 	VocabularyService.googleTranslate('ja-jp',vocabulary.word,function(result){
+			// //console.log(result); 
+		 //    if(result.success) {
+		 //        res.json(result);
+		 //    }
+  	// 	});
+  	// },
+
+  	//pronounce word by voicerRss
   	pronounce: function(req,res){
   		var vocabulary = req.allParams();
   		console.log(vocabulary);
-  		VocabularyService.translate('ja',vocabulary.word,function(result){
+  		VocabularyService.voicerRSS('ja-jp',vocabulary.word,function(result){
 			//console.log(result); 
 		    if(result.success) {
 		        res.json(result);

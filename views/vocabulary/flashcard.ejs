@@ -4,7 +4,7 @@
 
 <div class="row">
   <div class="col-md-3"></div>
-  <div class="col-sm-6 col-md-5">
+  <div class="col-sm-6 col-md-5 ">
 
     <div class="carousel slide" id="carouselID" data-wrap="false" data-interval="false" >
       <div class="carousel-inner">
@@ -165,7 +165,7 @@
     // pronounce vocabulary function
     var playAudio = function(word){
       io.socket.post('/vocabulary/pronounce',{word: word}, function(data) {
-        var audio = new Audio("data:audio/mpeg;base64," + data.audio);
+        var audio = new Audio("data:audio/mp3;base64," + data.audio);
         audio.play();
       });
     };
