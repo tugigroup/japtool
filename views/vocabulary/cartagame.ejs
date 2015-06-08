@@ -1,0 +1,92 @@
+<!-- Latest compiled and minified JavaScript 
+<script src="/js/vendor/jquery.js"></script> -->
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="/styles/bootstrap.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="/styles/bootstrap-theme.css">
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script>
+  $(document).ready(function(){
+
+    var beforeId = -1;
+    var beforeWord = "";
+    var afterId = -1;
+    var collRes = [];
+
+    $("td").on({
+        mouseenter: function(){
+            //$(this).css("background-color", "yellow");
+        },  
+        mouseleave: function(){
+            //$(this).css("background-color", "white");
+        }, 
+        click: function(){
+            //$(this).css("background-color", "lightblue");
+
+            //get current TD-ID
+            var currId = $(this).attr("id");
+            
+            //Neu lai tich lai vao thang cu~ thi se khong fan ung gi
+            if (currId == beforeId) return;
+
+            if ($.inArray(currId, collRes) < 0){
+                  //get current TD-TEXT
+                  var currWord = $.trim($("#input" + currId).val());
+                  var currMean = $.trim($("#" + currId).text());
+
+                  if (beforeId == -1 ) {
+                      $(this).css({'background-color':'yellow','font-size':'150%'});
+                      beforeId = currId;
+                      beforeWord = currWord;        
+                  } else {
+                      //Neu nghia khac voi tu da chon
+                      if (beforeWord != currWord && beforeWord != currMean) {
+                        $("#" + beforeId).css({'background-color':'White','font-size':'100%'});
+
+                      //Neu nghia dung voi tu da chon
+                      } else {
+                        afterId = currId;
+                        $("#" + beforeId).css({'background-color':'Grey'});
+                        $("#" + afterId).css({'background-color':'Grey','font-size':'150%'});
+                        collRes.push(beforeId);
+                        collRes.push(afterId);
+                      }
+
+                      beforeId = -1;
+                      beforeWord = "";
+                      afterId = -1;
+                   }
+              }
+        }  
+    });
+  });
+</script>
+<div class="container">
+
+<form action="/vocabulary/cartagame" enctype="multipart/form-data" method="POST">
+  <table class="table table-striped" border="1">
+    <tbody>
+    <% index = 0 %>
+    <% genFlg = true %>
+    <% for (row = 0; row < 6; row++) { %>
+      <% if (genFlg) { %>
+        <tr>
+          <% for (col = 0; col < 4; col++) { %>
+            <% index = col+row*4 %>
+            <td width="25%" id="<%= index %>">
+              <% if (index < ranWords.length) { %>
+                <%= ranWords[index].word %>
+                <input type="hidden" id="input<%= index %>" value=" <%= ranWords[index].meaning %> ">
+              <% } else { %>
+                <% genFlg = false %>
+                <% break %>
+              <% }%> 
+          <% } %>
+      <% } %>
+    <% } %>
+</form>
+</div>

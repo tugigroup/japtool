@@ -40,15 +40,21 @@ module.exports.routes = {
     //'/new_group':{view: 'user/new_group'},
     //'POST /searchUser': 'UserController.searchUser',
     /*End tuyentv1*/
+    'get/ new_group':'BuddyGroupController.create',
 
     /*Router by QuyetND2*/
-    'get /showTest': 'QuestionController.showAction',
-    '/testIndex': {view: 'test/index-test'},
-    'post /confirm': 'QuestionController.confirmAction',
-    'post /submitTest': 'QuestionController.submitTestAction',
-    'get /showAnswer': 'QuestionController.answerAction',
-    'get /showQuestion': 'QuestionController.questionAction',
-    'post /inputAnswer': 'QuestionController.inputAnswerAction',
+    '/testIndex':{view:'test/index-test'},
+    'get /showTest': 'test/QuestionController.show',
+    'post /confirmResult': 'test/QuestionController.confirm',
+    'post /submitTest': 'test/QuestionController.create',
+    'get /getImgQuestion/:fd': 'test/QuestionController.getImg',
+    'get /getAudioQuestion/:fd': 'test/QuestionController.getAudio',
+    'get /getVideoQuestion/:fd': 'test/QuestionController.getVideo',
+    'get /showAnswer': 'test/QuestionController.getFormAnswer',
+    'get /showQuestion': 'test/QuestionController.getForm',
+    'post /inputAnswer': 'test/AnswerController.create',
+    'post /deleteQuestion': 'test/QuestionController.delete',
+    'post /deleteAnswer': 'test/AnswerController.delete',
     /*End QuyetND2*/
 
 
@@ -70,4 +76,7 @@ module.exports.routes = {
 
     'get /vocabulary/flashcard': 'VocabularyController.flashcard',
     'get /vocabulary/list': 'VocabularyController.list',
+    'post /vocabulary/pronounce': 'VocabularyController.pronounce',
+    'post /vocabulary/quicklearning': 'VocabularyController.quicklearning',
+    'get /vocabulary/cartagame': 'CartaGameController.wordgen',
 };

@@ -71,7 +71,8 @@ module.exports = {
  
     }
     else{
-      res.render('vocabadmin/create');
+
+      res.view('vocabadmin/create', {layout: 'layout'});
     }
   },
 
@@ -85,7 +86,8 @@ module.exports = {
     if(req.method=="GET" && id!=null){
 
       Vocabulary.findOne(id).exec(function(err,vocabulary){
-        res.render( 'vocabadmin/update',{'vocabulary':vocabulary});  
+
+        res.view( 'vocabadmin/update',{'vocabulary':vocabulary, layout: 'layout'});  
       });
     }
     else if (req.method=="POST" && id!=null){
@@ -161,7 +163,7 @@ module.exports = {
       console.log('the record is deleted. record id : ' + id ); 
       Vocabulary.find().exec(function findCB(err,vocabularies){
    
-        res.render('vocabadmin/index',{'vocabularies':vocabularies});   
+        res.view('vocabadmin/index',{'vocabularies':vocabularies, layout: 'layout'});   
       });
     });
   },
@@ -176,7 +178,7 @@ module.exports = {
 
       Vocabulary.findOne(id).exec(function(err,vocabulary){
    
-        res.render( 'vocabadmin/view',{'vocabulary':vocabulary});   
+        res.view( 'vocabadmin/view',{'vocabulary':vocabulary, layout: 'layout'});   
       });
   },
 
@@ -186,9 +188,15 @@ module.exports = {
    */
   index: function (req, res) {
 
+      var database = require('../common/database');
+
+      console.log('uri: ' + database.uri());
+      console.log('host: ' + database.host());
+      console.log('port: ' + database.port());
+
       Vocabulary.find().exec(function findCB(err,vocabularies){
    
-        res.render('vocabadmin/index',{'vocabularies':vocabularies});   
+        res.view('vocabadmin/index',{'vocabularies':vocabularies, layout: 'layout'});   
       });
 
   },
