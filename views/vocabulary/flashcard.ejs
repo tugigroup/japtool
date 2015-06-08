@@ -164,10 +164,14 @@
 
     // pronounce vocabulary function
     var playAudio = function(word){
+      var word = encodeURIComponent(word);
       io.socket.post('/vocabulary/pronounce',{word: word}, function(data) {
         var audio = new Audio("data:audio/mp3;base64," + data.audio);
         audio.play();
       });
+      // var audio = new Audio();
+      // audio.src ="https://api.voicerss.org/?key=6e1c89141fe9405198f5c8c9e33e0dd3&hl=ja-jp&r=0&c=mp3&f=48khz_16bit_stereo&src=難しい";
+      // audio.play();
     };
 
     // pronounce word which display in front of flash card
