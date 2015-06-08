@@ -1,4 +1,5 @@
-<form class="form-horizontal test-form" action="/submitTest" method="post" id="question-form" enctype="multipart/form-data">
+<form class="form-horizontal test-form" action="/submitTest" method="post" id="question-form"
+      enctype="multipart/form-data">
     <fieldset>
         <legend>Question Form</legend>
         <div class="form-group">
@@ -6,27 +7,6 @@
 
             <div class="col-lg-10">
                 <input class="form-control" id="inputContent" placeholder="Content" type="text" name="content">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="inputImage" class="col-lg-2 control-label">Image</label>
-
-            <div class="col-lg-10">
-                <input class="" id="inputImage" type="file" multiple="multiple" name="image">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="inputAudio" class="col-lg-2 control-label">Audio</label>
-
-            <div class="col-lg-10">
-                <input class="" id="inputAudio" type="file" multiple="multiple" name="audio">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="inputVideo" class="col-lg-2 control-label">Video</label>
-
-            <div class="col-lg-10">
-                <input class="" id="inputVideo" type="file" multiple="multiple" name="video">
             </div>
         </div>
         <div class="form-group">
@@ -51,10 +31,38 @@
             </div>
         </div>
         <div class="form-group">
+            <label for="inputLesson" class="col-lg-2 control-label">Lesson</label>
+
+            <div class="col-lg-10">
+                <input class="form-control" id="inputLesson" placeholder="Lesson" type="text" name="lesson">
+            </div>
+        </div>
+        <div class="form-group">
             <label for="inputOther" class="col-lg-2 control-label">Other</label>
 
             <div class="col-lg-10">
                 <input class="form-control" id="inputOther" placeholder="Other" type="text" name="other">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputImage" class="col-lg-2 control-label">Image</label>
+
+            <div class="col-lg-10">
+                <input class="" id="inputImage" type="file" multiple="multiple" name="image">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputAudio" class="col-lg-2 control-label">Audio</label>
+
+            <div class="col-lg-10">
+                <input class="" id="inputAudio" type="file" multiple="multiple" name="audio">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputVideo" class="col-lg-2 control-label">Video</label>
+
+            <div class="col-lg-10">
+                <input class="" id="inputVideo" type="file" multiple="multiple" name="video">
             </div>
         </div>
         <div class="form-group">
@@ -66,75 +74,20 @@
 </form>
 <script>
     $(document).ready(function () {
-        /*$('#question-form').submit(function () {
-
-         $(this).ajaxSubmit({
-
-         error: function (xhr) {
-         status('Error: ' + xhr.status);
-         },
-
-         success: function (response) {
-         console.log('asass');
-         console.log(response);
-         }
-         });
-         //Very important line, it disable the page refresh.
-         return false
-         });*/
-        /*$('#submit-test').click(function () {
-            var content = $("#inputContent").val();
-            var image = $("#inputImage").val();
-            var audio = $("#inputAudio").val();
-            var video = $("#inputVideo").val();
-            var level = $("#inputLevel").val();
-            var sort = $("#inputSort").val();
-            var tab = $("#inputTab").val();
-            var category = $("#inputCategory").val();
-            var other = $("#inputOther").val();
-            console.log(content);
-            console.log(image);
-            if ($.isNumeric(sort) && content != "") {
-                $.ajax({
-                    method: "POST",
-                    url: "submitTest",
-                    data: {
-                        content: content,
-                        image: image,
-                        audio: audio,
-                        video: video,
-                        level: level,
-                        sort: sort,
-                        tab: tab,
-                        category: category,
-                        other: other
-                    }
-                })
-                        .done(function (msg) {
-                            console.log(msg);
-                            $('.test-container').load('/showTest');
-                            $('.question-container').load('/showQuestion');
-                            $('.answer-form').load('/showAnswer');
-                        });
-            }
-            $('.test-form').validate({
-                rules: {
-                    inputContent: {
-                        required: true,
-                        minlength: 6
-                    },
-                    inputSort: {
-                        number: true,
-                        required: true
-                    }
+        $('.test-form').validate({
+            rules: {
+                content: {
+                    required: true,
+                    minlength: 6
                 },
-                submitHandler: function (form) {
-
-                },
-                success: function (element) {
-                    element.text('OK!').addClass('valid')
+                sort: {
+                    number: true,
+                    required: true
                 }
-            });
-        });*/
+            },
+            success: function (element) {
+                element.text('OK!').addClass('valid')
+            }
+        });
     })
 </script>

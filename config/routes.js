@@ -55,6 +55,8 @@ module.exports.routes = {
     'post /inputAnswer': 'test/AnswerController.create',
     'post /deleteQuestion': 'test/QuestionController.delete',
     'post /deleteAnswer': 'test/AnswerController.delete',
+    'get /lesson/:category/:lesson': 'test/QuestionController.lesson',
+    '/learningGroup':{view:'test/learn-group'},
     /*End QuyetND2*/
 
 
