@@ -1,7 +1,7 @@
 /**
- * AnswerController
+ * BuddyController
  *
- * @description :: Server-side logic for managing answers
+ * @description :: Server-side logic for managing buddies
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 

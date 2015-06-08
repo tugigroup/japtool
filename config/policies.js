@@ -27,22 +27,17 @@ module.exports.policies = {
      *                                                                          *
      ***************************************************************************/
 
-    '*': 'flash',
-    user: {
-        'new': "flash",
-        create: "flash",
-        show: "userSeeProfile",
-        edit: "userSeeProfile",
-        update: "userSeeProfile",
-        '*': "admin"
-    },
-    BuddyGroup: {
-        'new_group': "flash",
-         create: 'flash',
-        show: "userSeeProfile",
-        create: "userSeeProfile"
+    '*': 'flash'
+    //user: {
+    //    'new': "flash",
+    //    create: "flash",
+    //    show: "userSeeProfile",
+    //    searchUser: "userSeeProfile",
+    //    edit: "userSeeProfile",
+    //    update: "userSeeProfile",
+    //    '*': "admin"
+    //}
 
-    }
 
     /***************************************************************************
      *                                                                          *
