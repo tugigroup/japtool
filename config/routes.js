@@ -37,10 +37,14 @@ module.exports.routes = {
         view: 'index'
     },
     /* Router by tuyentv1*/
+
     //'/new_group':{view: 'user/new_group'},
     //'POST /searchUser': 'UserController.searchUser',
     /*End tuyentv1*/
-
+    //'/login' : {
+    //    controller : 'auth',
+    //    action     : 'index'
+    //},
     /*Router by QuyetND2*/
     'get /showTest': 'QuestionController.showAction',
     '/testIndex': {view: 'test/index-test'},

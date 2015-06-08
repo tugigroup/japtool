@@ -26,17 +26,25 @@ module.exports.policies = {
      * access)                                                                  *
      *                                                                          *
      ***************************************************************************/
+    '*': 'sessionAuth',
 
-    '*': 'flash'
-    //user: {
-    //    'new': "flash",
-    //    create: "flash",
+    'auth': {
+        '*': true
+    },
+
+    '*': 'flash',
+    user: {
+        'new': "flash",
+         create: "flash"
     //    show: "userSeeProfile",
     //    searchUser: "userSeeProfile",
     //    edit: "userSeeProfile",
     //    update: "userSeeProfile",
     //    '*': "admin"
-    //}
+    },
+    auth:{
+        '*': 'flash'
+    }
 
 
     /***************************************************************************

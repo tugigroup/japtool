@@ -9,7 +9,14 @@
 
 module.exports = {
     schema: true,
+    adapter: 'mongo',
     attributes: {
+        provider:{
+          type:'string'
+        },
+        uid:{
+            type:'string'
+        },
         username: {
             type: 'string',
             required: true

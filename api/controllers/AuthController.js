@@ -1,22 +1,23 @@
 /**
- * SessionController
+ * AuthController
  *
- * @description :: Server-side logic for managing sessions
- * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
+ * @description :: Server-side logic for managing auths
+ * @help        :: See http://links.sailsjs.org/docs/controllers
  */
-var bcrypt = require('bcryptjs');
 var passport = require('passport');
+var bcrypt = require('bcryptjs');
 module.exports = {
-    'new': function (req, res) {
-        res.view('session/new');
+    'index': function(req, res) {
+        res.view('auth/login');
     },
-    create: function (req, res, next) {
+    //'login': function (req, res) {
+    //    res.view('auth/login');
+    //},
+    login: function (req, res, next) {
 
         // Check for email and password in params sent via the form, if none
         // redirect the browser back to the sign-in form.
         if (!req.param('email') || !req.param('password')) {
-            // return next({err: ["Password doesn't match password confirmation."]});
-
             var usernamePasswordRequiredError = [{
                 name: 'usernamePasswordRequired',
 
@@ -30,7 +31,7 @@ module.exports = {
                 err: usernamePasswordRequiredError
             }
 
-            res.redirect('/session/new');
+            res.redirect('/auth');
             return;
         }
 
@@ -49,7 +50,7 @@ module.exports = {
                 req.session.flash = {
                     err: noAccountError
                 }
-                res.redirect('/session/new');
+                res.redirect('/auth');
                 return;
             }
 
@@ -66,7 +67,7 @@ module.exports = {
                     req.session.flash = {
                         err: usernamePasswordMismatchError
                     }
-                    res.redirect('/session/new');
+                    res.redirect('/auth');
                     return;
                 }
 
@@ -111,8 +112,37 @@ module.exports = {
         //wipe out the session (log out)
         req.session.destroy();
         //redirect the browser to the sign-in screen
-        res.redirect('/session/new');
+        res.redirect('/auth/login');
 
+    },
+    // https://developers.facebook.com/docs/
+    // https://developers.facebook.com/docs/reference/login/
+    //facebook: function(req, res) {
+    //    passport.authenticate('facebook', { failureRedirect: '/login', scope: ['email'] }, function(err, user) {
+    //        req.logIn(user, function(err) {
+    //            if (err) {
+    //                res.send('loi roi');
+    //            }
+    //
+    //            res.redirect('/auth/');
+    //
+    //        });
+    //    })(req, res);
+    //}
+    facebook: function (req, res, next) {
+        passport.authenticate('facebook', { scope: ['email', 'user_about_me']},
+            function (err, user) {
+                req.logIn(user, function (err) {
+                    //sails.log(user);
+                    if(err) {
+                        req.session.flash = 'There was an error';
+                        res.redirect('auth/login');
+                    } else {
+                        req.session.user = user;
+                        res.redirect('/user');
+                    }
+                });
+            })(req, res, next);
     }
 
 };
