@@ -37,6 +37,9 @@ module.exports.routes = {
         view: 'index'
     },
     /* Router by tuyentv1*/
+    //'/new_group':{view: 'user/new_group'},
+    //'POST /searchUser': 'UserController.searchUser',
+    /*End tuyentv1*/
     'get/ new_group':'BuddyGroupController.create',
 
     /*Router by QuyetND2*/
@@ -54,6 +57,8 @@ module.exports.routes = {
     'post /deleteAnswer': 'test/AnswerController.delete',
     /*End QuyetND2*/
 
+
+
     /***************************************************************************
      *                                                                          *
      * Custom routes here...                                                    *
@@ -70,5 +75,8 @@ module.exports.routes = {
     },
 
     'get /vocabulary/flashcard': 'VocabularyController.flashcard',
-    'get /vocabulary/list': 'VocabularyController.list'
+    'get /vocabulary/list': 'VocabularyController.list',
+    'post /vocabulary/pronounce': 'VocabularyController.pronounce',
+    'post /vocabulary/quicklearning': 'VocabularyController.quicklearning',
+    'get /vocabulary/cartagame': 'CartaGameController.wordgen',
 };
