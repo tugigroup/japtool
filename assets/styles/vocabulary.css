@@ -126,6 +126,7 @@
   position: relative;
   width: 280px;
   height: 400px;
+  margin: 10px auto;
 }
 
 .card1 .face {
