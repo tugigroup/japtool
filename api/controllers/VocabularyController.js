@@ -6,45 +6,72 @@
  */
 
 module.exports = {
-	//select vacabulary
+	//index page
 	index: function(red,res) {
-	  
-      Vocabulary.selectByLevel({level: "N5"},function(err,vocabularies){
-        //res.view(vocabularies);
-		if(err) return res.send(500);
-		return res.view('vocabulary/index',{'vocabularies':vocabularies});   	
-      });
+		return res.view('vocabulary/index');   	
 	},
 
-    //select vacabulary
+    //select vocabulary for [list] style
 	list: function(red,res) {
 	  
       Vocabulary.selectByLevel({level: "N5"},function(err,vocabularies){
-        //res.view(vocabularies);
 		if(err) return res.send(500);
 		return res.render('vocabulary/list',{'vocabularies':vocabularies});   	
       });
+
 	},
 
-	//select vacabulary
+	//select vocabulary for [flash card] style
 	flashcard: function(red,res) {
 	  
       Vocabulary.selectByLevel({level: "N5"},function(err,vocabularies){
-        //res.view(vocabularies);
 		if(err) return res.send(500);
 		return res.render('vocabulary/flashcard',{'vocabularies':vocabularies});   	
       });
+
 	},
-	
-	vocabulary: function(req,res) {
+
+	//select vocabulary for [quick learning] style
+	quicklearning: function(req,res){
+
+		Vocabulary.selectByLevel({level: "N5"},function(err,vocabularies){
+		if(err) return res.send(500);
+		return res.render('vocabulary/quicklearning',{'vocabularies':vocabularies});   	
+      });
+	},
+	/*vocabulary: function(req,res) {
 		var gfs = req.gfs;
 		// body...
 		var dbAdapter = require('skipper-gridfs')({uri:'mongodb://taitt:taitt@52.68.197.24:27017/taitt.file'});
 		dbAdapter.read("7c6d1738-03da-40e8-bd58-c3e3c04a9ba2.jpg", function(err,results){
 			res.type('image/png');
-            res.send(new Buffer(results));
-            //res.view({image:results});
+        	res.send(new Buffer(results));
 		});
-	}
+	},
+	*/
+
+  	//pronounce word by google translate
+  	pronounce: function(req,res){
+  		var vocabulary = req.allParams();
+  		console.log(vocabulary);
+  		VocabularyService.googleTranslate('ja',vocabulary.word,function(result){
+			//console.log(result); 
+		    if(result.success) {
+		        res.json(result);
+		    }
+  		});
+  	},
+
+  	// //pronounce word by voicerRss
+  	// pronounce: function(req,res){
+  	// 	var vocabulary = req.allParams();
+  	// 	console.log(vocabulary);
+  	// 	VocabularyService.voicerRSS('ja-jp',vocabulary.word,function(result){
+			// //console.log(result); 
+		 //    if(result.success) {
+		 //        res.json(result);
+		 //    }
+  	// 	});
+  	// },
 };
 
