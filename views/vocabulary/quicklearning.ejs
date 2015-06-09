@@ -3,30 +3,30 @@
 <script src="/js/bootstrap.min.js"></script>
 
 <div class="row">
-  <div class="col-sm-6 col-md-5">
+  <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
 
   <div class="card1">
    
     <div class="face">
       <div class="top-space"></div>
       <div clas="col-sm-12" >
-        <div class="word_card" id="word"></div>
-        <div id="children">
+        <div class="word_card"></div>
+        <div id="children1">
           <p class="content_card">読み方</p>
-          <p class="left-space content_card" id="reading"></p>
+          <p class="left-space content_card" id="reading1"></p>
           <p class="content_card">意味</p>
-          <p class="left-space content_card" id="meaning"></p>
-          <button type="button" class="btn btn-default" id="next-button">
+          <p class="left-space content_card" id="meaning1"></p>
+          <button type="button" class="btn btn-default" id="next-button1">
             <span>次</span>
           </button>
         </div>
       </div>
       <div class="row footer">
         <div class="col-sm-12 ">
-          <button type="button" class="btn btn-default" aria-label="Left Align" id="unknow-button">
+          <button type="button" class="btn btn-default" aria-label="Left Align" id="unknow-button1">
             <span>知らない</span>
           </button>
-          <button type="button" class="btn btn-default" aria-label="Left Align" id="know-button">
+          <button type="button" class="btn btn-default" aria-label="Left Align" id="know-button1">
             <span>知っている</span>
           </button>
         </div>
@@ -36,6 +36,34 @@
   </div>
 
  </div>
+</div>
+<div class="row">
+  <div class="col-xs-11 col-sm-6 col-md-4 col-lg-4">
+
+    <!-- PRICE ITEM -->
+    <div class="panel price">
+        <div class="panel-body text-center">
+            <p class="lead" style="font-size:30px" id="word"></p>
+        </div>
+        <div id="children">
+          <ul class="list-group text-left">
+              <li class="list-group-item" ><i class="icon-ok text-success"></i>読み方</li>
+              <li class="list-group-item" id="reading"><i class="icon-ok text-success"></i></li>
+              <li class="list-group-item"><i class="icon-ok text-success"></i>意味</li>
+              <li class="list-group-item" id="meaning"><i class="icon-ok text-success"></i></li>
+              <li class="list-group-item">
+               <a class="btn btn-sm btn-block btn-default" id="next-button">次</a>
+               </li>
+          </ul>
+        </div>
+        <div class="panel-footer">
+          <a class="btn btn-md btn-block btn-warning" id="unknow-button">知らない</a>
+          <a class="btn btn-md btn-block btn-success" id="know-button">知っている</a>
+        </div>
+    </div>
+    <!-- /PRICE ITEM -->
+    
+  </div>
 </div>
 
 <script>
@@ -53,7 +81,7 @@
         array1.length = 0;
         // push all elements of array2 to array1
         $.each(array2,function(index,value){
-array1.push(value);
+          array1.push(value);
         });
         // remove all elements of array2
         array2.length = 0;
@@ -97,12 +125,12 @@ array1.push(value);
         setVocabulary(vocabularies[i]); 
       }else {
         if(unknowVocabularies.length > 0) {
-reload(vocabularies,unknowVocabularies);
-setVocabulary(vocabularies[i]);
+          reload(vocabularies,unknowVocabularies);
+          setVocabulary(vocabularies[i]);
         }else {
-$("#word").text("Finish!!!");
-$("#unknow-button").hide();
-$("#know-button").hide();
+          $("#word").text("Finish!!!");
+          $("#unknow-button").hide();
+          $("#know-button").hide();
         }
       }
     });
@@ -116,12 +144,12 @@ $("#know-button").hide();
         $("#know-button").attr("disabled", false);
       }else {
         if(unknowVocabularies.length > 0) {
-$("#children").hide();
-$("#know-button").attr("disabled", false);
-reload(vocabularies,unknowVocabularies);
-setVocabulary(vocabularies[i]);
+          $("#children").hide();
+          $("#know-button").attr("disabled", false);
+          reload(vocabularies,unknowVocabularies);
+          setVocabulary(vocabularies[i]);
         }else {
-alert("Finish");
+          alert("Finish");
         }
       }
     });

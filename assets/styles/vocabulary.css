@@ -97,6 +97,7 @@
   text-align: left;
   color: white;
   font-size: 18px;
+  line-height: 90%;
 }
 .flip .card .back .title_card {
   background: #F27B00;
@@ -124,7 +125,7 @@
 */
 .card1 {
   position: relative;
-  width: 280px;
+  width: 300px;
   height: 400px;
   margin: 10px auto;
 }
@@ -156,6 +157,10 @@
   bottom: 0;
   left:0;
   width: 100%;
+}
+
+.card1 .footer button{
+  margin: 0px auto;
 }
 
 /*
@@ -271,4 +276,53 @@
   }
 }
 
+/*Test css*/
+/* COMMON PRICING STYLES */
+.panel.price{
+  border-radius:0px;
+  -moz-transition: all .3s ease;
+  -o-transition:  all .3s ease;
+  -webkit-transition:  all .3s ease;
+}
+.panel.price:hover{
+  box-shadow: 0px 0px 30px rgba(0,0,0, .2);
+}
+.price .list-group{
+  height: 200px;
+}
+.price .list-group-item{
+  border-bottom-:1px solid rgba(250,250,250, .5);
+}
 
+.price .panel-footer {
+  height: 90px;
+  color: #fff;
+  border-bottom:0px;
+  background-color:  rgba(0,0,0, .1);
+  box-shadow: 0px 3px 0px rgba(0,0,0, .3);
+}
+
+
+.panel.price .btn{
+  box-shadow: 0 -1px 0px rgba(50,50,50, .2) inset;
+  border:0px;
+}
+
+  /* green panel */
+  
+.price.panel-body {
+  color: #fff;
+  background-color: #65C965;
+}
+
+
+.price.panel-body .lead{
+text-shadow: 0px 3px 0px rgba(50,50,50, .3);
+}
+
+.price.list-group-item {
+  color: #333;
+  background-color: rgba(50,50,50, .01);
+  font-weight:600;
+  text-shadow: 0px 1px 0px rgba(250,250,250, .75);
+}
