@@ -1,6 +1,6 @@
 var passport = require('passport')
 //, GitHubStrategy = require('passport-github').Strategy
-//, GoogleStrategy = require('passport-google-oauth').OAuth2Strategy
+, GoogleStrategy = require('passport-google-oauth').OAuth2Strategy
 //, TwitterStrategy = require('passport-twitter').Strategy
     , FacebookStrategy = require('passport-facebook').Strategy;
 
@@ -12,11 +12,10 @@ var verifyHandler = function (token, tokenSecret, profile, done) {
             if (user) {
                 return done(null, user);
             } else {
-
-                var data = {
+               var data = {
                     provider: profile.provider,
                     uid: profile.id,
-                    name: profile.displayName
+                    username: profile.displayName
                 };
 
                 if (profile.emails && profile.emails[0] && profile.emails[0].value) {
@@ -30,6 +29,9 @@ var verifyHandler = function (token, tokenSecret, profile, done) {
                 }
 
                 User.create(data, function (err, user) {
+                    if (err){
+                        return console.log( err)
+                    }
                     return done(err, user);
                 });
             }
@@ -69,12 +71,12 @@ module.exports.http = {
             callbackURL: "http://localhost:1337/auth/facebook/callback"
         }, verifyHandler));
 
-        //passport.use(new GoogleStrategy({
-        //    clientID: 'YOUR_CLIENT_ID',
-        //    clientSecret: 'YOUR_CLIENT_SECRET',
-        //    callbackURL: 'http://localhost:1337/auth/google/callback'
-        //}, verifyHandler));
-        //
+        passport.use(new GoogleStrategy({
+            clientID: '988791216294-9u7ooc4cd42cod1cu9u2v8l556hpo2od.apps.googleusercontent.com',
+            clientSecret: '988791216294-9u7ooc4cd42cod1cu9u2v8l556hpo2od@developer.gserviceaccount.com',
+            callbackURL: 'http://localhost:1337/auth/google/callback'
+        }, verifyHandler));
+
         //passport.use(new TwitterStrategy({
         //    consumerKey: 'YOUR_CLIENT_ID',
         //    consumerSecret: 'YOUR_CLIENT_SECRET',

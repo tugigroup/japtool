@@ -31,10 +31,13 @@ module.exports = {
         sort: {
             type: "integer"
         },
-        tab: {
+        tag: {
             type: "string"
         },
         category: {
+            type: "string"
+        },
+        lesson: {
             type: "string"
         },
         other: {
