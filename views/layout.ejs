@@ -64,11 +64,11 @@
 			</ul>
 			<div class="navbar-right">
 				<% if(session.authenticated){ %>
-				<a class="btn btn-default navbar-btn navbar-right" href="/session/destroy">sign-out</a>
+				<a class="btn btn-default navbar-btn navbar-right" href="/auth/destroy">sign-out</a>
 				<% } %>
 			</div>
 			<% if (!session.authenticated) { %>
-			<form class="navbar-form navbar-right" action="/session/create">
+			<form class="navbar-form navbar-right" action="/auth/login">
 				<div class="form-group">
 					<input type="text" placeholder="Email" name="email" class="form-control">
 				</div>
