@@ -50,8 +50,9 @@ module.exports = {
         var sort = req.param('sort');
         var tab = req.param('tab');
         var category = req.param('category');
+        var lesson = req.param('lesson');
+        var tag = req.param('tag');
         var other = req.param('other');
-
         req.file('video').upload({
             adapter: require('skipper-gridfs'),
             uri: 'mongodb://localhost:27017/japtool.videos'
@@ -90,15 +91,16 @@ module.exports = {
                                         video: video,
                                         level: level,
                                         sort: sort,
-                                        tab: tab,
+                                        tag: tag,
                                         category: category,
+                                        lesson: lesson,
                                         other: other
                                     }).exec(function createCB(err, created) {
                                         if (err) {
                                             sails.log(err)
                                         }
                                         else {
-                                            res.send("Question has been created!");
+                                            res.redirect('/testIndex');
                                         }
                                     })
                                 } else {
@@ -106,15 +108,16 @@ module.exports = {
                                         content: content,
                                         level: level,
                                         sort: sort,
-                                        tab: tab,
+                                        tag: tag,
                                         category: category,
+                                        lesson: lesson,
                                         other: other
                                     }).exec(function createCB(err, created) {
                                         if (err) {
                                             sails.log(err)
                                         }
                                         else {
-                                            res.send("Question has been created!");
+                                            res.redirect('/testIndex');
                                         }
                                     })
                                 }
@@ -231,6 +234,21 @@ module.exports = {
                 }
 
                 res.send('Question has been deleted!');
+            }
+        })
+    },
+    lesson: function (req, res) {
+        var lesson = req.param('lesson');
+        var category = req.param('category');
+        Question.find({lesson: lesson, category: category}).populate('answers').exec(function createCB(err, questions) {
+            if (err) {
+                sails.log(err)
+            } else {
+                if (questions.length == 0) {
+                    res.send('Lesson no exits')
+                } else {
+                    res.render('test/lesson', {questions: questions});
+                }
             }
         })
     }
