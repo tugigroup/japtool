@@ -1,10 +1,17 @@
+<style>
+    .active {
+        display: block !important;
+    }
+</style>
 <div class="col-lg-2">
+    <h3>Category <%= questions[0].category %></h3>
+
     <h3><%= questions[0].lesson %></h3>
 </div>
 <div class="col-lg-10">
     <div class="row">
-        <% questions.forEach(function(question) { %>
-        <div class="col-lg-6">
+        <% questions.forEach(function(question, index) { %>
+        <div class="col-lg-4 question-learn-group <% if(index == 0 ) { %> active <% } %>" id="<%= index %>">
             <h2> Category <%= question.category %></h2>
 
             <div class="panel panel-primary">
@@ -45,16 +52,34 @@
                         </div>
                         <% }); %>
                     </div>
-                    <div id="<%= question.id %>" class="btn btn-info pull-right btn-answer-ok">Ok</div>
+                    <div id="previous" class="btn btn-info pull-left previous">Previous</div>
+                    <div id="<%= question.id %>" class="btn btn-info pull-right btn-answer-ok">Next</div>
                 </div>
             </div>
         </div>
         <% }); %>
     </div>
+    <div id="show-result" class="btn btn-info">Show result</div>
 </div>
 
 <script>
     $(document).ready(function () {
+        var result = [];
+        var count = <%= questions.length %>;
+        for (var i = 0; i < count; i++) {
+            result[i] = false;
+        }
+
+        $('.previous').each(function () {
+            $(this).click(function () {
+                var index = parseInt($('.active').attr('id')) - 1;
+                if (index > -1) {
+                    $('.active').removeClass('active');
+                    $('#' + index).addClass('active');
+                }
+            })
+        })
+
         $('.btn-answer-ok').each(function () {
             $(this).click(function () {
                 var _arr_data = [];
@@ -71,10 +96,33 @@
                         data: {data: _arr_data, id: _id}
                     })
                             .done(function (msg) {
-                                alert(msg);
+                                result[parseInt($('.active').attr('id'))] = msg;
+                                console.log(result);
+                                var index = parseInt($('.active').attr('id')) + 1;
+                                var count = <%= questions.length %>;
+                                if (index < count) {
+                                    $('.active').removeClass('active');
+                                    $('#' + index).addClass('active');
+                                }
                             });
                 } else {
                     alert('Please choose your option');
+                }
+            })
+            $('.question-learn-group').each(function () {
+                $(this).hide();
+            });
+        });
+
+        $('#show-result').click(function () {
+            var i = 0;
+            var count = <%= questions.length %>;
+            result.forEach(function (item, index) {
+                if (item == true) {
+                    i++
+                }
+                if (index == (result.length - 1)) {
+                    alert(i + '/' + result.length);
                 }
             })
         });

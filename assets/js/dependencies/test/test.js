@@ -9,5 +9,5 @@ $(document).ready(function () {
         $('#container-lesson').load('/lesson/' + category + '/' + lesson, function (err) {
 
         })
-    })
+    });
 });

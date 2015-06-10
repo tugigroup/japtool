@@ -56,6 +56,7 @@ module.exports.routes = {
     'post /deleteQuestion': 'test/QuestionController.delete',
     'post /deleteAnswer': 'test/AnswerController.delete',
     'get /lesson/:category/:lesson': 'test/QuestionController.lesson',
+    'get /getQuestion/:id': 'test/QuestionController.getQuestion',
     '/learningGroup':{view:'test/learn-group'},
     /*End QuyetND2*/
 
