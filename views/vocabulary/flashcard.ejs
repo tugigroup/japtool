@@ -12,7 +12,7 @@
             <div class="card"> 
               <div class="face front">
                 <div class="col-sm-12 top-space">
-                <% if (vocabularies[0].image!=""){%>
+                <% if (vocabularies[0].image){%>
                   <img src="/images/<%=vocabularies[0].image%>" alt="" class="image_card" ></img>
                 <%}%>
                 </div> 
@@ -28,17 +28,17 @@
               <div class="face back">
                 <div class="col-sm-12 top-space">
                   <%i=1%>
-                  <% if (vocabularies[0].reading!=""){%>
+                  <% if (vocabularies[0].reading){%>
                     <p><%=i%>.読み方</p>
                     <p class="left-space"><%=vocabularies[0].reading%></p>
                     <%i=i+1%>
                   <%}%>
-                  <% if (vocabularies[0].meaning!=""){%>
+                  <% if (vocabularies[0].meaning){%>
                     <p><%=i%>.意味</p>
                     <p class="left-space"><%=vocabularies[0].meaning%></p>
                     <%i=i+1%>
                   <%}%>
-                  <% if (vocabularies[0].examples!=""){%>
+                  <% if (vocabularies[0].examples){%>
                     <p><%=i%>.例文</p>
                     <p  class="examples left-space" 
                         data-toggle="tooltip" 
@@ -46,12 +46,12 @@
                         title="Tooltip on right"><%=vocabularies[0].examples%></p>
                     <%i=i+1%>
                   <%}%>
-                  <% if (vocabularies[0].synonymous!=""){%>
+                  <% if (vocabularies[0].synonymous){%>
                     <p><%=i%>.同義語</p>
                     <p class="synonymous left-space"><%=vocabularies[0].synonymous%></p>
                     <%i=i+1%>
                   <%}%>
-                  <% if (vocabularies[0].antonymous!=""){%>
+                  <% if (vocabularies[0].antonymous){%>
                     <p><%=i%>.反対語</p>
                     <p class="antonymous left-space"><%=vocabularies[0].antonymous%></p>
                     <%i=i+1%>
@@ -68,7 +68,7 @@
               <div class="card"> 
                 <div class="face front">
                   <div class="col-sm-12 top-space">
-                  <% if (vocabulary.image!=""){%>
+                  <% if (vocabulary.image){%>
                     <img src="/images/<%=vocabulary.image%>" alt="" class="image_card" ></img>
                   <%}%>
                   </div>
@@ -84,17 +84,17 @@
                 <div class="face back">
                   <div class="col-sm-12 top-space">
                     <%i=1%>
-                    <% if (vocabulary.reading!=""){%>
+                    <% if (vocabulary.reading){%>
                       <p><%=i%>.読み方</p>
                       <p class="left-space"><%=vocabulary.reading%></p>
                       <%i=i+1%>
                     <%}%>
-                    <% if (vocabulary.meaning!=""){%>
+                    <% if (vocabulary.meaning){%>
                       <p><%=i%>.意味</p>
                       <p class="left-space"><%=vocabulary.meaning%></p>
                       <%i=i+1%>
                     <%}%>
-                    <% if (vocabulary.examples!=""){%>
+                    <% if (vocabulary.examples){%>
                       <p><%=i%>.例文</p>
                       <p  class="examples left-space" 
                         data-toggle="tooltip" 
@@ -102,12 +102,12 @@
                         title="Tooltip on right"><%=vocabulary.examples%></p>
                       <%i=i+1%>
                     <%}%>
-                    <% if (vocabulary.synonymous!=""){%>
+                    <% if (vocabulary.synonymous){%>
                       <p><%=i%>.同義語</p>
                       <p class="synonymous left-space"><%=vocabulary.synonymous%></p>
                       <%i=i+1%>
                     <%}%>
-                    <% if (vocabulary.antonymous!=""){%>
+                    <% if (vocabulary.antonymous){%>
                       <p><%=i%>.反対語</p>
                       <p class="antonymous left-space"><%=vocabulary.antonymous%></p>
                       <%i=i+1%>

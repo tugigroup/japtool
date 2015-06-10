@@ -120,47 +120,42 @@
 
 /*
  *
- * Card for quicklearning
- * 
+ *css for quicklearning
+ *
 */
-.card1 {
-  position: relative;
-  width: 300px;
-  height: 400px;
-  margin: 10px auto;
-}
-
-.card1 .face {
-  position: absolute;
-  width: 100%;
-  height: 100%;
+.panel-card {
   font-family: "Times New Roman", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-  line-height: 100%;
-  background: gray;
-  font-size: 3em;
-
-  -ms-border-radius: 8px;
-  -moz-border-radius: 8px;
-  -webkit-border-radius: 8px;
-  -o-border-radius: 8px;
-  border-radius: 8px;
-  
-  -ms-box-shadow: 0 0 6px 2px #888888;
-  -moz-box-shadow: 0 0 6px 2px #888888;
-  -webkit-box-shadow: 0 0 6px 2px #888888;
-  -o-box-shadow: 0 0 6px 2px #888888;
-  box-shadow: 0 0 6px 2px #888888;
+  -webkit-transform-style: preserve-3d;
+  -webkit-transition: 0.5s;
+  -moz-transform-style: preserve-3d;
+  -moz-transition: 0.5s;
+  -ms-transform-style: preserve-3d;
+  -ms-transition: 0.5s;
+  -o-transform-style: preserve-3d;
+  -o-transition: 0.5s;
+  transform-style: preserve-3d;
+  transition: 0.5s;
+}
+.panel-card:hover {
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2);
+}
+.panel-card .panel-heading {
+  padding: 20px 10px;
+}
+.panel-card .panel-body {
+  background-color: #f0f0f0;
+  font-size: 20px;
+  color: #777777;
+  padding: 20px;
+  margin: 0px;
+  height: 220px;
 }
 
-.card1 .footer{
-  position: absolute;
-  bottom: 0;
-  left:0;
-  width: 100%;
-}
-
-.card1 .footer button{
-  margin: 0px auto;
+.panel-card .panel-footer {
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin: 0px;
+  height: 100px;
 }
 
 /*
@@ -274,55 +269,4 @@
   .carousel-inner .item .flip {
      width: 56%;
   }
-}
-
-/*Test css*/
-/* COMMON PRICING STYLES */
-.panel.price{
-  border-radius:0px;
-  -moz-transition: all .3s ease;
-  -o-transition:  all .3s ease;
-  -webkit-transition:  all .3s ease;
-}
-.panel.price:hover{
-  box-shadow: 0px 0px 30px rgba(0,0,0, .2);
-}
-.price .list-group{
-  height: 200px;
-}
-.price .list-group-item{
-  border-bottom-:1px solid rgba(250,250,250, .5);
-}
-
-.price .panel-footer {
-  height: 90px;
-  color: #fff;
-  border-bottom:0px;
-  background-color:  rgba(0,0,0, .1);
-  box-shadow: 0px 3px 0px rgba(0,0,0, .3);
-}
-
-
-.panel.price .btn{
-  box-shadow: 0 -1px 0px rgba(50,50,50, .2) inset;
-  border:0px;
-}
-
-  /* green panel */
-  
-.price.panel-body {
-  color: #fff;
-  background-color: #65C965;
-}
-
-
-.price.panel-body .lead{
-text-shadow: 0px 3px 0px rgba(50,50,50, .3);
-}
-
-.price.list-group-item {
-  color: #333;
-  background-color: rgba(50,50,50, .01);
-  font-weight:600;
-  text-shadow: 0px 1px 0px rgba(250,250,250, .75);
 }
