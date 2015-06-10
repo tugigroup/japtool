@@ -5,7 +5,7 @@
 */
 .flip {
   position: relative;
-  height: 430px;
+  height: 420px;
   margin: 0px auto;
   -webkit-perspective: 800px;
   -ms-perspective: 800px;
@@ -84,29 +84,14 @@
 
 }
 .flip .card .front .image_card {
-  width: 95%;
+  margin-top: 15px; 
+  width: 100%;
 }
-.flip .card .front .word_card, .card1 .face .word_card {
+.flip .card .front .word_card {
   background: #F27B00;
   color: white;
   font-size: 30px;
   text-align: center;
-  height: 
-}
-.flip .card .front .content_card, .card1 .face .content_card {
-  text-align: left;
-  color: white;
-  font-size: 18px;
-  line-height: 90%;
-}
-.flip .card .back .title_card {
-  background: #F27B00;
-  font-size: 2em;
-  color: white;
-  text-align: center;
-}
-.flip .card .back .content_card {
-  font-size: 1.3em;
 }
 .flip .card .front .footer {
   position: absolute;
@@ -148,14 +133,13 @@
   color: #777777;
   padding: 20px;
   margin: 0px;
-  height: 220px;
+  height: 250px;
 }
-
 .panel-card .panel-footer {
   background-color: #f0f0f0;
   padding: 10px;
   margin: 0px;
-  height: 100px;
+  height: 60px;
 }
 
 /*
@@ -173,11 +157,6 @@
   outline: 0;
   color:gray;
   width: 10%;
-
- }
- .carousel-control.button{
-  bottom:0;
-  font-size: 200px;
  }
 
 /*
@@ -191,6 +170,8 @@
 }
 /*click action*/
 .glyphicon-play:active {
+  color: gray;
+
   -webkit-transform:scale(.95); /* Safari and Chrome */
   -moz-transform:scale(.95); /* Firefox */
   -ms-transform:scale(.95); /* IE 9 */
@@ -209,6 +190,8 @@
 }
 /*click action*/
 .examples:active, .synonymous:active, .antonymous:active {
+  color: black;
+
   -webkit-transform:scale(.95); /* Safari and Chrome */
   -moz-transform:scale(.95); /* Firefox */
   -ms-transform:scale(.95); /* IE 9 */
