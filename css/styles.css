@@ -5,10 +5,12 @@ body {
     color: #333333;
     background-color: #fff;
 }
-a:hover{
+
+a:hover {
     text-decoration: none;
-    text-transform: capitalize;
+    cursor: pointer;
 }
+
 ul {
     margin: 0;
     padding: 0;
@@ -99,10 +101,6 @@ ul {
     height: auto;
 }
 
-.module-inner img {
-
-}
-
 .content-group-friends img {
     width: 100%;
     height: auto;
@@ -115,21 +113,38 @@ ul {
 .content-group-friends .group-friends {
     margin-bottom: 2rem
 }
-.content{
+
+.content {
     padding-bottom: 2rem;
 }
+
 .content h2 {
     font-weight: 300;
     text-transform: capitalize;
     font-size: 33px;
 }
-.content h2:after{
+
+.info h3 a {
+    text-transform: capitalize;
+}
+
+.vocabulary-item .info h3 {
+    border-bottom: 1px solid rgba(189, 189, 189, 0.44);
+    padding-bottom: 1rem;
+}
+
+.vocabulary-item .info h3:after {
     content: ' ';
     display: block;
-    border: 1px dashed rgba(220, 220, 220, 0.15);
     height: 1px;
-    width: 100%;
+    width: 27%;
+    z-index: 99999;
+    border: 1px solid #2BA9E1;
+    position: relative;
+    top: 11.5px;
+
 }
+
 .group-friends .info h3 a {
     font-size: 18px;
     color: #000000;
@@ -144,23 +159,55 @@ ul {
     display: table;
     margin-bottom: 2rem;
 }
-.desc-home i a{color:rgb(213, 73, 64)}
+
+.desc-home i a {
+    color: rgb(213, 73, 64)
+}
+
 /*Vocabulary*/
-.vocabulary{
+.vocabulary {
     background: rgb(231, 231, 231);
 }
-.vocabulary-item{
+
+.vocabulary-item {
     margin-bottom: 1rem;
 }
+
 .vocabulary-item img {
     width: 100%;
     height: auto;
-    max-height: 200px;
 }
 
 .vocabulary-item .info h3 a {
-    font-size: 18px;
+    font-size: 26px;
     color: #333333;
+    font-weight: 300;
+}
+
+.info-lesson {
+    text-align: center;
+}
+
+.info-lesson a {
+    color: #fff;
+    width: 100%;
+    display: block;
+    padding: 10px;
+}
+
+.info-desc {
+    margin-bottom: 1rem
+}
+
+.info-learning p {
+    line-height: 30px
+}
+.info-lesson-done .glyphicon{
+    color: rgb(92, 184, 92);
+}
+
+.join-learn {
+    color: #fff
 }
 
 /*END CONTENT*/
@@ -186,6 +233,11 @@ ul {
 
 .copyright .text-center {
     padding: 10px 0px
+}
+
+.join-learn {
+    border-radius: 0;
+    padding: 6px 13.5px;
 }
 
 /*END FOOTER*/
