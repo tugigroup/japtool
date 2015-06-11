@@ -26,6 +26,7 @@ ul {
     font-weight: 400;
     margin-top: 20px;
     padding: 8px 40px;
+    white-space: normal;
 }
 
 .sd-learn-more:hover {
@@ -164,10 +165,14 @@ ul {
     color: rgb(213, 73, 64)
 }
 
-/*Vocabulary*/
-.vocabulary {
+/*Group Friend*/
+.content-group-friends, .reading-practice,.member {
     background: rgb(231, 231, 231);
 }
+
+/* reading-practice */
+
+/*Vocabulary*/
 
 .vocabulary-item {
     margin-bottom: 1rem;
@@ -202,7 +207,8 @@ ul {
 .info-learning p {
     line-height: 30px
 }
-.info-lesson-done .glyphicon{
+
+.info-lesson-done .glyphicon {
     color: rgb(92, 184, 92);
 }
 
@@ -237,7 +243,16 @@ ul {
 
 .join-learn {
     border-radius: 0;
-    padding: 6px 13.5px;
+    width: 100%;
+    white-space: normal;
 }
 
+/*Member*/
+.member .col-sm-1 a img {
+    width: 100%;
+    height: auto;
+}
+.member .col-sm-1{
+    margin-bottom: 2rem;
+}
 /*END FOOTER*/
