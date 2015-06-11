@@ -1,0 +1,46 @@
+.form-register label {
+    font-weight: 500;
+}
+
+.register {
+    min-height: 280px;
+}
+
+.control-label {
+    font-weight: 500;
+}
+
+.well {
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.login-drop {
+    border-radius: 3px;
+    color: #ffffff;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 1px;
+    padding: 4px 15px;
+    background: #4FA74F;
+}
+
+.login-page {
+    margin: 0 auto;
+    margin-top: 0 !important;
+}
+
+div.required .control-label:before {
+    content: '* ';
+    color: #F00;
+    font-weight: bold;
+}
+
+.account label {
+    text-align: right;
+    padding-top: 7px;
+}
+.secondary-title{
+    font-weight: 400;margin: 0
+}

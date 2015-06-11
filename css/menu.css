@@ -70,7 +70,9 @@
     color: #dddddd;
     font-weight: 400;
 }
-
+#cssmenu > ul > li:last-child > a{
+    padding-right: 0;
+}
 #cssmenu > ul > li:hover > a {
     color: #ffffff;
 }

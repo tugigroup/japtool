@@ -58,7 +58,9 @@ ul {
     position: relative;
     z-index: 9
 }
-
+.account-right{
+    text-align: right;
+}
 .logo img {
     padding-top: 3rem
 }
@@ -97,6 +99,11 @@ ul {
 
 /*END HEADER*/
 /*CONTENT*/
+.wrapper {
+    min-height: 510px;
+    margin-bottom: 2rem;
+}
+
 .content-random .slideshow img, .module-inner img {
     width: 100%;
     height: auto;
@@ -166,7 +173,7 @@ ul {
 }
 
 /*Group Friend*/
-.content-group-friends, .reading-practice,.member {
+.content-group-friends, .reading-practice, .member {
     background: rgb(231, 231, 231);
 }
 
@@ -181,6 +188,10 @@ ul {
 .vocabulary-item img {
     width: 100%;
     height: auto;
+}
+
+.info h3 {
+    margin: 0;
 }
 
 .vocabulary-item .info h3 a {
@@ -252,7 +263,9 @@ ul {
     width: 100%;
     height: auto;
 }
-.member .col-sm-1{
+
+.member .col-sm-1 {
     margin-bottom: 2rem;
 }
+
 /*END FOOTER*/
