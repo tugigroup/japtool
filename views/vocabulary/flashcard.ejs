@@ -17,7 +17,7 @@
                   <%}%>
                 </div> 
                 <div class="col-sm-12 word_card">
-                  <p class="word"><%=vocabularies[0].word%></p>
+                  <p class="word"><%=vocabularies[0].item%></p>
                   <span class="glyphicon glyphicon-play"></span>
                 </div>
                 <div class="footer">
@@ -32,17 +32,19 @@
                     <p class="left-space"><%=vocabularies[0].reading%></p>
                     <%i=i+1%>
                   <%}%>
-                  <% if (vocabularies[0].meaning){%>
+                  <% if (vocabularies[0].description){%>
                     <p><%=i%>.意味</p>
-                    <p class="left-space"><%=vocabularies[0].meaning%></p>
+                    <p class="left-space"><%=vocabularies[0].description%></p>
                     <%i=i+1%>
                   <%}%>
                   <% if (vocabularies[0].examples){%>
                     <p><%=i%>.例文</p>
+                    <% vocabularies[0].examples.forEach( function( item, index){ %>
                     <p  class="examples left-space" 
                         data-toggle="tooltip" 
                         data-placement="right" 
-                        title="Tooltip on right"><%=vocabularies[0].examples%></p>
+                        title="<%=item.meaning%>"><%=item.example%></p>
+                    <%})%>
                     <%i=i+1%>
                   <%}%>
                   <% if (vocabularies[0].synonymous){%>
@@ -72,7 +74,7 @@
                     <%}%>
                   </div>
                   <div class="col-sm-12 word_card">
-                    <p class="word"><%=vocabulary.word%></p>
+                    <p class="word"><%=vocabulary.item%></p>
                     <span class="glyphicon glyphicon-play"></span>
                   </div>
                   <div class="footer">
@@ -88,17 +90,19 @@
                       <p class="left-space"><%=vocabulary.reading%></p>
                       <%i=i+1%>
                     <%}%>
-                    <% if (vocabulary.meaning){%>
+                    <% if (vocabulary.description){%>
                       <p><%=i%>.意味</p>
-                      <p class="left-space"><%=vocabulary.meaning%></p>
+                      <p class="left-space"><%=vocabulary.description%></p>
                       <%i=i+1%>
                     <%}%>
                     <% if (vocabulary.examples){%>
                       <p><%=i%>.例文</p>
+                      <% vocabulary.examples.forEach( function( item, index){ %>
                       <p  class="examples left-space" 
                         data-toggle="tooltip" 
                         data-placement="right" 
-                        title="Tooltip on right"><%=vocabulary.examples%></p>
+                        title="<%=item.meaning%>"><%=item.example%></p>
+                      <%})%>
                       <%i=i+1%>
                     <%}%>
                     <% if (vocabulary.synonymous){%>
