@@ -16,8 +16,8 @@
             <tr>
               <td><%= index= index+1 %></td>
 
-              <% if (vocabulary.word) {%>
-              <td><%= vocabulary.word %></td>
+              <% if (vocabulary.item) {%>
+              <td><%= vocabulary.item %></td>
               <%}else {%>
               <td></td>
               <%}%>
@@ -28,14 +28,20 @@
               <td></td>
               <%}%>
 
-              <% if (vocabulary.meaning) {%>
-              <td><%= vocabulary.meaning %></td>
+              <% if (vocabulary.description) {%>
+              <td><%= vocabulary.description %></td>
               <%}else {%>
               <td></td>
               <%}%>
 
-              <% if (vocabulary.examples) {%>
-              <td><%= vocabulary.examples %></td>
+              <% if (typeof vocabulary.examples !== 'undefined' && vocabulary.examples.length > 0) {%>
+              <td>
+                <% vocabulary.examples.forEach( function( item, j){ %>
+                <% if ( j < 3){%>
+                <li><%= item.example %></li>
+                <%}%>
+                <%})%>
+              </td>
               <%}else {%>
               <td></td>
               <%}%>
