@@ -1,0 +1,3 @@
+.panel, .btn, .form-control, .pagination, .input-group-addon, .thumbnail, .fixed-table-container, .panel-heading {
+    border-radius: 0px !important;
+}

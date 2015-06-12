@@ -1,0 +1,272 @@
+<html>
+<head>
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">-->
+    <meta charset="UTF-8">
+    <link type="text/css" href="../css/bootstrap.css" rel="stylesheet">
+    <link type="text/css" href="../css/bootstrap-theme.css" rel="stylesheet">
+    <link type="text/css" href="../css/styles.css" rel="stylesheet">
+    <link type="text/css" href="../css/menu.css" rel="stylesheet">
+    <link type="text/css" href="../css/font-awesome.css" rel="stylesheet">
+    <link type="text/css" href="../css/bootstrap-social.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet"
+          href="http://fonts.googleapis.com/css?family=Roboto:400,500,300&amp;subset=latin,latin-ext,vietnamese">
+
+    <script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/script.js"></script>
+
+    <!--added by TuanNT22-->
+    <link type="text/css" href="../css/bootstrap-table/bootstrap-table.css" rel="stylesheet">
+    <link type="text/css" href="../css/bootstrap-table/flat.css" rel="stylesheet">
+    <script type="text/javascript" src="../js/bootstrap-table.js"></script>
+    <!--<script type="text/javascript" src="../js/bootstrap-table-extensions/toolbar/bootstrap-table-toolbar.js"></script>-->
+    <!--end-->
+
+    <title>Template Japtool</title>
+</head>
+<body>
+<div class="header">
+    <div class="header-top">
+        <div class="container">
+            <div class="row">
+                <div class="header-top-menu col-md-4 col-md-offset-6">
+                    <ul>
+                        <li><a>Book Store</a></li>
+                        <li><a href="library.html">Libary</a></li>
+                        <li><a>Vocabulary</a></li>
+                        <li><a href="../group/group.html">My group</a></li>
+                    </ul>
+                </div>
+                <div class="account col-md-2">
+                    <a href="../user/login.html">Login</a>
+                    <a href="../user/register.html">Register</a>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="header-center clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <a class="logo"><img src="../images/logo.png"></a>
+                </div>
+                <div class="col-md-9">
+                    <div id='cssmenu' class="pull-right">
+                        <ul class="menu-page">
+                            <li><a href='../home.html'>Home</a></li>
+                            <li><a href='#'>About</a></li>
+                            <li class='active'><a href='library.html'>Libary</a>
+                                <ul>
+                                    <li><a href='#'>Product 1</a>
+                                        <ul>
+                                            <li><a href='#'>Sub Product</a></li>
+                                            <li><a href='#'>Sub Product</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href='#'>Product 2</a>
+                                        <ul>
+                                            <li><a href='#'>Sub Product</a></li>
+                                            <li><a href='#'>Sub Product</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="../learning-group/learning-group.html">Learning group</a></li>
+                            <li><a>Using guide</a></li>
+                            <li><a href='#'>Contact</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="stripe_color"></div>
+        <div class="stripe_image"></div>
+    </div>
+
+</div>
+<div class="container">
+    <div class="row">
+        <div class="content-random group-joining clearfix">
+            <div class="col-md-12">
+                <h2>Library System</h2>
+                <!--Custom tollbar-->
+                <div id="toolbar">
+                    <div class="form-inline" role="form">
+                        <div class="form-group">
+                            <span>Tìm kiếm theo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        </div>
+                        <div class="form-group">
+                            <span>Trình độ: </span>
+                            <select class="form-control" name="level">
+                                <option value="N1">N1</option>
+                                <option value="N2">N2</option>
+                                <option value="N3">N3</option>
+                                <option value="N4">N4</option>
+                                <option value="N5">N5</option>
+                            </select>
+                        </div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <div class="form-group">
+                            <span>Loại giáo trình: </span>
+                            <select class="form-control" name="type">
+                                <option value="Tu vung">Từ vựng</option>
+                                <option value="Tu loai">Từ loại</option>
+                                <option>Từ vựng</option>
+                                <option>Từ vựng</option>
+                                <option>Từ vựng</option>
+                                <option>Từ vựng</option>
+                                <option>Từ vựng</option>
+                                <option>Từ vựng</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input name="search" class="form-control" type="text" placeholder="Search">
+                        </div>
+                        <button id="ok" type="submit" class="btn btn-default">OK</button>
+                    </div>
+                </div>
+                <!--End custom toolbar-->
+                <table id="libTable"
+                       data-toggle="table"
+                       data-url="library.json"
+                       data-sort-name="no"
+                       data-sort-order="asc"
+                       data-show-columns="true"
+
+                       data-pagination="true"
+                       data-toolbar="#toolbar"
+
+                       data-query-params="queryParams">
+                    <!--data-detail-view="true"-->
+                    <!--data-detail-formatter="detailFormatter"-->
+                    <thead>
+                    <tr>
+                        <th data-field="no" data-align="center" data-sortable="true">No</th>
+                        <th data-field="name" data-sortable="true">Library Name</th>
+                        <th data-field="level" data-align="center" data-sortable="true">Level</th>
+                        <th data-field="type" data-align="center" data-sortable="true">Type</th>
+                        <th data-field="numberOfLesson" data-align="center" data-sortable="true">Lesson</th>
+                        <th data-field="estimateHour" data-align="center" data-sortable="true">Estimate Hour</th>
+                        <th data-field="numberOfRecommend" data-align="center" data-sortable="true">Recommend</th>
+                        <th data-field="numberOfUser" data-align="center" data-sortable="true">Used</th>
+                        <!--<th>Preview</th>-->
+                        <!--<th>Detail</th>-->
+                        <!--<th>Learn</th>-->
+                    </tr>
+                    </thead>
+                </table>
+                <!--<script>-->
+                <!--$(function () {-->
+                <!--//                        $('#libTable').next().click(function () {-->
+                <!--//                            $(this).hide();-->
+                <!--$('#libTable').bootstrapTable({}).on('click-row.bs.table', function (e, row, $element) {-->
+                <!--alert('');-->
+                <!--});-->
+                <!--//                        });-->
+                <!--});-->
+                <!--</script>-->
+                <script>
+                    var $table = $('#libTable'),
+                            $ok = $('#ok');
+                    $(function () {
+                        $ok.click(function () {
+                            $table.bootstrapTable('refresh');
+                        });
+                    });
+                    function queryParams() {
+                        var params = {};
+                        $('#toolbar').find('select[name]').each(function () {
+                            params[$(this).attr('name')] = $(this).val();
+//                            console.log($(this).attr('name') + '-' + $(this).val());
+                        });
+                        $('#toolbar').find('input[name]').each(function () {
+                            params[$(this).attr('name')] = $(this).val();
+//                            console.log($(this).attr('name') + '-' + $(this).val());
+                        });
+                        console.log(params);
+                        return params;
+                    }
+                    function responseHandler(res) {
+                        return res.rows;
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+</div>
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="logo-footer">
+                    <a><img src="../images/logo.png"/> </a>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <a class="btn btn-block btn-sm btn-social btn-facebook">
+                                <i class="fa fa-facebook"></i> Follow on Facebook
+                            </a>
+                        </div>
+                        <div class="col-sm-6">
+                            <a class="btn btn-block btn-sm btn-social btn-twitter">
+                                <i class="fa fa-twitter"></i> Follow on Twitter
+                            </a>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <h3>Address</h3>
+                <ul>
+                    <li><i class="iconentypo-home"></i> 11 Fifth Ave, Loftus - NEW JERSEY, US</li>
+                    <li><i class="iconentypo-phone"></i> Telephone: + 61 (2) 8093 3400</li>
+                    <li><i class="iconentypo-print"></i> Fax: +61 (2) 9542 3599</li>
+                    <li><i class="iconentypo-mail"></i> Email: <a href="#">submissions@domain.com</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-4">
+                <h3>Quick links</h3>
+                <ul>
+                    <li><a>Colleges & Schools</a></li>
+                    <li><a>Course Catalog</a></li>
+                    <li><a>Single Course</a></li>
+                    <li><a>Colleges & Schools</a></li>
+                    <li><a>Course Catalog</a></li>
+                    <li><a>Single Course</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                © 2015 All Rights Reserved. Terms of use and Privacy Policy
+            </div>
+        </div>
+    </div>
+</div>
+<!--details view-->
+<!--<script>-->
+<!--function detailFormatter(index, row) {-->
+<!--var html = [];-->
+<!--$.each(row, function (key, value) {-->
+<!--html.push('<p><b>' + key + ':</b> ' + value + '</p>');-->
+<!--});-->
+<!--return html.join('');-->
+<!--}-->
+<!--</script>-->
+<!--end-->
+</body>

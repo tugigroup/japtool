@@ -58,9 +58,11 @@ ul {
     position: relative;
     z-index: 9
 }
-.account-right{
+
+.account-right {
     text-align: right;
 }
+
 .logo img {
     padding-top: 3rem
 }
@@ -227,6 +229,87 @@ ul {
     color: #fff
 }
 
+/*Library*/
+.modal-header, h4, .close {
+    background-color: #5cb85c;
+    color: white !important;
+    text-align: center;
+    font-size: 30px;
+}
+
+.modal-footer {
+    background-color: #f9f9f9;
+}
+
+.group-joining .panel-heading {
+    background: none;
+    border: none;
+}
+
+.group-joining h2 {
+    color: #000;
+    font-weight: 300;
+    margin: 0;
+    border-bottom: 1px solid rgba(189, 189, 189, 0.44);
+    padding-bottom: 1rem;
+    width: 100%;
+}
+
+.group-joining-friends {
+    margin-top: 2rem;
+}
+
+.group-joining-friends h2 {
+    color: #000;
+    font-weight: 300;
+    margin: 0;
+    border-bottom: 1px solid rgba(189, 189, 189, 0.44);
+    padding-bottom: 1rem;
+    width: 100%;
+}
+
+.group-joining-friends h2:after, .group-joining h2:after {
+    content: ' ';
+    display: block;
+    height: 1px;
+    width: 27%;
+    z-index: 99999;
+    border: 1px solid #2BA9E1;
+    position: relative;
+    top: 11.5px;
+}
+
+.panel-primary {
+    border: none;
+}
+
+.group-joining .creategroup {
+    margin-top: -40px;
+}
+
+.creategroup-form{
+    margin-top: 2rem;
+}
+.creategroup-form .panel-heading h2 {
+    color: #fff;
+    font-weight: 300;
+    margin: 5px;
+    width: 100%;
+    font-size: 20px;
+}
+
+.creategroup-form .panel-info {
+    border-color:#5cb85c ;
+}
+.creategroup-form .panel-heading {
+    background: #5cb85c;
+}
+.creategroup-button button{
+    border: none;
+    width: 100%;
+    padding: 10px;
+    color: #fff;
+}
 /*END CONTENT*/
 /*FOOTER*/
 .footer {

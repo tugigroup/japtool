@@ -1,0 +1,604 @@
+<html>
+<head>
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">-->
+    <meta charset="UTF-8">
+    <link type="text/css" href="../css/bootstrap.css" rel="stylesheet">
+    <link type="text/css" href="../css/bootstrap-theme.css" rel="stylesheet">
+    <link type="text/css" href="../css/styles.css" rel="stylesheet">
+    <link type="text/css" href="../css/menu.css" rel="stylesheet">
+    <link type="text/css" href="../css/font-awesome.css" rel="stylesheet">
+    <link type="text/css" href="../css/bootstrap-social.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet"
+          href="http://fonts.googleapis.com/css?family=Roboto:400,500,300&amp;subset=latin,latin-ext,vietnamese">
+
+    <script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/script.js"></script>
+
+    <!--added by TuanNT22-->
+    <link type="text/css" href="../css/bootstrap-table/bootstrap-table.css" rel="stylesheet">
+    <link type="text/css" href="../css/bootstrap-table/flat.css" rel="stylesheet">
+    <script type="text/javascript" src="../js/bootstrap-table.js"></script>
+    <!--end-->
+
+    <title>Template Japtool</title>
+</head>
+<body>
+<div class="header">
+    <div class="header-top">
+        <div class="container">
+            <div class="row">
+                <div class="header-top-menu col-md-4 col-md-offset-6">
+                    <ul>
+                        <li><a>Book Store</a></li>
+                        <li><a href="../library/library.html">Libary</a></li>
+                        <li><a>Vocabulary</a></li>
+                        <li><a href="group.html">My group</a></li>
+                    </ul>
+                </div>
+                <div class="account col-md-2">
+                    <a href="../user/login.html">Login</a>
+                    <a href="../user/register.html">Register</a>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="header-center clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <a class="logo"><img src="../images/logo.png"></a>
+                </div>
+                <div class="col-md-9">
+                    <div id='cssmenu' class="pull-right">
+                        <ul class="menu-page">
+                            <li><a href='../home.html'>Home</a></li>
+                            <li><a href='#'>About</a></li>
+                            <li class='active'><a href='../library/library.html'>Libary</a>
+                                <ul>
+                                    <li><a href='#'>Product 1</a>
+                                        <ul>
+                                            <li><a href='#'>Sub Product</a></li>
+                                            <li><a href='#'>Sub Product</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href='#'>Product 2</a>
+                                        <ul>
+                                            <li><a href='#'>Sub Product</a></li>
+                                            <li><a href='#'>Sub Product</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="../group/group.html">Learning group</a></li>
+                            <li><a>Using guide</a></li>
+                            <li><a href='#'>Contact</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="stripe_color"></div>
+        <div class="stripe_image"></div>
+    </div>
+
+</div>
+<div class="container">
+    <div class="row">
+        <div class="content-random group-joining clearfix">
+            <div class="col-sm-12">
+                <h2>Your joining groups</h2>
+
+                <div class="">
+                    <button type="button" class="btn btn-success pull-right creategroup" id="createNewGroup">Create New
+                        Group
+                    </button>
+                    <div class="modal fade" id="createNewGroupModal" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header" style="padding:35px 50px;">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4><span class="glyphicon glyphicon-lock"></span> New Group </h4>
+                                </div>
+                                <div class="modal-body" style="padding:40px 50px;">
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-danger btn-default pull-left"
+                                            data-dismiss="modal"><span
+                                            class="glyphicon glyphicon-remove"></span> Cancel
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <script>
+                        $(document).ready(function () {
+                            $("#createNewGroup").click(function () {
+                                $("#createNewGroupModal").modal();
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <table id="libTable"
+                       data-toggle="table"
+                       data-url="groupjoin.json"
+                       data-cache="false"
+                       data-sort-name="no"
+                       data-sort-order="asc"
+                       data-show-columns="true"
+                       data-search="true"
+                       data-select-item-name="toolbar1"
+                       data-pagination="true"
+                       data-show-header="true"
+                       data-card-view="false"
+                       class="table table-striped"
+                        >
+                    <!--data-detail-view="true"-->
+                    <!--data-detail-formatter="detailFormatter"-->
+                    <thead>
+                    <tr>
+                        <th style="width: 10%;" data-field="id" data-sortable="true">No</th>
+                        <th data-field="groupname" data-sortable="true">Group Name</th>
+                        <th data-field="member" data-formatter="memFormatter" data-sortable="true"
+                            class="col-md-2">
+                            Member
+                        </th>
+                        <th data-field="library" data-formatter="libFormatter" data-sortable="true"
+                            class="col-md-3">
+                            Library
+                        </th>
+                    </tr>
+                    </thead>
+                </table>
+                <script>
+                    function memFormatter(value, row, index) {
+                        var result = "<ul>";
+                        for (j in row.member) {
+                            result += '<li><i class="glyphicon glyphicon-ok" aria-hidden="true"></i> <a href="" title="View this library details.">' + row.member[j] + '</a></li>';
+                        }
+                        result += '</ul>';
+                        return [row.member.length + ' members' +
+                        '<a class="view pull-right" href="" title="View all libraries in this group." data-toggle="modal" data-target="#group-member-' + row.id + '">' +
+                        '<i class="glyphicon glyphicon-zoom-in"></i>' +
+                        '</a>' +
+
+                        '<div id="group-member-' + row.id + '" class="modal fade" role="dialog"> ' +
+                        '<div class= "modal-dialog"><div class="modal-content"><div class="modal-header">' +
+                        '<button type = "button" class="close" data-dismiss="modal" > &times; </button>' +
+                        '<h4 class="modal-title"> Members </h4>' +
+                        '</div><div class="modal-body">' +
+                        '<p>' + result + ' </p>' +
+                        '</div><div class="modal-footer">' +
+                        '<button type = "button" class = "btn btn-default" data-dismiss="modal">Close</button>' +
+                        '</div></div></div></div></li >'
+                        ].join("");
+                    }
+                    function libFormatter(value, row, index) {
+                        var shortResult = "";
+                        if (row.library.length >= 2) {
+                            for (j = 0; j <= 1; j++) {
+                                shortResult += row.library[j] + ", ";
+                            }
+                        } else {
+                            for (j = 0; j <= row.library.length - 1; j++) {
+                                shortResult += row.library[j] + ", ";
+                            }
+                        }
+                        var result = "<ul>";
+                        for (j in row.library) {
+                            result += '<li><i class="glyphicon glyphicon-ok" aria-hidden="true"></i> <a href="" title="View this library details.">' + row.library[j] + '</a></li>';
+                        }
+                        result += '</ul>';
+                        return [shortResult + "..." +
+                        '<a class="view pull-right" href="" title="View all librarys in this group." data-toggle="modal" data-target="#group-' + row.id + '">' +
+                        '<i class="glyphicon glyphicon-zoom-in"></i>' +
+                        '</a>' +
+
+                        '<div id="group-' + row.id + '" class="modal fade" role="dialog"> ' +
+                        '<div class= "modal-dialog"><div class="modal-content"><div class="modal-header">' +
+                        '<button type = "button" class="close" data-dismiss="modal" > &times; </button>' +
+                        '<h4 class="modal-title"> Libraries </h4>' +
+                        '</div><div class="modal-body">' +
+                        '<p>' + result + ' </p>' +
+                        '</div><div class="modal-footer">' +
+                        '<button type = "button" class = "btn btn-default" data-dismiss="modal">Close</button>' +
+                        '</div></div></div></div></li >'
+                        ].join('');
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="content-random group-joining-friends clearfix">
+            <div class="col-sm-12">
+                <h2>Your friends joining groups</h2>
+            </div>
+
+            <div class="col-md-12">
+
+                <!-- Table -->
+                <table id="libTable"
+                       data-toggle="table"
+                       data-url="groupjoin.json"
+                       data-cache="false"
+                       data-sort-name="no"
+                       data-sort-order="asc"
+                       data-show-columns="true"
+                       data-search="true"
+                       data-select-item-name="toolbar1"
+                       data-pagination="true"
+                       data-show-header="true"
+                       class="table table-striped">
+                    <!--data-detail-view="true"-->
+                    <!--data-detail-formatter="detailFormatter"-->
+                    <thead>
+                    <tr>
+                        <th style="width: 10%;" data-field="id" data-sortable="true">No</th>
+                        <th data-field="groupname" data-sortable="true">Group Name</th>
+                        <th data-field="member" data-formatter="memFormatter" data-sortable="true"
+                            class="col-md-2">
+                            Member
+                        </th>
+                        <th data-field="library" data-formatter="libFormatter" data-sortable="true"
+                            class="col-md-3">
+                            Library
+                        </th>
+
+                        <!--<th data-field="library" data-formatter="libActionFormatter" data-sortable="false"-->
+                        <!--class="col-md-1">-->
+                        <!--</th>-->
+                    </tr>
+                    </thead>
+                </table>
+                <script>
+                    function memFormatter(value, row, index) {
+                        var result = "<ul>";
+                        for (j in row.member) {
+                            result += '<li><i class="glyphicon glyphicon-ok" aria-hidden="true"></i> <a href="" title="View this library details.">' + row.member[j] + '</a></li>';
+                        }
+                        result += '</ul>';
+                        return [row.member.length + ' members' +
+                        '<a class="view pull-right" href="" title="View all librarys in this group." data-toggle="modal" data-target="#group-member-' + row.id + '">' +
+                        '<i class="glyphicon glyphicon-zoom-in"></i>' +
+                        '</a>' +
+
+                        '<div id="group-member-' + row.id + '" class="modal fade" role="dialog"> ' +
+                        '<div class= "modal-dialog"><div class="modal-content"><div class="modal-header">' +
+                        '<button type = "button" class="close" data-dismiss="modal" > &times; </button>' +
+                        '<h4 class="modal-title"> Members </h4>' +
+                        '</div><div class="modal-body">' +
+                        '<p>' + result + ' </p>' +
+                        '</div><div class="modal-footer">' +
+                        '<button type = "button" class = "btn btn-default" data-dismiss="modal">Close</button>' +
+                        '</div></div></div></div></li >'
+                        ].join("");
+                    }
+                    function libFormatter(value, row, index) {
+                        var shortResult = "";
+                        if (row.library.length >= 2) {
+                            for (j = 0; j <= 1; j++) {
+                                shortResult += row.library[j] + ", ";
+                            }
+                        } else {
+                            for (j = 0; j <= row.library.length - 1; j++) {
+                                shortResult += row.library[j] + ", ";
+                            }
+                        }
+                        var result = "<ul>";
+                        for (j in row.library) {
+                            result += '<li><i class="glyphicon glyphicon-ok" aria-hidden="true"></i> <a href="" title="View this library details.">' + row.library[j] + '</a></li>';
+                        }
+                        result += '</ul>';
+                        return [shortResult + "..." +
+                        '<a class="view pull-right" href="" title="View all librarys in this group." data-toggle="modal" data-target="#group-' + row.id + '">' +
+                        '<i class="glyphicon glyphicon-zoom-in"></i>' +
+                        '</a>' +
+
+                        '<div id="group-' + row.id + '" class="modal fade" role="dialog"> ' +
+                        '<div class= "modal-dialog"><div class="modal-content"><div class="modal-header">' +
+                        '<button type = "button" class="close" data-dismiss="modal" > &times; </button>' +
+                        '<h4 class="modal-title"> Libraries </h4>' +
+                        '</div><div class="modal-body">' +
+                        '<p>' + result + ' </p>' +
+                        '</div><div class="modal-footer">' +
+                        '<button type = "button" class = "btn btn-default" data-dismiss="modal">Close</button>' +
+                        '</div></div></div></div></li >'
+                        ].join('');
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="content-random creategroup-form">
+            <div class="col-md-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h2>Create Group</h2>
+                    </div>
+                    <div class="panel-body">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="col-md-2 control-label">Group Name: </label>
+
+                                <div class="col-md-10">
+                                    <input type="email" class="form-control" id="exampleInputEmail1"
+                                           placeholder="Enter group name"/>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Description: </label>
+
+                                <div class="col-md-10">
+                                    <textarea type="password" class="form-control"
+                                              placeholder="Description"> </textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Learning plant: </label>
+
+                                <div class="col-md-10">
+                                    <div class="row">
+                                        <div class="col-md-12" id="datepicker">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">From:</span>
+                                                <input type="date" class="form-control" name="start">
+                                                <span class="input-group-addon">To:</span>
+                                                <input type="date" class="form-control" name="end">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Member list:</label>
+
+                                <div class="col-md-10">
+                                    <div class="form-group">
+
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <div class="col-xs-2">
+                                                    <div class="thumbnail">
+                                                        <a href="#" title="Click to view profile.">
+                                                            <img src="../images/avatar/a01.png">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-2">
+                                                    <div class="thumbnail">
+                                                        <a href="#" title="Click to view profile.">
+                                                            <img src="../images/avatar/a02.png">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-2">
+                                                    <div class="thumbnail">
+                                                        <a href="#" title="Click to view profile.">
+                                                            <img src="../images/avatar/a03.png">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-2">
+                                                    <div class="thumbnail">
+                                                        <a href="#" title="Click to view profile.">
+                                                            <img src="../images/avatar/a04.png">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-2">
+                                                    <div class="thumbnail">
+                                                        <a href="#" title="Click to view profile.">
+                                                            <img src="../images/avatar/a05.png">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-2">
+                                                    <div class="thumbnail">
+                                                        <a href="#" title="Click to view profile.">
+                                                            <img src="../images/avatar/fh02.png">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-2">
+                                                    <div class="thumbnail">
+                                                        <a href="#" title="Click to view profile.">
+                                                            <img src="../images/avatar/fh03.png">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-2">
+                                                    <div class="thumbnail">
+                                                        <a href="#" title="Click to view profile.">
+                                                            <img src="../images/avatar/a05.png">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-2">
+                                                    <div class="thumbnail">
+                                                        <a href="#" title="Click to view profile.">
+                                                            <img src="../images/avatar/fh02.png">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-2">
+                                                    <div class="thumbnail">
+                                                        <a href="#" title="Click to view profile.">
+                                                            <img src="../images/avatar/fh03.png">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <label class="col-sm-7 control-label">Maximum member: </label>
+
+                                                <div class="col-sm-5">
+                                                    <select class="form-control" id="sel1">
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                        <option>6</option>
+                                                        <option>7</option>
+                                                        <option>8</option>
+                                                    </select>
+
+                                                </div>
+                                            </div>
+                                            <br/>
+
+                                            <div class="row">
+                                                <div class="col-sm-7"></div>
+                                                <div class="info-lesson col-sm-5">
+                                                    <a href="#" class="label-success pull-right" role="button">Invite
+                                                        more
+                                                        members</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Libraries:</label>
+
+                                <div class="col-md-10">
+                                    <!--<div class="form-group">-->
+                                    <div class="row">
+                                        <div class="col-sm-10">
+                                            <div class="row">
+                                                <div class="col-sm-2 info-lesson">
+                                                    <a href="#" title="Click to view library details" class="label-primary"
+                                                       role="button">
+                                                        Từ vựng N2
+                                                    </a>
+                                                </div>
+                                               <div class="col-sm-2 info-lesson">
+                                                    <a href="#" title="Click to view library details" class="label-primary"
+                                                       role="button">
+                                                        Từ vựng N3
+                                                    </a>
+                                                </div>
+                                               <div class="col-sm-2 info-lesson">
+                                                    <a href="#" title="Click to view library details" class="label-primary"
+                                                       role="button">
+                                                        Từ vựng N4
+                                                    </a>
+                                                </div>
+                                               <div class="col-sm-2 info-lesson">
+                                                    <a href="#" title="Click to view library details" class="label-primary"
+                                                       role="button">
+                                                        Từ vựng N5
+                                                    </a>
+                                                </div>
+                                               <div class="col-sm-2 info-lesson">
+                                                    <a href="#" title="Click to view library details" class="label-primary"
+                                                       role="button">
+                                                        Từ vựng N6
+                                                    </a>
+                                                </div>
+
+
+
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="info-lesson">
+                                                <a href="#" class="label-primary pull-right" role="button">Add
+                                                    more libraries</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--</div>-->
+                                </div>
+                            </div>
+                            <hr style="border-color: #bce8f1"/>
+                            <div class="form-group creategroup-button">
+                                <div class="col-sm-offset-10 col-sm-2 info-lesson">
+                                    <button type="submit" class="label-danger pull-right">
+                                        Create Group
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="logo-footer">
+                    <a><img src="../images/logo.png"/> </a>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <a class="btn btn-block btn-sm btn-social btn-facebook">
+                                <i class="fa fa-facebook"></i> Follow on Facebook
+                            </a>
+                        </div>
+                        <div class="col-sm-6">
+                            <a class="btn btn-block btn-sm btn-social btn-twitter">
+                                <i class="fa fa-twitter"></i> Follow on Twitter
+                            </a>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <h3>Address</h3>
+                <ul>
+                    <li><i class="iconentypo-home"></i> 11 Fifth Ave, Loftus - NEW JERSEY, US</li>
+                    <li><i class="iconentypo-phone"></i> Telephone: + 61 (2) 8093 3400</li>
+                    <li><i class="iconentypo-print"></i> Fax: +61 (2) 9542 3599</li>
+                    <li><i class="iconentypo-mail"></i> Email: <a href="#">submissions@domain.com</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-4">
+                <h3>Quick links</h3>
+                <ul>
+                    <li><a>Colleges & Schools</a></li>
+                    <li><a>Course Catalog</a></li>
+                    <li><a>Single Course</a></li>
+                    <li><a>Colleges & Schools</a></li>
+                    <li><a>Course Catalog</a></li>
+                    <li><a>Single Course</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                © 2015 All Rights Reserved. Terms of use and Privacy Policy
+            </div>
+        </div>
+    </div>
+</div>
+</body>

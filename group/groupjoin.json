@@ -1,0 +1,3378 @@
+[
+  {
+    "id": 1,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Tran Van Tuyen",
+      "Tran Duc Duong",
+      "Tran Van Tuyen",
+      "Ma Hai Nam",
+      "Pham Van Thinh",
+      "Nguyen Huy Anh",
+      "Tran Van Tuyen"
+    ],
+    "library": [
+      "Luyen doc N3",
+      "Luyen doc N3"
+    ]
+  },
+  {
+    "id": 2,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Do Thanh Xuan",
+      "Ma Hai Nam",
+      "Tran Duc Duong",
+      "Nguyen Huy Anh"
+    ],
+    "library": [
+      "Tu vung N4",
+      "Ngu phap N3",
+      "Tu vung N2",
+      "Tu vung N1"
+    ]
+  },
+  {
+    "id": 3,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Tran Duc Duong",
+      "Ma Hai Nam",
+      "Nguyen Huy Anh",
+      "Nguyen Huy Anh",
+      "Nguyen Trong Tuan"
+    ],
+    "library": [
+      "Ngu phap N3",
+      "Tu vung N3",
+      "Tu vung N3",
+      "Ngu phap N3",
+      "Luyen doc N3",
+      "Luyen doc N3"
+    ]
+  },
+  {
+    "id": 4,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Pham Van Thinh",
+      "Nguyen Huy Anh",
+      "Tran Duc Duong",
+      "Pham Van Thinh",
+      "Do Thanh Xuan"
+    ],
+    "library": [
+      "Ngu phap N3",
+      "Tu vung N1",
+      "Ngu phap N3",
+      "Tu vung N4",
+      "Tu vung N3",
+      "Tu vung N5",
+      "Tu vung N5"
+    ]
+  },
+  {
+    "id": 5,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Do Thanh Xuan",
+      "Tran Van Tuyen",
+      "Ma Hai Nam",
+      "Nguyen Trong Tuan",
+      "Nguyen Huy Anh"
+    ],
+    "library": [
+      "Tu vung N5",
+      "Ngu phap N3",
+      "Tu vung N3"
+    ]
+  },
+  {
+    "id": 6,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Tran Duc Duong",
+      "Do Thanh Xuan",
+      "Nguyen Trong Tuan",
+      "Nguyen Huy Anh",
+      "Pham Van Thinh",
+      "Tran Van Tuyen"
+    ],
+    "library": [
+      "Tu vung N5",
+      "Tu vung N1",
+      "Tu vung N2"
+    ]
+  },
+  {
+    "id": 7,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Tran Van Tuyen",
+      "Tran Duc Duong",
+      "Nguyen Trong Tuan",
+      "Tran Van Tuyen",
+      "Nguyen Huy Anh"
+    ],
+    "library": [
+      "Luyen doc N3",
+      "Tu vung N2",
+      "Tu vung N4",
+      "Tu vung N3",
+      "Luyen doc N3",
+      "Tu vung N2"
+    ]
+  },
+  {
+    "id": 8,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Nguyen Huy Anh",
+      "Do Thanh Xuan",
+      "Nguyen Huy Anh"
+    ],
+    "library": [
+      "Tu vung N1",
+      "Ngu phap N3",
+      "Luyen doc N3",
+      "Tu vung N5"
+    ]
+  },
+  {
+    "id": 9,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Pham Van Thinh",
+      "Tran Duc Duong",
+      "Nguyen Trong Tuan",
+      "Pham Van Thinh"
+    ],
+    "library": [
+      "Luyen doc N3",
+      "Tu vung N3",
+      "Ngu phap N3",
+      "Tu vung N2",
+      "Tu vung N5",
+      "Tu vung N4"
+    ]
+  },
+  {
+    "id": 10,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Tran Van Tuyen",
+      "Nguyen Trong Tuan",
+      "Pham Van Thinh",
+      "Tran Van Tuyen"
+    ],
+    "library": [
+      "Tu vung N2",
+      "Luyen doc N3",
+      "Tu vung N2",
+      "Tu vung N3"
+    ]
+  },
+  {
+    "id": 11,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Nguyen Huy Anh",
+      "Ma Hai Nam",
+      "Pham Van Thinh"
+    ],
+    "library": [
+      "Tu vung N4",
+      "Tu vung N4"
+    ]
+  },
+  {
+    "id": 12,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Tran Van Tuyen",
+      "Pham Van Thinh",
+      "Pham Van Thinh"
+    ],
+    "library": [
+      "Tu vung N2",
+      "Tu vung N3",
+      "Tu vung N2",
+      "Tu vung N4",
+      "Ngu phap N3",
+      "Luyen doc N3",
+      "Ngu phap N3"
+    ]
+  },
+  {
+    "id": 13,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Tran Duc Duong",
+      "Tran Duc Duong",
+      "Tran Duc Duong"
+    ],
+    "library": [
+      "Ngu phap N3",
+      "Tu vung N3"
+    ]
+  },
+  {
+    "id": 14,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Tran Van Tuyen",
+      "Ma Hai Nam"
+    ],
+    "library": [
+      "Tu vung N4",
+      "Tu vung N5",
+      "Tu vung N5",
+      "Luyen doc N3",
+      "Luyen doc N3",
+      "Tu vung N2",
+      "Tu vung N4"
+    ]
+  },
+  {
+    "id": 15,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Tran Van Tuyen",
+      "Nguyen Huy Anh",
+      "Ma Hai Nam"
+    ],
+    "library": [
+      "Ngu phap N3",
+      "Ngu phap N3",
+      "Tu vung N1",
+      "Tu vung N5",
+      "Tu vung N2",
+      "Ngu phap N3",
+      "Luyen doc N3"
+    ]
+  },
+  {
+    "id": 16,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Tran Van Tuyen",
+      "Nguyen Trong Tuan"
+    ],
+    "library": [
+      "Ngu phap N3",
+      "Tu vung N4",
+      "Tu vung N5"
+    ]
+  },
+  {
+    "id": 17,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Ma Hai Nam",
+      "Do Thanh Xuan",
+      "Ma Hai Nam",
+      "Nguyen Trong Tuan",
+      "Tran Van Tuyen",
+      "Tran Van Tuyen"
+    ],
+    "library": [
+      "Tu vung N5",
+      "Tu vung N5",
+      "Ngu phap N3",
+      "Tu vung N2"
+    ]
+  },
+  {
+    "id": 18,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Nguyen Trong Tuan",
+      "Tran Van Tuyen",
+      "Pham Van Thinh",
+      "Do Thanh Xuan"
+    ],
+    "library": [
+      "Luyen doc N3",
+      "Tu vung N3",
+      "Tu vung N5",
+      "Tu vung N2",
+      "Tu vung N2",
+      "Tu vung N5"
+    ]
+  },
+  {
+    "id": 19,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Tran Duc Duong",
+      "Ma Hai Nam",
+      "Ma Hai Nam",
+      "Pham Van Thinh",
+      "Tran Van Tuyen",
+      "Pham Van Thinh",
+      "Nguyen Trong Tuan"
+    ],
+    "library": [
+      "Ngu phap N3",
+      "Tu vung N5",
+      "Tu vung N2",
+      "Luyen doc N3"
+    ]
+  },
+  {
+    "id": 20,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Nguyen Huy Anh",
+      "Ma Hai Nam",
+      "Do Thanh Xuan",
+      "Tran Van Tuyen",
+      "Do Thanh Xuan",
+      "Ma Hai Nam"
+    ],
+    "library": [
+      "Tu vung N1",
+      "Ngu phap N3",
+      "Tu vung N1"
+    ]
+  },
+  {
+    "id": 21,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Tran Duc Duong",
+      "Ma Hai Nam",
+      "Do Thanh Xuan",
+      "Nguyen Huy Anh",
+      "Pham Van Thinh",
+      "Nguyen Trong Tuan"
+    ],
+    "library": [
+      "Tu vung N3",
+      "Ngu phap N3",
+      "Tu vung N5",
+      "Tu vung N1",
+      "Tu vung N2",
+      "Tu vung N3",
+      "Tu vung N1"
+    ]
+  },
+  {
+    "id": 22,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Tran Van Tuyen",
+      "Do Thanh Xuan",
+      "Ma Hai Nam",
+      "Tran Van Tuyen",
+      "Nguyen Trong Tuan",
+      "Ma Hai Nam",
+      "Pham Van Thinh"
+    ],
+    "library": [
+      "Tu vung N2",
+      "Tu vung N1"
+    ]
+  },
+  {
+    "id": 23,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Tran Van Tuyen",
+      "Do Thanh Xuan",
+      "Tran Van Tuyen"
+    ],
+    "library": [
+      "Tu vung N4",
+      "Tu vung N3",
+      "Tu vung N5"
+    ]
+  },
+  {
+    "id": 24,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Tran Duc Duong",
+      "Tran Duc Duong"
+    ],
+    "library": [
+      "Tu vung N2",
+      "Tu vung N5",
+      "Ngu phap N3",
+      "Tu vung N5",
+      "Tu vung N1",
+      "Tu vung N2",
+      "Tu vung N5"
+    ]
+  },
+  {
+    "id": 25,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Do Thanh Xuan",
+      "Pham Van Thinh",
+      "Tran Duc Duong",
+      "Tran Van Tuyen"
+    ],
+    "library": [
+      "Luyen doc N3",
+      "Luyen doc N3",
+      "Tu vung N1",
+      "Tu vung N3"
+    ]
+  },
+  {
+    "id": 26,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Nguyen Trong Tuan",
+      "Tran Duc Duong",
+      "Nguyen Huy Anh",
+      "Pham Van Thinh",
+      "Do Thanh Xuan",
+      "Tran Van Tuyen"
+    ],
+    "library": [
+      "Tu vung N2",
+      "Ngu phap N3",
+      "Tu vung N2",
+      "Luyen doc N3",
+      "Tu vung N3"
+    ]
+  },
+  {
+    "id": 27,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Pham Van Thinh",
+      "Nguyen Huy Anh",
+      "Do Thanh Xuan",
+      "Tran Duc Duong",
+      "Tran Duc Duong"
+    ],
+    "library": [
+      "Tu vung N5",
+      "Ngu phap N3",
+      "Tu vung N5",
+      "Luyen doc N3",
+      "Ngu phap N3",
+      "Tu vung N2"
+    ]
+  },
+  {
+    "id": 28,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Nguyen Trong Tuan",
+      "Tran Duc Duong"
+    ],
+    "library": [
+      "Tu vung N5",
+      "Tu vung N3",
+      "Tu vung N3"
+    ]
+  },
+  {
+    "id": 29,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Tran Duc Duong",
+      "Nguyen Trong Tuan"
+    ],
+    "library": [
+      "Tu vung N5",
+      "Tu vung N4"
+    ]
+  },
+  {
+    "id": 30,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Pham Van Thinh",
+      "Do Thanh Xuan",
+      "Nguyen Huy Anh",
+      "Tran Duc Duong",
+      "Tran Duc Duong",
+      "Do Thanh Xuan",
+      "Nguyen Huy Anh"
+    ],
+    "library": [
+      "Luyen doc N3",
+      "Tu vung N5",
+      "Tu vung N2",
+      "Tu vung N1",
+      "Tu vung N3",
+      "Ngu phap N3",
+      "Tu vung N2"
+    ]
+  },
+  {
+    "id": 31,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Tran Duc Duong",
+      "Tran Van Tuyen",
+      "Tran Duc Duong",
+      "Tran Van Tuyen"
+    ],
+    "library": [
+      "Tu vung N3",
+      "Tu vung N1",
+      "Tu vung N3"
+    ]
+  },
+  {
+    "id": 32,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Nguyen Trong Tuan",
+      "Tran Duc Duong",
+      "Ma Hai Nam",
+      "Tran Duc Duong",
+      "Do Thanh Xuan",
+      "Tran Van Tuyen"
+    ],
+    "library": [
+      "Tu vung N3",
+      "Tu vung N5",
+      "Tu vung N2",
+      "Ngu phap N3",
+      "Luyen doc N3"
+    ]
+  },
+  {
+    "id": 33,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Pham Van Thinh",
+      "Do Thanh Xuan",
+      "Nguyen Huy Anh",
+      "Nguyen Trong Tuan",
+      "Do Thanh Xuan",
+      "Tran Van Tuyen",
+      "Nguyen Trong Tuan"
+    ],
+    "library": [
+      "Ngu phap N3",
+      "Tu vung N5",
+      "Tu vung N5",
+      "Tu vung N1",
+      "Tu vung N3"
+    ]
+  },
+  {
+    "id": 34,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Ma Hai Nam",
+      "Pham Van Thinh",
+      "Do Thanh Xuan",
+      "Pham Van Thinh",
+      "Tran Van Tuyen",
+      "Tran Duc Duong",
+      "Nguyen Huy Anh"
+    ],
+    "library": [
+      "Tu vung N3",
+      "Luyen doc N3",
+      "Tu vung N3",
+      "Tu vung N5",
+      "Tu vung N1",
+      "Ngu phap N3",
+      "Tu vung N5"
+    ]
+  },
+  {
+    "id": 35,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Pham Van Thinh",
+      "Nguyen Huy Anh",
+      "Nguyen Trong Tuan",
+      "Tran Duc Duong",
+      "Nguyen Huy Anh"
+    ],
+    "library": [
+      "Tu vung N2",
+      "Tu vung N1",
+      "Tu vung N1",
+      "Tu vung N2",
+      "Tu vung N1"
+    ]
+  },
+  {
+    "id": 36,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Tran Duc Duong",
+      "Do Thanh Xuan",
+      "Nguyen Trong Tuan",
+      "Tran Duc Duong",
+      "Tran Van Tuyen",
+      "Nguyen Trong Tuan",
+      "Ma Hai Nam"
+    ],
+    "library": [
+      "Ngu phap N3",
+      "Tu vung N4"
+    ]
+  },
+  {
+    "id": 37,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Do Thanh Xuan",
+      "Ma Hai Nam"
+    ],
+    "library": [
+      "Ngu phap N3",
+      "Tu vung N5",
+      "Tu vung N3",
+      "Tu vung N5",
+      "Tu vung N3"
+    ]
+  },
+  {
+    "id": 38,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Nguyen Huy Anh",
+      "Tran Duc Duong",
+      "Nguyen Trong Tuan",
+      "Nguyen Huy Anh",
+      "Do Thanh Xuan",
+      "Tran Van Tuyen"
+    ],
+    "library": [
+      "Tu vung N5",
+      "Tu vung N1",
+      "Tu vung N3",
+      "Tu vung N2"
+    ]
+  },
+  {
+    "id": 39,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Do Thanh Xuan",
+      "Pham Van Thinh",
+      "Nguyen Huy Anh",
+      "Tran Van Tuyen"
+    ],
+    "library": [
+      "Tu vung N4",
+      "Tu vung N3",
+      "Ngu phap N3",
+      "Luyen doc N3",
+      "Luyen doc N3"
+    ]
+  },
+  {
+    "id": 40,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Do Thanh Xuan",
+      "Nguyen Trong Tuan"
+    ],
+    "library": [
+      "Tu vung N1",
+      "Tu vung N4",
+      "Tu vung N5",
+      "Ngu phap N3",
+      "Luyen doc N3",
+      "Luyen doc N3"
+    ]
+  },
+  {
+    "id": 41,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Nguyen Huy Anh",
+      "Nguyen Trong Tuan",
+      "Do Thanh Xuan",
+      "Nguyen Huy Anh",
+      "Tran Duc Duong"
+    ],
+    "library": [
+      "Tu vung N2",
+      "Tu vung N1",
+      "Tu vung N2",
+      "Tu vung N3",
+      "Tu vung N5",
+      "Luyen doc N3"
+    ]
+  },
+  {
+    "id": 42,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Tran Duc Duong",
+      "Pham Van Thinh"
+    ],
+    "library": [
+      "Ngu phap N3",
+      "Luyen doc N3",
+      "Ngu phap N3",
+      "Tu vung N5"
+    ]
+  },
+  {
+    "id": 43,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Tran Duc Duong",
+      "Ma Hai Nam",
+      "Tran Duc Duong",
+      "Tran Van Tuyen",
+      "Pham Van Thinh",
+      "Pham Van Thinh"
+    ],
+    "library": [
+      "Tu vung N2",
+      "Tu vung N3",
+      "Tu vung N5",
+      "Luyen doc N3",
+      "Tu vung N3",
+      "Tu vung N3",
+      "Tu vung N4"
+    ]
+  },
+  {
+    "id": 44,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Tran Van Tuyen",
+      "Tran Duc Duong",
+      "Do Thanh Xuan",
+      "Do Thanh Xuan",
+      "Ma Hai Nam"
+    ],
+    "library": [
+      "Tu vung N3",
+      "Tu vung N5",
+      "Luyen doc N3",
+      "Tu vung N5",
+      "Tu vung N4",
+      "Tu vung N5",
+      "Tu vung N3"
+    ]
+  },
+  {
+    "id": 45,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Do Thanh Xuan",
+      "Tran Duc Duong",
+      "Do Thanh Xuan",
+      "Nguyen Trong Tuan"
+    ],
+    "library": [
+      "Tu vung N3",
+      "Luyen doc N3"
+    ]
+  },
+  {
+    "id": 46,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Ma Hai Nam",
+      "Do Thanh Xuan",
+      "Nguyen Huy Anh",
+      "Pham Van Thinh",
+      "Tran Van Tuyen"
+    ],
+    "library": [
+      "Tu vung N2",
+      "Tu vung N5",
+      "Ngu phap N3",
+      "Tu vung N2",
+      "Tu vung N5",
+      "Tu vung N5"
+    ]
+  },
+  {
+    "id": 47,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Nguyen Trong Tuan",
+      "Pham Van Thinh",
+      "Tran Duc Duong",
+      "Tran Duc Duong",
+      "Tran Van Tuyen",
+      "Pham Van Thinh",
+      "Nguyen Trong Tuan"
+    ],
+    "library": [
+      "Tu vung N3",
+      "Tu vung N2",
+      "Tu vung N5",
+      "Ngu phap N3",
+      "Tu vung N1",
+      "Tu vung N3",
+      "Tu vung N5"
+    ]
+  },
+  {
+    "id": 48,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Nguyen Huy Anh",
+      "Nguyen Trong Tuan",
+      "Nguyen Huy Anh",
+      "Nguyen Trong Tuan",
+      "Pham Van Thinh",
+      "Do Thanh Xuan"
+    ],
+    "library": [
+      "Luyen doc N3",
+      "Tu vung N5",
+      "Ngu phap N3",
+      "Tu vung N1",
+      "Ngu phap N3"
+    ]
+  },
+  {
+    "id": 49,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Ma Hai Nam",
+      "Nguyen Huy Anh"
+    ],
+    "library": [
+      "Luyen doc N3",
+      "Tu vung N3",
+      "Tu vung N3",
+      "Tu vung N2"
+    ]
+  },
+  {
+    "id": 50,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Ma Hai Nam",
+      "Tran Duc Duong",
+      "Tran Van Tuyen"
+    ],
+    "library": [
+      "Tu vung N4",
+      "Tu vung N1"
+    ]
+  },
+  {
+    "id": 51,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Tran Duc Duong",
+      "Nguyen Trong Tuan",
+      "Ma Hai Nam",
+      "Ma Hai Nam"
+    ],
+    "library": [
+      "Tu vung N2",
+      "Ngu phap N3",
+      "Tu vung N3",
+      "Tu vung N1",
+      "Ngu phap N3",
+      "Tu vung N3"
+    ]
+  },
+  {
+    "id": 52,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Pham Van Thinh",
+      "Tran Duc Duong",
+      "Do Thanh Xuan",
+      "Nguyen Huy Anh",
+      "Pham Van Thinh",
+      "Pham Van Thinh",
+      "Tran Duc Duong"
+    ],
+    "library": [
+      "Ngu phap N3",
+      "Tu vung N5"
+    ]
+  },
+  {
+    "id": 53,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Nguyen Trong Tuan",
+      "Nguyen Huy Anh",
+      "Do Thanh Xuan"
+    ],
+    "library": [
+      "Tu vung N3",
+      "Tu vung N5",
+      "Ngu phap N3",
+      "Ngu phap N3",
+      "Luyen doc N3",
+      "Ngu phap N3"
+    ]
+  },
+  {
+    "id": 54,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Tran Van Tuyen",
+      "Tran Van Tuyen",
+      "Ma Hai Nam",
+      "Do Thanh Xuan",
+      "Do Thanh Xuan",
+      "Pham Van Thinh"
+    ],
+    "library": [
+      "Tu vung N2",
+      "Tu vung N1",
+      "Tu vung N1",
+      "Luyen doc N3",
+      "Tu vung N5",
+      "Tu vung N2",
+      "Tu vung N2"
+    ]
+  },
+  {
+    "id": 55,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Ma Hai Nam",
+      "Pham Van Thinh",
+      "Tran Van Tuyen",
+      "Tran Duc Duong",
+      "Nguyen Huy Anh",
+      "Pham Van Thinh"
+    ],
+    "library": [
+      "Tu vung N4",
+      "Tu vung N2",
+      "Luyen doc N3",
+      "Ngu phap N3",
+      "Tu vung N3",
+      "Tu vung N1",
+      "Tu vung N1"
+    ]
+  },
+  {
+    "id": 56,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Do Thanh Xuan",
+      "Pham Van Thinh",
+      "Ma Hai Nam",
+      "Ma Hai Nam",
+      "Pham Van Thinh",
+      "Do Thanh Xuan",
+      "Nguyen Trong Tuan"
+    ],
+    "library": [
+      "Tu vung N1",
+      "Tu vung N3",
+      "Tu vung N4",
+      "Tu vung N2",
+      "Tu vung N3",
+      "Tu vung N4"
+    ]
+  },
+  {
+    "id": 57,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Ma Hai Nam",
+      "Tran Duc Duong",
+      "Pham Van Thinh",
+      "Pham Van Thinh"
+    ],
+    "library": [
+      "Tu vung N4",
+      "Tu vung N5"
+    ]
+  },
+  {
+    "id": 58,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Do Thanh Xuan",
+      "Tran Duc Duong",
+      "Pham Van Thinh",
+      "Ma Hai Nam",
+      "Ma Hai Nam",
+      "Do Thanh Xuan"
+    ],
+    "library": [
+      "Tu vung N2",
+      "Luyen doc N3",
+      "Tu vung N5",
+      "Tu vung N2",
+      "Tu vung N4",
+      "Tu vung N1",
+      "Tu vung N1"
+    ]
+  },
+  {
+    "id": 59,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Nguyen Trong Tuan",
+      "Do Thanh Xuan",
+      "Tran Duc Duong",
+      "Tran Duc Duong"
+    ],
+    "library": [
+      "Luyen doc N3",
+      "Tu vung N5",
+      "Tu vung N2",
+      "Tu vung N4",
+      "Tu vung N1"
+    ]
+  },
+  {
+    "id": 60,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Nguyen Trong Tuan",
+      "Ma Hai Nam",
+      "Tran Duc Duong",
+      "Tran Van Tuyen",
+      "Do Thanh Xuan"
+    ],
+    "library": [
+      "Ngu phap N3",
+      "Tu vung N3",
+      "Tu vung N2",
+      "Tu vung N4",
+      "Tu vung N5",
+      "Tu vung N1",
+      "Ngu phap N3"
+    ]
+  },
+  {
+    "id": 61,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Ma Hai Nam",
+      "Do Thanh Xuan",
+      "Tran Van Tuyen",
+      "Nguyen Huy Anh",
+      "Tran Duc Duong",
+      "Pham Van Thinh",
+      "Do Thanh Xuan"
+    ],
+    "library": [
+      "Luyen doc N3",
+      "Ngu phap N3"
+    ]
+  },
+  {
+    "id": 62,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Do Thanh Xuan",
+      "Nguyen Huy Anh",
+      "Ma Hai Nam",
+      "Tran Duc Duong",
+      "Tran Duc Duong"
+    ],
+    "library": [
+      "Ngu phap N3",
+      "Tu vung N5"
+    ]
+  },
+  {
+    "id": 63,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Ma Hai Nam",
+      "Ma Hai Nam",
+      "Do Thanh Xuan",
+      "Tran Van Tuyen",
+      "Ma Hai Nam"
+    ],
+    "library": [
+      "Luyen doc N3",
+      "Tu vung N4"
+    ]
+  },
+  {
+    "id": 64,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Do Thanh Xuan",
+      "Pham Van Thinh"
+    ],
+    "library": [
+      "Ngu phap N3",
+      "Tu vung N1",
+      "Tu vung N3",
+      "Luyen doc N3"
+    ]
+  },
+  {
+    "id": 65,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Do Thanh Xuan",
+      "Nguyen Huy Anh",
+      "Nguyen Huy Anh",
+      "Do Thanh Xuan",
+      "Nguyen Trong Tuan",
+      "Ma Hai Nam",
+      "Nguyen Trong Tuan"
+    ],
+    "library": [
+      "Tu vung N2",
+      "Tu vung N2",
+      "Tu vung N1"
+    ]
+  },
+  {
+    "id": 66,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Nguyen Trong Tuan",
+      "Ma Hai Nam"
+    ],
+    "library": [
+      "Tu vung N4",
+      "Tu vung N2",
+      "Luyen doc N3"
+    ]
+  },
+  {
+    "id": 67,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Pham Van Thinh",
+      "Nguyen Trong Tuan",
+      "Pham Van Thinh",
+      "Tran Van Tuyen",
+      "Do Thanh Xuan",
+      "Tran Van Tuyen",
+      "Tran Van Tuyen"
+    ],
+    "library": [
+      "Tu vung N1",
+      "Tu vung N1",
+      "Tu vung N3"
+    ]
+  },
+  {
+    "id": 68,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Tran Van Tuyen",
+      "Do Thanh Xuan",
+      "Nguyen Huy Anh",
+      "Ma Hai Nam"
+    ],
+    "library": [
+      "Tu vung N3",
+      "Tu vung N1",
+      "Tu vung N5",
+      "Tu vung N5",
+      "Ngu phap N3",
+      "Tu vung N1"
+    ]
+  },
+  {
+    "id": 69,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Ma Hai Nam",
+      "Ma Hai Nam",
+      "Do Thanh Xuan",
+      "Nguyen Trong Tuan",
+      "Tran Van Tuyen",
+      "Do Thanh Xuan",
+      "Tran Duc Duong"
+    ],
+    "library": [
+      "Tu vung N4",
+      "Tu vung N4",
+      "Tu vung N4",
+      "Tu vung N3",
+      "Tu vung N3",
+      "Tu vung N1",
+      "Luyen doc N3"
+    ]
+  },
+  {
+    "id": 70,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Ma Hai Nam",
+      "Tran Duc Duong",
+      "Tran Duc Duong",
+      "Nguyen Trong Tuan",
+      "Tran Duc Duong",
+      "Tran Duc Duong"
+    ],
+    "library": [
+      "Tu vung N3",
+      "Luyen doc N3",
+      "Ngu phap N3",
+      "Tu vung N4",
+      "Luyen doc N3"
+    ]
+  },
+  {
+    "id": 71,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Pham Van Thinh",
+      "Tran Duc Duong",
+      "Do Thanh Xuan",
+      "Ma Hai Nam",
+      "Do Thanh Xuan",
+      "Tran Van Tuyen"
+    ],
+    "library": [
+      "Tu vung N4",
+      "Tu vung N2"
+    ]
+  },
+  {
+    "id": 72,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Nguyen Huy Anh",
+      "Do Thanh Xuan",
+      "Tran Duc Duong"
+    ],
+    "library": [
+      "Tu vung N3",
+      "Luyen doc N3",
+      "Ngu phap N3"
+    ]
+  },
+  {
+    "id": 73,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Ma Hai Nam",
+      "Nguyen Trong Tuan",
+      "Do Thanh Xuan",
+      "Pham Van Thinh",
+      "Tran Van Tuyen",
+      "Tran Duc Duong"
+    ],
+    "library": [
+      "Tu vung N5",
+      "Tu vung N1",
+      "Tu vung N4",
+      "Tu vung N2",
+      "Tu vung N2",
+      "Tu vung N3",
+      "Luyen doc N3"
+    ]
+  },
+  {
+    "id": 74,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Nguyen Trong Tuan",
+      "Do Thanh Xuan",
+      "Tran Van Tuyen"
+    ],
+    "library": [
+      "Tu vung N3",
+      "Tu vung N2",
+      "Tu vung N4"
+    ]
+  },
+  {
+    "id": 75,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Nguyen Huy Anh",
+      "Nguyen Huy Anh",
+      "Tran Van Tuyen",
+      "Nguyen Huy Anh",
+      "Tran Van Tuyen"
+    ],
+    "library": [
+      "Ngu phap N3",
+      "Tu vung N2",
+      "Ngu phap N3"
+    ]
+  },
+  {
+    "id": 76,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Tran Duc Duong",
+      "Ma Hai Nam",
+      "Pham Van Thinh",
+      "Tran Van Tuyen",
+      "Do Thanh Xuan"
+    ],
+    "library": [
+      "Ngu phap N3",
+      "Ngu phap N3",
+      "Luyen doc N3",
+      "Ngu phap N3",
+      "Luyen doc N3"
+    ]
+  },
+  {
+    "id": 77,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Nguyen Huy Anh",
+      "Do Thanh Xuan",
+      "Tran Duc Duong"
+    ],
+    "library": [
+      "Tu vung N5",
+      "Luyen doc N3",
+      "Tu vung N3",
+      "Tu vung N4",
+      "Tu vung N5",
+      "Tu vung N5"
+    ]
+  },
+  {
+    "id": 78,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Do Thanh Xuan",
+      "Do Thanh Xuan",
+      "Tran Van Tuyen",
+      "Tran Van Tuyen",
+      "Tran Van Tuyen",
+      "Ma Hai Nam"
+    ],
+    "library": [
+      "Luyen doc N3",
+      "Ngu phap N3",
+      "Tu vung N1",
+      "Tu vung N1",
+      "Tu vung N3",
+      "Tu vung N2",
+      "Tu vung N2"
+    ]
+  },
+  {
+    "id": 79,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Ma Hai Nam",
+      "Nguyen Trong Tuan",
+      "Nguyen Trong Tuan",
+      "Tran Duc Duong"
+    ],
+    "library": [
+      "Tu vung N5",
+      "Luyen doc N3",
+      "Ngu phap N3"
+    ]
+  },
+  {
+    "id": 80,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Tran Van Tuyen",
+      "Tran Duc Duong",
+      "Do Thanh Xuan",
+      "Ma Hai Nam",
+      "Ma Hai Nam",
+      "Ma Hai Nam",
+      "Tran Duc Duong"
+    ],
+    "library": [
+      "Tu vung N4",
+      "Luyen doc N3",
+      "Tu vung N4",
+      "Tu vung N1",
+      "Tu vung N1",
+      "Luyen doc N3"
+    ]
+  },
+  {
+    "id": 81,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Tran Duc Duong",
+      "Nguyen Trong Tuan",
+      "Pham Van Thinh"
+    ],
+    "library": [
+      "Tu vung N2",
+      "Ngu phap N3",
+      "Tu vung N4",
+      "Tu vung N5"
+    ]
+  },
+  {
+    "id": 82,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Nguyen Huy Anh",
+      "Tran Van Tuyen",
+      "Do Thanh Xuan",
+      "Do Thanh Xuan",
+      "Pham Van Thinh"
+    ],
+    "library": [
+      "Tu vung N2",
+      "Tu vung N2"
+    ]
+  },
+  {
+    "id": 83,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Tran Duc Duong",
+      "Pham Van Thinh",
+      "Tran Van Tuyen",
+      "Tran Duc Duong"
+    ],
+    "library": [
+      "Tu vung N1",
+      "Tu vung N5"
+    ]
+  },
+  {
+    "id": 84,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Tran Duc Duong",
+      "Pham Van Thinh",
+      "Tran Van Tuyen"
+    ],
+    "library": [
+      "Luyen doc N3",
+      "Tu vung N3",
+      "Tu vung N3",
+      "Luyen doc N3",
+      "Tu vung N2",
+      "Tu vung N2"
+    ]
+  },
+  {
+    "id": 85,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Tran Duc Duong",
+      "Ma Hai Nam",
+      "Tran Van Tuyen",
+      "Do Thanh Xuan"
+    ],
+    "library": [
+      "Tu vung N3",
+      "Tu vung N5"
+    ]
+  },
+  {
+    "id": 86,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Nguyen Huy Anh",
+      "Tran Duc Duong",
+      "Nguyen Trong Tuan"
+    ],
+    "library": [
+      "Tu vung N1",
+      "Tu vung N2",
+      "Tu vung N1",
+      "Luyen doc N3"
+    ]
+  },
+  {
+    "id": 87,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Nguyen Huy Anh",
+      "Do Thanh Xuan",
+      "Pham Van Thinh",
+      "Tran Van Tuyen"
+    ],
+    "library": [
+      "Luyen doc N3",
+      "Luyen doc N3"
+    ]
+  },
+  {
+    "id": 88,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Nguyen Huy Anh",
+      "Tran Van Tuyen"
+    ],
+    "library": [
+      "Luyen doc N3",
+      "Tu vung N3",
+      "Tu vung N1"
+    ]
+  },
+  {
+    "id": 89,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Do Thanh Xuan",
+      "Nguyen Huy Anh",
+      "Do Thanh Xuan",
+      "Tran Van Tuyen",
+      "Tran Duc Duong",
+      "Tran Van Tuyen"
+    ],
+    "library": [
+      "Tu vung N1",
+      "Ngu phap N3",
+      "Tu vung N5"
+    ]
+  },
+  {
+    "id": 90,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Tran Van Tuyen",
+      "Tran Van Tuyen",
+      "Ma Hai Nam",
+      "Pham Van Thinh"
+    ],
+    "library": [
+      "Tu vung N2",
+      "Luyen doc N3",
+      "Tu vung N2"
+    ]
+  },
+  {
+    "id": 91,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Tran Van Tuyen",
+      "Pham Van Thinh",
+      "Nguyen Huy Anh",
+      "Tran Duc Duong",
+      "Nguyen Trong Tuan"
+    ],
+    "library": [
+      "Tu vung N1",
+      "Ngu phap N3"
+    ]
+  },
+  {
+    "id": 92,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Do Thanh Xuan",
+      "Pham Van Thinh",
+      "Nguyen Trong Tuan",
+      "Pham Van Thinh"
+    ],
+    "library": [
+      "Luyen doc N3",
+      "Tu vung N4",
+      "Tu vung N2",
+      "Ngu phap N3"
+    ]
+  },
+  {
+    "id": 93,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Nguyen Huy Anh",
+      "Ma Hai Nam",
+      "Tran Duc Duong",
+      "Do Thanh Xuan",
+      "Tran Van Tuyen",
+      "Tran Duc Duong",
+      "Ma Hai Nam"
+    ],
+    "library": [
+      "Ngu phap N3",
+      "Ngu phap N3",
+      "Tu vung N2",
+      "Tu vung N1",
+      "Ngu phap N3",
+      "Tu vung N5",
+      "Ngu phap N3"
+    ]
+  },
+  {
+    "id": 94,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Pham Van Thinh",
+      "Tran Van Tuyen"
+    ],
+    "library": [
+      "Luyen doc N3",
+      "Tu vung N2",
+      "Tu vung N4"
+    ]
+  },
+  {
+    "id": 95,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Nguyen Huy Anh",
+      "Tran Duc Duong",
+      "Nguyen Huy Anh",
+      "Tran Van Tuyen"
+    ],
+    "library": [
+      "Tu vung N4",
+      "Tu vung N3",
+      "Tu vung N3",
+      "Tu vung N5"
+    ]
+  },
+  {
+    "id": 96,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Tran Duc Duong",
+      "Ma Hai Nam"
+    ],
+    "library": [
+      "Tu vung N3",
+      "Luyen doc N3",
+      "Tu vung N1",
+      "Tu vung N3"
+    ]
+  },
+  {
+    "id": 97,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Tran Duc Duong",
+      "Tran Duc Duong",
+      "Nguyen Huy Anh",
+      "Pham Van Thinh"
+    ],
+    "library": [
+      "Tu vung N4",
+      "Tu vung N4",
+      "Luyen doc N3",
+      "Tu vung N1",
+      "Tu vung N3",
+      "Tu vung N5"
+    ]
+  },
+  {
+    "id": 98,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Tran Duc Duong",
+      "Do Thanh Xuan",
+      "Pham Van Thinh"
+    ],
+    "library": [
+      "Tu vung N3",
+      "Tu vung N5",
+      "Ngu phap N3"
+    ]
+  },
+  {
+    "id": 99,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Ma Hai Nam",
+      "Do Thanh Xuan",
+      "Nguyen Huy Anh",
+      "Do Thanh Xuan",
+      "Tran Van Tuyen",
+      "Do Thanh Xuan",
+      "Nguyen Trong Tuan"
+    ],
+    "library": [
+      "Tu vung N2",
+      "Tu vung N1",
+      "Luyen doc N3",
+      "Luyen doc N3",
+      "Tu vung N3"
+    ]
+  },
+  {
+    "id": 100,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Do Thanh Xuan",
+      "Do Thanh Xuan",
+      "Nguyen Huy Anh",
+      "Tran Van Tuyen",
+      "Nguyen Huy Anh",
+      "Tran Van Tuyen"
+    ],
+    "library": [
+      "Luyen doc N3",
+      "Tu vung N1",
+      "Tu vung N5"
+    ]
+  },
+  {
+    "id": 101,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Pham Van Thinh",
+      "Tran Van Tuyen",
+      "Do Thanh Xuan",
+      "Ma Hai Nam"
+    ],
+    "library": [
+      "Luyen doc N3",
+      "Tu vung N5",
+      "Tu vung N1",
+      "Tu vung N1",
+      "Luyen doc N3",
+      "Luyen doc N3"
+    ]
+  },
+  {
+    "id": 102,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Nguyen Huy Anh",
+      "Ma Hai Nam",
+      "Pham Van Thinh",
+      "Tran Van Tuyen"
+    ],
+    "library": [
+      "Tu vung N1",
+      "Luyen doc N3",
+      "Tu vung N3"
+    ]
+  },
+  {
+    "id": 103,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Tran Van Tuyen",
+      "Nguyen Trong Tuan"
+    ],
+    "library": [
+      "Tu vung N4",
+      "Luyen doc N3",
+      "Tu vung N3",
+      "Tu vung N4",
+      "Ngu phap N3",
+      "Tu vung N1"
+    ]
+  },
+  {
+    "id": 104,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Nguyen Trong Tuan",
+      "Tran Duc Duong"
+    ],
+    "library": [
+      "Tu vung N5",
+      "Luyen doc N3",
+      "Tu vung N5",
+      "Luyen doc N3",
+      "Tu vung N3",
+      "Tu vung N3"
+    ]
+  },
+  {
+    "id": 105,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Ma Hai Nam",
+      "Pham Van Thinh",
+      "Pham Van Thinh",
+      "Nguyen Trong Tuan",
+      "Tran Van Tuyen",
+      "Nguyen Trong Tuan",
+      "Ma Hai Nam"
+    ],
+    "library": [
+      "Luyen doc N3",
+      "Tu vung N3"
+    ]
+  },
+  {
+    "id": 106,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Pham Van Thinh",
+      "Ma Hai Nam",
+      "Ma Hai Nam",
+      "Pham Van Thinh",
+      "Do Thanh Xuan"
+    ],
+    "library": [
+      "Tu vung N5",
+      "Tu vung N3",
+      "Tu vung N1",
+      "Ngu phap N3",
+      "Ngu phap N3",
+      "Tu vung N3",
+      "Tu vung N1"
+    ]
+  },
+  {
+    "id": 107,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Pham Van Thinh",
+      "Pham Van Thinh",
+      "Nguyen Trong Tuan",
+      "Nguyen Huy Anh",
+      "Nguyen Huy Anh"
+    ],
+    "library": [
+      "Tu vung N5",
+      "Tu vung N1"
+    ]
+  },
+  {
+    "id": 108,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Do Thanh Xuan",
+      "Ma Hai Nam",
+      "Pham Van Thinh",
+      "Do Thanh Xuan"
+    ],
+    "library": [
+      "Ngu phap N3",
+      "Ngu phap N3",
+      "Tu vung N5",
+      "Tu vung N1",
+      "Tu vung N2",
+      "Tu vung N3",
+      "Luyen doc N3"
+    ]
+  },
+  {
+    "id": 109,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Ma Hai Nam",
+      "Tran Van Tuyen",
+      "Ma Hai Nam"
+    ],
+    "library": [
+      "Ngu phap N3",
+      "Ngu phap N3"
+    ]
+  },
+  {
+    "id": 110,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Nguyen Huy Anh",
+      "Tran Duc Duong",
+      "Nguyen Huy Anh",
+      "Nguyen Huy Anh",
+      "Do Thanh Xuan"
+    ],
+    "library": [
+      "Luyen doc N3",
+      "Tu vung N3",
+      "Tu vung N3",
+      "Tu vung N4",
+      "Tu vung N2"
+    ]
+  },
+  {
+    "id": 111,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Nguyen Huy Anh",
+      "Tran Van Tuyen",
+      "Pham Van Thinh",
+      "Pham Van Thinh",
+      "Pham Van Thinh",
+      "Tran Van Tuyen",
+      "Do Thanh Xuan"
+    ],
+    "library": [
+      "Tu vung N5",
+      "Luyen doc N3",
+      "Tu vung N5",
+      "Tu vung N3"
+    ]
+  },
+  {
+    "id": 112,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Do Thanh Xuan",
+      "Do Thanh Xuan",
+      "Pham Van Thinh",
+      "Nguyen Trong Tuan",
+      "Tran Duc Duong",
+      "Pham Van Thinh"
+    ],
+    "library": [
+      "Tu vung N5",
+      "Luyen doc N3",
+      "Tu vung N2",
+      "Ngu phap N3",
+      "Ngu phap N3"
+    ]
+  },
+  {
+    "id": 113,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Ma Hai Nam",
+      "Pham Van Thinh",
+      "Nguyen Trong Tuan",
+      "Pham Van Thinh"
+    ],
+    "library": [
+      "Tu vung N1",
+      "Luyen doc N3",
+      "Tu vung N1",
+      "Tu vung N2",
+      "Tu vung N1"
+    ]
+  },
+  {
+    "id": 114,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Pham Van Thinh",
+      "Nguyen Trong Tuan",
+      "Ma Hai Nam",
+      "Ma Hai Nam",
+      "Ma Hai Nam"
+    ],
+    "library": [
+      "Tu vung N4",
+      "Tu vung N3",
+      "Tu vung N5"
+    ]
+  },
+  {
+    "id": 115,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Tran Van Tuyen",
+      "Tran Van Tuyen",
+      "Do Thanh Xuan",
+      "Pham Van Thinh",
+      "Nguyen Trong Tuan"
+    ],
+    "library": [
+      "Luyen doc N3",
+      "Ngu phap N3",
+      "Ngu phap N3"
+    ]
+  },
+  {
+    "id": 116,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Nguyen Huy Anh",
+      "Nguyen Trong Tuan"
+    ],
+    "library": [
+      "Tu vung N4",
+      "Tu vung N2",
+      "Tu vung N2"
+    ]
+  },
+  {
+    "id": 117,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Do Thanh Xuan",
+      "Nguyen Huy Anh",
+      "Tran Van Tuyen",
+      "Nguyen Huy Anh"
+    ],
+    "library": [
+      "Tu vung N1",
+      "Tu vung N2",
+      "Tu vung N4",
+      "Ngu phap N3",
+      "Tu vung N3"
+    ]
+  },
+  {
+    "id": 118,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Nguyen Trong Tuan",
+      "Do Thanh Xuan",
+      "Tran Van Tuyen",
+      "Nguyen Trong Tuan",
+      "Tran Van Tuyen",
+      "Ma Hai Nam"
+    ],
+    "library": [
+      "Tu vung N3",
+      "Tu vung N5",
+      "Tu vung N3",
+      "Tu vung N3",
+      "Tu vung N3",
+      "Tu vung N1"
+    ]
+  },
+  {
+    "id": 119,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Pham Van Thinh",
+      "Ma Hai Nam",
+      "Ma Hai Nam",
+      "Nguyen Huy Anh",
+      "Tran Van Tuyen"
+    ],
+    "library": [
+      "Tu vung N3",
+      "Luyen doc N3",
+      "Ngu phap N3",
+      "Tu vung N1",
+      "Tu vung N2",
+      "Luyen doc N3",
+      "Luyen doc N3"
+    ]
+  },
+  {
+    "id": 120,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Tran Van Tuyen",
+      "Tran Duc Duong",
+      "Pham Van Thinh",
+      "Do Thanh Xuan",
+      "Tran Duc Duong",
+      "Tran Van Tuyen",
+      "Do Thanh Xuan"
+    ],
+    "library": [
+      "Tu vung N4",
+      "Tu vung N4"
+    ]
+  },
+  {
+    "id": 121,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Tran Van Tuyen",
+      "Tran Van Tuyen",
+      "Tran Duc Duong",
+      "Do Thanh Xuan",
+      "Tran Duc Duong",
+      "Pham Van Thinh"
+    ],
+    "library": [
+      "Tu vung N4",
+      "Ngu phap N3",
+      "Luyen doc N3"
+    ]
+  },
+  {
+    "id": 122,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Tran Van Tuyen",
+      "Pham Van Thinh"
+    ],
+    "library": [
+      "Tu vung N4",
+      "Tu vung N3",
+      "Ngu phap N3",
+      "Tu vung N5",
+      "Ngu phap N3",
+      "Ngu phap N3"
+    ]
+  },
+  {
+    "id": 123,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Pham Van Thinh",
+      "Nguyen Huy Anh",
+      "Ma Hai Nam",
+      "Tran Duc Duong",
+      "Nguyen Trong Tuan",
+      "Ma Hai Nam",
+      "Do Thanh Xuan"
+    ],
+    "library": [
+      "Ngu phap N3",
+      "Tu vung N1",
+      "Tu vung N5",
+      "Tu vung N4",
+      "Tu vung N4",
+      "Tu vung N3",
+      "Ngu phap N3"
+    ]
+  },
+  {
+    "id": 124,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Nguyen Huy Anh",
+      "Tran Van Tuyen",
+      "Tran Duc Duong",
+      "Tran Duc Duong",
+      "Ma Hai Nam",
+      "Nguyen Trong Tuan",
+      "Do Thanh Xuan"
+    ],
+    "library": [
+      "Tu vung N2",
+      "Tu vung N5",
+      "Tu vung N2",
+      "Tu vung N2",
+      "Ngu phap N3"
+    ]
+  },
+  {
+    "id": 125,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Nguyen Huy Anh",
+      "Ma Hai Nam",
+      "Ma Hai Nam",
+      "Tran Van Tuyen",
+      "Nguyen Trong Tuan",
+      "Pham Van Thinh",
+      "Do Thanh Xuan"
+    ],
+    "library": [
+      "Ngu phap N3",
+      "Tu vung N2",
+      "Tu vung N4",
+      "Tu vung N1",
+      "Tu vung N2",
+      "Tu vung N1"
+    ]
+  },
+  {
+    "id": 126,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Ma Hai Nam",
+      "Tran Duc Duong",
+      "Nguyen Huy Anh",
+      "Tran Van Tuyen",
+      "Ma Hai Nam"
+    ],
+    "library": [
+      "Ngu phap N3",
+      "Tu vung N4",
+      "Tu vung N3",
+      "Tu vung N1"
+    ]
+  },
+  {
+    "id": 127,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Tran Duc Duong",
+      "Tran Duc Duong",
+      "Nguyen Trong Tuan",
+      "Tran Van Tuyen",
+      "Nguyen Huy Anh",
+      "Tran Duc Duong",
+      "Tran Duc Duong"
+    ],
+    "library": [
+      "Tu vung N3",
+      "Luyen doc N3",
+      "Tu vung N2",
+      "Ngu phap N3",
+      "Tu vung N5",
+      "Tu vung N3"
+    ]
+  },
+  {
+    "id": 128,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Nguyen Trong Tuan",
+      "Nguyen Trong Tuan",
+      "Do Thanh Xuan",
+      "Ma Hai Nam",
+      "Tran Van Tuyen",
+      "Do Thanh Xuan",
+      "Ma Hai Nam"
+    ],
+    "library": [
+      "Tu vung N3",
+      "Tu vung N4",
+      "Tu vung N3"
+    ]
+  },
+  {
+    "id": 129,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Pham Van Thinh",
+      "Do Thanh Xuan",
+      "Ma Hai Nam",
+      "Tran Duc Duong",
+      "Tran Van Tuyen",
+      "Nguyen Huy Anh"
+    ],
+    "library": [
+      "Tu vung N1",
+      "Tu vung N3",
+      "Ngu phap N3",
+      "Tu vung N3",
+      "Tu vung N4"
+    ]
+  },
+  {
+    "id": 130,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Pham Van Thinh",
+      "Do Thanh Xuan",
+      "Ma Hai Nam"
+    ],
+    "library": [
+      "Tu vung N2",
+      "Tu vung N5",
+      "Luyen doc N3",
+      "Ngu phap N3",
+      "Tu vung N3"
+    ]
+  },
+  {
+    "id": 131,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Tran Van Tuyen",
+      "Ma Hai Nam",
+      "Ma Hai Nam",
+      "Tran Duc Duong",
+      "Do Thanh Xuan",
+      "Nguyen Huy Anh",
+      "Do Thanh Xuan"
+    ],
+    "library": [
+      "Ngu phap N3",
+      "Tu vung N4",
+      "Tu vung N4",
+      "Luyen doc N3",
+      "Tu vung N5"
+    ]
+  },
+  {
+    "id": 132,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Nguyen Huy Anh",
+      "Tran Van Tuyen",
+      "Nguyen Trong Tuan",
+      "Do Thanh Xuan",
+      "Nguyen Huy Anh",
+      "Ma Hai Nam"
+    ],
+    "library": [
+      "Tu vung N3",
+      "Tu vung N2",
+      "Luyen doc N3",
+      "Tu vung N1",
+      "Tu vung N4",
+      "Tu vung N4"
+    ]
+  },
+  {
+    "id": 133,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Ma Hai Nam",
+      "Pham Van Thinh"
+    ],
+    "library": [
+      "Tu vung N1",
+      "Tu vung N1"
+    ]
+  },
+  {
+    "id": 134,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Tran Duc Duong",
+      "Ma Hai Nam",
+      "Nguyen Huy Anh",
+      "Nguyen Huy Anh"
+    ],
+    "library": [
+      "Ngu phap N3",
+      "Ngu phap N3",
+      "Tu vung N3",
+      "Tu vung N1",
+      "Tu vung N5",
+      "Tu vung N3",
+      "Tu vung N1"
+    ]
+  },
+  {
+    "id": 135,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Nguyen Huy Anh",
+      "Tran Van Tuyen",
+      "Tran Van Tuyen"
+    ],
+    "library": [
+      "Tu vung N4",
+      "Tu vung N2",
+      "Tu vung N5",
+      "Luyen doc N3",
+      "Tu vung N2",
+      "Tu vung N1"
+    ]
+  },
+  {
+    "id": 136,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Tran Van Tuyen",
+      "Pham Van Thinh",
+      "Tran Duc Duong",
+      "Tran Duc Duong",
+      "Tran Duc Duong"
+    ],
+    "library": [
+      "Tu vung N1",
+      "Tu vung N2",
+      "Tu vung N4",
+      "Tu vung N2",
+      "Tu vung N2",
+      "Tu vung N4",
+      "Tu vung N1"
+    ]
+  },
+  {
+    "id": 137,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Pham Van Thinh",
+      "Tran Van Tuyen",
+      "Tran Van Tuyen",
+      "Pham Van Thinh"
+    ],
+    "library": [
+      "Tu vung N4",
+      "Luyen doc N3",
+      "Ngu phap N3",
+      "Tu vung N5",
+      "Tu vung N5",
+      "Tu vung N5",
+      "Tu vung N5"
+    ]
+  },
+  {
+    "id": 138,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Nguyen Trong Tuan",
+      "Tran Van Tuyen",
+      "Nguyen Trong Tuan"
+    ],
+    "library": [
+      "Ngu phap N3",
+      "Tu vung N5"
+    ]
+  },
+  {
+    "id": 139,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Do Thanh Xuan",
+      "Nguyen Trong Tuan",
+      "Pham Van Thinh",
+      "Nguyen Huy Anh",
+      "Tran Duc Duong",
+      "Do Thanh Xuan",
+      "Ma Hai Nam"
+    ],
+    "library": [
+      "Tu vung N3",
+      "Tu vung N2",
+      "Tu vung N2",
+      "Tu vung N4"
+    ]
+  },
+  {
+    "id": 140,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Tran Duc Duong",
+      "Tran Duc Duong",
+      "Nguyen Huy Anh",
+      "Do Thanh Xuan"
+    ],
+    "library": [
+      "Tu vung N3",
+      "Tu vung N2",
+      "Ngu phap N3",
+      "Tu vung N1",
+      "Tu vung N2",
+      "Tu vung N1"
+    ]
+  },
+  {
+    "id": 141,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Ma Hai Nam",
+      "Tran Duc Duong",
+      "Tran Duc Duong"
+    ],
+    "library": [
+      "Luyen doc N3",
+      "Tu vung N4",
+      "Tu vung N4",
+      "Tu vung N4",
+      "Ngu phap N3",
+      "Tu vung N2"
+    ]
+  },
+  {
+    "id": 142,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Nguyen Huy Anh",
+      "Pham Van Thinh"
+    ],
+    "library": [
+      "Tu vung N3",
+      "Tu vung N4",
+      "Tu vung N4",
+      "Ngu phap N3",
+      "Tu vung N5"
+    ]
+  },
+  {
+    "id": 143,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Tran Van Tuyen",
+      "Nguyen Trong Tuan",
+      "Do Thanh Xuan"
+    ],
+    "library": [
+      "Tu vung N3",
+      "Tu vung N4",
+      "Tu vung N2",
+      "Tu vung N5",
+      "Tu vung N2"
+    ]
+  },
+  {
+    "id": 144,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Pham Van Thinh",
+      "Nguyen Trong Tuan",
+      "Nguyen Trong Tuan"
+    ],
+    "library": [
+      "Tu vung N2",
+      "Tu vung N5"
+    ]
+  },
+  {
+    "id": 145,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Pham Van Thinh",
+      "Do Thanh Xuan",
+      "Ma Hai Nam",
+      "Tran Van Tuyen",
+      "Ma Hai Nam",
+      "Do Thanh Xuan"
+    ],
+    "library": [
+      "Tu vung N2",
+      "Tu vung N1",
+      "Luyen doc N3",
+      "Tu vung N1",
+      "Tu vung N1"
+    ]
+  },
+  {
+    "id": 146,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Nguyen Huy Anh",
+      "Do Thanh Xuan",
+      "Tran Van Tuyen",
+      "Tran Duc Duong",
+      "Ma Hai Nam",
+      "Tran Duc Duong",
+      "Nguyen Huy Anh"
+    ],
+    "library": [
+      "Tu vung N4",
+      "Tu vung N3",
+      "Tu vung N4",
+      "Tu vung N3"
+    ]
+  },
+  {
+    "id": 147,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Nguyen Huy Anh",
+      "Tran Van Tuyen",
+      "Tran Duc Duong",
+      "Tran Duc Duong",
+      "Nguyen Trong Tuan",
+      "Nguyen Huy Anh",
+      "Nguyen Trong Tuan"
+    ],
+    "library": [
+      "Tu vung N2",
+      "Luyen doc N3",
+      "Tu vung N1",
+      "Ngu phap N3",
+      "Tu vung N2"
+    ]
+  },
+  {
+    "id": 148,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Ma Hai Nam",
+      "Pham Van Thinh",
+      "Do Thanh Xuan",
+      "Do Thanh Xuan",
+      "Tran Van Tuyen",
+      "Nguyen Huy Anh",
+      "Ma Hai Nam"
+    ],
+    "library": [
+      "Luyen doc N3",
+      "Tu vung N2",
+      "Tu vung N1"
+    ]
+  },
+  {
+    "id": 149,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Nguyen Trong Tuan",
+      "Pham Van Thinh",
+      "Pham Van Thinh",
+      "Do Thanh Xuan",
+      "Ma Hai Nam",
+      "Ma Hai Nam",
+      "Tran Duc Duong"
+    ],
+    "library": [
+      "Tu vung N3",
+      "Tu vung N2",
+      "Ngu phap N3",
+      "Luyen doc N3",
+      "Luyen doc N3",
+      "Tu vung N2"
+    ]
+  },
+  {
+    "id": 150,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Tran Duc Duong",
+      "Ma Hai Nam",
+      "Nguyen Trong Tuan",
+      "Do Thanh Xuan",
+      "Do Thanh Xuan"
+    ],
+    "library": [
+      "Ngu phap N3",
+      "Luyen doc N3",
+      "Tu vung N2"
+    ]
+  },
+  {
+    "id": 151,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Nguyen Trong Tuan",
+      "Nguyen Trong Tuan",
+      "Pham Van Thinh",
+      "Ma Hai Nam",
+      "Do Thanh Xuan",
+      "Tran Van Tuyen"
+    ],
+    "library": [
+      "Luyen doc N3",
+      "Tu vung N5",
+      "Luyen doc N3"
+    ]
+  },
+  {
+    "id": 152,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Tran Van Tuyen",
+      "Ma Hai Nam",
+      "Pham Van Thinh",
+      "Nguyen Trong Tuan",
+      "Nguyen Trong Tuan",
+      "Pham Van Thinh",
+      "Pham Van Thinh"
+    ],
+    "library": [
+      "Ngu phap N3",
+      "Tu vung N3",
+      "Tu vung N3",
+      "Tu vung N3",
+      "Tu vung N5",
+      "Tu vung N3"
+    ]
+  },
+  {
+    "id": 153,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Tran Van Tuyen",
+      "Nguyen Huy Anh",
+      "Tran Van Tuyen",
+      "Ma Hai Nam",
+      "Tran Duc Duong",
+      "Ma Hai Nam",
+      "Do Thanh Xuan"
+    ],
+    "library": [
+      "Luyen doc N3",
+      "Tu vung N1",
+      "Tu vung N1",
+      "Ngu phap N3"
+    ]
+  },
+  {
+    "id": 154,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Do Thanh Xuan",
+      "Tran Van Tuyen",
+      "Tran Van Tuyen",
+      "Pham Van Thinh",
+      "Do Thanh Xuan",
+      "Nguyen Trong Tuan",
+      "Nguyen Trong Tuan"
+    ],
+    "library": [
+      "Tu vung N5",
+      "Tu vung N1",
+      "Tu vung N2"
+    ]
+  },
+  {
+    "id": 155,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Nguyen Huy Anh",
+      "Nguyen Trong Tuan",
+      "Nguyen Huy Anh",
+      "Nguyen Huy Anh"
+    ],
+    "library": [
+      "Ngu phap N3",
+      "Tu vung N4",
+      "Ngu phap N3",
+      "Luyen doc N3",
+      "Tu vung N5"
+    ]
+  },
+  {
+    "id": 156,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Tran Van Tuyen",
+      "Ma Hai Nam",
+      "Tran Van Tuyen"
+    ],
+    "library": [
+      "Tu vung N2",
+      "Tu vung N3",
+      "Tu vung N4",
+      "Tu vung N4"
+    ]
+  },
+  {
+    "id": 157,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Nguyen Huy Anh",
+      "Tran Duc Duong",
+      "Tran Duc Duong",
+      "Tran Van Tuyen",
+      "Tran Duc Duong",
+      "Ma Hai Nam",
+      "Nguyen Trong Tuan"
+    ],
+    "library": [
+      "Luyen doc N3",
+      "Luyen doc N3",
+      "Tu vung N4",
+      "Tu vung N1"
+    ]
+  },
+  {
+    "id": 158,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Ma Hai Nam",
+      "Pham Van Thinh",
+      "Do Thanh Xuan",
+      "Tran Duc Duong",
+      "Nguyen Huy Anh",
+      "Tran Duc Duong"
+    ],
+    "library": [
+      "Ngu phap N3",
+      "Tu vung N2",
+      "Tu vung N4",
+      "Tu vung N2",
+      "Tu vung N5"
+    ]
+  },
+  {
+    "id": 159,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Tran Duc Duong",
+      "Nguyen Trong Tuan",
+      "Pham Van Thinh",
+      "Nguyen Trong Tuan",
+      "Tran Van Tuyen",
+      "Nguyen Trong Tuan",
+      "Nguyen Trong Tuan"
+    ],
+    "library": [
+      "Tu vung N4",
+      "Tu vung N2",
+      "Tu vung N2",
+      "Tu vung N3"
+    ]
+  },
+  {
+    "id": 160,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Nguyen Huy Anh",
+      "Do Thanh Xuan",
+      "Tran Duc Duong",
+      "Pham Van Thinh",
+      "Ma Hai Nam",
+      "Tran Van Tuyen",
+      "Do Thanh Xuan"
+    ],
+    "library": [
+      "Tu vung N2",
+      "Tu vung N2",
+      "Luyen doc N3"
+    ]
+  },
+  {
+    "id": 161,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Nguyen Trong Tuan",
+      "Tran Van Tuyen",
+      "Nguyen Huy Anh"
+    ],
+    "library": [
+      "Tu vung N4",
+      "Tu vung N2",
+      "Ngu phap N3",
+      "Tu vung N4",
+      "Tu vung N3",
+      "Tu vung N1"
+    ]
+  },
+  {
+    "id": 162,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Tran Van Tuyen",
+      "Tran Duc Duong",
+      "Nguyen Trong Tuan",
+      "Pham Van Thinh",
+      "Do Thanh Xuan"
+    ],
+    "library": [
+      "Tu vung N5",
+      "Tu vung N4",
+      "Tu vung N1",
+      "Tu vung N2",
+      "Tu vung N3",
+      "Tu vung N3",
+      "Tu vung N5"
+    ]
+  },
+  {
+    "id": 163,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Tran Duc Duong",
+      "Tran Van Tuyen",
+      "Pham Van Thinh",
+      "Nguyen Trong Tuan"
+    ],
+    "library": [
+      "Tu vung N3",
+      "Tu vung N3",
+      "Tu vung N2"
+    ]
+  },
+  {
+    "id": 164,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Ma Hai Nam",
+      "Pham Van Thinh"
+    ],
+    "library": [
+      "Ngu phap N3",
+      "Tu vung N2",
+      "Tu vung N5",
+      "Tu vung N1",
+      "Ngu phap N3"
+    ]
+  },
+  {
+    "id": 165,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Pham Van Thinh",
+      "Tran Van Tuyen"
+    ],
+    "library": [
+      "Tu vung N5",
+      "Tu vung N3",
+      "Tu vung N3",
+      "Luyen doc N3",
+      "Tu vung N2"
+    ]
+  },
+  {
+    "id": 166,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Tran Van Tuyen",
+      "Ma Hai Nam",
+      "Nguyen Trong Tuan",
+      "Tran Duc Duong",
+      "Nguyen Trong Tuan",
+      "Ma Hai Nam",
+      "Tran Van Tuyen"
+    ],
+    "library": [
+      "Luyen doc N3",
+      "Luyen doc N3",
+      "Luyen doc N3",
+      "Tu vung N2"
+    ]
+  },
+  {
+    "id": 167,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Do Thanh Xuan",
+      "Pham Van Thinh",
+      "Pham Van Thinh",
+      "Tran Duc Duong",
+      "Tran Van Tuyen"
+    ],
+    "library": [
+      "Tu vung N3",
+      "Tu vung N3",
+      "Tu vung N4",
+      "Tu vung N1",
+      "Luyen doc N3",
+      "Tu vung N1",
+      "Tu vung N5"
+    ]
+  },
+  {
+    "id": 168,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Do Thanh Xuan",
+      "Tran Duc Duong",
+      "Do Thanh Xuan",
+      "Do Thanh Xuan",
+      "Do Thanh Xuan"
+    ],
+    "library": [
+      "Tu vung N5",
+      "Tu vung N3",
+      "Tu vung N5",
+      "Luyen doc N3"
+    ]
+  },
+  {
+    "id": 169,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Nguyen Huy Anh",
+      "Pham Van Thinh",
+      "Nguyen Trong Tuan",
+      "Do Thanh Xuan",
+      "Nguyen Trong Tuan"
+    ],
+    "library": [
+      "Tu vung N3",
+      "Tu vung N2",
+      "Tu vung N1",
+      "Ngu phap N3"
+    ]
+  },
+  {
+    "id": 170,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Pham Van Thinh",
+      "Tran Duc Duong"
+    ],
+    "library": [
+      "Tu vung N1",
+      "Tu vung N4",
+      "Luyen doc N3",
+      "Tu vung N3",
+      "Luyen doc N3"
+    ]
+  },
+  {
+    "id": 171,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Tran Van Tuyen",
+      "Nguyen Huy Anh",
+      "Do Thanh Xuan",
+      "Nguyen Huy Anh"
+    ],
+    "library": [
+      "Tu vung N5",
+      "Tu vung N4",
+      "Tu vung N1",
+      "Tu vung N1",
+      "Ngu phap N3",
+      "Tu vung N2"
+    ]
+  },
+  {
+    "id": 172,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Do Thanh Xuan",
+      "Nguyen Trong Tuan",
+      "Do Thanh Xuan",
+      "Do Thanh Xuan",
+      "Tran Van Tuyen",
+      "Tran Van Tuyen",
+      "Nguyen Huy Anh"
+    ],
+    "library": [
+      "Tu vung N1",
+      "Luyen doc N3",
+      "Tu vung N3",
+      "Luyen doc N3",
+      "Tu vung N1"
+    ]
+  },
+  {
+    "id": 173,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Do Thanh Xuan",
+      "Do Thanh Xuan"
+    ],
+    "library": [
+      "Tu vung N3",
+      "Tu vung N1"
+    ]
+  },
+  {
+    "id": 174,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Ma Hai Nam",
+      "Tran Duc Duong"
+    ],
+    "library": [
+      "Tu vung N5",
+      "Tu vung N4",
+      "Tu vung N2"
+    ]
+  },
+  {
+    "id": 175,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Nguyen Trong Tuan",
+      "Do Thanh Xuan",
+      "Tran Duc Duong",
+      "Nguyen Trong Tuan",
+      "Do Thanh Xuan",
+      "Pham Van Thinh"
+    ],
+    "library": [
+      "Luyen doc N3",
+      "Luyen doc N3",
+      "Tu vung N4",
+      "Tu vung N1"
+    ]
+  },
+  {
+    "id": 176,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Tran Van Tuyen",
+      "Tran Duc Duong",
+      "Ma Hai Nam",
+      "Do Thanh Xuan",
+      "Pham Van Thinh",
+      "Tran Van Tuyen"
+    ],
+    "library": [
+      "Tu vung N3",
+      "Tu vung N2",
+      "Tu vung N2",
+      "Tu vung N1",
+      "Tu vung N1",
+      "Tu vung N3"
+    ]
+  },
+  {
+    "id": 177,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Do Thanh Xuan",
+      "Nguyen Huy Anh"
+    ],
+    "library": [
+      "Tu vung N1",
+      "Tu vung N4",
+      "Tu vung N5",
+      "Tu vung N2"
+    ]
+  },
+  {
+    "id": 178,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Nguyen Huy Anh",
+      "Ma Hai Nam",
+      "Tran Van Tuyen",
+      "Tran Van Tuyen",
+      "Do Thanh Xuan"
+    ],
+    "library": [
+      "Ngu phap N3",
+      "Tu vung N5",
+      "Tu vung N3",
+      "Tu vung N2"
+    ]
+  },
+  {
+    "id": 179,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Pham Van Thinh",
+      "Tran Van Tuyen",
+      "Ma Hai Nam",
+      "Pham Van Thinh",
+      "Pham Van Thinh"
+    ],
+    "library": [
+      "Tu vung N4",
+      "Tu vung N5",
+      "Ngu phap N3",
+      "Tu vung N1",
+      "Tu vung N1"
+    ]
+  },
+  {
+    "id": 180,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Nguyen Huy Anh",
+      "Tran Duc Duong",
+      "Nguyen Huy Anh",
+      "Nguyen Huy Anh"
+    ],
+    "library": [
+      "Tu vung N2",
+      "Tu vung N4",
+      "Tu vung N3"
+    ]
+  },
+  {
+    "id": 181,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Pham Van Thinh",
+      "Nguyen Trong Tuan",
+      "Pham Van Thinh"
+    ],
+    "library": [
+      "Ngu phap N3",
+      "Luyen doc N3",
+      "Ngu phap N3"
+    ]
+  },
+  {
+    "id": 182,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Do Thanh Xuan",
+      "Nguyen Huy Anh",
+      "Nguyen Trong Tuan",
+      "Do Thanh Xuan",
+      "Ma Hai Nam"
+    ],
+    "library": [
+      "Luyen doc N3",
+      "Tu vung N5",
+      "Tu vung N4"
+    ]
+  },
+  {
+    "id": 183,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Ma Hai Nam",
+      "Pham Van Thinh"
+    ],
+    "library": [
+      "Tu vung N1",
+      "Tu vung N2",
+      "Tu vung N2",
+      "Tu vung N4",
+      "Tu vung N1"
+    ]
+  },
+  {
+    "id": 184,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Nguyen Huy Anh",
+      "Do Thanh Xuan",
+      "Do Thanh Xuan",
+      "Nguyen Trong Tuan"
+    ],
+    "library": [
+      "Tu vung N2",
+      "Luyen doc N3",
+      "Tu vung N3"
+    ]
+  },
+  {
+    "id": 185,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Pham Van Thinh",
+      "Pham Van Thinh"
+    ],
+    "library": [
+      "Tu vung N1",
+      "Tu vung N4",
+      "Tu vung N1",
+      "Tu vung N5",
+      "Tu vung N4"
+    ]
+  },
+  {
+    "id": 186,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Nguyen Trong Tuan",
+      "Tran Duc Duong",
+      "Do Thanh Xuan",
+      "Do Thanh Xuan",
+      "Nguyen Huy Anh",
+      "Tran Van Tuyen",
+      "Tran Van Tuyen"
+    ],
+    "library": [
+      "Tu vung N4",
+      "Tu vung N4"
+    ]
+  },
+  {
+    "id": 187,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Ma Hai Nam",
+      "Tran Duc Duong",
+      "Nguyen Huy Anh",
+      "Nguyen Trong Tuan",
+      "Pham Van Thinh"
+    ],
+    "library": [
+      "Tu vung N5",
+      "Tu vung N5"
+    ]
+  },
+  {
+    "id": 188,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Do Thanh Xuan",
+      "Nguyen Trong Tuan",
+      "Tran Van Tuyen",
+      "Nguyen Huy Anh",
+      "Nguyen Huy Anh",
+      "Ma Hai Nam"
+    ],
+    "library": [
+      "Tu vung N4",
+      "Tu vung N3",
+      "Ngu phap N3",
+      "Tu vung N4",
+      "Ngu phap N3",
+      "Ngu phap N3"
+    ]
+  },
+  {
+    "id": 189,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Ma Hai Nam",
+      "Ma Hai Nam",
+      "Pham Van Thinh",
+      "Tran Van Tuyen",
+      "Tran Van Tuyen",
+      "Nguyen Trong Tuan",
+      "Do Thanh Xuan"
+    ],
+    "library": [
+      "Luyen doc N3",
+      "Ngu phap N3",
+      "Tu vung N3"
+    ]
+  },
+  {
+    "id": 190,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Nguyen Huy Anh",
+      "Nguyen Trong Tuan",
+      "Do Thanh Xuan",
+      "Tran Duc Duong"
+    ],
+    "library": [
+      "Tu vung N1",
+      "Tu vung N4",
+      "Tu vung N4",
+      "Tu vung N4",
+      "Tu vung N2",
+      "Tu vung N4",
+      "Tu vung N4"
+    ]
+  },
+  {
+    "id": 191,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Ma Hai Nam",
+      "Nguyen Trong Tuan"
+    ],
+    "library": [
+      "Tu vung N4",
+      "Tu vung N4",
+      "Tu vung N1",
+      "Tu vung N2",
+      "Tu vung N2"
+    ]
+  },
+  {
+    "id": 192,
+    "groupname": "Nhom hoc ngu phap N3",
+    "member": [
+      "Ma Hai Nam",
+      "Tran Duc Duong",
+      "Nguyen Trong Tuan",
+      "Ma Hai Nam",
+      "Ma Hai Nam",
+      "Nguyen Huy Anh"
+    ],
+    "library": [
+      "Tu vung N4",
+      "Luyen doc N3",
+      "Tu vung N4"
+    ]
+  },
+  {
+    "id": 193,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Pham Van Thinh",
+      "Do Thanh Xuan"
+    ],
+    "library": [
+      "Tu vung N4",
+      "Tu vung N4"
+    ]
+  },
+  {
+    "id": 194,
+    "groupname": "Nhom hoc tu vung N3",
+    "member": [
+      "Tran Van Tuyen",
+      "Nguyen Trong Tuan",
+      "Tran Duc Duong",
+      "Ma Hai Nam"
+    ],
+    "library": [
+      "Tu vung N4",
+      "Ngu phap N3",
+      "Tu vung N1",
+      "Tu vung N3",
+      "Tu vung N2",
+      "Luyen doc N3",
+      "Luyen doc N3"
+    ]
+  },
+  {
+    "id": 195,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Nguyen Trong Tuan",
+      "Pham Van Thinh",
+      "Do Thanh Xuan",
+      "Tran Van Tuyen"
+    ],
+    "library": [
+      "Tu vung N1",
+      "Tu vung N3",
+      "Tu vung N3",
+      "Tu vung N3",
+      "Tu vung N4"
+    ]
+  },
+  {
+    "id": 196,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Ma Hai Nam",
+      "Ma Hai Nam",
+      "Do Thanh Xuan"
+    ],
+    "library": [
+      "Tu vung N2",
+      "Luyen doc N3",
+      "Ngu phap N3",
+      "Tu vung N3"
+    ]
+  },
+  {
+    "id": 197,
+    "groupname": "Nhom luyen doc hang ngay",
+    "member": [
+      "Nguyen Trong Tuan",
+      "Nguyen Huy Anh",
+      "Tran Duc Duong",
+      "Do Thanh Xuan",
+      "Nguyen Huy Anh"
+    ],
+    "library": [
+      "Tu vung N3",
+      "Tu vung N5",
+      "Tu vung N5",
+      "Ngu phap N3",
+      "Luyen doc N3",
+      "Tu vung N2"
+    ]
+  }
+]
