@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link type="text/css" href="../css/bootstrap.css" rel="stylesheet">
+    <link type="text/css" href="../css/bootstrap-theme.css" rel="stylesheet">
+    <link type="text/css" href="../css/jquery.mCustomScrollbar.css" rel="stylesheet">
+    <link type="text/css" href="../css/account.css" rel="stylesheet">
+    <link type="text/css" href="../css/styles.css" rel="stylesheet">
+    <link type="text/css" href="../css/menu.css" rel="stylesheet">
+    <link type="text/css" href="../css/font-awesome.css" rel="stylesheet">
+    <link type="text/css" href="../css/bootstrap-social.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet"
+          href="http://fonts.googleapis.com/css?family=Roboto:400,500,300&amp;subset=latin,latin-ext,vietnamese">
+    <script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/script.js"></script>
+
+    <script type="text/javascript" src="../js/scrollBar.js"></script>
+    <script type="text/javascript" src="../js/showEdit.js"></script>
+    <title>Profile User</title>
+</head>
+<body>
+<div class="header">
+    <div class="header-top">
+        <div class="container">
+            <div class="row">
+                <div class="header-top-menu col-md-4 col-md-offset-6">
+                    <ul>
+                        <li><a>Book Store</a></li>
+                        <li><a href="../library/library.html">Libary</a></li>
+                        <li><a>Vocabulary</a></li>
+                        <li><a href="../group/group.html">My group</a></li>
+                    </ul>
+                </div>
+                <div class="account-right col-md-2">
+                    <a href="login.html">Login</a>
+                    <a href="register.html">Register</a>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="header-center clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <a class="logo"><img src="../images/logo.png"></a>
+                </div>
+                <div class="col-md-9">
+                    <div id='cssmenu' class="pull-right">
+                        <ul class="menu-page">
+                            <li><a href='../home.html'>Home</a></li>
+                            <li><a href='#'>About</a></li>
+                            <li class='active'><a href='../library/library.html'>Libary</a>
+                                <ul>
+                                    <li><a href='#'>Product 1</a>
+                                        <ul>
+                                            <li><a href='#'>Sub Product</a></li>
+                                            <li><a href='#'>Sub Product</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href='#'>Product 2</a>
+                                        <ul>
+                                            <li><a href='#'>Sub Product</a></li>
+                                            <li><a href='#'>Sub Product</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="../learning-group/learning-group.html">Learning group</a></li>
+                            <li><a>Using guide</a></li>
+                            <li><a href='#'>Contact</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="stripe_color"></div>
+        <div class="stripe_image"></div>
+    </div>
+
+</div>
+<div class="body">
+    <div class="container">
+        <div class="row profile">
+            <div class="col-sm-3">
+                <div class="row">
+                    <div class="panel panel-success">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-sm-12"><span class="lbUser">Username</span></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12"><span class="lbLever">Lever Of User</span></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-offset-4"><img src="../images/df_ava.jpg" width="60" height="60"/></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-offset-1 col-sm-10">
+                                <div class="panel panel-warning">
+                                    <!--<div class="panel-heading">Details</div>-->
+                                    <div class="panel-body">
+                                        <p>First Name : value</p>
+
+                                        <p>Last Name : value</p>
+
+                                        <p>Join Date : value</p>
+
+                                        <p>total lesson : value</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-offset-1 col-sm-10">
+                                <span class="friendUser">List Friends</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-offset-1 col-sm-10">
+                                <div class="panel panel-warning">
+                                    <!--<div class="panel-heading">Details</div>-->
+                                    <div class="panel-body">
+                                        <!--GRID OF List Friend-->
+                                        <div class="row">
+                                            <div class="col-sm-4 text-center"><img class="imgDf" src="../images/df_ava.jpg"
+                                                                                   data-toggle="tooltip"
+                                                                                   title="test!" width="20"
+                                                                                   height="25"/></div>
+                                            <div class="col-sm-4 text-center"><img class="imgDf" src="../images/df_ava.jpg"
+                                                                                   data-toggle="tooltip"
+                                                                                   title="test!" width="20"
+                                                                                   height="25"/></div>
+                                            <div class="col-sm-4 text-center"><img class="imgDf" src="../images/df_ava.jpg"
+                                                                                   data-toggle="tooltip"
+                                                                                   title="test!" width="20"
+                                                                                   height="25"/></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-4 text-center"><img class="imgDf" src="../images/df_ava.jpg"
+                                                                                   title="test!" width="20"
+                                                                                   height="25"/></div>
+                                            <div class="col-sm-4 text-center"><img class="imgDf" src="../images/df_ava.jpg"
+                                                                                   title="test!" width="20"
+                                                                                   height="25"/></div>
+                                            <div class="col-sm-4 text-center"><img class="imgDf" src="../images/df_ava.jpg"
+                                                                                   title="test!" width="20"
+                                                                                   height="25"/></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-4 text-center"><img class="imgDf" src="../images/df_ava.jpg"
+                                                                                   title="test!" width="20"
+                                                                                   height="25"/></div>
+                                            <div class="col-sm-4 text-center"><img class="imgDf" src="../images/df_ava.jpg"
+                                                                                   title="test!" width="20"
+                                                                                   height="25"/></div>
+                                            <div class="col-sm-4 text-center"><img class="imgDf" src="../images/df_ava.jpg"
+                                                                                   title="test!" width="20"
+                                                                                   height="25"/></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-offset-1 col-sm-10">
+                                <span class="friendUser">List Joined Group</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-offset-1 col-sm-10">
+                                <div class="panel panel-warning">
+                                    <!--<div class="panel-heading">Details</div>-->
+                                    <div class="panel-body">
+                                        <!--GRID OF List Friend-->
+                                        <div class="row">
+                                            <div class="col-sm-4 text-center"><img class="imgDf"
+                                                                                   src="../images/group-friends/df_group.png"
+                                                                                   title="test!" width="20"
+                                                                                   height="25"/></div>
+                                            <div class="col-sm-4 text-center"><img class="imgDf"
+                                                                                   src="../images/group-friends/df_group.png"
+                                                                                   title="test!" width="20"
+                                                                                   height="25"/></div>
+                                            <div class="col-sm-4 text-center"><img class="imgDf"
+                                                                                   src="../images/group-friends/df_group.png"
+                                                                                   title="test!" width="20"
+                                                                                   height="25"/></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-4 text-center"><img class="imgDf"
+                                                                                   src="../images/group-friends/df_group.png"
+                                                                                   title="test!" width="20"
+                                                                                   height="25"/></div>
+                                            <div class="col-sm-4 text-center"><img class="imgDf"
+                                                                                   src="../images/group-friends/df_group.png"
+                                                                                   title="test!" width="20"
+                                                                                   height="25"/></div>
+                                            <div class="col-sm-4 text-center"><img class="imgDf"
+                                                                                   src="../images/group-friends/df_group.png"
+                                                                                   title="test!" width="20"
+                                                                                   height="25"/></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-4 text-center"><img class="imgDf"
+                                                                                   src="../images/group-friends/df_group.png"
+                                                                                   title="test!" width="20"
+                                                                                   height="25"/></div>
+                                            <div class="col-sm-4 text-center"><img class="imgDf"
+                                                                                   src="../images/group-friends/df_group.png"
+                                                                                   title="test!" width="20"
+                                                                                   height="25"/></div>
+                                            <div class="col-sm-4 text-center"><img class="imgDf"
+                                                                                   src="../images/group-friends/df_group.png"
+                                                                                   title="test!" width="20"
+                                                                                   height="25"/></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--tabs show details info-->
+            <div class="col-sm-9">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#info">Information</a></li>
+                    <li><a data-toggle="tab" href="#friend">Friends</a></li>
+                    <li><a data-toggle="tab" href="#lesson">User's studied lession</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="info" class="tab-pane fade in active">
+                        <!--show use's info-->
+                        <div id="default-show">
+                            <div class="row">
+                                <div class="col-sm-offset-1 col-sm-10 form-info">
+                                    <div class="row">
+                                        <div class="col-sm-10"><p class="leadInfo">UserName</p></div>
+                                        <div class="col-sm-2">
+                                            <button type="button" class="btn btn-sm btn-edit" id="btnShow">Edit <span
+                                                    class="glyphicon glyphicon-edit"></span></button>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="detail-info"></div>
+                                    <p>First Name : Value
+
+                                    <p>Last Name : Value
+
+                                    <p>E-Mail : Value
+
+                                    <p>E-Telephone : Value
+
+                                    <p>Fax : Value
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-offset-1 col-sm-10 form-info">
+                                    <p class="leadInfo">User Address</p>
+                                    <hr>
+                                    <p>Company : Value
+
+                                    <p>Address : Value
+
+                                    <p>City : Value
+
+                                    <p>Post Code : Value
+
+                                    <p>Country : Value
+
+                                    <p>Region / State : Value
+                                </div>
+                            </div>
+                        </div>
+                        <!--form Edit user's Info , form is hidden-->
+                        <div id="default-hide">
+                            <div class="row">
+                                <br>
+                                <div class="col-sm-offset-1 col-sm-10">
+                                    <p class="leadInfo">User Name</p>
+                                    <hr>
+                                    <label class="col-sm-3 control-label" for="input-firstname">First Name :</label>
+
+                                    <div class="col-sm-9">
+                                        <p><input class="form-control" type="text" name="firstname" value=""
+                                                  placeholder="Your First Name" id="input-firstname">
+                                    </div>
+                                    <label class="col-sm-3 control-label" for="input-lastname">last Name :</label>
+
+                                    <div class="col-sm-9">
+                                        <p><input class="form-control" type="text" name="lastname" value=""
+                                                  placeholder="Your Last Name" id="input-lastname">
+                                    </div>
+                                    <label class="col-sm-3 control-label" for="input-email">Your email :</label>
+
+                                    <div class="col-sm-9">
+                                        <p><input class="form-control" type="text" name="email" value=""
+                                                  placeholder="Your email" id="input-email">
+                                    </div>
+                                    <label class="col-sm-3 control-label" for="input-telephone">E-Telephone :</label>
+
+                                    <div class="col-sm-9">
+                                        <p><input class="form-control" type="text" name="telephone" value=""
+                                                  placeholder="Your telephone" id="input-telephone">
+                                    </div>
+                                    <label class="col-sm-3 control-label" for="input-fax">Fax :</label>
+
+                                    <div class="col-sm-9">
+                                        <p><input class="form-control" type="text" name="fax" value=""
+                                                  placeholder="Your fax" id="input-fax">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-offset-1 col-sm-10">
+                                    <p class="leadInfo">User Address</p>
+                                    <hr>
+                                    <label class="col-sm-3 control-label" for="input-company">Company :</label>
+
+                                    <div class="col-sm-9">
+                                        <p><input class="form-control" type="text" name="CompanyUser" value=""
+                                                  placeholder="Your Company" id="input-company">
+                                    </div>
+                                    <label class="col-sm-3 control-label" for="input-address">Address :</label>
+
+                                    <div class="col-sm-9">
+                                        <p><input class="form-control" type="text" name="addressUser" value=""
+                                                  placeholder="Your Address" id="input-address">
+                                    </div>
+                                    <label class="col-sm-3 control-label" for="input-city">City :</label>
+
+                                    <div class="col-sm-9">
+                                        <p><input class="form-control" type="text" name="cityUser" value=""
+                                                  placeholder="Your City" id="input-city">
+                                    </div>
+                                    <label class="col-sm-3 control-label" for="input-postCode">Post Code :</label>
+
+                                    <div class="col-sm-9">
+                                        <p><input class="form-control" type="text" name="postCode" value=""
+                                                  placeholder="Your PostCode" id="input-postCode">
+                                    </div>
+                                    <label class="col-sm-3 control-label" for="input-country"><font color="red"><b>*</b></font>Country</label>
+
+                                    <div class="col-sm-9">
+                                        <p><select name="country_id" id="input-country" class="form-control">
+                                            <option value=""> --- Please Select ---</option>
+                                        </select>
+                                    </div>
+                                    <label class="col-sm-3 control-label" for="input-state"><font
+                                            color="red"><b>*</b></font>Region / State</label>
+
+                                    <div class="col-sm-9">
+                                        <p><select name="state_id" id="input-state" class="form-control">
+                                            <option value=""> --- Please Select ---</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <p>
+
+                            <div class="row">
+                                <div class="col-sm-offset-8 col-sm-4 pull-left">
+                                    <button type="button" class="btn btn-sm btn-edit" id="btnSaveEdit">Save <span
+                                            class="glyphicon glyphicon-saved"></span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="friend" class="tab-pane fade">
+                        <div class="row">
+                            <div class=" col-sm-12 form-listFriend">
+                                <div class="row">
+                                    <div class="form-search">
+                                        <form name="" action="" method="">
+                                            <div class="col-sm-offset-7 col-sm-3">
+                                                <input class="form-control input-sm" name="tbSearch" value=""
+                                                       id="input-search" placeholder="Search By Name" type="text">
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <button type="submit" class="btn btn-primary btnSearch"><span
+                                                        class="glyphicon glyphicon-search"></span></button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="pre-scrollable infoUser mCustomScrollbar" data-mcs-theme="dark">
+                                    <!--start a line three friend's info-->
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="row">
+                                                <div class="col-sm-offset-1 col-sm-3 "><img src="../images/df_ava.jpg"
+                                                                                            width="46" height="46"/>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <p class="lbUser">FriendName</p>
+
+                                                    <p>Email : Value</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="row">
+                                                <div class="col-sm-offset-1 col-sm-3 "><img src="../images/df_ava.jpg"
+                                                                                            width="46" height="46"/>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <p class="lbUser">FriendName</p>
+
+                                                    <p>Email : Value</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="row">
+                                                <div class="col-sm-offset-1 col-sm-3 "><img src="../images/df_ava.jpg"
+                                                                                            width="46" height="46"/>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <p class="lbUser">FriendName</p>
+
+                                                    <p>Email : Value</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <!--finish a line three friend's info-->
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="row">
+                                                <div class="col-sm-offset-1 col-sm-3 "><img src="../images/df_ava.jpg"
+                                                                                            width="46" height="46"/>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <p class="lbUser">FriendName</p>
+
+                                                    <p>Email : Value</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="row">
+                                                <div class="col-sm-offset-1 col-sm-3 "><img src="../images/df_ava.jpg"
+                                                                                            width="46" height="46"/>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <p class="lbUser">FriendName</p>
+
+                                                    <p>Email : Value</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="row">
+                                                <div class="col-sm-offset-1 col-sm-3 "><img src="../images/df_ava.jpg"
+                                                                                            width="46" height="46"/>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <p class="lbUser">FriendName</p>
+
+                                                    <p>Email : Value</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="row">
+                                                <div class="col-sm-offset-1 col-sm-3 "><img src="../images/df_ava.jpg"
+                                                                                            width="46" height="46"/>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <p class="lbUser">FriendName</p>
+
+                                                    <p>Email : Value</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="row">
+                                                <div class="col-sm-offset-1 col-sm-3 "><img src="../images/df_ava.jpg"
+                                                                                            width="46" height="46"/>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <p class="lbUser">FriendName</p>
+
+                                                    <p>Email : Value</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="row">
+                                                <div class="col-sm-offset-1 col-sm-3 "><img src="../images/df_ava.jpg"
+                                                                                            width="46" height="46"/>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <p class="lbUser">FriendName</p>
+
+                                                    <p>Email : Value</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="row">
+                                                <div class="col-sm-offset-1 col-sm-3 "><img src="../images/df_ava.jpg"
+                                                                                            width="46" height="46"/>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <p class="lbUser">FriendName</p>
+
+                                                    <p>Email : Value</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="row">
+                                                <div class="col-sm-offset-1 col-sm-3 "><img src="../images/df_ava.jpg"
+                                                                                            width="46" height="46"/>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <p class="lbUser">FriendName</p>
+
+                                                    <p>Email : Value</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="row">
+                                                <div class="col-sm-offset-1 col-sm-3 "><img src="../images/df_ava.jpg"
+                                                                                            width="46" height="46"/>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <p class="lbUser">FriendName</p>
+
+                                                    <p>Email : Value</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="row">
+                                                <div class="col-sm-offset-1 col-sm-3 "><img src="../images/df_ava.jpg"
+                                                                                            width="46" height="46"/>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <p class="lbUser">FriendName</p>
+
+                                                    <p>Email : Value</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="row">
+                                                <div class="col-sm-offset-1 col-sm-3 "><img src="../images/df_ava.jpg"
+                                                                                            width="46" height="46"/>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <p class="lbUser">FriendName</p>
+
+                                                    <p>Email : Value</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="row">
+                                                <div class="col-sm-offset-1 col-sm-3 "><img src="../images/df_ava.jpg"
+                                                                                            width="46" height="46"/>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <p class="lbUser">FriendName</p>
+
+                                                    <p>Email : Value</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="row">
+                                                <div class="col-sm-offset-1 col-sm-3 "><img src="../images/df_ava.jpg"
+                                                                                            width="46" height="46"/>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <p class="lbUser">FriendName</p>
+
+                                                    <p>Email : Value</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="row">
+                                                <div class="col-sm-offset-1 col-sm-3 "><img src="../images/df_ava.jpg"
+                                                                                            width="46" height="46"/>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <p class="lbUser">FriendName</p>
+
+                                                    <p>Email : Value</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="row">
+                                                <div class="col-sm-offset-1 col-sm-3 "><img src="../images/df_ava.jpg"
+                                                                                            width="46" height="46"/>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <p class="lbUser">FriendName</p>
+
+                                                    <p>Email : Value</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="lesson" class="tab-pane fade">
+                        <div class="row">
+                            <div class="lessonSt">
+                                <div class="col-sm-12">
+                                    <div class="row">
+                                        <div class="form-search">
+                                            <form action="" method="">
+                                                <div class="col-sm-offset-7 col-sm-3">
+                                                    <input class="form-control input-sm" name="tbSearch" value=""
+                                                           id="input-searchLesson" placeholder="Search By Name"
+                                                           type="text">
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <button type="submit" class="btn btn-primary btnSearch"><span
+                                                            class="glyphicon glyphicon-search"></span></button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-offset-1 col-sm-11">
+                                <div class="pre-scrollable infoUser mCustomScrollbar" data-mcs-theme="dark">
+                                    <!--a studied lesson-->
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <a href="" class="lessonName">Lesson One</a>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <span class="label label-info">30 Question</span>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <a href="" class="label label-success">By Đức Dương</a>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <!--a studied lesson-->
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <a href="" class="lessonName">Lesson One</a>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <span class="label label-info">30 Question</span>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <a href="" class="label label-success">By Đức Dương</a>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <!--a studied lesson-->
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <a href="" class="lessonName">Lesson One</a>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <span class="label label-info">30 Question</span>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <a href="" class="label label-success">By Đức Dương</a>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <!--a studied lesson-->
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <a href="" class="lessonName">Lesson One</a>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <span class="label label-info">30 Question</span>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <a href="" class="label label-success">By Đức Dương</a>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <!--a studied lesson-->
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <a href="" class="lessonName">Lesson One</a>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <span class="label label-info">30 Question</span>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <a href="" class="label label-success">By Đức Dương</a>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <!--a studied lesson-->
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <a href="" class="lessonName">Lesson One</a>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <span class="label label-info">30 Question</span>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <a href="" class="label label-success">By Đức Dương</a>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <!--a studied lesson-->
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <a href="" class="lessonName">Lesson One</a>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <span class="label label-info">30 Question</span>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <a href="" class="label label-success">By Đức Dương</a>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <!--a studied lesson-->
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <a href="" class="lessonName">Lesson One</a>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <span class="label label-info">30 Question</span>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <a href="" class="label label-success">By Đức Dương</a>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <!--a studied lesson-->
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <a href="" class="lessonName">Lesson One</a>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <span class="label label-info">30 Question</span>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <a href="" class="label label-success">By Đức Dương</a>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <!--a studied lesson-->
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <a href="" class="lessonName">Lesson One</a>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <span class="label label-info">30 Question</span>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <a href="" class="label label-success">By Đức Dương</a>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="logo-footer">
+                    <a><img src="../images/logo.png"/> </a>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <a class="btn btn-block btn-sm btn-social btn-facebook">
+                                <i class="fa fa-facebook"></i> Follow on Facebook
+                            </a>
+                        </div>
+                        <div class="col-sm-6">
+                            <a class="btn btn-block btn-sm btn-social btn-twitter">
+                                <i class="fa fa-twitter"></i> Follow on Twitter
+                            </a>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <h3>Address</h3>
+                <ul>
+                    <li><i class="iconentypo-home"></i> 11 Fifth Ave, Loftus - NEW JERSEY, US</li>
+                    <li><i class="iconentypo-phone"></i> Telephone: + 61 (2) 8093 3400</li>
+                    <li><i class="iconentypo-print"></i> Fax: +61 (2) 9542 3599</li>
+                    <li><i class="iconentypo-mail"></i> Email: <a href="#">submissions@domain.com</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-4">
+                <h3>Quick links</h3>
+                <ul>
+                    <li><a>Colleges & Schools</a></li>
+                    <li><a>Course Catalog</a></li>
+                    <li><a>Single Course</a></li>
+                    <li><a>Colleges & Schools</a></li>
+                    <li><a>Course Catalog</a></li>
+                    <li><a>Single Course</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                © 2015 All Rights Reserved. Terms of use and Privacy Policy
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
