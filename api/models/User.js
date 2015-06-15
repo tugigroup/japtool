@@ -75,7 +75,6 @@ module.exports = {
         buddy: {
             collection: "Buddy",
             via: "buddyOf"
-
         }
 
 
