@@ -8,7 +8,8 @@
                         <label for="inputCategory" class="col-lg-2 control-label">Category</label>
 
                         <div class="col-lg-10">
-                            <input class="form-control" id="inputCategory" placeholder="Category" type="text" name="category">
+                            <input class="form-control" id="inputCategory" placeholder="Category" type="text"
+                                   name="category">
                         </div>
                     </div>
                     <div class="form-group">
@@ -28,4 +29,41 @@
         </div>
     </div>
     <div class="row" id="container-lesson"></div>
+    <div class="row" ng-app="chatApp" ng-controller="chatController">
+        <form class="form-horizontal">
+            <fieldset>
+                <legend>Chat Group</legend>
+                <div class="form-group">
+                    <div class="col-lg-2">
+                        <input type="text" class="form-control" id="inputUserID" name="userID" ng-model="userID">
+                    </div>
+
+                    <div class="col-lg-10" id="Conversation" style="min-height: 200px; border: 1px solid #000; max-height: 500px; overflow-y: scroll"
+                         ng-model="conversation">
+                        <table  class="table">
+                            <tr class="chat_message" ng-repeat="chat in chatList | orderBy:predicate:reverse | limitTo: 1000">
+                                <td class="col-md-12 td_class"><strong>{{ chat.userID }} : </strong> {{ chat.msg }}</td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputChat" class="col-lg-2 control-label">Message</label>
+
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="inputChat" name="message" ng-model="message" ng-keyup="sendEnter($event)">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <div class="btn btn-primary" id="send" ng-click="sendMessage()">Send</div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <script>
+
+    </script>
 </div>

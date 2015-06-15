@@ -25,17 +25,17 @@
                 <div class="panel-body">
                     <div class="row">
                         <% if(question.image != null) { %>
-                        <img class="img-responsive" src="/getImgQuestion/<%= question.image %>" alt=""/>
+                        <img class="img-responsive" src="/test/question/getImg/?fd=<%= question.image %>" alt=""/>
                         <% } %>
                         <% if(question.audio != null) { %>
                         <audio controls>
-                            <source src="getAudioQuestion/<%= question.audio %>" type="audio/wav">
+                            <source src="/test/question/getAudio/?fd=/<%= question.audio %>" type="audio/wav">
                             Your browser does not support the audio element.
                         </audio>
                         <% } %>
                         <% if(question.video != null) { %>
                         <video width="320" height="240" controls>
-                            <source src="getVideoQuestion/<%= question.video %>" type="video/mp4">
+                            <source src="/test/question/getVideo/?fd=/<%= question.video %>" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                         <% } %>

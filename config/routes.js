@@ -44,19 +44,10 @@ module.exports.routes = {
 
     /*Router by QuyetND2*/
     '/testIndex':{view:'test/index-test'},
-    'get /showTest': 'test/QuestionController.show',
     'post /confirmResult': 'test/QuestionController.confirm',
     'post /submitTest': 'test/QuestionController.create',
-    'get /getImgQuestion/:fd': 'test/QuestionController.getImg',
-    'get /getAudioQuestion/:fd': 'test/QuestionController.getAudio',
-    'get /getVideoQuestion/:fd': 'test/QuestionController.getVideo',
-    'get /showAnswer': 'test/QuestionController.getFormAnswer',
-    'get /showQuestion': 'test/QuestionController.getForm',
     'post /inputAnswer': 'test/AnswerController.create',
-    'post /deleteQuestion': 'test/QuestionController.delete',
-    'post /deleteAnswer': 'test/AnswerController.delete',
     'get /lesson/:category/:lesson': 'test/QuestionController.lesson',
-    'get /getQuestion/:id': 'test/QuestionController.getQuestion',
     '/learningGroup':{view:'test/learn-group'},
     /*End QuyetND2*/
 
