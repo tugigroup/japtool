@@ -57,7 +57,9 @@ module.exports = {
   selectByLevel: function(opts,cb) {
 	var level = opts.level;
 	
-	 Vocabulary.find({level: level}).populate('examples').exec(function(err,vocabularies){
+	Vocabulary.find({where:{level: level, tag : {'contains':',sublession1,'}}, sort : 'sort'})
+		.populate('examples')
+		.exec(function(err,vocabularies){
 	 	console.log(vocabularies);
 		if(err) return cb(err);
 		return cb(null,vocabularies);

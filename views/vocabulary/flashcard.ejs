@@ -10,9 +10,10 @@
         <div class="item active">
           <div class="flip"> 
             <div class="card"> 
+              <% if (vocabularies[0]) {%>
               <div class="face front">
                 <div class="col-sm-12">
-                  <% if (vocabularies[0].image){%>
+                  <% if (vocabularies[0].image ){%>
                   <img src="/images/<%=vocabularies[0].image%>" class="image_card" ></img>
                   <%}%>
                 </div> 
@@ -61,6 +62,7 @@
                   <%}%>
                 </div> 
               </div>
+              <%}%>
             </div> 
           </div>
         </div>
