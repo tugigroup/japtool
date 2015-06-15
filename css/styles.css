@@ -230,12 +230,12 @@ ul {
 }
 
 /*Library*/
-.modal-header, h4, .close {
-    background-color: #5cb85c;
-    color: white !important;
-    text-align: center;
-    font-size: 30px;
-}
+/*.modal-header, h4, .close {*/
+    /*background-color: #5cb85c;*/
+    /*color: white !important;*/
+    /*text-align: center;*/
+    /*font-size: 30px;*/
+/*}*/
 
 .modal-footer {
     background-color: #f9f9f9;
@@ -273,7 +273,7 @@ ul {
     display: block;
     height: 1px;
     width: 27%;
-    z-index: 99999;
+    z-index: 1;
     border: 1px solid #2BA9E1;
     position: relative;
     top: 11.5px;
