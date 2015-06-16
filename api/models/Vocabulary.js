@@ -55,8 +55,10 @@ module.exports = {
   
   //select vocabulary by Level
   selectByLevel: function(opts,cb) {
-	var level = opts.level;
-	Vocabulary.find({where:{level: level, tag : {'contains':',lession1,'}}, sort : 'sort'})
+	var condition = opts.condition;
+	var jsonObj = JSON.parse(condition);
+
+	Vocabulary.find({where: jsonObj, sort : 'sort'})
 		.populate('examples')
 		.exec(function(err,vocabularies){
 		if(err) {
@@ -64,7 +66,7 @@ module.exports = {
 		}
 		if(vocabularies == null || vocabularies.length == 0) {
 			err = new Error();
-      		err.message = require('util').format('Cannot find vocabularies with level= %s.', level);
+      		err.message = require('util').format('Cannot find vocabularies');
       		err.status = 404;
       		console.log(err.message);
       		return cb(err);
