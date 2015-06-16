@@ -121,29 +121,41 @@ module.exports = {
     searchUser: function (req, res, next) {
         var id_origin = req.param('id_origin');
         var username = req.param('username');
-        
-            User.find({username: '%' + username + '%'}, function searchUser(err, user) {
-                if (err) {
-                    res.send(400);
-                } else {
-                    res.render('user/list-find-friends', {id_origin: id_origin, ob: user});
-                }
-            });
+        User.find({username: '%' + username + '%'}, function searchUser(err, user) {
+            if (err) {
+                res.send(400);
+            } else {
+                Buddy.find(function (err, buddy) {
+                    res.render('user/list-find-friends', {id_origin: id_origin, buddy: buddy, ob: user});
+                });
+
+            }
+        });
 
     },
 
     //Add Friend of user to collection with module "One to Many"
     addBuddy: function (req, res) {
-        var users = req.param('users');
-        var user_id = req.param('user_id');
-        var username = req.param('name');
-        Buddy.create({name: username, user_id: user_id, buddyOf: users}, function userCreated(err, buddy) {
-            if (err) {
-                res.send(400);
-            } else {
-                res.redirect('/user/show/' + users);
-            }
-        })
+        var users = req.param('id_origin_hidden');
+        var user_id = req.param('userid');
+        var statusBuddy = req.param('statusBuddy');
+        if (statusBuddy == 1) {
+            sails.log('status 1');
+        }
+        else if (statusBuddy == 2) {
+            sails.log('status 1');
+        }
+        else {
+            Buddy.create({user_id: user_id, statusBuddy: '2', buddyOf: users}, function userCreated(err, buddy) {
+                if (err) {
+                    res.send(400);
+                } else {
+                    res.json({isFlag: 1});
+                }
+            })
+        }
+
+
     },
     //Find all Friend of User
     findBuddy: function (req, res) {

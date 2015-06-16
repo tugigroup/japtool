@@ -8,15 +8,21 @@
 module.exports = {
 
     attributes: {
-        name: {
-            type: 'string'
-        },
         user_id: {
             type: 'string'
+        },
+        // 0: chua ket ban
+        // 1: da yeu cau ket ban
+        // 2: da la ban
+        statusBuddy: {
+            type: 'integer'
+
         },
         buddyOf: {
             model: 'User'
         }
+
+
     }
 
 };
