@@ -13,9 +13,9 @@ module.exports = {
 
     //select vocabulary for [list] style
 	list: function(red,res) {
-	  
-      Vocabulary.selectByLevel({level: "N5"},function(err,vocabularies){
-		if(err) return res.send(500);
+      var extractDataCondition = '{"level": "N5", "tag" : {"contains":",lession1,"}}';
+	  Vocabulary.selectByLevel({condition: extractDataCondition},function(err,vocabularies){
+		if(err) return res.send(err.status);
 		return res.render('vocabulary/list',{'vocabularies':vocabularies});   	
       });
 
@@ -23,9 +23,9 @@ module.exports = {
 
 	//select vocabulary for [flash card] style
 	flashcard: function(red,res) {
-	  
-      Vocabulary.selectByLevel({level: "N5"},function(err,vocabularies){
-		if(err) return res.send(500);
+	  var extractDataCondition = '{"level": "N5", "tag" : {"contains":",lession1,"}}';
+	  Vocabulary.selectByLevel({condition: extractDataCondition},function(err,vocabularies){
+		if(err) return res.send(err.status);
 		return res.render('vocabulary/flashcard',{'vocabularies':vocabularies});   	
       });
 
@@ -33,12 +33,13 @@ module.exports = {
 
 	//select vocabulary for [quick learning] style
 	quicklearning: function(req,res){
-
-		Vocabulary.selectByLevel({level: "N5"},function(err,vocabularies){
-		if(err) return res.send(500);
+	   var extractDataCondition = '{"level": "N5", "tag" : {"contains":",lession1,"}}';
+	   Vocabulary.selectByLevel({condition: extractDataCondition},function(err,vocabularies){
+		if(err) return res.send(err.status);
 		return res.render('vocabulary/quicklearning',{'vocabularies':vocabularies});   	
       });
 	},
+	
 	/*vocabulary: function(req,res) {
 		var gfs = req.gfs;
 		// body...

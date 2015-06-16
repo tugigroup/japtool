@@ -11,47 +11,50 @@
           <div class="flip"> 
             <div class="card"> 
               <div class="face front">
-                <div class="col-sm-12 top-space">
-                <% if (vocabularies[0].image!=""){%>
-                  <img src="/images/<%=vocabularies[0].image%>" alt="" class="image_card" ></img>
-                <%}%>
+                <div class="col-sm-12">
+                  <% if (vocabularies[0].image ){%>
+                  <img src="/images/<%=vocabularies[0].image%>" class="image_card" ></img>
+                  <%}%>
                 </div> 
                 <div class="col-sm-12 word_card">
-                  <p class="word"><%=vocabularies[0].word%></p>
+                  <p class="word"><%=vocabularies[0].item%></p>
                   <span class="glyphicon glyphicon-play"></span>
                 </div>
                 <div class="footer">
                   <p>1/<%=vocabularies.length%></p>
                 </div>
               </div> 
-
               <div class="face back">
                 <div class="col-sm-12 top-space">
                   <%i=1%>
-                  <% if (vocabularies[0].reading!=""){%>
+                  <% if (vocabularies[0].reading){%>
                     <p><%=i%>.読み方</p>
                     <p class="left-space"><%=vocabularies[0].reading%></p>
                     <%i=i+1%>
                   <%}%>
-                  <% if (vocabularies[0].meaning!=""){%>
+                  <% if (vocabularies[0].description){%>
                     <p><%=i%>.意味</p>
-                    <p class="left-space"><%=vocabularies[0].meaning%></p>
+                    <p class="left-space"><%=vocabularies[0].description%></p>
                     <%i=i+1%>
                   <%}%>
-                  <% if (vocabularies[0].examples!=""){%>
+                  <% if (vocabularies[0].examples){%>
                     <p><%=i%>.例文</p>
-                    <p  class="examples left-space" 
+                    <% vocabularies[0].examples.forEach( function( item, j){ %>
+                    <% if ( j < 2){%>
+                    <li  class="examples left-space" 
                         data-toggle="tooltip" 
                         data-placement="right" 
-                        title="Tooltip on right"><%=vocabularies[0].examples%></p>
+                        title="<%=item.meaning%>"><%=item.example%></li>
+                    <%}%>
+                    <%})%>
                     <%i=i+1%>
                   <%}%>
-                  <% if (vocabularies[0].synonymous!=""){%>
+                  <% if (vocabularies[0].synonymous){%>
                     <p><%=i%>.同義語</p>
                     <p class="synonymous left-space"><%=vocabularies[0].synonymous%></p>
                     <%i=i+1%>
                   <%}%>
-                  <% if (vocabularies[0].antonymous!=""){%>
+                  <% if (vocabularies[0].antonymous){%>
                     <p><%=i%>.反対語</p>
                     <p class="antonymous left-space"><%=vocabularies[0].antonymous%></p>
                     <%i=i+1%>
@@ -67,13 +70,13 @@
             <div class="flip"> 
               <div class="card"> 
                 <div class="face front">
-                  <div class="col-sm-12 top-space">
-                  <% if (vocabulary.image!=""){%>
-                    <img src="/images/<%=vocabulary.image%>" alt="" class="image_card" ></img>
-                  <%}%>
+                  <div class="col-sm-12">
+                    <% if (vocabulary.image){%>
+                    <img src="/images/<%=vocabulary.image%>" class="image_card" ></img>
+                    <%}%>
                   </div>
                   <div class="col-sm-12 word_card">
-                    <p class="word"><%=vocabulary.word%></p>
+                    <p class="word"><%=vocabulary.item%></p>
                     <span class="glyphicon glyphicon-play"></span>
                   </div>
                   <div class="footer">
@@ -84,30 +87,34 @@
                 <div class="face back">
                   <div class="col-sm-12 top-space">
                     <%i=1%>
-                    <% if (vocabulary.reading!=""){%>
+                    <% if (vocabulary.reading){%>
                       <p><%=i%>.読み方</p>
                       <p class="left-space"><%=vocabulary.reading%></p>
                       <%i=i+1%>
                     <%}%>
-                    <% if (vocabulary.meaning!=""){%>
+                    <% if (vocabulary.description){%>
                       <p><%=i%>.意味</p>
-                      <p class="left-space"><%=vocabulary.meaning%></p>
+                      <p class="left-space"><%=vocabulary.description%></p>
                       <%i=i+1%>
                     <%}%>
-                    <% if (vocabulary.examples!=""){%>
+                    <% if (typeof vocabulary.examples !== 'undefined' && vocabulary.examples.length > 0){%>
                       <p><%=i%>.例文</p>
-                      <p  class="examples left-space" 
-                        data-toggle="tooltip" 
-                        data-placement="right" 
-                        title="Tooltip on right"><%=vocabulary.examples%></p>
+                      <% vocabulary.examples.forEach( function( item, j){ %>
+                      <% if ( j < 2){%>
+                      <li class="examples left-space" 
+                          data-toggle="tooltip" 
+                          data-placement="right" 
+                          title="<%=item.meaning%>"><%=item.example%></li>
+                      <%}%>
+                      <%})%>
                       <%i=i+1%>
                     <%}%>
-                    <% if (vocabulary.synonymous!=""){%>
+                    <% if (vocabulary.synonymous){%>
                       <p><%=i%>.同義語</p>
                       <p class="synonymous left-space"><%=vocabulary.synonymous%></p>
                       <%i=i+1%>
                     <%}%>
-                    <% if (vocabulary.antonymous!=""){%>
+                    <% if (vocabulary.antonymous){%>
                       <p><%=i%>.反対語</p>
                       <p class="antonymous left-space"><%=vocabulary.antonymous%></p>
                       <%i=i+1%>
@@ -179,7 +186,7 @@
 
     // pronounce example which display in back of flash card
     $('.back .examples').click(function(){
-      var word= $('.active .back .examples').text();
+      var word= $(this).text();
       playAudio(word);
     });
 

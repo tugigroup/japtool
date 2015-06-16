@@ -15,10 +15,37 @@
         <% vocabularies.forEach( function( vocabulary, index){ %>
             <tr>
               <td><%= index= index+1 %></td>
-              <td><%= vocabulary.word %></td>
+
+              <% if (vocabulary.item) {%>
+              <td><%= vocabulary.item %></td>
+              <%}else {%>
+              <td></td>
+              <%}%>
+
+              <% if (vocabulary.reading) {%>
               <td><%= vocabulary.reading %></td>
-              <td><%= vocabulary.meaning %></td>
-              <td><%= vocabulary.examples %></td>
+              <%}else {%>
+              <td></td>
+              <%}%>
+
+              <% if (vocabulary.description) {%>
+              <td><%= vocabulary.description %></td>
+              <%}else {%>
+              <td></td>
+              <%}%>
+
+              <% if (typeof vocabulary.examples !== 'undefined' && vocabulary.examples.length > 0) {%>
+              <td>
+                <% vocabulary.examples.forEach( function( item, j){ %>
+                <% if ( j < 3){%>
+                <li><%= item.example %></li>
+                <%}%>
+                <%})%>
+              </td>
+              <%}else {%>
+              <td></td>
+              <%}%>
+              
               <td></td>
             </tr>
         <% }); %>

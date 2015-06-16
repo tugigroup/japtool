@@ -7,7 +7,7 @@
 
 module.exports = {
 	wordgen: function (req, res) {
-    Vocabulary.find({level:'N5', tag:'lession1'},{word:1,meaning:1}).exec(function findCB(err, vols){
+    Vocabulary.find({level:'N5', tag:'lession1'},{item:1,description:1}).exec(function findCB(err, vols){
       if(err) return res.send(500);
 
       //Random Get max 12 words in collection
@@ -22,7 +22,7 @@ module.exports = {
 
       var reverseWords = [];
       for(i = 0; i < words.length; i++) {
-        reverseWords.push({'word':words[i].meaning,'meaning':words[i].word});
+        reverseWords.push({'item':words[i].description,'description':words[i].item});
       }
 
       var concatWords = [];

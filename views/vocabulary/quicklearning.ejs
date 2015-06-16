@@ -3,40 +3,42 @@
 <script src="/js/bootstrap.min.js"></script>
 
 <div class="row">
-  <div class="col-sm-6 col-md-5">
-
-  <div class="card1">
-   
-    <div class="face">
-      <div class="top-space"></div>
-      <div clas="col-sm-12" >
-        <div class="word_card" id="word"></div>
-        <div id="children">
-          <p class="content_card">読み方</p>
-          <p class="left-space content_card" id="reading"></p>
-          <p class="content_card">意味</p>
-          <p class="left-space content_card" id="meaning"></p>
-          <button type="button" class="btn btn-default" id="next-button">
-            <span>次</span>
-          </button>
-        </div>
+  <div class="col-md-4"></div>
+  <!-- item -->
+  <div class="col-md-4 text-center">
+      <div class="panel panel-success panel-card">
+          <div class="panel-heading">
+              <h2 id="word"></h2>
+          </div>
+          <div class="panel-body text-left">
+            <div id="children">
+              <p>1.読み方</p>
+              <p class="left-space" id="reading"></p>
+              <p>2.意味</p>
+              <p class="left-space" id="meaning"></p>
+              <div class="row">
+                <div class="col-xs-4 col-sm-4 col-md-4"></div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                  <a class="btn btn-md btn-block btn-default" id="next-button">次</a>
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4"></div>
+              </div>
+            </div>
+          </div>
+          <div class="panel-footer">
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <a class="btn btn-md btn-block btn-danger" id="unknow-button">知らない</a>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <a class="btn btn-md btn-block btn-success" id="know-button" >知っている</a>
+            </div>
+          </div>
       </div>
-      <div class="row footer">
-        <div class="col-sm-12 ">
-          <button type="button" class="btn btn-default" aria-label="Left Align" id="unknow-button">
-            <span>知らない</span>
-          </button>
-          <button type="button" class="btn btn-default" aria-label="Left Align" id="know-button">
-            <span>知っている</span>
-          </button>
-        </div>
-      </div>
-    </div> 
-
   </div>
-
- </div>
+  <!-- /item -->
+  <div class="col-md-4"></div>
 </div>
+
 
 <script>
   $(function(){
@@ -53,7 +55,7 @@
         array1.length = 0;
         // push all elements of array2 to array1
         $.each(array2,function(index,value){
-array1.push(value);
+          array1.push(value);
         });
         // remove all elements of array2
         array2.length = 0;
@@ -63,11 +65,11 @@ array1.push(value);
     // set values of vocabulary
     var setVocabulary = function(vocabulary){
       //Pass value to view(id="word")
-      $("#word").text(vocabulary.word);
+      $("#word").text(vocabulary.item);
       //Pass value to view(id="reading")
       $("#reading").text(vocabulary.reading);
       //Pass value to view(id="meaning")
-      $("#meaning").text(vocabulary.meaning); 
+      $("#meaning").text(vocabulary.description); 
     };
 
     //view first vocabulary
@@ -97,12 +99,12 @@ array1.push(value);
         setVocabulary(vocabularies[i]); 
       }else {
         if(unknowVocabularies.length > 0) {
-reload(vocabularies,unknowVocabularies);
-setVocabulary(vocabularies[i]);
+          reload(vocabularies,unknowVocabularies);
+          setVocabulary(vocabularies[i]);
         }else {
-$("#word").text("Finish!!!");
-$("#unknow-button").hide();
-$("#know-button").hide();
+          $("#word").text("Finish!!!");
+          $("#unknow-button").hide();
+          $("#know-button").hide();
         }
       }
     });
@@ -116,12 +118,12 @@ $("#know-button").hide();
         $("#know-button").attr("disabled", false);
       }else {
         if(unknowVocabularies.length > 0) {
-$("#children").hide();
-$("#know-button").attr("disabled", false);
-reload(vocabularies,unknowVocabularies);
-setVocabulary(vocabularies[i]);
+          $("#children").hide();
+          $("#know-button").attr("disabled", false);
+          reload(vocabularies,unknowVocabularies);
+          setVocabulary(vocabularies[i]);
         }else {
-alert("Finish");
+          alert("Finish");
         }
       }
     });

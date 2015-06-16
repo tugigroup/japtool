@@ -78,10 +78,7 @@ module.exports.routes = {
      ***************************************************************************/
 
 
-    'get /vocabulary': {
-      view: '/vocabulary/index'
-    },
-
+    'get /vocabulary': 'VocabularyController.index',
     'get /vocabulary/flashcard': 'VocabularyController.flashcard',
     'get /vocabulary/list': 'VocabularyController.list',
     'post /vocabulary/pronounce': 'VocabularyController.pronounce',

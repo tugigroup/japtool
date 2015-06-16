@@ -8,7 +8,7 @@
 module.exports = {
 
   attributes: { 
-		word: {
+		item: {
 		   type : 'string'
         },
 		reading: {
@@ -17,19 +17,17 @@ module.exports = {
 　　　    type: {
 			type : 'string'
         },		
-		meaning: {
+		description: {
 			type : 'string'
 		},
         examples:　{
-		    type : 'string' 
+		    collection: "example",
+            via: "exampleSetID"
 		},
 		synonymous: {
 		    type : 'string'
 		},
 		antonymous: {
-			type : 'string'
-		},
-		other: {
 			type : 'string'
 		},
 		image: {
@@ -45,7 +43,7 @@ module.exports = {
 			type : 'string'
 		},
 		sort: {
-			type : 'string'
+			type : 'integer'
 		},
 		tag: {
 			type : 'string'
@@ -57,10 +55,22 @@ module.exports = {
   
   //select vocabulary by Level
   selectByLevel: function(opts,cb) {
-	var level = opts.level;
-	
-	 Vocabulary.find({level: level}).exec(function(err,vocabularies){
-		if(err) return cb(err);
+	var condition = opts.condition;
+	var jsonObj = JSON.parse(condition);
+
+	Vocabulary.find({where: jsonObj, sort : 'sort'})
+		.populate('examples')
+		.exec(function(err,vocabularies){
+		if(err) {
+			return cb(err);
+		}
+		if(vocabularies == null || vocabularies.length == 0) {
+			err = new Error();
+      		err.message = require('util').format('Cannot find vocabularies');
+      		err.status = 404;
+      		console.log(err.message);
+      		return cb(err);
+		}
 		return cb(null,vocabularies);
 	 });
   }

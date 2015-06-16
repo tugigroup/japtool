@@ -5,7 +5,7 @@
 */
 .flip {
   position: relative;
-  height: 430px;
+  height: 420px;
   margin: 0px auto;
   -webkit-perspective: 800px;
   -ms-perspective: 800px;
@@ -84,28 +84,14 @@
 
 }
 .flip .card .front .image_card {
-  width: 95%;
+  margin-top: 15px; 
+  width: 100%;
 }
-.flip .card .front .word_card, .card1 .face .word_card {
+.flip .card .front .word_card {
   background: #F27B00;
   color: white;
   font-size: 30px;
   text-align: center;
-  height: 
-}
-.flip .card .front .content_card, .card1 .face .content_card {
-  text-align: left;
-  color: white;
-  font-size: 18px;
-}
-.flip .card .back .title_card {
-  background: #F27B00;
-  font-size: 2em;
-  color: white;
-  text-align: center;
-}
-.flip .card .back .content_card {
-  font-size: 1.3em;
 }
 .flip .card .front .footer {
   position: absolute;
@@ -119,43 +105,41 @@
 
 /*
  *
- * Card for quicklearning
- * 
+ *css for quicklearning
+ *
 */
-.card1 {
-  position: relative;
-  width: 280px;
-  height: 400px;
-  margin: 10px auto;
-}
-
-.card1 .face {
-  position: absolute;
-  width: 100%;
-  height: 100%;
+.panel-card {
   font-family: "Times New Roman", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-  line-height: 100%;
-  background: gray;
-  font-size: 3em;
-
-  -ms-border-radius: 8px;
-  -moz-border-radius: 8px;
-  -webkit-border-radius: 8px;
-  -o-border-radius: 8px;
-  border-radius: 8px;
-  
-  -ms-box-shadow: 0 0 6px 2px #888888;
-  -moz-box-shadow: 0 0 6px 2px #888888;
-  -webkit-box-shadow: 0 0 6px 2px #888888;
-  -o-box-shadow: 0 0 6px 2px #888888;
-  box-shadow: 0 0 6px 2px #888888;
+  -webkit-transform-style: preserve-3d;
+  -webkit-transition: 0.5s;
+  -moz-transform-style: preserve-3d;
+  -moz-transition: 0.5s;
+  -ms-transform-style: preserve-3d;
+  -ms-transition: 0.5s;
+  -o-transform-style: preserve-3d;
+  -o-transition: 0.5s;
+  transform-style: preserve-3d;
+  transition: 0.5s;
 }
-
-.card1 .footer{
-  position: absolute;
-  bottom: 0;
-  left:0;
-  width: 100%;
+.panel-card:hover {
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2);
+}
+.panel-card .panel-heading {
+  padding: 20px 10px;
+}
+.panel-card .panel-body {
+  background-color: #f0f0f0;
+  font-size: 20px;
+  color: #777777;
+  padding: 20px;
+  margin: 0px;
+  height: 250px;
+}
+.panel-card .panel-footer {
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin: 0px;
+  height: 60px;
 }
 
 /*
@@ -173,11 +157,6 @@
   outline: 0;
   color:gray;
   width: 10%;
-
- }
- .carousel-control.button{
-  bottom:0;
-  font-size: 200px;
  }
 
 /*
@@ -191,6 +170,8 @@
 }
 /*click action*/
 .glyphicon-play:active {
+  color: gray;
+
   -webkit-transform:scale(.95); /* Safari and Chrome */
   -moz-transform:scale(.95); /* Firefox */
   -ms-transform:scale(.95); /* IE 9 */
@@ -209,6 +190,8 @@
 }
 /*click action*/
 .examples:active, .synonymous:active, .antonymous:active {
+  color: black;
+
   -webkit-transform:scale(.95); /* Safari and Chrome */
   -moz-transform:scale(.95); /* Firefox */
   -ms-transform:scale(.95); /* IE 9 */
@@ -270,5 +253,3 @@
      width: 56%;
   }
 }
-
-
