@@ -15,7 +15,7 @@ module.exports = {
 	list: function(red,res) {
 	  
       Vocabulary.selectByLevel({level: "N5"},function(err,vocabularies){
-		if(err) return res.send(500);
+		if(err) return res.send(err.status);
 		return res.render('vocabulary/list',{'vocabularies':vocabularies});   	
       });
 
@@ -23,9 +23,9 @@ module.exports = {
 
 	//select vocabulary for [flash card] style
 	flashcard: function(red,res) {
-	  
-      Vocabulary.selectByLevel({level: "N5"},function(err,vocabularies){
-		if(err) return res.send(500);
+		
+	  Vocabulary.selectByLevel({level: "N5"},function(err,vocabularies){
+		if(err) return res.send(err.status);
 		return res.render('vocabulary/flashcard',{'vocabularies':vocabularies});   	
       });
 
@@ -35,7 +35,7 @@ module.exports = {
 	quicklearning: function(req,res){
 
 		Vocabulary.selectByLevel({level: "N5"},function(err,vocabularies){
-		if(err) return res.send(500);
+		if(err) return res.send(err.status);
 		return res.render('vocabulary/quicklearning',{'vocabularies':vocabularies});   	
       });
 	},
