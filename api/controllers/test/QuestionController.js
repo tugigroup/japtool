@@ -23,7 +23,7 @@ module.exports = {
                 });
 
                 if (data.length != i) {
-                    res.send("Incorrect");
+                    res.send(false);
                 } else {
                     data.forEach(function (data_item, data_index) {
                         created.answers.forEach(function (answer, answer_index) {
@@ -32,9 +32,9 @@ module.exports = {
                             }
                             if ((data.length - 1) == data_index && (created.answers.length - 1) == answer_index) {
                                 if (flag_asw_choose) {
-                                    res.send("Correct");
+                                    res.send(true);
                                 } else {
-                                    res.send("Incorrect");
+                                    res.send(false);
                                 }
                             }
                         })
@@ -249,6 +249,16 @@ module.exports = {
                 } else {
                     res.render('test/lesson', {questions: questions});
                 }
+            }
+        })
+    },
+
+    getQuestion: function (req, res) {
+        var id = req.param('id');
+        Question.findOne({id: id}).populate('answers').exec(function createCB(err, question) {
+            if (err) sails.log(err)
+            else {
+                res.render('test/question', {question: question});
             }
         })
     }
