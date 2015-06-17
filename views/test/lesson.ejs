@@ -1,0 +1,130 @@
+<style>
+    .active {
+        display: block !important;
+    }
+</style>
+<div class="col-lg-2">
+    <h3>Category <%= questions[0].category %></h3>
+
+    <h3><%= questions[0].lesson %></h3>
+</div>
+<div class="col-lg-10">
+    <div class="row">
+        <% questions.forEach(function(question, index) { %>
+        <div class="col-lg-4 question-learn-group <% if(index == 0 ) { %> active <% } %>" id="<%= index %>">
+            <h2> Category <%= question.category %></h2>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="position: relative">
+                    <h3 class="panel-title"><%= question.content %></h3>
+                    <button type="button" style="position: absolute; top: 10px; right: 10px;"
+                            class="close delete-question"
+                            data-dismiss="alert" name="<%= question.id %>">x
+                    </button>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <% if(question.image != null) { %>
+                        <img class="img-responsive" src="/test/question/getImg/?fd=<%= question.image %>" alt=""/>
+                        <% } %>
+                        <% if(question.audio != null) { %>
+                        <audio controls>
+                            <source src="/test/question/getAudio/?fd=/<%= question.audio %>" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <% } %>
+                        <% if(question.video != null) { %>
+                        <video width="320" height="240" controls>
+                            <source src="/test/question/getVideo/?fd=/<%= question.video %>" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <% } %>
+                    </div>
+                    <div class="row">
+                        <% question.answers.forEach(function(item) { %>
+                        <div class="col-lg-6">
+                            <div class="checkbox">
+                                <label>
+                                    <input class="my-checkbox" type="checkbox"
+                                           name="<%= item.content %>"> <%= item.content %>
+                                </label>
+                            </div>
+                        </div>
+                        <% }); %>
+                    </div>
+                    <div id="previous" class="btn btn-info pull-left previous">Previous</div>
+                    <div id="<%= question.id %>" class="btn btn-info pull-right btn-answer-ok">Next</div>
+                </div>
+            </div>
+        </div>
+        <% }); %>
+    </div>
+    <div id="show-result" class="btn btn-info">Show result</div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        var result = [];
+        var count = <%= questions.length %>;
+        for (var i = 0; i < count; i++) {
+            result[i] = false;
+        }
+
+        $('.previous').each(function () {
+            $(this).click(function () {
+                var index = parseInt($('.active').attr('id')) - 1;
+                if (index > -1) {
+                    $('.active').removeClass('active');
+                    $('#' + index).addClass('active');
+                }
+            })
+        })
+
+        $('.btn-answer-ok').each(function () {
+            $(this).click(function () {
+                var _arr_data = [];
+                var _id = $(this).attr("id");
+                $(this).parent().find('.my-checkbox').each(function () {
+                    if ($(this).prop("checked")) {
+                        _arr_data.push($(this).attr("name"));
+                    }
+                });
+                if (_arr_data != '' && _id != '') {
+                    $.ajax({
+                        method: "POST",
+                        url: "confirmResult",
+                        data: {data: _arr_data, id: _id}
+                    })
+                            .done(function (msg) {
+                                result[parseInt($('.active').attr('id'))] = msg;
+                                console.log(result);
+                                var index = parseInt($('.active').attr('id')) + 1;
+                                var count = <%= questions.length %>;
+                                if (index < count) {
+                                    $('.active').removeClass('active');
+                                    $('#' + index).addClass('active');
+                                }
+                            });
+                } else {
+                    alert('Please choose your option');
+                }
+            })
+            $('.question-learn-group').each(function () {
+                $(this).hide();
+            });
+        });
+
+        $('#show-result').click(function () {
+            var i = 0;
+            var count = <%= questions.length %>;
+            result.forEach(function (item, index) {
+                if (item == true) {
+                    i++
+                }
+                if (index == (result.length - 1)) {
+                    alert(i + '/' + result.length);
+                }
+            })
+        });
+    })
+</script>
