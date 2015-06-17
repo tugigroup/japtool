@@ -44,6 +44,10 @@ module.exports = {
         }
     },
 
+    getBookDetail: function (req, res) {
+
+    },
+
     create: function (req, res) {
         var content = req.param('content');
         var level = req.param('level');
@@ -53,6 +57,7 @@ module.exports = {
         var lesson = req.param('lesson');
         var tag = req.param('tag');
         var other = req.param('other');
+        var bookDetail = req.param('bookDetail');
         req.file('video').upload({
             adapter: require('skipper-gridfs'),
             uri: 'mongodb://localhost:27017/japtool.videos'
@@ -94,6 +99,7 @@ module.exports = {
                                         tag: tag,
                                         category: category,
                                         lesson: lesson,
+                                        bookDetail: bookDetail,
                                         other: other
                                     }).exec(function createCB(err, created) {
                                         if (err) {
@@ -111,6 +117,7 @@ module.exports = {
                                         tag: tag,
                                         category: category,
                                         lesson: lesson,
+                                        bookDetail: bookDetail,
                                         other: other
                                     }).exec(function createCB(err, created) {
                                         if (err) {
@@ -191,7 +198,9 @@ module.exports = {
     },
 
     getForm: function (req, res) {
-        res.render('test/input-question');
+        BookDetail.find().exec(function createCB(err, data) {
+            res.render('test/input-question', {data: data});
+        })
     },
 
     delete: function (req, res) {
