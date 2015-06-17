@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1445c818-d831-4cfb-af5e-03eb135f28be" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/df_ava.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/group-friends/df_group.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/jquery.mCustomScrollbar.concat.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/jquery.mCustomScrollbar.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/user/profile.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/scrollBar.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/showEdit.js" />
       <change type="DELETED" beforePath="D:\Xampp\htdocs\template_japtool\register" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/account.css" afterPath="$PROJECT_DIR$/css/account.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="template_japtool.iws" />
     <ignored path=".idea/workspace.xml" />
