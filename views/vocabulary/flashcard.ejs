@@ -37,7 +37,7 @@
                     <p class="left-space"><%=vocabularies[0].description%></p>
                     <%i=i+1%>
                   <%}%>
-                  <% if (vocabularies[0].examples){%>
+                  <% if (typeof vocabularies[0].examples !== 'undefined' && vocabularies[0].examples.length > 0){%>
                     <p><%=i%>.例文</p>
                     <% vocabularies[0].examples.forEach( function( item, j){ %>
                     <% if ( j < 2){%>
