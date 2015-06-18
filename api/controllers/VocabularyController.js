@@ -13,7 +13,7 @@ module.exports = {
 
     //select vocabulary for [list] style
 	list: function(red,res) {
-      var extractDataCondition = '{"level": "N5", "tag" : {"contains":",lession1,"}}';
+      var extractDataCondition = '{"level": "N2", "tag" : {"contains":",trainghia3,lession4,"}}';
 	  Vocabulary.selectByLevel({condition: extractDataCondition},function(err,vocabularies){
 		if(err) return res.send(err.status);
 		return res.render('vocabulary/list',{'vocabularies':vocabularies});   	
@@ -23,7 +23,7 @@ module.exports = {
 
 	//select vocabulary for [flash card] style
 	flashcard: function(red,res) {
-	  var extractDataCondition = '{"level": "N5", "tag" : {"contains":",lession1,"}}';
+	  var extractDataCondition = '{"level": "N2", "tag" : {"contains":",trainghia3,lession4,"}}';
 	  Vocabulary.selectByLevel({condition: extractDataCondition},function(err,vocabularies){
 		if(err) return res.send(err.status);
 		return res.render('vocabulary/flashcard',{'vocabularies':vocabularies});   	
@@ -33,7 +33,7 @@ module.exports = {
 
 	//select vocabulary for [quick learning] style
 	quicklearning: function(req,res){
-	   var extractDataCondition = '{"level": "N5", "tag" : {"contains":",lession1,"}}';
+	   var extractDataCondition = '{"level": "N2", "tag" : {"contains":",trainghia3,lession4,"}}';
 	   Vocabulary.selectByLevel({condition: extractDataCondition},function(err,vocabularies){
 		if(err) return res.send(err.status);
 		return res.render('vocabulary/quicklearning',{'vocabularies':vocabularies});   	
