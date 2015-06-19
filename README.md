@@ -1,5 +1,5 @@
 
-<h1>JapTool project collaboration rule</h1>
+<h1>JapTool project collaboration guide</h1>
 
 
 <h2>1. Git-branch Branching strategy</h2>
@@ -10,16 +10,16 @@ master branch is base brach for developing. When implement new feature, clone ma
 <h3>dummy branch</h3>
 to avoid miss of push, dummy brach is created and setted as default branch.
 
-<h3>prod branch</h3>
-this brach for product version
+<h3>doc branch</h3>
+doc branch is used for sharing requirement & management documents.
 
 <h3>feature branches</h3>
 Branches are created for the development of each function. Currently has the following branches
 <ul>
-  <li>vocabulary : for vocabulary leaning feature</li>
-  <li>test: for question and check feature</li>
+  <li>home : for home page and modules base on home page</li>
   <li>user: for sign-in and signup feature</li>
-  <li>speech: for speech recognition feature</li>
+  <li>library: for library feature</li>
+  <li>learning: for learning feature</li>
 </ul>
 
 <h2>2. Using cases </h2>
