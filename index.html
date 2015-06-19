@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <link type="text/css" href="css/bootstrap.css" rel="stylesheet">
     <link type="text/css" href="css/bootstrap-theme.css" rel="stylesheet">
-    <link type="text/css" href="css/styles.css" rel="stylesheet">
+    <link type="text/css" href="css/index.css" rel="stylesheet">
     <link type="text/css" href="css/menu.css" rel="stylesheet">
     <link type="text/css" href="css/font-awesome.css" rel="stylesheet">
     <link type="text/css" href="css/bootstrap-social.css" rel="stylesheet">
@@ -14,29 +14,13 @@
     <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/jquery.countimator.js"></script>
     <title>Template Japtool</title>
 </head>
 <body>
+<div class="home-image-background"></div>
+
 <div class="header">
-    <div class="header-top">
-        <div class="container">
-            <div class="row">
-                <div class="header-top-menu col-md-3 col-md-offset-7">
-                    <ul>
-                        <li><a>Book Store</a></li>
-                        <li><a>Libary</a></li>
-                        <li><a>Vocabulary</a></li>
-                    </ul>
-                </div>
-                <div class="account col-md-2">
-                    <a>Login</a>
-                    <a>Register</a>
-                </div>
-
-
-            </div>
-        </div>
-    </div>
     <div class="header-center clearfix">
         <div class="container">
             <div class="row">
@@ -46,9 +30,9 @@
                 <div class="col-md-9">
                     <div id='cssmenu' class="pull-right">
                         <ul class="menu-page">
-                            <li><a href='#'>Home</a></li>
+                            <li><a href='home.html'>Home</a></li>
                             <li><a href='#'>About</a></li>
-                            <li class='active'><a href='#'>Libary</a>
+                            <li class='active'><a href='library/library.html'>Libary</a>
                                 <ul>
                                     <li><a href='#'>Product 1</a>
                                         <ul>
@@ -64,7 +48,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li><a>Learning group</a></li>
+                            <li><a href="learning-group/learning-group.html">Learning group</a></li>
                             <li><a>Using guide</a></li>
                             <li><a href='#'>Contact</a></li>
                         </ul>
@@ -74,513 +58,97 @@
             </div>
         </div>
 
-        <div class="stripe_color"></div>
-        <div class="stripe_image"></div>
     </div>
 
 </div>
 <div class="container">
     <div class="row">
-        <div class="content-random">
-            <div class="col-md-6">
-                <div class="slideshow">
-                    <img src="images/smiling_brunette.jpg">
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="module-inner">
-                            <img src="images/grad-group.jpg">
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="module-inner">
-                            <img src="images/college-student.jpg">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="module-inner">
-                    <img src="images/studying.jpg">
-                </div>
-                <div class="module-inner">
-                    <img src="images/modern-office.jpg">
-                </div>
-                <div class="module-inner">
-                    <img src="images/track.jpg">
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="module-inner">
-                    <img src="images/business-people-talking.jpg">
-                </div>
-                <div class="module-inner">
-                    <img src="images/bookstore.jpg">
-                </div>
-            </div>
-        </div>
-
-        <div class="content-group-friends clearfix content">
-            <h2 class="text-center">Infomation about learning groups from friends</h2>
-
-            <p class="text-center desc-home">Hiển thị những group học tiếng nhật của bạn bè trong list friends của
-                bạn, bạn join vào để học cùng nhau nhé</p>
-
-            <p class="text-center desc-home"><i><a>View more all</a></i></p>
-
-            <div class="col-sm-6 group-friends">
+        <div class="home-content text-center">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
                 <div class="row">
                     <div class="col-sm-5">
-                        <a><img src="images/group-friends/masonry_02-400x400.jpg"/></a>
-                    </div>
-                    <div class="col-sm-7">
-                        <div class="info">
-                            <h3><a>N2 Grammar Learning Group</a></h3>
-                            <span>Author: </span> Billy Tran
-                            <div class="date-info">
-                                <span>Schedule:</span> 2015/05/01 - 2015/08/15
-                            </div>
-                            <div class="using-library-info">
-                                <span>Using library:</span> ABC, XYZ
-                            </div>
-                            <div class="person-info">
-                                <span>Registered:</span> 10 person
-                            </div>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your Email">
                         </div>
-                        <a class="btn btn-danger">Join Group</a>
                     </div>
-                </div>
-            </div>
-            <div class="col-sm-6 group-friends">
-                <div class="row">
                     <div class="col-sm-5">
-                        <a><img src="images/group-friends/masonry_05-400x400.jpg"/></a>
-                    </div>
-                    <div class="col-sm-7">
-                        <div class="info">
-                            <h3><a>N2 Grammar Learning Group</a></h3>
-                            <span>Author: </span> Billy Tran
-                            <div class="date-info">
-                                <span>Schedule:</span> 2015/05/01 - 2015/08/15
-                            </div>
-                            <div class="using-library-info">
-                                <span>Using library:</span> ABC, XYZ
-                            </div>
-                            <div class="person-info">
-                                <span>Registered:</span> 10 person
-                            </div>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Your Password">
                         </div>
-                        <a class="btn btn-danger">Join Group</a>
+                    </div>
+                    <div class="col-sm-2">
+                        <button type="submit" class="btn btn-danger">Submit</button>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 group-friends">
-                <div class="row">
-                    <div class="col-sm-5">
-                        <a><img src="images/group-friends/masonry_04-400x400.jpg"/></a>
-                    </div>
-                    <div class="col-sm-7">
-                        <div class="info">
-                            <h3><a>N2 Grammar Learning Group</a></h3>
-                            <span>Author: </span> Billy Tran
-                            <div class="date-info">
-                                <span>Schedule:</span> 2015/05/01 - 2015/08/15
-                            </div>
-                            <div class="using-library-info">
-                                <span>Using library:</span> ABC, XYZ
-                            </div>
-                            <div class="person-info">
-                                <span>Registered:</span> 10 person
-                            </div>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        </div>
-                        <a class="btn btn-danger">Join Group</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 group-friends">
-                <div class="row">
-                    <div class="col-sm-5">
-                        <a><img src="images/group-friends/masonry_02-400x400.jpg"/></a>
-                    </div>
-                    <div class="col-sm-7">
-                        <div class="info">
-                            <h3><a>N2 Grammar Learning Group</a></h3>
-                            <span>Author: </span> Billy Tran
-                            <div class="date-info">
-                                <span>Schedule:</span> 2015/05/01 - 2015/08/15
-                            </div>
-                            <div class="using-library-info">
-                                <span>Using library:</span> ABC, XYZ
-                            </div>
-                            <div class="person-info">
-                                <span>Registered:</span> 10 person
-                            </div>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        </div>
-                        <a class="btn btn-danger">Join Group</a>
-                    </div>
-                </div>
-            </div>
-            <a class="btn sd-learn-more view-more">View More Groups From Friends</a>
-        </div>
-    </div>
-</div>
-<div class="vocabulary content clearfix">
-    <div class="container">
-        <div class="row">
-            <h2 class="text-center clearfix">Vocabulary learning group</h2>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-12">
+                <p class="">If you haven't account, you can click <a href=""><span class="label label-primary register">register</span></a> here or you can login with social follow</p>
 
-            <p class="text-center desc-home">Hiển thị những group học tiếng nhật của bạn bè trong list friends của
-                bạn, bạn join vào để học cùng nhau nhé</p>
-
-            <p class="text-center desc-home"><i><a>View more all</a></i></p>
-
-            <div class="col-sm-3">
-                <div class="vocabulary-item">
-                    <a><img src="images/group-friends/masonry_15-400x400.jpg"/> </a>
-
-                    <div class="info">
-                        <h3><a>Vocabulary games with us</a></h3>
-                        <span>Author: </span> Billy Tran
-                        <div class="date-info">
-                            <span>Schedule:</span> 2015/05/01 - 2015/08/15
-                        </div>
-                        <div class="using-library-info">
-                            <span>Using library:</span> ABC, XYZ
-                        </div>
-                        <div class="person-info">
-                            <span>Registered:</span> 10 person
-                        </div>
-
-                    </div>
-                    <a class="btn sd-learn-more">Detail</a>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="vocabulary-item">
-                    <a><img src="images/group-friends/masonry_05-400x400.jpg"/> </a>
-
-                    <div class="info">
-                        <h3><a>Vocabulary games with us</a></h3>
-                        <span>Author: </span> Billy Tran
-                        <div class="date-info">
-                            <span>Schedule:</span> 2015/05/01 - 2015/08/15
-                        </div>
-                        <div class="using-library-info">
-                            <span>Using library:</span> ABC, XYZ
-                        </div>
-                        <div class="person-info">
-                            <span>Registered:</span> 10 person
-                        </div>
-
-                    </div>
-                    <a class="btn sd-learn-more">Detail</a>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="vocabulary-item">
-                    <a><img src="images/group-friends/masonry_02-400x400.jpg"/> </a>
-
-                    <div class="info">
-                        <h3><a>Vocabulary games with us</a></h3>
-                        <span>Author: </span> Billy Tran
-                        <div class="date-info">
-                            <span>Schedule:</span> 2015/05/01 - 2015/08/15
-                        </div>
-                        <div class="using-library-info">
-                            <span>Using library:</span> ABC, XYZ
-                        </div>
-                        <div class="person-info">
-                            <span>Registered:</span> 10 person
-                        </div>
-
-                    </div>
-                    <a class="btn sd-learn-more">Detail</a>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="vocabulary-item">
-                    <a><img src="images/group-friends/masonry_05-400x400.jpg"/> </a>
-
-                    <div class="info">
-                        <h3><a>Vocabulary games with us</a></h3>
-                        <span>Author: </span> Billy Tran
-                        <div class="date-info">
-                            <span>Schedule:</span> 2015/05/01 - 2015/08/15
-                        </div>
-                        <div class="using-library-info">
-                            <span>Using library:</span> ABC, XYZ
-                        </div>
-                        <div class="person-info">
-                            <span>Registered:</span> 10 person
-                        </div>
-
-                    </div>
-                    <a class="btn sd-learn-more">Detail</a>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
-<div class="reading content clearfix">
-    <div class="container">
-        <div class="row">
-            <h2 class="text-center clearfix">reading practice group</h2>
-
-            <p class="text-center desc-home">Hiển thị những group học tiếng nhật của bạn bè trong list friends của
-                bạn, bạn
-                join vào để học cùng nhau nhé</p>
-
-            <p class="text-center desc-home"><i><a>View more all</a></i></p>
-
-            <div class="col-sm-3">
-                <div class="vocabulary-item">
-                    <a><img src="images/group-friends/masonry_15-400x400.jpg"/> </a>
-
-                    <div class="info">
-                        <h3><a>Vocabulary games with us</a></h3>
-                        <span>Author: </span> Billy Tran
-                        <div class="date-info">
-                            <span>Schedule:</span> 2015/05/01 - 2015/08/15
-                        </div>
-                        <div class="using-library-info">
-                            <span>Using library:</span> ABC, XYZ
-                        </div>
-                        <div class="person-info">
-                            <span>Registered:</span> 10 person
-                        </div>
-
-                    </div>
-                    <a class="btn sd-learn-more">Detail</a>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="vocabulary-item">
-                    <a><img src="images/group-friends/masonry_05-400x400.jpg"/> </a>
-
-                    <div class="info">
-                        <h3><a>Vocabulary games with us</a></h3>
-                        <span>Author: </span> Billy Tran
-                        <div class="date-info">
-                            <span>Schedule:</span> 2015/05/01 - 2015/08/15
-                        </div>
-                        <div class="using-library-info">
-                            <span>Using library:</span> ABC, XYZ
-                        </div>
-                        <div class="person-info">
-                            <span>Registered:</span> 10 person
-                        </div>
-
-                    </div>
-                    <a class="btn sd-learn-more">Detail</a>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="vocabulary-item">
-                    <a><img src="images/group-friends/masonry_02-400x400.jpg"/> </a>
-
-                    <div class="info">
-                        <h3><a>Vocabulary games with us</a></h3>
-                        <span>Author: </span> Billy Tran
-                        <div class="date-info">
-                            <span>Schedule:</span> 2015/05/01 - 2015/08/15
-                        </div>
-                        <div class="using-library-info">
-                            <span>Using library:</span> ABC, XYZ
-                        </div>
-                        <div class="person-info">
-                            <span>Registered:</span> 10 person
-                        </div>
-
-                    </div>
-                    <a class="btn sd-learn-more">Detail</a>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="vocabulary-item">
-                    <a><img src="images/group-friends/masonry_05-400x400.jpg"/> </a>
-
-                    <div class="info">
-                        <h3><a>Vocabulary games with us</a></h3>
-                        <span>Author: </span> Billy Tran
-                        <div class="date-info">
-                            <span>Schedule:</span> 2015/05/01 - 2015/08/15
-                        </div>
-                        <div class="using-library-info">
-                            <span>Using library:</span> ABC, XYZ
-                        </div>
-                        <div class="person-info">
-                            <span>Registered:</span> 10 person
-                        </div>
-
-                    </div>
-                    <a class="btn sd-learn-more">Detail</a>
+                <div>
+                    <a class="btn btn-social-icon btn-sm btn-facebook"><i class="fa fa-facebook"></i></a>
+                    <a class="btn btn-social-icon btn-sm btn-flickr"><i class="fa fa-flickr"></i></a>
+                    <a class="btn btn-social-icon btn-sm btn-github"><i class="fa fa-github"></i></a>
+                    <a class="btn btn-social-icon btn-sm btn-google-plus"><i class="fa fa-google-plus"></i></a>
+                    <a class="btn btn-social-icon btn-sm btn-instagram"><i class="fa fa-instagram"></i></a>
+                    <a class="btn btn-social-icon btn-sm btn-linkedin"><i class="fa fa-linkedin"></i></a>
+                    <a class="btn btn-social-icon btn-sm btn-tumblr"><i class="fa fa-tumblr"></i></a>
+                    <a class="btn btn-social-icon btn-sm btn-twitter"><i class="fa fa-twitter"></i></a>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<div class="vocabulary content clearfix">
-    <div class="container">
-        <div class="row">
-            <h2 class="text-center clearfix">Learning your self</h2>
 
-            <p class="text-center desc-home">Hiển thị những group học tiếng nhật của bạn bè trong list friends của
-                bạn, bạn
-                join vào để học cùng nhau nhé</p>
 
-            <p class="text-center desc-home"><i><a>View more all</a></i></p>s
-            <div class="col-sm-3">
-                <div class="vocabulary-item">
-                    <a><img src="images/group-friends/masonry_15-400x400.jpg"/> </a>
-
-                    <div class="info">
-                        <h3><a>Vocabulary games with us</a></h3>
-                        <span>Author: </span> Billy Tran
-                        <div class="date-info">
-                            <span>Schedule:</span> 2015/05/01 - 2015/08/15
-                        </div>
-                        <div class="using-library-info">
-                            <span>Using library:</span> ABC, XYZ
-                        </div>
-                        <div class="person-info">
-                            <span>Registered:</span> 10 person
-                        </div>
-
-                    </div>
-                    <a class="btn sd-learn-more">Detail</a>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="vocabulary-item">
-                    <a><img src="images/group-friends/masonry_05-400x400.jpg"/> </a>
-
-                    <div class="info">
-                        <h3><a>Vocabulary games with us</a></h3>
-                        <span>Author: </span> Billy Tran
-                        <div class="date-info">
-                            <span>Schedule:</span> 2015/05/01 - 2015/08/15
-                        </div>
-                        <div class="using-library-info">
-                            <span>Using library:</span> ABC, XYZ
-                        </div>
-                        <div class="person-info">
-                            <span>Registered:</span> 10 person
-                        </div>
-
-                    </div>
-                    <a class="btn sd-learn-more">Detail</a>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="vocabulary-item">
-                    <a><img src="images/group-friends/masonry_02-400x400.jpg"/> </a>
-
-                    <div class="info">
-                        <h3><a>Vocabulary games with us</a></h3>
-                        <span>Author: </span> Billy Tran
-                        <div class="date-info">
-                            <span>Schedule:</span> 2015/05/01 - 2015/08/15
-                        </div>
-                        <div class="using-library-info">
-                            <span>Using library:</span> ABC, XYZ
-                        </div>
-                        <div class="person-info">
-                            <span>Registered:</span> 10 person
-                        </div>
-
-                    </div>
-                    <a class="btn sd-learn-more">Detail</a>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="vocabulary-item">
-                    <a><img src="images/group-friends/masonry_05-400x400.jpg"/> </a>
-
-                    <div class="info">
-                        <h3><a>Vocabulary games with us</a></h3>
-                        <span>Author: </span> Billy Tran
-                        <div class="date-info">
-                            <span>Schedule:</span> 2015/05/01 - 2015/08/15
-                        </div>
-                        <div class="using-library-info">
-                            <span>Using library:</span> ABC, XYZ
-                        </div>
-                        <div class="person-info">
-                            <span>Registered:</span> 10 person
-                        </div>
-
-                    </div>
-                    <a class="btn sd-learn-more">Detail</a>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 <div class="footer">
     <div class="container">
         <div class="row">
-            <div class="col-sm-4">
-                <div class="logo-footer">
-                    <a><img src="images/logo.png"/> </a>
+            <div class="col-sm-3">
+                <div class="home-static user-home">
+                    <i class="fa fa-user fa-5x"></i>
 
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <a class="btn btn-block btn-sm btn-social btn-facebook">
-                                <i class="fa fa-facebook"></i> Follow on Facebook
-                            </a>
-                        </div>
-                        <div class="col-sm-6">
-                            <a class="btn btn-block btn-sm btn-social btn-twitter">
-                                <i class="fa fa-twitter"></i> Follow on Twitter
-                            </a>
-                        </div>
-                    </div>
+                    <p><span class="counter">1500</span></p>
 
-
+                    <p>User</p>
                 </div>
             </div>
-            <div class="col-sm-4">
-                <h3>Address</h3>
-                <ul>
-                    <li><i class="iconentypo-home"></i> 11 Fifth Ave, Loftus - NEW JERSEY, US</li>
-                    <li><i class="iconentypo-phone"></i> Telephone: + 61 (2) 8093 3400</li>
-                    <li><i class="iconentypo-print"></i> Fax: +61 (2) 9542 3599</li>
-                    <li><i class="iconentypo-mail"></i> Email: <a href="#">submissions@domain.com</a></li>
-                </ul>
-            </div>
-            <div class="col-sm-4">
-                <h3>Quick links</h3>
-                <ul>
-                    <li><a>Colleges & Schools</a></li>
-                    <li><a>Course Catalog</a></li>
-                    <li><a>Single Course</a></li>
-                    <li><a>Colleges & Schools</a></li>
-                    <li><a>Course Catalog</a></li>
-                    <li><a>Single Course</a></li>
+            <div class="col-sm-3">
+                <div class="home-static library">
+                    <i class="fa fa-book fa-5x"></i>
 
-                </ul>
+                    <p><span class="counter">5500</span></p>
+
+                    <p>Library</p>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="home-static group-member">
+                    <i class="fa fa-group fa-5x"></i>
+
+                    <p><span class="counter">3500</span></p>
+
+                    <p>Group</p>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="home-static vocabulary">
+                    <i class="fa fa-hdd-o fa-5x"></i>
+
+                    <p><span class="counter">1000</span></p>
+
+                    <p>Vocabulary</p>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<div class="copyright">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12 text-center">
-                © 2015 All Rights Reserved. Terms of use and Privacy Policy
-            </div>
-        </div>
-    </div>
-</div>
+<script data-example="examples">
+    $(function () {
+        $(".counter").countimator();
+    });
+</script>
+
 </body>
 </html>

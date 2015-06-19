@@ -1,0 +1,140 @@
+.home-slideshow img{
+    width: 100%;
+}
+.who-are-we{
+    margin: 4rem 0;
+}
+.who-are-we p{
+    font-size: 18px;
+}
+.who-are-we .btn-social-icon.btn-sm {
+    border-radius: 50%;
+}
+/* ----------------------- */
+/*		  SERVICE - 1      */
+/* ----------------------- */
+.ts-service-style-1{margin-top: 60px}
+.ts-service-style-1 .service-icon{
+    background-color: #42454a;
+    position: relative;
+    color: white;
+    text-align: center;
+    width: 45px;
+    height: 45px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 16px;
+    transition: background 0.2s ease 0s, color 0.2s ease 0s;
+    -moz-transition: background 0.2s ease 0s, color 0.2s ease 0s;
+    -webkit-transition: background 0.2s ease 0s, color 0.2s ease 0s;
+    font-size: 20px;
+
+}
+.ts-service-style-1 .service-icon .fa{
+    line-height: 48px;
+}
+.ts-service-style-1 .service-icon:after{
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+    content: "";
+    height: 100%;
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    box-shadow: 0 0 0 4px #fd4326;
+    -moz-box-shadow: 0 0 0 4px #fd4326;
+    -webkit-box-shadow: 0 0 0 4px #fd4326;
+    left: -7px;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    padding: 7px;
+    top: -7px;
+    transform: scale(0.8);
+    -moz-transform: scale(0.8);
+    -webkit-transform: scale(0.8);
+    transition: transform 0.2s ease 0s, opacity 0.2s ease 0s;
+    -moz-transition: -moz-transform 0.2s ease 0s, opacity 0.2s ease 0s;
+    -webkit-transition: -webkit-transform 0.2s ease 0s, opacity 0.2s ease 0s;
+    box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+}
+.ts-service-style-1:hover .service-icon:after {
+    opacity: 1;
+    filter: alpha(opacity=100);
+    transform: scale(1);
+    -moz-transform: scale(1);
+    -webkit-transform: scale(1);
+}
+.ts-service-style-1:hover .service-icon{
+    color: white;
+    background: #fd4326;
+}
+.ts-service-style-1 .service-title h3{
+    display: inline-block;
+    margin: 0;
+    font-size: 20px;
+    color: #252525;
+    line-height: 50px;
+}
+.ts-service-style-1 .service-content{
+    margin: 30px 0 30px 0;
+    line-height: 26px;
+    font-weight: 300;
+}
+.ts-service-style-1 .read-more{
+    color: #fd4326;
+    font-size: 12px;
+    font-weight: 300;
+    text-decoration: none;
+}
+.ts-service-style-1 .read-more .fa{
+    margin-left: 7px
+}
+.home-static{
+    color: #fff;
+    padding: 10px;
+    border: 2px solid #CDCBCC;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+    width: 225px;
+    height: 225px;
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 40px;
+    margin-bottom: 20px;
+}
+.counter{
+    font-weight: 500;
+    font-size: 18px;
+}
+.statistics{
+    padding: 5rem;
+    background-attachment: fixed;
+    background-image: url(../images/bg-progreaa.jpg);
+    background-repeat: repeat;
+    background-size: cover;
+    position: relative;
+    background-position: 0 50%;
+}
+.ts-overlay {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: rgba(0,0,0,0.7);
+}
+.statistics .fa{
+    color: #fd4326;
+}

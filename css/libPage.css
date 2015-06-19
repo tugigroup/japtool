@@ -1,0 +1,34 @@
+.libMaster {
+    padding-top: 5px;
+    margin-bottom: 2px;
+}
+
+.libBoder-right {
+    border-right: 1px solid #c0c0c0;
+}
+
+.libImg {
+    height: auto;
+}
+
+.libImg-modal {
+    padding-left: 10px;
+}
+.libPara-modal{
+    text-align: justify;
+}
+.lib-label-danger {
+    background-color: red;
+    font-weight: normal;
+}
+
+.libMaster li {
+    font-size: 13px;
+}
+
+a:hover {
+    text-decoration: none;
+}
+.library-page .col-sm-4{
+    margin-bottom: 1rem;
+}
