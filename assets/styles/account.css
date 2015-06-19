@@ -30,7 +30,9 @@
     margin: 0 auto;
     margin-top: 0 !important;
 }
-
+.login-page:hover{
+    color: #265a88 !important;
+}
 div.required .control-label:before {
     content: '* ';
     color: #F00;

@@ -17,6 +17,19 @@ ul {
     list-style: none;
 }
 
+.row-no-padding {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.row-no-padding-left {
+    padding-left: 0 !important;
+}
+
+.row-no-padding-right {
+    padding-right: 0 !important;
+}
+
 .sd-learn-more {
     border: 1px solid #D54940;
     border-radius: 3px;
@@ -231,10 +244,10 @@ ul {
 
 /*Library*/
 /*.modal-header, h4, .close {*/
-    /*background-color: #5cb85c;*/
-    /*color: white !important;*/
-    /*text-align: center;*/
-    /*font-size: 30px;*/
+/*background-color: #5cb85c;*/
+/*color: white !important;*/
+/*text-align: center;*/
+/*font-size: 30px;*/
 /*}*/
 
 .modal-footer {
@@ -287,9 +300,10 @@ ul {
     margin-top: -40px;
 }
 
-.creategroup-form{
+.creategroup-form {
     margin-top: 2rem;
 }
+
 .creategroup-form .panel-heading h2 {
     color: #fff;
     font-weight: 300;
@@ -299,17 +313,20 @@ ul {
 }
 
 .creategroup-form .panel-info {
-    border-color:#5cb85c ;
+    border-color: #5cb85c;
 }
+
 .creategroup-form .panel-heading {
     background: #5cb85c;
 }
-.creategroup-button button{
+
+.creategroup-button button {
     border: none;
     width: 100%;
     padding: 10px;
     color: #fff;
 }
+
 /*END CONTENT*/
 /*FOOTER*/
 .footer {

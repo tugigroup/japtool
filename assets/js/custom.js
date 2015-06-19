@@ -2,6 +2,8 @@
  * Created by TuyenTV1 on 6/15/2015.
  */
 
+
+//Search user when click button
 $(document).ready(function () {
     $('#submit').click(function () {
         var username = $('#username').val();
