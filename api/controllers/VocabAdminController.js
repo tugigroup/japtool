@@ -190,9 +190,9 @@ module.exports = {
 
       var database = require('../common/database');
 
-      console.log('uri: ' + database.uri());
-      console.log('host: ' + database.host());
-      console.log('port: ' + database.port());
+      //console.log('uri: ' + database.uri());
+      //console.log('host: ' + database.host());
+      //console.log('port: ' + database.port());
 
       Vocabulary.find().exec(function findCB(err,vocabularies){
    
