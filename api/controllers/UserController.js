@@ -23,8 +23,6 @@ module.exports = {
                 //if error redirect back to sign-up page
                 return res.redirect('/user/new');
             }
-
-
             //Long user in
             req.session.authenticated = true;
             req.session.User = user;
@@ -35,7 +33,6 @@ module.exports = {
             res.redirect('/user/show/' + user.id);
 
         });
-
     },
     //render the profile view (show.ejs)
     show: function (req, res, next) {

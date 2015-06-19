@@ -11,15 +11,11 @@ module.exports = {
     schema: true,
     adapter: 'mongo',
     attributes: {
-        provider:{
-          type:'string'
+        provider: {
+            type: 'string'
         },
-        uid:{
-            type:'string'
-        },
-        username: {
-            type: 'string',
-            required: true
+        uid: {
+            type: 'string'
         },
         firstname: {
             type: 'string',
@@ -30,21 +26,40 @@ module.exports = {
             required: true
         },
         email: {
-            type: 'string',
-            email: 'true',
-            required: true,
-            unique: true
+            type: 'string'
+            //email: 'true',
+            //required: true,
+            //unique: true
         },
-        encryptedPassword: {
+        telephone: {
             type: 'string'
         },
-        admin: {
-            type: 'boolean',
-            defaultsTo: false
-        },
-        address: {
+        fax: {
             type: 'string'
         },
+
+        yourAddress: [{
+            company: {
+                type: 'string',
+                value:'company'
+            },
+            address: {
+                type: 'string',
+                value:'address'
+            },
+            city: {
+                type: 'string',
+                value:'city'
+            },
+            postCode: {
+                type: 'string',
+                value:'postCode'
+            },
+            country: {
+                type: 'string',
+                value:'country'
+            }
+        }],
         gender: {
             type: 'integer'
         },
@@ -71,6 +86,17 @@ module.exports = {
             type: 'boolean',
             defaultsTo: false
         },
+        username: {
+            type: 'string',
+            required: true
+        },
+        admin: {
+            type: 'boolean',
+            defaultsTo: false
+        },
+        encryptedPassword: {
+            type: 'string'
+        },
         // Add a reference to User
         buddy: {
             collection: "Buddy",
@@ -80,7 +106,7 @@ module.exports = {
 
     },
     beforeCreate: function (values, next) {
-        if (typeof values.provider !== 'undefined'){
+        if (typeof values.provider !== 'undefined') {
             return next();
         }
         //This checks to make sure the password confirmation match before creating record

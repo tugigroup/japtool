@@ -2,92 +2,168 @@
 <html>
 <head>
 
-	<title>New Sails App</title>
+    <title>New Sails App</title>
 
-	<!-- Viewport mobile tag for sensible mobile support -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Viewport mobile tag for sensible mobile support -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--
+        Stylesheets and Preprocessors
+        ==============================
 
+        You can always bring in CSS files manually with `<link>` tags, or asynchronously
+        using a solution like AMD (RequireJS).  Or, if you like, you can take advantage
+        of Sails' conventional asset pipeline (boilerplate Gruntfile).
 
-	<!--
-		Stylesheets and Preprocessors
-		==============================
+        By default, stylesheets from your `assets/styles` folder are included
+        here automatically (between STYLES and STYLES END). Both CSS (.css) and LESS (.less)
+        are supported. In production, your styles will be minified and concatenated into
+        a single file.
 
-		You can always bring in CSS files manually with `<link>` tags, or asynchronously
-		using a solution like AMD (RequireJS).  Or, if you like, you can take advantage
-		of Sails' conventional asset pipeline (boilerplate Gruntfile).
+        To customize any part of the built-in behavior, just edit `tasks/pipeline.js`.
+        For example, here are a few things you could do:
 
-		By default, stylesheets from your `assets/styles` folder are included
-		here automatically (between STYLES and STYLES END). Both CSS (.css) and LESS (.less)
-		are supported. In production, your styles will be minified and concatenated into
-		a single file.
-
-		To customize any part of the built-in behavior, just edit `tasks/pipeline.js`.
-		For example, here are a few things you could do:
-
-			+ Change the order of your CSS files
-			+ Import stylesheets from other directories
-			+ Use a different or additional preprocessor, like SASS, SCSS or Stylus
-	-->
-	<!--STYLES-->
-	<link rel="stylesheet" href="/styles/bootstrap-social.css">
-	<link rel="stylesheet" href="/styles/bootstrap-theme.css">
-	<link rel="stylesheet" href="/styles/bootstrap-theme.min.css">
-	<link rel="stylesheet" href="/styles/bootstrap.css">
-	<link rel="stylesheet" href="/styles/bootstrap.min.css">
-	<link rel="stylesheet" href="/styles/font-awesome.css">
-	<link rel="stylesheet" href="/styles/importer.css">
-	<link rel="stylesheet" href="/styles/user.css">
-	<link rel="stylesheet" href="/styles/vocabulary.css">
-	<!--STYLES END-->
+            + Change the order of your CSS files
+            + Import stylesheets from other directories
+            + Use a different or additional preprocessor, like SASS, SCSS or Stylus
+    -->
+    <!--STYLES-->
+    <link rel="stylesheet" href="/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="/styles/account.css">
+    <link rel="stylesheet" href="/styles/bootstrap-social.css">
+    <link rel="stylesheet" href="/styles/font-awesome.css">
+    <link rel="stylesheet" href="/styles/font-roboto.css">
+    <link rel="stylesheet" href="/styles/importer.css">
+    <link rel="stylesheet" href="/styles/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="/styles/menu.css">
+    <link rel="stylesheet" href="/styles/user.css">
+    <link rel="stylesheet" href="/styles/vocabulary.css">
+    <!--STYLES END-->
 </head>
 
 <body>
-<div class="navbar navbar-inverse navbar-fixed-top">
-	<div class="container">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="/"> GIB ODC</a>
-		</div>
-		<div class="navbar-collapse collapse">
-			<ul class="nav navbar-nav">
-				<% if(session.authenticated){ %>
-				<li class="active"><a href="/user/show/<%= session.User.id %>"><%= session.User.username %></a></li>
-				<% } %>
-				<% if(session.authenticated && session.User.admin){ %>
-				<li><a href="/user">User Administrator</a></li>
-				<li><a href="#">Placeholder2</a></li>
-				<% } %>
-			</ul>
-			<div class="navbar-right">
-				<% if(session.authenticated){ %>
-				<a class="btn btn-default navbar-btn navbar-right" href="/auth/destroy">sign-out</a>
-				<% } %>
-			</div>
-			<% if (!session.authenticated) { %>
-			<form class="navbar-form navbar-right" action="/auth/login">
-				<div class="form-group">
-					<input type="text" placeholder="Email" name="email" class="form-control">
-				</div>
-				<div class="form-group">
-					<input type="password" placeholder="Password" name="password" class="form-control">
-				</div>
-				<button type="submit" class="btn btn-success">Sign in</button>
-				<input type="hidden" name="_csrf" value="<%= _csrf %>"/>
-			</form>
-			<% } %>
-		</div>
-	</div>
-</div>
-<div class="container">
-	<div class="row">
-		<%- body %>
-	</div>
-</div>
+<div class="header">
+    <div class="header-top">
+        <div class="container">
+            <div class="row">
+                <div class="header-top-menu col-md-4 col-md-offset-6">
+                    <ul>
+                        <li><a>Book Store</a></li>
+                        <li><a href="library/library.html">Libary</a></li>
+                        <li><a>Vocabulary</a></li>
+                        <li><a href="group/group.html">My group</a></li>
+                    </ul>
+                </div>
+                <div class="account-right col-md-2">
+                    <a href="catalog/user/login.html">Login</a>
+                    <a href="catalog/user/register.html">Register</a>
+                </div>
 
+
+            </div>
+        </div>
+    </div>
+    <div class="header-center clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <a class="logo"><img src="../images/logo.png"></a>
+                </div>
+                <div class="col-md-9">
+                    <div id='cssmenu' class="pull-right">
+                        <ul class="menu-page">
+                            <li><a href='home.html'>Home</a></li>
+                            <li><a href='#'>About</a></li>
+                            <li class='active'><a href='library/library.html'>Libary</a>
+                                <ul>
+                                    <li><a href='#'>Product 1</a>
+                                        <ul>
+                                            <li><a href='#'>Sub Product</a></li>
+                                            <li><a href='#'>Sub Product</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href='#'>Product 2</a>
+                                        <ul>
+                                            <li><a href='#'>Sub Product</a></li>
+                                            <li><a href='#'>Sub Product</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="learning-group/learning-group.html">Learning group</a></li>
+                            <li><a>Using guide</a></li>
+                            <li><a href='#'>Contact</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="stripe_color"></div>
+        <div class="stripe_image"></div>
+    </div>
+
+</div>
+<%- body %>
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="logo-footer">
+                    <a><img src="../images/logo.png"/> </a>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <a class="btn btn-block btn-sm btn-social btn-facebook">
+                                <i class="fa fa-facebook"></i> Follow on Facebook
+                            </a>
+                        </div>
+                        <div class="col-sm-6">
+                            <a class="btn btn-block btn-sm btn-social btn-twitter">
+                                <i class="fa fa-twitter"></i> Follow on Twitter
+                            </a>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <h3>Address</h3>
+                <ul>
+                    <li><i class="iconentypo-home"></i> 11 Fifth Ave, Loftus - NEW JERSEY, US</li>
+                    <li><i class="iconentypo-phone"></i> Telephone: + 61 (2) 8093 3400</li>
+                    <li><i class="iconentypo-print"></i> Fax: +61 (2) 9542 3599</li>
+                    <li><i class="iconentypo-mail"></i> Email: <a href="#">submissions@domain.com</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-4">
+                <h3>Quick links</h3>
+                <ul>
+                    <li><a>Colleges & Schools</a></li>
+                    <li><a>Course Catalog</a></li>
+                    <li><a>Single Course</a></li>
+                    <li><a>Colleges & Schools</a></li>
+                    <li><a>Course Catalog</a></li>
+                    <li><a>Single Course</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                ï¿½ 2015 All Rights Reserved. Terms of use and Privacy Policy
+            </div>
+        </div>
+    </div>
+</div>
 <!--
     Client-side Templates
     ========================
@@ -138,15 +214,20 @@
 -->
 
 <!--SCRIPTS-->
+<script src="/js/dependencies/jquery-1.9.1.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/dependencies/script.js"></script>
 <script src="/js/dependencies/sails.io.js"></script>
 <script src="/js/dependencies/angular.min.js"></script>
-<script src="/js/dependencies/jquery-1.9.1.js"></script>
+<script src="/js/dependencies/bootstrap-table.js"></script>
+<script src="/js/dependencies/jquery.mCustomScrollbar.concat.min.js"></script>
 <script src="/js/dependencies/jquery.validate.min.js"></script>
+<script src="/js/dependencies/scrollBar.js"></script>
+<script src="/js/dependencies/showEdit.js"></script>
 <script src="/js/dependencies/test/test.js"></script>
 <script src="/js/dependencies/vocabulary.js"></script>
 <script src="/js/dependencies/zcommon.js"></script>
 <script src="/js/dependencies/zcustomValidate.js"></script>
-<script src="/js/bootstrap.min.js"></script>
 <script src="/js/custom.js"></script>
 <script src="/js/npm.js"></script>
 <!--SCRIPTS END-->
