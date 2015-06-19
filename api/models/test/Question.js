@@ -42,6 +42,9 @@ module.exports = {
         },
         other: {
             type: "string"
+        },
+        bookDetail:{
+            model:'BookDetail'
         }
     }
 };

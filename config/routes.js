@@ -55,6 +55,8 @@ module.exports.routes = {
     'post /inputAnswer': 'test/AnswerController.create',
     'get /lesson/:category/:lesson': 'test/QuestionController.lesson',
     '/learningGroup':{view:'test/learn-group'},
+    '/getBookMaster':{view:'test/book-master'},
+    '/getBookDetail':'BookDetailController.getBookDetail',
     /*End QuyetND2*/
 
 
