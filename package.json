@@ -1,0 +1,17 @@
+{
+  "name": "datatool",
+  "version": "1.0.0",
+  "description": "tools for manapulate data for japtool",
+  "main": " ",
+  "dependencies": {
+    "csv-parse": "^0.1.3",
+    "mongoose": "^4.0.6",
+    "string": "^3.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": " "
+  },
+  "author": "dulv",
+  "license": "ISC"
+}
