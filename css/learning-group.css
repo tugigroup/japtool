@@ -244,9 +244,11 @@ ul.timeline > li > .timeline-panel:after {
     left: -13px;
     right: auto;
 }
-.invite-member{
+
+.invite-member {
     padding-bottom: 1rem;
 }
+
 .invite-member .col-sm-8 {
     padding-left: 0;
 }
@@ -256,21 +258,290 @@ ul.timeline > li > .timeline-panel:after {
     font-size: 14px;
     color: rgb(217, 83, 79);
 }
-.comment img{
+
+.comment img {
     border-radius: 50%;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
 }
-.comment-items{
+
+.comment-items {
     margin-bottom: 1rem;
 }
-.comment-area{
+
+.comment-area {
     width: 100%;
 }
-.view-comment{
+
+.view-comment {
     font-size: 16px;
     font-weight: 400;
     padding-top: 25px;
     display: block;
     color: rgb(0, 105, 152);
+}
+
+/*/!*learning group menu*!/*/
+/*@import url(http://fonts.googleapis.com/css?family=Raleway:400,200);*/
+/*#cssmenu-learngroup,*/
+/*#cssmenu-learngroup ul,*/
+/*#cssmenu-learngroup ul li,*/
+/*#cssmenu-learngroup ul li a {*/
+    /*margin: 0;*/
+    /*padding: 0;*/
+    /*border: 0;*/
+    /*list-style: none;*/
+    /*line-height: 1;*/
+    /*display: block;*/
+    /*position: relative;*/
+    /*-webkit-box-sizing: border-box;*/
+    /*-moz-box-sizing: border-box;*/
+    /*box-sizing: border-box;*/
+/*}*/
+
+/*#cssmenu-learngroup {*/
+    /*/!*width: 220px;*!/*/
+    /*font-family: Raleway, sans-serif;*/
+    /*color: #ffffff;*/
+/*}*/
+
+/*#cssmenu-learngroup ul ul {*/
+    /*display: none;*/
+/*}*/
+
+/*#cssmenu-learngroup > ul > li.active > ul {*/
+    /*display: block;*/
+/*}*/
+
+/*.align-right {*/
+    /*float: right;*/
+/*}*/
+
+/*#cssmenu-learngroup > ul > li > a {*/
+    /*padding: 8px 2px;*/
+    /*cursor: pointer;*/
+    /*z-index: 2;*/
+    /*font-size: 17px;*/
+    /*text-decoration: none;*/
+    /*color: black;*/
+    /*text-decoration: none;*/
+    /*-webkit-transition: color .2s ease;*/
+    /*-o-transition: color .2s ease;*/
+    /*transition: color .2s ease;*/
+/*}*/
+
+/*#cssmenu-learngroup > ul > li > a:before {*/
+    /*text-color: #000;*/
+    /*border-left: 3px solid red;*/
+    /*content: ' ';*/
+    /*padding-right: 4px;*/
+/*}*/
+
+/*#cssmenu-learngroup > ul > li > a:hover {*/
+    /*color: red;*/
+/*}*/
+
+/*#cssmenu-learngroup ul > li.has-sub > a:after {*/
+    /*position: absolute;*/
+    /*right: 26px;*/
+    /*top: 19px;*/
+    /*z-index: 5;*/
+    /*display: block;*/
+    /*height: 10px;*/
+    /*width: 2px;*/
+    /*background: red;*/
+    /*content: "";*/
+    /*-webkit-transition: all 0.1s ease-out;*/
+    /*-moz-transition: all 0.1s ease-out;*/
+    /*-ms-transition: all 0.1s ease-out;*/
+    /*-o-transition: all 0.1s ease-out;*/
+    /*transition: all 0.1s ease-out;*/
+/*}*/
+
+/*#cssmenu-learngroup ul > li.has-sub > a:before {*/
+    /*/!*position: absolute;*!/*/
+    /*right: 22px;*/
+    /*top: 23px;*/
+    /*/!*display: block;*!/*/
+    /*width: 10px;*/
+    /*height: 2px;*/
+    /*background: #ffffff;*/
+    /*content: "";*/
+    /*-webkit-transition: all 0.1s ease-out;*/
+    /*-moz-transition: all 0.1s ease-out;*/
+    /*-ms-transition: all 0.1s ease-out;*/
+    /*-o-transition: all 0.1s ease-out;*/
+    /*transition: all 0.1s ease-out;*/
+/*}*/
+
+/*#cssmenu-learngroup ul > li.has-sub.open > a:after,*/
+/*#cssmenu-learngroup ul > li.has-sub.open > a:before {*/
+    /*-webkit-transform: rotate(180deg);*/
+    /*-moz-transform: rotate(180deg);*/
+    /*-ms-transform: rotate(180deg);*/
+    /*-o-transform: rotate(180deg);*/
+    /*transform: rotate(180deg);*/
+/*}*/
+
+/*#cssmenu-learngroup ul ul li a {*/
+    /*padding: 14px 12px;*/
+    /*cursor: pointer;*/
+    /*z-index: 2;*/
+    /*font-size: 14px;*/
+    /*text-decoration: none;*/
+    /*/!*color: #dddddd;*!/*/
+    /*/!*background: #49505a;*!/*/
+
+    /*/!*modify*!/*/
+    /*color: #000;*/
+    /*/!*border-left: 5px solid green;*!/*/
+    /*margin-bottom: 2px;*/
+    /*/!*end modify*!/*/
+    /*-webkit-transition: color .2s ease;*/
+    /*-o-transition: color .2s ease;*/
+    /*transition: color .2s ease;*/
+/*}*/
+
+/*#cssmenu-learngroup ul ul ul li a {*/
+    /*padding-left: 22px;*/
+    /*/!*modify*!/*/
+    /*/!*border-left: 5px solid yellowgreen;*!/*/
+    /*/!*end modify*!/*/
+/*}*/
+
+/*#cssmenu-learngroup ul ul ul li a:before {*/
+    /*text-color: #000;*/
+    /*border-left: 3px solid brown;*/
+    /*content: ' ';*/
+    /*padding-right: 4px;*/
+/*}*/
+
+/*#cssmenu-learngroup ul ul li a:hover {*/
+    /*color: red;*/
+/*}*/
+
+/*#cssmenu-learngroup ul ul > li.has-sub > a:after {*/
+    /*top: 16px;*/
+    /*right: 26px;*/
+    /*background: #dddddd;*/
+/*}*/
+
+/*#cssmenu-learngroup ul ul > li.has-sub > a:before {*/
+    /*/!*top: 20px;*!/*/
+    /*/!*background: #dddddd;*!/*/
+    /*text-color: #000;*/
+    /*border-left: 3px solid green;*/
+    /*content: ' ';*/
+    /*padding-right: 4px;*/
+/*}*/
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,200);
+#cssmenu-learngroup,
+#cssmenu-learngroup ul,
+#cssmenu-learngroup ul li,
+#cssmenu-learngroup ul li a {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    list-style: none;
+    line-height: 1;
+    display: block;
+    position: relative;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+#cssmenu-learngroup {
+    /*width: 220px;*/
+    font-family: Raleway, sans-serif;
+    color: #ffffff;
+}
+#cssmenu-learngroup ul ul {
+    display: none;
+}
+#cssmenu-learngroup > ul > li.active > ul {
+    display: block;
+}
+.align-right {
+    float: right;
+}
+#cssmenu-learngroup > ul > li > a {
+    padding: 16px 22px;
+    cursor: pointer;
+    z-index: 2;
+    font-size: 16px;
+    text-decoration: none;
+    color: #ffffff;
+    background: #3ab4a6;
+    -webkit-transition: color .2s ease;
+    -o-transition: color .2s ease;
+    transition: color .2s ease;
+}
+#cssmenu-learngroup > ul > li > a:hover {
+    color: #d8f3f0;
+}
+#cssmenu-learngroup ul > li.has-sub > a:after {
+    position: absolute;
+    right: 26px;
+    top: 19px;
+    z-index: 5;
+    display: block;
+    height: 10px;
+    width: 2px;
+    background: #ffffff;
+    content: "";
+    -webkit-transition: all 0.1s ease-out;
+    -moz-transition: all 0.1s ease-out;
+    -ms-transition: all 0.1s ease-out;
+    -o-transition: all 0.1s ease-out;
+    transition: all 0.1s ease-out;
+}
+#cssmenu-learngroup ul > li.has-sub > a:before {
+    position: absolute;
+    right: 22px;
+    top: 23px;
+    display: block;
+    width: 10px;
+    height: 2px;
+    background: #ffffff;
+    content: "";
+    -webkit-transition: all 0.1s ease-out;
+    -moz-transition: all 0.1s ease-out;
+    -ms-transition: all 0.1s ease-out;
+    -o-transition: all 0.1s ease-out;
+    transition: all 0.1s ease-out;
+}
+#cssmenu-learngroup ul > li.has-sub.open > a:after,
+#cssmenu-learngroup ul > li.has-sub.open > a:before {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+#cssmenu-learngroup ul ul li a {
+    padding: 14px 22px;
+    cursor: pointer;
+    z-index: 2;
+    font-size: 14px;
+    text-decoration: none;
+    color: #dddddd;
+    background: #49505a;
+    -webkit-transition: color .2s ease;
+    -o-transition: color .2s ease;
+    transition: color .2s ease;
+}
+#cssmenu-learngroup ul ul ul li a {
+    padding-left: 32px;
+}
+#cssmenu-learngroup ul ul li a:hover {
+    color: #ffffff;
+}
+#cssmenu-learngroup ul ul > li.has-sub > a:after {
+    top: 16px;
+    right: 26px;
+    background: #dddddd;
+}
+#cssmenu-learngroup ul ul > li.has-sub > a:before {
+    top: 20px;
+    background: #dddddd;
 }
