@@ -130,3 +130,7 @@ div.required .control-label:before {
     padding: 7px 20px;
     background-color: #ffffff;
 }
+.success-register a{
+    color: #fff;
+    font-weight: 400;
+}

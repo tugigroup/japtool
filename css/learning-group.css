@@ -464,30 +464,30 @@ ul.timeline > li > .timeline-panel:after {
 .align-right {
     float: right;
 }
+
 #cssmenu-learngroup > ul > li > a {
-    padding: 16px 22px;
+    padding: 11px 0px;
     cursor: pointer;
     z-index: 2;
     font-size: 16px;
     text-decoration: none;
-    color: #ffffff;
-    background: #3ab4a6;
+    color: #000;
     -webkit-transition: color .2s ease;
     -o-transition: color .2s ease;
     transition: color .2s ease;
 }
 #cssmenu-learngroup > ul > li > a:hover {
-    color: #d8f3f0;
+    color: red;
 }
 #cssmenu-learngroup ul > li.has-sub > a:after {
     position: absolute;
     right: 26px;
-    top: 19px;
+    top: 14px;
     z-index: 5;
     display: block;
     height: 10px;
     width: 2px;
-    background: #ffffff;
+    background: #49505A;
     content: "";
     -webkit-transition: all 0.1s ease-out;
     -moz-transition: all 0.1s ease-out;
@@ -498,11 +498,11 @@ ul.timeline > li > .timeline-panel:after {
 #cssmenu-learngroup ul > li.has-sub > a:before {
     position: absolute;
     right: 22px;
-    top: 23px;
+    top: 18px;
     display: block;
     width: 10px;
     height: 2px;
-    background: #ffffff;
+    background: #49505A;
     content: "";
     -webkit-transition: all 0.1s ease-out;
     -moz-transition: all 0.1s ease-out;
@@ -524,8 +524,7 @@ ul.timeline > li > .timeline-panel:after {
     z-index: 2;
     font-size: 14px;
     text-decoration: none;
-    color: #dddddd;
-    background: #49505a;
+    color: #49505A;
     -webkit-transition: color .2s ease;
     -o-transition: color .2s ease;
     transition: color .2s ease;
@@ -534,14 +533,14 @@ ul.timeline > li > .timeline-panel:after {
     padding-left: 32px;
 }
 #cssmenu-learngroup ul ul li a:hover {
-    color: #ffffff;
+    color: red;
 }
 #cssmenu-learngroup ul ul > li.has-sub > a:after {
     top: 16px;
     right: 26px;
-    background: #dddddd;
+    background: #49505A;
 }
 #cssmenu-learngroup ul ul > li.has-sub > a:before {
     top: 20px;
-    background: #dddddd;
+    background: #49505A;
 }
