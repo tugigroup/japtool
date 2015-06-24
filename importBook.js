@@ -65,7 +65,7 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, lessions){
 	var bookMasterInsertCount = 0;
 	var bookDetailInsertCount = 0;
 	var errorCount = 0;
-	var insertedBookMaser;
+	var insertedBookMaster;
 	var insertedBookDetail;
 
 	for ( var i = 1; i < lessions.length; i++ ) {
@@ -74,14 +74,14 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, lessions){
 		lession = lessions[i];
 
 		if (lession[0] == "") {
-			if (insertedBookMaser == null){
+			if (insertedBookMaster == null){
 				errorCount++;
 				continue; 
 
 			} else{
 				// insert book detail record
 				insertedBookDetail = new bookDetailColl({
-					bookID:  				insertedBookMaser._id,
+					bookID:  				insertedBookMaster._id,
 				    lession: 				lession[8],
 				    subLession: 			lession[9],
 				    useModule: 				lession[10],
@@ -110,7 +110,7 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, lessions){
 
 			// insert book detail record
 			insertedBookDetail = new bookDetailColl({
-				bookID:  				insertedBookMaser._id,
+				bookID:  				insertedBookMaster._id,
 			    lession: 				lession[8],
 			    subLession: 			lession[9],
 			    useModule: 				lession[10],
