@@ -1,0 +1,313 @@
+<% $.each(libs, function(i, lib){
+if(lib.level == level){
+if(max > 0){ %>
+<div class="col-sm-4 lib-cell">
+    <div class="row">
+        <div class="media libMaster">
+            <a href="#" data-toggle="modal" data-target="#lib-level<%= lib.no %>">
+                <img class="media-object col-xs-3 libImg"
+                     src="../images/library-icons/<%= Math.floor((Math.random() * 8) + 1) %>.png"
+                     title="Click to view this library details">
+            </a>
+
+            <div class="media-body">
+                <h4 class="media-heading">
+                    <a href="#" class="text-primary"
+                       title="Click to view this library details" data-toggle="modal"
+                       data-target="#lib-level-<%= lib.no %>">
+                        <%= lib.name %>
+                    </a>
+                </h4>
+                <ul>
+                    <li>
+                        <span class="glyphicon glyphicon-flag" aria-hidden="true"></span> Level: <%= lib.level %> - Used: <%= lib.numberOfUser %>
+                    </li>
+                    <li>
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Number
+                        Lesson: <%= lib.numberOfLesson %>
+                    </li>
+
+                    <li>
+                        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                        <a href="#" title="Click to view this library lesson."
+                           data-toggle="modal"
+                           data-target="#lib-review-<%= lib.no %>" class="text-danger">Preview</a> -
+                        <span></span>
+                        <a href="#?no=<%= lib.no %>" title="Click to learn this library." class="text-info">Learning
+                            Library</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--Modal lib details-->
+<div class="modal fade" id="lib-level-<%= lib.no %>" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Library - <%= lib.name %></h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-3">
+                            <a href="#">
+                                <img class="library-detail-img" src="../images/library-icons/<%= Math.floor((Math.random() * 8) + 1) %>.png">
+                            </a>
+                    </div>
+                    <div class="col-sm-9">
+                        <ul>
+                            <h4>Details:</h4>
+                            <li>
+                                <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+                                Level: <%= lib.level %>
+                            </li>
+                            <li>
+                                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                Type: <%= lib.type %>
+                            </li>
+                            <li>
+                                <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+                                Number Lesson: <%= lib.numberOfLesson %>
+                            </li>
+                            <li>
+                                <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+                                Estimate Hour: <%= lib.estimateHour %>
+                            </li>
+                            <li>
+                                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                Number Of Recommend: <%= lib.numberOfRecommend %>
+                            </li>
+                            <li>
+                                <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+                                Used: <%= lib.numberOfUser %>
+                            </li>
+
+                        </ul>
+                    </div>
+                <div class="col-sm-12">
+
+                        <h4>Description:</h4>
+
+                        <div class="pre-scrollable mCustomScrollbar mCS-autoHide"
+                             data-mcs-theme="dark">
+                            Lorem ipsum
+                            dolor sit amet, consectetur adipiscing elit. Integer nec odio.
+                            Praesent libero. Sed cursus antedapibus diam.Sednisi. Nulla quis
+                            sem at nibh elementumimperdiet.Duis sagittis ipsum. Praesent
+                            mauris. Fuscenec tellus sed augue semper porta. Mauris
+                            massa.Vestibulumlaciniaarcu eget nulla. Class aptent taciti
+                            sociosqu adlitoratorquent per conubia nostra, per
+                            inceptoshimenaeos.Curabitur sodales ligula in libero.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+                            nec odio. Praesent libero. Sed cursus antedapibus diam.Sednisi.
+                            Nulla quis sem at nibh elementumimperdiet.Duis sagittis ipsum.
+                            Praesent mauris. Fuscenec tellus sed augue semper porta. Mauris
+                            massa.Vestibulumlaciniaarcu eget nulla. Class aptent taciti
+                            sociosqu adlitoratorquent per conubia nostra, per
+                            inceptoshimenaeos.Curabitur sodales ligula in libero.
+                            Lorem ipsum
+                            dolor sit amet, consectetur adipiscing elit. Integer nec odio.
+                            Praesent libero. Sed cursus antedapibus diam.Sednisi. Nulla quis
+                            sem at nibh elementumimperdiet.Duis sagittis ipsum. Praesent
+                            mauris. Fuscenec tellus sed augue semper porta. Mauris
+                            massa.Vestibulumlaciniaarcu eget nulla. Class aptent taciti
+                            sociosqu adlitoratorquent per conubia nostra, per
+                            inceptoshimenaeos.Curabitur sodales ligula in libero.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+                            nec odio. Praesent libero. Sed cursus antedapibus diam.Sednisi.
+                            Nulla quis sem at nibh elementumimperdiet.Duis sagittis ipsum.
+                            Praesent mauris. Fuscenec tellus sed augue semper porta. Mauris
+                            massa.Vestibulumlaciniaarcu eget nulla. Class aptent taciti
+                            sociosqu adlitoratorquent per conubia nostra, per
+                            inceptoshimenaeos.Curabitur sodales ligula in libero.
+                        </div>
+
+
+                        <h4>Your friends are learning this library: </h4>
+
+                        <div class="row">
+                            <div class="col-sm-1">
+                                <div class="thumbnail">
+                                    <a href="#" title="Click to view profile.">
+                                        <img src="../images/avatar/a01.png">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-sm-1">
+                                <div class="thumbnail">
+                                    <a href="#" title="Click to view profile.">
+                                        <img src="../images/avatar/a02.png">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-sm-1">
+                                <div class="thumbnail">
+                                    <a href="#" title="Click to view profile.">
+                                        <img src="../images/avatar/a03.png">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-sm-1">
+                                <div class="thumbnail">
+                                    <a href="#" title="Click to view profile.">
+                                        <img src="../images/avatar/a04.png">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-sm-1">
+                                <div class="thumbnail">
+                                    <a href="#" title="Click to view profile.">
+                                        <img src="../images/avatar/a05.png">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-sm-1">
+                                <div class="thumbnail">
+                                    <a href="#" title="Click to view profile.">
+                                        <img src="../images/avatar/fh02.png">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-sm-1">
+                                <div class="thumbnail">
+                                    <a href="#" title="Click to view profile.">
+                                        <img src="../images/avatar/fh03.png">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-sm-1">
+                                <div class="thumbnail">
+                                    <a href="#" title="Click to view profile.">
+                                        <img src="../images/avatar/a05.png">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-sm-1">
+                                <div class="thumbnail">
+                                    <a href="#" title="Click to view profile.">
+                                        <img src="../images/avatar/fh02.png">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-sm-1">
+                                <div class="thumbnail">
+                                    <a href="#" title="Click to view profile.">
+                                        <img src="../images/avatar/fh03.png">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                </div>
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="media">
+
+                                <div class="media-body">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-success" role="button">Learning This Library</a>
+                <a href="#" class="btn btn-danger" role="button" data-dismiss="modal">Close</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal lib review-->
+<div class="modal fade" id="lib-review-<%= lib.no %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Library - <%= lib.name %></h4>
+            </div>
+            <div class="modal-body">
+                <div class="row libImg-modal">
+                    <div class="row">
+                        <div class="col-sm-3 invite change-learning">
+                            <h3 class="text-center">Lesson learning</h3>
+
+                            <div class="row">
+                                <ul class="timeline">
+                                    <li>
+                                        <div class="tl-circ"></div>
+                                        <div class="timeline-panel">
+                                            <div class="tl-heading">
+                                                <h4>Lesson 1</h4>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li class="timeline-inverted">
+                                        <div class="tl-circ"></div>
+                                        <div class="timeline-panel">
+                                            <div class="tl-heading">
+                                                <h4>Lesson 2</h4>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="timeline-inverted">
+                                        <div class="tl-circ"></div>
+                                        <div class="timeline-panel">
+                                            <div class="tl-heading">
+                                                <h4>Lesson 3</h4>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="timeline-inverted">
+                                        <div class="tl-circ"></div>
+                                        <div class="timeline-panel">
+                                            <div class="tl-heading">
+                                                <h4>Lesson 4</h4>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="timeline-inverted">
+                                        <div class="tl-circ"></div>
+                                        <div class="timeline-panel">
+                                            <div class="tl-heading">
+                                                <h4>Lesson 5</h4>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="timeline-inverted">
+                                        <div class="tl-circ"></div>
+                                        <div class="timeline-panel">
+                                            <div class="tl-heading">
+                                                <h4>Lesson 6</h4>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-9 invite">
+                            <h3 class="text-center"><%= lib.level %> vocabulary learning group</h3>
+
+                            <div class="abc"
+                                 style="background-color: rgba(61, 140, 204, 0.39); min-height: 600px">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-success" role="button">Learning This Library</a>
+                <a href="#" class="btn btn-danger" role="button" data-dismiss="modal">Close</a>
+            </div>
+        </div>
+    </div>
+</div>
+<% max--;}
+}}); %>

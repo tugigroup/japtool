@@ -1,8 +1,8 @@
 [
   {
     "no": "1",
-    "name": "Hoc tu vung",
-    "level": "N3",
+    "name": "Hoc tu vung N1",
+    "level": "N1",
     "type": "Tu vung",
     "numberOfLesson": "22",
     "estimateHour": "30h",
@@ -11,7 +11,7 @@
   },
   {
     "no": "2",
-    "name": "Hoc tu vung",
+    "name": "Tu vung chuyen nganh",
     "level": "N2",
     "type": "Tu vung",
     "numberOfLesson": "45",
@@ -21,8 +21,8 @@
   },
   {
     "no": "3",
-    "name": "Hoc tu vung",
-    "level": "N3",
+    "name": "Hoc tu vung nang cao",
+    "level": "N1",
     "type": "Tu loai",
     "numberOfLesson": "21",
     "estimateHour": "30h",
@@ -31,7 +31,7 @@
   },
   {
     "no": "4",
-    "name": "Hoc tu vung",
+    "name": "Hoc tu vung cong nghe",
     "level": "N1",
     "type": "Tu vung",
     "numberOfLesson": "46",
@@ -42,7 +42,7 @@
   {
     "no": "5",
     "name": "Hoc tu vung",
-    "level": "N3",
+    "level": "N1",
     "type": "Tu vung",
     "numberOfLesson": "88",
     "estimateHour": "30h",
@@ -51,7 +51,7 @@
   },
   {
     "no": "6",
-    "name": "Hoc tu vung",
+    "name": "Hoc tu vung giao tiep",
     "level": "N4",
     "type": "Tu vung",
     "numberOfLesson": "56",
@@ -61,8 +61,148 @@
   },
   {
     "no": "7",
+    "name": "Hoc tu vung giao tiep",
+    "level": "N4",
+    "type": "Tu vung",
+    "numberOfLesson": "56",
+    "estimateHour": "30h",
+    "numberOfRecommend": "5",
+    "numberOfUser": "50"
+  },
+  {
+    "no": "8",
+    "name": "Hoc tu vung giao tiep",
+    "level": "N4",
+    "type": "Tu vung",
+    "numberOfLesson": "56",
+    "estimateHour": "30h",
+    "numberOfRecommend": "5",
+    "numberOfUser": "50"
+  },
+  {
+    "no": "9",
+    "name": "Hoc tu vung giao tiep",
+    "level": "N4",
+    "type": "Tu vung",
+    "numberOfLesson": "56",
+    "estimateHour": "30h",
+    "numberOfRecommend": "5",
+    "numberOfUser": "50"
+  },
+  {
+    "no": "10",
+    "name": "Hoc tu vung giao tiep",
+    "level": "N4",
+    "type": "Tu vung",
+    "numberOfLesson": "56",
+    "estimateHour": "30h",
+    "numberOfRecommend": "5",
+    "numberOfUser": "50"
+  },
+  {
+    "no": "11",
+    "name": "Hoc tu vung giao tiep",
+    "level": "N4",
+    "type": "Tu vung",
+    "numberOfLesson": "56",
+    "estimateHour": "30h",
+    "numberOfRecommend": "5",
+    "numberOfUser": "50"
+  },
+  {
+    "no": "12",
+    "name": "Hoc tu vung giao tiep",
+    "level": "N4",
+    "type": "Tu vung",
+    "numberOfLesson": "56",
+    "estimateHour": "30h",
+    "numberOfRecommend": "5",
+    "numberOfUser": "50"
+  },
+  {
+    "no": "13",
+    "name": "Hoc tu vung giao tiep",
+    "level": "N4",
+    "type": "Tu vung",
+    "numberOfLesson": "56",
+    "estimateHour": "30h",
+    "numberOfRecommend": "5",
+    "numberOfUser": "50"
+  },
+  {
+    "no": "14",
+    "name": "Hoc tu vung giao tiep",
+    "level": "N4",
+    "type": "Tu vung",
+    "numberOfLesson": "56",
+    "estimateHour": "30h",
+    "numberOfRecommend": "5",
+    "numberOfUser": "50"
+  },
+  {
+    "no": "15",
+    "name": "Hoc tu vung giao tiep",
+    "level": "N4",
+    "type": "Tu vung",
+    "numberOfLesson": "56",
+    "estimateHour": "30h",
+    "numberOfRecommend": "5",
+    "numberOfUser": "50"
+  },
+  {
+    "no": "16",
+    "name": "Hoc tu vung giao tiep",
+    "level": "N4",
+    "type": "Tu vung",
+    "numberOfLesson": "56",
+    "estimateHour": "30h",
+    "numberOfRecommend": "5",
+    "numberOfUser": "50"
+  },
+  {
+    "no": "17",
+    "name": "Hoc tu vung giao tiep",
+    "level": "N4",
+    "type": "Tu vung",
+    "numberOfLesson": "56",
+    "estimateHour": "30h",
+    "numberOfRecommend": "5",
+    "numberOfUser": "50"
+  },
+  {
+    "no": "18",
+    "name": "Hoc tu vung giao tiep",
+    "level": "N4",
+    "type": "Tu vung",
+    "numberOfLesson": "56",
+    "estimateHour": "30h",
+    "numberOfRecommend": "5",
+    "numberOfUser": "50"
+  },
+  {
+    "no": "19",
+    "name": "Hoc tu vung giao tiep",
+    "level": "N4",
+    "type": "Tu vung",
+    "numberOfLesson": "56",
+    "estimateHour": "30h",
+    "numberOfRecommend": "5",
+    "numberOfUser": "50"
+  },
+  {
+    "no": "20",
+    "name": "Hoc tu vung giao tiep",
+    "level": "N4",
+    "type": "Tu vung",
+    "numberOfLesson": "56",
+    "estimateHour": "30h",
+    "numberOfRecommend": "5",
+    "numberOfUser": "50"
+  },
+  {
+    "no": "21",
     "name": "Hoc tu vung",
-    "level": "N3",
+    "level": "N1",
     "type": "Tu vung",
     "numberOfLesson": "43",
     "estimateHour": "30h",
@@ -70,9 +210,9 @@
     "numberOfUser": "50"
   },
   {
-    "no": "8",
+    "no": "22",
     "name": "Hoc tu vung",
-    "level": "N3",
+    "level": "N1",
     "type": "Tu vung",
     "numberOfLesson": "67",
     "estimateHour": "30h",
@@ -80,7 +220,7 @@
     "numberOfUser": "50"
   },
   {
-    "no": "9",
+    "no": "23",
     "name": "Hoc tu vung",
     "level": "N5",
     "type": "Tu vung",
@@ -90,7 +230,127 @@
     "numberOfUser": "50"
   },
   {
-    "no": "10",
+    "no": "24",
+    "name": "Hoc tu vung",
+    "level": "N5",
+    "type": "Tu vung",
+    "numberOfLesson": "30",
+    "estimateHour": "32h",
+    "numberOfRecommend": "4",
+    "numberOfUser": "50"
+  },
+  {
+    "no": "25",
+    "name": "Hoc tu vung",
+    "level": "N5",
+    "type": "Tu vung",
+    "numberOfLesson": "30",
+    "estimateHour": "32h",
+    "numberOfRecommend": "4",
+    "numberOfUser": "50"
+  },
+  {
+    "no": "26",
+    "name": "Hoc tu vung",
+    "level": "N5",
+    "type": "Tu vung",
+    "numberOfLesson": "30",
+    "estimateHour": "32h",
+    "numberOfRecommend": "4",
+    "numberOfUser": "50"
+  },
+  {
+    "no": "27",
+    "name": "Hoc tu vung",
+    "level": "N5",
+    "type": "Tu vung",
+    "numberOfLesson": "30",
+    "estimateHour": "32h",
+    "numberOfRecommend": "4",
+    "numberOfUser": "50"
+  },
+  {
+    "no": "28",
+    "name": "Hoc tu vung",
+    "level": "N5",
+    "type": "Tu vung",
+    "numberOfLesson": "30",
+    "estimateHour": "32h",
+    "numberOfRecommend": "4",
+    "numberOfUser": "50"
+  },
+  {
+    "no": "29",
+    "name": "Hoc tu vung",
+    "level": "N5",
+    "type": "Tu vung",
+    "numberOfLesson": "30",
+    "estimateHour": "32h",
+    "numberOfRecommend": "4",
+    "numberOfUser": "50"
+  },
+  {
+    "no": "30",
+    "name": "Hoc tu vung",
+    "level": "N5",
+    "type": "Tu vung",
+    "numberOfLesson": "30",
+    "estimateHour": "32h",
+    "numberOfRecommend": "4",
+    "numberOfUser": "50"
+  },
+  {
+    "no": "31",
+    "name": "Hoc tu vung",
+    "level": "N5",
+    "type": "Tu vung",
+    "numberOfLesson": "30",
+    "estimateHour": "32h",
+    "numberOfRecommend": "4",
+    "numberOfUser": "50"
+  },
+  {
+    "no": "32",
+    "name": "Hoc tu vung",
+    "level": "N5",
+    "type": "Tu vung",
+    "numberOfLesson": "30",
+    "estimateHour": "32h",
+    "numberOfRecommend": "4",
+    "numberOfUser": "50"
+  },
+  {
+    "no": "33",
+    "name": "Hoc tu vung",
+    "level": "N5",
+    "type": "Tu vung",
+    "numberOfLesson": "30",
+    "estimateHour": "32h",
+    "numberOfRecommend": "4",
+    "numberOfUser": "50"
+  },
+  {
+    "no": "34",
+    "name": "Hoc tu vung",
+    "level": "N5",
+    "type": "Tu vung",
+    "numberOfLesson": "30",
+    "estimateHour": "32h",
+    "numberOfRecommend": "4",
+    "numberOfUser": "50"
+  },
+  {
+    "no": "35",
+    "name": "Hoc tu vung",
+    "level": "N5",
+    "type": "Tu vung",
+    "numberOfLesson": "30",
+    "estimateHour": "32h",
+    "numberOfRecommend": "4",
+    "numberOfUser": "50"
+  },
+  {
+    "no": "36",
     "name": "Hoc tu vung",
     "level": "N3",
     "type": "Tu vung",
@@ -100,7 +360,7 @@
     "numberOfUser": "50"
   },
   {
-    "no": "11",
+    "no": "37",
     "name": "Hoc tu vung",
     "level": "N2",
     "type": "Tu vung",
@@ -110,7 +370,107 @@
     "numberOfUser": "50"
   },
   {
-    "no": "12",
+    "no": "38",
+    "name": "Hoc tu vung",
+    "level": "N2",
+    "type": "Tu vung",
+    "numberOfLesson": "30",
+    "estimateHour": "30h",
+    "numberOfRecommend": "5",
+    "numberOfUser": "50"
+  },
+  {
+    "no": "39",
+    "name": "Hoc tu vung",
+    "level": "N2",
+    "type": "Tu vung",
+    "numberOfLesson": "30",
+    "estimateHour": "30h",
+    "numberOfRecommend": "5",
+    "numberOfUser": "50"
+  },
+  {
+    "no": "40",
+    "name": "Hoc tu vung",
+    "level": "N2",
+    "type": "Tu vung",
+    "numberOfLesson": "30",
+    "estimateHour": "30h",
+    "numberOfRecommend": "5",
+    "numberOfUser": "50"
+  },
+  {
+    "no": "41",
+    "name": "Hoc tu vung",
+    "level": "N2",
+    "type": "Tu vung",
+    "numberOfLesson": "30",
+    "estimateHour": "30h",
+    "numberOfRecommend": "5",
+    "numberOfUser": "50"
+  },
+  {
+    "no": "42",
+    "name": "Hoc tu vung",
+    "level": "N2",
+    "type": "Tu vung",
+    "numberOfLesson": "30",
+    "estimateHour": "30h",
+    "numberOfRecommend": "5",
+    "numberOfUser": "50"
+  },
+  {
+    "no": "43",
+    "name": "Hoc tu vung",
+    "level": "N2",
+    "type": "Tu vung",
+    "numberOfLesson": "30",
+    "estimateHour": "30h",
+    "numberOfRecommend": "5",
+    "numberOfUser": "50"
+  },
+  {
+    "no": "44",
+    "name": "Hoc tu vung",
+    "level": "N2",
+    "type": "Tu vung",
+    "numberOfLesson": "30",
+    "estimateHour": "30h",
+    "numberOfRecommend": "5",
+    "numberOfUser": "50"
+  },
+  {
+    "no": "45",
+    "name": "Hoc tu vung",
+    "level": "N2",
+    "type": "Tu vung",
+    "numberOfLesson": "30",
+    "estimateHour": "30h",
+    "numberOfRecommend": "5",
+    "numberOfUser": "50"
+  },
+  {
+    "no": "46",
+    "name": "Hoc tu vung",
+    "level": "N2",
+    "type": "Tu vung",
+    "numberOfLesson": "30",
+    "estimateHour": "30h",
+    "numberOfRecommend": "5",
+    "numberOfUser": "50"
+  },
+  {
+    "no": "47",
+    "name": "Hoc tu vung",
+    "level": "N2",
+    "type": "Tu vung",
+    "numberOfLesson": "30",
+    "estimateHour": "30h",
+    "numberOfRecommend": "5",
+    "numberOfUser": "50"
+  },
+  {
+    "no": "48",
     "name": "Hoc tu vung ABC",
     "level": "N3",
     "type": "Tu vung",
@@ -120,7 +480,7 @@
     "numberOfUser": "50"
   },
   {
-    "no": "13",
+    "no": "49",
     "name": "Hoc tu vung",
     "level": "N1",
     "type": "Tu vung",
@@ -130,7 +490,7 @@
     "numberOfUser": "50"
   },
   {
-    "no": "14",
+    "no": "50",
     "name": "Hoc tu vung",
     "level": "N1",
     "type": "Tu vung",
@@ -140,7 +500,7 @@
     "numberOfUser": "50"
   },
   {
-    "no": "15",
+    "no": "51",
     "name": "Hoc tu vung",
     "level": "N3",
     "type": "Tu vung",
@@ -150,7 +510,7 @@
     "numberOfUser": "50"
   },
   {
-    "no": "16",
+    "no": "52",
     "name": "Hoc tu vung",
     "level": "N3",
     "type": "Tu vung",
@@ -160,7 +520,7 @@
     "numberOfUser": "50"
   },
   {
-    "no": "17",
+    "no": "53",
     "name": "Hoc tu vung",
     "level": "N3",
     "type": "Tu vung",
@@ -170,7 +530,7 @@
     "numberOfUser": "50"
   },
   {
-    "no": "18",
+    "no": "54",
     "name": "Hoc tu vung",
     "level": "N3",
     "type": "Tu vung",
@@ -180,7 +540,7 @@
     "numberOfUser": "50"
   },
   {
-    "no": "19",
+    "no": "55",
     "name": "Hoc tu vung",
     "level": "N3",
     "type": "Tu vung",
@@ -190,7 +550,7 @@
     "numberOfUser": "50"
   },
   {
-    "no": "20",
+    "no": "56",
     "name": "Hoc tu vung",
     "level": "N3",
     "type": "Tu vung",
@@ -203,14 +563,14 @@
     "no": "21",
     "name": "Hoc tu vung",
     "level": "N3",
-    "type": "Tu vung",
+    "type": 57,
     "numberOfLesson": "30",
     "estimateHour": "30h",
     "numberOfRecommend": "5",
     "numberOfUser": "50"
   },
   {
-    "no": "22",
+    "no": "58",
     "name": "Hoc tu vung",
     "level": "N3",
     "type": "Tu vung",
@@ -220,7 +580,7 @@
     "numberOfUser": "50"
   },
   {
-    "no": "23",
+    "no": "59",
     "name": "Hoc tu vung",
     "level": "N3",
     "type": "Tu vung",
@@ -230,7 +590,7 @@
     "numberOfUser": "50"
   },
   {
-    "no": "24",
+    "no": "60",
     "name": "Hoc tu vung",
     "level": "N3",
     "type": "Tu vung",
@@ -240,7 +600,7 @@
     "numberOfUser": "50"
   },
   {
-    "no": "25",
+    "no": "61",
     "name": "Hoc tu vung",
     "level": "N3",
     "type": "Tu vung",
@@ -250,7 +610,7 @@
     "numberOfUser": "50"
   },
   {
-    "no": "26",
+    "no": "62",
     "name": "Hoc tu vung",
     "level": "N3",
     "type": "Tu vung",
@@ -260,7 +620,7 @@
     "numberOfUser": "50"
   },
   {
-    "no": "27",
+    "no": "63",
     "name": "Hoc tu vung",
     "level": "N3",
     "type": "Tu vung",

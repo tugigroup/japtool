@@ -3,8 +3,8 @@
     margin-bottom: 2px;
 }
 
-.libBoder-right {
-    border-right: 1px solid #c0c0c0;
+.lib-cell {
+    margin-bottom: 5px;
 }
 
 .libImg {
@@ -14,9 +14,11 @@
 .libImg-modal {
     padding-left: 10px;
 }
-.libPara-modal{
+
+.libPara-modal {
     text-align: justify;
 }
+
 .lib-label-danger {
     background-color: red;
     font-weight: normal;
@@ -29,6 +31,58 @@
 a:hover {
     text-decoration: none;
 }
-.library-page .col-sm-4{
-    margin-bottom: 1rem;
+
+.media-body {
+    padding-right: 10px;
+}
+
+.pre-scrollable {
+    max-height: 100px !important;
+    overflow-y: hidden;
+}
+.read-more-library{
+    font-size: 15px;
+    font-weight: 400;
+    color: #d9534f;
+}
+.media h3 span{
+    font-weight: 300;
+    font-size: 26px;
+    color: #000;
+
+}
+.media-body h4 a{
+    font-size: 18px;
+    color: rgb(13, 13, 13);
+}
+.media-body h4 a:hover{
+    color: #d9534f;
+}
+.library-page .media .join-learn{
+    margin-top: 24px;
+}
+.library-page .media .join-learn a{
+    color: #fff;
+}
+.library-page-line{
+    border-bottom: 1px solid rgba(189, 189, 189, 0.44);
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+.library-page-line:after{
+    content: ' ';
+    display: block;
+    height: 1px;
+    width: 27%;
+    z-index: 1;
+    border: 1px solid #2BA9E1;
+    position: relative;
+    top: 11.5px;
+}
+.library-page .row:last-child{
+    margin-bottom: 2rem;
+}
+.library-detail-img{
+    width: 100%;
+    height: auto;
 }

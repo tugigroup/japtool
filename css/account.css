@@ -115,3 +115,18 @@ div.required .control-label:before {
 .profile .tab-content{
     margin-bottom: 1rem;
 }
+
+.changePassword{
+    margin-top:54px;
+}
+.btn-changePass{
+    border: 1px solid #1087DD;
+    color: #1087DD;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: -1px;
+    margin-right: 10px;
+    padding: 7px 20px;
+    background-color: #ffffff;
+}
