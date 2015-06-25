@@ -16,6 +16,16 @@ ul {
     padding: 0;
     list-style: none;
 }
+h2{
+    font-weight: 300;
+    font-size: 26px;
+    color: #000;
+}
+.btn-default, .btn-primary, .btn-success, .btn-info, .btn-warning, .btn-danger {
+    text-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
 
 .sd-learn-more {
     border: 1px solid #D54940;
@@ -34,6 +44,37 @@ ul {
     color: #296192;
 }
 
+.modal {
+        text-align: center;
+}
+
+.modal:before{
+        display: inline-block;
+        vertical-align: middle;
+        content: " ";
+        height:100%;
+}
+
+.modal-dialog {
+        display: inline-block;
+        text-align: left;
+        vertical-align: middle;
+}
+.library-page-line{
+    border-bottom: 1px solid rgba(189, 189, 189, 0.44);
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+.library-page-line:after{
+    content: ' ';
+    display: block;
+    height: 1px;
+    width: 27%;
+    z-index: 1;
+    border: 1px solid #2BA9E1;
+    position: relative;
+    top: 11.5px;
+}
 /*HEADER*/
 .header-top {
     background-color: #011a29;
@@ -93,10 +134,6 @@ ul {
     background-color: #001a32;
     opacity: 0.8;
     z-index: 2;
-}
-
-.header {
-    margin-bottom: 4rem
 }
 
 /*END HEADER*/

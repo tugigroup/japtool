@@ -41,64 +41,83 @@ div.required .control-label:before {
     text-align: right;
     padding-top: 7px;
 }
-.secondary-title{
-    font-weight: 400;margin: 0
+
+.secondary-title {
+    font-weight: 400;
+    margin: 0
 }
-.lbUser{
+
+.lbUser {
     font-weight: 500;
     color: #1087dd;
 }
+
 .friendUser {
     font-weight: 500;
 }
-.lbLever{
+
+.lbLever {
     font-size: 12px;
 }
+
 .panel-body .imgDf {
     padding-top: 3px;
 }
-.form-info{
+
+.form-info {
     margin-top: 30px;
 }
+
 .leadInfo {
     font-weight: 500;
     font-size: 20px;
 }
+
 .infoUser {
     overflow-x: hidden;
     overflow-y: hidden;
-    max-height:450px;
+    max-height: 450px;
 }
-.form-listFriend{
+
+.form-listFriend {
     margin-top: 20px;
 }
-.lh{
-    border-top:  1px solid #D6E9C6;
+
+.lh {
+    border-top: 1px solid #D6E9C6;
 }
-.btnSearch{
+
+.btnSearch {
     font-size: 11px;
     margin-left: -16px;
 }
-.profile .form-search{
+
+.profile .form-search {
     margin-right: -71px;
 }
-.lessonSt{
+
+.lessonSt {
     margin-top: 10px;
 }
-.profile .label-success{
+
+.profile .label-success {
     font-weight: 400;
 }
+
 .label-info {
     font-weight: 400;
 }
-.lessonName{
+
+.lessonName {
     font-weight: 500;
     font-size: 17px;
 }
-.lbEdit{
+
+.lbEdit {
     font-weight: 500;
 }
-.btn-edit{
+
+.btn-edit {
     border: 1px solid #1087DD;
     border-radius: 3px;
     color: #1087DD;
@@ -109,17 +128,20 @@ div.required .control-label:before {
     padding: 8px 40px;
     background-color: #ffffff;
 }
-.profile .btn-success{
+
+.profile .btn-success {
     margin-right: 50px;
 }
-.profile .tab-content{
+
+.profile .tab-content {
     margin-bottom: 1rem;
 }
 
-.changePassword{
-    margin-top:54px;
+.changePassword {
+    margin-top: 54px;
 }
-.btn-changePass{
+
+.btn-changePass {
     border: 1px solid #1087DD;
     color: #1087DD;
     display: inline-block;
@@ -130,7 +152,9 @@ div.required .control-label:before {
     padding: 7px 20px;
     background-color: #ffffff;
 }
-.success-register a{
+
+.success-register a {
     color: #fff;
     font-weight: 400;
 }
+
