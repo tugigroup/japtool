@@ -158,3 +158,6 @@ div.required .control-label:before {
     font-weight: 400;
 }
 
+.bg-white {
+    background-color: white;
+}

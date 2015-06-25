@@ -62,18 +62,15 @@
 
 (function ($) {
     $(document).ready(function () {
-
         $("#cssmenu").menumaker({
             title: "Menu",
             format: "multitoggle"
         });
-
     });
 })(jQuery);
 //learning group menu
 (function ($) {
     $(document).ready(function () {
-
         $('#cssmenu-learngroup li.active').addClass('open').children('ul').show();
         $('#cssmenu-learngroup li.has-sub>a').on('click', function () {
             $(this).removeAttr('href');
@@ -92,7 +89,6 @@
                 element.siblings('li').find('ul').slideUp(200);
             }
         });
-
     });
 })(jQuery);
 

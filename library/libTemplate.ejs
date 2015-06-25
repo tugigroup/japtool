@@ -20,7 +20,8 @@ if(max > 0){ %>
                 </h4>
                 <ul>
                     <li>
-                        <span class="glyphicon glyphicon-flag" aria-hidden="true"></span> Level: <%= lib.level %> - Used: <%= lib.numberOfUser %>
+                        <span class="glyphicon glyphicon-flag" aria-hidden="true"></span> Level: <%= lib.level %> -
+                        Used: <%= lib.numberOfUser %>
                     </li>
                     <li>
                         <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Number
@@ -39,10 +40,9 @@ if(max > 0){ %>
                 </ul>
             </div>
         </div>
-
     </div>
 </div>
-<!--Modal lib details-->
+<!--lib details-->
 <div class="modal fade" id="lib-level-<%= lib.no %>" tabindex="-1">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -54,9 +54,10 @@ if(max > 0){ %>
             <div class="modal-body">
                 <div class="row">
                     <div class="col-sm-3">
-                            <a href="#">
-                                <img class="library-detail-img" src="../images/library-icons/<%= Math.floor((Math.random() * 8) + 1) %>.png">
-                            </a>
+                        <a href="#">
+                            <img class="library-detail-img"
+                                 src="../images/library-icons/<%= Math.floor((Math.random() * 8) + 1) %>.png">
+                        </a>
                     </div>
                     <div class="col-sm-9">
                         <ul>
@@ -88,7 +89,7 @@ if(max > 0){ %>
 
                         </ul>
                     </div>
-                <div class="col-sm-12">
+                    <div class="col-sm-12">
 
                         <h4>Description:</h4>
 
@@ -202,7 +203,7 @@ if(max > 0){ %>
                             </div>
                         </div>
 
-                </div>
+                    </div>
                     <div class="col-sm-12">
                         <div class="row">
                             <div class="media">
@@ -222,7 +223,7 @@ if(max > 0){ %>
         </div>
     </div>
 </div>
-<!-- Modal lib review-->
+<!--lib review-->
 <div class="modal fade" id="lib-review-<%= lib.no %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -233,72 +234,79 @@ if(max > 0){ %>
             </div>
             <div class="modal-body">
                 <div class="row libImg-modal">
-                    <div class="row">
-                        <div class="col-sm-3 invite change-learning">
-                            <h3 class="text-center">Lesson learning</h3>
-
-                            <div class="row">
-                                <ul class="timeline">
-                                    <li>
-                                        <div class="tl-circ"></div>
-                                        <div class="timeline-panel">
-                                            <div class="tl-heading">
-                                                <h4>Lesson 1</h4>
-                                            </div>
-                                        </div>
+                    <div class="col-sm-3 invite">
+                        <div class="row">
+                            <h3>Lesson learning</h3>
+                        </div>
+                        <div class="row">
+                            <div id='cssmenu-learngroup'>
+                                <ul>
+                                    <li><a href='#'>Lesson learning 1</a></li>
+                                    <li class='has-sub'><a href='#'>Lesson learning 2</a>
+                                        <ul>
+                                            <li class='has-sub'><a href='#'>Sub Lesson learning</a>
+                                                <ul>
+                                                    <li><a href='#'>Sub Lesson learning</a></li>
+                                                    <li><a href='#'>Sub Lesson learning </a></li>
+                                                </ul>
+                                            </li>
+                                            <li class='has-sub'><a href='#'>Sub Lesson learning</a>
+                                                <ul>
+                                                    <li><a href='#'>Sub Lesson learning </a></li>
+                                                    <li><a href='#'>Sub Lesson learning </a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
                                     </li>
-
-                                    <li class="timeline-inverted">
-                                        <div class="tl-circ"></div>
-                                        <div class="timeline-panel">
-                                            <div class="tl-heading">
-                                                <h4>Lesson 2</h4>
-                                            </div>
-                                        </div>
+                                    <li><a href='#'>Lesson learning 3</a></li>
+                                    <li><a href='#'>Lesson learning 4</a></li>
+                                    <li><a href='#'>Lesson learning 1</a></li>
+                                    <li class='has-sub'><a href='#'>Lesson learning 2</a>
+                                        <ul>
+                                            <li class='has-sub'><a href='#'>Sub Lesson learning </a>
+                                                <ul>
+                                                    <li><a href='#'>Sub Lesson learning </a></li>
+                                                    <li><a href='#'>Sub Lesson learning </a></li>
+                                                </ul>
+                                            </li>
+                                            <li class='has-sub'><a href='#'>Sub Lesson learning</a>
+                                                <ul>
+                                                    <li><a href='#'>Sub Lesson learning 2.2.1</a></li>
+                                                    <li><a href='#'>Sub Lesson learning 2.2.2</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
                                     </li>
-                                    <li class="timeline-inverted">
-                                        <div class="tl-circ"></div>
-                                        <div class="timeline-panel">
-                                            <div class="tl-heading">
-                                                <h4>Lesson 3</h4>
-                                            </div>
-                                        </div>
+                                    <li><a href='#'>Lesson learning 3</a></li>
+                                    <li><a href='#'>Lesson learning 4</a></li>
+                                    <li><a href='#'>Lesson learning 1</a></li>
+                                    <li class='has-sub'><a href='#'>Lesson learning 2</a>
+                                        <ul>
+                                            <li class='has-sub'><a href='#'>Sub Lesson learning 2.1</a>
+                                                <ul>
+                                                    <li><a href='#'>Sub Lesson learning 2.1.1</a></li>
+                                                    <li><a href='#'>Sub Lesson learning 2.1.2</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class='has-sub'><a href='#'>Sub Lesson learning 2.2</a>
+                                                <ul>
+                                                    <li><a href='#'>Sub Lesson learning 2.2.1</a></li>
+                                                    <li><a href='#'>Sub Lesson learning 2.2.2</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
                                     </li>
-                                    <li class="timeline-inverted">
-                                        <div class="tl-circ"></div>
-                                        <div class="timeline-panel">
-                                            <div class="tl-heading">
-                                                <h4>Lesson 4</h4>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="timeline-inverted">
-                                        <div class="tl-circ"></div>
-                                        <div class="timeline-panel">
-                                            <div class="tl-heading">
-                                                <h4>Lesson 5</h4>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="timeline-inverted">
-                                        <div class="tl-circ"></div>
-                                        <div class="timeline-panel">
-                                            <div class="tl-heading">
-                                                <h4>Lesson 6</h4>
-                                            </div>
-                                        </div>
-                                    </li>
+                                    <li><a href='#'>Lesson learning 3</a></li>
+                                    <li><a href='#'>Lesson learning 4</a></li>
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-sm-9 invite">
-                            <h3 class="text-center"><%= lib.level %> vocabulary learning group</h3>
+                    </div>
+                    <div class="col-sm-9 invite">
+                        <h3 class="text-center">N3 vocabulary learning group</h3>
 
-                            <div class="abc"
-                                 style="background-color: rgba(61, 140, 204, 0.39); min-height: 600px">
-
-                            </div>
-                        </div>
+                        <div class="abc"
+                             style="background-color: rgba(61, 140, 204, 0.39); min-height: 600px"></div>
                     </div>
                 </div>
             </div>
