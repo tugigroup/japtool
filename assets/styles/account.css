@@ -1,0 +1,153 @@
+.form-register label {
+    font-weight: 500;
+}
+
+.register {
+    min-height: 280px;
+}
+
+.control-label {
+    font-weight: 500;
+}
+
+.well {
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.login-drop {
+    border-radius: 3px;
+    color: #ffffff;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 1px;
+    padding: 4px 15px;
+    background: #4FA74F;
+}
+
+.login-page {
+    margin: 0 auto;
+    margin-top: 0 !important;
+}
+.login-page:hover{
+    color: #265a88 !important;
+}
+div.required .control-label:before {
+    content: '* ';
+    color: #F00;
+    font-weight: bold;
+}
+
+.account label {
+    text-align: right;
+    padding-top: 7px;
+}
+.secondary-title{
+    font-weight: 400;margin: 0
+}
+.lbUser{
+    font-weight: 500;
+    color: #1087dd;
+}
+.friendUser {
+    font-weight: 500;
+}
+.lbLever{
+    font-size: 12px;
+}
+.panel-body .imgDf {
+    padding-top: 3px;
+}
+.form-info{
+    margin-top: 30px;
+}
+.leadInfo {
+    font-weight: 500;
+    font-size: 20px;
+}
+.infoUser {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    max-height:450px;
+}
+.form-listFriend{
+    margin-top: 20px;
+}
+.lh{
+    border-top:  1px solid #D6E9C6;
+}
+.btnSearch{
+    font-size: 11px;
+    margin-left: -16px;
+}
+.profile .form-search{
+    margin-right: -71px;
+}
+.lessonSt{
+    margin-top: 10px;
+}
+.profile .label-success{
+    font-weight: 400;
+}
+.label-info {
+    font-weight: 400;
+}
+.lessonName{
+    font-weight: 500;
+    font-size: 17px;
+}
+.lbEdit{
+    font-weight: 500;
+}
+.btn-edit{
+    border: 1px solid #1087DD;
+    border-radius: 3px;
+    color: #1087DD;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: -5px;
+    padding: 8px 40px;
+    background-color: #ffffff;
+}
+.profile .btn-success{
+    margin-right: 50px;
+}
+.profile .tab-content{
+    margin-bottom: 1rem;
+}
+.changePassword{
+    margin-top:54px;
+}
+.btn-changePass{
+    border: 1px solid #1087DD;
+    color: #1087DD;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: -1px;
+    margin-right: 15px;
+    padding: 7px 20px;
+    background-color: #ffffff;
+}
+.resgiter {
+    margin: 0 auto;
+    max-width: 600px
+}
+
+.btn:hover, .btn:focus, .btn.focus {
+    color: #296192;
+    text-decoration: none;
+}
+
+.user-new .btn-social:hover {
+    color: #fff
+}
+
+.submit-user-new {
+    margin-bottom: 2rem;
+}
+.auth-login,.profile{
+    margin-top: 2rem;
+}
