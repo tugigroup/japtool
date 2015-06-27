@@ -33,9 +33,12 @@ module.exports.routes = {
      *                                                                          *
      ***************************************************************************/
 
-    '/': {
-        view: 'index'
-    },
+    /*'/': {
+     view: 'catalog/HomeController.index'
+
+     },*/
+    '/':'japtool/HomeController.index',
+
     /* Router by tuyentv1*/
 
     //'/new_group':{view: 'user/new_group'},
@@ -55,8 +58,10 @@ module.exports.routes = {
     'post /inputAnswer': 'test/AnswerController.create',
     'get /lesson/:category/:lesson': 'test/QuestionController.lesson',
     '/learningGroup':{view:'test/learn-group'},
+
     '/getBookMaster':{view:'test/book-master'},
     '/getBookDetail':'BookDetailController.getBookDetail',
+
     /*End QuyetND2*/
 
 
@@ -78,4 +83,5 @@ module.exports.routes = {
     'post /vocabulary/pronounce': 'VocabularyController.pronounce',
     'post /vocabulary/quicklearning': 'VocabularyController.quicklearning',
     'get /vocabulary/cartagame': 'CartaGameController.wordgen',
+
 };

@@ -16,18 +16,15 @@ ul {
     padding: 0;
     list-style: none;
 }
-
-.row-no-padding {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+h2{
+    font-weight: 300;
+    font-size: 26px;
+    color: #000;
 }
-
-.row-no-padding-left {
-    padding-left: 0 !important;
-}
-
-.row-no-padding-right {
-    padding-right: 0 !important;
+.btn-default, .btn-primary, .btn-success, .btn-info, .btn-warning, .btn-danger {
+    text-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
 }
 
 .sd-learn-more {
@@ -47,12 +44,46 @@ ul {
     color: #296192;
 }
 
+.modal {
+        text-align: center;
+}
+
+.modal:before{
+        display: inline-block;
+        vertical-align: middle;
+        content: " ";
+        height:100%;
+}
+
+.modal-dialog {
+        display: inline-block;
+        text-align: left;
+        vertical-align: middle;
+}
+.library-page-line{
+    border-bottom: 1px solid rgba(189, 189, 189, 0.44);
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+.library-page-line:after{
+    content: ' ';
+    display: block;
+    height: 1px;
+    width: 27%;
+    z-index: 1;
+    border: 1px solid #2BA9E1;
+    position: relative;
+    top: 11.5px;
+}
 /*HEADER*/
 .header-top {
     background-color: #011a29;
     padding: 10px 0px;
+    color: #fff;
 }
-
+.header-top-menu{
+    text-align: right;
+}
 .header-top-menu ul li {
     display: inline-block
 }
@@ -108,14 +139,10 @@ ul {
     z-index: 2;
 }
 
-.header {
-    margin-bottom: 4rem
-}
-
 /*END HEADER*/
 /*CONTENT*/
 .wrapper {
-    min-height: 510px;
+    min-height: 410px;
     margin-bottom: 2rem;
 }
 
@@ -300,10 +327,9 @@ ul {
     margin-top: -40px;
 }
 
-.creategroup-form {
+.creategroup-form{
     margin-top: 2rem;
 }
-
 .creategroup-form .panel-heading h2 {
     color: #fff;
     font-weight: 300;
@@ -313,27 +339,23 @@ ul {
 }
 
 .creategroup-form .panel-info {
-    border-color: #5cb85c;
+    border-color:#5cb85c ;
 }
-
 .creategroup-form .panel-heading {
     background: #5cb85c;
 }
-
-.creategroup-button button {
+.creategroup-button button{
     border: none;
     width: 100%;
     padding: 10px;
     color: #fff;
 }
-
 /*END CONTENT*/
 /*FOOTER*/
 .footer {
     background: #232627;
     color: #fff;
     padding: 5rem 0;
-    margin-top: 2rem;
 }
 
 .logo-footer img {

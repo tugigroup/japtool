@@ -37,29 +37,28 @@ module.exports = {
         fax: {
             type: 'string'
         },
-
-        yourAddress: [{
-            company: {
-                type: 'string',
-                value:'company'
-            },
-            address: {
-                type: 'string',
-                value:'address'
-            },
-            city: {
-                type: 'string',
-                value:'city'
-            },
-            postCode: {
-                type: 'string',
-                value:'postCode'
-            },
-            country: {
-                type: 'string',
-                value:'country'
-            }
-        }],
+        //yourAddress: [
+        //    {
+        //    company: {
+        //        type: 'string',
+        //        required: true
+        //    },
+        //    address: {
+        //        type: 'string'
+        //    },
+        //    city: {
+        //        type: 'string'
+        //    },
+        //    postCode: {
+        //        type: 'string'
+        //    },
+        //    country: {
+        //        type: 'string'
+        //    }
+        //}],
+        yourAddress: {
+            type: 'json'
+        },
         gender: {
             type: 'integer'
         },
@@ -105,6 +104,7 @@ module.exports = {
 
 
     },
+
     beforeCreate: function (values, next) {
         if (typeof values.provider !== 'undefined') {
             return next();

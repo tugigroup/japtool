@@ -16,10 +16,12 @@ doc branch is used for sharing requirement & management documents.
 <h3>feature branches</h3>
 Branches are created for the development of each function. Currently has the following branches
 <ul>
+
   <li>home : for home page and modules base on home page</li>
   <li>user: for sign-in and signup feature</li>
   <li>library: for library feature</li>
   <li>learning: for learning feature</li>
+
 </ul>
 
 <h2>2. Using cases </h2>

@@ -117,3 +117,37 @@ div.required .control-label:before {
 .profile .tab-content{
     margin-bottom: 1rem;
 }
+.changePassword{
+    margin-top:54px;
+}
+.btn-changePass{
+    border: 1px solid #1087DD;
+    color: #1087DD;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: -1px;
+    margin-right: 15px;
+    padding: 7px 20px;
+    background-color: #ffffff;
+}
+.resgiter {
+    margin: 0 auto;
+    max-width: 600px
+}
+
+.btn:hover, .btn:focus, .btn.focus {
+    color: #296192;
+    text-decoration: none;
+}
+
+.user-new .btn-social:hover {
+    color: #fff
+}
+
+.submit-user-new {
+    margin-bottom: 2rem;
+}
+.auth-login,.profile{
+    margin-top: 2rem;
+}
