@@ -8,7 +8,7 @@
   <h1>Bài học từ vựng</h1>
 </div> -->
 
-<a class="btn btn-success btn-xs" href="/vocabadmin/create">Add</a>
+<a class="btn btn-success btn-xs" href="/admin/vocabulary/create">Add</a>
 <table class='table table-bordered table-hover'>
   <tr>
   <th>No</th>
@@ -28,9 +28,9 @@
   <td><%= vocabulary.level %></td>
   <td><%= vocabulary.tag %></td>
   <td>
-  <a class="btn btn-info btn-xs" href="/vocabadmin/view/<%=vocabulary.id %>">Detail</a>
-  <a class="btn btn-warning btn-xs" href="/vocabadmin/update/<%=vocabulary.id %>">Update</a>  
-  <a class="btn btn-danger btn-xs" href="/vocabadmin/delete/<%=vocabulary.id %>">delete</a>
+  <a class="btn btn-info btn-xs" href="/admin/vocabulary/view/<%=vocabulary.id %>">Detail</a>
+  <a class="btn btn-warning btn-xs" href="/admin/vocabulary/update/<%=vocabulary.id %>">Update</a>  
+  <a class="btn btn-danger btn-xs" href="/admin/vocabulary/delete/<%=vocabulary.id %>">delete</a>
   </td></tr>
 <% }); %>
 </table>

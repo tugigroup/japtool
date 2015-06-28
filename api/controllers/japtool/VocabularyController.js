@@ -8,7 +8,7 @@
 module.exports = {
 	//index page
 	index: function(red,res) {
-		return res.view('vocabulary/index');   	
+		return res.view('japtool/vocabulary/index');   	
 	},
 
     //select vocabulary for [list] style
@@ -16,7 +16,7 @@ module.exports = {
       var extractDataCondition = '{"level": "N2", "tag" : {"contains":",trainghia3,lession4,"}}';
 	  Vocabulary.selectByLevel({condition: extractDataCondition},function(err,vocabularies){
 		if(err) return res.send(err.status);
-		return res.render('vocabulary/list',{'vocabularies':vocabularies});   	
+		return res.render('japtool/vocabulary/list',{'vocabularies':vocabularies});   	
       });
 
 	},
@@ -26,7 +26,7 @@ module.exports = {
 	  var extractDataCondition = '{"level": "N2", "tag" : {"contains":",trainghia3,lession4,"}}';
 	  Vocabulary.selectByLevel({condition: extractDataCondition},function(err,vocabularies){
 		if(err) return res.send(err.status);
-		return res.render('vocabulary/flashcard',{'vocabularies':vocabularies});   	
+		return res.render('japtool/vocabulary/flashcard',{'vocabularies':vocabularies});   	
       });
 
 	},
@@ -36,7 +36,7 @@ module.exports = {
 	   var extractDataCondition = '{"level": "N2", "tag" : {"contains":",trainghia3,lession4,"}}';
 	   Vocabulary.selectByLevel({condition: extractDataCondition},function(err,vocabularies){
 		if(err) return res.send(err.status);
-		return res.render('vocabulary/quicklearning',{'vocabularies':vocabularies});   	
+		return res.render('japtool/vocabulary/quicklearning',{'vocabularies':vocabularies});   	
       });
 	},
 	
@@ -74,5 +74,54 @@ module.exports = {
 		 //    }
   	// 	});
   	// },
+
+  	cartagame: function (req, res) {
+
+  		//var extractDataCondition = '{"level": "N2", "tag" : {"contains":",trainghia3,lession4,"}}';
+	    //Vocabulary.selectByLevel({condition: extractDataCondition},function(err,vocabularies){
+
+  	    Vocabulary.find({level:'N2', tag: {"contains":",trainghia3,lession4,"}},{item:1,description:1}).exec(function(err, vols){
+	      if(err) return res.send(500);
+
+	      //Random Get max 12 words in collection
+	      var tmpWords = vols.slice(0);
+	      var words = [];
+	      var index;
+	      while (words.length < 12 && tmpWords.length > 0) {
+	        index = Math.floor(Math.random() * tmpWords.length);
+	        words.push(tmpWords[index]);
+	        tmpWords.splice(index,1);
+	      }
+
+	      var reverseWords = [];
+	      for(i = 0; i < words.length; i++) {
+	        reverseWords.push({'item':words[i].description,'description':words[i].item});
+	      }
+
+	      var concatWords = [];
+	      for (i = 0; i < words.length; i++)
+	      {
+	        concatWords.push(words[i]);
+	        concatWords.push(reverseWords[i]);
+	      } 
+
+	      var ranWords = [];
+	      while (concatWords.length > 0) {
+	        index = Math.floor(Math.random() * concatWords.length);
+	        ranWords.push(concatWords[index]);
+	        concatWords.splice(index,1);
+	      }
+
+	      console.log("Data (words): " + JSON.stringify(words));
+	      console.log("-----------------------");
+	      console.log("Data (reverse): " + JSON.stringify(reverseWords));
+	      console.log("-----------------------");
+	      console.log("Data (concat): " + JSON.stringify(concatWords));
+	      console.log("-----------------------");
+	      console.log("Data (random): " + JSON.stringify(ranWords));
+
+	      return res.render('japtool/vocabulary/cartagame',{'ranWords':ranWords});
+	    });
+	  },
 };
 

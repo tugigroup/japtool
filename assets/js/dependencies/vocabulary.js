@@ -1,6 +1,6 @@
 $(document).ready(function () {
-    $('.flashcard').load('/vocabulary/flashcard');
-    $('.listVocabulary').load('/vocabulary/list');
-    $('.quicklearning').load('/vocabulary/quicklearning');
-    $('.cartagame').load('/cartagame/wordgen');
+    $('.flashcard').load('/japtool/vocabulary/flashcard');
+    $('.listVocabulary').load('/japtool/vocabulary/list');
+    $('.quicklearning').load('/japtool/vocabulary/quicklearning');
+    //$('.cartagame').load('/japtool/vocabulary/cartagame');
 });

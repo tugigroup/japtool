@@ -169,7 +169,7 @@
     // pronounce vocabulary function
     var playAudio = function(word){
       var word = encodeURIComponent(word);
-      io.socket.post('/vocabulary/pronounce',{word: word}, function(data) {
+      io.socket.post('/japtool/vocabulary/pronounce',{word: word}, function(data) {
         var audio = new Audio("data:audio/mp3;base64," + data.audio);
         audio.play();
       });

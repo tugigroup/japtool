@@ -1,5 +1,5 @@
 /**
- * VocabAdminController
+ * VocabularyController for admin
  *
  * @description :: Server-side logic for managing vocabularies
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
@@ -10,11 +10,11 @@ module.exports = {
 
 
   /**
-   * `VocabAdminController.create()`
+   * `VocabularyController.create()`
    */
   create: function (req, res) {
 
-    if(req.method=="POST"&& req.param("word", null)!=null){
+    if(req.method=="POST"&& req.param("item", null)!=null){
 
       var paras = req.allParams();
       //console.log('all paras: ' + JSON.stringify(paras));
@@ -40,7 +40,7 @@ module.exports = {
       //     }
 
       //     Vocabulary.create(paras).exec(function createVoc(err, vocabulary){
-      //       res.redirect('vocabadmin/view/'+vocabulary.id);
+      //       res.redirect('admin/vocabulary/view/'+vocabulary.id);
       //     });
       // });
       
@@ -50,8 +50,7 @@ module.exports = {
       path = require('path');
       
       req.file('avatar').upload({
-          // don't allow the total upload size to exceed ~1MB
-          maxBytes: 1000000,
+          maxBytes: sails.config.constants.upFileMaxBytes,
           dirname: uploadPath
         }, function(err, imgfiles){
           if (err) return res.negotiate(err);
@@ -65,20 +64,20 @@ module.exports = {
           Vocabulary.create(paras).exec(function createVoc(err, vocabulary){
             console.log('the record is inserted : ' + JSON.stringify(vocabulary));
 
-            res.redirect('vocabadmin/view/' + vocabulary.id);
+            res.redirect('admin/vocabulary/view/' + vocabulary.id);
           });
       });
  
     }
     else{
 
-      res.view('vocabadmin/create', {layout: 'layout'});
+      res.view('admin/vocabulary/create', {layout: 'layout'});
     }
   },
 
 
   /**
-   * `VocabAdminController.update()`
+   * `VocabularyController.update()`
    */
   update: function (req, res) {
     var id=req.param("id",null);
@@ -87,7 +86,7 @@ module.exports = {
 
       Vocabulary.findOne(id).exec(function(err,vocabulary){
 
-        res.view( 'vocabadmin/update',{'vocabulary':vocabulary, layout: 'layout'});  
+        res.view( 'admin/vocabulary/update',{'vocabulary':vocabulary, layout: 'layout'});  
       });
     }
     else if (req.method=="POST" && id!=null){
@@ -102,8 +101,7 @@ module.exports = {
       path = require('path');
       
       req.file('avatar').upload({
-          // don't allow the total upload size to exceed ~1MB
-          maxBytes: 1000000,
+          maxBytes: sails.config.constants.upFileMaxBytes,
           dirname: uploadPath
         }, function(err, imgfiles){
           if (err) return res.negotiate(err);
@@ -132,7 +130,7 @@ module.exports = {
             Vocabulary.update({id: id}, paras).exec(function(err,updated){
               console.log('the record is updated : ' + JSON.stringify(updated[0]) ); 
 
-              res.redirect('vocabadmin/view/' + vocabulary.id);
+              res.redirect('admin/vocabulary/view/' + vocabulary.id);
             });
           });
       });
@@ -141,7 +139,7 @@ module.exports = {
 
 
   /**
-   * `VocabAdminController.delete()`
+   * `VocabularyController.delete()`
    */
   delete: function (req, res) {
     var id=req.param("id",null);
@@ -163,14 +161,14 @@ module.exports = {
       console.log('the record is deleted. record id : ' + id ); 
       Vocabulary.find().exec(function findCB(err,vocabularies){
    
-        res.view('vocabadmin/index',{'vocabularies':vocabularies, layout: 'layout'});   
+        res.view('admin/vocabulary/index',{'vocabularies':vocabularies, layout: 'layout'});   
       });
     });
   },
 
 
   /**
-   * `VocabAdminController.view()`
+   * `VocabularyController.view()`
    */
   view: function (req, res) {
 
@@ -178,17 +176,17 @@ module.exports = {
 
       Vocabulary.findOne(id).exec(function(err,vocabulary){
    
-        res.view( 'vocabadmin/view',{'vocabulary':vocabulary, layout: 'layout'});   
+        res.view( 'admin/vocabulary/view',{'vocabulary':vocabulary, layout: 'layout'});   
       });
   },
 
 
   /**
-   * `VocabAdminController.index()`
+   * `VocabularyController.index()`
    */
   index: function (req, res) {
 
-      var database = require('../common/database');
+      var database = require('../../common/database');
 
       //console.log('uri: ' + database.uri());
       //console.log('host: ' + database.host());
@@ -196,7 +194,7 @@ module.exports = {
 
       Vocabulary.find().exec(function findCB(err,vocabularies){
    
-        res.view('vocabadmin/index',{'vocabularies':vocabularies, layout: 'layout'});   
+        res.view('admin/vocabulary/index',{'vocabularies':vocabularies, layout: 'layout'});   
       });
 
   },
