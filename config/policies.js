@@ -26,24 +26,24 @@ module.exports.policies = {
      * access)                                                                  *
      *                                                                          *
      ***************************************************************************/
-    //'*': 'sessionAuth',
-    //
-    //'auth': {
-    //    '*': true
-    //},
-    //'*': 'flash',
-    //user: {
-    //    'new': "flash",
-    //     create: "flash"
-    ////    show: "userSeeProfile",
-    ////    searchUser: "userSeeProfile",
-    ////    edit: "userSeeProfile",
-    ////    update: "userSeeProfile",
-    ////    '*': "admin"
-    //},
-    //auth:{
-    //    '*': 'flash'
-    //}
+    '*': 'sessionAuth',
+
+    'auth': {
+        '*': true
+    },
+    '*': 'flash',
+    user: {
+        'new': "flash",
+         create: "flash",
+    //    show: "userSeeProfile",
+    //    searchUser: "userSeeProfile",
+    //    edit: "userSeeProfile",
+    //    update: "userSeeProfile",
+        '*': "admin"
+    },
+    auth:{
+        '*': 'flash'
+    }
 
 
     /***************************************************************************

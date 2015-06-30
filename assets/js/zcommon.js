@@ -42,4 +42,22 @@ $(document).ready(function(){
     $("#default-hide").hide();
   });
 
+  //Show and hiden icon Upload avatar image of page create learning
+  $("#btnUp").hide();
+  $("#imgGr").hover(function () {
+    $("#btnUp").show();
+    $(this).css("opacity", "0.4");
+  }, function () {
+    $(this).css("opacity", "1");
+    $("#btnUp").hide();
+  });
+
+  $("#btnUp").hover(function () {
+    $("#btnUp").show();
+    $("#imgGr").css("opacity", "0.4");
+  }, function () {
+    $("#imgGr").css("opacity", "1");
+    $("#btnUp").hide();
+  });
+
 });
