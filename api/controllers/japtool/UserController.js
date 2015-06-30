@@ -36,12 +36,13 @@ module.exports = {
             //affter successfuly creating the user
             //redirect to the show action
             User.update({id: idUser}, {yourAddress: yourAddress}, function () {
-                res.redirect('/japtool/user');
+                res.redirect('/japtool/user', {layout: 'layout/layout-japtool'});
             });
 
 
         });
     },
+
     //render the profile view (show.ejs)
     show: function (req, res, next) {
         User.findOne(req.param('id'), function foundUser(err, user) {
@@ -52,24 +53,10 @@ module.exports = {
                 return next();
             }
 
-            res.view({
-                user: user
-            });
+            res.view({user: user, layout: 'layout/layout-japtool'});
         });
     },
-    //display all list user to index.ejs
-    index: function (req, res, next) {
-        //Get an array of all user in the user collection (ex: SQL select table)
-        User.find(function foundUsers(err, users) {
-            if (err) {
-                return next(err);
-            }
-            //paa the array down to the index.ejs page
-            res.view({
-                users: users
-            });
-        });
-    },
+
     //render the edit view edit.ejs
     edit: function (req, res, next) {
         //Find the user from the id passed in via params
@@ -84,18 +71,35 @@ module.exports = {
                 if (err) {
                     return next(err);
                 }
-                res.render('japtool/user/edit-user-information', {listCountry: listCountrys, user: user});
+                res.render('japtool/user/edit-user-information', {
+                    listCountry: listCountrys,
+                    user: user,
+                    layout: 'layout/layout-japtool'
+                });
             });
         });
     },
+
     //Process the info from edit view
     update: function (req, res, next) {
-        var id = req.param('id');
+        var id = req.param('userInfoId');
         User.update(id, req.params.all(), function (err, user) {
             if (err) {
                 return next(err);
             }
-            res.render('japtool/user/show-user-info', {user: user[0]});
+            res.render('japtool/user/show-user-info', {user: user[0], layout: 'layout/layout-japtool'});
+        });
+    },
+
+    //display all list user to index.ejs
+    index: function (req, res, next) {
+        //Get an array of all user in the user collection (ex: SQL select table)
+        User.find(function foundUsers(err, users) {
+            if (err) {
+                return next(err);
+            }
+            //paa the array down to the index.ejs page
+            res.view({users: users, layout: 'layout/layout-japtool'});
         });
     },
 
@@ -134,7 +138,12 @@ module.exports = {
                 res.send(400);
             } else {
                 Buddy.find(function (err, buddy) {
-                    res.render('japtool/user/list-find-friends', {id_origin: id_origin, buddy: buddy, ob: user});
+                    res.render('japtool/user/list-find-friends', {
+                        id_origin: id_origin,
+                        buddy: buddy,
+                        ob: user,
+                        layout: 'layout/layout-japtool'
+                    });
                 });
 
             }
@@ -173,7 +182,7 @@ module.exports = {
                 res.send(400);
             } else {
                 //res.send(buddys);
-                res.view('japtool/user/list-friends', {buddys: buddys})
+                res.view('japtool/user/list-friends', {buddys: buddys, layout: 'layout/layout-japtool'})
             }
         });
     }

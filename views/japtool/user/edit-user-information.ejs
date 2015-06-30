@@ -1,8 +1,7 @@
 <form id="edit-info">
     <div class="row">
-        <br>
-
         <div class="col-sm-offset-1 col-sm-10">
+            <input type="hidden" value="<%- user.id %>" name="userInfoId">
             <p class="leadInfo">User Name</p>
             <hr>
             <label class="col-sm-3 control-label" for="input-firstname">First Name :</label>
@@ -74,7 +73,8 @@
                 <p><select name="yourAddress[country]" id="input-country" class="form-control">
                         <% _.each(listCountry, function(listCountryItem){ %>
                         <% if (user.yourAddress.country == listCountryItem.name){ %>
-                        <option value="<%= user.yourAddress.country %>" selected> <%= user.yourAddress.country %></option>
+                        <option value="<%= user.yourAddress.country %>"
+                                selected> <%= user.yourAddress.country %></option>
                         <% } else{ %>
                         <option value="<%= listCountryItem.name %>"><%= listCountryItem.name %></option>
                         <% } %>
@@ -93,11 +93,11 @@
 <script>
     $(document).ready(function () {
         $("#btnSaveEdit").on('click', function () {
-            var dataUser = $('form#edit-info').serialize();
+            alert('ok');
             $.ajax({
-                url: '/japtool/user/update/<%= user.id %>',
+                url: '/japtool/user/update',
                 type: 'POST',
-                data: dataUser,
+                data: $('form#edit-info').serialize(),
                 cache: false,
                 success: function (data) {
                     $('#default-show').html('');
@@ -108,11 +108,5 @@
                 }
             });
         });
-
-        $("#btnSaveEdit").click(function () {
-            $("#default-show").show();
-            $("#default-hide").hide();
-        });
-
     });
 </script>

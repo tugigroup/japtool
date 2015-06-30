@@ -1,3 +1,4 @@
+//ICON
 $(function () {
     var all_classes = "";
     var timer = undefined;
@@ -18,21 +19,17 @@ $(function () {
     $($('li', '.social-class')[Math.floor($('li', '.social-class').length * Math.random())]).mouseenter();
 });
 
+
+//CustomScrollbar
+(function ($) {
+    $(window).load(function () {
+        $(".content").mCustomScrollbar();
+    });
+})(jQuery);
+
+//USER BRANCH
 //Show and hidden with search, edit... Of learning and user profile
 $(document).ready(function () {
-
-    //Hidden with div after show User Profile
-    $("#default-hide").hide();
-    $("#btnShow").click(function () {
-        $("#default-hide").show();
-        $("#default-show").hide();
-    });
-
-    //Show div affter click save user profile
-    $("#btnSaveEdit").click(function () {
-        $("#default-show").show();
-        $("#default-hide").hide();
-    });
 
     //Show div search of manage learning
     $("#btn-show-search").click(function () {
@@ -64,71 +61,24 @@ $(document).ready(function () {
         $("#btnUp").hide();
     });
 
-
-    //
+    // edit user profile page
     $('#btnShow').click(function () {
         var idUser = $('#idUser').val();
         $.ajax({
             url: '/japtool/user/edit',
-            type: 'POST',
+            type: 'GET',
             data: {
                 id: idUser
             },
             cache: false,
+            async: false,
             success: function (data) {
-                $('#default-hide').html('');
-                $('#default-hide').html(data);
+                $('#default-show').html('');
+                $('#default-show').html(data);
             },
             error: function () {
                 alert('Error')
             }
         })
     });
-
-
-    //    $('#submit').click(function () {
-//        var username = $('#username').val();
-//        var id = $('#hiddien_Id').val();
-//        $.ajax({
-//            url: '/user/searchUser',
-//            type: 'POST',
-//            data: {
-//                username: username,
-//                id_origin: id
-//            },
-//            cache: false,
-//            success: function (data) {
-//                $('#info-User').html('');
-//                $('#info-User').html(data);
-//            },
-//            error: function() {
-//                alert('loi roi nhe');
-//            }
-//        });
-//    });
-//
-//
-//    $('#username').keyup(function(){
-//
-//        var username = $('#username').val();
-//        var id = $('#hiddien_Id').val();
-//        $.ajax({
-//            url: '/user/searchUser',
-//            type: 'POST',
-//            data: {
-//                username: username,
-//                id_origin: id
-//            },
-//            cache: false,
-//            success: function (data) {
-//                $('#info-User').html('');
-//                $('#info-User').html(data);
-//            },
-//            error: function() {
-//                alert('loi roi nhe');
-//            }
-//        });
-//
-//    });
-
 });

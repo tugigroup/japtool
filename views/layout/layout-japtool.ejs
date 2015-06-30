@@ -29,12 +29,12 @@
                     <div class="account-right col-sm-3">
                         <% if(session.authenticated){ %>
                         <span>Welcome <a
-                                    href="/catalog/user/show/<%= session.User.id %>"><%= session.User.username %></a></span><a
-                                href="/catalog/auth/destroy">Sign Out</a>
+                                    href="/japtool/user/show/<%= session.User.id %>"><%= session.User.username %></a></span><a
+                                href="/japtool/auth/destroy">Sign Out</a>
                         <% } %>
                         <% if (!session.authenticated) { %>
-                        <a href="/catalog/auth">Login</a>
-                        <a href="/catalog/user/new">Register</a>
+                        <a href="/japtool/auth">Login</a>
+                        <a href="/japtool/user/new">Register</a>
                         <% } %>
                     </div>
                 </div>
@@ -139,10 +139,13 @@
             </div>
         </div>
     </div>
-    <script src="/js/dependencies/jquery-1.9.1.js"></script>
+    <script src="/js/dependencies/jquery.js"></script>
     <script src="/js/dependencies/bootstrap.min.js"></script>
-    <script src="/js/dependencies/menu.js"></script>
+    <script src="/js/dependencies/jquery.validate.min.js"></script>
     <script src="/js/dependencies/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="/js/dependencies/sails.io.js"></script>
+
+    <script src="/js/menu.js"></script>
     <script src="/js/customValidate.js"></script>
     <script src="/js/japtool-common.js"></script>
 </head>
