@@ -1,14 +1,14 @@
 module.exports = {
     server: function () {
-        return 'localhost';
+        return sails.config.connections.someMongodbServer.host;
     },
 
     port: function () {
-        return '27017';
+        return sails.config.connections.someMongodbServer.port;
     },
 
     database: function () {
-        return 'japtool';
+        return sails.config.connections.someMongodbServer.database;
     },
 
     skipperAdapter: function (collection) {

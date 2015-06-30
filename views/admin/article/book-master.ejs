@@ -1,4 +1,4 @@
-<form class="form-horizontal" action="japtool/bookmaster/create" method="post" id="">
+<form class="form-horizontal" action="japtool/bookmaster/create" method="post" id="" enctype="multipart/form-data">
     <fieldset>
         <legend>Book Master Form</legend>
         <div class="form-group">
@@ -31,6 +31,33 @@
             </div>
         </div>
         <div class="form-group">
+            <label class="col-lg-2 control-label">publish</label>
+            <div class="col-lg-10">
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="published" id="optionsRadios1" value="true" checked="">
+                        True
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="published" id="optionsRadios2" value="false">
+                        False
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="select" class="col-lg-2 control-label">complex</label>
+            <div class="col-lg-10">
+                <select class="form-control" id="select" name="complex">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
             <label for="inputLessonNum" class="col-lg-2 control-label">LessonNum</label>
 
             <div class="col-lg-10">
@@ -58,6 +85,13 @@
             <div class="col-lg-10">
                 <input class="form-control" id="inputRecommendNum" placeholder="RecommendNum" type="text"
                        name="RecommendNum">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputImage" class="col-lg-2 control-label">Image</label>
+
+            <div class="col-lg-10">
+                <input class="" id="inputImage" type="file" multiple="multiple" name="image">
             </div>
         </div>
         <div class="form-group">
