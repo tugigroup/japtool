@@ -1,11 +1,11 @@
-<form class="form-horizontal" action="/bookdetail/create" method="post" id="">
+<form class="form-horizontal" action="japtool/bookdetail/create" method="post" id="">
     <fieldset>
         <legend>Book Detail Form</legend>
         <div class="form-group">
             <label for="select" class="col-lg-2 control-label">Book Master</label>
 
             <div class="col-lg-10">
-                <select class="form-control" id="select-question" name="bookMaster">
+                <select class="form-control" id="select-question" name="bookID">
                     <% data.forEach(function(item) { %>
                     <option value="<%= item.id %>"><%= item.name %></option>
                     <% }); %>
@@ -17,6 +17,13 @@
 
             <div class="col-lg-10">
                 <input class="form-control" id="inputLesson" placeholder="Lesson" type="text" name="lesson">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputSubLesson" class="col-lg-2 control-label">SubLesson</label>
+
+            <div class="col-lg-10">
+                <input class="form-control" id="inputSubLesson" placeholder="SubLesson" type="text" name="subLesson">
             </div>
         </div>
         <div class="form-group">

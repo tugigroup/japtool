@@ -59,8 +59,8 @@ module.exports.routes = {
     'get /lesson/:category/:lesson': 'test/QuestionController.lesson',
     '/learningGroup':{view:'test/learn-group'},
 
-    '/getBookMaster':{view:'test/book-master'},
-    '/getBookDetail':'BookDetailController.getBookDetail',
+    '/createBookMaster':{view:'admin/article/book-master'},
+    '/createBookDetail':'japtool/BookDetailController.getBookDetail',
 
     /*End QuyetND2*/
 
