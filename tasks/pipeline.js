@@ -40,7 +40,7 @@ var jsFilesToInject = [
     'js/**/*.js',
 
 
-    '/js/custom.js'
+    '/js/custom-ajax.js'
 ];
 
 

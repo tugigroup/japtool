@@ -1,7 +1,13 @@
 $(document).ready(function () {
-    $('.form-signin').validate({
+    $('.form-register').validate({
         rules: {
-            name: {
+            username: {
+                required: true
+            },
+            firstname: {
+                required: true
+            },
+            lastname: {
                 required: true
             },
             email: {
@@ -14,7 +20,7 @@ $(document).ready(function () {
             },
             confirmation: {
                 minlength: 6,
-                equalTo: "#password"
+                equalTo: "#input-password"
             }
         },
         success: function (element) {

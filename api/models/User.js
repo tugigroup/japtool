@@ -26,10 +26,9 @@ module.exports = {
             required: true
         },
         email: {
-            type: 'string'
-            //email: 'true',
-            //required: true,
-            //unique: true
+            type: 'string',
+            required: true,
+            unique: true
         },
         telephone: {
             type: 'string'
@@ -37,25 +36,6 @@ module.exports = {
         fax: {
             type: 'string'
         },
-        //yourAddress: [
-        //    {
-        //    company: {
-        //        type: 'string',
-        //        required: true
-        //    },
-        //    address: {
-        //        type: 'string'
-        //    },
-        //    city: {
-        //        type: 'string'
-        //    },
-        //    postCode: {
-        //        type: 'string'
-        //    },
-        //    country: {
-        //        type: 'string'
-        //    }
-        //}],
         yourAddress: {
             type: 'json'
         },
@@ -100,9 +80,10 @@ module.exports = {
         buddy: {
             collection: "Buddy",
             via: "buddyOf"
+        },
+        user_country: {
+            model: 'country'
         }
-
-
     },
 
     beforeCreate: function (values, next) {

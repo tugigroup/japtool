@@ -4,7 +4,6 @@
  * @description :: Server-side logic for managing users
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
-
 module.exports = {
 //This loads the sign-up page new.ejs
     'new': function (req, res) {
@@ -12,7 +11,13 @@ module.exports = {
     },
     //Create user
     create: function (req, res) {
-
+        var yourAddress = {
+            company: '',
+            address: '',
+            city: '',
+            postCode: '',
+            country:''
+        };
         //Create a user with the params sent from the sign-up form new.ejs
         User.create(req.params.all(), function userCreated(err, user) {
             //If there's an error
@@ -26,11 +31,16 @@ module.exports = {
             //Long user in
             req.session.authenticated = true;
             req.session.User = user;
+            var idUser = req.session.User.id;
 
-
-            //affter successfuly creating the user
+           //affter successfuly creating the user
             //redirect to the show action
-            res.redirect('/japtool/user/show/' + user.id);
+            User.update({id: idUser}, {yourAddress: yourAddress}, function(){
+                res.redirect('/japtool/user');
+            });
+
+
+
 
         });
     },
@@ -72,11 +82,12 @@ module.exports = {
             if (!user) {
                 return next();
             }
-
-            res.render('japtool/user/edit-user-information', {user: user});
-            //res.view({
-            //    user: user
-            //});
+            Country.find(function(err,listCountrys){
+                if (err) {
+                    return next(err);
+                }
+                res.render('japtool/user/edit-user-information', {listCountry:listCountrys,user: user});
+            });
         });
     },
     //Process the info from edit view
@@ -109,24 +120,14 @@ module.exports = {
     },
 
     //Change Password
-    changePass:function(req,res){
-        var idUser = req.param();
-            var oldPassword = req.param('oldPasswordUser');
-            var newPassword = req.param('newPasswordUser');
+    changePassword: function (req, res) {
+        var idUser = req.param('id');
+        sails.log('OK');
+        //var oldPassword = req.param('oldPasswordUser');
+        //var newPassword = req.param('newPasswordUser');
 
     },
-    //Find user with data from input
-    //searchUser: function (req, res, next) {
-    //    var id_origin = req.param('id_origin');
-    //    var username = req.param('username');
-    //    User.findByUsername(username, function searchUser(err, user) {
-    //        if (err) {
-    //            res.send(400);
-    //        } else {
-    //            res.render('user/list-find-friends', {id_origin:id_origin, ob: user});
-    //        }
-    //    })
-    //},
+
     searchUser: function (req, res, next) {
         var id_origin = req.param('id_origin');
         var username = req.param('username');
