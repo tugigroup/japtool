@@ -8,18 +8,16 @@
 module.exports = {
     create: function (req, res) {
         var par = req.allParams();
-        fileAction.upload('image', 'files', req, function(err, img) {
+        fileAction.upload('image', 'files', req, function (err, img) {
             if (err) {
                 sails.log(err)
             } else {
                 if (img.length <= 1) {
                     par.image = img[0].fd;
-                    sails.log('File Upload:', img);
                     BookMaster.create(par).exec(function (err, data) {
                         if (err) {
                             sails.log(err)
                         } else {
-                            sails.log(data);
                             res.send('BookMaster has been create');
                         }
                     });
@@ -66,6 +64,21 @@ module.exports = {
         if (fd != '') {
             fileAction.read(fd, 'files', 'image/jpg', res);
         }
+    },
+
+    getLibrary: function (req, res) {
+        BookMaster.find({}).populate('bookDetail').exec(function createCB(err, data) {
+            var arrTag = [];
+            data.forEach(function (item, index) {
+                arrTag.push(item.category);
+                if (index == (data.length - 1)) {
+                    var array = require("array-extended");
+                    var uniqueTag = array(arrTag).unique().value();
+                    sails.log(uniqueTag);
+                    res.view('japtool/library/index', {data: data, uniqueTag: uniqueTag})
+                }
+            })
+        })
     }
 };
 

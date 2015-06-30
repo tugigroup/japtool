@@ -14,6 +14,7 @@ module.exports = {
         level: {type: 'string'},
         published: {type: 'boolean'},
         image: {type: 'string'},
+        category: {type: 'string'},
         complex: {type: 'integer'},
         lessonNum: {type: 'integer'},
         hourForLearn: {type: 'integer'},
