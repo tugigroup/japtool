@@ -4,10 +4,10 @@
 module.exports = {
 //This loads index.ejs
     index: function(req, res){
-        res.view({ layout: 'layout/japtool-library'});
+        res.view({ layout: 'layout/layout-japtool'});
     },
     libraryCategory:function(req,res){
-        res.view('japtool/library/libraryCategory',{ layout: 'layout/japtool-library'});
+        res.view('japtool/library/libraryCategory',{ layout: 'layout/layout-japtool'});
     }
 
 }

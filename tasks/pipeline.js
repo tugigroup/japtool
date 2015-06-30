@@ -17,30 +17,19 @@
 var cssFilesToInject = [
     'styles/bootstrap.min.css',
     'styles/bootstrap-theme.min.css',
-    'styles/styles.css',
-    'styles/**/*.css'
+    'styles/bootstrap-social.css',
+    'styles/font-awesome.css',
+    'styles/font-roboto.css',
+    'styles/menu.css',
+    'styles/jquery.mCustomScrollbar.css',
+    'styles/styles-japtool.css'
 ];
 
 
 // Client-side javascript files to inject in order
 // (uses Grunt-style wildcard/glob/splat expressions)
 var jsFilesToInject = [
-
-    // Load sails.io before everything else
-    'js/dependencies/jquery-1.9.1.js',
-    'js/bootstrap.min.js',
-    'js/dependencies/script.js',
-    'js/dependencies/sails.io.js',
-
-    // Dependencies like jQuery, or Angular are brought in here
-    'js/dependencies/**/*.js',
-
-    // All of the rest of your client-side js files
-    // will be injected here in no particular order.
-    'js/**/*.js',
-
-
-    '/js/custom-ajax.js'
+    'js/dependencies/**/*.js'
 ];
 
 

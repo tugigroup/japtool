@@ -7,7 +7,7 @@
 module.exports = {
 //This loads the sign-up page new.ejs
     'new': function (req, res) {
-        res.view();
+        res.view({layout: 'layout/layout-japtool'});
     },
     //Create user
     create: function (req, res) {
@@ -16,7 +16,7 @@ module.exports = {
             address: '',
             city: '',
             postCode: '',
-            country:''
+            country: ''
         };
         //Create a user with the params sent from the sign-up form new.ejs
         User.create(req.params.all(), function userCreated(err, user) {
@@ -33,13 +33,11 @@ module.exports = {
             req.session.User = user;
             var idUser = req.session.User.id;
 
-           //affter successfuly creating the user
+            //affter successfuly creating the user
             //redirect to the show action
-            User.update({id: idUser}, {yourAddress: yourAddress}, function(){
+            User.update({id: idUser}, {yourAddress: yourAddress}, function () {
                 res.redirect('/japtool/user');
             });
-
-
 
 
         });
@@ -82,11 +80,11 @@ module.exports = {
             if (!user) {
                 return next();
             }
-            Country.find(function(err,listCountrys){
+            Country.find(function (err, listCountrys) {
                 if (err) {
                     return next(err);
                 }
-                res.render('japtool/user/edit-user-information', {listCountry:listCountrys,user: user});
+                res.render('japtool/user/edit-user-information', {listCountry: listCountrys, user: user});
             });
         });
     },
@@ -179,5 +177,4 @@ module.exports = {
             }
         });
     }
-
-}
+};

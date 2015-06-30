@@ -1,20 +1,24 @@
 body {
-    background: url('../../images/1.jpg') no-repeat center center fixed;
+    background: url('../images/1.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
 }
+
 .nopadding {
     padding: 0 !important;
     margin: 0 !important;
 }
+
 .nopadding-left {
     padding-left: 0 !important;
 }
+
 .nopadding-right {
     padding-right: 0 !important;
 }
+
 .home-image-background {
     background: #000;
     width: 100%;
@@ -22,23 +26,29 @@ body {
     position: absolute;
     opacity: 0.6;
 }
+
 .logo img {
     padding-top: 3rem;
 }
-.home-content{
+
+.home-content {
     padding-top: 150px;
     min-height: 535px;
 }
-.home-content p{
+
+.home-content p {
     color: #fff;
     line-height: 40px;
 }
-.text-center button{
+
+.text-center button {
     width: 100%;
 }
-.label{
+
+.label {
     font-weight: 400;
 }
+
 .sd-learn-more {
     border: 1px solid #D54940;
     border-radius: 3px;
@@ -50,7 +60,8 @@ body {
     padding: 8px 40px;
     white-space: normal;
 }
-.home-static{
+
+.home-static {
     color: #fff;
     padding: 10px;
     border: 2px solid #CDCBCC;
@@ -66,16 +77,20 @@ body {
     padding-top: 40px;
     margin-bottom: 20px;
 }
+
 .home-static .fa {
     color: #fd4326;
 }
-.counter{
+
+.counter {
     font-weight: 500;
     font-size: 18px;
 }
-.register{
+
+.register {
     font-size: 15px;
 }
-a:hover{
+
+a:hover {
     text-decoration: none;
 }

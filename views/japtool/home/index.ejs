@@ -1,4 +1,20 @@
-<div class="home-image-background"></div>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/styles/bootstrap-social.css">
+    <link rel="stylesheet" href="/styles/font-awesome.css">
+    <link rel="stylesheet" href="/styles/font-roboto.css">
+    <link rel="stylesheet" href="/styles/menu.css">
+    <link rel="stylesheet" href="/styles/index.css">
+</head>
+<body>
+<div class="home-image-background">
+</div>
 <div class="header">
     <div class="header-center clearfix">
         <div class="container">
@@ -32,13 +48,10 @@
                             <li><a href='#'>Contact</a></li>
                         </ul>
                     </div>
-
                 </div>
             </div>
         </div>
-
     </div>
-
 </div>
 <div class="container">
     <div class="row">
@@ -47,28 +60,31 @@
             <div class="col-sm-8">
                 <div class="row">
                     <form action="/japtool/auth/login" method="POST" enctype="multipart/form-data">
-                    <div class="col-sm-5">
-                        <div class="form-group">
-                            <input type="text" name="email" value="" placeholder="Your Email Address"
-                                   id="input-email" class="form-control">
+                        <div class="col-sm-5">
+                            <div class="form-group">
+                                <input type="text" name="email" value="" placeholder="Your Email Address"
+                                       id="input-email" class="form-control">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-sm-5">
-                        <div class="form-group">
-                            <input type="password" name="password" value="" placeholder="Your Password"
-                                   id="input-password" class="form-control">
+                        <div class="col-sm-5">
+                            <div class="form-group">
+                                <input type="password" name="password" value="" placeholder="Your Password"
+                                       id="input-password" class="form-control">
+                            </div>
                         </div>
-                    </div>
-                    <input type="hidden" name="_csrf" value="<%= _csrf %>" />
-                    <div class="col-sm-2">
-                        <button type="submit" class="btn btn-danger">Submit</button>
-                    </div>
-                        </form>
+                        <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+
+                        <div class="col-sm-2">
+                            <button type="submit" class="btn btn-danger">Submit</button>
+                        </div>
+                    </form>
                 </div>
             </div>
             <div class="col-sm-2"></div>
             <div class="col-sm-12">
-                <p class="">If you haven't account, you can click <a href="japtool/user/new"><span class="label label-primary register">register</span></a> here or you can login with social follow</p>
+                <p class="">If you haven't account, you can click <a href="japtool/user/new"><span
+                                class="label label-primary register">register</span></a> here or you can login with
+                    social follow</p>
 
                 <div>
                     <a class="btn btn-social-icon btn-sm btn-facebook"><i class="fa fa-facebook"></i></a>
@@ -128,3 +144,11 @@
         </div>
     </div>
 </div>
+
+</body>
+<script src="/js/dependencies/jquery.js"></script>
+<script src="/js/dependencies/bootstrap.min.js"></script>
+<script src="/js/menu.js"></script>
+<script src="/js/home-countimator.js"></script>
+<script src="/js/home-common.js"></script>
+</html>
