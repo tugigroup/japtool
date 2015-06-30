@@ -92,21 +92,6 @@
 </form>
 <script>
     $(document).ready(function () {
-        $("#btnSaveEdit").on('click', function () {
-            alert('ok');
-            $.ajax({
-                url: '/japtool/user/update',
-                type: 'POST',
-                data: $('form#edit-info').serialize(),
-                cache: false,
-                success: function (data) {
-                    $('#default-show').html('');
-                    $('#default-show').html(data);
-                },
-                error: function () {
-                    alert('loi roi nhe');
-                }
-            });
-        });
+
     });
 </script>

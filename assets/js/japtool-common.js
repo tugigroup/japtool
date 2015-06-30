@@ -61,24 +61,19 @@ $(document).ready(function () {
         $("#btnUp").hide();
     });
 
-    // edit user profile page
-    $('#btnShow').click(function () {
-        var idUser = $('#idUser').val();
+    $("#btnSaveEdit").on('click', function () {
         $.ajax({
-            url: '/japtool/user/edit',
-            type: 'GET',
-            data: {
-                id: idUser
-            },
+            url: '/japtool/user/update',
+            type: 'POST',
+            data: $('form#edit-info').serialize(),
             cache: false,
-            async: false,
             success: function (data) {
                 $('#default-show').html('');
                 $('#default-show').html(data);
             },
             error: function () {
-                alert('Error')
+                alert('loi roi nhe');
             }
-        })
+        });
     });
 });

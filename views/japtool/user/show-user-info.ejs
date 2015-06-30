@@ -42,7 +42,24 @@
 </div>
 
 <script>
-    $(document).ready(function () {
-
+    // edit user profile page
+    $('#btnShow').click(function () {
+        var idUser = $('#idUser').val();
+        $.ajax({
+            url: '/japtool/user/edit',
+            type: 'GET',
+            data: {
+                id: idUser
+            },
+            cache: false,
+            async: false,
+            success: function (data) {
+                $('#default-show').html('');
+                $('#default-show').html(data);
+            },
+            error: function () {
+                alert('Error')
+            }
+        })
     });
 </script>
