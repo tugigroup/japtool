@@ -18,7 +18,7 @@ module.exports = {
         recommendNum: {type: 'integer'},
         bookDetail: {
             collection: 'BookDetail',
-            via: 'bookMaster'
+            via: 'bookID'
         }
     }
 };
