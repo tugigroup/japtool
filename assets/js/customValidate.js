@@ -27,4 +27,21 @@ $(document).ready(function () {
             element.text('OK!').addClass('valid')
         }
     });
+    $('#change-pass').validate({
+        rules: {
+            oldPasswordUser: {
+                minlength: 6,
+                required: true
+            },
+            newPasswordUser: {
+                minlength: 6,
+                required: true
+            },
+            newPasswordUserCf: {
+                minlength: 6,
+                required: true,
+                equalTo: "#input-NewPassword"
+            }
+        }
+    });
 });

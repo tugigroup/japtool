@@ -164,7 +164,7 @@
                     <div id="info" class="tab-pane fade in active">
                         <!--show use's info-->
                         <div id="default-show">
-                            <%- partial('show-user-info.ejs')%>
+                            <%- partial('show-user-info.ejs') %>
                         </div>
                     </div>
                     <div id="friend" class="tab-pane fade">
@@ -185,7 +185,7 @@
                                     </div>
                                 </div>
                                 <hr>
-                                <div class="pre-scrollable infoUser mCustomScrollbar" data-mcs-theme="dark">
+                                <div class="infoUser mCustomScrollbar" data-mcs-theme="dark">
                                     <!--start a line three friend's info-->
                                     <div class="row">
                                         <div class="col-sm-4">
@@ -427,30 +427,55 @@
                         </div>
                     </div>
                     <div id="password" class="tab-pane fade">
-                        <div class="row changePassword">
-                            <div class="col-sm-offset-1 col-sm-9">
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label" for="input-OldPassword">Old Password</label>
-                                    <div class="col-sm-9">
-                                        <p><input type="password" name="oldPasswordUser" value="" placeholder="Your Old Password" id="input-OldPassword" class="form-control">
+                        <form id="change-pass" name="change-pass">
+                            <div class="row changePassword">
+                                <div class="col-sm-offset-1 col-sm-9">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label" for="input-OldPassword">Old
+                                            Password</label>
+
+                                        <div class="col-sm-9">
+                                            <p><input type="password" name="oldPasswordUser" value=""
+                                                      placeholder="Your Old Password"
+                                                      id="input-OldPassword" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label" for="input-NewPassword">New
+                                            Password</label>
+
+                                        <div class="col-sm-9">
+                                            <p><input type="password" name="newPasswordUser" value=""
+                                                      placeholder="Your New Password"
+                                                      id="input-NewPassword" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label" for="input-PasswordCf">Password
+                                            Confirm</label>
+
+                                        <div class="col-sm-9">
+                                            <p><input type="password" name="newPasswordUserCf" value=""
+                                                      placeholder="Confirm Your Password"
+                                                      id="input-PasswordCf" class="form-control">
+                                        </div>
+                                    </div>
+                                    <input type='hidden' name='_csrf' value='<%= _csrf %>'>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3"></label>
+
+                                        <div class="col-sm-9 pull-left">
+                                            <!--Change pass message-->
+                                            <label id="change-pass-mess"></label>
+                                            <button type="button" class="btn btn-sm btn-changePass pull-right"
+                                                    id="btnSaveChangePass">
+                                                Save <span class="glyphicon glyphicon-saved"></span></button>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label" for="input-NewPassword">New Password</label>
-                                    <div class="col-sm-9">
-                                        <p><input type="password" name="newPasswordUser" value="" placeholder="Your New Password" id="input-NewPassword" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label" for="input-PasswordCf">Password Confirm</label>
-                                    <div class="col-sm-9">
-                                        <p><input type="password" name="newPasswordUserCf" value="" placeholder="Confirm Your Password" id="input-PasswordCf" class="form-control">
-                                    </div>
-                                </div>
-                                <button type="button" class="btn btn-sm btn-changePass pull-right">Save <span
-                                            class="glyphicon glyphicon-saved"></span></button>
                             </div>
-                        </div>
+                        </form>
                     </div>
 
                 </div>

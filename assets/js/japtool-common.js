@@ -61,7 +61,26 @@ $(document).ready(function () {
         $("#btnUp").hide();
     });
 
-    $("#btnSaveEdit").on('click', function () {
+    $('#btnShow').click(function () {
+        var idUser = $('#idUser').val();
+        $.ajax({
+            url: '/japtool/user/edit',
+            type: 'GET',
+            data: {
+                id: idUser
+            },
+            cache: false,
+            async: false,
+            success: function (data) {
+                $('#default-show').html('');
+                $('#default-show').html(data);
+            },
+            error: function () {
+                alert('Error')
+            }
+        })
+    });
+    $("#btnSaveEdit").click(function () {
         $.ajax({
             url: '/japtool/user/update',
             type: 'POST',
@@ -75,5 +94,52 @@ $(document).ready(function () {
                 alert('loi roi nhe');
             }
         });
+    });
+
+//remove old message when user update password information
+    $('#input-NewPassword, #input-PasswordCf').keyup(function () {
+        $('#change-pass-mess').removeClass().text('');
+    });
+    $("#btnSaveChangePass").click(function () {
+        var userId = $('#idUser').val();
+        var oldPass = $('#input-OldPassword').val();
+        var newPass = $('#input-NewPassword').val();
+        var newPassCf = $('#input-PasswordCf').val();
+        var mess = $('#change-pass-mess').removeClass();
+
+        //Vì dùng ajax nên jquery không b?t ???c các l?i này (nó d?a trên s? ki?n submit form)
+        if (oldPass == "" || oldPass == null || newPass == "" || newPass == null || newPassCf == "" || newPassCf == null) {
+            //All field required
+            mess.addClass('error').text('All field is required!').show();
+        } else if (newPass === oldPass) {
+            //New pass and old are same
+            mess.addClass('error').text('Current pass and the new one are the same!').show();
+        }
+        else {
+            //Ajax change pass function
+            $.ajax({
+                url: '/japtool/user/changePass',
+                type: 'POST',
+                data: {
+                    id: userId,
+                    oldPass: oldPass,
+                    newPass: newPass,
+                    newPassCf: newPassCf
+                },
+                cache: false,
+                success: function (data) {
+                    if (data.code == 'error') {
+                        mess.addClass('error').text(data.mess).show();
+                    } else {
+                        mess.addClass('valid').text(data.mess).show();
+                        //reset form when update success
+                        $('#change-pass')[0].reset();
+                    }
+                },
+                error: function () {
+                    mess.addClass('error').text('Something is wrong, please try again later.').show();
+                }
+            })
+        }
     });
 });
