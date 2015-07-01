@@ -4,6 +4,6 @@
 module.exports = {
 //This loads index.ejs
     index: function(req, res){
-        res.view({ layout: 'layout/japtool-home'});
+        res.view({ layout: null});
     }
-}
+};

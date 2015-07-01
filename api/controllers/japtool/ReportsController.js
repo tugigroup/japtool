@@ -4,7 +4,7 @@
 module.exports = {
 //This load
     learningReport: function(req, res){
-        res.view('japtool/reports/learningReport',{ layout: 'layout/japtool-report'});
+        res.view('japtool/reports/learningReport',{ layout: 'layout/layout-japtool'});
     }
 
-}
+};

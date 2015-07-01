@@ -4,7 +4,8 @@
             <div class="col-sm-10">
                 <input type="hidden" value="<%- user.id %>" id="idUser">
 
-                <p class="leadInfo"><%- user.username %></p></div>
+                <p class="leadInfo"><%- user.username %></p>
+            </div>
             <div class="col-sm-2">
                 <button type="button" class="btn btn-sm btn-edit" id="btnShow">Edit <span
                             class="glyphicon glyphicon-edit"></span></button>
@@ -36,14 +37,29 @@
 
         <p>Post Code : <%= user.yourAddress.postCode %></p>
 
-
-
-
+        <p>Country : <%= user.yourAddress.country %></p>
     </div>
 </div>
+
 <script>
-    $("#btnShow").click(function(){
-        $("#default-hide").show();
-        $("#default-show").hide();
+    // edit user profile page
+    $('#btnShow').click(function () {
+        var idUser = $('#idUser').val();
+        $.ajax({
+            url: '/japtool/user/edit',
+            type: 'GET',
+            data: {
+                id: idUser
+            },
+            cache: false,
+            async: false,
+            success: function (data) {
+                $('#default-show').html('');
+                $('#default-show').html(data);
+            },
+            error: function () {
+                alert('Error')
+            }
+        })
     });
 </script>

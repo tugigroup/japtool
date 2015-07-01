@@ -18,9 +18,15 @@
                 </a>
             </div>
         </div>
-
+        <% if(flash && flash.err) { %>
+        <ul class="alert alert-success">
+            <% Object.keys(flash.err).forEach(function(error) { %>
+            <li><%- JSON.stringify(flash.err[error]) %></li>
+            <% }) %>
+        </ul>
+        <% } %>
         <form action="/japtool/user/create" method="POST"
-              enctype="multipart/form-data" class="form-horizontal">
+              enctype="multipart/form-data" class="form-horizontal form-register">
             <fieldset id="account">
                 <legend>Your Personal Details</legend>
                 <div class="form-group required">
@@ -79,9 +85,7 @@
             <input type='hidden' name='_csrf' value='<%= _csrf %>'>
 
             <div class="buttons submit-user-new clearfix">
-                <div class="pull-right">I have read and agree to the <a class="agree"><span>Privacy Policy</span></a>
-                    <input type="checkbox" name="agree" value="1">
-                    &nbsp;
+                <div class="pull-right">
                     <input type="submit" value="Continue" class="btn btn-primary">
                 </div>
             </div>

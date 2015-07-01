@@ -9,10 +9,7 @@ module.exports = {
 
     attributes: {
         lesson: {type: 'string'},
-        subLesson: {
-            collection:'Question',
-            via:'bookDetail'
-        },
+        subLesson: {type: 'string'},
         useModule: {type: 'string'},
         useCollection: {type: 'string'},
         dataExtractCondition: {type: 'string'},
