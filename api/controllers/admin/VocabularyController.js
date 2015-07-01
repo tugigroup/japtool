@@ -173,10 +173,11 @@ module.exports = {
   view: function (req, res) {
 
       var id=req.param("id",null);
+      console.log("constants.upFileMaxBytes: " + constants.upFileMaxBytes);
 
       Vocabulary.findOne(id).exec(function(err,vocabulary){
    
-        res.view( 'admin/vocabulary/view',{'vocabulary':vocabulary, layout: 'layout'});   
+        //res.view( 'admin/vocabulary/view',{'vocabulary':vocabulary, layout: 'layout'});   
       });
   },
 
@@ -186,7 +187,9 @@ module.exports = {
    */
   index: function (req, res) {
 
-      var database = require('../../common/database');
+      //var database = require('../../common/database');
+      //console.log("constants.upFileMaxBytes: " + constants.upFileMaxBytes);
+      //console.log("constants.testConst: " + constants.testConst);
 
       //console.log('uri: ' + database.uri());
       //console.log('host: ' + database.host());
@@ -194,7 +197,7 @@ module.exports = {
 
       Vocabulary.find().exec(function findCB(err,vocabularies){
    
-        res.view('admin/vocabulary/index',{'vocabularies':vocabularies, layout: 'layout'});   
+        //res.view('admin/vocabulary/index',{'vocabularies':vocabularies, layout: 'layout'});   
       });
 
   },
