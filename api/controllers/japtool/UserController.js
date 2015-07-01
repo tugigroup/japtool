@@ -8,7 +8,7 @@ var bcrypt = require('bcryptjs');
 module.exports = {
 //This loads the sign-up page new.ejs
     'new': function (req, res) {
-        res.view({layout: 'layout/layout-japtool'});
+        res.layoutJaptool();
     },
     //Create user
     create: function (req, res) {
@@ -37,7 +37,7 @@ module.exports = {
             //affter successfuly creating the user
             //redirect to the show action
             User.update({id: idUser}, {yourAddress: yourAddress}, function () {
-                res.redirect('/japtool/user', {layout: 'layout/layout-japtool'});
+                res.redirect('/japtool/user');
             });
 
 
@@ -54,7 +54,7 @@ module.exports = {
                 return next();
             }
 
-            res.view({user: user, layout: 'layout/layout-japtool'});
+            res.view({user: user});
         });
     },
 
@@ -74,8 +74,7 @@ module.exports = {
                 }
                 res.render('japtool/user/edit-user-information', {
                     listCountry: listCountrys,
-                    user: user,
-                    layout: 'layout/layout-japtool'
+                    user: user
                 });
             });
         });
@@ -88,7 +87,7 @@ module.exports = {
             if (err) {
                 return next(err);
             }
-            res.render('japtool/user/show-user-info', {user: user[0], layout: 'layout/layout-japtool'});
+            res.render('japtool/user/show-user-info', {user: user[0]});
         });
     },
 
@@ -100,7 +99,7 @@ module.exports = {
                 return next(err);
             }
             //paa the array down to the index.ejs page
-            res.view({users: users, layout: 'layout/layout-japtool'});
+            res.view({users: users});
         });
     },
 
@@ -172,8 +171,8 @@ module.exports = {
                     res.render('japtool/user/list-find-friends', {
                         id_origin: id_origin,
                         buddy: buddy,
-                        ob: user,
-                        layout: 'layout/layout-japtool'
+                        ob: user
+
                     });
                 });
 
@@ -213,7 +212,7 @@ module.exports = {
                 res.send(400);
             } else {
                 //res.send(buddys);
-                res.view('japtool/user/list-friends', {buddys: buddys, layout: 'layout/layout-japtool'})
+                res.layoutJaptool('japtool/user/list-friends', {buddys: buddys})
             }
         });
     }

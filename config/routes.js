@@ -1,4 +1,3 @@
-
 /**
  * Route Mappings
  * (sails.config.routes)
@@ -32,27 +31,20 @@ module.exports.routes = {
      * `assets` directory)                                                      *
      *                                                                          *
      ***************************************************************************/
-
-    '/':'japtool/HomeController.index',
-    /* Router by tuyentv1*/
-
-    //'/new_group':{view: 'user/new_group'},
-    //'POST /searchUser': 'UserController.searchUser',
-    /*End tuyentv1*/
-    'get/ new_group':'BuddyGroupController.create',
-
-    //'/login' : {
-    //    controller : 'auth',
-    //    action     : 'index'
-    //},
+    '/': 'japtool/HomeController.index',
+    '/japtool': {
+        locals:{
+            layout:'/layout/layout-japtool'
+        }
+    },
 
     /*Router by QuyetND2*/
-    '/testIndex':{view:'test/index-test'},
+    '/testIndex': {view: 'test/index-test'},
     'post /confirmResult': 'test/QuestionController.confirm',
     'post /submitTest': 'test/QuestionController.create',
     'post /inputAnswer': 'test/AnswerController.create',
     'get /lesson/:category/:lesson': 'test/QuestionController.lesson',
-    '/learningGroup':{view:'test/learn-group'},
+    '/learningGroup': {view: 'test/learn-group'},
     /*End QuyetND2*/
 
 
