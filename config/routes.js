@@ -33,10 +33,6 @@ module.exports.routes = {
      *                                                                          *
      ***************************************************************************/
 
-    /*'/': {
-     view: 'catalog/HomeController.index'
-
-     },*/
     '/':'japtool/HomeController.index',
 
     /* Router by tuyentv1*/

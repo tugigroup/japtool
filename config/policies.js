@@ -31,16 +31,15 @@ module.exports.policies = {
     'auth': {
         '*': true
     },
-
     '*': 'flash',
     user: {
         'new': "flash",
-         create: "flash"
+         create: "flash",
     //    show: "userSeeProfile",
     //    searchUser: "userSeeProfile",
     //    edit: "userSeeProfile",
     //    update: "userSeeProfile",
-    //    '*': "admin"
+        '*': "admin"
     },
     auth:{
         '*': 'flash'
