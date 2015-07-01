@@ -13,8 +13,8 @@ module.exports = {
         useModule: {type: 'string'},
         useCollection: {type: 'string'},
         dataExtractCondition: {type: 'string'},
-        bookMaster:{
-            model:'bookMaster'
+        bookID: {
+            model: 'bookMaster'
         }
     }
 };

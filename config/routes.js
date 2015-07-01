@@ -48,15 +48,9 @@ module.exports.routes = {
     //},
 
     /*Router by QuyetND2*/
-    '/testIndex':{view:'test/index-test'},
-    'post /confirmResult': 'test/QuestionController.confirm',
-    'post /submitTest': 'test/QuestionController.create',
-    'post /inputAnswer': 'test/AnswerController.create',
-    'get /lesson/:category/:lesson': 'test/QuestionController.lesson',
-    '/learningGroup':{view:'test/learn-group'},
-
-    '/getBookMaster':{view:'test/book-master'},
-    '/getBookDetail':'BookDetailController.getBookDetail',
+    //'/':'admin/BookMasterController.index',
+    '/createBookMaster':{view:'admin/article/book-master'},
+    '/createBookDetail':'japtool/BookDetailController.getBookDetail',
 
     /*End QuyetND2*/
 

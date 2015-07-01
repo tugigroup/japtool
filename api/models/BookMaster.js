@@ -12,13 +12,17 @@ module.exports = {
         description: {type: 'string'},
         type: {type: 'string'},
         level: {type: 'string'},
+        published: {type: 'boolean'},
+        image: {type: 'string'},
+        category: {type: 'string'},
+        complex: {type: 'integer'},
         lessonNum: {type: 'integer'},
         hourForLearn: {type: 'integer'},
         usedNum: {type: 'integer'},
         recommendNum: {type: 'integer'},
         bookDetail: {
             collection: 'BookDetail',
-            via: 'bookMaster'
+            via: 'bookID'
         }
     }
 };
