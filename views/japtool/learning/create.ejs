@@ -1,29 +1,32 @@
-<div class="wrapper learning-group">
-    <div class="container">
-        <div class="row">
-            <div class="content">
-                <form action="/japtool/learning/add" method="post">
+<form action="/japtool/learning/add" method="post" id="create-learning">
+    <div class="wrapper learning-group">
+        <div class="container">
+            <div class="row">
+                <div class="content">
                     <div class="col-sm-12">
                         <h2>Create learning</h2>
                     </div>
                     <div class="clearfix">
                         <div class="col-sm-10 learning-group-item">
                             <div class="row">
-                                <form action="" method="POST">
-                                    <div class="col-sm-2">
-                                        <label>Learning Name</label>
-                                    </div>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="" placeholder="Class Name"
-                                               name="nameLearning">
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <label>Short Description</label>
-                                    </div>
-                                    <div class="col-sm-10">
-                                        <textarea class="form-control" rows="4" name="description"></textarea>
-                                    </div>
-                                </form>
+                                <div class="col-sm-2">
+                                    <label>Learning Name</label>
+                                </div>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control"
+                                           placeholder="Class Name"
+                                           name="nameLearning"
+                                           id="nameLearning"/>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label>Short Description</label>
+                                </div>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control"
+                                              rows="4"
+                                              id="description"
+                                              name="description"></textarea>
+                                </div>
                             </div>
                         </div>
                         <div class="col-sm-2 hidden-md hidden-xs">
@@ -35,20 +38,24 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group formStartFinish">
-                        <label class="col-md-2 control-label">Learning plant</label>
-
-                        <div class="col-md-10">
+                    <div class="clearfix">
+                        <div class="col-sm-10 learning-group-item">
                             <div class="row">
-                                <div class="col-md-12" id="datepicker">
-                                    <div class="input-group">
-                                        <span class="input-group-addon">From</span>
-                                        <input type="date" class="form-control" name="startDate">
-                                        <span class="input-group-addon">To</span>
-                                        <input type="date" class="form-control" name="finishDate">
-                                    </div>
+                                <div class="col-sm-2">
+                                    <label>From</label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="date" class="form-control" name="startDate" id="startDate">
+                                </div>
+                                <div class="col-sm-2">
+                                    <label>To</label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="date" class="form-control" name="finishDate" id="finishDate">
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-sm-2 hidden-md hidden-xs">
                         </div>
                     </div>
                     <div class="library-content-desc">
@@ -63,13 +70,20 @@
                         </div>
                     </div>
                     <!-- Trigger the modal with a button -->
-                    <button type="button" class="btn btn-info btn-chooseBook" data-toggle="modal"
-                            data-target="#myModal">
-                        Choose a book
-                    </button>
-                    <button type="submit" class="btn btn-success" data-dismiss="modal">Create Learning</button>
-                </form>
+                    <div id="show-popup-search"></div>
+                    <input type="button"
+                           class="btn btn-danger btn-chooseBook"
+                           data-toggle="modal"
+                           data-target="#myModal"
+                           value="Choose a book"
+                           id="btnSearchLibrary"/>
+                    <input type="submit"
+                           class="btn btn-success"
+                           data-dismiss="modal"
+                           value="Create learning"
+                           id="btnCreateLearning"/>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</form>

@@ -76,4 +76,23 @@ $(document).ready(function () {
             }
         });
     });
+
+    // Author: xuandt2
+    // Page: create learning, show popup search learning
+    $('[data-toggle="modal"]').click(function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'GET',
+            url: '/japtool/learning/search',
+            cache: false,
+            success: function (msg) {
+                $('#show-popup-search').html('');
+                $('#show-popup-search').html(msg);
+                $('#show-popup-search').modal('open');
+            },
+            error: function () {
+                alert('Error');
+            }
+        });
+    });
 });

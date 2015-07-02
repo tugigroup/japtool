@@ -27,4 +27,49 @@ $(document).ready(function () {
             element.text('OK!').addClass('valid')
         }
     });
+
+    /**
+     * validate jquery by xuandt2
+     */
+    $('#create-learning').validate({
+        rules: {
+            nameLearning: {
+                required: true,
+                minlength: 5,
+                maxlength: 50
+            },
+
+            description: {
+                required: true
+            },
+            startDate: {
+                required: true
+            },
+            finishDate: {
+                required: true
+            }
+        },
+
+        messages: {
+            nameLearning: {
+                required: "Please input class name.",
+                minlength: "Class name greater than 5 characters.",
+                maxlength: "Class name less than 50 characters."
+            },
+            description: {
+                required: "Please input décription."
+            },
+            startDate: {
+                required: "Please input start date."
+            },
+            finishDate: {
+                required: "Please input end date."
+            }
+        },
+
+        success: {},
+        error: function (element) {
+
+        }
+    });
 });
