@@ -1,4 +1,3 @@
-
 /**
  * Route Mappings
  * (sails.config.routes)
@@ -51,7 +50,6 @@ module.exports.routes = {
     //'/':'admin/BookMasterController.index',
     '/createBookMaster':{view:'admin/article/book-master'},
     '/createBookDetail':'japtool/BookDetailController.getBookDetail',
-
     /*End QuyetND2*/
 
 
