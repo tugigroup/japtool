@@ -27,6 +27,25 @@ $(document).ready(function () {
             element.text('OK!').addClass('valid')
         }
     });
+
+    $('#change-pass').validate({
+        rules: {
+            oldPasswordUser: {
+                minlength: 6,
+                required: true
+            },
+            newPasswordUser: {
+                minlength: 6,
+                required: true
+            },
+            newPasswordUserCf: {
+                minlength: 6,
+                required: true,
+                equalTo: "#input-NewPassword"
+            }
+        }
+    });
+
     /**
      * validate jquery by xuandt2
      */
@@ -45,7 +64,8 @@ $(document).ready(function () {
                 required: true
             },
             finishDate: {
-                required: true
+                required: true,
+                greaterThan: "#startDate"
             }
         },
 
@@ -62,7 +82,8 @@ $(document).ready(function () {
                 required: "Please input start date."
             },
             finishDate: {
-                required: "Please input end date."
+                required: "Please input end date.",
+                greaterStart: "Start date less than end date."
             }
         },
 
@@ -72,4 +93,3 @@ $(document).ready(function () {
         }
     });
 });
-

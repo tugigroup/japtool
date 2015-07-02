@@ -96,7 +96,7 @@ $(document).ready(function () {
         });
     });
 
-//remove old message when user update password information
+    //remove old message when user update password information
     $('#input-NewPassword, #input-PasswordCf').keyup(function () {
         $('#change-pass-mess').removeClass().text('');
     });
@@ -142,5 +142,28 @@ $(document).ready(function () {
             })
         }
     });
+
+    // Author: xuandt2
+    // Page: create learning, show popup search learning
+    $('[data-toggle="modal"]').on('click', function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'GET',
+            url: '/japtool/learning/search',
+            cache: false,
+            success: function (msg) {
+                $('#show-popup-search').html('');
+                $('#show-popup-search').html(msg);
+                $('#show-popup-search').modal('open');
+            },
+            error: function () {
+                alert('Error');
+            }
+        });
+    });
 });
 
+// Close popup
+$('.close-popup').click(function (e) {
+    $('#show-popup-search').close();
+});
