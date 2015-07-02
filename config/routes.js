@@ -31,20 +31,14 @@ module.exports.routes = {
      * `assets` directory)                                                      *
      *                                                                          *
      ***************************************************************************/
-    '/': 'japtool/HomeController.index',
-    '/japtool': {
-        locals:{
-            layout:'/layout/layout-japtool'
-        }
-    },
 
+
+    '/':'japtool/HomeController.index',
+    'get/ new_group':'BuddyGroupController.create',
     /*Router by QuyetND2*/
-    '/testIndex': {view: 'test/index-test'},
-    'post /confirmResult': 'test/QuestionController.confirm',
-    'post /submitTest': 'test/QuestionController.create',
-    'post /inputAnswer': 'test/AnswerController.create',
-    'get /lesson/:category/:lesson': 'test/QuestionController.lesson',
-    '/learningGroup': {view: 'test/learn-group'},
+    //'/':'admin/BookMasterController.index',
+    '/createBookMaster':{view:'admin/article/book-master'},
+    '/createBookDetail':'japtool/BookDetailController.getBookDetail',
     /*End QuyetND2*/
 
 
@@ -65,5 +59,7 @@ module.exports.routes = {
     'get /vocabulary/list': 'VocabularyController.list',
     'post /vocabulary/pronounce': 'VocabularyController.pronounce',
     'post /vocabulary/quicklearning': 'VocabularyController.quicklearning',
+
     'get /vocabulary/cartagame': 'CartaGameController.wordgen'
+
 };

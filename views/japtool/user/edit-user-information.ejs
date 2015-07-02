@@ -2,7 +2,6 @@
     <div class="row">
         <div class="col-sm-offset-1 col-sm-10">
             <input type="hidden" value="<%- user.id %>" name="userInfoId">
-
             <p class="leadInfo">User Name</p>
             <hr>
             <label class="col-sm-3 control-label" for="input-firstname">First Name :</label>
@@ -91,6 +90,7 @@
         </div>
     </div>
 </form>
+
 <script type="text/javascript">
     $(document).ready(function () {
         $("#btnSaveEdit").click(function () {
@@ -109,5 +109,4 @@
             });
         });
     })
-
 </script>

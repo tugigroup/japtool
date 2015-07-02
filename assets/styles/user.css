@@ -1,0 +1,12 @@
+body {
+}
+.content,#content{padding-top:70px; }
+.resgiter {
+    margin: 0 auto;
+    max-width: 600px
+}
+
+.btn:hover, .btn:focus, .btn.focus {
+    color: #DBDBDB;
+    text-decoration: none;
+}

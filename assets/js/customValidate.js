@@ -22,11 +22,9 @@ $(document).ready(function () {
                 minlength: 6,
                 equalTo: "#input-password"
             }
-        },
-        success: function (element) {
-            element.text('OK!').addClass('valid')
         }
     });
+
     $('#change-pass').validate({
         rules: {
             oldPasswordUser: {

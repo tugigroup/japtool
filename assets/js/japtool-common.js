@@ -61,6 +61,7 @@ $(document).ready(function () {
         $("#btnUp").hide();
     });
 
+
     $('#btnShow').click(function () {
         var idUser = $('#idUser').val();
         $.ajax({
@@ -81,6 +82,7 @@ $(document).ready(function () {
         })
     });
     $("#btnSaveEdit").click(function () {
+
         $.ajax({
             url: '/japtool/user/update',
             type: 'POST',
@@ -95,7 +97,6 @@ $(document).ready(function () {
             }
         });
     });
-
 //remove old message when user update password information
     $('#input-NewPassword, #input-PasswordCf').keyup(function () {
         $('#change-pass-mess').removeClass().text('');
@@ -143,3 +144,4 @@ $(document).ready(function () {
         }
     });
 });
+

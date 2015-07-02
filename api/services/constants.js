@@ -3,8 +3,9 @@
  */
 // constants.js
 // defile all constants of app here
-
-module.exports.constants = {
+module.exports= {
     // don't allow the total upload size to exceed ~1MB
-    upFileMaxBytes: 1000000
+    upFileMaxBytes: 1000000,
+    testConst: "nothing"
+
 };
