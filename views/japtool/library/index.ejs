@@ -7,8 +7,6 @@
                     <div class="row">
                         <div class="col-sm-10">
                             <h3><span><%= item %></span>
-                                <small><i>Master Japanese!</i></small>
-
                             </h3>
                         </div>
                         <div class="col-sm-2">
@@ -62,6 +60,144 @@
                                         Library</a>
                                 </li>
                             </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--lib details-->
+            <div class="modal fade" id="lib-level-2" tabindex="-1">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">×</span></button>
+                            <h4 class="modal-title">Library - <%= book.name %></h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <a href="#">
+                                        <img class="library-detail-img"
+                                             src="/japtool/BookMaster/readImg/?fd=<%= book.image %>">
+                                    </a>
+                                </div>
+                                <div class="col-sm-9">
+                                    <ul>
+                                        <h4>Details:</h4>
+                                        <li>
+                                            <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+                                            Level: <%= book.level %>
+                                        </li>
+                                        <li>
+                                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                            Type: <%= book.type %>
+                                        </li>
+                                        <li>
+                                            <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+                                            Number Lesson: <%= book.bookDetail.length %>
+                                        </li>
+                                        <li>
+                                            <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+                                            Estimate Hour:
+                                            <% if(book.hourForLearn == 'undefined'){ %>
+                                            <%= 0 %>
+                                            <% }else{ %>
+                                            <%= book.hourForLearn %>
+                                            <% } %>
+                                        </li>
+                                        <li>
+                                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                            Number Of Recommend:
+                                            <% if(book.recommendNum == undefined){ %>
+                                            <%= 0 %>
+                                            <% }else{ %>
+                                            <%= book.recommendNum %>
+                                            <% } %>
+                                        </li>
+                                        <li>
+                                            <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+                                            Used: 1
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <div class="col-sm-12">
+
+                                    <h4>Description:</h4>
+
+                                    <div class="pre-scrollable mCustomScrollbar" data-mcs-theme="dark">
+                                        <%= book.description %>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <h4>Your friends are learning this library: </h4>
+
+                            <div class="row">
+                                <div class="col-sm-1">
+                                    <div class="thumbnail">
+                                        <a href="#" title="Click to view profile.">
+                                            <img src="../images/avatar/a01.png">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="/japtool/BookMaster/lesson/<%= book.id %>" class="btn btn-success" role="button">Learning
+                                This Library</a>
+                            <a href="#" class="btn btn-danger" role="button" data-dismiss="modal">Close</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--lib review-->
+            <div class="modal fade" id="lib-review-2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">×</span></button>
+                            <h4 class="modal-title">Library - <%= book.name %></h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row libImg-modal">
+                                <div class="col-sm-3 invite">
+                                    <div class="row">
+                                        <h3>Lesson learning</h3>
+                                    </div>
+                                    <div class="row">
+                                        <div id="cssmenu-learngroup">
+                                            <ul>
+                                                <% uniqueLesson.forEach(function(uniqueLesson){ %>
+                                                <li class='has-sub'><a href='#'><%= uniqueLesson %></a>
+                                                    <% book.bookDetail.forEach(function(bookDetail){ %>
+                                                    <% if(uniqueLesson == bookDetail.lesson) { %>
+                                                    <ul>
+                                                        <li><a href='#'
+                                                               onclick="learn('<%= bookDetail.useModule %>', '<%= bookDetail.dataExtractCondition %>')"><%= bookDetail.subLesson %></a>
+                                                        </li>
+                                                    </ul>
+                                                    <% } %>
+                                                    <% }) %>
+                                                    <% }) %>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-9 invite">
+                                    <h3 class="text-center">N3 vocabulary learning group</h3>
+
+                                    <div class="abc"
+                                         style="background-color: rgba(61, 140, 204, 0.39); min-height: 600px"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="/japtool/BookMaster/lesson/<%= book.id %>" class="btn btn-success" role="button">Learning
+                                This Library</a>
+                            <a href="#" class="btn btn-danger" role="button" data-dismiss="modal">Close</a>
                         </div>
                     </div>
                 </div>
