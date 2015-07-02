@@ -4,10 +4,11 @@
  * @description :: Server-side logic for managing users
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
+var bcrypt = require('bcryptjs');
 module.exports = {
 //This loads the sign-up page new.ejs
     'new': function (req, res) {
-        res.view({layout: 'layout/layout-japtool'});
+        res.layoutJaptool();
     },
     //Create user
     create: function (req, res) {
@@ -36,7 +37,7 @@ module.exports = {
             //affter successfuly creating the user
             //redirect to the show action
             User.update({id: idUser}, {yourAddress: yourAddress}, function () {
-                res.redirect('/japtool/user', {layout: 'layout/layout-japtool'});
+                res.redirect('/japtool/user');
             });
 
 
@@ -53,7 +54,7 @@ module.exports = {
                 return next();
             }
 
-            res.view({user: user, layout: 'layout/layout-japtool'});
+            res.view({user: user});
         });
     },
 
@@ -73,8 +74,7 @@ module.exports = {
                 }
                 res.render('japtool/user/edit-user-information', {
                     listCountry: listCountrys,
-                    user: user,
-                    layout: 'layout/layout-japtool'
+                    user: user
                 });
             });
         });
@@ -87,7 +87,7 @@ module.exports = {
             if (err) {
                 return next(err);
             }
-            res.render('japtool/user/show-user-info', {user: user[0], layout: 'layout/layout-japtool'});
+            res.render('japtool/user/show-user-info', {user: user[0]});
         });
     },
 
@@ -99,7 +99,7 @@ module.exports = {
                 return next(err);
             }
             //paa the array down to the index.ejs page
-            res.view({users: users, layout: 'layout/layout-japtool'});
+            res.view({users: users});
         });
     },
 
@@ -122,12 +122,42 @@ module.exports = {
     },
 
     //Change Password
-    changePassword: function (req, res) {
-        var idUser = req.param('id');
-        sails.log('OK');
-        //var oldPassword = req.param('oldPasswordUser');
-        //var newPassword = req.param('newPasswordUser');
+    changePass: function (req, res) {
+        var id = req.param('id');
+        var oldPass = req.param('oldPass');
+        var newPass = req.param('newPass');
+        var newPassCf = req.param('newPassCf');
+        var mess = '';
 
+        //check user pass with input pass
+        bcrypt.compare(oldPass, req.session.User.encryptedPassword, function (err, valid) {
+            //if the input password doesn't match the password from the database...
+            if (err || !valid) {
+                mess = 'Your password is invalid!';
+                res.send({mess: mess, code: 'error'});
+            }
+            //everything is valid, encrypting password and save to db, session
+            else {
+                require('bcryptjs').hash(newPass, 10, function passwordEncypted(err, encryptedPassword) {
+                    if (err) {
+                        mess = 'Encrypt password failed!';
+                        res.send({mess: mess, code: 'error'});
+                    } else {
+                        User.update(id, {encryptedPassword: encryptedPassword}, function (err, userUpdated) {
+                            if (err) {
+                                mess = 'Update failed!';
+                                res.send({mess: mess, code: 'error'});
+                            } else {
+                                mess = 'Update success!';
+                                req.session.User.encryptedPassword = userUpdated[0].encryptedPassword;
+                                res.send({mess: mess, code: 'valid'});
+                            }
+                        });
+                    }
+                });
+            }
+        });
+        //res.send({mess: mess});
     },
 
     searchUser: function (req, res, next) {
@@ -141,8 +171,8 @@ module.exports = {
                     res.render('japtool/user/list-find-friends', {
                         id_origin: id_origin,
                         buddy: buddy,
-                        ob: user,
-                        layout: 'layout/layout-japtool'
+                        ob: user
+
                     });
                 });
 
@@ -182,7 +212,7 @@ module.exports = {
                 res.send(400);
             } else {
                 //res.send(buddys);
-                res.view('japtool/user/list-friends', {buddys: buddys, layout: 'layout/layout-japtool'})
+                res.layoutJaptool('japtool/user/list-friends', {buddys: buddys})
             }
         });
     }

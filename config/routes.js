@@ -1,4 +1,3 @@
-
 /**
  * Route Mappings
  * (sails.config.routes)
@@ -32,6 +31,22 @@ module.exports.routes = {
      * `assets` directory)                                                      *
      *                                                                          *
      ***************************************************************************/
+<<<<<<< HEAD
+    '/': 'japtool/HomeController.index',
+    '/japtool': {
+        locals:{
+            layout:'/layout/layout-japtool'
+        }
+    },
+
+    /*Router by QuyetND2*/
+    '/testIndex': {view: 'test/index-test'},
+    'post /confirmResult': 'test/QuestionController.confirm',
+    'post /submitTest': 'test/QuestionController.create',
+    'post /inputAnswer': 'test/AnswerController.create',
+    'get /lesson/:category/:lesson': 'test/QuestionController.lesson',
+    '/learningGroup': {view: 'test/learn-group'},
+=======
 
     '/':'japtool/HomeController.index',
 
@@ -52,6 +67,7 @@ module.exports.routes = {
     '/createBookMaster':{view:'admin/article/book-master'},
     '/createBookDetail':'japtool/BookDetailController.getBookDetail',
 
+>>>>>>> 8f555d79a53b79906e440cf240b687e2bdc01550
     /*End QuyetND2*/
 
 
