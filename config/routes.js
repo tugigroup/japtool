@@ -31,6 +31,7 @@ module.exports.routes = {
      * `assets` directory)                                                      *
      *                                                                          *
      ***************************************************************************/
+<<<<<<< HEAD
     '/': 'japtool/HomeController.index',
     '/japtool': {
         locals:{
@@ -45,6 +46,28 @@ module.exports.routes = {
     'post /inputAnswer': 'test/AnswerController.create',
     'get /lesson/:category/:lesson': 'test/QuestionController.lesson',
     '/learningGroup': {view: 'test/learn-group'},
+=======
+
+    '/':'japtool/HomeController.index',
+
+    /* Router by tuyentv1*/
+
+    //'/new_group':{view: 'user/new_group'},
+    //'POST /searchUser': 'UserController.searchUser',
+    /*End tuyentv1*/
+    'get/ new_group':'BuddyGroupController.create',
+
+    //'/login' : {
+    //    controller : 'auth',
+    //    action     : 'index'
+    //},
+
+    /*Router by QuyetND2*/
+    //'/':'admin/BookMasterController.index',
+    '/createBookMaster':{view:'admin/article/book-master'},
+    '/createBookDetail':'japtool/BookDetailController.getBookDetail',
+
+>>>>>>> 8f555d79a53b79906e440cf240b687e2bdc01550
     /*End QuyetND2*/
 
 
@@ -65,5 +88,6 @@ module.exports.routes = {
     'get /vocabulary/list': 'VocabularyController.list',
     'post /vocabulary/pronounce': 'VocabularyController.pronounce',
     'post /vocabulary/quicklearning': 'VocabularyController.quicklearning',
-    'get /vocabulary/cartagame': 'CartaGameController.wordgen'
+    'get /vocabulary/cartagame': 'CartaGameController.wordgen',
+
 };

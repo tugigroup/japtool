@@ -1,0 +1,54 @@
+<div class="table-responsive" id="tableListID" >
+    <!-- Table -->
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+              <th>No</th>
+              <th>言葉</th>
+              <th>読み方</th>
+              <th>意味</th>
+              <th>例文</th>
+              <th>備考</th>
+            </tr>
+        </thead>
+        <tbody>
+        <% vocabularies.forEach( function( vocabulary, index){ %>
+            <tr>
+              <td><%= index= index+1 %></td>
+
+              <% if (vocabulary.item) {%>
+              <td><%= vocabulary.item %></td>
+              <%}else {%>
+              <td></td>
+              <%}%>
+
+              <% if (vocabulary.reading) {%>
+              <td><%= vocabulary.reading %></td>
+              <%}else {%>
+              <td></td>
+              <%}%>
+
+              <% if (vocabulary.description) {%>
+              <td><%= vocabulary.description %></td>
+              <%}else {%>
+              <td></td>
+              <%}%>
+
+              <% if (typeof vocabulary.examples !== 'undefined' && vocabulary.examples.length > 0) {%>
+              <td>
+                <% vocabulary.examples.forEach( function( item, j){ %>
+                <% if ( j < 3){%>
+                <li><%= item.example %></li>
+                <%}%>
+                <%})%>
+              </td>
+              <%}else {%>
+              <td></td>
+              <%}%>
+              
+              <td></td>
+            </tr>
+        <% }); %>
+        </tbody>
+    </table>
+</div>
