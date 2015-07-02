@@ -5,7 +5,7 @@
 module.exports = {
     //This loads index.ejs
     index: function(req, res){
-        res.view({ layout: 'layout/japtool-Learning'});
+        res.view({ layout: 'layout/layout-japtool'});
     },
     learning:function(req,res){
         res.view('japtool/learning/learning',{layout: 'layout/layout-japtool'});
