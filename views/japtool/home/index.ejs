@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/styles/bootstrap-social.css">
+    <link rel="stylesheet" href="/styles/font-awesome.css">
+    <link rel="stylesheet" href="/styles/font-roboto.css">
+    <link rel="stylesheet" href="/styles/menu.css">
+    <link rel="stylesheet" href="/styles/index.css">
+</head>
+<body>
+<div class="home-image-background">
+</div>
+<div class="header">
+    <div class="header-center clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <a class="logo"><img src="images/logo.png"></a>
+                </div>
+                <div class="col-md-9">
+                    <div id='cssmenu' class="pull-right">
+                        <ul class="menu-page">
+                            <li><a href='home.html'>Home</a></li>
+                            <li><a href='#'>About</a></li>
+                            <li class='active'><a href='library/library.html'>Libary</a>
+                                <ul>
+                                    <li><a href='#'>Product 1</a>
+                                        <ul>
+                                            <li><a href='#'>Sub Product</a></li>
+                                            <li><a href='#'>Sub Product</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href='#'>Product 2</a>
+                                        <ul>
+                                            <li><a href='#'>Sub Product</a></li>
+                                            <li><a href='#'>Sub Product</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="learning-group/learning-group.html">Learning group</a></li>
+                            <li><a>Using guide</a></li>
+                            <li><a href='#'>Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="home-content text-center">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <div class="row">
+                    <form action="/japtool/auth/login" method="POST" enctype="multipart/form-data">
+                        <div class="col-sm-5">
+                            <div class="form-group">
+                                <input type="text" name="email" value="" placeholder="Your Email Address"
+                                       id="input-email" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-5">
+                            <div class="form-group">
+                                <input type="password" name="password" value="" placeholder="Your Password"
+                                       id="input-password" class="form-control">
+                            </div>
+                        </div>
+                        <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+
+                        <div class="col-sm-2">
+                            <button type="submit" class="btn btn-danger">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-12">
+                <p class="">If you haven't account, you can click <a href="japtool/user/new"><span
+                                class="label label-primary register">register</span></a> here or you can login with
+                    social follow</p>
+
+                <div>
+                    <a class="btn btn-social-icon btn-sm btn-facebook"><i class="fa fa-facebook"></i></a>
+                    <a class="btn btn-social-icon btn-sm btn-flickr"><i class="fa fa-flickr"></i></a>
+                    <a class="btn btn-social-icon btn-sm btn-github"><i class="fa fa-github"></i></a>
+                    <a class="btn btn-social-icon btn-sm btn-google-plus"><i class="fa fa-google-plus"></i></a>
+                    <a class="btn btn-social-icon btn-sm btn-instagram"><i class="fa fa-instagram"></i></a>
+                    <a class="btn btn-social-icon btn-sm btn-linkedin"><i class="fa fa-linkedin"></i></a>
+                    <a class="btn btn-social-icon btn-sm btn-tumblr"><i class="fa fa-tumblr"></i></a>
+                    <a class="btn btn-social-icon btn-sm btn-twitter"><i class="fa fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="home-static user-home">
+                    <i class="fa fa-user fa-5x"></i>
+
+                    <p><span class="counter">1500</span></p>
+
+                    <p>User</p>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="home-static library">
+                    <i class="fa fa-book fa-5x"></i>
+
+                    <p><span class="counter">5500</span></p>
+
+                    <p>Library</p>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="home-static group-member">
+                    <i class="fa fa-group fa-5x"></i>
+
+                    <p><span class="counter">3500</span></p>
+
+                    <p>Group</p>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="home-static vocabulary">
+                    <i class="fa fa-hdd-o fa-5x"></i>
+
+                    <p><span class="counter">1000</span></p>
+
+                    <p>Vocabulary</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="/js/dependencies/jquery.js"></script>
+<script src="/js/dependencies/bootstrap.min.js"></script>
+<script src="/js/menu.js"></script>
+<script src="/js/home-countimator.js"></script>
+<script src="/js/home-common.js"></script>
+</html>
