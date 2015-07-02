@@ -79,7 +79,7 @@ $(document).ready(function () {
 
     // Author: xuandt2
     // Page: create learning, show popup search learning
-    $('[data-toggle="modal"]').click(function (e) {
+    $('[data-toggle="modal"]').on('click', function (e) {
         e.preventDefault();
         $.ajax({
             type: 'GET',
@@ -95,4 +95,9 @@ $(document).ready(function () {
             }
         });
     });
+});
+
+// Close popup
+$('.close-popup').click(function (e) {
+    $('#show-popup-search').close();
 });
