@@ -68,5 +68,9 @@ check current branch. You need standing in your branch.<br>
 merge master branch into your current branch<br>
 <code>git merge origin/master</code><br>
 <br>
+
+<h3>fetch branch other into branch current (ex: master), using</h3>
+	git merge <branch_name>
+
 Git does not automatically merge if conflig. You need to handle manually conflig.
 "hello" 
