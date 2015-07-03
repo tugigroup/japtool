@@ -35,7 +35,8 @@ module.exports = {
             req.session.User = user;
             var idUser = req.session.User.id;
             //Update user address
-            User.update({id: idUser}, {yourAddress: yourAddress},function(err,updateUser){});
+            User.update({id: idUser}, {yourAddress: yourAddress}, function (err, updateUser) {
+            });
 
             //after create user success, generate email include active link --> bcrypt: email + create date
             require('bcryptjs').hash(user.email + user.createdAt.toISOString(), 10, function passwordEncypted(err, encryptedLink) {
@@ -126,7 +127,32 @@ module.exports = {
             res.render('japtool/user/show-user-info', {user: user[0]});
         });
     },
-
+    //edit avatar user
+    editAvatar: function (req, res, next) {
+        var id = req.param('userID');
+        //var avatarUser = req.param('avatarUser');
+        var avatar = req.param('avatarUser');
+        fileAction.upload(avatar, 'files', req, function (err, img) {
+            console.log(img);
+            if (err) {
+                sails.log(err)
+            } else {
+                if (img.length <= 1) {
+                    avatar.image = img[0].fd;
+                    user.update(id,{avatar:avatar}).exec(function (err, data) {
+                        if (err) {
+                            sails.log(err)
+                        } else {
+                            res.send('BookMaster has been create');
+                        }
+                    });
+                }
+                else {
+                    res.send('You can only upload 1 file');
+                }
+            }
+        });
+    },
     //display all list user to index.ejs
     index: function (req, res, next) {
         //Get an array of all user in the user collection (ex: SQL select table)
@@ -253,8 +279,8 @@ module.exports = {
         });
     },
 
-    _config:{
-        locals:{
+    _config: {
+        locals: {
             layout: 'layout/layout-japtool'
         }
     }

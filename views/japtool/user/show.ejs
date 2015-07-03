@@ -7,13 +7,18 @@
                     <div class="panel panel-success">
                         <div class="panel-body">
                             <div class="row">
+                                <input type="hidden" name="userID" id="userID" value="<%= user.id %>"/>
+
                                 <div class="col-sm-12"><span class="lbUser"><%- user.username %></span></div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-12"><span class="lbLever">Lever Of User</span></div>
                             </div>
                             <div class="row">
-                                <div class="col-sm-offset-4"><img src="/images/df_ava.jpg" width="60" height="60"/>
+                                <div class="col-sm-offset-4">
+                                    <img src="/images/df_ava.jpg" width="60" height="60" id="avatarPreview"/>
+                                    <input type="file" name="avatarUser" id="avatarUser"/>
+
                                 </div>
                             </div>
                         </div>
