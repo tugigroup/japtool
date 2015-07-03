@@ -32,7 +32,7 @@ module.exports = {
             required: true
         },
 
-        sort1:{
+        sort:{
             type:'integer'
         },
 
