@@ -111,7 +111,6 @@ module.exports = {
     getAllLibrary: function (req, res) {
         var category = req.param('category');
         BookMaster.find({category: category}).populate('bookDetail').exec(function createCB(err, data) {
-            var arrTag = [];
             var arrAllLesson = [];
 
             data.forEach(function (book) {
@@ -127,23 +126,15 @@ module.exports = {
                                 idLesson: book.id
                             };
                             arrAllLesson.push(objLesson);
+                            res.view('japtool/library/showCategory', {
+                                data: data,
+                                arrAllLesson: arrAllLesson,
+                                layout: 'layout/layout-japtool'
+                            })
                         }
                     })
                 }
             });
-
-            data.forEach(function (item, index) {
-                arrTag.push(item.category);
-                if (index == (data.length - 1)) {
-                    var array = require("array-extended");
-                    var uniqueTag = array(arrTag).unique().value();
-                    res.view('japtool/library/showCategory', {
-                        data: data,
-                        arrAllLesson: arrAllLesson,
-                        layout: 'layout/layout-japtool'
-                    })
-                }
-            })
         })
     }
 };
