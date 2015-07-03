@@ -72,7 +72,7 @@ $("#cssmenu").menumaker({
 });
 })(jQuery);
 
-//Menu Learing
+//Menu Library and learning
 (function ($) {
   $(document).ready(function () {
     $('#cssmenu-learngroup li.active').addClass('open').children('ul').show();

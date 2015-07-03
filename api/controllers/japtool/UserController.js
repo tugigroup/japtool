@@ -9,7 +9,7 @@ var bcrypt = require('bcryptjs');
 module.exports = {
 //This loads the sign-up page new.ejs
     'new': function (req, res) {
-        res.view({layout: 'layout/layout-japtool'});
+        res.view();
     },
     //Create user
     create: function (req, res) {
@@ -44,7 +44,6 @@ module.exports = {
                 } else {
                     //and then, redirect to new-success page to inform user active account
                     res.view('japtool/user/new-success', {
-                        layout: 'layout/layout-japtool',
                         user: user,
                         activeLink: encryptedLink
                     });
@@ -61,21 +60,19 @@ module.exports = {
             console.log('DB: ', req.session.User.email + req.session.User.createdAt);
             //if the active link doesn't match
             if (err || !valid) {
-                return res.view('japtool/user/active-account-success', {layout: 'layout/layout-japtool', code: 'fail'});
+                return res.view('japtool/user/active-account-success', {code: 'fail'});
             }
             //everything is valid,change user status and save to db, session
             else {
                 User.update(req.session.User._id, {status: true}, function (err, userUpdated) {
                     if (err) {
                         return res.view('japtool/user/active-account-success', {
-                            layout: 'layout/layout-japtool',
                             code: 'fail'
                         });
                     } else {
                         //Luu lại status vào session
                         req.session.User.status = userUpdated[0].status;
                         return res.view('japtool/user/active-account-success', {
-                            layout: 'layout/layout-japtool',
                             code: 'success'
                         });
                     }
@@ -93,7 +90,7 @@ module.exports = {
                 return next();
             }
 
-            res.view({user: user, layout: 'layout/layout-japtool'});
+            res.view({user: user});
         });
     },
 
@@ -138,7 +135,7 @@ module.exports = {
                 return next(err);
             }
             //paa the array down to the index.ejs page
-            res.view({users: users, layout: 'layout/layout-japtool'});
+            res.view({users: users});
         });
     },
 
@@ -251,8 +248,14 @@ module.exports = {
                 res.send(400);
             } else {
                 //res.send(buddys);
-                res.layoutJaptool('japtool/user/list-friends', {buddys: buddys})
+                res.view('japtool/user/list-friends', {buddys: buddys})
             }
         });
+    },
+
+    _config:{
+        locals:{
+            layout: 'layout/layout-japtool'
+        }
     }
 };

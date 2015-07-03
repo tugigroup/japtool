@@ -8,7 +8,7 @@ var passport = require('passport');
 var bcrypt = require('bcryptjs');
 module.exports = {
     'index': function (req, res) {
-        res.view({layout: 'layout/layout-japtool'});
+        res.view();
     },
     login: function (req, res, next) {
         // Check for email and password in params sent via the form, if none
@@ -126,7 +126,12 @@ module.exports = {
                     }
                 });
             })(req, res, next);
-    }
+    },
 
+    _config:{
+      locals:{
+          layout: 'layout/layout-japtool'
+      }
+    }
 };
 
