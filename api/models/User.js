@@ -61,6 +61,12 @@ module.exports = {
         creatingDate: {
             type: 'date'
         },
+        currentLevel: {
+            type: 'string'
+        },
+        currentLearningTime: {
+            type: 'integer'
+        },
         online: {
             type: 'boolean',
             defaultsTo: false
