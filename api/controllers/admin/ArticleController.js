@@ -13,12 +13,10 @@ module.exports = {
         var explaination = req.param('explaination');
         var translation = req.param('translation');
         var level = req.param('level');
-        var sort = req.param('sort');
         var tag = req.param('tag');
         var category = req.param('category');
         // upload files and get FD
         // Up load Image
-        console.log(sort);
         fileAction.upload('video', 'files', req, function(err, videoUpload) {
             if (err) {
                 return res.negotiate(err);
@@ -49,7 +47,6 @@ module.exports = {
                                             explaination: explaination,
                                             translation: translation,
                                             level: level,
-                                            sort:sort,
                                             tag: tag,
                                             category: category,
                                             video: fdVideo,
@@ -82,7 +79,6 @@ module.exports = {
                                             explaination: explaination,
                                             translation: translation,
                                             level: level,
-                                            sort:sort,
                                             tag: tag,
                                             category: category
                                         }).exec(function articleCreated(err, Article) {
@@ -206,7 +202,6 @@ module.exports = {
         var explaination = req.param('explaination');
         var translation = req.param('translation');
         var level = req.param('level');
-        var sort = req.param('sort');
         var tag = req.param('tag');
         var category = req.param('category');
         var isVideoChange = req.param('isVideoChange');
@@ -311,7 +306,6 @@ module.exports = {
                                         }
                                     });
                                 }
-                                console.log(sort);
                                 // update article object
                                 Article.update({id: id}, {
                                     subject: subject,
@@ -319,14 +313,12 @@ module.exports = {
                                     explaination: explaination,
                                     translation: translation,
                                     level: level,
-                                    sort:sort,
                                     tag: tag,
                                     category: category
                                 }).exec(function afterwards(err , updated) {
                                     if (err) {
                                         return res.send(err);
                                     } else {
-                                        sails.log(updated.sort);
                                         res.redirect('/showAllArticle');
                                     }
                                 });

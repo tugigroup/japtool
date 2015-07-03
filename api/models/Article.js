@@ -33,7 +33,8 @@ module.exports = {
         },
 
         sort:{
-            type:'integer'
+            type: 'integer',
+            autoIncrement: true
         },
 
         tag: {

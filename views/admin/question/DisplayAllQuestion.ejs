@@ -21,8 +21,8 @@ if(size == 0) {
                     <td colspan="2">Action</td>
                 </tr>
                 </thead>
-                <% questions.forEach(  function (question){
-                        Articles.forEach(function (article) {
+                <%Articles.forEach(function (article) {
+                        questions.forEach(  function (question){
 
                         if(article.id == question.articleID) {
                         %>
@@ -50,6 +50,9 @@ if(size == 0) {
                 });
                 %>
             </table>
+        </div>
+        <div class="row">
+            <a href="/showAllArticle" class="btn btn-success btn-show-ar" >Show All Article</a>
         </div>
     </div>
 </div>

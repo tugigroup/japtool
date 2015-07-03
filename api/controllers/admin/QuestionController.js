@@ -13,7 +13,6 @@ module.exports = {
     create: function (req, res) {
         //get value parameters of input view
         var articleID = req.param('articleID');
-        var sort = req.param('sort');
         var question = req.param('question');
         var option1 = req.param('option1');
         var resultOption1 = req.param('resultOption1');
@@ -39,7 +38,6 @@ module.exports = {
                     Question.create(
                         {
                             articleID: articleID,
-                            sort: sort,
                             question: question,
                             option1: option1,
                             resultOption1: resultOption1,
@@ -68,7 +66,6 @@ module.exports = {
                     Question.create(
                         {
                             articleID: articleID,
-                            sort: sort,
                             question: question,
                             option1: option1,
                             resultOption1: resultOption1,
@@ -80,7 +77,7 @@ module.exports = {
                             resultOption4: resultOption4
                         }).exec(function articleCreated(err, question) {
                             //If there's an error
-                            console.log("Da nhay vao Upload thuong");
+                            console.log("Da nhay vao add thuong");
                             if (err) {
                                 req.session.flash = {
                                     err: err
@@ -173,7 +170,6 @@ module.exports = {
         //get value parameters of input view
         var id = req.param('id');
         var articleID = req.param('articleID');
-        var sort = req.param('sort');
         var question = req.param('question');
         var option1 = req.param('option1');
         var resultOption1 = req.param('resultOption1');
@@ -221,7 +217,6 @@ module.exports = {
                 if (fdImage != null) { // if user upload image
                     Question.update({id: id}, {
                         articleID: articleID,
-                        sort: sort,
                         question: question,
                         option1: option1,
                         resultOption1: resultOption1,
@@ -243,7 +238,6 @@ module.exports = {
                     // if User don't upload Image
                     Question.update({id: id}, {
                         articleID: articleID,
-                        sort: sort,
                         question: question,
                         option1: option1,
                         resultOption1: resultOption1,

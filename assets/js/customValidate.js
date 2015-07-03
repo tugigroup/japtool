@@ -27,6 +27,100 @@ $(document).ready(function () {
             element.text('OK!').addClass('valid')
         }
     });
+    $('#createArticleForm').validate({
+        rules: {
+            subject: {
+                required: true
+            },
+            content: {
+                required: true
+            },
+            explaination: {
+                required: true
+            },
+            translation: {
+                required: true
+            },
+            level: {
+                required:true
+            },
+            tag:{
+                required:true
+            }
+        },
+        success: function (element) {
+            element.text('OK!').addClass('valid')
+        }
+    });
+    $('#editArticleForm').validate({
+        rules: {
+            subject: {
+                required: true
+            },
+            content: {
+                required: true
+            },
+            explaination: {
+                required: true
+            },
+            translation: {
+                required: true
+            },
+            level: {
+                required:true
+            },
+            tag:{
+                required:true
+            }
+        },
+        success: function (element) {
+            element.text('OK!').addClass('valid')
+        }
+    });
+    $('#createQueForm').validate({
+        rules: {
+            question: {
+                required: true
+            },
+            option1: {
+                required: true
+            },
+            option2: {
+                required: true
+            },
+            option3: {
+                required: true
+            },
+            option4: {
+                required:true
+            }
+        },
+        success: function (element) {
+            element.text('OK!').addClass('valid')
+        }
+    });
+    $('#editQueForm').validate({
+        rules: {
+            question: {
+                required: true
+            },
+            option1: {
+                required: true
+            },
+            option2: {
+                required: true
+            },
+            option3: {
+                required: true
+            },
+            option4: {
+                required:true
+            }
+        },
+        success: function (element) {
+            element.text('OK!').addClass('Unsuccessful !!!')
+        }
+    });
 
     $('#change-pass').validate({
         rules: {

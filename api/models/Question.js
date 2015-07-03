@@ -13,7 +13,8 @@ module.exports = {
             required:true
         },
         sort:{
-            type:'integer'
+            type:'integer',
+            autoIncrement: true
         },
         question:{
             type:'string',

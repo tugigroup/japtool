@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <form action="updateArticle" enctype="multipart/form-data" method="post">
+        <form action="updateArticle" enctype="multipart/form-data" id="editArticleForm" method="post">
             <div class="edit-article">
                 <div class="col-sm-12">
                     <label class="lb-edit-ar lead">Edit Article</label>
@@ -36,12 +36,6 @@
                 </div>
                 <div class="col-sm-11">
                     <input type="text" class="form-control txt-box" id="" value="<%=Article.level%>" placeholder="level" name="level">
-                </div>
-                <div class="col-sm-1">
-                    <label>Sort</label>
-                </div>
-                <div class="col-sm-11">
-                    <input type="number" class="form-control txt-box" id="" value="<%=Article.sort%>" placeholder="sort" name="sort">
                 </div>
                 <div class="col-sm-1">
                     <label>tag</label>
@@ -106,7 +100,7 @@
                                 </div>
                                 <!--div hidden, this div let user change media-->
                                 <div class="col-sm-12 col-media" id="div-hide-video">
-                                    <input type="file" name="video" multiple="multiple" id="file-edit-video" class="txt-box file-ch">
+                                    <input type="file" name="video" multiple="multiple" accept="video/*" id="file-edit-video" class="txt-box file-ch">
                                     <button type="button" id="cancleVideo" class="glyphicon glyphicon-floppy-remove btn-changeMedia">Cancle</button>
                                 </div>
                             </div>
@@ -120,8 +114,8 @@
                             </div>
                             <!--div hidden, this div let user change media-->
                             <div class="col-sm-12 col-media" id="div-hide-audio">
-                                <input type="file" name="audio" multiple="multiple" id="file-edit-audio" class="txt-box file-ch">
-                                <button type="button" id="cancleAudio" class="glyphicon glyphicon-floppy-remove btn-changeMedia">Cancle</button>
+                                <input type="file" name="audio" multiple="multiple" accept="audio/*" id="file-edit-audio" class="txt-box file-ch">
+                                <button type="button" id="cancleAudio"  class="glyphicon glyphicon-floppy-remove btn-changeMedia">Cancle</button>
                             </div>
                         </div>
                         <div id="image" class="tab-pane fade">
@@ -131,7 +125,7 @@
                             </div>
                             <!--div hidden, this div let user change media-->
                             <div class="col-sm-12 col-media" id="div-hide-img">
-                                <input type="file" name="img" multiple="multiple" id="file-edit-img" class="txt-box file-ch">
+                                <input type="file" name="img" multiple="multiple" accept="image/*" id="file-edit-img" class="txt-box file-ch">
                                 <button type="button" id="cancleImg" class="glyphicon glyphicon-floppy-remove btn-changeMedia">Cancle</button>
                             </div>
                         </div>
@@ -139,52 +133,6 @@
                     <!--finish display media-->
                 </div>
                 <hr class="hr-edit">
-
-
-
-                <!--&lt;!&ndash;this textbox let we know , user change media ot not&ndash;&gt;-->
-                <!--<input type="text" hidden="hidden" name="isVideoChange" value="yes"/>-->
-                <!--<div class="col-sm-1">-->
-                    <!--<label>Video</label>-->
-                <!--</div>-->
-                <!--<div class="col-sm-11">-->
-                    <!--<div class="row row-slc">-->
-                        <!--<input type="file" name="video" multiple="multiple" class="form-control txt-box">-->
-                    <!--</div>-->
-                    <!--<div class="row row-media">-->
-                            <!--<video controls>-->
-                                <!--<source src="/showVideo/<%=Article.video%>" type="video/mp4">-->
-                            <!--</video>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--&lt;!&ndash;this textbox let we know , user change media ot not&ndash;&gt;-->
-                <!--<input type="text" hidden="hidden" name="isAudioChange" value="yes"/>-->
-                <!--<div class="col-sm-1">-->
-                    <!--<label>audio</label>-->
-                <!--</div>-->
-                <!--<div class="col-sm-11">-->
-                    <!--<div class="row row-slc">-->
-                        <!--<input type="file" name="audio" multiple="multiple" class="form-control txt-box">-->
-                    <!--</div>-->
-                    <!--<div class="row row-media">-->
-                        <!--<audio class="audio-form"  controls>-->
-                            <!--<source src="/showAudio/<%=Article.audio%>"  type="audio/mpeg">-->
-                        <!--</audio>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--&lt;!&ndash;this textbox let we know , user change media ot not&ndash;&gt;-->
-                <!--<input type="text" hidden="hidden" name="isVideoChange" value="yes"/>-->
-                <!--<div class="col-sm-1">-->
-                    <!--<label>Image</label>-->
-                <!--</div>-->
-                <!--<div class="col-sm-11">-->
-                    <!--<div class="row row-slc">-->
-                        <!--<input type="file" name="img" multiple="multiple" class="form-control txt-box">-->
-                    <!--</div>-->
-                    <!--<div class="row row-media">-->
-                        <!--<img src="/showImage/<%=Article.image%>">-->
-                    <!--</div>-->
-                <!--</div>-->
                 <div class="col-sm-offset-1 col-sm-11">
                     <button type="submit" class="btn btn-success btn-edit-ar">Update Article</button>
                 </div>
