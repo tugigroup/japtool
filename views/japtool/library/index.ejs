@@ -11,7 +11,7 @@
                         </div>
                         <div class="col-sm-2">
                             <div class="join-learn btn label-primary">
-                                <a href="/japtool/library/libraryCategory">View more Library</a>
+                                <a href="/japtool/BookMaster/getAllLibrary/?category=<%= item %>">View more Library</a>
                             </div>
                         </div>
                     </div>
@@ -19,7 +19,6 @@
                 </div>
             </div>
         </div>
-
         <div class="clearfix"></div>
         <div id="lib-1">
             <% data.forEach(function(book, index){ %>
@@ -152,39 +151,6 @@
                 </div>
             </div>
             <!--lib review-->
-            <% if(book.bookDetail == 0){ %>
-            <script>
-                console.log('No has BookDetails');
-            </script>
-            <% } else{ %>
-            <script>
-                var lesson = [];
-            </script>
-            <% book.bookDetail.forEach(function(item){ %>
-            <script>
-                lesson.push('<%= item.lesson %>');
-
-            </script>
-            <% }) %>
-            <script>
-                var uniqueLesson = [];
-                function remove_duplicates_safe(arr) {
-                    var obj = {};
-                    var arr2 = [];
-                    for (var i = 0; i < arr.length; i++) {
-                        if (!(arr[i] in obj)) {
-                            arr2.push(arr[i]);
-                            obj[arr[i]] = true;
-                        }
-                    }
-                    return arr2;
-
-                }
-                uniqueLesson = remove_duplicates_safe(lesson)
-                console.log(uniqueLesson);
-            </script>
-            <% } %>
-
             <div class="modal fade" id="lib-review-<%= book.id %>" tabindex="-1" role="dialog"
                  aria-labelledby="myModalLabel">
                 <div class="modal-dialog modal-lg" role="document">
@@ -203,69 +169,28 @@
                                     <div class="row">
                                         <div id="cssmenu-learngroup">
                                             <ul>
-                                                <li><a href="#">Lesson learning 1</a></li>
-                                                <li class="has-sub"><a href="#">Lesson learning 2</a>
+                                                <% arrAllLesson.forEach(function(item){ %>
+                                                <% if(item.idLesson == book.id){ %>
+                                                <% item.arrLesson.forEach(function(uniqueLesson){ %>
+                                                <li class='has-sub'><a href='#'><%= uniqueLesson %></a>
+                                                    <% book.bookDetail.forEach(function(bookDetail){ %>
+                                                    <% if(uniqueLesson == bookDetail.lesson) { %>
                                                     <ul>
-                                                        <li class="has-sub"><a href="#">Sub Lesson learning</a>
-                                                            <ul>
-                                                                <li><a href="#">Sub Lesson learning</a></li>
-                                                                <li><a href="#">Sub Lesson learning </a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="has-sub"><a href="#">Sub Lesson learning</a>
-                                                            <ul>
-                                                                <li><a href="#">Sub Lesson learning </a></li>
-                                                                <li><a href="#">Sub Lesson learning </a></li>
-                                                            </ul>
+                                                        <li><a href='#'
+                                                               onclick="learn('<%= bookDetail.useModule %>', '<%= bookDetail.dataExtractCondition %>')"><%= bookDetail.subLesson %></a>
                                                         </li>
                                                     </ul>
-                                                </li>
-                                                <li><a href="#">Lesson learning 3</a></li>
-                                                <li><a href="#">Lesson learning 4</a></li>
-                                                <li><a href="#">Lesson learning 1</a></li>
-                                                <li class="has-sub"><a href="#">Lesson learning 2</a>
-                                                    <ul>
-                                                        <li class="has-sub"><a href="#">Sub Lesson learning </a>
-                                                            <ul>
-                                                                <li><a href="#">Sub Lesson learning </a></li>
-                                                                <li><a href="#">Sub Lesson learning </a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="has-sub"><a href="#">Sub Lesson learning</a>
-                                                            <ul>
-                                                                <li><a href="#">Sub Lesson learning 2.2.1</a></li>
-                                                                <li><a href="#">Sub Lesson learning 2.2.2</a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="#">Lesson learning 3</a></li>
-                                                <li><a href="#">Lesson learning 4</a></li>
-                                                <li><a href="#">Lesson learning 1</a></li>
-                                                <li class="has-sub"><a href="#">Lesson learning 2</a>
-                                                    <ul>
-                                                        <li class="has-sub"><a href="#">Sub Lesson learning 2.1</a>
-                                                            <ul>
-                                                                <li><a href="#">Sub Lesson learning 2.1.1</a></li>
-                                                                <li><a href="#">Sub Lesson learning 2.1.2</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="has-sub"><a href="#">Sub Lesson learning 2.2</a>
-                                                            <ul>
-                                                                <li><a href="#">Sub Lesson learning 2.2.1</a></li>
-                                                                <li><a href="#">Sub Lesson learning 2.2.2</a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="#">Lesson learning 3</a></li>
-                                                <li><a href="#">Lesson learning 4</a></li>
+                                                    <% } %>
+                                                    <% }) %>
+                                                    <% }) %>
+                                                    <% } %>
+                                                    <% }) %>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-9 invite">
-                                    <h3 class="text-center">N3 vocabulary learning group</h3>
+                                    <h3 class="text-center"><%= book.name %></h3>
 
                                     <div class="abc"
                                          style="background-color: rgba(61, 140, 204, 0.39); min-height: 600px"></div>

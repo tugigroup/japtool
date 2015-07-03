@@ -129,9 +129,9 @@ module.exports = {
     },
 
     _config:{
-      locals:{
-          layout: 'layout/layout-japtool'
-      }
+        locals:{
+            layout: 'layout/layout-japtool'
+        }
     }
 };
 

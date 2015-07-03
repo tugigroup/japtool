@@ -81,20 +81,65 @@ $(document).ready(function () {
       }
     })
   });
+  //Validate user edit info form
+  $('#input-firstname').keyup(function () {
+    var fName = $('#input-firstname').val();
+    var messfName = $('#user-edit-mess-fName').removeClass();
+
+    if (fName == "" || fName == null) {
+      messfName.addClass('error').text('First name is required!').show();
+    } else {
+      messfName.hide();
+    }
+  });
+  $('#input-lastname').keyup(function () {
+    var lName = $('#input-lastname').val();
+    var messlName = $('#user-edit-mess-lName').removeClass();
+
+    if (lName == "" || lName == null) {
+      messlName.addClass('error').text('Last name is required!').show();
+    } else {
+      messlName.hide();
+    }
+  });
+  $('#input-email').keyup(function () {
+    var emailREG = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+    var email = $('#input-email').val();
+    var messemail = $('#user-edit-mess-email').removeClass();
+
+    if (email == "" || email == null) {
+      messemail.addClass('error').text('Email is required!').show();
+    } else if (!emailREG.test(email)) {
+      messemail.addClass('error').text('Your email is invalid!').show();
+    } else {
+      messemail.hide();
+    }
+  });
   $("#btnSaveEdit").click(function () {
     var fName = $('#input-firstname').val();
+    var messfName = $('user-edit-mess-fName').removeClass();
     var lName = $('#input-lastname').val();
-    var email = $('#input-email').val();
-    var mess = $('#user-edit-mess').removeClass();
+    var messlName = $('#user-edit-mess-lName').removeClass();
     var emailREG = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-    if (fName == "" || fName == null || lName == "" || lName == null || email == "" || email == null) {
-      //All field required
-      mess.addClass('error').text('Field first name, last name and email is required!').show();
-    } else if (!emailREG.test(email)) {
-      //Check email
-      mess.addClass('error').text('Your email is invalid!').show();
+    var email = $('#input-email').val();
+    var messemail = $('#user-edit-mess-email').removeClass();
+    var valid = true;
+    if (fName == "" || fName == null) {
+      messfName.addClass('error').text('First name is required!').show();
+      valid = false;
     }
-    else {
+    if (lName == "" || lName == null) {
+      messlName.addClass('error').text('Last name is required!').show();
+      valid = false;
+    }
+    if (email == "" || email == null) {
+      messemail.addClass('error').text('Email is required!').show();
+      valid = false;
+    } else if (!emailREG.test(email)) {
+      messemail.addClass('error').text('Your email is invalid!').show();
+      valid = false;
+    }
+    if (valid) {
       $.ajax({
         url: '/japtool/user/update',
         type: 'POST',

@@ -1,20 +1,44 @@
 /**
- * Created by TuyenTV1 on 6/26/2015.
+ * Created by XuanDT2 on 6/29/2015.
  */
-
 module.exports = {
-    //This loads index.ejs
-    index: function(req, res){
-        res.view({ layout: 'layout/layout-japtool'});
-    },
-    learning:function(req,res){
-        res.view('japtool/learning/learning',{layout: 'layout/layout-japtool'});
-    },
-    create:function(req,res){
-        res.view('japtool/learning/create',{layout: 'layout/layout-japtool'});
-    },
-    edit:function(req,res){
-        res.view('japtool/learning/edit',{layout: 'layout/layout-japtool'});
-    }
+    /**
+     * GET: japtool/learning/create
+     * @param req
+     * @param res
+     */
+    create: function (req, res) {
+        res.view('japtool/learning/create');
 
+    },
+    /**
+     * POST: japtool/learning/add
+     * @param req
+     * @param res
+     */
+    add: function (req, res) {
+        try {
+
+            var params = req.params.all();
+            Learning.create(params).exec(function (err, learning) {
+                if (err) {
+                    return res.json({err: err});
+                }
+
+                if (!learning) {
+                    return res.json({err: "Error"});
+                }
+
+                res.redirect('japtool/BookMaster/lesson/' + learning.id);
+            });
+        }
+        catch (ex) {
+            sails.log(ex);
+        }
+    },
+        _config:{
+            locals:{
+                layout: 'layout/layout-japtool'
+            }
+        }
 };
