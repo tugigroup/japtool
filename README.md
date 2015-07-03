@@ -1,8 +1,14 @@
 # japtool
-<h2>2.1 Start developing new feature</h2>
+<h2>1. Using cases </h2>
+<h3>1.1 Start developing new feature</h3>
+clone from master brach <br>
+<code>git clone -b master https://github.com/tugigroup/japtool.git</code><br>
+<code>cd japtool</code><br>
+
+create new feature brach. test branch for example<br>
+<code>git checkout -b test</code>
+
+push new brach to github repository<br>
+<code>git push origin test</code>
+
 <br>
-<h4>clone from master brach </h4>
-<br>
-git clone -b master https://github.com/tugigroup/japtool.git
-<br>
-cd japtool
