@@ -10,6 +10,11 @@ data = fs.readFileSync(config.vocabulary_csv_file,{"encoding":"utf8"});
 
 parse(data, {delimiter : ',', comment: '#'}, function(err, vocabularies){
 
+	if (err) {
+		console.log('data import error! Data has wrong');
+		return;
+	}
+	
 	// check header
 	if (vocabularies.length == 0){
 		console.log('Error! csv file has not any data');
