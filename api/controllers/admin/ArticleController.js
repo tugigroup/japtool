@@ -15,6 +15,7 @@ module.exports = {
         var level = req.param('level');
         var tag = req.param('tag');
         var category = req.param('category');
+        var sort=null;
         // upload files and get FD
         // Up load Image
         fileAction.upload('video', 'files', req, function(err, videoUpload) {
@@ -39,63 +40,74 @@ module.exports = {
                                 if (videoUpload.length != 0) fdVideo = videoUpload[0].fd;
                                 if (imgUploaded.length != 0) fdImage = imgUploaded[0].fd;
                                 // create article object
-                                if (fdVideo != null || fdAudio != null || fdImage != null) { // if user upload image
-                                    Article.create(
-                                        {
-                                            subject: subject,
-                                            content: content,
-                                            explaination: explaination,
-                                            translation: translation,
-                                            level: level,
-                                            tag: tag,
-                                            category: category,
-                                            video: fdVideo,
-                                            audio: fdAudio,
-                                            image: fdImage
 
+                                //pass sort variable
+                                Article.count().exec(function(err, cnt){
+                                    if(err) res.send(err);
+                                    else{
+                                        sort = cnt + 1;
+                                    }
+                                    //create object
+                                    if (fdVideo != null || fdAudio != null || fdImage != null) { // if user upload image
+                                        Article.create(
+                                            {
+                                                subject: subject,
+                                                content: content,
+                                                explaination: explaination,
+                                                translation: translation,
+                                                level: level,
+                                                tag: tag,
+                                                category: category,
+                                                video: fdVideo,
+                                                audio: fdAudio,
+                                                image: fdImage,
+                                                sort :sort
 
-                                        }).exec(function articleCreated(err, Article) {
-                                            sails.log('videos', videoUpload);
-                                            sails.log('audio', audioUpload);
-                                            sails.log('image', imgUploaded);
-                                            console.log("Da nhay vao Upload hai thang");
-                                            //sails.log(Article);
-                                            //If there's an error
-                                            if (err) {
-                                                sails.log(err)
-                                            }
-                                            else {
-                                                //affter successfuly creating the user
-                                                //redirect to the show action
-                                                res.redirect('/displayArticleCT/' + Article.id);
-                                            }
-                                        });
-                                } else {
-                                    // if User don't upload Image
-                                    Article.create(
-                                        {
-                                            subject: subject,
-                                            content: content,
-                                            explaination: explaination,
-                                            translation: translation,
-                                            level: level,
-                                            tag: tag,
-                                            category: category
-                                        }).exec(function articleCreated(err, Article) {
-                                            //If there's an error
-                                            console.log("Da nhay vao Upload thuong");
-                                            if (err) {
-                                                req.session.flash = {
-                                                    err: err
+                                            }).exec(function articleCreated(err, Article) {
+                                                sails.log('videos', videoUpload);
+                                                sails.log('audio', audioUpload);
+                                                sails.log('image', imgUploaded);
+                                                console.log("Da nhay vao Upload hai thang");
+                                                //sails.log(Article);
+                                                //If there's an error
+                                                if (err) {
+                                                    sails.log(err)
                                                 }
-                                                return res.send(err);
-                                            } else {
-                                                //affter successfuly creating the user
-                                                //redirect to the show action
-                                                res.redirect('/displayArticleCT/' + Article.id);
-                                            }
-                                        });
-                                }
+                                                else {
+                                                    //affter successfuly creating the user
+                                                    //redirect to the show action
+                                                    res.redirect('/displayArticleCT/' + Article.id);
+                                                }
+                                            });
+                                    } else {
+                                        // if User don't upload Image
+                                        Article.create(
+                                            {
+                                                subject: subject,
+                                                content: content,
+                                                explaination: explaination,
+                                                translation: translation,
+                                                level: level,
+                                                tag: tag,
+                                                category: category,
+                                                sort:sort
+                                            }).exec(function articleCreated(err, Article) {
+                                                //If there's an error
+                                                console.log("Da nhay vao Upload thuong");
+                                                if (err) {
+                                                    req.session.flash = {
+                                                        err: err
+                                                    }
+                                                    return res.send(err);
+                                                } else {
+                                                    //affter successfuly creating the user
+                                                    //redirect to the show action
+                                                    res.redirect('/displayArticleCT/' + Article.id);
+                                                }
+                                            });
+                                    }
+                                })
+
                             }
                         });
                     }
