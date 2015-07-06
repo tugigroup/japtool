@@ -23,10 +23,27 @@ h2 {
     color: #000;
 }
 
+.label {
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 100%;
+    font-weight: 400;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
+
 .btn-default, .btn-primary, .btn-success, .btn-info, .btn-warning, .btn-danger {
     text-shadow: none;
     -webkit-box-shadow: none;
     box-shadow: none;
+}
+
+input[type=submit]:hover {
+    color: #fff
 }
 
 .sd-learn-more {
@@ -128,12 +145,12 @@ h2 {
     background: url("../images/bacground-header.jpg") repeat;
     background-size: cover;
     background-position: 50% 50%;
-    -moz-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter ….3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
-    -o-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter ….3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
-    -webkit-filter: grayscale(100%);
-    filter: gray;
-    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter ….3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
 
+    -moz-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter â€¦.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+    -o-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter â€¦.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+    -webkit-filter: grayscale(100%);
+    /*filter: gray;*/
+    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter â€¦.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
 }
 
 .stripe_color {
@@ -331,7 +348,7 @@ div.required .control-label:before {
     margin-bottom: 1rem;
 }
 
-.changePassword {
+.changePassword, #change-avatar {
     margin-top: 54px;
 }
 
@@ -368,17 +385,48 @@ div.required .control-label:before {
     margin-top: 2rem;
 }
 
-label.error {
+label.error, p.error {
     font-weight: 400;
     color: red;
     font-style: italic;
     padding-top: 2px;
 }
 
-label.valid {
+label.valid, p.valid {
     font-weight: 400;
     color: green;
     padding-top: 2px;
+}
+
+.login-back {
+    color: #fff;
+}
+
+/*Upload avatar style*/
+
+.avatar-user-image img {
+    width: 91%;
+    border: 1px solid #b3b3b3;
+    padding: 5px;
+    margin: auto auto;
+    display: block;
+}
+
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+}
+
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
 }
 
 /*End Account*/

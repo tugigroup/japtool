@@ -32,20 +32,10 @@ module.exports.routes = {
      *                                                                          *
      ***************************************************************************/
 
+    '/': 'japtool/HomeController.index',
+
     '/':'japtool/HomeController.index',
-
-    /* Router by tuyentv1*/
-
-    //'/new_group':{view: 'user/new_group'},
-    //'POST /searchUser': 'UserController.searchUser',
-    /*End tuyentv1*/
     'get/ new_group':'BuddyGroupController.create',
-
-    //'/login' : {
-    //    controller : 'auth',
-    //    action     : 'index'
-    //},
-
     /*Router by QuyetND2*/
     //'/':'admin/BookMasterController.index',
     '/createBookMaster':{view:'admin/article/book-master'},
@@ -112,6 +102,7 @@ module.exports.routes = {
     'get /vocabulary/list': 'VocabularyController.list',
     'post /vocabulary/pronounce': 'VocabularyController.pronounce',
     'post /vocabulary/quicklearning': 'VocabularyController.quicklearning',
-    'get /vocabulary/cartagame': 'CartaGameController.wordgen',
+
+    'get /vocabulary/cartagame': 'CartaGameController.wordgen'
 
 };

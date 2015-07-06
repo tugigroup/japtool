@@ -1,0 +1,29 @@
+<% if(code == 'success'){ %>
+<div class="wrapper">
+  <div class="container">
+
+    <div class="col-sm-12 text-center success-register">
+      <h3>Active Success</h3>
+
+      <p>Welcome to Japtool Learning.</p>
+
+      <p>Please You click here to login system <span class="label-success label"><a class="login-back" href="/japtool/auth">Login</a></span></p>
+      </p>
+    </div>
+  </div>
+</div>
+<% }else{ %>
+<div class="wrapper">
+  <div class="container">
+
+    <div class="col-sm-12 text-center success-register">
+      <h3>Active Fail</h3>
+
+      <p>Tài khoản của bạn không hợp lệ.</p>
+
+      <p>Mời bạn click vào đây để đăng kí lại tài khoản <span class="label-danger label"><a href="/japtool/user/new">Sign Up</a></span></p>
+      </p>
+    </div>
+  </div>
+</div>
+<% } %>

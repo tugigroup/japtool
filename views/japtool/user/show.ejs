@@ -1,21 +1,25 @@
 <div class="container">
     <div class="row">
         <div class="profile clearfix">
-
             <div class="col-sm-3">
                 <div class="row">
                     <div class="panel panel-success">
                         <div class="panel-body">
                             <div class="row">
+                                <input type="hidden" name="userID" id="userID" value="<%= user.id %>"/>
+
                                 <div class="col-sm-12"><span class="lbUser"><%- user.username %></span></div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-12"><span class="lbLever">Lever Of User</span></div>
                             </div>
-                            <div class="row">
-                                <div class="col-sm-offset-4"><img src="/images/df_ava.jpg" width="60" height="60"/>
+                                <div class="avatar-user-image">
+                                    <% if(!user.avatar){ %>
+                                    <img src="/images/avatar/avatar.jpg" id="avatarPreview"/>
+                                    <% } else{ %>
+                                    <img src="/japtool/user/readAvatarUser/?fd=<%= user.avatar %>"/>
+                                    <% } %>
                                 </div>
-                            </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-offset-1 col-sm-10">
@@ -159,6 +163,7 @@
                     <li class="active"><a data-toggle="tab" href="#info">Information</a></li>
                     <li><a data-toggle="tab" href="#friend">Friends</a></li>
                     <li><a data-toggle="tab" href="#password">Change Password</a></li>
+                    <li><a data-toggle="tab" href="#change-avatar">Change Avatar</a></li>
                 </ul>
                 <div class="tab-content">
                     <div id="info" class="tab-pane fade in active">
@@ -477,15 +482,38 @@
                             </div>
                         </form>
                     </div>
+                    <div id="change-avatar" class="tab-pane fade">
 
+                        <div class="row">
+                            <div class="col-sm-2 avatar-user-image">
+                                <% if(!user.avatar){ %>
+                                <img src="/images/avatar/avatar.jpg" id="avatarPreview"/>
+                                <% } else{ %>
+                                <img src="/japtool/user/readAvatarUser/?fd=<%= user.avatar %>" id="avatarPreview"/>
+                                <% } %>
+                            </div>
+                            <div class="col-sm-10">
+                                <form class="form-inline" action="/japtool/user/editAvatar"
+                                      enctype="multipart/form-data"
+                                      method="POST">
+                                    <div class="form-group">
+                                        <input type="type" id="uploadAvatar" class="form-control"
+                                               placeholder="Choose File" disabled="disabled" name="avatarUser">
+                                    </div>
+
+                                    <div class="fileUpload btn btn-primary">
+                                        <span>Upload</span>
+                                        <input id="uploadBtnAvatar" type="file" class="upload" name="uploadAvatar" accept="image/*"/>
+                                    </div>
+                                    <button type="submit" class="btn btn-success">Save</button>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
             </div>
         </div>
-
     </div>
-
 </div>
 </div>
-
-

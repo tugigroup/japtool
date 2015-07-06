@@ -163,6 +163,7 @@ $(document).ready(function () {
         $("#btnUp").hide();
     });
 
+
     $('#btnShow').click(function () {
         var idUser = $('#idUser').val();
         $.ajax({
@@ -182,22 +183,80 @@ $(document).ready(function () {
             }
         })
     });
-    $("#btnSaveEdit").click(function () {
-        $.ajax({
-            url: '/japtool/user/update',
-            type: 'POST',
-            data: $('form#edit-info').serialize(),
-            cache: false,
-            success: function (data) {
-                $('#default-show').html('');
-                $('#default-show').html(data);
-            },
-            error: function () {
-                alert('loi roi nhe');
-            }
-        });
-    });
+    //Validate user edit info form
+    $('#input-firstname').keyup(function () {
+        var fName = $('#input-firstname').val();
+        var messfName = $('#user-edit-mess-fName').removeClass();
 
+        if (fName == "" || fName == null) {
+            messfName.addClass('error').text('First name is required!').show();
+        } else {
+            messfName.hide();
+        }
+    });
+    $('#input-lastname').keyup(function () {
+        var lName = $('#input-lastname').val();
+        var messlName = $('#user-edit-mess-lName').removeClass();
+
+        if (lName == "" || lName == null) {
+            messlName.addClass('error').text('Last name is required!').show();
+        } else {
+            messlName.hide();
+        }
+    });
+    $('#input-email').keyup(function () {
+        var emailREG = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+        var email = $('#input-email').val();
+        var messemail = $('#user-edit-mess-email').removeClass();
+
+        if (email == "" || email == null) {
+            messemail.addClass('error').text('Email is required!').show();
+        } else if (!emailREG.test(email)) {
+            messemail.addClass('error').text('Your email is invalid!').show();
+        } else {
+            messemail.hide();
+        }
+    });
+    $("#btnSaveEdit").click(function () {
+        var fName = $('#input-firstname').val();
+        var messfName = $('user-edit-mess-fName').removeClass();
+        var lName = $('#input-lastname').val();
+        var messlName = $('#user-edit-mess-lName').removeClass();
+        var emailREG = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+        var email = $('#input-email').val();
+        var messemail = $('#user-edit-mess-email').removeClass();
+        var valid = true;
+        if (fName == "" || fName == null) {
+            messfName.addClass('error').text('First name is required!').show();
+            valid = false;
+        }
+        if (lName == "" || lName == null) {
+            messlName.addClass('error').text('Last name is required!').show();
+            valid = false;
+        }
+        if (email == "" || email == null) {
+            messemail.addClass('error').text('Email is required!').show();
+            valid = false;
+        } else if (!emailREG.test(email)) {
+            messemail.addClass('error').text('Your email is invalid!').show();
+            valid = false;
+        }
+        if (valid) {
+            $.ajax({
+                url: '/japtool/user/update',
+                type: 'POST',
+                data: $('form#edit-info').serialize(),
+                cache: false,
+                success: function (data) {
+                    $('#default-show').html('');
+                    $('#default-show').html(data);
+                },
+                error: function () {
+                    alert('loi roi nhe');
+                }
+            });
+        }
+    });
     //remove old message when user update password information
     $('#input-NewPassword, #input-PasswordCf').keyup(function () {
         $('#change-pass-mess').removeClass().text('');
@@ -209,7 +268,7 @@ $(document).ready(function () {
         var newPassCf = $('#input-PasswordCf').val();
         var mess = $('#change-pass-mess').removeClass();
 
-        //Vì dùng ajax nên jquery không b?t ???c các l?i này (nó d?a trên s? ki?n submit form)
+        //VÃ¬ dÃ¹ng ajax nÃªn jquery khÃ´ng b?t ???c cÃ¡c l?i nÃ y (nÃ³ d?a trÃªn s? ki?n submit form)
         if (oldPass == "" || oldPass == null || newPass == "" || newPass == null || newPassCf == "" || newPassCf == null) {
             //All field required
             mess.addClass('error').text('All field is required!').show();
@@ -243,6 +302,25 @@ $(document).ready(function () {
                 }
             })
         }
+    });
+
+    //UPLOAD AVATAR USER IN PROFILE
+    document.getElementById("uploadBtnAvatar").onchange = function () {
+        document.getElementById("uploadAvatar").value = this.value;
+    };
+
+    function readAvatar(input) {
+        if (input.files && input.files[0]) {
+
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#avatarPreview').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#uploadBtnAvatar").change(functionÂ () {
+        readAvatar(this);
     });
 
     // Author: xuandt2

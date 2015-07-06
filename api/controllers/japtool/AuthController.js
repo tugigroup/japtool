@@ -8,7 +8,7 @@ var passport = require('passport');
 var bcrypt = require('bcryptjs');
 module.exports = {
     'index': function (req, res) {
-        res.layoutJaptool();
+        res.view();
     },
     login: function (req, res, next) {
         // Check for email and password in params sent via the form, if none
@@ -27,7 +27,6 @@ module.exports = {
             req.session.flash = {
                 err: usernamePasswordRequiredError
             }
-
             res.redirect('/japtool/auth');
             return;
         }
@@ -73,10 +72,10 @@ module.exports = {
 
                 //If the user is also an admin redirect to the user list(/view/user/index.ejs)
                 //This is user in conjuntion with config/policies.js file
-                if (req.session.User.admin) {
-                    res.redirect('/japtool/user');
-                    return;
-                }
+                //if (req.session.User.admin) {
+                //    res.redirect('/japtool/user');
+                //    return;
+                //}
                 // Change status to online
                 user.online = true;
                 user.save(function (err, user) {
@@ -92,14 +91,14 @@ module.exports = {
 
                     // If the user is also an admin redirect to the user list (e.g. /views/user/index.ejs)
                     // This is used in conjunction with config/policies.js file
-                    if (req.session.User.admin) {
-                        res.redirect('/japtool/user');
-                        return;
-                    }
+                    //if (req.session.User.admin) {
+                    //    res.redirect('/japtool/user');
+                    //    return;
+                    //}
 
                     //Redirect to their profile page (e.g. /views/user/show.ejs)
                     res.redirect('/japtool/user/');
-                    //res.redirect('/japtool/user/show/' + user.id);
+
                 });
             });
         });
@@ -113,20 +112,6 @@ module.exports = {
         res.redirect('/japtool/auth');
 
     },
-    // https://developers.facebook.com/docs/
-    // https://developers.facebook.com/docs/reference/login/
-    //facebook: function(req, res) {
-    //    passport.authenticate('facebook', { failureRedirect: '/login', scope: ['email'] }, function(err, user) {
-    //        req.logIn(user, function(err) {
-    //            if (err) {
-    //                res.send('loi roi');
-    //            }
-    //
-    //            res.redirect('/auth/');
-    //
-    //        });
-    //    })(req, res);
-    //}
     facebook: function (req, res, next) {
         passport.authenticate('facebook', { scope: ['email', 'user_about_me']},
             function (err, user) {
@@ -141,7 +126,12 @@ module.exports = {
                     }
                 });
             })(req, res, next);
-    }
+    },
 
+    _config:{
+        locals:{
+            layout: 'layout/layout-japtool'
+        }
+    }
 };
 
