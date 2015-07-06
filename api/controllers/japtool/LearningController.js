@@ -2,6 +2,12 @@
  * Created by XuanDT2 on 6/29/2015.
  */
 module.exports = {
+    _config:{
+        locals:{
+            layout: 'layout/layout-japtool'
+        }
+    },
+
     /**
      * GET: japtool/learning/create
      * @param req
@@ -18,27 +24,27 @@ module.exports = {
      */
     add: function (req, res) {
         try {
-
             var params = req.params.all();
             Learning.create(params).exec(function (err, learning) {
                 if (err) {
                     return res.json({err: err});
                 }
-
                 if (!learning) {
                     return res.json({err: "Error"});
                 }
-
-                res.redirect('japtool/BookMaster/lesson/' + learning.id);
+                res.redirect('japtool/learning/index/' + learning.id);
             });
         }
         catch (ex) {
             sails.log(ex);
         }
     },
-        _config:{
-            locals:{
-                layout: 'layout/layout-japtool'
-            }
-        }
+    /**
+     * GET: /learning/search
+     * @param req
+     * @param res
+     */
+    search: function (req, res) {
+        return res.render('japtool/learning/search', {layout: null});
+    },
 };

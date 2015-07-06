@@ -7,7 +7,7 @@
 
 module.exports = {
     createBook: function (req, res) {
-        res.view('admin/article/book-master',{layout: 'layout/layout-japtool'});
+        res.view('admin/article/book-master', {layout: 'layout/layout-japtool'});
     },
     create: function (req, res) {
         var par = req.allParams();
@@ -72,6 +72,26 @@ module.exports = {
     getLibrary: function (req, res) {
         BookMaster.find({}).populate('bookDetail').exec(function createCB(err, data) {
             var arrTag = [];
+            var arrAllLesson = [];
+
+            data.forEach(function (book) {
+                var arrLesson = [];
+                if (book.bookDetail.length != 0) {
+                    book.bookDetail.forEach(function (item, index) {
+                        arrLesson.push(item.lesson);
+                        if (index == (book.bookDetail.length - 1)) {
+                            var array = require("array-extended");
+                            var uniqueArrLesson = array(arrLesson).unique().value();
+                            var objLesson = {
+                                arrLesson: uniqueArrLesson,
+                                idLesson: book.id
+                            };
+                            arrAllLesson.push(objLesson);
+                        }
+                    })
+                }
+            });
+
             data.forEach(function (item, index) {
                 arrTag.push(item.category);
                 if (index == (data.length - 1)) {
@@ -80,10 +100,41 @@ module.exports = {
                     res.view('japtool/library/index', {
                         data: data,
                         uniqueTag: uniqueTag,
+                        arrAllLesson: arrAllLesson,
                         layout: 'layout/layout-japtool'
                     })
                 }
             })
+        })
+    },
+
+    getAllLibrary: function (req, res) {
+        var category = req.param('category');
+        BookMaster.find({category: category}).populate('bookDetail').exec(function createCB(err, data) {
+            var arrAllLesson = [];
+
+            data.forEach(function (book) {
+                var arrLesson = [];
+                if (book.bookDetail.length != 0) {
+                    book.bookDetail.forEach(function (item, index) {
+                        arrLesson.push(item.lesson);
+                        if (index == (book.bookDetail.length - 1)) {
+                            var array = require("array-extended");
+                            var uniqueArrLesson = array(arrLesson).unique().value();
+                            var objLesson = {
+                                arrLesson: uniqueArrLesson,
+                                idLesson: book.id
+                            };
+                            arrAllLesson.push(objLesson);
+                            res.view('japtool/library/showCategory', {
+                                data: data,
+                                arrAllLesson: arrAllLesson,
+                                layout: 'layout/layout-japtool'
+                            })
+                        }
+                    })
+                }
+            });
         })
     }
 };
