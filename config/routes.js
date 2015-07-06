@@ -39,11 +39,53 @@ module.exports.routes = {
     /*Router by QuyetND2*/
     //'/':'admin/BookMasterController.index',
     '/createBookMaster':{view:'admin/article/book-master'},
-    '/createBookDetail':'japtool/BookDetailController.getBookDetail'
+    '/createBookDetail':'japtool/BookDetailController.getBookDetail',
     /*End QuyetND2*/
 
 
-
+    // router by Duongtd2
+    //article by duongtd2
+    '/addArticle':{
+        view:'admin/article/addArticle',
+        locals: {
+            layout: 'layout/layout-admin'
+        }
+    },
+    'post /createArticle':'admin/Article.create',
+    '/displayArticle':'admin/Article.showArticle',
+    '/displayArticleCT/:id':'admin/Article.showArticle',
+    '/showDeArticle':{
+        view:'detailsArticle',
+        locals: {
+            layout: 'layout/layout-admin'
+        }
+    },
+    '/showAudio/:fd':'admin/ArticleController.getAudio',
+    '/showVideo/:fd':'admin/ArticleController.getVideo',
+    '/showImage/:fd':'admin/ArticleController.getImg',
+    '/showAllArticle':'admin/ArticleController.showAll',
+    '/deleteArticle/:id':'admin/ArticleController.delete',
+    'post /editArticle':'admin/ArticleController.editAr',
+    '/sendEditArticle':'admin/ArticleController.editAr',
+    'post /updateArticle':'admin/ArticleController.update',
+    // Question by duongtd2
+    '/addQuestion':{
+        view:'admin/question/addQuestion',
+        locals: {
+            layout: 'layout/layout-admin'
+        }
+    },
+    'post /createQuestion':'admin/Question.create',
+    '/displayQuestion':'admin/Question.showQuestion',
+    '/displayQuestionCT/:id':'admin/Question.showQuestion',
+    '/showImageQue/:fd':'admin/Question.getImg',
+    '/sendEditQuestion':'admin/Question.editQue',
+    '/showAllQuestion':'admin/Question.showAll',
+    'post /editQues':'admin/Question.editQue',
+    '/deleteQuestion/:id':'admin/Question.delete',
+    'post /updateQuestion':'admin/Question.update',
+    '/pointToAddQue':'admin/Question.pointToAddQue'
+    // End router by duongtd2
     /***************************************************************************
      *                                                                          *
      * Custom routes here...                                                    *
