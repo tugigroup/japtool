@@ -18,12 +18,10 @@ module.exports = {
             type: 'string'
         },
         firstname: {
-            type: 'string',
-            required: true
+            type: 'string'
         },
         lastname: {
-            type: 'string',
-            required: true
+            type: 'string'
         },
         email: {
             type: 'string',
