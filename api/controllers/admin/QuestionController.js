@@ -22,6 +22,7 @@ module.exports = {
         var resultOption3 = req.param('resultOption3');
         var option4 = req.param('option4');
         var resultOption4 = req.param('resultOption4');
+        var sort = null;
         // upload files and get FD
         // Up load Image
         fileAction.upload('img', 'files', req, function (err, imgUpload) {
@@ -34,63 +35,74 @@ module.exports = {
                 // test length of byte , if they're available , will pass file description to variable : image
                 if (imgUpload.length != 0) fdImage = imgUpload[0].fd;
                 // create question object
-                if (fdImage != null) { // if user upload image
-                    Question.create(
-                        {
-                            articleID: articleID,
-                            question: question,
-                            option1: option1,
-                            resultOption1: resultOption1,
-                            option2: option2,
-                            resultOption2: resultOption2,
-                            option3: option3,
-                            resultOption3: resultOption3,
-                            option4: option4,
-                            resultOption4: resultOption4,
-                            image: fdImage
-                        }).exec(function articleCreated(err, question) {
-                            console.log("Da nhay vao Upload img");
-                            //sails.log(Article);
-                            //If there's an error
-                            if (err) {
-                                sails.log(err)
-                            }
-                            else {
-                                //affter successfuly creating the user
-                                //redirect to the show action
-                                res.redirect('/displayQuestionCT/' + question.id);
-                            }
-                        });
-                } else {
-                    // if User don't upload Image
-                    Question.create(
-                        {
-                            articleID: articleID,
-                            question: question,
-                            option1: option1,
-                            resultOption1: resultOption1,
-                            option2: option2,
-                            resultOption2: resultOption2,
-                            option3: option3,
-                            resultOption3: resultOption3,
-                            option4: option4,
-                            resultOption4: resultOption4
-                        }).exec(function articleCreated(err, question) {
-                            //If there's an error
-                            console.log("Da nhay vao add thuong");
-                            if (err) {
-                                req.session.flash = {
-                                    err: err
+
+                // count and pass sort variable
+                Question.count().exec(function(err, cnt) {
+                    if (err) res.send(err);
+                    else {
+                        sort = cnt + 1;
+                    }
+                    if (fdImage != null) { // if user upload image
+                        Question.create(
+                            {
+                                articleID: articleID,
+                                question: question,
+                                sort:sort,
+                                option1: option1,
+                                resultOption1: resultOption1,
+                                option2: option2,
+                                resultOption2: resultOption2,
+                                option3: option3,
+                                resultOption3: resultOption3,
+                                option4: option4,
+                                resultOption4: resultOption4,
+                                image: fdImage
+                            }).exec(function articleCreated(err, question) {
+                                console.log("Da nhay vao Upload img");
+                                //sails.log(Article);
+                                //If there's an error
+                                if (err) {
+                                    sails.log(err)
                                 }
-                                return res.send(err);
-                            } else {
-                                //affter successfuly creating the user
-                                //redirect to the show action
-                                console.log("Add question thanh cong");
-                                res.redirect('/displayQuestionCT/' + question.id);
-                            }
-                        });
-                }
+                                else {
+                                    //affter successfuly creating the user
+                                    //redirect to the show action
+                                    res.redirect('/displayQuestionCT/' + question.id);
+                                }
+                            });
+                    } else {
+                        // if User don't upload Image
+                        Question.create(
+                            {
+                                articleID: articleID,
+                                question: question,
+                                sort:sort,
+                                option1: option1,
+                                resultOption1: resultOption1,
+                                option2: option2,
+                                resultOption2: resultOption2,
+                                option3: option3,
+                                resultOption3: resultOption3,
+                                option4: option4,
+                                resultOption4: resultOption4
+                            }).exec(function articleCreated(err, question) {
+                                //If there's an error
+                                console.log("Da nhay vao add thuong");
+                                if (err) {
+                                    req.session.flash = {
+                                        err: err
+                                    }
+                                    return res.send(err);
+                                } else {
+                                    //affter successfuly creating the user
+                                    //redirect to the show action
+                                    console.log("Add question thanh cong");
+                                    res.redirect('/displayQuestionCT/' + question.id);
+                                }
+                            });
+                    }
+                })
+
             }
         });
     },
