@@ -23,7 +23,7 @@ $(function () {
 //CustomScrollbar
 (function ($) {
     $(window).load(function () {
-        $(".content").mCustomScrollbar();
+        $(".contentScrollbar").mCustomScrollbar();
     });
 })(jQuery);
 
@@ -203,10 +203,6 @@ $(document).ready(function () {
     });
 
     //UPLOAD AVATAR USER IN PROFILE
-    document.getElementById("uploadBtnAvatar").onchange = function () {
-        document.getElementById("uploadAvatar").value = this.value;
-    };
-
     function readAvatar(input) {
         if (input.files && input.files[0]) {
 
@@ -217,9 +213,22 @@ $(document).ready(function () {
             reader.readAsDataURL(input.files[0]);
         }
     }
-    $("#uploadBtnAvatar").change(function () {
-        readAvatar(this);
-    });
-
+    $('#uploadBtnAvatar').on('change', function () {
+        $('#uploadAvatar').val(this.value);
+    }),
+     $("#uploadBtnAvatar").change(function () {
+            readAvatar(this);
+     });
 });
 
+//END USER
+
+//VOCABULARY
+$(document).ready(function () {
+    $("#vocabularyList").steps({
+        headerTag: "h3",
+        bodyTag: "section",
+        transitionEffect: "slideLeft"
+    });
+});
+//END VOCABULARY
