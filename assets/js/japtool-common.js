@@ -203,6 +203,10 @@ $(document).ready(function () {
     });
 
     //UPLOAD AVATAR USER IN PROFILE
+    document.getElementById("uploadBtnAvatar").onchange = function () {
+        document.getElementById("uploadAvatar").value = this.value;
+    };
+
     function readAvatar(input) {
         if (input.files && input.files[0]) {
 
@@ -213,39 +217,8 @@ $(document).ready(function () {
             reader.readAsDataURL(input.files[0]);
         }
     }
-
-    $('#avatarUser').change(function () {
-        var userID = $('#userID').val();
-        var avatarUser = $('#avatarUser').attr('name');
-        //console.log(avatarUser);
-
-        //if (this.files && this.files[0]) {
-        //
-        //    var reader = new FileReader();
-        //    reader.onload = function (e) {
-        //        $('#avatarPreview').attr('src', e.target.result);
-        //    }
-        //    reader.readAsDataURL(this.files[0]);
-        //    console.log(reader.result());
-        //}
-        $.ajax({
-            url: '/japtool/user/editAvatar',
-            type: 'GET',
-            contentType: 'multipart/form-data',
-            data: {
-                userID: userID,
-                avatarUser: avatarUser
-            },
-            cache: false,
-            success: function (data) {
-                alert('OK');
-            },
-            error: function () {
-                alert('Error');
-            }
-        })
-
-
+    $("#uploadBtnAvatar").change(function () {
+        readAvatar(this);
     });
 
 });

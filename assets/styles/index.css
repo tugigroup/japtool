@@ -4,6 +4,7 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    font-family: Roboto, Helvetica, Verdana, Arial, sans-serif;
 }
 
 .nopadding {
@@ -93,4 +94,17 @@ body {
 
 a:hover {
     text-decoration: none;
+}
+.no-user .label{
+    border-radius: 0;
+    font-weight: 400;
+}
+.no-user h2{
+    font-weight: 300;
+    font-size: 30px;
+    margin-top: 0;
+}
+.no-user p{
+    line-height: 50px;
+    margin-bottom: 0;
 }

@@ -4,12 +4,6 @@ $(document).ready(function () {
       username: {
         required: true
       },
-      firstname: {
-        required: true
-      },
-      lastname: {
-        required: true
-      },
       email: {
         required: true,
         email: true

@@ -184,10 +184,6 @@ h3 {
     top: 11.5px;
 }
 
-.btn {
-    margin-bottom: 20px;
-}
-
 #piechart {
     width: 500px;
     height: 350px;
@@ -352,7 +348,7 @@ div.required .control-label:before {
     margin-bottom: 1rem;
 }
 
-.changePassword {
+.changePassword, #change-avatar {
     margin-top: 54px;
 }
 
@@ -405,12 +401,22 @@ label.valid, p.valid {
 .login-back {
     color: #fff;
 }
+
 /*Upload avatar style*/
+
+.avatar-user-image img {
+    width: 91%;
+    border: 1px solid #b3b3b3;
+    padding: 5px;
+    margin: auto auto;
+    display: block;
+}
+
 .fileUpload {
     position: relative;
     overflow: hidden;
-    margin: 10px;
 }
+
 .fileUpload input.upload {
     position: absolute;
     top: 0;
@@ -422,6 +428,7 @@ label.valid, p.valid {
     opacity: 0;
     filter: alpha(opacity=0);
 }
+
 /*End Account*/
 
 /*CONTENT*/

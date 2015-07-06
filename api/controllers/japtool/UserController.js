@@ -129,29 +129,31 @@ module.exports = {
     },
     //edit avatar user
     editAvatar: function (req, res, next) {
-        var id = req.param('userID');
-        //var avatarUser = req.param('avatarUser');
-        var avatar = req.param('avatarUser');
-        fileAction.upload(avatar, 'files', req, function (err, img) {
-            console.log(img);
+        var userIDSession = req.session.User.id;
+        sails.log(userIDSession);
+        fileAction.upload('uploadAvatar', 'files', req, function (err, img) {
+            //sails.log(img);
             if (err) {
                 sails.log(err)
             } else {
-                if (img.length <= 1) {
-                    avatar.image = img[0].fd;
-                    user.update(id,{avatar:avatar}).exec(function (err, data) {
-                        if (err) {
-                            sails.log(err)
-                        } else {
-                            res.send('BookMaster has been create');
-                        }
-                    });
-                }
-                else {
-                    res.send('You can only upload 1 file');
-                }
+                User.update({id: userIDSession}, {avatar: img[0].fd}, function (err, updateAvatar) {
+
+                    if (err) {
+                        sails.log(err)
+                    } else {
+                        res.redirect('japtool/user/show/'+userIDSession)
+                    }
+                });
             }
+
         });
+    },
+    readAvatarUser: function (req, res) {
+        var fd = req.param('fd');
+        sails.log(fd);
+        if (fd != '') {
+            fileAction.read(fd, 'files', 'image/*', res);
+        }
     },
     //display all list user to index.ejs
     index: function (req, res, next) {
