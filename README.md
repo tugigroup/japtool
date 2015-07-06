@@ -8,9 +8,9 @@
 <h4>
 2.Run following command to import data
 </h4>
-  2.1 Import data of [test]
-      <code> node importQuestion.js </code>
-  2.2 Import data of [vocabulary]
-      <code> node importVocabulary.js </code>
-  2.3 Import data of [book]
-      <code> node importBook.js </code>
+  2.1 Import data of [test] <br>
+      <code> node importQuestion.js </code><br>
+  2.2 Import data of [vocabulary]<br>
+      <code> node importVocabulary.js </code><br>
+  2.3 Import data of [book]<br>
+      <code> node importBook.js </code><br>
