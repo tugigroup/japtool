@@ -7,7 +7,9 @@ module.exports = {
             layout: 'layout/layout-japtool'
         }
     },
-
+    home:function (req, res) {
+        res.view('japtool/home/home');
+    },
     /**
      * GET: japtool/learning/create
      * @param req

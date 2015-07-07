@@ -33,8 +33,6 @@ module.exports.routes = {
      ***************************************************************************/
 
     '/': 'japtool/HomeController.index',
-
-    '/':'japtool/HomeController.index',
     'get/ new_group':'BuddyGroupController.create',
     /*Router by QuyetND2*/
     //'/':'admin/BookMasterController.index',
