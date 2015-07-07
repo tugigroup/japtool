@@ -1,4 +1,4 @@
-name,description,type,level,lessionNum,hoursForLearn,usedNum,recommendNum,lession,subLession,useModule,useCollection,dataExtractCondition
+name,description,type,level,lessonNum,hoursForLearn,usedNum,recommendNum,lesson,subLesson,useModule,useCollection,dataExtractCondition
 "Cặp từ vựng trái nghĩa N2 tập 1","Học theo các cặp từ trái nghĩa rất dễ thuộc dễ nhớ","vocabulary","N2","20","","","","Bài 1","Từ vựng","vocabulary","vocabulary","{'level': 'N2', 'tag' : {'contains':',trainghia1,lession1,'}}"
 "","","","","","","","","Bài 2","Từ vựng","vocabulary","vocabulary","{'level': 'N2', 'tag' : {'contains':',trainghia1,lession2,'}}"
 "","","","","","","","","Bài 3","Từ vựng","vocabulary","vocabulary","{'level': 'N2', 'tag' : {'contains':',trainghia1,lession3,'}}"

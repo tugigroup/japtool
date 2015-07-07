@@ -8,25 +8,25 @@ var config = require('./config.json');
 data = fs.readFileSync(config.book_csv_file,{"encoding":"utf8"});
 //console.log(data);
 
-parse(data, {delimiter : ',', comment: '#'}, function(err, lessions){
+parse(data, {delimiter : ',', comment: '#'}, function(err, lessons){
 
 	// check header
-	if (lessions.length == 0){
+	if (lessons.length == 0){
 		console.log('Error! csv file has not any data.');
 	}
 
-	var header = lessions[0];
+	var header = lessons[0];
 	if (header.length < 13 || 
 		header[0] != 'name' ||
 		header[1] != 'description' ||
 		header[2] != 'type' ||
 		header[3] != 'level' ||
-		header[4] != 'lessionNum' ||
+		header[4] != 'lessonNum' ||
 		header[5] != 'hoursForLearn' ||
 		header[6] != 'usedNum' ||
 		header[7] != 'recommendNum' ||
-		header[8] != 'lession' ||
-		header[9] != 'subLession' ||
+		header[8] != 'lesson' ||
+		header[9] != 'subLesson' ||
 		header[10] != 'useModule' ||
 		header[11] != 'useCollection' ||
 		header[12] != 'dataExtractCondition' ){
@@ -42,7 +42,7 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, lessions){
 	  description: String,
 	  type:   String,
 	  level:   String,
-	  lessionNum:   Number,
+	  lessonNum:   Number,
 	  hoursForLearn:   Number,
 	  usedNum: Number,
 	  recommendNum:   Number
@@ -52,8 +52,8 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, lessions){
 
 	var bookDetailSchema = mongoose.Schema({
 	  bookID:  mongoose.Schema.Types.ObjectId,
-	  lession: String,
-	  subLession: String,
+	  lesson: String,
+	  subLesson: String,
 	  useModule: String,
 	  useCollection: String,
 	  dataExtractCondition:   String
@@ -61,19 +61,19 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, lessions){
 
 	var bookDetailColl = mongoose.model('bookDetail', bookDetailSchema);
 
-	var lession;
+	var lesson;
 	var bookMasterInsertCount = 0;
 	var bookDetailInsertCount = 0;
 	var errorCount = 0;
 	var insertedBookMaster;
 	var insertedBookDetail;
 
-	for ( var i = 1; i < lessions.length; i++ ) {
+	for ( var i = 1; i < lessons.length; i++ ) {
 		//console.log(lessions[i]);
 
-		lession = lessions[i];
+		lesson = lessons[i];
 
-		if (lession[0] == "") {
+		if (lesson[0] == "") {
 			if (insertedBookMaster == null){
 				errorCount++;
 				continue; 
@@ -82,11 +82,11 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, lessions){
 				// insert book detail record
 				insertedBookDetail = new bookDetailColl({
 					bookID:  				insertedBookMaster._id,
-				    lession: 				lession[8],
-				    subLession: 			lession[9],
-				    useModule: 				lession[10],
-				    useCollection: 			lession[11],
-				    dataExtractCondition: 	lession[12]
+				    lesson: 				lesson[8],
+				    subLesson: 				lesson[9],
+				    useModule: 				lesson[10],
+				    useCollection: 			lesson[11],
+				    dataExtractCondition: 	lesson[12]
 				});
 
 				insertedBookDetail.save();
@@ -95,14 +95,14 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, lessions){
 		} else {
 			// insert book master record
 			insertedBookMaster = new bookMasterColl({
-				name:  			lession[0],
-				description: 	lession[1],
-				type:   		lession[2],
-				level:   		lession[3],
-				lessionNum:   	lession[4],
-				hoursForLearn:  lession[5],
-				usedNum: 		lession[6],
-				recommendNum:   lession[7]
+				name:  			lesson[0],
+				description: 	lesson[1],
+				type:   		lesson[2],
+				level:   		lesson[3],
+				lessonNum:   	lesson[4],
+				hoursForLearn:  lesson[5],
+				usedNum: 		lesson[6],
+				recommendNum:   lesson[7]
 			});
 
 			insertedBookMaster.save();
@@ -111,11 +111,11 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, lessions){
 			// insert book detail record
 			insertedBookDetail = new bookDetailColl({
 				bookID:  				insertedBookMaster._id,
-			    lession: 				lession[8],
-			    subLession: 			lession[9],
-			    useModule: 				lession[10],
-			    useCollection: 			lession[11],
-			    dataExtractCondition: 	lession[12]
+			    lesson: 				lesson[8],
+			    subLesson: 				lesson[9],
+			    useModule: 				lesson[10],
+			    useCollection: 			lesson[11],
+			    dataExtractCondition: 	lesson[12]
 			});
 
 			insertedBookDetail.save();
