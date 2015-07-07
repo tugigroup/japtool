@@ -7,7 +7,8 @@
 
 module.exports = {
 	list:function(req,res){
-		 var extractDataCondition = '{"level": "N2"}';
+		 //var extractDataCondition = '{"level": "N2"}';
+		 var extractDataCondition = '{}';
 		  Vocabulary.selectByLevel({condition: extractDataCondition},function(err,vocabularies){
 			if(err) return res.send(err.status);
 			 res.view('japtool/vocabulary/list',{'vocabularies':vocabularies});

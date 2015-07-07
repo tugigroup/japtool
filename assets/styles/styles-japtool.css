@@ -22,6 +22,7 @@ h2 {
     font-size: 26px;
     color: #000;
 }
+
 .label {
     display: inline;
     padding: .2em .6em .3em;
@@ -1493,6 +1494,7 @@ ul.timeline li .timeline-panel:after {
 
 .wizard .content .body ul li {
     display: list-item;
+    line-height: 22px;
 }
 
 .wizard .content .body iframe {
@@ -1581,6 +1583,16 @@ ul.timeline li .timeline-panel:after {
 .wizard .loading .spinner {
 }
 
+#vocabularyList h4 {
+    font-size: 30px;
+    font-weight: 700;
+}
+#vocabularyList p span{
+    font-weight: 500;
+}
+.wizard ul.vocabulary-item-example{
+    padding-left: 3rem;
+}
 /*END VOCABULARY*/
 /*END CONTENT*/
 /*FOOTER*/
