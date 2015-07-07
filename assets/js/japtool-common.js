@@ -454,5 +454,3 @@ $(document).ready(function () {
     });
 
 });
-
-
