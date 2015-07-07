@@ -43,12 +43,9 @@ module.exports = {
                 if (err) {
                     console.log('Encrypt active link failed!');
                 } else {
-                    //and then, redirect to new-success page to inform user active account
-                    res.view('japtool/user/new-success', {
-                        user: user,
-                        activeLink: encryptedLink
-                    });
-                    console.log('/japtool/user/active?active=' + encryptedLink);
+                    //and then, redirect to recommend page
+                    res.redirect('/japtool/user/');
+                    /*console.log('/japtool/user/active?active=' + encryptedLink);*/
                 }
             });
         });
@@ -222,6 +219,10 @@ module.exports = {
             }
         });
         //res.send({mess: mess});
+    },
+
+    afterLogin:function(req, res){
+      res.view('japtool/user/afterLogin');
     },
 
     searchUser: function (req, res, next) {

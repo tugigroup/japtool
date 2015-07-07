@@ -104,5 +104,6 @@ module.exports.routes = {
     'post /vocabulary/quicklearning': 'VocabularyController.quicklearning',
 
     'get /vocabulary/cartagame': 'CartaGameController.wordgen'
+    /*Router by NamMh*/
 
 };

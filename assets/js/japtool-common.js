@@ -1,3 +1,97 @@
+//RECOMMENT POPUP
+var answer1;
+var answer2;
+var answer3 = new Array();
+var listIdSurvey = new Array();
+$(document).ready(function () {
+    checkAnswer1(1, 2);
+    $('#lib-recommend-1').modal('show');
+});
+function nextQuestion(pre, next) {
+
+    $('#lib-recommend-' + pre).removeClass('fade').modal('hide');
+    if (next !== -1 && next !== 3) {
+        $('#lib-recommend-' + next).addClass('fade').modal('show');
+    }
+    if (next == 3) {
+        $('#lib-recommend-' + next).load('/japtool/Recommend/getStep3?lv=' + answer1 + '&cLT=' + answer2 + '&surVey=' + answer3);
+        $('#lib-recommend-' + next).addClass('fade').modal('show');
+    }
+}
+
+function checkAnswer1(pre, next) {
+    $("#recommend-1 option").each(function () {
+        $(this).click(function () {
+            answer1 = $("#recommend-1").val();
+            nextQuestion(pre, next);
+        });
+    });
+}
+
+function checkAnswer2(pre, next) {
+    answer2 = $("#rcm2 input[type='radio']:checked").val();
+    if (answer2 == 4) {
+        $('#LibraRecommend').load('/japtool/Recommend/getLibraryForFirtLogin?lv=' + answer1 + '&cLT=' + answer2);
+        nextQuestion(pre, -1);
+    }
+    else {
+        nextQuestion(pre, next);
+    }
+
+
+}
+
+
+function checkAnswer3() {
+    var check = new Array();
+    var equa = 0;
+    var lengt = $("#numberquestion").val();
+
+    for (var i = 0; i < lengt; i++) {
+        listIdSurvey[i] = $("#surVeyid" + i + "").val();
+        var q = false;
+        var index = 0;
+        var truePos = 0;
+        $('input[type="radio"][name="lib-recommend-3-q' + (i + 1) + '"]').each(function () {
+            if ($(this).prop("checked")) {
+                q = true;
+                truePos = index;
+            }
+            else {
+            }
+            index++;
+        });
+        answer3[i] = truePos;
+        check[i] = q;
+    }
+    console.log(answer3);
+    for (var i = 0; i < lengt; i++) {
+        if (check[i]) {
+            equa = equa + 1;
+        }
+    }
+    if (equa == (lengt)) {
+        $('#LibraRecommend').load('/japtool/Recommend/getLibraryForFirtLogin?lv=' + answer1 + '&cLT=' + answer2 + '&sV=' + answer3 + '&id=' + listIdSurvey);
+        nextQuestion(3, -1);
+    }
+}
+//END RECOMMENT POPUP
+//Recommend login
+$(document).ready(function () {
+    $('#lib-recommend-4').modal('show');
+});
+function checkAnswer1Login() {
+    answer2 = $("#rcmlogin input[type='radio']:checked").val();
+    if (answer2 == 1) {
+        nextQuestion(4, -1);
+        $('#LibraRecommend').load('/japtool/Recommend/getLibraryLogin');
+    }
+    if (answer2 == 2) {
+        nextQuestion(4, -1);
+        $('#LibraRecommend').load('/japtool/Recommend/getLibraryLogin');
+    }
+}
+//end recommend login
 //ICON
 $(function () {
     var all_classes = "";
@@ -31,9 +125,9 @@ $(function () {
 //Show and hidden with search, edit... Of learning and user profile
 $(document).ready(function () {
 
-    (function($){
+    (function ($) {
         $.fn.extend({
-            MyPagination: function(options) {
+            MyPagination: function (options) {
                 var defaults = {
                     height: 400,
                     fadeSpeed: 400
@@ -51,8 +145,8 @@ $(document).ready(function () {
                 var paginatePages;
 
                 // initialization function
-                init = function() {
-                    objContent.children().each(function(i){
+                init = function () {
+                    objContent.children().each(function (i) {
                         if (height + this.clientHeight > options.height) {
                             fullPages.push(subPages);
                             subPages = new Array();
@@ -84,12 +178,12 @@ $(document).ready(function () {
                 };
 
                 // update counter function
-                updateCounter = function(i) {
+                updateCounter = function (i) {
                     $('#page_number').html(i);
                 };
 
                 // show page function
-                showPage = function(page) {
+                showPage = function (page) {
                     i = page - 1;
                     if (paginatePages[i]) {
 
@@ -104,7 +198,7 @@ $(document).ready(function () {
                 };
 
                 // show pagination function (draw switching numbers)
-                showPagination = function(numPages) {
+                showPagination = function (numPages) {
                     var pagins = '';
                     for (var i = 1; i <= numPages; i++) {
                         pagins += '<li><a href="#" onclick="showPage(' + i + '); return false;">' + i + '</a></li>';
@@ -116,12 +210,12 @@ $(document).ready(function () {
                 init();
 
                 // and binding 2 events - on clicking to Prev
-                $('.pagination #prev').click(function() {
+                $('.pagination #prev').click(function () {
                     showPage(lastPage);
                 });
                 // and Next
-                $('.pagination #next').click(function() {
-                    showPage(lastPage+2);
+                $('.pagination #next').click(function () {
+                    showPage(lastPage + 2);
                 });
 
             }
@@ -129,7 +223,7 @@ $(document).ready(function () {
     })(jQuery);
 
     // custom initialization
-    jQuery(window).load(function() {
+    jQuery(window).load(function () {
         $('#content').MyPagination({height: 400, fadeSpeed: 400});
     });
 
@@ -319,7 +413,8 @@ $(document).ready(function () {
             reader.readAsDataURL(input.files[0]);
         }
     }
-    $("#uploadBtnAvatar").change(function () {
+
+    $("#uploadBtnAvatar").change(function () {
         readAvatar(this);
     });
 
@@ -347,79 +442,3 @@ $(document).ready(function () {
 $('.close-popup').click(function (e) {
     $('#show-popup-search').close();
 });
-//RECOMMENT POPUP
-var answer1;
-var answer2;
-var answer3 = new Array();
-var listIdSurvey = new Array();
-$(document).ready(function () {
-    checkAnswer1(1, 2);
-    $('#lib-recommend-1').modal('show');
-});
-function nextQuestion(pre, next) {
-    $('#lib-recommend-' + pre).removeClass('fade').modal('hide');
-    if (next !== -1 && next !== 3) {
-        $('#lib-recommend-' + next).addClass('fade').modal('show');
-    }
-    if (next == 3) {
-        $('#lib-recommend-' + next).load('/japtool/Recommend/getStep3?lv=' + answer1 + '&cLT=' + answer2 + '&surVey=' + answer3);
-        $('#lib-recommend-' + next).addClass('fade').modal('show');
-    }
-}
-
-function checkAnswer1(pre, next) {
-    $("#recommend-1 option").each(function () {
-        $(this).click(function () {
-            answer1 = $("#recommend-1").val();
-            nextQuestion(pre, next);
-        });
-    });
-}
-
-function checkAnswer2(pre, next) {
-    answer2 = $("#rcm2 input[type='radio']:checked").val();
-    if (answer2 == 4) {
-        $('#LibraRecommend').load('/japtool/Recommend/getLibrary?lv=' + answer1 + '&cLT=' + answer2);
-        nextQuestion(pre, -1);
-    }
-    else {
-        nextQuestion(pre, next);
-    }
-
-
-}
-
-function checkAnswer3() {
-    var check = new Array();
-    var equa = 0;
-    var lengt = $("#numberquestion").val();
-
-    for (var i = 0; i < lengt; i++) {
-        listIdSurvey[i] = $("#surVeyid"+i+"").val();
-        var q = false;
-        var index = 0;
-        var truePos = 0;
-        $('input[type="radio"][name="lib-recommend-3-q' + (i + 1) + '"]').each(function () {
-            if ($(this).prop("checked")) {
-                q = true;
-                truePos = index;
-            }
-            else {
-            }
-            index++;
-        });
-        answer3[i] = truePos;
-        check[i] = q;
-    }
-    console.log(answer3);
-    for (var i = 0; i < lengt; i++) {
-        if (check[i]) {
-            equa = equa + 1;
-        }
-    }
-    if (equa == (lengt)) {
-        $('#LibraRecommend').load('/japtool/Recommend/getLibrary?lv=' + answer1 + '&cLT=' + answer2 + '&sV=' + answer3 + '&id=' + listIdSurvey);
-        nextQuestion(3, -1);
-    }
-}
-//END RECOMMENT POPUP
