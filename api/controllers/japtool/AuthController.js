@@ -97,7 +97,7 @@ module.exports = {
                     //}
 
                     //Redirect to their profile page (e.g. /views/user/show.ejs)
-                    res.redirect('/japtool/user/');
+                    res.redirect('japtool/user/afterLogin');
 
                 });
             });
