@@ -7,19 +7,11 @@
 
 module.exports = {
 	list:function(req,res){
-		 var extractDataCondition = '{"level": "N2"}';
-		 //var extractDataCondition = '{}';
+		 var extractDataCondition = '{"level": "N2", "tag" : {"contains":",400dongtu,lession1,"}}';
+		sails.log(extractDataCondition);
 		  Vocabulary.selectByLevel({condition: extractDataCondition},function(err,vocabularies){
 			if(err) return res.send(err.status);
-			sails.log(vocabularies);
-			  //vocabularies.forEach(function(itemVocabulary){
-				//  //var tags = itemVocabulary.tag;
-				//  //tags = tags.split(",");
-				//	//tags.remove
-               //   //
-				//  //sails.log(tags);
-              //
-			  //});
+
 			 res.view('japtool/vocabulary/list',{'vocabularies':vocabularies});
 		 });
 	},
