@@ -48,7 +48,7 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, lessons){
 	  recommendNum:   Number
 	},{ collection: 'bookmaster', versionKey: false });
 
-	var bookMasterColl = mongoose.model('bookmaster', bookMasterSchema);
+	var bookMasterColl = mongoose.model('bookMaster', bookMasterSchema);
 
 	var bookDetailSchema = mongoose.Schema({
 	  bookID:  mongoose.Schema.Types.ObjectId,
@@ -59,7 +59,7 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, lessons){
 	  dataExtractCondition:   String
 	},{ collection: 'bookdetail', versionKey: false  });
 
-	var bookDetailColl = mongoose.model('bookdetail', bookDetailSchema);
+	var bookDetailColl = mongoose.model('bookDetail', bookDetailSchema);
 
 	var lesson;
 	var bookMasterInsertCount = 0;
