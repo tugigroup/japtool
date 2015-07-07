@@ -951,7 +951,7 @@ a:hover {
     margin-bottom: 0;
 }
 
-.tl-body > p + p {
+.tl-body p + p {
     margin-top: 5px;
 }
 
@@ -983,23 +983,23 @@ ul.timeline li:nth-child(2n) .tl-circ {
 
 }
 
-ul.timeline > li > .tldate {
+ul.timeline li .tldate {
     margin: 0;
 }
 
-ul.timeline > li > .timeline-panel {
+ul.timeline li .timeline-panel {
     float: right;
     margin-right: 0.5rem;
 }
 
-ul.timeline > li > .timeline-panel:before {
+ul.timeline li .timeline-panel:before {
     border-left-width: 0;
     border-right-width: 15px;
     left: -15px;
     right: auto;
 }
 
-ul.timeline > li > .timeline-panel:after {
+ul.timeline li .timeline-panel:after {
     border-left-width: 0;
     border-right-width: 14px;
     left: -13px;
@@ -1068,7 +1068,7 @@ ul.timeline > li > .timeline-panel:after {
     display: none;
 }
 
-#cssmenu-learngroup > ul > li.active > ul {
+#cssmenu-learngroup ul li.active ul {
     display: block;
 }
 
@@ -1076,7 +1076,7 @@ ul.timeline > li > .timeline-panel:after {
     float: right;
 }
 
-#cssmenu-learngroup > ul > li > a {
+#cssmenu-learngroup ul li a {
     padding: 11px 0px;
     cursor: pointer;
     z-index: 2;
@@ -1088,11 +1088,11 @@ ul.timeline > li > .timeline-panel:after {
     transition: color .2s ease;
 }
 
-#cssmenu-learngroup > ul > li > a:hover {
+#cssmenu-learngroup ul li a:hover {
     color: red;
 }
 
-#cssmenu-learngroup ul > li.has-sub > a:after {
+#cssmenu-learngroup ul li.has-sub a:after {
     position: absolute;
     right: 26px;
     top: 14px;
@@ -1109,7 +1109,7 @@ ul.timeline > li > .timeline-panel:after {
     transition: all 0.1s ease-out;
 }
 
-#cssmenu-learngroup ul > li.has-sub > a:before {
+#cssmenu-learngroup ul li.has-sub a:before {
     position: absolute;
     right: 22px;
     top: 18px;
@@ -1125,8 +1125,8 @@ ul.timeline > li > .timeline-panel:after {
     transition: all 0.1s ease-out;
 }
 
-#cssmenu-learngroup ul > li.has-sub.open > a:after,
-#cssmenu-learngroup ul > li.has-sub.open > a:before {
+#cssmenu-learngroup ul li.has-sub.open a:after,
+#cssmenu-learngroup ul li.has-sub.open a:before {
     -webkit-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
@@ -1154,13 +1154,13 @@ ul.timeline > li > .timeline-panel:after {
     color: red;
 }
 
-#cssmenu-learngroup ul ul > li.has-sub > a:after {
+#cssmenu-learngroup ul ul li.has-sub a:after {
     top: 16px;
     right: 26px;
     background: #49505A;
 }
 
-#cssmenu-learngroup ul ul > li.has-sub > a:before {
+#cssmenu-learngroup ul ul li.has-sub a:before {
     top: 20px;
     background: #49505A;
 }
@@ -1342,6 +1342,258 @@ ul.timeline > li > .timeline-panel:after {
 
 /*END LEARNING GROUP*/
 
+/*VOCABYLARY*/
+.wizard,
+.tabcontrol {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+}
+
+.wizard a,
+.tabcontrol a {
+    outline: 0;
+}
+
+.wizard ul,
+.tabcontrol ul {
+    list-style: none !important;
+    padding: 0;
+    margin: 0;
+}
+
+.wizard ul li,
+.tabcontrol ul li {
+    display: block;
+    padding: 0;
+}
+
+/* Accessibility */
+.wizard .steps .current-info,
+.tabcontrol .steps .current-info {
+    position: absolute;
+    left: -999em;
+}
+
+.wizard .content .title,
+.tabcontrol .content .title {
+    position: absolute;
+    left: -999em;
+}
+
+/*
+    Wizard
+*/
+
+.wizard .steps {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.wizard.vertical .steps {
+    display: inline;
+    float: left;
+    width: 30%;
+}
+
+.wizard .steps .number {
+    font-size: 1.429em;
+}
+
+.wizard .steps ul li {
+
+}
+
+.wizard .steps ul li,
+.wizard .actions ul li {
+    float: left;
+}
+
+.wizard.vertical .steps ul li {
+    float: none;
+    width: 100%;
+}
+
+.wizard .steps a,
+.wizard .steps a:hover,
+.wizard .steps a:active {
+    display: block;
+    width: auto;
+    margin: 0 0.5em 0.5em;
+    padding: 0.5em 0.5em;
+    text-decoration: none;
+
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.wizard .steps .disabled a,
+.wizard .steps .disabled a:hover,
+.wizard .steps .disabled a:active {
+    background: #eee;
+    color: #aaa;
+    cursor: default;
+}
+
+.wizard .steps .current a,
+.wizard .steps .current a:hover,
+.wizard .steps .current a:active {
+    background: #2184be;
+    color: #fff;
+    cursor: default;
+}
+
+.wizard .steps .done a,
+.wizard .steps .done a:hover,
+.wizard .steps .done a:active {
+    background: #9dc8e2;
+    color: #fff;
+}
+
+.wizard .steps .error a,
+.wizard .steps .error a:hover,
+.wizard .steps .error a:active {
+    background: #ff3111;
+    color: #fff;
+}
+
+.wizard .content {
+    background: #eee;
+    display: block;
+    margin: 0.5em;
+    min-height: 35em;
+    overflow: hidden;
+    position: relative;
+    width: auto;
+
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.wizard.vertical .content {
+    display: inline;
+    float: left;
+    margin: 0 2.5% 0.5em 2.5%;
+    width: 65%;
+}
+
+.wizard .content .body {
+    float: left;
+    position: absolute;
+    width: 95%;
+    height: 95%;
+    padding: 2.5%;
+}
+
+.wizard .content .body ul {
+    list-style: disc !important;
+}
+
+.wizard .content .body ul li {
+    display: list-item;
+    line-height: 22px;
+}
+
+.wizard .content .body iframe {
+    border: 0 none;
+    width: 100%;
+    height: 100%;
+}
+
+.wizard .content .body input {
+    display: block;
+    border: 1px solid #ccc;
+}
+
+.wizard .content .body input[type="checkbox"] {
+    display: inline-block;
+}
+
+.wizard .content .body input.error {
+    background: rgb(251, 227, 228);
+    border: 1px solid #fbc2c4;
+    color: #8a1f11;
+}
+
+.wizard .content .body label {
+    display: inline-block;
+    margin-bottom: 0.5em;
+}
+
+.wizard .content .body label.error {
+    color: #8a1f11;
+    display: inline-block;
+    margin-left: 1.5em;
+}
+
+.wizard .actions {
+    position: relative;
+    display: block;
+    text-align: right;
+    width: 100%;
+}
+
+.wizard.vertical .actions {
+    display: inline;
+    float: right;
+    margin: 0 2.5%;
+    width: 95%;
+}
+
+.wizard .actions ul {
+    display: inline-block;
+    text-align: right;
+}
+
+.wizard .actions ul li {
+    margin: 0 0.5em;
+}
+
+.wizard.vertical .actions ul li {
+    margin: 0 0 0 1em;
+}
+
+.wizard .actions a,
+.wizard .actions a:hover,
+.wizard .actions a:active {
+    background: #2184be;
+    color: #fff;
+    display: block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.wizard .actions .disabled a,
+.wizard .actions .disabled a:hover,
+.wizard .actions .disabled a:active {
+    background: #eee;
+    color: #aaa;
+}
+
+.wizard .loading {
+}
+
+.wizard .loading .spinner {
+}
+
+#vocabularyList h4 {
+    font-size: 30px;
+    font-weight: 700;
+}
+#vocabularyList p span{
+    font-weight: 500;
+}
+.wizard ul.vocabulary-item-example{
+    padding-left: 3rem;
+}
+/*END VOCABULARY*/
 /*END CONTENT*/
 /*FOOTER*/
 .footer {

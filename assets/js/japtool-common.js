@@ -23,7 +23,7 @@ $(function () {
 //CustomScrollbar
 (function ($) {
     $(window).load(function () {
-        $(".content").mCustomScrollbar();
+        $(".contentScrollbar").mCustomScrollbar();
     });
 })(jQuery);
 
@@ -31,9 +31,9 @@ $(function () {
 //Show and hidden with search, edit... Of learning and user profile
 $(document).ready(function () {
 
-    (function($){
+    (function ($) {
         $.fn.extend({
-            MyPagination: function(options) {
+            MyPagination: function (options) {
                 var defaults = {
                     height: 400,
                     fadeSpeed: 400
@@ -51,8 +51,8 @@ $(document).ready(function () {
                 var paginatePages;
 
                 // initialization function
-                init = function() {
-                    objContent.children().each(function(i){
+                init = function () {
+                    objContent.children().each(function (i) {
                         if (height + this.clientHeight > options.height) {
                             fullPages.push(subPages);
                             subPages = new Array();
@@ -84,12 +84,12 @@ $(document).ready(function () {
                 };
 
                 // update counter function
-                updateCounter = function(i) {
+                updateCounter = function (i) {
                     $('#page_number').html(i);
                 };
 
                 // show page function
-                showPage = function(page) {
+                showPage = function (page) {
                     i = page - 1;
                     if (paginatePages[i]) {
 
@@ -104,7 +104,7 @@ $(document).ready(function () {
                 };
 
                 // show pagination function (draw switching numbers)
-                showPagination = function(numPages) {
+                showPagination = function (numPages) {
                     var pagins = '';
                     for (var i = 1; i <= numPages; i++) {
                         pagins += '<li><a href="#" onclick="showPage(' + i + '); return false;">' + i + '</a></li>';
@@ -116,12 +116,12 @@ $(document).ready(function () {
                 init();
 
                 // and binding 2 events - on clicking to Prev
-                $('.pagination #prev').click(function() {
+                $('.pagination #prev').click(function () {
                     showPage(lastPage);
                 });
                 // and Next
-                $('.pagination #next').click(function() {
-                    showPage(lastPage+2);
+                $('.pagination #next').click(function () {
+                    showPage(lastPage + 2);
                 });
 
             }
@@ -129,7 +129,7 @@ $(document).ready(function () {
     })(jQuery);
 
     // custom initialization
-    jQuery(window).load(function() {
+    jQuery(window).load(function () {
         $('#content').MyPagination({height: 400, fadeSpeed: 400});
     });
 
@@ -305,10 +305,6 @@ $(document).ready(function () {
     });
 
     //UPLOAD AVATAR USER IN PROFILE
-    document.getElementById("uploadBtnAvatar").onchange = function () {
-        document.getElementById("uploadAvatar").value = this.value;
-    };
-
     function readAvatar(input) {
         if (input.files && input.files[0]) {
 
@@ -319,12 +315,29 @@ $(document).ready(function () {
             reader.readAsDataURL(input.files[0]);
         }
     }
-    $("#uploadBtnAvatar").change(function () {
-        readAvatar(this);
-    });
 
-    // Author: xuandt2
-    // Page: create learning, show popup search learning
+    $('#uploadBtnAvatar').on('change', function () {
+        $('#uploadAvatar').val(this.value);
+    }),
+        $("#uploadBtnAvatar").change(function () {
+            readAvatar(this);
+        });
+});
+
+//END USER
+
+//VOCABULARY
+$(document).ready(function () {
+    $("#vocabularyList").steps({
+        headerTag: "h3",
+        bodyTag: "section",
+        transitionEffect: "slideLeft"
+    });
+});
+//END VOCABULARY
+// Author: xuandt2
+// Page: create learning, show popup search learning
+$(document).ready(function () {
     $('[data-toggle="modal"]').on('click', function (e) {
         e.preventDefault();
         $.ajax({
@@ -341,11 +354,11 @@ $(document).ready(function () {
             }
         });
     });
-});
+    // Close popup
+    $('.close-popup').click(function (e) {
+        $('#show-popup-search').close();
+    });
 
-// Close popup
-$('.close-popup').click(function (e) {
-    $('#show-popup-search').close();
 });
 //RECOMMENT POPUP
 var answer1;
