@@ -117,7 +117,7 @@ $(function () {
 //CustomScrollbar
 (function ($) {
     $(window).load(function () {
-        $(".content").mCustomScrollbar();
+        $(".contentScrollbar").mCustomScrollbar();
     });
 })(jQuery);
 
@@ -399,10 +399,6 @@ $(document).ready(function () {
     });
 
     //UPLOAD AVATAR USER IN PROFILE
-    document.getElementById("uploadBtnAvatar").onchange = function () {
-        document.getElementById("uploadAvatar").value = this.value;
-    };
-
     function readAvatar(input) {
         if (input.files && input.files[0]) {
 
@@ -414,12 +410,28 @@ $(document).ready(function () {
         }
     }
 
-    $("#uploadBtnAvatar").change(function () {
-        readAvatar(this);
-    });
+    $('#uploadBtnAvatar').on('change', function () {
+        $('#uploadAvatar').val(this.value);
+    }),
+        $("#uploadBtnAvatar").change(function () {
+            readAvatar(this);
+        });
+});
 
-    // Author: xuandt2
-    // Page: create learning, show popup search learning
+//END USER
+
+//VOCABULARY
+$(document).ready(function () {
+    $("#vocabularyList").steps({
+        headerTag: "h3",
+        bodyTag: "section",
+        transitionEffect: "slideLeft"
+    });
+});
+//END VOCABULARY
+// Author: xuandt2
+// Page: create learning, show popup search learning
+$(document).ready(function () {
     $('[data-toggle="modal"]').on('click', function (e) {
         e.preventDefault();
         $.ajax({
@@ -436,9 +448,11 @@ $(document).ready(function () {
             }
         });
     });
+    // Close popup
+    $('.close-popup').click(function (e) {
+        $('#show-popup-search').close();
+    });
+
 });
 
-// Close popup
-$('.close-popup').click(function (e) {
-    $('#show-popup-search').close();
-});
+
