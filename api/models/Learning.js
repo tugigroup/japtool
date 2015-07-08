@@ -18,33 +18,36 @@ module.exports = {
             type: 'string'
         },
 
-        description:{
+        description: {
             type: 'string'
         },
 
-        startDate:{
+        startDate: {
             type: 'datetime',
             required: true
         },
 
-        finishDate:{
+        finishDate: {
             type: 'datetime',
             required: true
         },
 
-        maxMemberNum:{
+        maxMemberNum: {
             type: 'integer',
             defaultsTo: 1
         },
 
-        memberSetId:{
+        memberSetId: {
             type: 'integer',
             defaultsTo: 1
         },
 
-        bookSetId:{
+        bookId: {
             type: 'string'
             //required: true
+        },
+        status: {
+            type: 'String'
         }
     }
 };
