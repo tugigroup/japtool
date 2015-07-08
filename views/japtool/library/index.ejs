@@ -1,6 +1,6 @@
 <div class="container library-page example">
-    <% uniqueTag.forEach(function(item, indexLibrary){ %>
-    <div class="row content library-<%= indexLibrary %>" id="content">
+    <% uniqueType.forEach(function(item, indexLibrary){ %>
+    <div class="row content library-<%= indexLibrary %>" id="">
         <div class="media">
             <div class="media-body">
                 <div class="col-sm-12 library-page-title">
@@ -11,7 +11,7 @@
                         </div>
                         <div class="col-sm-2">
                             <div class="join-learn btn label-primary">
-                                <a href="/japtool/BookMaster/getAllLibrary/?category=<%= item %>">View more Library</a>
+                                <a href="/japtool/BookMaster/getAllLibrary/?type=<%= item %>">View more Library</a>
                             </div>
                         </div>
                     </div>
@@ -22,7 +22,7 @@
         <div class="clearfix"></div>
         <div id="lib-1">
             <% data.forEach(function(book, index){ %>
-            <% if(book.category == item) { %>
+            <% if(book.type == item) { %>
             <div class="col-sm-4 lib-cell">
                 <div class="row">
                     <div class="media libMaster">
@@ -218,7 +218,7 @@
             for (var i = 0; i < itemOnPage; i++) {
                 $('.library-' + i).show();
             }
-            var totalPages = <%= uniqueTag.length %>/itemOnPage;
+            var totalPages = <%= uniqueType.length %>/itemOnPage;
             $('#pagination-demo').twbsPagination({
                 totalPages: totalPages,
                 visiblePages: 4,

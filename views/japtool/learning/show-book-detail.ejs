@@ -12,11 +12,11 @@
                         <div id='cssmenu-learngroup'>
                             <ul>
                                 <% uniqueLessons.forEach(function(uniqueLesson){ %>
-                                <li class='has-sub'><a href='#'><%= uniqueLesson %></a>
+                                <li class='has-sub'><a href='javascript: void(0)'><%= uniqueLesson %></a>
                                     <% bookDetails.forEach(function(bookDetail){ %>
                                     <% if(uniqueLesson == bookDetail.lesson) { %>
                                     <ul>
-                                        <li><a href='#'
+                                        <li><a href='javascript: void(0)'
                                                onclick="learn('<%= bookDetail.useModule %>', '<%= bookDetail.dataExtractCondition %>')"><%= bookDetail.subLesson %></a>
                                         </li>
                                     </ul>
@@ -30,7 +30,7 @@
                 <div class="col-sm-8 invite">
                     <h3 class="text-center">N3 vocabulary learning group</h3>
 
-                    <div class="abc" style="background-color: rgba(61, 140, 204, 0.39); min-height: 600px"></div>
+                    <div class="abc" id="container-learn" style="background-color: rgba(61, 140, 204, 0.39); min-height: 600px"></div>
                     <!-- Comment-->
                     <div class="comment">
                         <div class="row">
@@ -111,62 +111,6 @@
                                 <a href="">Nguy?n Hoàng Nam</a>
                             </div>
                         </div>
-                        <div class="invite-member clearfix">
-                            <div class="col-xs-4">
-                                <a><img src="/images/member/1.jpg"/> </a>
-                            </div>
-                            <div class="col-xs-8">
-                                <a href="">Tr?n ??c L??ng</a>
-                            </div>
-                        </div>
-                        <div class="invite-member clearfix">
-                            <div class="col-xs-4">
-                                <a><img src="/images/member/1.jpg"/> </a>
-                            </div>
-                            <div class="col-xs-8">
-                                <a href="">Chí V?n Phèo</a>
-                            </div>
-                        </div>
-                        <div class="invite-member clearfix">
-                            <div class="col-xs-4">
-                                <a><img src="/images/member/1.jpg"/> </a>
-                            </div>
-                            <div class="col-xs-8">
-                                <a href="">Lê Th? N?</a>
-                            </div>
-                        </div>
-                        <div class="invite-member clearfix">
-                            <div class="col-xs-4">
-                                <a><img src="/images/member/1.jpg"/> </a>
-                            </div>
-                            <div class="col-xs-8">
-                                <a href="">Tr?n vi?t Hoàng</a>
-                            </div>
-                        </div>
-                        <div class="invite-member clearfix">
-                            <div class="col-xs-4">
-                                <a><img src="/images/member/1.jpg"/> </a>
-                            </div>
-                            <div class="col-xs-8">
-                                <a href="">Lê H?i Nam</a>
-                            </div>
-                        </div>
-                        <div class="invite-member clearfix">
-                            <div class="col-xs-4">
-                                <a><img src="/images/member/1.jpg"/> </a>
-                            </div>
-                            <div class="col-xs-8">
-                                <a href="">Lê h?o H?o</a>
-                            </div>
-                        </div>
-                        <div class="invite-member clearfix">
-                            <div class="col-xs-4">
-                                <a><img src="/images/member/1.jpg"/> </a>
-                            </div>
-                            <div class="col-xs-8">
-                                <a href="">Lê H?i Nam</a>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -174,3 +118,10 @@
         </div>
     </div>
 </div>
+<script>
+    window.onload = function(){
+        function learn(module, condition){
+            $('#container-learn').load('/japtool/' + module + '/' + condition);
+        }
+    };
+</script>
