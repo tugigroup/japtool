@@ -41,7 +41,7 @@ module.exports = {
 	    else if (req.method=="POST" && id!=null){
 	      
 	      	var paras = req.allParams();
-	      	console.log('all paras: ' + JSON.stringify(paras));
+	      	//console.log('all paras: ' + JSON.stringify(paras));
 	      	delete paras.image_file;
 	      	delete paras.id;
 
@@ -52,6 +52,7 @@ module.exports = {
 	       		BookMaster.findOne(id).exec(function(err,bookBeforeUpdate){
 
 		            if (imgUploaded.length != 0){
+		            	// set image to new file
 		              	paras.image = imgUploaded[0].fd;
 		           
 		             	//delete old img file
