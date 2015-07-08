@@ -46,7 +46,7 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, lessons){
 	  hoursForLearn:   Number,
 	  usedNum: Number,
 	  recommendNum:   Number
-	},{ collection: 'bookmaster', versionKey: false });
+	},{ collection: 'bookMaster', versionKey: false });
 
 	var bookMasterColl = mongoose.model('bookMaster', bookMasterSchema);
 
@@ -57,7 +57,7 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, lessons){
 	  useModule: String,
 	  useCollection: String,
 	  dataExtractCondition:   String
-	},{ collection: 'bookdetail', versionKey: false  });
+	},{ collection: 'bookDetail', versionKey: false  });
 
 	var bookDetailColl = mongoose.model('bookDetail', bookDetailSchema);
 
