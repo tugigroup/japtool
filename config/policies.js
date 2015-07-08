@@ -28,13 +28,33 @@ module.exports.policies = {
      ***************************************************************************/
     '*': 'sessionAuth',
     '*': 'flash',
-    user: {
+
+    'japtool/user': {
         'new': "flash",
+        '*': "authenticated",
         create: "flash"
     },
-    auth: {
+    'japtool/auth': {
         '*': 'flash'
+    },
+    'japtool/vocabulary': {
+        '*': 'authenticated'
+    },
+    'japtool/BookMaster': {
+        '*': 'authenticated'
+    },
+    'japtool/BookDetail': {
+        '*': 'authenticated'
+    },
+    'japtool/Learning': {
+        '*': 'authenticated'
+    },
+    'japtool/Library': {
+        '*': 'authenticated'
     }
+
+
+
 
 
     /***************************************************************************
