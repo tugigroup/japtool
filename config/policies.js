@@ -27,21 +27,12 @@ module.exports.policies = {
      *                                                                          *
      ***************************************************************************/
     '*': 'sessionAuth',
-
-    'auth': {
-        '*': true
-    },
     '*': 'flash',
     user: {
         'new': "flash",
-         create: "flash",
-    //    show: "userSeeProfile",
-    //    searchUser: "userSeeProfile",
-    //    edit: "userSeeProfile",
-    //    update: "userSeeProfile",
-        '*': "admin"
+        create: "flash"
     },
-    auth:{
+    auth: {
         '*': 'flash'
     }
 
