@@ -138,7 +138,7 @@ module.exports = {
                     if (err) {
                         sails.log(err)
                     } else {
-                        res.redirect('japtool/user/show/'+userIDSession)
+                        res.redirect('japtool/user/show/' + userIDSession)
                     }
                 });
             }
@@ -155,13 +155,37 @@ module.exports = {
     //display all list user to index.ejs
     index: function (req, res, next) {
         //Get an array of all user in the user collection (ex: SQL select table)
-        User.find(function foundUsers(err, users) {
+        var lv;
+        var userId = req.session.User.id
+        User.findOne({id: userId}).exec(function (err, user) {
             if (err) {
-                return next(err);
+
             }
-            //paa the array down to the index.ejs page
-            res.view({users: users});
-        });
+            else {
+                lv = user.currentLevel;
+                if (lv == null || lv == '') {
+                    /* res.redirect('japtool/user/afterLogin');*/
+                    res.view();
+                }
+                else {
+                    SurveyUser.find({UserID: user.id}).exec(function (err, svuss) {
+                        if (err) {
+
+                        }
+                        else {
+                            if (svuss == null || svuss == '') {
+                                res.view({});
+                            }
+                            else{
+                                res.redirect('japtool/user/afterLogin');
+                            }
+                        }
+
+                    })
+
+                }
+            }
+        })
     },
 
     //Delete user
@@ -221,8 +245,8 @@ module.exports = {
         //res.send({mess: mess});
     },
 
-    afterLogin:function(req, res){
-      res.view('japtool/user/afterLogin');
+    afterLogin: function (req, res) {
+        res.view('japtool/user/afterLogin');
     },
 
     searchUser: function (req, res, next) {
