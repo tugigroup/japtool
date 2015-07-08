@@ -12,7 +12,7 @@ module.exports = function (req, res, ok) {
         req.session.flash = {
             err: requireLoginError
         }
-        res.redirect('/japtool/auth/login');
+        res.redirect('/japtool/auth');
         return;
     }
 };

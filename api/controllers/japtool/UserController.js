@@ -43,12 +43,9 @@ module.exports = {
                 if (err) {
                     console.log('Encrypt active link failed!');
                 } else {
-                    //and then, redirect to new-success page to inform user active account
-                    res.view('japtool/user/new-success', {
-                        user: user,
-                        activeLink: encryptedLink
-                    });
-                    console.log('/japtool/user/active?active=' + encryptedLink);
+                    //and then, redirect to recommend page
+                    res.redirect('/japtool/user/');
+                    /*console.log('/japtool/user/active?active=' + encryptedLink);*/
                 }
             });
         });
@@ -90,7 +87,6 @@ module.exports = {
             if (!user) {
                 return next();
             }
-
             res.view({user: user});
         });
     },
@@ -130,7 +126,7 @@ module.exports = {
     //edit avatar user
     editAvatar: function (req, res, next) {
         var userIDSession = req.session.User.id;
-        sails.log(userIDSession);
+
         fileAction.upload('uploadAvatar', 'files', req, function (err, img) {
             //sails.log(img);
             if (err) {
@@ -150,7 +146,6 @@ module.exports = {
     },
     readAvatarUser: function (req, res) {
         var fd = req.param('fd');
-        sails.log(fd);
         if (fd != '') {
             fileAction.read(fd, 'files', 'image/*', res);
         }
@@ -222,6 +217,10 @@ module.exports = {
             }
         });
         //res.send({mess: mess});
+    },
+
+    afterLogin:function(req, res){
+      res.view('japtool/user/afterLogin');
     },
 
     searchUser: function (req, res, next) {
