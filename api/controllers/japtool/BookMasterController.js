@@ -93,13 +93,13 @@ module.exports = {
             });
 
             data.forEach(function (item, index) {
-                arrTag.push(item.category);
+                arrTag.push(item.type);
                 if (index == (data.length - 1)) {
                     var array = require("array-extended");
-                    var uniqueTag = array(arrTag).unique().value();
+                    var uniqueType = array(arrTag).unique().value();
                     res.view('japtool/library/index', {
                         data: data,
-                        uniqueTag: uniqueTag,
+                        uniqueType: uniqueType,
                         arrAllLesson: arrAllLesson,
                         layout: 'layout/layout-japtool'
                     })
@@ -109,8 +109,8 @@ module.exports = {
     },
 
     getAllLibrary: function (req, res) {
-        var category = req.param('category');
-        BookMaster.find({category: category}).populate('bookDetail').exec(function createCB(err, data) {
+        var type = req.param('type');
+        BookMaster.find({type: type}).populate('bookDetail').exec(function createCB(err, data) {
             var arrAllLesson = [];
 
             data.forEach(function (book) {
@@ -126,15 +126,16 @@ module.exports = {
                                 idLesson: book.id
                             };
                             arrAllLesson.push(objLesson);
-                            res.view('japtool/library/showCategory', {
-                                data: data,
-                                arrAllLesson: arrAllLesson,
-                                layout: 'layout/layout-japtool'
-                            })
+
                         }
                     })
                 }
             });
+            res.view('japtool/library/showCategory', {
+                data: data,
+                arrAllLesson: arrAllLesson,
+                layout: 'layout/layout-japtool'
+            })
         })
     }
 };
