@@ -8,11 +8,13 @@
 module.exports = {
 	getImg: function (req, res) {
         var fd = req.param('fd');
+        //console.log('fd: ' + fd);
         if (fd == null) {
             res.send('null');
         } else {
-            var skipperAdapter = common.skipperAdapter('files');
+            var skipperAdapter = database.skipperAdapter('files');
             skipperAdapter.read(fd, function (error, file) {
+                //console.log('file: ' + JSON.stringify(file));
                 if (error) {
                     res.json(error);
                 } else {
@@ -28,7 +30,7 @@ module.exports = {
         if (fd == null) {
             res.send('');
         } else {
-            var skipperAdapter = common.skipperAdapter('files');
+            var skipperAdapter = database.skipperAdapter('files');
             skipperAdapter.read(fd, function (error, file) {
                 if (error) {
                     res.json(error);
@@ -45,7 +47,7 @@ module.exports = {
         if (fd == null) {
             res.send('');
         } else {
-            var skipperAdapter = common.skipperAdapter('files');
+            var skipperAdapter = database.skipperAdapter('files');
 
             skipperAdapter.read(fd, function (error, file) {
                 if (error) {
