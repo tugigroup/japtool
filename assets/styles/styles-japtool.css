@@ -1387,7 +1387,7 @@ ul.timeline li .timeline-panel:after {
 
 .wizard .steps {
     position: relative;
-    display: block;
+    display: none;
     width: 100%;
 }
 

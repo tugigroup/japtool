@@ -15,7 +15,7 @@ module.exports = function(req, res, ok) {
         req.session.flash = {
             err: noRightsError
         }
-        res.redirect('/japtool/auth/login');
+        res.redirect('/japtool/auth/index');
         return;
     }
 
