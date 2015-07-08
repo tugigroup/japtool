@@ -22,7 +22,7 @@
         <div class="clearfix"></div>
         <div id="lib-1">
             <% data.forEach(function(book, index){ %>
-            <div class="col-sm-4 lib-cell">
+            <div class="col-sm-4 lib-cell lib-cell-<%= index %>">
                 <div class="row">
                     <div class="media libMaster">
                         <a href="#" data-toggle="modal" data-target="#lib-details-<%= book.id %>">
@@ -213,11 +213,22 @@
     <ul id="pagination-demo" class="pagination-sm row text-center pull-right"></ul>
     <script type="text/javascript">
         window.onload = function () {
+            $('.lib-cell').hide();
+            var itemOnPage = 6;
+            for (var i = 0; i < itemOnPage; i++) {
+                $('.lib-cell-' + i).show();
+            }
+            var totalPages = <%= data.length %>/itemOnPage;
             $('#pagination-demo').twbsPagination({
-                totalPages: 35,
-                visiblePages: 7,
+                totalPages: totalPages,
+                visiblePages: 4,
                 onPageClick: function (event, page) {
-                    $('#page-content').text('Page ' + page);
+
+                    var itemShow = itemOnPage * page;
+                    $('.lib-cell').hide();
+                    for (var i = itemShow - itemOnPage; i < itemShow; i++) {
+                        $('.lib-cell-' + i).show();
+                    }
                 }
             });
         };
