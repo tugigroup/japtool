@@ -1,3 +1,12 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#vocabularyList").steps({
+            headerTag: "h3",
+            bodyTag: "section",
+            transitionEffect: "slideLeft"
+        });
+    });
+</script>
 <div id="vocabularyList">
     <% vocabularies.forEach( function(vocabulary, index){ %>
     <h3><%= vocabulary.item %></h3>

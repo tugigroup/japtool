@@ -12,8 +12,8 @@ module.exports = {
         }
     },
     list: function (req, res) {
-        //var extractDataCondition = req.param('condition');
-        var extractDataCondition = '{"level": "N2", "tag" : {"contains":",400dongtu,lession1,"}}';
+        var extractDataCondition = req.param('condition');
+        //var extractDataCondition = '{"level": "N2", "tag" : {"contains":",400dongtu,lession1,"}}';
          Vocabulary.selectByLevel({condition: extractDataCondition},function(err,vocabularies){
         if(err) return res.send(err.status);
 
