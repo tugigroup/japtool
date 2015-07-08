@@ -24,7 +24,7 @@
                 </div>
             </div>
 
-            <div class="clearfix"></div>
+            <!--<div class="clearfix"></div>-->
             <div id="lib-1">
                 <% for(var i = 0;i < lbrs.length;i++){ %>
                 <div class="col-sm-4 lib-cell">
@@ -89,27 +89,27 @@
                                             <h4>Details:</h4>
                                             <li>
                                                 <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
-                                                Level: N2
+                                                Level: <%= lbrs[i].level %>
                                             </li>
                                             <li>
                                                 <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                                                Type: Tu vung
+                                                Type: <%= lbrs[i].type %>
                                             </li>
                                             <li>
                                                 <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
-                                                Number Lesson: 45
+                                                Number Lesson: <%= lbrs[i].lessonNum %>
                                             </li>
                                             <li>
                                                 <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
-                                                Estimate Hour: 30h
+                                                Estimate Hour: <%= lbrs[i].hourForLearn %>
                                             </li>
                                             <li>
                                                 <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                                                Number Of Recommend: 5
+                                                Number Of Recommend: <%= lbrs[i].recommendNum %>
                                             </li>
                                             <li>
                                                 <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
-                                                Used: 50
+                                                Used: <%= lbrs[i].usedNum %>
                                             </li>
 
                                         </ul>
@@ -119,36 +119,7 @@
                                         <h4>Description:</h4>
 
                                         <div class="pre-scrollable mCustomScrollbar" data-mcs-theme="dark">
-                                            Lorem ipsum
-                                            dolor sit amet, consectetur adipiscing elit. Integer nec odio.
-                                            Praesent libero. Sed cursus antedapibus diam.Sednisi. Nulla quis
-                                            sem at nibh elementumimperdiet.Duis sagittis ipsum. Praesent
-                                            mauris. Fuscenec tellus sed augue semper porta. Mauris
-                                            massa.Vestibulumlaciniaarcu eget nulla. Class aptent taciti
-                                            sociosqu adlitoratorquent per conubia nostra, per
-                                            inceptoshimenaeos.Curabitur sodales ligula in libero.
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-                                            nec odio. Praesent libero. Sed cursus antedapibus diam.Sednisi.
-                                            Nulla quis sem at nibh elementumimperdiet.Duis sagittis ipsum.
-                                            Praesent mauris. Fuscenec tellus sed augue semper porta. Mauris
-                                            massa.Vestibulumlaciniaarcu eget nulla. Class aptent taciti
-                                            sociosqu adlitoratorquent per conubia nostra, per
-                                            inceptoshimenaeos.Curabitur sodales ligula in libero.
-                                            Lorem ipsum
-                                            dolor sit amet, consectetur adipiscing elit. Integer nec odio.
-                                            Praesent libero. Sed cursus antedapibus diam.Sednisi. Nulla quis
-                                            sem at nibh elementumimperdiet.Duis sagittis ipsum. Praesent
-                                            mauris. Fuscenec tellus sed augue semper porta. Mauris
-                                            massa.Vestibulumlaciniaarcu eget nulla. Class aptent taciti
-                                            sociosqu adlitoratorquent per conubia nostra, per
-                                            inceptoshimenaeos.Curabitur sodales ligula in libero.
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-                                            nec odio. Praesent libero. Sed cursus antedapibus diam.Sednisi.
-                                            Nulla quis sem at nibh elementumimperdiet.Duis sagittis ipsum.
-                                            Praesent mauris. Fuscenec tellus sed augue semper porta. Mauris
-                                            massa.Vestibulumlaciniaarcu eget nulla. Class aptent taciti
-                                            sociosqu adlitoratorquent per conubia nostra, per
-                                            inceptoshimenaeos.Curabitur sodales ligula in libero.
+                                            <%= lbrs[i].description %>
                                         </div>
                                     </div>
                                 </div>

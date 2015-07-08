@@ -4,9 +4,19 @@ var answer2;
 var answer3 = new Array();
 var listIdSurvey = new Array();
 $(document).ready(function () {
-
+    var lv = $("#lv").val();
+    var crt = $("#crt").val();
+    if (lv == '' || lv == null) {
         checkAnswer1(1, 2);
         $('#lib-recommend-1').modal('show');
+    }
+    else {
+        answer1 = lv;
+        answer2 = crt;
+        $('#lib-recommend-3').load('/japtool/Recommend/getStep3?lv=' + answer1);
+        $('#lib-recommend-3').addClass('fade').modal('show');
+    }
+
 
 });
 function nextQuestion(pre, next) {
@@ -25,7 +35,13 @@ function checkAnswer1(pre, next) {
     $("#recommend-1 option").each(function () {
         $(this).click(function () {
             answer1 = $("#recommend-1").val();
-            nextQuestion(pre, next);
+            if (answer1 == 'Choose one') {
+
+            }
+            else {
+                nextQuestion(pre, next);
+            }
+
         });
     });
 }

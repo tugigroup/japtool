@@ -156,6 +156,7 @@ module.exports = {
     index: function (req, res, next) {
         //Get an array of all user in the user collection (ex: SQL select table)
         var lv;
+        var crt;
         var userId = req.session.User.id
         User.findOne({id: userId}).exec(function (err, user) {
             if (err) {
@@ -165,7 +166,10 @@ module.exports = {
                 lv = user.currentLevel;
                 if (lv == null || lv == '') {
                     /* res.redirect('japtool/user/afterLogin');*/
-                    res.view();
+                    res.view({
+                        lv:'',
+                        crt:''
+                    });
                 }
                 else {
                     SurveyUser.find({UserID: user.id}).exec(function (err, svuss) {
@@ -173,8 +177,12 @@ module.exports = {
 
                         }
                         else {
+                            crt=user.currentLearningTime;
                             if (svuss == null || svuss == '') {
-                                res.view({});
+                                res.view({
+                                    lv:lv,
+                                    crt:crt
+                                });
                             }
                             else{
                                 res.redirect('japtool/user/afterLogin');
