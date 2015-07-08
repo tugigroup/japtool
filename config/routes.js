@@ -42,6 +42,11 @@ module.exports.routes = {
     '/createBookDetail':'japtool/BookDetailController.getBookDetail',
     /*End QuyetND2*/
 
+    /* Start common */
+    '/media/audio/:fd':'common/MediaController.getAudio',
+    '/media/video/:fd':'common/MediaController.getVideo',
+    '/media/image/:fd':'common/MediaController.getImg',
+    /* End common */
 
     // router by Duongtd2
     //article by duongtd2
