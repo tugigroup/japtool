@@ -1,3 +1,5 @@
+//USER
+//validate form register user
 $(document).ready(function () {
   $('.form-register').validate({
     rules: {
@@ -18,7 +20,7 @@ $(document).ready(function () {
       }
     }
   });
-
+//Validate change password user
   $('#change-pass').validate({
     rules: {
       oldPasswordUser: {
@@ -36,7 +38,7 @@ $(document).ready(function () {
       }
     }
   });
-
+//END USER
     $('#createArticleForm').validate({
         rules: {
             subject: {
@@ -162,7 +164,7 @@ $(document).ready(function () {
                 maxlength: "Class name less than 50 characters."
             },
             description: {
-                required: "Please input décription."
+                required: "Please input description."
             },
             startDate: {
                 required: "Please input start date."

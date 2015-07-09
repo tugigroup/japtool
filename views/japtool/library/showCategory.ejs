@@ -172,6 +172,7 @@
                                                 <% if(item.idLesson == book.id){ %>
                                                 <% item.arrLesson.forEach(function(uniqueLesson){ %>
                                                 <li class='has-sub'><a href='#'><%= uniqueLesson %></a>
+                                                    <% if(book.bookDetail.length != 0){ %>
                                                     <% book.bookDetail.forEach(function(bookDetail){ %>
                                                     <% if(uniqueLesson == bookDetail.lesson) { %>
                                                     <ul>
@@ -181,6 +182,7 @@
                                                     </ul>
                                                     <% } %>
                                                     <% }) %>
+                                                    <% } %>
                                                     <% }) %>
                                                     <% } %>
                                                     <% }) %>
@@ -208,15 +210,16 @@
         </div>
     </div>
 
-    <div class="row text-center holder">
-        <ul class="pagination">
-            <li><a href="#">«</a></li>
-            <li class="active"><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">»</a></li>
-        </ul>
-    </div>
+    <ul id="pagination-demo" class="pagination-sm row text-center pull-right"></ul>
+    <script type="text/javascript">
+        window.onload = function () {
+            $('#pagination-demo').twbsPagination({
+                totalPages: 35,
+                visiblePages: 7,
+                onPageClick: function (event, page) {
+                    $('#page-content').text('Page ' + page);
+                }
+            });
+        };
+    </script>
 </div>
