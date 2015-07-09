@@ -23,7 +23,7 @@ module.exports = {
                 }).exec(function (err, ok) {
                     if (err) {
                     }
-                    res.render('japtool/Recommend/LibraRecommend', {
+                    res.view('japtool/Recommend/LibraRecommend', {
                         lbrs: lbrs
                     });
                 })
@@ -53,6 +53,7 @@ module.exports = {
                         }
                         SurveyUser.create({
                             surveyID: listid[i],
+                            UserID:req.session.User.id,
                             correct1: arrTemp[0],
                             correct2: arrTemp[1],
                             correct3: arrTemp[2],
@@ -62,7 +63,7 @@ module.exports = {
                             }
                         })
                     }
-                    return res.render('japtool/Recommend/LibraRecommend', {
+                    return res.view('japtool/Recommend/LibraRecommend', {
                         lbrs: lbrs
                     });
                 })
@@ -74,7 +75,7 @@ module.exports = {
         BookMaster.find({level: lv}).limit(constants.maxLibraRec).exec(function (err, lbrs) {
             if (err) {
             }
-            res.render('japtool/Recommend/LibraRecommend', {
+            res.view('japtool/Recommend/LibraRecommend', {
                 lbrs: lbrs
             });
         })
@@ -98,5 +99,10 @@ module.exports = {
                 })
             })
         }*/
+    },
+    _config: {
+        locals: {
+            layout: 'layout/layout-japtool'
+        }
     }
 }
