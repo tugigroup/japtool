@@ -3,103 +3,54 @@
         <div class="row">
             <h2 class="text-center clearfix">Learning Your Self</h2>
 
-            <p class="text-center desc-home">Hi?n th? nh?ng group h?c ti?ng nh?t c?a b?n bË trong list friends c?a
-                b?n, b?n join v‡o ?? h?c c˘ng nhau nhÈ</p>
+            <p class="text-center desc-home">Hi·ªÉn th·ªã nh·ªØng group h·ªçc ti·∫øng nh·∫≠t c·ªßa b·∫°n b√® trong list friends c·ªßa b·∫°n, b·∫°n join v√†o ƒë·ªÉ h·ªçc c√πng nhau nh√©</p>
 
             <p class="text-center desc-home"><i><a>View more all</a></i></p>
+            <!--Show bool user History-->
+            <%if(bookUseHistories!=undefined && bookUseHistories.length>0){%>
+              <%bookUseHistories.forEach(function(bookUse){%>
+                <div class="col-sm-6">
+                    <div class="vocabulary-item">
+                        <div class="info">
+                            <h3><a><%=bookUse.bookMaster.name%></a></h3>
+                            <!--Show miss following lesson-->
+                            <p>Till now you have miss following lesson</p>
+                            <%if(missLessons!=undefined && missLessons.length>0){%>
+                              <%missLessons.forEach(function(missLesson){%>
+                                  <div class="col-sm-3">
+                                    <div class="info-lesson label-warning"><a><%= missLesson.subLesson%></a></div>
+                                  </div>
+                              <%});%> <!--End for-->
+                            <%} else {%>
+                                <h5>don't miss following lesson</h5>
+                            <%}%> <!--End if-->
+                            <!--Ended Show miss following lesson-->
 
-            <div class="col-sm-6">
-                <div class="vocabulary-item">
-                    <div class="info">
-                        <h3><a>Vocabulary games with us</a></h3>
-
-                        <p>Till now you have miss following lesson</p>
-
-                        <div class="row info-desc">
-                            <div class="col-sm-3">
-                                <div class="info-lesson label-default"><a>Lesson 1</a></div>
+                            <!--Show learn history-->
+                            <div class="row info-learning">
+                                <%if(bookUse.userLearnHistories!=undefined && bookUse.userLearnHistories.length>0){%>
+                                <%bookUse.userLearnHistories.forEach(function(userLearn){%>
+                                  <div class="col-sm-9">
+                                    <!--<span class="label label-primary"><%=userLearn.lesson%></span>-->
+                                    <p><span class="glyphicon glyphicon-thumbs-up"></span> You have done <%=userLearn.subLesson%> on <%=userLearn.lesson%></p>
+                                  </div>
+                                  <div class="col-sm-3">
+                                    <a class="join-learn btn label-danger">Continue</a>
+                                  </div>
+                                <%});%> <!--End for-->
+                                <%} else {%>
+                                <h5>No learn history</h5>
+                                <%}%> <!--End if-->
                             </div>
-                            <div class="col-sm-3">
-                                <div class="info-lesson label-primary"><a>Lesson 2</a></div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="info-lesson label-success"><a>Lesson 3</a></div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="info-lesson label-warning"><a>Lesson 4</a></div>
-                            </div>
+                            <!--Ended Show learn history-->
+                            <p class="text-center desc-home"><i><a>View more all</a></i></p>
                         </div>
-                        <div class="row info-learning">
-                            <div class="col-sm-9">
-                                <p><span class="glyphicon glyphicon-bullhorn"></span> Group's members An, Minh, T‚m are
-                                    learning <span class="label label-primary">Lession 4</span> now</p>
-                            </div>
-                            <div class="col-sm-3">
-                                <a class="join-learn btn label-danger">Join to learning</a>
-                            </div>
-                            <div class="col-sm-9">
-                                <p><span class="glyphicon glyphicon-bullhorn"></span> Group's members An, Minh, T‚m are
-                                    learning <span class="label label-primary">Lession 3</span> now</p>
-                            </div>
-                            <div class="col-sm-3">
-                                <a class="join-learn btn label-danger">Join to learning</a>
-                            </div>
-                        </div>
-                        <p class="info-lesson-done"><span class="glyphicon glyphicon-thumbs-up"></span> Group's members
-                            Qu?ng, H‡ have done Lession Lession 3</p>
-
-                        <p class="info-lesson-done"><span class="glyphicon glyphicon-thumbs-up"></span> Group's members
-                            C?c has done Lession 3 by himself</p>
-
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="vocabulary-item">
-                    <div class="info">
-                        <h3><a>Vocabulary games with us</a></h3>
-
-                        <p>Till now you have miss following lesson</p>
-
-                        <div class="row info-desc">
-                            <div class="col-sm-3">
-                                <div class="info-lesson label-default"><a>Lesson 1</a></div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="info-lesson label-primary"><a>Lesson 2</a></div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="info-lesson label-success"><a>Lesson 3</a></div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="info-lesson label-warning"><a>Lesson 4</a></div>
-                            </div>
-                        </div>
-                        <div class="row info-learning">
-                            <div class="col-sm-9">
-                                <p><span class="glyphicon glyphicon-bullhorn"></span> Group's members An, Minh, T‚m are
-                                    learning <span class="label label-primary">Lession 4</span> now</p>
-                            </div>
-                            <div class="col-sm-3">
-                                <a class="join-learn btn label-danger">Join to learning</a>
-                            </div>
-                            <div class="col-sm-9">
-                                <p><span class="glyphicon glyphicon-bullhorn"></span> Group's members An, Minh, T‚m are
-                                    learning <span class="label label-primary">Lession 3</span> now</p>
-                            </div>
-                            <div class="col-sm-3">
-                                <a class="join-learn btn label-danger">Join to learning</a>
-                            </div>
-                        </div>
-                        <p class="info-lesson-done"><span class="glyphicon glyphicon-thumbs-up"></span> Group's members
-                            Qu?ng, H‡ have done Lession Lession 3</p>
-
-                        <p class="info-lesson-done"><span class="glyphicon glyphicon-thumbs-up"></span> Group's members
-                            C?c has done Lession 3 by himself</p>
-
-                    </div>
-                </div>
-            </div>
+              <%});%> <!--End for-->
+            <%} else {%>
+            <div><h1>No Content</h1></div>
+            <%}%> <!--End if-->
         </div>
     </div>
 </div>
