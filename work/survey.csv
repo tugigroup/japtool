@@ -1,2 +1,2 @@
 sortIndex,level,firstUsing,uniqueUsing,question,option1,correct1,option2,correct2,option3,correct3,option4,correct4
-"1","a","a","a","a","a","a","a","a","a","a","a","a"
+"1","N1",TRUE,TRUE,"Khả năng học ngoại ngữ của bạn?","Tốt",TRUE,"Bình thường",FALSE,"Kém",FALSE,"Rất kém",FALSE

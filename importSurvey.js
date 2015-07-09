@@ -15,24 +15,23 @@ data = fs.readFileSync(config.survey_csv_file,{"encoding":"utf8"});
 var surveySchema = new mongoose.Schema({
 	sortIndex:  		Number,
 	level: 				String,
-	firstUsing:   		boolean,
-	uniqueUsing:   		boolean,
+	firstUsing:   		Boolean,
+	uniqueUsing:   		Boolean,
 	qType:   			{type: String, enum: ['1', '2']},
 	question:   		String,
 	option1:   			String,
-	correct1:   		boolean,
+	correct1:   		Boolean,
 	option2:   			String,
-	correct2:   		boolean,
+	correct2:   		Boolean,
 	option3:   			String,
-	correct3:   		boolean,
+	correct3:   		Boolean,
 	option4:   			String,
-	correct4:   		boolean
+	correct4:   		Boolean
 	},{ collection: 'survey', versionKey: false });
 
 var surveyColl = mongoose.model('survey', surveySchema);
 
 var insertToSurvey = function(survey,callback){
-	console.log(survey);
     var insertedSurvey = new surveyColl({
 		sortIndex:  		survey[0],
 		level: 				survey[1],
@@ -53,7 +52,6 @@ var insertToSurvey = function(survey,callback){
 		if(err) {
 			callback(err);
 		}else {
-			console.log(surveyColl.schema.path('qType').enumValues);
 			surveyInsertCount ++;
 			callback(null, surveyInsertCount);
 
