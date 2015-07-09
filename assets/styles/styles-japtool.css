@@ -1346,6 +1346,35 @@ ul.timeline li .timeline-panel:after {
 
 /*END LEARNING GROUP*/
 
+
+/*css by duongtd2*/
+/*css show article to learn*/
+.showArticleLearn {
+    min-height: 700px;
+}
+.showArticleLearn .btn-doTest-article{
+    background-image: none;
+    background-color: white;
+    border-color: white;
+    border: none;
+}
+.doTestArticle .testHid {
+   display-outside: none;
+    display: none;
+    display-inside: block;
+}
+.doTestArticle .lb-ts-test-fail {
+   color:red;
+}.doTestArticle .lb-ts-test-ok {
+   color:green;
+}
+.container-do-test-article{
+    width: 93%;
+    min-height: 1000px;
+}
+/*END css by duongtd2*/
+
+
 /*VOCABYLARY*/
 .wizard,
 .tabcontrol {
@@ -1598,6 +1627,7 @@ ul.timeline li .timeline-panel:after {
     padding-left: 3rem;
 }
 /*END VOCABULARY*/
+
 /*END CONTENT*/
 /*FOOTER*/
 .footer {

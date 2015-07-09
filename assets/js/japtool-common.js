@@ -481,4 +481,12 @@ $(document).ready(function () {
         $('#show-popup-search').close();
     });
 
+
+// Close popup
+$('.close-popup').click(function (e) {
+    $('#show-popup-search').close();
 });
+
+
+});
+

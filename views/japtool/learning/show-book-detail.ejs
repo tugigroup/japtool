@@ -187,8 +187,6 @@
 </div>
 <script>
     function learn(module, condition) {
-//        console.log(condition);
-        var encode = escape();
         var strCondition = JSON.stringify(condition);
         $('#container-learn').load('/japtool/' + module + '/list/?condition=' + strCondition);
     }
