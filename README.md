@@ -18,3 +18,5 @@
       <code> node importKanji.js </code><br>
   2.5 Import data of [book]<br>
       <code> node importBook.js </code><br>
+  2.6 Import data of [survey]<br>
+      <code> node importSurvey.js </code><br>

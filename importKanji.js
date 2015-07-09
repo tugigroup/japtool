@@ -9,9 +9,6 @@ var config = require('./config.json');
 data = fs.readFileSync(config.kanji_csv_file,{"encoding":"utf8"});
 //console.log(data);
 
-// connect to mongodb
-mongoose.connect('mongodb://' + config.dbhost + '/' + config.database);
-
 var kanjiSchema = mongoose.Schema({
 	item:  			String,
 	hanviet: 		String,
@@ -44,6 +41,7 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, kanjis){
 	// check header
 	if (kanjis.length == 0){
 		console.log('Error! csv file has not any data');
+		return;
 	}
 
 	var header = kanjis[0];
@@ -59,16 +57,14 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, kanjis){
 		// header[9] != 'category' 
 	
 		console.log('Error! Format of csv file is not correct.');
+		return;
 	}
 
-	// var kanji_array = [];
-	// for (var i = 1; i<kanjis.length; i++){
-	// 	//console.log(kanjis[i]);
-	// 	kanji_array.push(kanjis[i]);
-	// }
     var example_array = [];
     var kanjiInsertCount = 0;
 	var exampleInsertCount = 0;
+	// connect to mongodb
+	mongoose.connect('mongodb://' + config.dbhost + '/' + config.database);
 	console.log('START: IMPORTING DATA...');
 	console.log('========================');
 	async.series([
@@ -142,12 +138,12 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, kanjis){
 		if(err) {
  			console.log(err);
 		}else {
-			// disconect mongodb
-	    	mongoose.disconnect();
 	    	console.log('kanji collection: ' + results[0].toString() + ' records was inserted.');
 			console.log('example collection: ' + results[1].toString() + ' records was inserted.');
 			console.log('========================');
 			console.log('END: IMPORTED DATA');		
 		}
+		// disconect mongodb
+	    mongoose.disconnect();
 	});
 });

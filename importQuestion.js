@@ -9,9 +9,6 @@ var config = require('./config.json');
 var articleInsertCount = 0;
 var questionInsertCount = 0;
 
-// connect to mongodb
-mongoose.connect('mongodb://' + config.dbhost + '/' + config.database);
-
 var articleSchema = mongoose.Schema({
   subject:  String,
   content:  String,
@@ -48,6 +45,7 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, articles){
 	// check header
 	if (articles.length == 0){
 		console.log('Error! csv file has not any data.');
+		return;
 	}
 
 	var header = articles[0];
@@ -67,6 +65,7 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, articles){
 		header[12] != 'result' ){
 
 		console.log('Error! Format of csv file is not correct.');
+		return;
 	}
 
 	var article;
@@ -78,6 +77,8 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, articles){
 	var errorCount = 0;
 	var insertedArticle;
 	var insertedQuestion;
+	// connect to mongodb
+	mongoose.connect('mongodb://' + config.dbhost + '/' + config.database);
 	console.log('START: IMPORTING DATA...');
 	console.log('========================');
 	for ( var i = 1; i < articles.length; i++ ) {
@@ -136,6 +137,8 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, articles){
 					insertedQuestion.save(function (err,data) {
 					    if(err) {
 					        console.log(err);
+					        // disconect mongodb
+							mongoose.disconnect();
 					    }else {
 					    	questionInsertCount++;
 					    	if (questionInsertCount == articles.length -1) {
@@ -165,6 +168,8 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, articles){
 				insertedArticle.save(function (err,data) {
 					if(err) {
 					    console.log(err);
+					    // disconect mongodb
+						mongoose.disconnect();
 					}else {
 					    articleInsertCount++;
 					}
@@ -212,7 +217,9 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, articles){
 
 				insertedQuestion.save(function (err,data) {
 					if(err) {
-					console.log(err);
+						console.log(err);
+						// disconect mongodb
+						mongoose.disconnect();
 					}else {
 						questionInsertCount++;
 						if (questionInsertCount == articles.length -1) {
@@ -242,6 +249,8 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, articles){
 			insertedArticle.save(function (err,data) {
 				if(err) {
 				    console.log(err);
+				    // disconect mongodb
+					mongoose.disconnect();
 				}else {
 					articleInsertCount++;
 				}
@@ -291,6 +300,8 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, articles){
 			insertedQuestion.save(function (err,data) {
 				if(err) {
 				    console.log(err);
+				    // disconect mongodb
+					mongoose.disconnect();
 				}else {
 					questionInsertCount++;
 					if (questionInsertCount == articles.length -1) {

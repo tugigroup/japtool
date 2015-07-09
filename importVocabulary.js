@@ -6,14 +6,8 @@ var parser = parse({delimiter : ','});
 var mongoose = require('mongoose');
 var config = require('./config.json');
 
-var vocabInsertCount = 0;
-var exampleInsertCount = 0;
-var count = 0;
-
 data = fs.readFileSync(config.vocabulary_csv_file,{"encoding":"utf8"});
 //console.log(data);
-// connect to mongodb
-mongoose.connect('mongodb://' + config.dbhost + '/' + config.database);
 
 var vocabularySchema = mongoose.Schema({
   item:  			String,
@@ -45,6 +39,7 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, vocabularies){
 	//check header
 	if (vocabularies.length == 0){
 		console.log('Error! csv file has not any data');
+		return;
 	}
 
 	var header = vocabularies[0];
@@ -59,11 +54,14 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, vocabularies){
 		// header[7] != 'category' 
 	
 		console.log('Error! Format of csv file is not correct.');
+		return;
 	}
 
 	var example_array = [];
     var vocabularyInsertCount = 0;
 	var exampleInsertCount = 0;
+	// connect to mongodb
+	mongoose.connect('mongodb://' + config.dbhost + '/' + config.database);
 	console.log('START: IMPORTING DATA...');
 	console.log('========================');
 	async.series([
@@ -95,7 +93,6 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, vocabularies){
 	    },
 	    function(callback){
 	    	var insertedCount = 0;
-			//console.log(example_array.length)
 			example_array.forEach(function(item) {
 				var examples = [];
 				examples = item.exampleStr.toString().split(config.chars_split_between_examples);
@@ -134,12 +131,12 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, vocabularies){
 		if(err) {
  			console.log(err);
 		}else {
-			// disconect mongodb
-	    	mongoose.disconnect();
 	    	console.log('vocabulary collection: ' + results[0].toString() + ' records was inserted.');
 			console.log('example collection: ' + results[1].toString() + ' records was inserted.');
 			console.log('========================');
 			console.log('END: IMPORTED DATA');		
 		}
+		// disconect mongodb
+	    mongoose.disconnect();
 	});
 });

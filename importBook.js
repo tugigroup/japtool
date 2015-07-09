@@ -13,6 +13,7 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, lessons){
 	// check header
 	if (lessons.length == 0){
 		console.log('Error! csv file has not any data.');
+		return;
 	}
 
 	var header = lessons[0];
@@ -32,6 +33,7 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, lessons){
 		header[12] != 'dataExtractCondition' ){
 
 		console.log('Error! Format of csv file is not correct.');
+		return;
 	}
 
 	// connect to mongodb
@@ -93,6 +95,8 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, lessons){
 				insertedBookDetail.save(function (err,data) {
 					if(err) {
 					    console.log(err);
+					    // disconect mongodb
+						mongoose.disconnect();
 					}else {
 					    bookDetailInsertCount++;
 					    if (bookDetailInsertCount == lessons.length -1) {
@@ -124,6 +128,8 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, lessons){
 			insertedBookMaster.save(function (err,data) {
 				if(err) {
 					console.log(err);
+					// disconect mongodb
+					mongoose.disconnect();
 				}else {
 					bookMasterInsertCount++;
 				}
@@ -142,6 +148,8 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, lessons){
 			insertedBookDetail.save(function (err,data) {
 				if(err) {
 					console.log(err);
+					// disconect mongodb
+					mongoose.disconnect();
 				}else {
 					bookDetailInsertCount++;
 					if (bookDetailInsertCount == lessons.length -1) {

@@ -25,12 +25,12 @@ async.series([
 	},
 	function(callback){
 		// Vocabulary collection
-		var exampleSchema = mongoose.Schema({
+		var vocabularySchema = mongoose.Schema({
 			},{ collection: 'vocabulary', versionKey: false });
 
-		var example = mongoose.model('vocabulary', exampleSchema);
+		var vocabulary = mongoose.model('vocabulary', vocabularySchema);
 
-		example.remove({}, function (err) {
+		vocabulary.remove({}, function (err) {
 			if (err) {
 				callback(err)
 			}else {
@@ -40,12 +40,12 @@ async.series([
 	},
 	function(callback){
 		// kanji collection
-		var exampleSchema = mongoose.Schema({
+		var kanjiSchema = mongoose.Schema({
 			},{ collection: 'kanji', versionKey: false });
 
-		var example = mongoose.model('kanji', exampleSchema);
+		var kanji = mongoose.model('kanji', kanjiSchema);
 
-		example.remove({}, function (err) {
+		kanji.remove({}, function (err) {
 			if (err) {
 				callback(err)
 			}else {
@@ -55,12 +55,12 @@ async.series([
 	},
 	function(callback){
 		// grammar collection
-		var exampleSchema = mongoose.Schema({
+		var grammarSchema = mongoose.Schema({
 			},{ collection: 'grammar', versionKey: false });
 
-		var example = mongoose.model('grammar', exampleSchema);
+		var grammar = mongoose.model('grammar', grammarSchema);
 
-		example.remove({}, function (err) {
+		grammar.remove({}, function (err) {
 			if (err) {
 				callback(err)
 			}else {
@@ -70,12 +70,12 @@ async.series([
 	},
 	function(callback){
 		// question collection
-		var exampleSchema = mongoose.Schema({
+		var questionSchema = mongoose.Schema({
 			},{ collection: 'question', versionKey: false });
 
-		var example = mongoose.model('question', exampleSchema);
+		var question = mongoose.model('question', questionSchema);
 
-		example.remove({}, function (err) {
+		question.remove({}, function (err) {
 			if (err) {
 				callback(err)
 			}else {
@@ -85,12 +85,12 @@ async.series([
 	},
 	function(callback){
 		// article collection
-		var exampleSchema = mongoose.Schema({
+		var articleSchema = mongoose.Schema({
 			},{ collection: 'article', versionKey: false });
 
-		var example = mongoose.model('article', exampleSchema);
+		var article = mongoose.model('article', articleSchema);
 
-		example.remove({}, function (err) {
+		article.remove({}, function (err) {
 			if (err) {
 				callback(err)
 			}else {
@@ -100,12 +100,12 @@ async.series([
 	},
 	function(callback){
 		// bookDetail collection
-		var exampleSchema = mongoose.Schema({
+		var bookdetailSchema = mongoose.Schema({
 			},{ collection: 'bookdetail', versionKey: false });
 
-		var example = mongoose.model('bookdetail', exampleSchema);
+		var bookdetail = mongoose.model('bookdetail', bookdetailSchema);
 
-		example.remove({}, function (err) {
+		bookdetail.remove({}, function (err) {
 			if (err) {
 				callback(err)
 			}else {
@@ -115,12 +115,12 @@ async.series([
 	},
 	function(callback){
 		// bookMaster collection
-		var exampleSchema = mongoose.Schema({
+		var bookmasterSchema = mongoose.Schema({
 			},{ collection: 'bookmaster', versionKey: false });
 
-		var example = mongoose.model('bookmaster', exampleSchema);
+		var bookmaster = mongoose.model('bookmaster', bookmasterSchema);
 
-		example.remove({}, function (err) {
+		bookmaster.remove({}, function (err) {
 			if (err) {
 				callback(err)
 			}else {
@@ -128,14 +128,27 @@ async.series([
 			}
 		});
 	},
+	function(callback){
+		// survey collection
+		var surveySchema = mongoose.Schema({
+			},{ collection: 'survey', versionKey: false });
+
+		var survey = mongoose.model('survey', surveySchema);
+
+		survey.remove({}, function (err) {
+			if (err) {
+				callback(err)
+			}else {
+				callback(null,'survey was removed all documents.')
+			}
+		});
+	}
 	],
 	// optional callback
 	function(err, results){
 		if(err) {
  			console.log(err);
 		}else {
-			// disconect mongodb
-	    	mongoose.disconnect();
 	    	console.log(results[0].toString());
 			console.log(results[1].toString());
 			console.log(results[2].toString());
@@ -144,7 +157,10 @@ async.series([
 			console.log(results[5].toString());
 			console.log(results[6].toString());
 			console.log(results[7].toString());
+			console.log(results[8].toString());
 			console.log('========================');
 			console.log('END: REMOVED DOCUMENTS');		
 		}
+		// disconect mongodb
+	    mongoose.disconnect();
 	});
