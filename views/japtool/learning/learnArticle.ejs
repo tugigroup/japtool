@@ -1,0 +1,105 @@
+<% data.forEach(function(article, index){ %>
+<div class="container container-do-test-article">
+    <h3>Article <%= index + 1 %></h3>
+    <div class="doTestArticle">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3><%= article.subject %> </h3>
+                <input type="text" id="articleId" hidden="hidden" value="<%= article.id %>"/>
+                <input type="text" id="articleTag" hidden="hidden" value="<%= article.tag %>"/>
+                <hr>
+            </div>
+            <div class="col-sm-12">
+                <div class="jumbotron">
+                    <p>Level : <%= article.level %></p>
+
+                    <p>
+                    <h4>Content</h4>
+                    </p>
+                    <p>
+                        <%= article.content %>
+                    </p>
+
+                    <p>
+                    <h4>Image , Autio , Video</h4>
+                    </p>
+                    <% if(article.image != null){
+                    %>
+                    <p>
+                        <img src="/admin/Article/getImg/?fd=<%= article.image %>"/>
+                    </p>
+                    <%
+                    }
+                    %>
+
+                    <% if(article.audio != null){
+                    %>
+                    <p>
+                        <audio class="audio-form" controls>
+                            <source src="/admin/Article/getAudio/?fd=<%= article.audio %>" type="audio/mpeg">
+                        </audio>
+                    </p>
+                    <%
+                    } %>
+
+                    <% if(article.audio != null){
+                    %>
+                    <p>
+                        <video class="video-form" controls>
+                            <source src="/admin/Article/getVideo/?fd=<%= article.video %>" type="video/mp4">
+                        </video>
+                    </p>
+                    <%
+                    } %>
+                </div>
+            </div>
+            <div class="col-sm-12" id="div-question-list">
+                <%
+                article.questionSetID.forEach(function (question) {
+                %>
+                <input type="text" id="<%= question.id %>"/>
+
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h4><%= question.question %></h4>
+                        <% if(question.image != null){
+                        %>
+                        <h5>Image :</h5>
+                        <img src="/admin/Question/getImg/?fd=<%= question.image %>"/>
+                        <%
+                        } %>
+                        <div class="col-sm-6"><input type="radio" name="<%= question.id %>"
+                                                     value="<%= question.option1 %>"><%= question.option1 %></div>
+                        <div class="col-sm-6"><input type="radio" name="<%= question.id %>"
+                                                     value="<%= question.option2 %>"><%= question.option2 %></div>
+                        <div class="col-sm-6"><input type="radio" name="<%= question.id %>"
+                                                     value="<%= question.option3 %>"><%= question.option3 %></div>
+                        <div class="col-sm-6"><input type="radio" name="<%= question.id %>"
+                                                     value="<%= question.option4 %>"><%= question.option4 %></div>
+                    </div>
+                </div>
+                <%
+                });
+                %>
+                <button type="button" class="btn btn-info" id="btnCheckRs" data-toggle="modal" data-target="#myModal">
+                    Check
+                </button>
+            </div>
+            <div class="col-sm-12" id="div-result">
+                <div id="div-show-Rs-test" class="row">
+
+                </div>
+                <div id="div-show-Rs-test-point" class="row">
+
+                </div>
+                <div class="row">
+                    <form action="doTest" method="post">
+                        <input type="text" hidden="hidden" value="<%= article.id %>" name="id"/>
+                        <button type="submit" class="btn btn-warning">Test Again</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% }) %>

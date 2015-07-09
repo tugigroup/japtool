@@ -81,7 +81,7 @@ module.exports = {
 	       //        res.redirect('admin/book/index');
 	       //      });
 	       //  });
-	    	});     
+	    	//});
 		}
 	},
 
