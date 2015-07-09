@@ -8,7 +8,7 @@
 <h4>
 2.Run following command to import data
 </h4>
-　　2.1 Remove all old data before importing data<br>
+  2.1 Remove all old data before importing data<br>
 	  <code> node removeAll.js </code><br>
   2.2 Import data of [test] <br>
       <code> node importQuestion.js </code><br>
