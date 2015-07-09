@@ -51,6 +51,7 @@ module.exports = {
 		category: {
 			type : 'string'
 		}
+
   },
   
   //select vocabulary by Level

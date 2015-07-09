@@ -10,6 +10,7 @@
                     <div class="col-sm-3">
                         Choose a book
                     </div>
+
                     <div class="col-sm-8">
                         <div class="row form-search-book">
                             <form name="" action="" method="">
@@ -24,11 +25,13 @@
                             </form>
                         </div>
                     </div>
+
                 </div>
             </div>
             <div class="modal-body">
                 <div class="pre-scrollable showBook mCustomScrollbar" data-mcs-theme="dark">
                     <div class="row form-showBook">
+                        <%for(var i=0;i<books.length;i++){%>
                         <div class="col-sm-12">
                             <div class="row">
                                 <div class="col-sm-1"><input type="radio" name="chooseBook"
@@ -37,11 +40,12 @@
                                 <div class="col-sm-2"><img src="/images/Book-icon-orange.png"
                                                            width="46" height="46"/></div>
                                 <div class="col-sm-9">
-                                    <a href=""><p class="lbUser">Học nghe</p></a>
-                                    <p>Level : 10</p>
+                                    <a href=""><p class="lbUser"><%=books[i].name%></p></a>
+                                    <p>Level : <%=books[i].level%></p>
                                 </div>
                             </div>
                         </div>
+                        <%}%>
                     </div>
                     <hr class="lineBook">
                 </div>
