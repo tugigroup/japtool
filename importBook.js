@@ -38,25 +38,25 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, lessons){
 	mongoose.connect('mongodb://' + config.dbhost + '/' + config.database);
 
 	var bookMasterSchema = mongoose.Schema({
-	  name:  String,
-	  description: String,
-	  type:   String,
-	  level:   String,
-	  lessonNum:   Number,
-	  hoursForLearn:   Number,
-	  usedNum: Number,
-	  recommendNum:   Number
+	  name:  			String,
+	  description: 		String,
+	  type:   			String,
+	  level:   			String,
+	  lessonNum:   		Number,
+	  hoursForLearn:   	Number,
+	  usedNum: 			Number,
+	  recommendNum:   	Number
 	},{ collection: 'bookmaster', versionKey: false });
 
 	var bookMasterColl = mongoose.model('bookmaster', bookMasterSchema);
 
 	var bookDetailSchema = mongoose.Schema({
-	  bookID:  mongoose.Schema.Types.ObjectId,
-	  lesson: String,
-	  subLesson: String,
-	  useModule: String,
-	  useCollection: String,
-	  dataExtractCondition:   String
+	  bookID:  			mongoose.Schema.Types.ObjectId,
+	  lesson: 					String,
+	  subLesson: 				String,
+	  useModule: 				String,
+	  useCollection: 			String,
+	  dataExtractCondition:   	String
 	},{ collection: 'bookdetail', versionKey: false  });
 
 	var bookDetailColl = mongoose.model('bookdetail', bookDetailSchema);
@@ -67,7 +67,8 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, lessons){
 	var errorCount = 0;
 	var insertedBookMaster;
 	var insertedBookDetail;
-
+	console.log('START: IMPORTING DATA...');
+	console.log('========================');
 	for ( var i = 1; i < lessons.length; i++ ) {
 		//console.log(lessions[i]);
 
@@ -89,8 +90,23 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, lessons){
 				    dataExtractCondition: 	lesson[12]
 				});
 
-				insertedBookDetail.save();
-				bookDetailInsertCount++;
+				insertedBookDetail.save(function (err,data) {
+					if(err) {
+					    console.log(err);
+					}else {
+					    bookDetailInsertCount++;
+					    if (bookDetailInsertCount == lessons.length -1) {
+							console.log('bookMaser collection: ' + bookMasterInsertCount.toString() + ' records was inserted.');
+							console.log('bookDetail collection: ' + bookDetailInsertCount.toString() + ' records was inserted.');
+							console.log('Error records: ' + errorCount.toString() );
+
+							// disconect mongodb
+							mongoose.disconnect();
+							console.log('========================');
+							console.log('END: IMPORTED DATA');
+						}
+					}
+				});
 			}
 		} else {
 			// insert book master record
@@ -105,8 +121,13 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, lessons){
 				recommendNum:   lesson[7]
 			});
 
-			insertedBookMaster.save();
-			bookMasterInsertCount++;
+			insertedBookMaster.save(function (err,data) {
+				if(err) {
+					console.log(err);
+				}else {
+					bookMasterInsertCount++;
+				}
+			});
 
 			// insert book detail record
 			insertedBookDetail = new bookDetailColl({
@@ -118,15 +139,23 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, lessons){
 			    dataExtractCondition: 	lesson[12]
 			});
 
-			insertedBookDetail.save();
-			bookDetailInsertCount++;
+			insertedBookDetail.save(function (err,data) {
+				if(err) {
+					console.log(err);
+				}else {
+					bookDetailInsertCount++;
+					if (bookDetailInsertCount == lessons.length -1) {
+						console.log('bookMaser collection: ' + bookMasterInsertCount.toString() + ' records was inserted.');
+						console.log('bookDetail collection: ' + bookDetailInsertCount.toString() + ' records was inserted.');
+						console.log('Error records: ' + errorCount.toString() );
+
+						// disconect mongodb
+						mongoose.disconnect();
+						console.log('========================');
+						console.log('END: IMPORTED DATA');
+					}
+				}
+			});
 		}
 	};
-
-	console.log('bookMaser collection: ' + bookMasterInsertCount.toString() + ' records was inserted.');
-	console.log('bookDetail collection: ' + bookDetailInsertCount.toString() + ' records was inserted.');
-	console.log('Error records: ' + errorCount.toString() );
-
-	// disconect mongodb
-	mongoose.disconnect();
 });

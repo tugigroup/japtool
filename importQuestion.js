@@ -5,6 +5,41 @@ var parser = parse({delimiter : ','});
 var mongoose = require('mongoose');
 var config = require('./config.json');
 
+
+var articleInsertCount = 0;
+var questionInsertCount = 0;
+
+// connect to mongodb
+mongoose.connect('mongodb://' + config.dbhost + '/' + config.database);
+
+var articleSchema = mongoose.Schema({
+  subject:  String,
+  content:  String,
+  level:    String,
+  sort:     Number,
+  tag:      String,
+  category: String
+},{ collection: 'article', versionKey: false });
+
+var articleColl = mongoose.model('article', articleSchema);
+
+var questionSchema = mongoose.Schema({
+  articleID:     mongoose.Schema.Types.ObjectId,
+  sort:          Number,
+  question:      String,
+  option1:       String,
+  resultOption1: Boolean,
+  option2:       String,
+  resultOption2: Boolean,
+  option3:       String,
+  resultOption3: Boolean,
+  option4:       String,
+  resultOption4: Boolean
+},{ collection: 'question', versionKey: false  });
+
+var questionColl = mongoose.model('question', questionSchema);
+
+
 data = fs.readFileSync(config.article_csv_file,{"encoding":"utf8"});
 //console.log(data);
 
@@ -34,47 +69,17 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, articles){
 		console.log('Error! Format of csv file is not correct.');
 	}
 
-	// connect to mongodb
-	mongoose.connect('mongodb://' + config.dbhost + '/' + config.database);
-
-	var articleSchema = mongoose.Schema({
-	  subject:  String,
-	  content:  String,
-	  level:    String,
-	  sort:     Number,
-	  tag:      String,
-	  category: String
-	},{ collection: 'article', versionKey: false });
-
-	var articleColl = mongoose.model('article', articleSchema);
-
-	var questionSchema = mongoose.Schema({
-	  articleID:     mongoose.Schema.Types.ObjectId,
-	  sort:          Number,
-	  question:      String,
-	  option1:       String,
-	  resultOption1: Boolean,
-	  option2:       String,
-	  resultOption2: Boolean,
-	  option3:       String,
-	  resultOption3: Boolean,
-	  option4:       String,
-	  resultOption4: Boolean
-	},{ collection: 'question', versionKey: false  });
-
-	var questionColl = mongoose.model('question', questionSchema);
-
 	var article;
 	var result1;
 	var result2;
 	var result3;
 	var result4;
-	var articleInsertCount = 0;
-	var questionInsertCount = 0;
+	
 	var errorCount = 0;
 	var insertedArticle;
 	var insertedQuestion;
-
+	console.log('START: IMPORTING DATA...');
+	console.log('========================');
 	for ( var i = 1; i < articles.length; i++ ) {
 		//console.log(lessions[i]);
 
@@ -128,8 +133,23 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, articles){
 					    resultOption4: 			result4
 					});
 
-					insertedQuestion.save();
-					questionInsertCount++;
+					insertedQuestion.save(function (err,data) {
+					    if(err) {
+					        console.log(err);
+					    }else {
+					    	questionInsertCount++;
+					    	if (questionInsertCount == articles.length -1) {
+								console.log('article collection: ' + articleInsertCount.toString() + ' records was inserted.');
+								console.log('question collection: ' + questionInsertCount.toString() + ' records was inserted.');
+								console.log('Error records: ' + errorCount.toString() );
+
+								// disconect mongodb
+								mongoose.disconnect();
+								console.log('========================');
+								console.log('END: IMPORTED DATA');
+							}
+					    }
+					});
 				}
 			}else {
 				// insert article record
@@ -142,8 +162,13 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, articles){
 					category:  			article[5]
 				});
 
-				insertedArticle.save();
-				articleInsertCount++;
+				insertedArticle.save(function (err,data) {
+					if(err) {
+					    console.log(err);
+					}else {
+					    articleInsertCount++;
+					}
+				});
 				// insert question record
 				switch(article[12].toUpperCase()) {
 				    case "A" :
@@ -185,8 +210,23 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, articles){
 					resultOption4: 			result4
 				});
 
-				insertedQuestion.save();
-				questionInsertCount++;
+				insertedQuestion.save(function (err,data) {
+					if(err) {
+					console.log(err);
+					}else {
+						questionInsertCount++;
+						if (questionInsertCount == articles.length -1) {
+							console.log('article collection: ' + articleInsertCount.toString() + ' records was inserted.');
+							console.log('question collection: ' + questionInsertCount.toString() + ' records was inserted.');
+							console.log('Error records: ' + errorCount.toString() );
+
+							// disconect mongodb
+							mongoose.disconnect();
+							console.log('========================');
+							console.log('END: IMPORTED DATA');
+						}
+					}
+				});
 			}
 		} else {
 			// insert article record
@@ -199,8 +239,13 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, articles){
 				category:  			article[5]
 			});
 
-			insertedArticle.save();
-			articleInsertCount++;
+			insertedArticle.save(function (err,data) {
+				if(err) {
+				    console.log(err);
+				}else {
+					articleInsertCount++;
+				}
+			});
 
     		switch(article[12].toUpperCase()) {
 			    case "A" :
@@ -243,15 +288,23 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, articles){
 				resultOption4: 			result4
 			});
 
-			insertedQuestion.save();
-			questionInsertCount++;
+			insertedQuestion.save(function (err,data) {
+				if(err) {
+				    console.log(err);
+				}else {
+					questionInsertCount++;
+					if (questionInsertCount == articles.length -1) {
+						console.log('article collection: ' + articleInsertCount.toString() + ' records was inserted.');
+						console.log('question collection: ' + questionInsertCount.toString() + ' records was inserted.');
+						console.log('Error records: ' + errorCount.toString() );
+
+						// disconect mongodb
+						mongoose.disconnect();
+						console.log('========================');
+						console.log('END: IMPORTED DATA');
+					}
+				}
+			});
 		}
 	};
-
-	console.log('article collection: ' + articleInsertCount.toString() + ' records was inserted.');
-	console.log('question collection: ' + questionInsertCount.toString() + ' records was inserted.');
-	console.log('Error records: ' + errorCount.toString() );
-
-	// disconect mongodb
-	mongoose.disconnect();
 });

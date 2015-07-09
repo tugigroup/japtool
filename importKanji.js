@@ -46,20 +46,20 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, kanjis){
 		console.log('Error! csv file has not any data');
 	}
 
-	var header = kanjis[0];
-	if (header.length < 10 || 
-		header[0] != 'item' ||
-		header[1] != 'hanviet' ||
-		header[2] != 'kunyomi' ||
-		header[3] != 'onyomi' ||
-		header[4] != 'description' ||
-		header[6] != 'level' ||
-		header[7] != 'sort' ||
-		header[8] != 'tag' ||
-		header[9] != 'category' ){
+	// var header = kanjis[0];
+	// if (header.length < 10 || 
+	// 	header[0] != 'item' ||
+	// 	header[1] != 'hanviet' ||
+	// 	header[2] != 'kunyomi' ||
+	// 	header[3] != 'onyomi' ||
+	// 	header[4] != 'description' ||
+	// 	header[6] != 'level' ||
+	// 	header[7] != 'sort' ||
+	// 	header[8] != 'tag' ||
+	// 	header[9] != 'category' ){
 
-		console.log('Error! Format of csv file is not correct.');
-	}
+	// 	console.log('Error! Format of csv file is not correct.');
+	// }
 
 	// var kanji_array = [];
 	// for (var i = 1; i<kanjis.length; i++){
@@ -69,6 +69,8 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, kanjis){
     var example_array = [];
     var kanjiInsertCount = 0;
 	var exampleInsertCount = 0;
+	console.log('START: IMPORTING DATA...');
+	console.log('========================');
 	async.series([
 		function(callback){
 			//console.log(kanji_array[0]);
@@ -106,26 +108,30 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, kanjis){
 				examples = item.exampleStr.toString().split(config.chars_split_between_examples);
 				var count = 0;
 				examples.forEach(function(example) {
-					var items = [];
-					items = example.split(config.chars_split_insite_examples);
-					var insertedExample = new exampleColl({ exampleSetID: item.id,
-												example: items[0],
-												meaning: items[1] 
-												});
-					insertedExample.save(function (err,data) {
-					    if(err) {
-					        callback(err);
-					    }else {
-					    	exampleInsertCount++;
-					    	count ++;
-					    	if (count == examples.length){
-					    		insertedCount++;
-					    	}
-					    	if (insertedCount == example_array.length){
-					    		callback(null, exampleInsertCount);
-					    	}
-					    }
-					});
+					if (example.trim() == ""){
+						insertedCount++;
+					}else {
+						var items = [];
+						items = example.split(config.chars_split_insite_examples);
+						var insertedExample = new exampleColl({ exampleSetID: item.id,
+													example: items[0],
+													meaning: items[1] 
+													});
+						insertedExample.save(function (err,data) {
+						    if(err) {
+						        callback(err);
+						    }else {
+						    	exampleInsertCount++;
+						    	count ++;
+						    	if (count == examples.length){
+						    		insertedCount++;
+						    	}
+						    	if (insertedCount == example_array.length){
+						    		callback(null, exampleInsertCount);
+						    	}
+						    }
+						});
+					}
 				});
 			});
 			
@@ -140,6 +146,8 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, kanjis){
 	    	mongoose.disconnect();
 	    	console.log('kanji collection: ' + results[0].toString() + ' records was inserted.');
 			console.log('example collection: ' + results[1].toString() + ' records was inserted.');
+			console.log('========================');
+			console.log('END: IMPORTED DATA');		
 		}
 	});
 });
