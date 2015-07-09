@@ -95,6 +95,9 @@ module.exports.routes = {
     '/deleteQuestion/:id':'admin/Question.delete',
     'post /updateQuestion':'admin/Question.update',
     '/pointToAddQue':'admin/Question.pointToAddQue',
+
+
+
     // End router by duongtd2
     /***************************************************************************
      *                                                                          *

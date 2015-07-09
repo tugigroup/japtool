@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="showArticleLearn">
+        <div class="row">
+            <table class="table" >
+                <thead>
+                <tr>
+                    <th>NO</th>
+                    <th>subject</th>
+                    <th>action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <%
+                var cnt=0;
+                articles.forEach(function(article){
+                    %>
+                    <tr>
+                        <td><%=cnt++%></td>
+                        <td><%=article.subject%></td>
+                        <td>
+                            <form action="doTest" method="post">
+                                <input type="text" hidden="hidden" value="<%=article.id%>" name="id">
+                                <button type="submit" class="btn-doTest-article">Test</button>
+                            </form>
+                        </td>
+                    </tr>
+
+                <%
+                }); %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

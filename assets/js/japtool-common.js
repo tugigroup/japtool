@@ -269,3 +269,4 @@ $(document).ready(function () {
 $('.close-popup').click(function (e) {
     $('#show-popup-search').close();
 });
+
