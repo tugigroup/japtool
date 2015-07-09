@@ -5,23 +5,31 @@
 
             <p class="leadInfo">User Name</p>
             <hr>
-            <label class="col-sm-3 control-label" for="input-firstname">First Name :</label>
+            <div class="required">
+                <label class="col-sm-3 control-label" for="input-firstname">First Name :</label>
 
-            <div class="col-sm-9">
-                <p><input class="form-control" type="text" name="firstname" value="<%= user.firstname %>"
-                          placeholder="Your First Name" id="input-firstname"></p>
-            </div>
-            <label class="col-sm-3 control-label" for="input-lastname">last Name :</label>
+                <div class="col-sm-9">
+                    <p><input class="form-control" type="text" name="firstname" value="<%= user.firstname %>"
+                              placeholder="Your First Name" id="input-firstname"></p>
 
-            <div class="col-sm-9">
-                <p><input class="form-control" type="text" name="lastname" value="<%= user.lastname %>"
-                          placeholder="Your Last Name" id="input-lastname"></p>
-            </div>
-            <label class="col-sm-3 control-label" for="input-email">Your email :</label>
+                    <p id="user-edit-mess-fName" style="display: none"></p>
+                </div>
+                <label class="col-sm-3 control-label" for="input-lastname">Last Name :</label>
 
-            <div class="col-sm-9">
-                <p><input class="form-control" type="text" name="email" value="<%= user.email %>"
-                          placeholder="Your email" id="input-email"></p>
+                <div class="col-sm-9">
+                    <p><input class="form-control" type="text" name="lastname" value="<%= user.lastname %>"
+                              placeholder="Your Last Name" id="input-lastname"></p>
+
+                    <p id="user-edit-mess-lName" style="display: none"></p>
+                </div>
+                <label class="col-sm-3 control-label" for="input-email">Your email :</label>
+
+                <div class="col-sm-9">
+                    <p><input class="form-control" type="text" name="email" value="<%= user.email %>"
+                              placeholder="Your email" id="input-email"></p>
+
+                    <p id="user-edit-mess-email" style="display: none"></p>
+                </div>
             </div>
             <label class="col-sm-3 control-label" for="input-telephone">E-Telephone :</label>
 
@@ -82,18 +90,75 @@
                         <% }) %>
                     </select>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-offset-8 col-sm-4 pull-left">
-            <button type="button" class="btn btn-sm btn-edit" id="btnSaveEdit">Save <span
-                        class="glyphicon glyphicon-saved"></span></button>
+            <label class="col-sm-3 control-label" for="input-country"></label>
+
+            <div class="col-sm-9">
+                <button type="button" class="btn btn-sm btn-edit pull-right" id="btnSaveEdit">Save <span
+                            class="glyphicon glyphicon-saved"></span></button>
+            </div>
         </div>
     </div>
 </form>
+
 <script type="text/javascript">
-    $(document).ready(function () {
-        $("#btnSaveEdit").click(function () {
+    $('#input-firstname').keyup(function () {
+        var fName = $('#input-firstname').val();
+        var messfName = $('#user-edit-mess-fName').removeClass();
+
+        if (fName == "" || fName == null) {
+            messfName.addClass('error').text('First name is required!').show();
+        } else {
+            messfName.hide();
+        }
+    });
+    $('#input-lastname').keyup(function () {
+        var lName = $('#input-lastname').val();
+        var messlName = $('#user-edit-mess-lName').removeClass();
+
+        if (lName == "" || lName == null) {
+            messlName.addClass('error').text('Last name is required!').show();
+        } else {
+            messlName.hide();
+        }
+    });
+    $('#input-email').keyup(function () {
+        var emailREG = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+        var email = $('#input-email').val();
+        var messemail = $('#user-edit-mess-email').removeClass();
+
+        if (email == "" || email == null) {
+            messemail.addClass('error').text('Email is required!').show();
+        } else if (!emailREG.test(email)) {
+            messemail.addClass('error').text('Your email is invalid!').show();
+        } else {
+            messemail.hide();
+        }
+    });
+    $("#btnSaveEdit").click(function () {
+        var fName = $('#input-firstname').val();
+        var messfName = $('user-edit-mess-fName').removeClass();
+        var lName = $('#input-lastname').val();
+        var messlName = $('#user-edit-mess-lName').removeClass();
+        var emailREG = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+        var email = $('#input-email').val();
+        var messemail = $('#user-edit-mess-email').removeClass();
+        var valid = true;
+        if (fName == "" || fName == null) {
+            messfName.addClass('error').text('First name is required!').show();
+            valid = false;
+        }
+        if (lName == "" || lName == null) {
+            messlName.addClass('error').text('Last name is required!').show();
+            valid = false;
+        }
+        if (email == "" || email == null) {
+            messemail.addClass('error').text('Email is required!').show();
+            valid = false;
+        } else if (!emailREG.test(email)) {
+            messemail.addClass('error').text('Your email is invalid!').show();
+            valid = false;
+        }
+        if (valid) {
             $.ajax({
                 url: '/japtool/user/update',
                 type: 'POST',
@@ -107,7 +172,6 @@
                     alert('loi roi nhe');
                 }
             });
-        });
-    })
-
+        }
+    });
 </script>

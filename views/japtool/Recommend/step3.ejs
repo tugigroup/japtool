@@ -1,0 +1,40 @@
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Recommended Libraries For You - Step 3/3</h4>
+        </div>
+
+        <div class="modal-body">
+            <input type="hidden" id="numberquestion" value="<%= surveies.length %>">
+            <% for(var i = 0;i < surveies.length;i++){ %>
+            <input type="hidden" id="surVeyid<%=i%>" value="<%= surveies[i].id %>">
+
+            <form class="form-group" id="qt<%= i+1 %>">
+
+                <label><%= surveies[i].question %>?</label>
+                <% if(surveies[i].option1 != null){ %>
+                <p><input type="radio" name="lib-recommend-3-q<%= i+1 %>"
+                          value="<%= surveies[i].correct1 %>"> <%= surveies[i].option1 %></p>
+                <% } %>
+                <% if(surveies[i].option2 != null){ %>
+                <p><input type="radio" name="lib-recommend-3-q<%= i+1 %>"
+                          value="<%= surveies[i].correct2 %>"> <%= surveies[i].option2 %></p>
+                <% } %>
+                <% if(surveies[i].option3 != null){ %>
+                <p><input type="radio" name="lib-recommend-3-q<%= i+1 %>"
+                          value="<%= surveies[i].correct3 %>"> <%= surveies[i].option3 %></p>
+                <% } %>
+                <% if(surveies[i].option4 != null){ %>
+                <p><input type="radio" name="lib-recommend-3-q<%= i+1 %>"
+                          value="<%= surveies[i].correct4 %>"> <%= surveies[i].option4 %></p>
+                <% } %>
+            </form>
+            <% } %>
+        </div>
+        <div class="modal-footer">
+            <button onclick="checkAnswer3()">Finish</button>
+            <a href="#" class="btn btn-success" role="button" data-dismiss="modal" data-toggle="modal"
+               data-target="#lib-recommend-2">Back</a>
+        </div>
+    </div>
+</div>

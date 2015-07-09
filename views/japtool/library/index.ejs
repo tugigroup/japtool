@@ -1,6 +1,6 @@
 <div class="container library-page example">
-    <% uniqueTag.forEach(function(item){ %>
-    <div class="row content" id="content">
+    <% uniqueType.forEach(function(item, indexLibrary){ %>
+    <div class="row content library-<%= indexLibrary %>" id="">
         <div class="media">
             <div class="media-body">
                 <div class="col-sm-12 library-page-title">
@@ -11,7 +11,7 @@
                         </div>
                         <div class="col-sm-2">
                             <div class="join-learn btn label-primary">
-                                <a href="/japtool/BookMaster/getAllLibrary/?category=<%= item %>">View more Library</a>
+                                <a href="/japtool/BookMaster/getAllLibrary/?type=<%= item %>">View more Library</a>
                             </div>
                         </div>
                     </div>
@@ -22,7 +22,7 @@
         <div class="clearfix"></div>
         <div id="lib-1">
             <% data.forEach(function(book, index){ %>
-            <% if(book.category == item) { %>
+            <% if(book.type == item) { %>
             <div class="col-sm-4 lib-cell">
                 <div class="row">
                     <div class="media libMaster">
@@ -171,20 +171,20 @@
                                             <ul>
                                                 <% arrAllLesson.forEach(function(item){ %>
                                                 <% if(item.idLesson == book.id){ %>
-                                                    <% item.arrLesson.forEach(function(uniqueLesson){ %>
-                                                    <li class='has-sub'><a href='#'><%= uniqueLesson %></a>
-                                                        <% book.bookDetail.forEach(function(bookDetail){ %>
-                                                        <% if(uniqueLesson == bookDetail.lesson) { %>
-                                                        <ul>
-                                                            <li><a href='#'
-                                                                   onclick="learn('<%= bookDetail.useModule %>', '<%= bookDetail.dataExtractCondition %>')"><%= bookDetail.subLesson %></a>
-                                                            </li>
-                                                        </ul>
-                                                        <% } %>
-                                                        <% }) %>
-                                                        <% }) %>
-                                                <% } %>
-                                                <% }) %>
+                                                <% item.arrLesson.forEach(function(uniqueLesson){ %>
+                                                <li class='has-sub'><a href='#'><%= uniqueLesson %></a>
+                                                    <% book.bookDetail.forEach(function(bookDetail){ %>
+                                                    <% if(uniqueLesson == bookDetail.lesson) { %>
+                                                    <ul>
+                                                        <li><a href='#'
+                                                               onclick="learn('<%= bookDetail.useModule %>', '<%= bookDetail.dataExtractCondition %>')"><%= bookDetail.subLesson %></a>
+                                                        </li>
+                                                    </ul>
+                                                    <% } %>
+                                                    <% }) %>
+                                                    <% }) %>
+                                                    <% } %>
+                                                    <% }) %>
                                             </ul>
                                         </div>
                                     </div>
@@ -210,23 +210,27 @@
         </div>
     </div>
     <% }) %>
+    <ul id="pagination-demo" class="pagination-sm row text-center pull-right"></ul>
+    <script type="text/javascript">
+        window.onload = function () {
+            $('.content').hide();
+            var itemOnPage = 2;
+            for (var i = 0; i < itemOnPage; i++) {
+                $('.library-' + i).show();
+            }
+            var totalPages = <%= uniqueType.length %>/itemOnPage;
+            $('#pagination-demo').twbsPagination({
+                totalPages: totalPages,
+                visiblePages: 4,
+                onPageClick: function (event, page) {
 
-    <div class="row text-center pagination">
-        <ul class="pagination">
-            <li><a href="#" id="prev" class="prevnext">« Previous</a></li>
-            <li><a href="#" id="next" class="prevnext">Next »</a></li>
-        </ul>
-        <br />
-        <div id="page_number" class="page_number">1</div>
-
-    </div>
+                    var itemShow = itemOnPage * page;
+                    $('.content').hide();
+                    for (var i = itemShow - itemOnPage; i < itemShow; i++) {
+                        $('.library-' + i).show();
+                    }
+                }
+            });
+        };
+    </script>
 </div>
-<script type="text/javascript">
-    $('#pagination-demo').twbsPagination({
-        totalPages: 35,
-        visiblePages: 7,
-        onPageClick: function (event, page) {
-            $('#page-content').text('Page ' + page);
-        }
-    });
-</script>

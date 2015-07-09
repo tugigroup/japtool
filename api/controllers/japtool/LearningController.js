@@ -2,6 +2,11 @@
  * Created by XuanDT2 on 6/29/2015.
  */
 module.exports = {
+    _config:{
+        locals:{
+            layout: 'layout/layout-japtool'
+        }
+    },
 
     /**
      * GET: japtool/learning/create
@@ -9,9 +14,9 @@ module.exports = {
      * @param res
      */
     create: function (req, res) {
-        res.view('japtool/learning/create', {layout: 'layout/layout-japtool'});
-    },
+        res.view('japtool/learning/create');
 
+    },
     /**
      * POST: japtool/learning/add
      * @param req
@@ -34,7 +39,6 @@ module.exports = {
             sails.log(ex);
         }
     },
-
     /**
      * GET: /learning/search
      * @param req
@@ -42,5 +46,5 @@ module.exports = {
      */
     search: function (req, res) {
         return res.render('japtool/learning/search', {layout: null});
-    }
+    },
 };

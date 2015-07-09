@@ -1,3 +1,97 @@
+//RECOMMENT POPUP
+var answer1;
+var answer2;
+var answer3 = new Array();
+var listIdSurvey = new Array();
+$(document).ready(function () {
+    checkAnswer1(1, 2);
+    $('#lib-recommend-1').modal('show');
+});
+function nextQuestion(pre, next) {
+
+    $('#lib-recommend-' + pre).removeClass('fade').modal('hide');
+    if (next !== -1 && next !== 3) {
+        $('#lib-recommend-' + next).addClass('fade').modal('show');
+    }
+    if (next == 3) {
+        $('#lib-recommend-' + next).load('/japtool/Recommend/getStep3?lv=' + answer1 + '&cLT=' + answer2 + '&surVey=' + answer3);
+        $('#lib-recommend-' + next).addClass('fade').modal('show');
+    }
+}
+
+function checkAnswer1(pre, next) {
+    $("#recommend-1 option").each(function () {
+        $(this).click(function () {
+            answer1 = $("#recommend-1").val();
+            nextQuestion(pre, next);
+        });
+    });
+}
+
+function checkAnswer2(pre, next) {
+    answer2 = $("#rcm2 input[type='radio']:checked").val();
+    if (answer2 == 4) {
+        $('#LibraRecommend').load('/japtool/Recommend/getLibraryForFirtLogin?lv=' + answer1 + '&cLT=' + answer2);
+        nextQuestion(pre, -1);
+    }
+    else {
+        nextQuestion(pre, next);
+    }
+
+
+}
+
+
+function checkAnswer3() {
+    var check = new Array();
+    var equa = 0;
+    var lengt = $("#numberquestion").val();
+
+    for (var i = 0; i < lengt; i++) {
+        listIdSurvey[i] = $("#surVeyid" + i + "").val();
+        var q = false;
+        var index = 0;
+        var truePos = 0;
+        $('input[type="radio"][name="lib-recommend-3-q' + (i + 1) + '"]').each(function () {
+            if ($(this).prop("checked")) {
+                q = true;
+                truePos = index;
+            }
+            else {
+            }
+            index++;
+        });
+        answer3[i] = truePos;
+        check[i] = q;
+    }
+    console.log(answer3);
+    for (var i = 0; i < lengt; i++) {
+        if (check[i]) {
+            equa = equa + 1;
+        }
+    }
+    if (equa == (lengt)) {
+        $('#LibraRecommend').load('/japtool/Recommend/getLibraryForFirtLogin?lv=' + answer1 + '&cLT=' + answer2 + '&sV=' + answer3 + '&id=' + listIdSurvey);
+        nextQuestion(3, -1);
+    }
+}
+//END RECOMMENT POPUP
+//Recommend login
+$(document).ready(function () {
+    $('#lib-recommend-4').modal('show');
+});
+function checkAnswer1Login() {
+    answer2 = $("#rcmlogin input[type='radio']:checked").val();
+    if (answer2 == 1) {
+        nextQuestion(4, -1);
+        $('#LibraRecommend').load('/japtool/Recommend/getLibraryLogin');
+    }
+    if (answer2 == 2) {
+        nextQuestion(4, -1);
+        $('#LibraRecommend').load('/japtool/Recommend/getLibraryLogin');
+    }
+}
+//end recommend login
 //ICON
 $(function () {
     var all_classes = "";
@@ -23,7 +117,7 @@ $(function () {
 //CustomScrollbar
 (function ($) {
     $(window).load(function () {
-        $(".content").mCustomScrollbar();
+        $(".contentScrollbar").mCustomScrollbar();
     });
 })(jQuery);
 
@@ -31,9 +125,9 @@ $(function () {
 //Show and hidden with search, edit... Of learning and user profile
 $(document).ready(function () {
 
-    (function($){
+    (function ($) {
         $.fn.extend({
-            MyPagination: function(options) {
+            MyPagination: function (options) {
                 var defaults = {
                     height: 400,
                     fadeSpeed: 400
@@ -51,8 +145,8 @@ $(document).ready(function () {
                 var paginatePages;
 
                 // initialization function
-                init = function() {
-                    objContent.children().each(function(i){
+                init = function () {
+                    objContent.children().each(function (i) {
                         if (height + this.clientHeight > options.height) {
                             fullPages.push(subPages);
                             subPages = new Array();
@@ -84,12 +178,12 @@ $(document).ready(function () {
                 };
 
                 // update counter function
-                updateCounter = function(i) {
+                updateCounter = function (i) {
                     $('#page_number').html(i);
                 };
 
                 // show page function
-                showPage = function(page) {
+                showPage = function (page) {
                     i = page - 1;
                     if (paginatePages[i]) {
 
@@ -104,7 +198,7 @@ $(document).ready(function () {
                 };
 
                 // show pagination function (draw switching numbers)
-                showPagination = function(numPages) {
+                showPagination = function (numPages) {
                     var pagins = '';
                     for (var i = 1; i <= numPages; i++) {
                         pagins += '<li><a href="#" onclick="showPage(' + i + '); return false;">' + i + '</a></li>';
@@ -116,12 +210,12 @@ $(document).ready(function () {
                 init();
 
                 // and binding 2 events - on clicking to Prev
-                $('.pagination #prev').click(function() {
+                $('.pagination #prev').click(function () {
                     showPage(lastPage);
                 });
                 // and Next
-                $('.pagination #next').click(function() {
-                    showPage(lastPage+2);
+                $('.pagination #next').click(function () {
+                    showPage(lastPage + 2);
                 });
 
             }
@@ -129,7 +223,7 @@ $(document).ready(function () {
     })(jQuery);
 
     // custom initialization
-    jQuery(window).load(function() {
+    jQuery(window).load(function () {
         $('#content').MyPagination({height: 400, fadeSpeed: 400});
     });
 
@@ -163,6 +257,7 @@ $(document).ready(function () {
         $("#btnUp").hide();
     });
 
+
     $('#btnShow').click(function () {
         var idUser = $('#idUser').val();
         $.ajax({
@@ -182,22 +277,80 @@ $(document).ready(function () {
             }
         })
     });
-    $("#btnSaveEdit").click(function () {
-        $.ajax({
-            url: '/japtool/user/update',
-            type: 'POST',
-            data: $('form#edit-info').serialize(),
-            cache: false,
-            success: function (data) {
-                $('#default-show').html('');
-                $('#default-show').html(data);
-            },
-            error: function () {
-                alert('loi roi nhe');
-            }
-        });
-    });
+    //Validate user edit info form
+    $('#input-firstname').keyup(function () {
+        var fName = $('#input-firstname').val();
+        var messfName = $('#user-edit-mess-fName').removeClass();
 
+        if (fName == "" || fName == null) {
+            messfName.addClass('error').text('First name is required!').show();
+        } else {
+            messfName.hide();
+        }
+    });
+    $('#input-lastname').keyup(function () {
+        var lName = $('#input-lastname').val();
+        var messlName = $('#user-edit-mess-lName').removeClass();
+
+        if (lName == "" || lName == null) {
+            messlName.addClass('error').text('Last name is required!').show();
+        } else {
+            messlName.hide();
+        }
+    });
+    $('#input-email').keyup(function () {
+        var emailREG = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+        var email = $('#input-email').val();
+        var messemail = $('#user-edit-mess-email').removeClass();
+
+        if (email == "" || email == null) {
+            messemail.addClass('error').text('Email is required!').show();
+        } else if (!emailREG.test(email)) {
+            messemail.addClass('error').text('Your email is invalid!').show();
+        } else {
+            messemail.hide();
+        }
+    });
+    $("#btnSaveEdit").click(function () {
+        var fName = $('#input-firstname').val();
+        var messfName = $('user-edit-mess-fName').removeClass();
+        var lName = $('#input-lastname').val();
+        var messlName = $('#user-edit-mess-lName').removeClass();
+        var emailREG = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+        var email = $('#input-email').val();
+        var messemail = $('#user-edit-mess-email').removeClass();
+        var valid = true;
+        if (fName == "" || fName == null) {
+            messfName.addClass('error').text('First name is required!').show();
+            valid = false;
+        }
+        if (lName == "" || lName == null) {
+            messlName.addClass('error').text('Last name is required!').show();
+            valid = false;
+        }
+        if (email == "" || email == null) {
+            messemail.addClass('error').text('Email is required!').show();
+            valid = false;
+        } else if (!emailREG.test(email)) {
+            messemail.addClass('error').text('Your email is invalid!').show();
+            valid = false;
+        }
+        if (valid) {
+            $.ajax({
+                url: '/japtool/user/update',
+                type: 'POST',
+                data: $('form#edit-info').serialize(),
+                cache: false,
+                success: function (data) {
+                    $('#default-show').html('');
+                    $('#default-show').html(data);
+                },
+                error: function () {
+                    alert('loi roi nhe');
+                }
+            });
+        }
+    });
     //remove old message when user update password information
     $('#input-NewPassword, #input-PasswordCf').keyup(function () {
         $('#change-pass-mess').removeClass().text('');
@@ -209,7 +362,7 @@ $(document).ready(function () {
         var newPassCf = $('#input-PasswordCf').val();
         var mess = $('#change-pass-mess').removeClass();
 
-        //Vì dùng ajax nên jquery không b?t ???c các l?i này (nó d?a trên s? ki?n submit form)
+        //VÃ¬ dÃ¹ng ajax nÃªn jquery khÃ´ng b?t ???c cÃ¡c l?i nÃ y (nÃ³ d?a trÃªn s? ki?n submit form)
         if (oldPass == "" || oldPass == null || newPass == "" || newPass == null || newPassCf == "" || newPassCf == null) {
             //All field required
             mess.addClass('error').text('All field is required!').show();
@@ -245,8 +398,40 @@ $(document).ready(function () {
         }
     });
 
-    // Author: xuandt2
-    // Page: create learning, show popup search learning
+    //UPLOAD AVATAR USER IN PROFILE
+    function readAvatar(input) {
+        if (input.files && input.files[0]) {
+
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#avatarPreview').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $('#uploadBtnAvatar').on('change', function () {
+        $('#uploadAvatar').val(this.value);
+    }),
+        $("#uploadBtnAvatar").change(function () {
+            readAvatar(this);
+        });
+});
+
+//END USER
+
+//VOCABULARY
+$(document).ready(function () {
+    $("#vocabularyList").steps({
+        headerTag: "h3",
+        bodyTag: "section",
+        transitionEffect: "slideLeft"
+    });
+});
+//END VOCABULARY
+// Author: xuandt2
+// Page: create learning, show popup search learning
+$(document).ready(function () {
     $('[data-toggle="modal"]').on('click', function (e) {
         e.preventDefault();
         $.ajax({
@@ -263,10 +448,17 @@ $(document).ready(function () {
             }
         });
     });
-});
+    // Close popup
+    $('.close-popup').click(function (e) {
+        $('#show-popup-search').close();
+    });
+
 
 // Close popup
 $('.close-popup').click(function (e) {
     $('#show-popup-search').close();
+});
+
+
 });
 

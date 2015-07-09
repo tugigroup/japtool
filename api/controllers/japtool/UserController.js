@@ -4,11 +4,12 @@
  * @description :: Server-side logic for managing users
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
+
 var bcrypt = require('bcryptjs');
 module.exports = {
 //This loads the sign-up page new.ejs
     'new': function (req, res) {
-        res.layoutJaptool();
+        res.view();
     },
     //Create user
     create: function (req, res) {
@@ -33,17 +34,50 @@ module.exports = {
             req.session.authenticated = true;
             req.session.User = user;
             var idUser = req.session.User.id;
-
-            //affter successfuly creating the user
-            //redirect to the show action
-            User.update({id: idUser}, {yourAddress: yourAddress}, function () {
-                res.redirect('/japtool/user');
+            //Update user address
+            User.update({id: idUser}, {yourAddress: yourAddress}, function (err, updateUser) {
             });
 
-
+            //after create user success, generate email include active link --> bcrypt: email + create date
+            require('bcryptjs').hash(user.email + user.createdAt.toISOString(), 10, function passwordEncypted(err, encryptedLink) {
+                if (err) {
+                    console.log('Encrypt active link failed!');
+                } else {
+                    //and then, redirect to recommend page
+                    res.redirect('/japtool/user/');
+                    /*console.log('/japtool/user/active?active=' + encryptedLink);*/
+                }
+            });
         });
     },
-
+    //active account after new user created
+    active: function (req, res) {
+        var active = req.param('active');
+        //compare active link with db, if equal --> change user status = true
+        bcrypt.compare(req.session.User.email + req.session.User.createdAt, active, function (err, valid) {
+            console.log('DB: ', req.session.User.email + req.session.User.createdAt);
+            //if the active link doesn't match
+            if (err || !valid) {
+                return res.view('japtool/user/active-account-success', {code: 'fail'});
+            }
+            //everything is valid,change user status and save to db, session
+            else {
+                User.update(req.session.User._id, {status: true}, function (err, userUpdated) {
+                    if (err) {
+                        return res.view('japtool/user/active-account-success', {
+                            code: 'fail'
+                        });
+                    } else {
+                        //Luu lại status vào session
+                        req.session.User.status = userUpdated[0].status;
+                        return res.view('japtool/user/active-account-success', {
+                            code: 'success'
+                        });
+                    }
+                });
+            }
+        });
+    },
     //render the profile view (show.ejs)
     show: function (req, res, next) {
         User.findOne(req.param('id'), function foundUser(err, user) {
@@ -53,7 +87,6 @@ module.exports = {
             if (!user) {
                 return next();
             }
-
             res.view({user: user});
         });
     },
@@ -90,7 +123,33 @@ module.exports = {
             res.render('japtool/user/show-user-info', {user: user[0]});
         });
     },
+    //edit avatar user
+    editAvatar: function (req, res, next) {
+        var userIDSession = req.session.User.id;
 
+        fileAction.upload('uploadAvatar', 'files', req, function (err, img) {
+            //sails.log(img);
+            if (err) {
+                sails.log(err)
+            } else {
+                User.update({id: userIDSession}, {avatar: img[0].fd}, function (err, updateAvatar) {
+
+                    if (err) {
+                        sails.log(err)
+                    } else {
+                        res.redirect('japtool/user/show/'+userIDSession)
+                    }
+                });
+            }
+
+        });
+    },
+    readAvatarUser: function (req, res) {
+        var fd = req.param('fd');
+        if (fd != '') {
+            fileAction.read(fd, 'files', 'image/*', res);
+        }
+    },
     //display all list user to index.ejs
     index: function (req, res, next) {
         //Get an array of all user in the user collection (ex: SQL select table)
@@ -160,6 +219,10 @@ module.exports = {
         //res.send({mess: mess});
     },
 
+    afterLogin:function(req, res){
+      res.view('japtool/user/afterLogin');
+    },
+
     searchUser: function (req, res, next) {
         var id_origin = req.param('id_origin');
         var username = req.param('username');
@@ -212,8 +275,14 @@ module.exports = {
                 res.send(400);
             } else {
                 //res.send(buddys);
-                res.layoutJaptool('japtool/user/list-friends', {buddys: buddys})
+                res.view('japtool/user/list-friends', {buddys: buddys})
             }
         });
+    },
+
+    _config: {
+        locals: {
+            layout: 'layout/layout-japtool'
+        }
     }
 };

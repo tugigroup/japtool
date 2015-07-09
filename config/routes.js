@@ -32,26 +32,21 @@ module.exports.routes = {
      *                                                                          *
      ***************************************************************************/
 
+    '/': 'japtool/HomeController.index',
+
     '/':'japtool/HomeController.index',
-
-    /* Router by tuyentv1*/
-
-    //'/new_group':{view: 'user/new_group'},
-    //'POST /searchUser': 'UserController.searchUser',
-    /*End tuyentv1*/
     'get/ new_group':'BuddyGroupController.create',
-
-    //'/login' : {
-    //    controller : 'auth',
-    //    action     : 'index'
-    //},
-
     /*Router by QuyetND2*/
     //'/':'admin/BookMasterController.index',
     '/createBookMaster':{view:'admin/article/book-master'},
     '/createBookDetail':'japtool/BookDetailController.getBookDetail',
     /*End QuyetND2*/
 
+    /* Start common */
+    '/media/audio/:fd':'common/MediaController.getAudio',
+    '/media/video/:fd':'common/MediaController.getVideo',
+    '/media/image/:fd':'common/MediaController.getImg',
+    /* End common */
 
     // router by Duongtd2
     //article by duongtd2
@@ -94,7 +89,6 @@ module.exports.routes = {
     'post /editQues':'admin/Question.editQue',
     '/deleteQuestion/:id':'admin/Question.delete',
     'post /updateQuestion':'admin/Question.update',
-    '/pointToAddQue':'admin/Question.pointToAddQue',
 
 
 
@@ -110,11 +104,6 @@ module.exports.routes = {
      ***************************************************************************/
 
 
-    'get /vocabulary': 'VocabularyController.index',
-    'get /vocabulary/flashcard': 'VocabularyController.flashcard',
-    'get /vocabulary/list': 'VocabularyController.list',
-    'post /vocabulary/pronounce': 'VocabularyController.pronounce',
-    'post /vocabulary/quicklearning': 'VocabularyController.quicklearning',
-    'get /vocabulary/cartagame': 'CartaGameController.wordgen',
+
 
 };

@@ -1,32 +1,44 @@
+//USER
+//validate form register user
 $(document).ready(function () {
-    $('.form-register').validate({
-        rules: {
-            username: {
-                required: true
-            },
-            firstname: {
-                required: true
-            },
-            lastname: {
-                required: true
-            },
-            email: {
-                required: true,
-                email: true
-            },
-            password: {
-                minlength: 6,
-                required: true
-            },
-            confirmation: {
-                minlength: 6,
-                equalTo: "#input-password"
-            }
-        },
-        success: function (element) {
-            element.text('OK!').addClass('valid')
-        }
-    });
+  $('.form-register').validate({
+    rules: {
+      username: {
+        required: true
+      },
+      email: {
+        required: true,
+        email: true
+      },
+      password: {
+        minlength: 6,
+        required: true
+      },
+      confirmation: {
+        minlength: 6,
+        equalTo: "#input-password"
+      }
+    }
+  });
+//Validate change password user
+  $('#change-pass').validate({
+    rules: {
+      oldPasswordUser: {
+        minlength: 6,
+        required: true
+      },
+      newPasswordUser: {
+        minlength: 6,
+        required: true
+      },
+      newPasswordUserCf: {
+        minlength: 6,
+        required: true,
+        equalTo: "#input-NewPassword"
+      }
+    }
+  });
+//END USER
     $('#createArticleForm').validate({
         rules: {
             subject: {
@@ -122,24 +134,6 @@ $(document).ready(function () {
         }
     });
 
-    $('#change-pass').validate({
-        rules: {
-            oldPasswordUser: {
-                minlength: 6,
-                required: true
-            },
-            newPasswordUser: {
-                minlength: 6,
-                required: true
-            },
-            newPasswordUserCf: {
-                minlength: 6,
-                required: true,
-                equalTo: "#input-NewPassword"
-            }
-        }
-    });
-
     /**
      * validate jquery by xuandt2
      */
@@ -170,7 +164,7 @@ $(document).ready(function () {
                 maxlength: "Class name less than 50 characters."
             },
             description: {
-                required: "Please input décription."
+                required: "Please input description."
             },
             startDate: {
                 required: "Please input start date."

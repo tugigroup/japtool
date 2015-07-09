@@ -27,22 +27,6 @@
                         <ul class="menu-page">
                             <li><a href='home.html'>Home</a></li>
                             <li><a href='#'>About</a></li>
-                            <li class='active'><a href='library/library.html'>Libary</a>
-                                <ul>
-                                    <li><a href='#'>Product 1</a>
-                                        <ul>
-                                            <li><a href='#'>Sub Product</a></li>
-                                            <li><a href='#'>Sub Product</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href='#'>Product 2</a>
-                                        <ul>
-                                            <li><a href='#'>Sub Product</a></li>
-                                            <li><a href='#'>Sub Product</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
                             <li><a href="learning-group/learning-group.html">Learning group</a></li>
                             <li><a>Using guide</a></li>
                             <li><a href='#'>Contact</a></li>
@@ -96,7 +80,16 @@
                     <a class="btn btn-social-icon btn-sm btn-tumblr"><i class="fa fa-tumblr"></i></a>
                     <a class="btn btn-social-icon btn-sm btn-twitter"><i class="fa fa-twitter"></i></a>
                 </div>
+
+                <div class="no-user">
+                    <p>If you want not to register</p>
+                    <h2><a class="btn btn-danger">Click Here To Enter Now</a></h2>
+
+
+                </div>
             </div>
+
+
         </div>
 
 
@@ -109,7 +102,7 @@
                 <div class="home-static user-home">
                     <i class="fa fa-user fa-5x"></i>
 
-                    <p><span class="counter">1500</span></p>
+                    <p><span class="counter"><%=user%></span></p>
 
                     <p>User</p>
                 </div>
@@ -118,7 +111,7 @@
                 <div class="home-static library">
                     <i class="fa fa-book fa-5x"></i>
 
-                    <p><span class="counter">5500</span></p>
+                    <p><span class="counter"><%=library%></span></p>
 
                     <p>Library</p>
                 </div>
@@ -127,7 +120,7 @@
                 <div class="home-static group-member">
                     <i class="fa fa-group fa-5x"></i>
 
-                    <p><span class="counter">3500</span></p>
+                    <p><span class="counter"><%=group%></span></p>
 
                     <p>Group</p>
                 </div>
@@ -136,7 +129,7 @@
                 <div class="home-static vocabulary">
                     <i class="fa fa-hdd-o fa-5x"></i>
 
-                    <p><span class="counter">1000</span></p>
+                    <p><span class="counter"><%=voca%></span></p>
 
                     <p>Vocabulary</p>
                 </div>

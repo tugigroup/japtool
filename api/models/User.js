@@ -18,12 +18,10 @@ module.exports = {
             type: 'string'
         },
         firstname: {
-            type: 'string',
-            required: true
+            type: 'string'
         },
         lastname: {
-            type: 'string',
-            required: true
+            type: 'string'
         },
         email: {
             type: 'string',
@@ -53,13 +51,19 @@ module.exports = {
         },
         status: {
             type: 'boolean',
-            defaultsTo: true
+            defaultsTo: false
         },
         lastLogin: {
             type: 'date'
         },
         creatingDate: {
             type: 'date'
+        },
+        currentLevel: {
+            type: 'string'
+        },
+        currentLearningTime: {
+            type: 'integer'
         },
         online: {
             type: 'boolean',
