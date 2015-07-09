@@ -46,20 +46,20 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, kanjis){
 		console.log('Error! csv file has not any data');
 	}
 
-	// var header = kanjis[0];
-	// if (header.length < 10 || 
-	// 	header[0] != 'item' ||
-	// 	header[1] != 'hanviet' ||
-	// 	header[2] != 'kunyomi' ||
-	// 	header[3] != 'onyomi' ||
-	// 	header[4] != 'description' ||
-	// 	header[6] != 'level' ||
-	// 	header[7] != 'sort' ||
-	// 	header[8] != 'tag' ||
-	// 	header[9] != 'category' ){
-
-	// 	console.log('Error! Format of csv file is not correct.');
-	// }
+	var header = kanjis[0];
+	if (header.length < 10 
+		// header[0] != 'item' ||
+		// header[1] != 'hanviet' ||
+		// header[2] != 'kunyomi' ||
+		// header[3] != 'onyomi' ||
+		// header[4] != 'description' ||
+		// header[6] != 'level' ||
+		// header[7] != 'sort' ||
+		// header[8] != 'tag' ||
+		// header[9] != 'category' 
+	){
+		console.log('Error! Format of csv file is not correct.');
+	}
 
 	// var kanji_array = [];
 	// for (var i = 1; i<kanjis.length; i++){
