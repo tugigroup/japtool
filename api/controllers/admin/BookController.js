@@ -45,6 +45,7 @@ module.exports = {
 	      	delete paras.image_file;
 	      	delete paras.id;
 
+<<<<<<< HEAD
 	     //  	//Upload file to GridFS
 		    // req.file('image_file').upload({
 	     //      	// don't allow the total upload size to exceed ~1MB
@@ -151,5 +152,39 @@ module.exports = {
 	      //     });
 	      // });
 
-};
+=======
+	       	fileAction.upload('image_file', 'files', req, function(err, imgUploaded) {
+                if (err) return res.negotiate(err);
 
+                //delete old img file first, then switch image to new file
+	       		BookMaster.findOne(id).exec(function(err,bookBeforeUpdate){
+
+		            if (imgUploaded.length != 0){
+		            	// set image to new file
+		              	paras.image = imgUploaded[0].fd;
+		           
+		             	//delete old img file
+		              	if (bookBeforeUpdate.image) {
+		              		fileAction.rm(bookBeforeUpdate.image, 'files', function (err) {
+		              			if (err) {
+		              				throw err;
+		              			} else {
+		              				console.log('successfully deleted ' + bookBeforeUpdate.image);	
+		              			}		              			
+		              		})			                
+		              	}
+	            	}
+	            	else{ delete paras.image; }
+
+		        	// update book
+		            BookMaster.update({id: id}, paras).exec(function(err,updated){
+		              //console.log('the record is updated : ' + JSON.stringify(updated[0]) ); 
+		              res.redirect('admin/book/index');
+		            });
+		        });
+			});
+		}
+	},
+
+>>>>>>> origin/master
+};
