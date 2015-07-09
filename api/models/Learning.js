@@ -23,8 +23,8 @@ module.exports = {
         },
 
         startDate: {
-            type: 'datetime',
-            required: true
+            type: 'datetime'
+
         },
 
         finishDate: {
@@ -42,12 +42,12 @@ module.exports = {
             defaultsTo: 1
         },
 
-        bookId: {
-            type: 'string'
-            //required: true
-        },
+
         status: {
             type: 'String'
+        },
+        bookId: {
+            model: 'BookMaster'
         }
     }
 };

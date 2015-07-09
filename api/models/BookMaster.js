@@ -23,6 +23,10 @@ module.exports = {
         bookDetail: {
             collection: 'BookDetail',
             via: 'bookID'
+        },
+        learnings: {
+            collection: 'Learning',
+            via: 'bookId'
         }
     }
 };
