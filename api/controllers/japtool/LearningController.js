@@ -87,21 +87,10 @@ module.exports = {
       }
     },
 
-
-    /**
-     * GET: japtool/learning/create
-     * @param req
-     * @param res
-     */
     create: function (req, res) {
         res.view('japtool/learning/create');
 
     },
-    /**
-     * POST: japtool/learning/add
-     * @param req
-     * @param res
-     */
     add: function (req, res) {
         try {
             var params = req.params.all();
@@ -127,4 +116,49 @@ module.exports = {
     search: function (req, res) {
         return res.render('japtool/learning/search', {layout: null});
     },
+    getBook:function(req,res){
+        BookMaster.find().exec(function(err,books){
+            if(err){
+
+            }
+            else{
+                res.render('japtool/learning/search', {
+                    books:books
+                });
+            }
+        })
+    },
+    index: function (req, res) {
+        var bookarray= new Array();
+        Learning.find().exec(function (err, learnings) {
+            if (err) {
+
+            }
+            if (!learnings) {
+
+            }
+            else {
+                for (var i = 0; i < learnings.length; i++) {
+                    BookMaster.findOne({id:learnings[i].bookId}).exec(function(err,book){
+                        if(err){
+
+                        }
+                        else{
+                            bookarray[i]=book;
+                        }
+                    })
+                }
+                res.view({
+                    books:bookarray,
+                    learnList: learnings
+                });
+            }
+        })
+
+    },
+    _config: {
+        locals: {
+            layout: 'layout/layout-japtool'
+        }
+    }
 };

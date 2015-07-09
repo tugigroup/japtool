@@ -31,6 +31,13 @@ module.exports = {
     finishDate:{
       type: 'datetime',
       required: true
+    },
+    bookMaster:{
+      model:'BookMaster'
+    },
+    userLearnHistories: {
+      collection: 'UserLearnHistory',
+      via: 'bookUseHistory'
     }
   }
 };
