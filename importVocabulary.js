@@ -42,13 +42,13 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, vocabularies){
 		return;
 	}
 	
-	check header
+	//check header
 	if (vocabularies.length == 0){
 		console.log('Error! csv file has not any data');
 	}
 
 	var header = vocabularies[0];
-	if (header.length < 8
+	if (header.length < 8){
 		// header[0] != 'item' ||
 		// header[1] != 'reading' ||
 		// header[2] != 'description' ||
@@ -57,7 +57,7 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, vocabularies){
 		// header[5] != 'sort' ||
 		// header[6] != 'tag' ||
 		// header[7] != 'category' 
-	){
+	
 		console.log('Error! Format of csv file is not correct.');
 	}
 

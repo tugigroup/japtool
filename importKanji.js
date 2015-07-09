@@ -47,7 +47,7 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, kanjis){
 	}
 
 	var header = kanjis[0];
-	if (header.length < 10 
+	if (header.length < 10 ){
 		// header[0] != 'item' ||
 		// header[1] != 'hanviet' ||
 		// header[2] != 'kunyomi' ||
@@ -57,7 +57,7 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, kanjis){
 		// header[7] != 'sort' ||
 		// header[8] != 'tag' ||
 		// header[9] != 'category' 
-	){
+	
 		console.log('Error! Format of csv file is not correct.');
 	}
 
