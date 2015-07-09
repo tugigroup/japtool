@@ -177,7 +177,7 @@
                                                     <% if(uniqueLesson == bookDetail.lesson) { %>
                                                     <ul>
                                                         <li><a href='#'
-                                                               onclick="learn('<%= bookDetail.useModule %>', '<%= bookDetail.dataExtractCondition %>')"><%= bookDetail.subLesson %></a>
+                                                               onclick="learn('<%= bookDetail.useModule %>', <%= bookDetail.dataExtractCondition %>, '<%= book.id %>')"><%= bookDetail.subLesson %></a>
                                                         </li>
                                                     </ul>
                                                     <% } %>
@@ -193,7 +193,7 @@
                                 <div class="col-sm-9 invite">
                                     <h3 class="text-center"><%= book.name %></h3>
 
-                                    <div class="abc"
+                                    <div class="abc container-learn" id="<%= book.id %>"
                                          style="background-color: rgba(61, 140, 204, 0.39); min-height: 600px"></div>
                                 </div>
                             </div>
@@ -205,6 +205,12 @@
                         </div>
                     </div>
                 </div>
+                <script>
+                    function learn(module, condition, id) {
+                        var strCondition = JSON.stringify(condition);
+                        $('#' + id).load('/japtool/' + module + '/list/?condition=' + strCondition);
+                    }
+                </script>
             </div>
             <% }) %>
         </div>
