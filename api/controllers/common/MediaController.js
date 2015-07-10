@@ -12,7 +12,7 @@ module.exports = {
         if (fd == null) {
             res.send('null');
         } else {
-            var skipperAdapter = database.skipperAdapter('files');
+            var skipperAdapter = Database.skipperAdapter('files');
             skipperAdapter.read(fd, function (error, file) {
                 //console.log('file: ' + JSON.stringify(file));
                 if (error) {
@@ -30,7 +30,7 @@ module.exports = {
         if (fd == null) {
             res.send('');
         } else {
-            var skipperAdapter = database.skipperAdapter('files');
+            var skipperAdapter = Database.skipperAdapter('files');
             skipperAdapter.read(fd, function (error, file) {
                 if (error) {
                     res.json(error);
@@ -47,7 +47,7 @@ module.exports = {
         if (fd == null) {
             res.send('');
         } else {
-            var skipperAdapter = database.skipperAdapter('files');
+            var skipperAdapter = Database.skipperAdapter('files');
 
             skipperAdapter.read(fd, function (error, file) {
                 if (error) {

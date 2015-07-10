@@ -25,7 +25,7 @@ module.exports = {
         var sort = null;
         // upload files and get FD
         // Up load Image
-        fileAction.upload('img', 'files', req, function (err, imgUpload) {
+        FileAction.upload('img', 'files', req, function (err, imgUpload) {
             if (err) {
                 return res.negotiate(err);
             }
@@ -193,7 +193,7 @@ module.exports = {
         var resultOption4 = req.param('resultOption4');
         var isImgQueChange = req.param('isImgQueChange');
         console.log(isImgQueChange);
-        fileAction.upload('img', 'files', req, function (err, imgUpload) {
+        FileAction.upload('img', 'files', req, function (err, imgUpload) {
             if (err) {
                 return res.negotiate(err);
             }

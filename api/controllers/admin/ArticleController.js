@@ -18,16 +18,16 @@ module.exports = {
         var sort=null;
         // upload files and get FD
         // Up load Image
-        fileAction.upload('video', 'files', req, function(err, videoUpload) {
+        FileAction.upload('video', 'files', req, function(err, videoUpload) {
             if (err) {
                 return res.negotiate(err);
             }
             else {
-                fileAction.upload('audio', 'files', req, function(err, audioUpload) {
+                FileAction.upload('audio', 'files', req, function(err, audioUpload) {
                     if (err) {
                         return res.negotiate(err);
                     } else {
-                        fileAction.upload('img', 'files', req, function(err, imgUploaded) {
+                        FileAction.upload('img', 'files', req, function(err, imgUploaded) {
                             if (err) {
                                 return res.negotiate(err);
                             } else {
@@ -217,18 +217,18 @@ module.exports = {
         var isVideoChange = req.param('isVideoChange');
         var isAudioChange = req.param('isAudioChange');
         var isImgChange = req.param('isImgChange');
-        fileAction.upload('video', 'files', req, function(err, videoUpload) {
+        FileAction.upload('video', 'files', req, function(err, videoUpload) {
             if (err) {
                 return res.negotiate(err);
             }
             else {
                 console.log("Upload video");
-                fileAction.upload('audio', 'files', req, function(err, audioUpload) {
+                FileAction.upload('audio', 'files', req, function(err, audioUpload) {
                     if (err) {
                         return res.negotiate(err);
                     } else {
                         console.log("Upload audio");
-                        fileAction.upload('img', 'files', req, function(err, imgUploaded) {
+                        FileAction.upload('img', 'files', req, function(err, imgUploaded) {
                             if (err) {
                                 return res.negotiate(err);
                             } else {

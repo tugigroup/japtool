@@ -11,7 +11,7 @@ module.exports = {
     },
     create: function (req, res) {
         var par = req.allParams();
-        fileAction.upload('image', 'files', req, function (err, img) {
+        FileAction.upload('image', 'files', req, function (err, img) {
             if (err) {
                 sails.log(err)
             } else {
@@ -32,7 +32,7 @@ module.exports = {
         });
     },
     show: function (req, res) {
-        BookMaster.find().populate('bookDetail').exec(function createCB(err, data) {
+        BookMaster.find().populate('bookDetail',{ sort: 'sort ASC' }).exec(function createCB(err, data) {
             if (err) {
                 sails.log(err)
             } else {
@@ -43,7 +43,7 @@ module.exports = {
     lesson: function (req, res) {
         var id = req.param('id');
         var array = require("array-extended");
-        BookMaster.findOne({id: id}).populate('bookDetail').exec(function createCB(err, data) {
+        BookMaster.findOne({id: id}).populate('bookDetail',{ sort: 'sort ASC' }).exec(function createCB(err, data) {
             if (err) {
                 sails.log(err)
             } else {
@@ -66,12 +66,12 @@ module.exports = {
     readImg: function (req, res) {
         var fd = req.param('fd');
         if (fd != '') {
-            fileAction.read(fd, 'files', 'image/jpg', res);
+            FileAction.read(fd, 'files', 'image/jpg', res);
         }
     },
 
     getLibrary: function (req, res) {
-        BookMaster.find({}).populate('bookDetail').exec(function createCB(err, data) {
+        BookMaster.find({}).populate('bookDetail',{ sort: 'sort ASC' }).exec(function createCB(err, data) {
             var arrTag = [];
             var arrAllLesson = [];
 
@@ -111,7 +111,7 @@ module.exports = {
 
     getAllLibrary: function (req, res) {
         var type = req.param('type');
-        BookMaster.find({type: type}).populate('bookDetail').exec(function createCB(err, data) {
+        BookMaster.find({type: type}).populate('bookDetail',{ sort: 'sort ASC' }).exec(function createCB(err, data) {
             var arrAllLesson = [];
 
             data.forEach(function (book) {

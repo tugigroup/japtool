@@ -127,7 +127,7 @@ module.exports = {
     editAvatar: function (req, res, next) {
         var userIDSession = req.session.User.id;
 
-        fileAction.upload('uploadAvatar', 'files', req, function (err, img) {
+        FileAction.upload('uploadAvatar', 'files', req, function (err, img) {
             //sails.log(img);
             if (err) {
                 sails.log(err)
@@ -147,7 +147,7 @@ module.exports = {
     readAvatarUser: function (req, res) {
         var fd = req.param('fd');
         if (fd != '') {
-            fileAction.read(fd, 'files', 'image/*', res);
+            FileAction.read(fd, 'files', 'image/*', res);
         }
     },
     //display all list user to index.ejs

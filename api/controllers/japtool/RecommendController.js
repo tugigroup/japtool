@@ -1,7 +1,7 @@
 module.exports = {
     getStep3: function (req, res) {
         var lv = req.param('lv');
-        Survey.find({level: lv}).limit(constants.maxSurveyQuestion).exec(function (err, surveies) {
+        Survey.find({level: lv}).limit(Constants.maxSurveyQuestion).exec(function (err, surveies) {
             if (err) {
             }
             res.render('japtool/Recommend/step3', {
@@ -14,7 +14,7 @@ module.exports = {
         var cLT = req.param('cLT');
         var listSv = req.param('sV');
         if (listSv == null) {
-            BookMaster.find({level: lv}).limit(constants.maxLibraRs).exec(function (err, lbrs) {
+            BookMaster.find({level: lv}).limit(Constants.maxLibraRs).exec(function (err, lbrs) {
                 if (err) {
                 }
                 User.update({id: req.session.User.id}, {
@@ -31,7 +31,7 @@ module.exports = {
         }
         else {
             var listid = req.param("id").split(",");
-            BookMaster.find({level: lv}).limit(constants.maxLibraRec).exec(function (err, lbrs) {
+            BookMaster.find({level: lv}).limit(Constants.maxLibraRec).exec(function (err, lbrs) {
                 if (err) {
                 }
                 User.update({id: req.session.User.id}, {
@@ -72,7 +72,7 @@ module.exports = {
     },
     getLibraryLogin: function (req, res) {
         var lv= req.session.User.currentLevel;
-        BookMaster.find({level: lv}).limit(constants.maxLibraRec).exec(function (err, lbrs) {
+        BookMaster.find({level: lv}).limit(Constants.maxLibraRec).exec(function (err, lbrs) {
             if (err) {
             }
             res.view('japtool/Recommend/LibraRecommend', {
@@ -84,7 +84,7 @@ module.exports = {
         /*var cLT = req.param('cLT');
         var listSv = req.param('sV');
         if (listSv == null) {
-            BookMaster.find({level: lv}).limit(constants.maxLibraRec).exec(function (err, lbrs) {
+            BookMaster.find({level: lv}).limit(Constants.maxLibraRec).exec(function (err, lbrs) {
                 if (err) {
                 }
                 User.update({id: req.session.User.id}, {
