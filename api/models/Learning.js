@@ -41,7 +41,10 @@ module.exports = {
             type: 'integer',
             defaultsTo: 1
         },
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1f8c4a68175c8e14a9a200cb5a63b870f5c67848
         bookMaster: {
             model: 'BookMaster'
         },

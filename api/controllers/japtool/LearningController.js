@@ -96,7 +96,7 @@ module.exports = {
                     return res.json({err: "Error"});
                 }
                 var userId = req.session.User.id;
-                var bookMaster = req.param('bookId');
+                var bookMaster = req.param('bookMaster');
                 var startDate = req.param('startDate');
                 var finishDate = req.param('finishDate');
                 BookUseHistory.create({
