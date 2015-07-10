@@ -60,8 +60,7 @@ module.exports = {
                                                 category: category,
                                                 video: fdVideo,
                                                 audio: fdAudio,
-                                                image: fdImage,
-                                                sort :sort
+                                                image: fdImage
 
                                             }).exec(function articleCreated(err, Article) {
                                                 sails.log('videos', videoUpload);
@@ -89,8 +88,7 @@ module.exports = {
                                                 translation: translation,
                                                 level: level,
                                                 tag: tag,
-                                                category: category,
-                                                sort:sort
+                                                category: category
                                             }).exec(function articleCreated(err, Article) {
                                                 //If there's an error
                                                 console.log("Da nhay vao Upload thuong");
@@ -403,5 +401,51 @@ module.exports = {
                 }
             });
         }
+    },
+    showToLearn:function (req,res) {
+        Article.find(function foundProduct(err, articles) {
+            if (err) {
+                return res.send(err);
+            }
+            res.view(
+                'japtool/learning/showArticleToLearn',
+                {
+                    articles: articles,
+                    layout: 'layout/layout-japtool'
+                }
+            );
+        });
+    },
+    doTest:function (req,res){
+        var id = req.param('id');
+        Article.findOne({id:id}).exec(function found(err,foudAr){
+            if (err) {
+                res.send(err);
+            }
+            Question.find({articleID:foudAr.id}).exec(function foundAllQue(err,questions){
+                if(err){
+                    res.send(err);
+                }
+                res.view('japtool/learning/doTestArticle',
+                    {
+                        article:foudAr,
+                        questions:questions,
+                        layout:'layout/layout-japtool'
+                    }
+                );
+            });
+        });
+    },
+
+    getObject:function(req,res){
+        var articleID = req.param('articleID');
+        Question.find({articleID:articleID}).exec(function foundQue(err,questions){
+            if(err){
+                res.send(500);
+            }
+            else{
+                res.send(questions);
+            }
+        });
     }
 };
