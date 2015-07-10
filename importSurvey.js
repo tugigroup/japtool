@@ -32,20 +32,27 @@ var surveySchema = new mongoose.Schema({
 var surveyColl = mongoose.model('survey', surveySchema);
 
 var insertToSurvey = function(survey,callback){
+	var firstUsing = (firstUsing === survey[2]),
+	    uniqueUsing= (uniqueUsing === survey[3]),
+	    correct1= (correct1 === survey[7]),
+	    correct2= (correct2 === survey[9]),
+	    correct3= (correct3 === survey[11]),
+	    correct4= (correct4 === survey[13]);
     var insertedSurvey = new surveyColl({
 		sortIndex:  		survey[0],
 		level: 				survey[1],
-		firstUsing:   		survey[2],
-		uniqueUsing:   		survey[3],
-		question:   		survey[4],
-		option1:   			survey[5],
-		correct1:   		survey[6],
-		option2:   			survey[7],
-		correct2:   		survey[8],
-		option3:   			survey[9],
-		correct3:   		survey[10],
-		option4:   			survey[11],
-		correct4:   		survey[12]
+		firstUsing:   		firstUsing,
+		uniqueUsing:   		uniqueUsing,
+		qType: 				survey[4],
+		question:   		survey[5],
+		option1:   			survey[6],
+		correct1:   		correct1,
+		option2:   			survey[8],
+		correct2:   		correct2,
+		option3:   			survey[10],
+		correct3:   		correct3,
+		option4:   			survey[12],
+		correct4:   		correct4
 	});
 
 	insertedSurvey.save(function (err,data) {
@@ -78,15 +85,16 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, surveys){
 		header[1] != 'level' ||
 		header[2] != 'firstUsing' ||
 		header[3] != 'uniqueUsing' ||
-		header[4] != 'question' ||
-		header[5] != 'option1' ||
-		header[6] != 'correct1' ||
-		header[7] != 'option2' ||
-		header[8] != 'correct2' ||
-		header[9] != 'option3' ||
-		header[10] != 'correct3' ||
-		header[11] != 'option4' ||
-		header[12] != 'correct4'
+		header[4] != 'qType' ||
+		header[5] != 'question' ||
+		header[6] != 'option1' ||
+		header[7] != 'correct1' ||
+		header[8] != 'option2' ||
+		header[9] != 'correct2' ||
+		header[10] != 'option3' ||
+		header[11] != 'correct3' ||
+		header[12] != 'option4' ||
+		header[13] != 'correct4'
 	){
 		console.log('Error! Format of csv file is not correct.');
 		return;

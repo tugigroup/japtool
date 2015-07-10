@@ -1,2 +1,8 @@
-sortIndex,level,firstUsing,uniqueUsing,question,option1,correct1,option2,correct2,option3,correct3,option4,correct4
-"1","N1",TRUE,TRUE,"Khả năng học ngoại ngữ của bạn?","Tốt",TRUE,"Bình thường",FALSE,"Kém",FALSE,"Rất kém",FALSE
+sortIndex,level,firstUsing,uniqueUsing,qType,question,option1,correct1,option2,correct2,option3,correct3,option4,correct4
+"1","N1",FALSE,TRUE,"1","Khả năng học ngoại ngữ của bạn?","Tốt",TRUE,"Bình thường",FALSE,"Kém",FALSE,"Rất kém",FALSE
+"1","N2",TRUE,TRUE,"1","Khả năng học ngoại ngữ của bạn?","Tốt",TRUE,"Bình thường",FALSE,"Kém",FALSE,"Rất kém",FALSE
+"1","N3",TRUE,TRUE,"1","Khả năng học ngoại ngữ của bạn?","Tốt",TRUE,"Bình thường",FALSE,"Kém",FALSE,"Rất kém",FALSE
+"1","N4",TRUE,TRUE,"1","Khả năng học ngoại ngữ của bạn?","Tốt",TRUE,"Bình thường",FALSE,"Kém",FALSE,"Rất kém",FALSE
+"1","N5",TRUE,TRUE,"1","Khả năng học ngoại ngữ của bạn?","Tốt",TRUE,"Bình thường",FALSE,"Kém",FALSE,"Rất kém",FALSE
+"2","N1",TRUE,TRUE,"1","Khả năng nhớ từ mới?","Nhanh",TRUE,"Chậm",FALSE,"",FALSE,"",FALSE
+"3","N1",TRUE,TRUE,"1","Bạn đã từng học ở level này hoặc tương đương?","Đã từng",FALSE,"Chưa bao giờ.",TRUE,"",FALSE,"",FALSE
