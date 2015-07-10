@@ -138,6 +138,25 @@ function addbook() {
     '<b>Level : ' + booklv + '</b>');
     $('#show-books').modal('hide');
 }
+function getStatus() {
+    var status;
+    var now = new Date();
+    alert(now);
+    var startDate = new Date($('#startDate').val());
+    alert(startDate);
+    var finishDate = new Date($('#finishDate').val());
+    alert(finishDate);
+    if (now < startDate) {
+    }
+    else {
+        if (finishDate < now) {
+        }
+        else {
+        }
+    }
+
+
+}
 function deleteLearning() {
     var learningId = $('#deleteLearning').attr('title');
     window.location.replace('/japtool/Learning/deleteLearning?id=' + learningId);

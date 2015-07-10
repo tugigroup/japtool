@@ -41,11 +41,6 @@ module.exports = {
             type: 'integer',
             defaultsTo: 1
         },
-
-
-        status: {
-            type: 'String'
-        },
         bookId: {
             model: 'BookMaster'
         },
