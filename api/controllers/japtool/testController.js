@@ -17,6 +17,10 @@ module.exports = {
                 }
             );
         })
+    },
+    getListArticle:function () {
+        var arrArticleID = req.param('arrArticleID');
+        console.log(arrArticleID.length);
     }
 };
 
