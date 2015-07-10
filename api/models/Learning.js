@@ -48,6 +48,10 @@ module.exports = {
         },
         bookId: {
             model: 'BookMaster'
+        },
+        BookUseHistories: {
+            collection: 'BookUseHistory',
+            via: 'learning'
         }
     }
 };
