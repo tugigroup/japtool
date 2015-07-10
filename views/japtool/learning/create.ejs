@@ -64,20 +64,21 @@
 
                             <h3></h3>
 
-                            <div class="desc-library">
-                                <p></p>
+                            <div class="desc-library" id="placebook">
                             </div>
                         </div>
                     </div>
                     <!-- Trigger the modal with a button -->
-                    <div id="show-popup-search"></div>
+                    <div class="modal fade" id="show-books" data-backdrop="static" data-keyboard="false">
+                    </div>
                     <input type="button"
                            class="btn btn-danger btn-chooseBook"
+                           onclick="loadbooks()"
                            value="Choose a book"
-                           id="btnloadbooks"/>
+                           id="btn-show-books"/>
                     <input type="submit"
+                           onclick="createLearning()"
                            class="btn btn-success"
-                           data-dismiss="modal"
                            value="Create learning"
                            id="btnCreateLearning"/>
                 </div>

@@ -78,8 +78,11 @@ input[type=submit]:hover {
         display: inline-block;
         text-align: left;
         vertical-align: middle;
+    margin-left: 16%;
 }
-
+.model-show-boook{
+    margin-left: -14%;
+}
 .library-page-line {
     border-bottom: 1px solid rgba(189, 189, 189, 0.44);
     padding-bottom: 1rem;
@@ -607,9 +610,10 @@ a:hover {
     padding-right: 10px;
 }
 
-.pre-scrollable {
-    max-height: 100px !important;
+.showBook {
+    max-height: 300px !important;
     overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 .read-more-library {

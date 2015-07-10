@@ -74,7 +74,8 @@
                         <ul>
                             <li>
                                 <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
-                                <%=books[i].name%>
+                                <%=learnList[i].bookId.name%>
+
                             </li>
                             <li>
                                 <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
@@ -120,11 +121,12 @@
                                                             </li>
                                                             <li>
                                                                 <span class="glyphicon glyphicon-book"
-                                                                      aria-hidden="true"></span> <%=books[i].name%>
+                                                                      aria-hidden="true"></span>
+                                                                <%=learnList[i].bookId.name%>
                                                             </li>
                                                             <li>
                                                                 <h4>Description</h4>
-                                                                <%=books[i].description%>
+                                                                <%=learnList[i].bookId.description%>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -135,7 +137,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <a href="#" class="btn btn-primary" role="button">Edit</a>
-                                    <a href="#" class="btn btn-danger" role="button">Delete</a>
+                                    <a href="#" onclick="deleteLearning()" title="<%=learnList[i].id%>" id="deleteLearning" class="btn btn-danger" role="button">Delete</a>
                                     <a href="#" class="btn btn-warning" role="button" data-dismiss="modal">Close</a>
                                 </div>
                             </div>
