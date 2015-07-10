@@ -73,13 +73,19 @@
 
                         <div class="invite-member clearfix">
                             <div class="col-xs-4">
-                                <a><img src="/japtool/user/readAvatarUser/?fd=<%= session.User.avatar %>"/> </a>
+                                <% if(!session.User.avatar){ %>
+                                <img src="/images/avatar/avatar.jpg" id="avatarPreview"/>
+                                <% } else{ %>
+                                <a href="/japtool/user/show/<%= session.User.id %>"><img src="/japtool/user/readAvatarUser/?fd=<%= session.User.avatar %>"/> </a>
+                                <% } %>
+
                             </div>
                             <div class="col-xs-8">
-                                <a href=""><%= session.User.username %></a>
-                                <a href="">Nguyễn Hoàng Nam</a>
+                                <a href="/japtool/user/show/<%= session.User.id %>"><%= session.User.username %></a>
                             </div>
                         </div>
+
+
                     </div>
                 </div>
             </div>
