@@ -10,15 +10,9 @@ module.exports = {
       required: true
     },
 
-    groupId: {
-      type: 'string'
+    learning: {
+      model: 'Learning'
     },
-
-    bookID: {
-      type: 'string',
-      required: true
-    },
-
     finishRate:{
       type: 'float'
     },
