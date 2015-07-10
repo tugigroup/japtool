@@ -97,8 +97,27 @@ module.exports = {
                     //}
 
                     //Redirect to their profile page (e.g. /views/user/show.ejs)
-                    res.redirect('japtool/user/afterLogin');
+                    var UserLv = user.currentLevel;
+                    if (UserLv == '' || UserLv == null) {
+                        res.redirect('/japtool/user/index');
 
+                    }
+                    else {
+                        SurveyUser.findOne({UserID: user.id}).exec(function (err, svus) {
+                            if (err) {
+
+                            }
+                            else {
+                                if (svus == null || svus == '') {
+                                    res.redirect('/japtool/user/index');
+                                }
+                                else {
+                                    res.view('japtool/user/afterLogin');
+                                }
+                            }
+                        })
+
+                    }
                 });
             });
         });
@@ -113,12 +132,12 @@ module.exports = {
 
     },
     facebook: function (req, res, next) {
-        passport.authenticate('facebook', { scope: ['email', 'user_about_me']},
+        passport.authenticate('facebook', {scope: ['email', 'user_about_me']},
             function (err, user) {
                 console.log(user)
                 req.logIn(user, function (err) {
                     //sails.log(user);
-                    if(err) {
+                    if (err) {
                         res.send(err);
                     } else {
                         req.session.user = user;
@@ -128,8 +147,8 @@ module.exports = {
             })(req, res, next);
     },
 
-    _config:{
-        locals:{
+    _config: {
+        locals: {
             layout: 'layout/layout-japtool'
         }
     }

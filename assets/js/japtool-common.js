@@ -4,8 +4,20 @@ var answer2;
 var answer3 = new Array();
 var listIdSurvey = new Array();
 $(document).ready(function () {
-    checkAnswer1(1, 2);
-    $('#lib-recommend-1').modal('show');
+    var lv = $("#lv").val();
+    var crt = $("#crt").val();
+    if (lv == '' || lv == null) {
+        checkAnswer1(1, 2);
+        $('#lib-recommend-1').modal('show');
+    }
+    else {
+        answer1 = lv;
+        answer2 = crt;
+        $('#lib-recommend-3').load('/japtool/Recommend/getStep3?lv=' + answer1);
+        $('#lib-recommend-3').addClass('fade').modal('show');
+    }
+
+
 });
 function nextQuestion(pre, next) {
 
@@ -14,7 +26,7 @@ function nextQuestion(pre, next) {
         $('#lib-recommend-' + next).addClass('fade').modal('show');
     }
     if (next == 3) {
-        $('#lib-recommend-' + next).load('/japtool/Recommend/getStep3?lv=' + answer1 + '&cLT=' + answer2 + '&surVey=' + answer3);
+        $('#lib-recommend-' + next).load('/japtool/Recommend/getStep3?lv=' + answer1);
         $('#lib-recommend-' + next).addClass('fade').modal('show');
     }
 }
@@ -23,7 +35,13 @@ function checkAnswer1(pre, next) {
     $("#recommend-1 option").each(function () {
         $(this).click(function () {
             answer1 = $("#recommend-1").val();
-            nextQuestion(pre, next);
+            if (answer1 == 'Choose one') {
+
+            }
+            else {
+                nextQuestion(pre, next);
+            }
+
         });
     });
 }
@@ -31,8 +49,8 @@ function checkAnswer1(pre, next) {
 function checkAnswer2(pre, next) {
     answer2 = $("#rcm2 input[type='radio']:checked").val();
     if (answer2 == 4) {
-        $('#LibraRecommend').load('/japtool/Recommend/getLibraryForFirtLogin?lv=' + answer1 + '&cLT=' + answer2);
-        nextQuestion(pre, -1);
+        window.location.replace('/japtool/Recommend/getLibraryForFirtLogin?lv=' + answer1 + '&cLT=' + answer2);
+
     }
     else {
         nextQuestion(pre, next);
@@ -71,8 +89,8 @@ function checkAnswer3() {
         }
     }
     if (equa == (lengt)) {
-        $('#LibraRecommend').load('/japtool/Recommend/getLibraryForFirtLogin?lv=' + answer1 + '&cLT=' + answer2 + '&sV=' + answer3 + '&id=' + listIdSurvey);
-        nextQuestion(3, -1);
+        window.location.replace('/japtool/Recommend/getLibraryForFirtLogin?lv=' + answer1 + '&cLT=' + answer2 + '&sV=' + answer3 + '&id=' + listIdSurvey);
+
     }
 }
 //END RECOMMENT POPUP
@@ -83,12 +101,10 @@ $(document).ready(function () {
 function checkAnswer1Login() {
     answer2 = $("#rcmlogin input[type='radio']:checked").val();
     if (answer2 == 1) {
-        nextQuestion(4, -1);
-        $('#LibraRecommend').load('/japtool/Recommend/getLibraryLogin');
+        window.location.replace('/japtool/Recommend/getLibraryLogin');
     }
     if (answer2 == 2) {
-        nextQuestion(4, -1);
-        $('#LibraRecommend').load('/japtool/Recommend/getLibraryLogin');
+
     }
 }
 //end recommend login
