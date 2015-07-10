@@ -53,6 +53,7 @@ module.exports = {
                     lessons.push(item.lesson);
                 });
                 var uniqueLessons = array(lessons).unique().value();
+                //uniqueLessons = array.sort(uniqueLessons);
                 res.view('japtool/learning/show-book-detail', {
                     uniqueLessons: uniqueLessons,
                     bookDetails: bookDetails,
