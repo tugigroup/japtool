@@ -21,7 +21,7 @@ module.exports = {
     	BookMaster.find().exec(function findCB(err,books){
 
    			//console.log('books data : ' + JSON.stringify(books));
-        	res.view('admin/book/bookList',{'books':books});
+        	res.view('admin/book/index',{'books':books});
       	});
   	},
 
