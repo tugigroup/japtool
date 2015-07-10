@@ -57,16 +57,7 @@ module.exports.routes = {
     },
     'post /createArticle':'admin/Article.create',
     '/displayArticle':'admin/Article.showArticle',
-    '/displayArticleCT/:id':'admin/Article.showArticle',
-    '/showDeArticle':{
-        view:'detailsArticle',
-        locals: {
-            layout: 'layout/layout-admin'
-        }
-    },
-    '/showAudio/:fd':'admin/ArticleController.getAudio',
-    '/showVideo/:fd':'admin/ArticleController.getVideo',
-    '/showImage/:fd':'admin/ArticleController.getImg',
+    '/displayArticleCT/:id':'admin/Article.showArticle',       
     '/showAllArticle':'admin/ArticleController.showAll',
     '/deleteArticle/:id':'admin/ArticleController.delete',
     'post /editArticle':'admin/ArticleController.editAr',
@@ -81,8 +72,7 @@ module.exports.routes = {
     },
     'post /createQuestion':'admin/Question.create',
     '/displayQuestion':'admin/Question.showQuestion',
-    '/displayQuestionCT/:id':'admin/Question.showQuestion',
-    '/showImageQue/:fd':'admin/Question.getImg',
+    '/displayQuestionCT/:id':'admin/Question.showQuestion',    
     '/sendEditQuestion':'admin/Question.editQue',
     '/showAllQuestion':'admin/Question.showAll',
     'post /editQues':'admin/Question.editQue',

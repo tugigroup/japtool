@@ -1,7 +1,7 @@
 module.exports = {
 
-    read: function (fd, collection, type, res) {
-        var skipperAdapter = Database.skipperAdapter(collection);
+    read: function (fd, type, res) {
+        var skipperAdapter = Database.skipperAdapter();
         skipperAdapter.read(fd, function (error, file) {
             if (error) {
                 res.json(error);
@@ -12,15 +12,15 @@ module.exports = {
         });
     },
 
-    upload: function(parName, collection, req, cb){
-        req.file(parName).upload({
+    upload: function(controlName, req, cb){
+        req.file(controlName).upload({
             adapter: require('skipper-gridfs'),
-            uri: Database.uri() + '.' + collection
+            uri: Database.uri() + '.' + Database.gridfsName
         }, cb);
     },
 
-    rm: function (fd, collection, cb) {
-        var skipperAdapter = Database.skipperAdapter(collection);
+    rm: function (fd, cb) {
+        var skipperAdapter = Database.skipperAdapter();
         skipperAdapter.rm(fd, function (err) {
             if (err) return cb(err);
             return cb();

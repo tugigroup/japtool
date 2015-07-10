@@ -18,7 +18,7 @@ module.exports = {
                 if (error) {
                     res.json(error);
                 } else {
-                    res.contentType('image');
+                    res.contentType('image/jpg');
                     res.send(new Buffer(file));
                 }
             });
@@ -35,7 +35,7 @@ module.exports = {
                 if (error) {
                     res.json(error);
                 } else {
-                    res.contentType('audio');
+                    res.contentType('audio/mpeg');
                     res.send(new Buffer(file));
                 }
             });
@@ -53,7 +53,7 @@ module.exports = {
                 if (error) {
                     res.json(error);
                 } else {
-                    res.contentType('video');
+                    res.contentType('video/mp4');
                     res.send(new Buffer(file));
                 }
             });

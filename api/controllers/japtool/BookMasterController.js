@@ -11,7 +11,7 @@ module.exports = {
     },
     create: function (req, res) {
         var par = req.allParams();
-        FileAction.upload('image', 'files', req, function (err, img) {
+        FileAction.upload('image', req, function (err, img) {
             if (err) {
                 sails.log(err)
             } else {
@@ -61,13 +61,6 @@ module.exports = {
                 });
             }
         })
-    },
-
-    readImg: function (req, res) {
-        var fd = req.param('fd');
-        if (fd != '') {
-            FileAction.read(fd, 'files', 'image/jpg', res);
-        }
     },
 
     getLibrary: function (req, res) {

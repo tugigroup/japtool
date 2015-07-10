@@ -44,7 +44,7 @@ module.exports = {
 	      	//console.log('all paras: ' + JSON.stringify(paras));
 	      	delete paras.image_file;
 	      	delete paras.id;
-	       	FileAction.upload('image_file', 'files', req, function(err, imgUploaded) {
+	       	FileAction.upload('image_file', req, function(err, imgUploaded) {
                 if (err) return res.negotiate(err);
 
                 //delete old img file first, then switch image to new file
@@ -56,7 +56,7 @@ module.exports = {
 
 		             	//delete old img file
 		              	if (bookBeforeUpdate.image) {
-		              		FileAction.rm(bookBeforeUpdate.image, 'files', function (err) {
+		              		FileAction.rm(bookBeforeUpdate.image, function (err) {
 		              			if (err) {
 		              				throw err;
 		              			} else {

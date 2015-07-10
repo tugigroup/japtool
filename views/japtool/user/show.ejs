@@ -17,7 +17,7 @@
                                     <% if(!user.avatar){ %>
                                     <img src="/images/avatar/avatar.jpg" id="avatarPreview"/>
                                     <% } else{ %>
-                                    <img src="/japtool/user/readAvatarUser/?fd=<%= user.avatar %>"/>
+                                    <img src="/media/image/?fd=<%= user.avatar %>"/>
                                     <% } %>
                                 </div>
                         </div>
@@ -489,7 +489,7 @@
                                 <% if(!user.avatar){ %>
                                 <img src="/images/avatar/avatar.jpg" id="avatarPreview"/>
                                 <% } else{ %>
-                                <img src="/japtool/user/readAvatarUser/?fd=<%= user.avatar %>" id="avatarPreview"/>
+                                <img src="/media/image/?fd=<%= user.avatar %>" id="avatarPreview"/>
                                 <% } %>
                             </div>
                             <div class="col-sm-10">
