@@ -10,55 +10,52 @@ module.exports = {
     home: function (req, res) {
         try {
             /*Create Sample for Book User History*/
-            /*BookMaster.find().exec(function(err,bookMasters){
-             if (err) {
-             sails.log("Error: " + err);
-             return res.serverError(err);
-             }
-             sails.log("Total book Master is: " +  bookMasters.length)
-             for(var b=0;b<bookMasters.length;b++)
-             {
-             for(var i=0;i<10;i++)
-             {
-             BookUseHistory.create({
-             userId:req.session.User.id,
-             groupId:null,
-             bookID: bookMasters[b].id,
-             finishRate: Utils.randomIntInc(1,100),
-             startDate: new Date(),
-             finishDate: new Date(),
-             bookMaster:bookMasters[b]
-             }).exec(function (err, bookUseHistory)
-             {
-             if (err) {
-             return res.serverError(err);
-             }
-             sails.log("This Is Book:");
-             sails.log(bookUseHistory);
-             for(var j=0;j<10;j++) {
-             UserLearnHistory.create({
-             userId: req.session.User.id,
-             groupId: null,
-             bookID: bookUseHistory.id,
-             lesson: "lesson " + j,
-             subLesson: "subLesson " + j,
-             mark: Utils.randomIntInc(1,10),
-             startDate: new Date(),
-             finishDate: new Date(),
-             bookUseHistory: bookUseHistory
-             }).exec(function (err, userLearnHistory) {
-             if (err) {
-             return res.serverError(err);
-             }
-             sails.log("This Is Learn History:");
-             sails.log(userLearnHistory);
+            /*BookMaster.find().exec(function(err,bookMasters) {
+              if (err) {
+                sails.log("Error: " + err);
+                return res.serverError(err);
+              }
+              sails.log("Total book Master is: " + bookMasters.length)
+              for (var b = 0; b < bookMasters.length; b++) {
+                for (var i = 0; i < 10; i++) {
+                  BookUseHistory.create({
+                    userId: req.session.User.id,
+                    groupId: null,
+                    bookID: bookMasters[b].id,
+                    finishRate: Utils.randomIntInc(1, 100),
+                    startDate: new Date(),
+                    finishDate: new Date(),
+                    bookMaster: bookMasters[b]
+                  }).exec(function (err, bookUseHistory) {
+                    if (err) {
+                      return res.serverError(err);
+                    }
+                    sails.log("This Is Book:");
+                    sails.log(bookUseHistory);
+                    for (var j = 0; j < 10; j++) {
+                      UserLearnHistory.create({
+                        userId: req.session.User.id,
+                        groupId: null,
+                        bookID: bookUseHistory.id,
+                        lesson: "lesson " + j,
+                        subLesson: "subLesson " + j,
+                        mark: Utils.randomIntInc(1, 10),
+                        startDate: new Date(),
+                        finishDate: new Date(),
+                        bookUseHistory: bookUseHistory
+                      }).exec(function (err, userLearnHistory) {
+                        if (err) {
+                          return res.serverError(err);
+                        }
+                        sails.log("This Is Learn History:");
+                        sails.log(userLearnHistory);
 
-             });
-             }
-             });
-             }
-             }
-             });*/
+                      });
+                    }
+                  });
+                }
+              }
+            });*/
             /*Ended Create Sample for Book User History*/
             BookUseHistory.find({userId: req.session.User.id})
                 .populate('bookMaster')
