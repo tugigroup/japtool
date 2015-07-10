@@ -31,9 +31,22 @@ function nextQuestion(pre, next) {
     }
 }
 
+// function checkAnswer1(pre, next) {
+//     $("#recommend-1 option").each(function () {
+//         $(this).click(function () {
+//             answer1 = $("#recommend-1").val();
+//             if (answer1 == 'Choose one') {
+
+//             }
+//             else {
+//                 nextQuestion(pre, next);
+//             }
+
+//         });
+//     });
+// }
 function checkAnswer1(pre, next) {
-    $("#recommend-1 option").each(function () {
-        $(this).click(function () {
+    $("#recommend-1").on('change',function () {
             answer1 = $("#recommend-1").val();
             if (answer1 == 'Choose one') {
 
@@ -41,8 +54,6 @@ function checkAnswer1(pre, next) {
             else {
                 nextQuestion(pre, next);
             }
-
-        });
     });
 }
 
@@ -445,36 +456,3 @@ $(document).ready(function () {
     });
 });
 //END VOCABULARY
-// Author: xuandt2
-// Page: create learning, show popup search learning
-$(document).ready(function () {
-    $('[data-toggle="modal"]').on('click', function (e) {
-        e.preventDefault();
-        $.ajax({
-            type: 'GET',
-            url: '/japtool/learning/search',
-            cache: false,
-            success: function (msg) {
-                $('#show-popup-search').html('');
-                $('#show-popup-search').html(msg);
-                $('#show-popup-search').modal('open');
-            },
-            error: function () {
-                alert('Error');
-            }
-        });
-    });
-    // Close popup
-    $('.close-popup').click(function (e) {
-        $('#show-popup-search').close();
-    });
-
-
-// Close popup
-$('.close-popup').click(function (e) {
-    $('#show-popup-search').close();
-});
-
-
-});
-

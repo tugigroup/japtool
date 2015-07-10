@@ -209,16 +209,15 @@
                         }
                     }
                     // count finish percent
-                    var finishRate = pointUser / pointSum;
-                    // count point
-                    var point = (100/pointSum) * pointUser;
-                    console.log("Your point :"+ point);
+                    var finishRate = (pointUser / pointSum)*100;
                     // get finish rate and point
-//                    $("#div-show-Rs-test-point").append("" +
-//                    "<div class='col-sm-12'>" +
-//                    "   " +
-//                    "</div>" +
-//                    "");
+                    $("#div-show-Rs-test-point").append("" +
+                    "<hr>" +
+                    "<div class='col-sm-12'>" +
+                    "   <p><b>Number of Answer's True :</b>" +pointUser+"</p>"+
+                    "   <p><b>Your Lesson's Percent :</b>" +finishRate+"%</p>"+
+                    "</div>" +
+                    "");
                     // empty list question , that define question is empty
                     arrQueNotEm.length = 0 ;
                     checkedArr.length = 0 ;
