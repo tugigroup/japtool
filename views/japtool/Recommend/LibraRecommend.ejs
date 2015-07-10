@@ -31,9 +31,20 @@
                     <div class="row">
                         <div class="media libMaster">
                             <a href="#" data-toggle="modal" data-target="#lib-level2">
-                                <img class="media-object col-xs-3 libImg"
-                                     src="/images/group-friends/masonry_02-400x400.jpg"
-                                     title="Click to view this library details">
+
+                                <% if (lbrs[i].image) { %>
+
+                                    <img class="media-object col-xs-3 libImg"
+                                         src="/media/image/<%=lbrs[i].image%>"
+                                         title="Click to view this library details">
+
+                                <% } else {%>
+                                    <img class="media-object col-xs-3 libImg"
+                                         src="/images/book_default_cover.png"
+                                         title="Click to view this library details">
+
+                                <% } %>
+
                             </a>
 
                             <div class="media-body">
