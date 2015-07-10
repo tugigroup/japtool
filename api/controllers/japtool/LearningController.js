@@ -145,6 +145,17 @@ module.exports = {
 
         })
     },
+    deleteLearning:function(req,res){
+        var id= req.param('id');
+        Learning.destroy({id:id}).exec(function(err,ok){
+            if(err){
+
+            }
+            else{
+                res.redirect('japtool/learning/');
+            }
+        })
+    },
     _config: {
         locals: {
             layout: 'layout/layout-japtool'
