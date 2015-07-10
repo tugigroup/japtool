@@ -8,17 +8,12 @@
     });
 </script>
 <div id="vocabularyList">
-    <% if(!vocabularies){ %>
-     <h4>Nothing found Vocabulary</h4>
-    <% } else{ %>
     <% vocabularies.forEach( function(vocabulary, index){ %>
     <h3><%= vocabulary.item %></h3>
     <section>
         <h4 class="text-center text-danger"><%= vocabulary.item %></h4>
-
         <p>
-            <span class="text-success">Reading <i
-                        class="fa fa-microphone text-danger"></i> : </span><%= vocabulary.reading %>
+           <span class="text-success">Reading <i class="fa fa-microphone text-danger"></i> : </span><%= vocabulary.reading %>
         </p>
 
         <p><span class="text-success">Description: </span><%= vocabulary.description %></p>
@@ -37,5 +32,5 @@
 
     </section>
     <% }); %>
-    <% } %>
+
 </div>
