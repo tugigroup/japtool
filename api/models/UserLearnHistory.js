@@ -42,6 +42,9 @@ module.exports = {
     },
     bookUseHistory:{
       model:'BookUseHistory'
+    },
+    learning:{
+      model:'Learning'
     }
   }
 };

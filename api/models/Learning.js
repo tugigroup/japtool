@@ -41,12 +41,19 @@ module.exports = {
             type: 'integer',
             defaultsTo: 1
         },
-        bookId: {
+
+        bookMaster: {
             model: 'BookMaster'
         },
-        BookUseHistories: {
+
+        bookUseHistories: {
             collection: 'BookUseHistory',
             via: 'learning'
+        },
+
+        UserLearnHistories: {
+          collection: 'UserLearnHistory',
+          via: 'learning'
         }
     }
 };
