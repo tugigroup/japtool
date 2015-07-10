@@ -1,64 +1,59 @@
 /**
- * Created by XuanDT2 on 6/29/2015.
+ * Created by NamMH on 6/29/2015.
  */
 module.exports = {
-    _config:{
-        locals:{
+    _config: {
+        locals: {
             layout: 'layout/layout-japtool'
         }
     },
-    home:function (req, res) {
-      try {
-        /*Create Sample for Book User History*/
-        /*BookMaster.find().exec(function(err,bookMasters){
-          if (err) {
-            sails.log("Error: " + err);
-            return res.serverError(err);
-          }
-          sails.log("Total book Master is: " +  bookMasters.length)
-          for(var b=0;b<bookMasters.length;b++)
-          {
-            for(var i=0;i<10;i++)
-            {
-              BookUseHistory.create({
-                userId:req.session.User.id,
-                groupId:null,
-                bookID: bookMasters[b].id,
-                finishRate: Utils.randomIntInc(1,100),
-                startDate: new Date(),
-                finishDate: new Date(),
-                bookMaster:bookMasters[b]
-              }).exec(function (err, bookUseHistory)
-              {
-                if (err) {
-                  return res.serverError(err);
-                }
-                sails.log("This Is Book:");
-                sails.log(bookUseHistory);
-                for(var j=0;j<10;j++) {
-                  UserLearnHistory.create({
-                    userId: req.session.User.id,
-                    groupId: null,
-                    bookID: bookUseHistory.id,
-                    lesson: "lesson " + j,
-                    subLesson: "subLesson " + j,
-                    mark: Utils.randomIntInc(1,10),
-                    startDate: new Date(),
-                    finishDate: new Date(),
-                    bookUseHistory: bookUseHistory
-                  }).exec(function (err, userLearnHistory) {
-                    if (err) {
-                      return res.serverError(err);
-                    }
-                    sails.log("This Is Learn History:");
-                    sails.log(userLearnHistory);
+    home: function (req, res) {
+        try {
+		/*Create Sample for Book User History*/
+		/*BookMaster.find().exec(function(err,bookMasters) {
+		  if (err) {
+			sails.log("Error: " + err);
+			return res.serverError(err);
+		  }
+		  sails.log("Total book Master is: " + bookMasters.length)
+		  for (var b = 0; b < bookMasters.length; b++) {
+			for (var i = 0; i < 10; i++) {
+			  BookUseHistory.create({
+				userId: req.session.User.id,
+				groupId: null,
+				bookID: bookMasters[b].id,
+				finishRate: Utils.randomIntInc(1, 100),
+				startDate: new Date(),
+				finishDate: new Date(),
+				bookMaster: bookMasters[b]
+			  }).exec(function (err, bookUseHistory) {
+				if (err) {
+				  return res.serverError(err);
+				}
+				sails.log("This Is Book:");
+				sails.log(bookUseHistory);
+				for (var j = 0; j < 10; j++) {
+				  UserLearnHistory.create({
+					userId: req.session.User.id,
+					groupId: null,
+					bookID: bookUseHistory.id,
+					lesson: "lesson " + j,
+					subLesson: "subLesson " + j,
+					mark: Utils.randomIntInc(1, 10),
+					startDate: new Date(),
+					finishDate: new Date(),
+					bookUseHistory: bookUseHistory
+				  }).exec(function (err, userLearnHistory) {
+					if (err) {
+					  return res.serverError(err);
+					}
+					sails.log("This Is Learn History:");
+					sails.log(userLearnHistory);
 
-                  });
-                }
-              });
-            }
-          }
-        });*/
+				  });
+				}
+			  });
+			});*/
         /*Ended Create Sample for Book User History*/
         BookUseHistory.find({userId:req.session.User.id})
           .populate('bookMaster')
@@ -72,19 +67,19 @@ module.exports = {
           }
           //sails.log(bookUseHistories);
           /*Calculator for Till now you have miss following lesson*/
-          var missLessons = new Array()
+          //var missLessons = new Array()
           /*var index=0;
           bookUseHistories.forEach(function(item){
             var totalDate = item.finishDate - item.startDate;
             //sails.log("Total Lession: " + (++index) + "-" + countLesson(item.bookMaster.id));
           });*/
           sails.log("Return to View.");
-          res.view('japtool/home/home',{bookUseHistories:bookUseHistories, missLessons:missLessons});
+          res.view('japtool/home/home',{bookUseHistories:bookUseHistories});
         });
         }
-      catch (ex) {
-        sails.log(ex);
-      }
+        catch (ex) {
+            sails.log(ex);
+        }
     },
     /**
      * GET: japtool/learning/create
@@ -105,7 +100,25 @@ module.exports = {
                 if (!learning) {
                     return res.json({err: "Error"});
                 }
-                res.redirect('japtool/learning/index/' + learning.id);
+                var userId = req.session.User.id;
+                var bookMaster = req.param('bookId');
+                var startDate = req.param('startDate');
+                var finishDate = req.param('finishDate');
+                BookUseHistory.create({
+                    userId:userId,
+                    bookMaster:bookMaster,
+                    startDate:startDate,
+                    finishDate:finishDate,
+                    learning:learning.id
+                }).exec(function (err, bookusehistory) {
+                    if (err) {
+
+                    }
+                    else {
+                        res.redirect('japtool/learning/');
+                    }
+                })
+
             });
         }
         catch (ex) {
@@ -117,48 +130,44 @@ module.exports = {
      * @param req
      * @param res
      */
-    search: function (req, res) {
-        return res.render('japtool/learning/search', {layout: null});
-    },
-    getBook:function(req,res){
-        BookMaster.find().exec(function(err,books){
-            if(err){
 
-            }
-            else{
-                res.render('japtool/learning/search', {
-                    books:books
-                });
-            }
-        })
-    },
-    index: function (req, res) {
-        var bookarray= new Array();
-        Learning.find().exec(function (err, learnings) {
+    getBooks: function (req, res) {
+        BookMaster.find().exec(function (err, books) {
             if (err) {
 
             }
-            if (!learnings) {
-
-            }
             else {
-                for (var i = 0; i < learnings.length; i++) {
-                    BookMaster.findOne({id:learnings[i].bookId}).exec(function(err,book){
-                        if(err){
-
-                        }
-                        else{
-                            bookarray[i]=book;
-                        }
-                    })
-                }
-                res.view({
-                    books:bookarray,
-                    learnList: learnings
+                res.render('japtool/learning/choosebook', {
+                    books: books
                 });
             }
         })
+    },
 
+    index: function (req, res) {
+        Learning.find().populate('bookId').exec(function (err, learnings) {
+            if (err) {
+                sails.log("Loi cmnr dm")
+            }
+            else {
+                res.view({
+                    learnList: learnings
+                });
+            }
+
+
+        })
+    },
+    deleteLearning: function (req, res) {
+        var id = req.param('id');
+        Learning.destroy({id: id}).exec(function (err, ok) {
+            if (err) {
+
+            }
+            else {
+                res.redirect('japtool/learning/');
+            }
+        })
     },
     _config: {
         locals: {

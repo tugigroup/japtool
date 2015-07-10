@@ -14,7 +14,7 @@ module.exports = {
         var cLT = req.param('cLT');
         var listSv = req.param('sV');
         if (listSv == null) {
-            BookMaster.find({level: lv}).limit(constants.maxLibraRec).exec(function (err, lbrs) {
+            BookMaster.find({level: lv}).limit(constants.maxLibraRs).exec(function (err, lbrs) {
                 if (err) {
                 }
                 User.update({id: req.session.User.id}, {
