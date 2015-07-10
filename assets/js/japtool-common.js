@@ -126,36 +126,18 @@ function loadbooks() {
     $("#placebook").removeChild();
 
 }
-function addbook() {
-    var imglink = $('#imglink').attr('src');
-    var bookname = $('#bookname').attr('title');
-    var bookid = $('#bookid').val();
-    var booklv = $('#booklv').attr('title');
+function addbook(i) {
     $("#placebook").empty();
+    var imglink = $('#imglink'+i+'').attr('src');
+    var bookname = $('#bookname'+i+'').attr('title');
+    var bookid = $('#bookid'+i+'').val();
+    var booklv = $('#booklv'+i+'').attr('title');
+
     $("#placebook").append('<b><img src="' + imglink + '" width="46" height="46"/></b>' +
-    '<input type="hidden" name="bookId" value="' + bookid + '">' +
+    '<input type="hidden" name="bookMaster" value="' + bookid + '">' +
     '<b>' + bookname + '</b>' +
     '<b>Level : ' + booklv + '</b>');
     $('#show-books').modal('hide');
-}
-function getStatus() {
-    var status;
-    var now = new Date();
-    alert(now);
-    var startDate = new Date($('#startDate').val());
-    alert(startDate);
-    var finishDate = new Date($('#finishDate').val());
-    alert(finishDate);
-    if (now < startDate) {
-    }
-    else {
-        if (finishDate < now) {
-        }
-        else {
-        }
-    }
-
-
 }
 function deleteLearning() {
     var learningId = $('#deleteLearning').attr('title');

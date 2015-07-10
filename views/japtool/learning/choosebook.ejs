@@ -51,17 +51,17 @@
                             <div class="col-sm-2"> 
 
                                 <% if (books[i].image) { %>
-                                    <img id="imglink" src="/media/image/<%=books[i].image%>" width="46" height="46"/>
+                                    <img id="imglink<%=i%>" src="/media/image/<%=books[i].image%>" width="46" height="46"/>
                                 <% } else {%>
-                                    <img id="imglink" src="/images/book_default_cover.png" width="46" height="46"/>
+                                    <img id="imglink<%=i%>" src="/images/book_default_cover.png" width="46" height="46"/>
                                 <% } %>
 
                             </div>
                             <div class="col-sm-9">
-                                <input type="hidden" id="bookid" value="<%= books[i].id %>">
-                                <a  onclick="addbook()" id="bookname" title="<%= books[i].name %>"><p class="lbUser"><%= books[i].name %></p></a>
+                                <input type="hidden" id="bookid<%=i%>" value="<%= books[i].id %>">
+                                <a  onclick="addbook(<%=i%>)" id="bookname<%=i%>" title="<%= books[i].name %>"><p class="lbUser"><%= books[i].name %></p></a>
 
-                                <p title="<%= books[i].level %>" id="booklv">Level : <%= books[i].level %></p>
+                                <p title="<%= books[i].level %>" id="booklv<%=i%>">Level : <%= books[i].level %></p>
                             </div>
                         </div>
                     </div>

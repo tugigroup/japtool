@@ -101,7 +101,7 @@ module.exports = {
                     return res.json({err: "Error"});
                 }
                 var userId = req.session.User.id;
-                var bookMaster = req.param('bookId');
+                var bookMaster = req.param('bookMaster');
                 var startDate = req.param('startDate');
                 var finishDate = req.param('finishDate');
                 BookUseHistory.create({
@@ -145,7 +145,7 @@ module.exports = {
     },
 
     index: function (req, res) {
-        Learning.find().populate('bookId').exec(function (err, learnings) {
+        Learning.find().populate('bookMaster').exec(function (err, learnings) {
             if (err) {
                 sails.log("Loi cmnr dm")
             }

@@ -26,7 +26,7 @@ module.exports = {
         },
         learnings: {
             collection: 'Learning',
-            via: 'bookId'
+            via: 'bookMaster'
         },
         bookUseHistories: {
           collection: 'BookUseHistory',
