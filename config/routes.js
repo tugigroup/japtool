@@ -41,6 +41,7 @@ module.exports.routes = {
     /*End QuyetND2*/
 
     /* Start common */
+    '/admin':{view:'admin/index', locals: {layout: 'layout/layout-admin'}},
     '/media/audio/:fd':'common/MediaController.getAudio',
     '/media/video/:fd':'common/MediaController.getVideo',
     '/media/image/:fd':'common/MediaController.getImg',

@@ -28,8 +28,14 @@
                     <div class="media libMaster">
                         <a href="#" data-toggle="modal" data-target="#lib-details-<%= book.id %>">
                             <img class="media-object col-xs-3 libImg"
-                                 src="/japtool/BookMaster/readImg/?fd=<%= book.image %>"
-                                 title="Click to view this library details">
+
+                                <% if (book.image) { %>
+                                    src="/media/image/<%=book.image%>"
+                                <% } else {%>
+                                    src="/images/bookicon.jpg"
+                                <% } %>
+
+                                title="Click to view this library details">
                         </a>
 
                         <div class="media-body">
@@ -77,7 +83,13 @@
                                 <div class="col-sm-3">
                                     <a href="#">
                                         <img class="library-detail-img"
-                                             src="/japtool/BookMaster/readImg/?fd=<%= book.image %>">
+
+                                            <% if (book.image) { %>
+                                                src="/media/image/<%=book.image%>"
+                                            <% } else {%>
+                                                src="/images/book_default_cover.png"
+                                            <% } %>
+
                                     </a>
                                 </div>
                                 <div class="col-sm-9">
