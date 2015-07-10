@@ -17,7 +17,7 @@
                                     <% if(uniqueLesson == bookDetail.lesson) { %>
                                     <ul>
                                         <li><a href='javascript: void(0)'
-                                               onclick="learn('<%= bookDetail.useModule %>', '<%= bookDetail.dataExtractCondition %>')"><%= bookDetail.subLesson %></a>
+                                               onclick="learn('<%= bookDetail.useModule %>', <%= bookDetail.dataExtractCondition %>)"><%= bookDetail.subLesson %></a>
                                         </li>
                                     </ul>
                                     <% } %>
