@@ -13,18 +13,14 @@ module.exports = {
 
     uri: function () {
     	return 'mongodb://' + 
-    			sails.config.connections.someMongodbServer.host + ':' +
-    			sails.config.connections.someMongodbServer.port + '/' +
-    			sails.config.connections.someMongodbServer.database;
+    			(this).host() + ':' +
+    			(this).port() + '/' +
+    			(this).name();
     },
 
     skipperAdapter: function (collection) {
         return require('skipper-gridfs')({
-            uri: 'mongodb://' + 
-    			sails.config.connections.someMongodbServer.host + ':' +
-    			sails.config.connections.someMongodbServer.port + '/' +
-    			sails.config.connections.someMongodbServer.database + '.' +
-    			collection
+            uri: (this).uri() + '.' + collection
         });
     },
     

@@ -50,12 +50,10 @@
                             </div>
                             <div class="col-sm-11">
                                 <h4>Nguyen Hoang Nam</h4>
-
                                 <div class="comment-desc">
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                     incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                                    irure dolor in reprehenderit.
+                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                                 </div>
                             </div>
                         </div>
@@ -74,12 +72,19 @@
 
                         <div class="invite-member clearfix">
                             <div class="col-xs-4">
-                                <a><img src="/images/member/1.jpg"/> </a>
+                                <% if(!session.User.avatar){ %>
+                                <img src="/images/avatar/avatar.jpg" id="avatarPreview"/>
+                                <% } else{ %>
+                                <a href="/japtool/user/show/<%= session.User.id %>"><img src="/japtool/user/readAvatarUser/?fd=<%= session.User.avatar %>"/> </a>
+                                <% } %>
+
                             </div>
                             <div class="col-xs-8">
-                                <a href="">Nguyễn Hoàng Nam</a>
+                                <a href="/japtool/user/show/<%= session.User.id %>"><%= session.User.username %></a>
                             </div>
                         </div>
+
+
                     </div>
                 </div>
             </div>

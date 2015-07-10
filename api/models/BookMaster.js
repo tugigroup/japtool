@@ -23,6 +23,10 @@ module.exports = {
         bookDetail: {
             collection: 'BookDetail',
             via: 'bookID'
+        },
+        bookUseHistories: {
+          collection: 'BookUseHistory',
+          via: 'bookMaster'
         }
     }
 };

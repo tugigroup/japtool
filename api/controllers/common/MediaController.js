@@ -8,15 +8,17 @@
 module.exports = {
 	getImg: function (req, res) {
         var fd = req.param('fd');
+        //console.log('fd: ' + fd);
         if (fd == null) {
             res.send('null');
         } else {
-            var skipperAdapter = common.skipperAdapter('files');
+            var skipperAdapter = database.skipperAdapter('files');
             skipperAdapter.read(fd, function (error, file) {
+                //console.log('file: ' + JSON.stringify(file));
                 if (error) {
                     res.json(error);
                 } else {
-                    res.contentType('image/jpg');
+                    res.contentType('image');
                     res.send(new Buffer(file));
                 }
             });
@@ -28,12 +30,12 @@ module.exports = {
         if (fd == null) {
             res.send('');
         } else {
-            var skipperAdapter = common.skipperAdapter('files');
+            var skipperAdapter = database.skipperAdapter('files');
             skipperAdapter.read(fd, function (error, file) {
                 if (error) {
                     res.json(error);
                 } else {
-                    res.contentType('audio/mpeg');
+                    res.contentType('audio');
                     res.send(new Buffer(file));
                 }
             });
@@ -45,13 +47,13 @@ module.exports = {
         if (fd == null) {
             res.send('');
         } else {
-            var skipperAdapter = common.skipperAdapter('files');
+            var skipperAdapter = database.skipperAdapter('files');
 
             skipperAdapter.read(fd, function (error, file) {
                 if (error) {
                     res.json(error);
                 } else {
-                    res.contentType('video/mp4');
+                    res.contentType('video');
                     res.send(new Buffer(file));
                 }
             });

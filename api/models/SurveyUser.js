@@ -9,7 +9,10 @@ module.exports = {
 
     attributes: {
         surveyID:{
-            type: 'Integer'
+            type: 'String'
+        },
+        UserID:{
+            type: 'String'
         },
         correct1: {
             type:"Boolean"
