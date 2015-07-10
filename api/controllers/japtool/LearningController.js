@@ -71,15 +71,7 @@ module.exports = {
             return res.json({err: "Error"});
           }
           //sails.log(bookUseHistories);
-          /*Calculator for Till now you have miss following lesson*/
-          var missLessons = new Array()
-          /*var index=0;
-          bookUseHistories.forEach(function(item){
-            var totalDate = item.finishDate - item.startDate;
-            //sails.log("Total Lession: " + (++index) + "-" + countLesson(item.bookMaster.id));
-          });*/
-          sails.log("Return to View.");
-          res.view('japtool/home/home',{bookUseHistories:bookUseHistories, missLessons:missLessons});
+          res.view('japtool/home/home',{bookUseHistories:bookUseHistories});
         });
         }
       catch (ex) {
