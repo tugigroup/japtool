@@ -17,7 +17,7 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, lessons){
 	}
 
 	var header = lessons[0];
-	if (header.length < 13 || 
+	if (header.length < 14 || 
 		header[0] != 'name' ||
 		header[1] != 'description' ||
 		header[2] != 'type' ||
@@ -28,9 +28,10 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, lessons){
 		header[7] != 'recommendNum' ||
 		header[8] != 'lesson' ||
 		header[9] != 'subLesson' ||
-		header[10] != 'useModule' ||
-		header[11] != 'useCollection' ||
-		header[12] != 'dataExtractCondition' ){
+		header[10] != 'sort' ||
+		header[11] != 'useModule' ||
+		header[12] != 'useCollection' ||
+		header[13] != 'dataExtractCondition' ){
 
 		console.log('Error! Format of csv file is not correct.');
 		return;
@@ -56,6 +57,7 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, lessons){
 	  bookID:  			mongoose.Schema.Types.ObjectId,
 	  lesson: 					String,
 	  subLesson: 				String,
+	  sort: 					Number,
 	  useModule: 				String,
 	  useCollection: 			String,
 	  dataExtractCondition:   	String
@@ -87,9 +89,10 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, lessons){
 					bookID:  				insertedBookMaster._id,
 				    lesson: 				lesson[8],
 				    subLesson: 				lesson[9],
-				    useModule: 				lesson[10],
-				    useCollection: 			lesson[11],
-				    dataExtractCondition: 	lesson[12]
+				    sort: 					lesson[10],
+				    useModule: 				lesson[11],
+				    useCollection: 			lesson[12],
+				    dataExtractCondition: 	lesson[13]
 				});
 
 				insertedBookDetail.save(function (err,data) {
@@ -140,9 +143,10 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, lessons){
 				bookID:  				insertedBookMaster._id,
 			    lesson: 				lesson[8],
 			    subLesson: 				lesson[9],
-			    useModule: 				lesson[10],
-			    useCollection: 			lesson[11],
-			    dataExtractCondition: 	lesson[12]
+			    sort: 					lesson[10],
+			    useModule: 				lesson[11],
+			    useCollection: 			lesson[12],
+			    dataExtractCondition: 	lesson[13]
 			});
 
 			insertedBookDetail.save(function (err,data) {
