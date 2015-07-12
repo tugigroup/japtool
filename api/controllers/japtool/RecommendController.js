@@ -4,7 +4,7 @@ module.exports = {
         Survey.find({level: lv}).limit(Constants.maxSurveyQuestion).exec(function (err, surveies) {
             if (err) {
             }
-            res.render('japtool/Recommend/step3', {
+            res.render('japtool/recommend/step3', {
                 surveies: surveies
             });
         })
@@ -23,7 +23,7 @@ module.exports = {
                 }).exec(function (err, ok) {
                     if (err) {
                     }
-                    res.view('japtool/Recommend/LibraRecommend', {
+                    res.view('japtool/recommend/LibraRecommend', {
                         lbrs: lbrs
                     });
                 })
@@ -63,7 +63,7 @@ module.exports = {
                             }
                         })
                     }
-                    return res.view('japtool/Recommend/LibraRecommend', {
+                    return res.view('japtool/recommend/LibraRecommend', {
                         lbrs: lbrs
                     });
                 })
@@ -75,7 +75,7 @@ module.exports = {
         BookMaster.find({level: lv}).limit(Constants.maxLibraRec).exec(function (err, lbrs) {
             if (err) {
             }
-            res.view('japtool/Recommend/LibraRecommend', {
+            res.view('japtool/recommend/LibraRecommend', {
                 lbrs: lbrs
             });
         })
@@ -93,7 +93,7 @@ module.exports = {
                 }).exec(function (err, ok) {
                     if (err) {
                     }
-                    res.render('japtool/Recommend/LibraRecommend', {
+                    res.render('japtool/recommend/LibraRecommend', {
                         lbrs: lbrs
                     });
                 })

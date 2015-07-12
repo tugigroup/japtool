@@ -13,7 +13,7 @@ $(document).ready(function () {
     else {
         answer1 = lv;
         answer2 = crt;
-        $('#lib-recommend-3').load('/japtool/Recommend/getStep3?lv=' + answer1);
+        $('#lib-recommend-3').load('/japtool/recommend/getStep3?lv=' + answer1);
         $('#lib-recommend-3').addClass('fade').modal('show');
     }
 
@@ -26,7 +26,7 @@ function nextQuestion(pre, next) {
         $('#lib-recommend-' + next).addClass('fade').modal('show');
     }
     if (next == 3) {
-        $('#lib-recommend-' + next).load('/japtool/Recommend/getStep3?lv=' + answer1);
+        $('#lib-recommend-' + next).load('/japtool/recommend/getStep3?lv=' + answer1);
         $('#lib-recommend-' + next).addClass('fade').modal('show');
     }
 }
@@ -61,7 +61,7 @@ function checkAnswer1(pre, next) {
 function checkAnswer2(pre, next) {
     answer2 = $("#rcm2 input[type='radio']:checked").val();
     if (answer2 == 4) {
-        window.location.replace('/japtool/Recommend/getLibraryForFirtLogin?lv=' + answer1 + '&cLT=' + answer2);
+        window.location.replace('/japtool/recommend/getLibraryForFirtLogin?lv=' + answer1 + '&cLT=' + answer2);
 
     }
     else {
@@ -101,7 +101,7 @@ function checkAnswer3() {
         }
     }
     if (equa == (lengt)) {
-        window.location.replace('/japtool/Recommend/getLibraryForFirtLogin?lv=' + answer1 + '&cLT=' + answer2 + '&sV=' + answer3 + '&id=' + listIdSurvey);
+        window.location.replace('/japtool/recommend/getLibraryForFirtLogin?lv=' + answer1 + '&cLT=' + answer2 + '&sV=' + answer3 + '&id=' + listIdSurvey);
     }
 }
 //END RECOMMENT POPUP
@@ -112,7 +112,7 @@ $(document).ready(function () {
 function checkAnswer1Login() {
     answer2 = $("#rcmlogin input[type='radio']:checked").val();
     if (answer2 == 1) {
-        window.location.replace('/japtool/Recommend/getLibraryLogin');
+        window.location.replace('/japtool/recommend/getLibraryLogin');
     }
     if (answer2 == 2) {
 

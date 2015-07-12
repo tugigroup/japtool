@@ -8,7 +8,7 @@
 module.exports = {
 
     attributes: {
-        sortIndex: {
+        sort: {
             type: 'Integer'
         },
         level: {
