@@ -385,17 +385,18 @@ module.exports = {
                 );
             });
         });
-    },
-
-    getObject:function(req,res){
-        var articleID = req.param('articleID');
-        Question.find({articleID:articleID}).exec(function foundQue(err,questions){
-            if(err){
-                res.send(500);
-            }
-            else{
-                res.send(questions);
-            }
-        });
     }
+    //
+    //getObject:function(req,res){
+    //    var articleID = req.param('articleID');
+    //    Question.find({articleID:articleID}).exec(function foundQue(err,questions){
+    //        if(err){
+    //            res.send(500);
+    //        }
+    //        else{
+    //            res.send(questions);
+    //        }
+    //    });
+    //}
+
 };

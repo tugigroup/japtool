@@ -7,19 +7,19 @@
 
             <p class="text-center desc-home"><i><a>View more all</a></i></p>
             <!--Show bool user History-->
-            <%if(bookUseHistories!=undefined && bookUseHistories.length>0){%>
-              <%bookUseHistories.forEach(function(bookUse){%>
+            <%if(selfLearnings!=undefined && selfLearnings.length>0){%>
+              <%selfLearnings.forEach(function(selfLearning){%>
                 <div class="col-sm-6">
                     <div class="vocabulary-item">
                         <div class="info">
-                            <%if(bookUse.bookMaster!=null&&bookUse.bookMaster!=undefined){%>
-                            <h3><a><%=bookUse.bookMaster.name%></a></h3>
+                            <%if(selfLearning.bookMaster!=null&&selfLearning.bookMaster!=undefined){%>
+                            <h3><a><%=selfLearning.bookMaster.name%></a></h3>
                             <%} else{%>
                               <h3><a>Book name is NONE</a></h3>
                             <%}%>
                             <!--Show miss following lesson-->
                             <p>Till now you have miss following lesson</p>
-                            <%var missLessons = undefined /*bookUse.getMissLesson()*/%>
+                            <%var missLessons = undefined /*selfLearning.getMissLesson()*/%>
                             <%if(missLessons!=undefined && missLessons.length>0){%>
                               <%missLessons.forEach(function(missLesson){%>
                                   <div class="col-sm-3">
@@ -33,8 +33,8 @@
 
                             <!--Show learn history-->
                             <div class="row info-learning">
-                                <%if(bookUse.userLearnHistories!=undefined && bookUse.userLearnHistories.length>0){%>
-                                <%bookUse.userLearnHistories.forEach(function(userLearn){%>
+                                <%if(selfLearning.userLearnHistories!=undefined && selfLearning.userLearnHistories.length>0){%>
+                                <%selfLearning.userLearnHistories.forEach(function(userLearn){%>
                                   <div class="col-sm-9">
                                     <!--<span class="label label-primary"><%=userLearn.lesson%></span>-->
                                     <p><span class="glyphicon glyphicon-thumbs-up"></span> You have done <%=userLearn.subLesson%> on <%=userLearn.lesson%></p>

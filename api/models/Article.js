@@ -13,9 +13,9 @@ module.exports = {
             type: "string",
             required:true
         },
-        questionSetID:{
+        question:{
             collection: 'Question',
-            via: 'articleID'
+            via: 'article'
         },
         explaination: {
             type: "string",
@@ -64,7 +64,7 @@ module.exports = {
         var jsonObj = JSON.parse(condition);
 
         Article.find({where: jsonObj, sort : 'sort'})
-            .populate('questionSetID')
+            .populate('question')
             .exec(function(err,articles){
                 if(err) {
                     return cb(err);

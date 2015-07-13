@@ -36,10 +36,11 @@ if(size == 0) {
                     <td><%= article.category %></td>
                     <td><a href="/deleteArticle/<%= article.id %>">Delete</a></td>
                     <td>
-                        <form action="editArticle" method="post">
-                            <input type="text" hidden="hidden" value="<%= article.id %>" name="id">
-                            <button type="submit" class="btn-update-article">Update</button>
-                        </form>
+                        <!--<form action="editArticle" method="post">-->
+                            <!--<input type="text" hidden="hidden" value="<%= article.id %>" name="id">-->
+                            <!--<button type="submit" class="btn-update-article">Update</button>-->
+                        <!--</form>-->
+                        <a href="editArticle/?id=<%= article.id %>">Edit</a>
                     </td>
                 </tr>
                 <%
