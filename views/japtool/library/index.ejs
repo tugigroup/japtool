@@ -238,7 +238,7 @@
             }
             var totalPages = <%= uniqueType.length %>/itemOnPage;
             $('#pagination-demo').twbsPagination({
-                totalPages: totalPages,
+                totalPages: Math.ceil(totalPages),
                 visiblePages: 4,
                 onPageClick: function (event, page) {
                     var itemShow = itemOnPage * page;
