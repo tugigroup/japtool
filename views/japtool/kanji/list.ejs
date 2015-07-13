@@ -1,0 +1,42 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#vocabularyList").steps({
+            headerTag: "h3",
+            bodyTag: "section",
+            transitionEffect: "slideLeft"
+        });
+    });
+</script>
+<div id="vocabularyList">
+    <% kanjis.forEach( function(kanji, index){ %>
+    <h3><%= kanji.item %></h3>
+    <section>
+        <h4 class="text-center text-danger"><%= kanji.item %></h4>
+        <p>
+           <span class="text-success">hanviet <i class="fa fa-microphone text-danger"></i> : </span><%= kanji.hanviet %>
+        </p>
+        <p>
+           <span class="text-success">kunyomi <i class="fa fa-microphone text-danger"></i> : </span><%= kanji.kunyomi %>
+        </p>
+
+        <p>
+            <span class="text-success">onyomi <i class="fa fa-microphone text-danger"></i> : </span><%= kanji.onyomi %>
+        </p>
+        <p><span class="text-success">Description: </span><%= kanji.description %></p>
+
+        <% if (typeof kanji.examples !== 'undefined' && kanji.examples.length > 0) { %>
+        <p><span class="text-success">Example: </span></p>
+        <ul class="vocabulary-item-example">
+            <% kanji.examples.forEach( function(item){ %>
+            <% if (item.example == 'undefined' || item.example.length == 0){ %>
+            <% }else { %>
+            <li><span class="text-danger"><%= item.example %> : </span><%= item.meaning %></li>
+            <% } %>
+            <% }) %>
+        </ul>
+        <% } %>
+
+    </section>
+    <% }); %>
+
+</div>
