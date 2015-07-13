@@ -22,7 +22,7 @@ module.exports = {
         },
         examples: {
             collection: "example",
-            via: "exampleSetID"
+            via: "vocabulary"
         },
         synonymous: {
             type: 'string'

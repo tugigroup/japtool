@@ -8,20 +8,28 @@
     });
 </script>
 <div id="vocabularyList">
+    <% if(kanjis == null || kanjis.length == 0){ %>
+        <h4>Không tìm th?y t? nào</h4>
+    <% }else{ %>
     <% kanjis.forEach( function(kanji, index){ %>
     <h3><%= kanji.item %></h3>
     <section>
         <h4 class="text-center text-danger"><%= kanji.item %></h4>
+
         <p>
-           <span class="text-success">hanviet <i class="fa fa-microphone text-danger"></i> : </span><%= kanji.hanviet %>
+            <span class="text-success">hanviet <i
+                        class="fa fa-microphone text-danger"></i> : </span><%= kanji.hanviet %>
         </p>
+
         <p>
-           <span class="text-success">kunyomi <i class="fa fa-microphone text-danger"></i> : </span><%= kanji.kunyomi %>
+            <span class="text-success">kunyomi <i
+                        class="fa fa-microphone text-danger"></i> : </span><%= kanji.kunyomi %>
         </p>
 
         <p>
             <span class="text-success">onyomi <i class="fa fa-microphone text-danger"></i> : </span><%= kanji.onyomi %>
         </p>
+
         <p><span class="text-success">Description: </span><%= kanji.description %></p>
 
         <% if (typeof kanji.examples !== 'undefined' && kanji.examples.length > 0) { %>
@@ -38,5 +46,6 @@
 
     </section>
     <% }); %>
+    <% } %>
 
 </div>

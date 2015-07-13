@@ -35,7 +35,7 @@ module.exports = {
         },
         examples: {
             collection: "example",
-            via: "exampleSetKanjiID"
+            via: "kanji"
         }
     },
     //select vocabulary by Level
@@ -43,7 +43,7 @@ module.exports = {
         var condition = opts.condition;
         var jsonObj = JSON.parse(condition);
 
-        Vocabulary.find({where: jsonObj, sort: 'sort'})
+        Kanji.find({where: jsonObj, sort: 'sort'})
             .populate('examples')
             .exec(function (err, kanji) {
                 if (err) {

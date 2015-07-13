@@ -43,8 +43,8 @@ module.exports = {
     bookUseHistory:{
       model:'BookUseHistory'
     },
-    learning:{
-      model:'Learning'
+    selfLearning:{
+      model:'SelfLearning'
     }
   }
 };
