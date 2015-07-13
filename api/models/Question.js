@@ -8,7 +8,7 @@
 module.exports = {
 
     attributes: {
-        articleID:{
+        article:{
             model:'Article',
             required:true
         },
@@ -54,6 +54,9 @@ module.exports = {
         resultOption4:{
             type:'boolean',
             required:true
+        },
+        key:{
+            type:'string'
         }
     }
 };
