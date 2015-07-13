@@ -20,9 +20,9 @@ module.exports = {
         hourForLearn: {type: 'integer'},
         usedNum: {type: 'integer'},
         recommendNum: {type: 'integer'},
-        bookDetail: {
+        bookDetails: {
             collection: 'BookDetail',
-            via: 'bookID'
+            via: 'bookMaster'
         },
         learnings: {
             collection: 'Learning',
