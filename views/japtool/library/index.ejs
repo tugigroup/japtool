@@ -23,19 +23,20 @@
         <div id="lib-1">
             <% data.forEach(function(book, index){ %>
             <% if(book.type == item) { %>
+            <% if(index <= 7) { %>
             <div class="col-sm-4 lib-cell">
                 <div class="row">
                     <div class="media libMaster">
                         <a href="#" data-toggle="modal" data-target="#lib-details-<%= book.id %>">
                             <img class="media-object col-xs-3 libImg"
 
-                                <% if (book.image) { %>
-                                    src="/media/image/<%=book.image%>"
-                                <% } else {%>
-                                    src="/images/bookicon.jpg"
-                                <% } %>
+                                    <% if (book.image) { %>
+                                 src="/media/image/<%= book.image %>"
+                                    <% } else { %>
+                                 src="/images/bookicon.jpg"
+                                    <% } %>
 
-                                title="Click to view this library details">
+                                 title="Click to view this library details">
                         </a>
 
                         <div class="media-body">
@@ -85,10 +86,10 @@
                                         <img class="library-detail-img"
 
                                             <% if (book.image) { %>
-                                                src="/media/image/<%=book.image%>"
-                                            <% } else {%>
-                                                src="/images/book_default_cover.png"
-                                            <% } %>
+                                             src="/media/image/<%= book.image %>"
+                                            <% } else { %>
+                                             src="/images/book_default_cover.png"
+                                        <% } %>
 
                                     </a>
                                 </div>
@@ -184,7 +185,8 @@
                                                 <% arrAllLesson.forEach(function(item){ %>
                                                 <% if(item.idLesson == book.id){ %>
                                                 <% item.arrLesson.forEach(function(uniqueLesson){ %>
-                                                <li class='has-sub'><a href='javascript: void(0)'><%= uniqueLesson %></a>
+                                                <li class='has-sub'><a
+                                                            href='javascript: void(0)'><%= uniqueLesson %></a>
                                                     <% book.bookDetails.forEach(function(bookDetail){ %>
                                                     <% if(uniqueLesson == bookDetail.lesson) { %>
                                                     <ul>
@@ -224,6 +226,7 @@
                 </script>
             </div>
             <% } %>
+            <% } %>
             <% }) %>
         </div>
     </div>
@@ -236,7 +239,9 @@
             for (var i = 0; i < itemOnPage; i++) {
                 $('.library-' + i).show();
             }
-            var totalPages = <%= uniqueType.length %>/itemOnPage;
+            var totalPages =
+            <%= uniqueType.length %>/
+            itemOnPage;
             $('#pagination-demo').twbsPagination({
                 totalPages: Math.ceil(totalPages),
                 visiblePages: 4,
