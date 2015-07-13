@@ -113,9 +113,6 @@ module.exports = {
 
         })
     },
-    seach:function(req,res){
-        var name= req.param('bookname');
-    },
     deleteLearning: function (req, res) {
         var id = req.param('id');
         Learning.destroy({id: id}).exec(function (err, ok) {
