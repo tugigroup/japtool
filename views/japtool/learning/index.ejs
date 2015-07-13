@@ -1,4 +1,4 @@
-<div class="body-manager-learning">
+<div class="body-manager-learning" style="padding-bottom: 150px">
     <div class="container">
         <div class="row">
             <div id="default-show" class="clearfix">
@@ -11,6 +11,13 @@
                 </div>
             </div>
         </div>
+        <%if(learnList.length<=0){%>
+      <div class="container">
+        <div class="row" style="height: 200px">
+          <h2 class="text-center">Ban chua co mot learning nao! Tao mot learning tai <u><a href="/japtool/learning/create">day</a></u> hoac thoat'!!!</h2>
+        </div>
+      </div>
+        <%}%>
         <% for(var j = 0;j < uniqueType.length;j++){ %>
         <div class="row">
             <div class="col-sm-3">
@@ -63,6 +70,7 @@
                             </li>
                         </ul>
                     </div>
+
                     <div class="modal fade" id="lib-1">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
