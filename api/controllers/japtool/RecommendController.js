@@ -14,7 +14,7 @@ module.exports = {
         var cLT = req.param('cLT');
         var listSv = req.param('sV');
         if (listSv == null) {
-            BookMaster.find({level: lv}).populate('bookDetail').limit(Constants.maxLibraRs).exec(function createCB(err, data) {
+            BookMaster.find({level: lv}).populate('bookDetail',{sort:'sort ASC'}).limit(Constants.maxLibraRs).exec(function createCB(err, data) {
                 User.update({id: req.session.User.id}, {
                     currentLevel: lv,
                     currentLearningTime: cLT
@@ -61,7 +61,7 @@ module.exports = {
         }
         else {
             var listid = req.param("id").split(",");
-            BookMaster.find({level: lv}).populate('bookDetail').limit(Constants.maxLibraRs).exec(function createCB(err, data) {
+            BookMaster.find({level: lv}).populate('bookDetail',{sort:'sort ASC'}).limit(Constants.maxLibraRs).exec(function createCB(err, data) {
                 User.update({id: req.session.User.id}, {
                     currentLevel: lv,
                     currentLearningTime: cLT
@@ -133,7 +133,7 @@ module.exports = {
 
     getLibraryLogin: function (req, res) {
         var lv = req.session.User.currentLevel;
-        BookMaster.find({level: lv}).populate('bookDetail').limit(Constants.maxLibraRs).exec(function createCB(err, data) {
+        BookMaster.find({level: lv}).populate('bookDetail',{sort:'sort ASC'}).limit(Constants.maxLibraRs).exec(function createCB(err, data) {
             var arrTag = [];
             var arrAllLesson = [];
             data.forEach(function (book) {

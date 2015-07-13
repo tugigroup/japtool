@@ -9,52 +9,6 @@ module.exports = {
     },
     home: function (req, res) {
         try {
-		/*Create Sample for Book User History*/
-		/*BookMaster.find().exec(function(err,bookMasters) {
-		  if (err) {
-			sails.log("Error: " + err);
-			return res.serverError(err);
-		  }
-		  sails.log("Total book Master is: " + bookMasters.length)
-		  for (var b = 0; b < bookMasters.length; b++) {
-			for (var i = 0; i < 10; i++) {
-			  BookUseHistory.create({
-				userId: req.session.User.id,
-				groupId: null,
-				bookID: bookMasters[b].id,
-				finishRate: Utils.randomIntInc(1, 100),
-				startDate: new Date(),
-				finishDate: new Date(),
-				bookMaster: bookMasters[b]
-			  }).exec(function (err, bookUseHistory) {
-				if (err) {
-				  return res.serverError(err);
-				}
-				sails.log("This Is Book:");
-				sails.log(bookUseHistory);
-				for (var j = 0; j < 10; j++) {
-				  UserLearnHistory.create({
-					userId: req.session.User.id,
-					groupId: null,
-					bookID: bookUseHistory.id,
-					lesson: "lesson " + j,
-					subLesson: "subLesson " + j,
-					mark: Utils.randomIntInc(1, 10),
-					startDate: new Date(),
-					finishDate: new Date(),
-					bookUseHistory: bookUseHistory
-				  }).exec(function (err, userLearnHistory) {
-					if (err) {
-					  return res.serverError(err);
-					}
-					sails.log("This Is Learn History:");
-					sails.log(userLearnHistory);
-
-				  });
-				}
-			  });
-			});*/
-        /*Ended Create Sample for Book User History*/
         BookUseHistory.find({userId:req.session.User.id})
           .populate('bookMaster')
           .populate('userLearnHistories').exec(function (err, bookUseHistories) {
@@ -87,18 +41,24 @@ module.exports = {
     },
     add: function (req, res) {
         try {
-            var params = req.params.all();
-            Learning.create(params).exec(function (err, learning) {
+            var userId = req.session.User.id;
+            var notes= req.param('notes');
+            var bookMaster = req.param('bookMaster');
+            var startDate = req.param('startDate');
+            var finishDate = req.param('finishDate');
+            Learning.create({
+                notes:notes,
+                startDate:startDate,
+                finishDate:finishDate,
+                bookMaster:bookMaster,
+                user:userId
+            }).exec(function (err, learning) {
                 if (err) {
                     return res.json({err: err});
                 }
                 if (!learning) {
                     return res.json({err: "Error"});
                 }
-                var userId = req.session.User.id;
-                var bookMaster = req.param('bookMaster');
-                var startDate = req.param('startDate');
-                var finishDate = req.param('finishDate');
                 BookUseHistory.create({
                     userId:userId,
                     bookMaster:bookMaster,

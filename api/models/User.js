@@ -87,7 +87,11 @@ module.exports = {
         },
         user_country: {
             model: 'country'
-        }
+        },
+        learnings: {
+            collection: 'Learning',
+            via: 'user'
+        },
     },
 
     beforeCreate: function (values, next) {
