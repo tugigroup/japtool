@@ -123,7 +123,7 @@ module.exports = {
     },
     deleteLearning: function (req, res) {
         var id = req.param('id');
-        Learning.destroy({id: id}).exec(function (err, ok) {
+        SelfLearning.destroy({id: id}).exec(function (err, ok) {
             if (err) {
 
             }
