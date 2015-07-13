@@ -19,7 +19,10 @@ module.exports = {
         },
         meaning: {
             type: 'string'
-        }
+        },
+        grammar: {
+          model: 'Grammar'
+        },
     }
 
 };

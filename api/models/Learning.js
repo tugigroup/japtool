@@ -8,17 +8,7 @@
 module.exports = {
 
     attributes: {
-
-        nameLearning: {
-            type: 'string',
-            required: true
-        },
-
-        imageLearning: {
-            type: 'string'
-        },
-
-        description: {
+        notes: {
             type: 'string'
         },
 
@@ -32,18 +22,11 @@ module.exports = {
             required: true
         },
 
-        maxMemberNum: {
-            type: 'integer',
-            defaultsTo: 1
-        },
-
-        memberSetId: {
-            type: 'integer',
-            defaultsTo: 1
-        },
-
         bookMaster: {
             model: 'BookMaster'
+        },
+        user: {
+            model: 'User'
         },
 
         bookUseHistories: {
