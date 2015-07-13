@@ -110,17 +110,19 @@ module.exports = {
             else {
                 selfLearnings.forEach(function (item, index) {
                     arrTag.push(item.bookMaster.type);
-                    if (index == (selfLearnings.length - 1)) {
-                        var array = require("array-extended");
-                        var uniqueType = array(arrTag).unique().value();
-                        res.view( {
-                            learnList: selfLearnings,
-                            uniqueType: uniqueType
-                        })
-                    }
+                    // if (index == (selfLearnings.length - 1)) {
+                        
+                    // }
 
                 })
             }
+
+            var array = require("array-extended");
+            var uniqueType = array(arrTag).unique().value();
+            res.view( {
+                learnList: selfLearnings,
+                uniqueType: uniqueType
+            })
         })
     },
     deleteLearning: function (req, res) {
