@@ -4,7 +4,7 @@ module.exports = {
         Survey.find({level: lv}).limit(Constants.maxSurveyQuestion).exec(function (err, surveies) {
             if (err) {
             }
-            res.render('japtool/recommend/step3', {
+            res.render('japtool/Recommend/step3', {
                 surveies: surveies
             });
         })
@@ -14,26 +14,54 @@ module.exports = {
         var cLT = req.param('cLT');
         var listSv = req.param('sV');
         if (listSv == null) {
-            BookMaster.find({level: lv}).limit(Constants.maxLibraRs).exec(function (err, lbrs) {
-                if (err) {
-                }
+            BookMaster.find({level: lv}).populate('bookDetail').limit(Constants.maxLibraRs).exec(function createCB(err, data) {
                 User.update({id: req.session.User.id}, {
                     currentLevel: lv,
                     currentLearningTime: cLT
                 }).exec(function (err, ok) {
                     if (err) {
                     }
-                    res.view('japtool/recommend/LibraRecommend', {
-                        lbrs: lbrs
+                    var arrTag = [];
+                    var arrAllLesson = [];
+
+                    data.forEach(function (book) {
+                        var arrLesson = [];
+                        if (book.bookDetail.length != 0) {
+                            book.bookDetail.forEach(function (item, index) {
+                                arrLesson.push(item.lesson);
+                                if (index == (book.bookDetail.length - 1)) {
+                                    var array = require("array-extended");
+                                    var uniqueArrLesson = array(arrLesson).unique().value();
+                                    var objLesson = {
+                                        arrLesson: uniqueArrLesson,
+                                        idLesson: book.id
+                                    };
+                                    arrAllLesson.push(objLesson);
+                                }
+                            })
+                        }
                     });
+
+                    data.forEach(function (item, index) {
+                        arrTag.push(item.type);
+                        if (index == (data.length - 1)) {
+                            var array = require("array-extended");
+                            var uniqueType = array(arrTag).unique().value();
+                            res.view('japtool/Recommend/LibraRecommend', {
+                                data: data,
+                                uniqueType: uniqueType,
+                                arrAllLesson: arrAllLesson,
+                                layout: 'layout/layout-japtool'
+                            })
+                        }
+                    })
                 })
+
             })
         }
         else {
             var listid = req.param("id").split(",");
-            BookMaster.find({level: lv}).limit(Constants.maxLibraRec).exec(function (err, lbrs) {
-                if (err) {
-                }
+            BookMaster.find({level: lv}).populate('bookDetail').limit(Constants.maxLibraRs).exec(function createCB(err, data) {
                 User.update({id: req.session.User.id}, {
                     currentLevel: lv,
                     currentLearningTime: cLT
@@ -53,7 +81,7 @@ module.exports = {
                         }
                         SurveyUser.create({
                             surveyID: listid[i],
-                            UserID:req.session.User.id,
+                            UserID: req.session.User.id,
                             correct1: arrTemp[0],
                             correct2: arrTemp[1],
                             correct3: arrTemp[2],
@@ -63,42 +91,84 @@ module.exports = {
                             }
                         })
                     }
-                    return res.view('japtool/recommend/LibraRecommend', {
-                        lbrs: lbrs
+                    var arrTag = [];
+                    var arrAllLesson = [];
+
+                    data.forEach(function (book) {
+                        var arrLesson = [];
+                        if (book.bookDetail.length != 0) {
+                            book.bookDetail.forEach(function (item, index) {
+                                arrLesson.push(item.lesson);
+                                if (index == (book.bookDetail.length - 1)) {
+                                    var array = require("array-extended");
+                                    var uniqueArrLesson = array(arrLesson).unique().value();
+                                    var objLesson = {
+                                        arrLesson: uniqueArrLesson,
+                                        idLesson: book.id
+                                    };
+                                    arrAllLesson.push(objLesson);
+                                }
+                            })
+                        }
                     });
+
+                    data.forEach(function (item, index) {
+                        arrTag.push(item.type);
+                        if (index == (data.length - 1)) {
+                            var array = require("array-extended");
+                            var uniqueType = array(arrTag).unique().value();
+                            res.view('japtool/Recommend/LibraRecommend', {
+                                data: data,
+                                uniqueType: uniqueType,
+                                arrAllLesson: arrAllLesson,
+                                layout: 'layout/layout-japtool'
+                            })
+                        }
+                    })
                 })
+
             })
         }
     },
+
     getLibraryLogin: function (req, res) {
-        var lv= req.session.User.currentLevel;
-        BookMaster.find({level: lv}).limit(Constants.maxLibraRec).exec(function (err, lbrs) {
-            if (err) {
-            }
-            res.view('japtool/recommend/LibraRecommend', {
-                lbrs: lbrs
-            });
-        })
-
-
-        /*var cLT = req.param('cLT');
-        var listSv = req.param('sV');
-        if (listSv == null) {
-            BookMaster.find({level: lv}).limit(Constants.maxLibraRec).exec(function (err, lbrs) {
-                if (err) {
+        var lv = req.session.User.currentLevel;
+        BookMaster.find({level: lv}).populate('bookDetail').limit(Constants.maxLibraRs).exec(function createCB(err, data) {
+            var arrTag = [];
+            var arrAllLesson = [];
+            data.forEach(function (book) {
+                var arrLesson = [];
+                if (book.bookDetail.length != 0) {
+                    book.bookDetail.forEach(function (item, index) {
+                        arrLesson.push(item.lesson);
+                        if (index == (book.bookDetail.length - 1)) {
+                            var array = require("array-extended");
+                            var uniqueArrLesson = array(arrLesson).unique().value();
+                            var objLesson = {
+                                arrLesson: uniqueArrLesson,
+                                idLesson: book.id
+                            };
+                            arrAllLesson.push(objLesson);
+                        }
+                    })
                 }
-                User.update({id: req.session.User.id}, {
-                    currentLevel: lv,
-                    currentLearningTime: cLT
-                }).exec(function (err, ok) {
-                    if (err) {
-                    }
-                    res.render('japtool/recommend/LibraRecommend', {
-                        lbrs: lbrs
-                    });
-                })
+            });
+
+            data.forEach(function (item, index) {
+                arrTag.push(item.type);
+                if (index == (data.length - 1)) {
+                    var array = require("array-extended");
+                    var uniqueType = array(arrTag).unique().value();
+                    res.view('japtool/Recommend/LibraRecommend', {
+                        data: data,
+                        uniqueType: uniqueType,
+                        arrAllLesson: arrAllLesson,
+                        layout: 'layout/layout-japtool'
+                    })
+                }
             })
-        }*/
+
+        })
     },
     _config: {
         locals: {

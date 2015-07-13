@@ -1,298 +1,256 @@
-<div id="LibraRecommend">
-    <div class="container library-page">
-        <div class="row">
-            <div class="media">
-                <div class="media-body">
-                    <div class="col-sm-12 library-page-title">
-                        <div class="row">
-                            <div class="col-sm-10">
-                                <h3><span>N1 Libraries</span>
-                                    <small><i>Master Japanese!</i></small>
-
-                                </h3>
-                            </div>
-                            <div class="col-sm-2">
-                                <div class="join-learn btn label-primary">
-                                    <a href="library-by-cate.html">View more Library</a>
-                                </div>
+<div class="container library-page example">
+    <% uniqueType.forEach(function(item, indexLibrary){ %>
+    <div class="row content library-<%= indexLibrary %>" id="">
+        <div class="media">
+            <div class="media-body">
+                <div class="col-sm-12 library-page-title">
+                    <div class="row">
+                        <div class="col-sm-10">
+                            <h3><span><%= item %></span>
+                            </h3>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="join-learn btn label-primary">
+                                <a href="/japtool/BookMaster/getAllLibrary/?type=<%= item %>">View more Library</a>
                             </div>
                         </div>
-                        <div class="library-page-line"></div>
-
                     </div>
-
+                    <div class="library-page-line"></div>
                 </div>
             </div>
+        </div>
+        <div class="clearfix"></div>
+        <div id="lib-1">
+            <% data.forEach(function(book, index){ %>
+            <% if(book.type == item) { %>
+            <div class="col-sm-4 lib-cell">
+                <div class="row">
+                    <div class="media libMaster">
+                        <a href="#" data-toggle="modal" data-target="#lib-details-<%= book.id %>">
+                            <img class="media-object col-xs-3 libImg"
 
-            <!--<div class="clearfix"></div>-->
-            <div id="lib-1">
-                <% for(var i = 0;i < lbrs.length;i++){ %>
-                <div class="col-sm-4 lib-cell">
-                    <div class="row">
-                        <div class="media libMaster">
-                            <a href="#" data-toggle="modal" data-target="#lib-level2">
+                                    <% if (book.image) { %>
+                                 src="/media/image/<%= book.image %>"
+                                    <% } else { %>
+                                 src="/images/bookicon.jpg"
+                                    <% } %>
 
-                                <% if (lbrs[i].image) { %>
+                                 title="Click to view this library details">
+                        </a>
 
-                                    <img class="media-object col-xs-3 libImg"
-                                         src="/media/image/<%=lbrs[i].image%>"
-                                         title="Click to view this library details">
-
-                                <% } else {%>
-                                    <img class="media-object col-xs-3 libImg"
-                                         src="/images/bookicon.jpg"
-                                         title="Click to view this library details">
-
-                                <% } %>
-
-                            </a>
-
-                            <div class="media-body">
-                                <h4 class="media-heading">
-                                    <a href="#" class="text-primary" title="Click to view this library details"
-                                       data-toggle="modal" data-target="#lib-level-2">
-                                        <%= lbrs[i].name %>
-                                    </a>
-                                </h4>
-                                <ul>
-                                    <li>
-                                        <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
-                                        Level: <%= lbrs[i].level %> -
-                                        Used: <%= lbrs[i].usedNum %>
-                                    </li>
-                                    <li>
-                                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Number
-                                        Lesson: <%= lbrs[i].lessonNum %>
-                                    </li>
-
-                                    <li>
-                                        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-                                        <a href="#" title="Click to view this library lesson." data-toggle="modal"
-                                           data-target="#lib-review-2" class="text-danger">Preview</a> -
-                                        <span></span>
-                                        <a href="#?no=2" title="Click to learn this library." class="text-info">Learning
-                                            Library</a>
-                                    </li>
-                                </ul>
-                            </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">
+                                <a href="#" class="text-primary" title="Click to view this library details"
+                                   data-toggle="modal" data-target="#lib-details-<%= book.id %>">
+                                    <%= book.name %>
+                                </a>
+                            </h4>
+                            <ul>
+                                <li>
+                                    <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+                                    Level: <%= book.level %> -
+                                    Used: 1
+                                </li>
+                                <li>
+                                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Number
+                                    Lesson: <%= book.bookDetail.length %>
+                                </li>
+                                <li>
+                                    <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                                    <a href="#" title="Click to view this library lesson." data-toggle="modal"
+                                       data-target="#lib-review-<%= book.id %>" class="text-danger">Preview</a> -
+                                    <span></span>
+                                    <a href="/japtool/BookMaster/lesson/<%= book.id %>"
+                                       title="Click to learn this library." class="text-info">Learning
+                                        Library</a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-                <!--lib details-->
-                <div class="modal fade" id="lib-level-2" tabindex="-1">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                            aria-hidden="true">×</span></button>
-                                <h4 class="modal-title">Library - Tu vung chuyen nganh</h4>
+            </div>
+            <!--lib details-->
+            <div class="modal fade" id="lib-details-<%= book.id %>" tabindex="-1">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">×</span></button>
+                            <h4 class="modal-title">Library - <%= book.name %></h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <a href="#">
+                                        <img class="library-detail-img"
+
+                                            <% if (book.image) { %>
+                                             src="/media/image/<%= book.image %>"
+                                            <% } else { %>
+                                             src="/images/book_default_cover.png"
+                                        <% } %>
+
+                                    </a>
+                                </div>
+                                <div class="col-sm-9">
+                                    <ul>
+                                        <h4>Details:</h4>
+                                        <li>
+                                            <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+                                            Level: <%= book.level %>
+                                        </li>
+                                        <li>
+                                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                            Type: <%= book.type %>
+                                        </li>
+                                        <li>
+                                            <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+                                            Number Lesson: <%= book.bookDetail.length %>
+                                        </li>
+                                        <li>
+                                            <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+                                            Estimate Hour:
+                                            <% if(book.hourForLearn == 'undefined'){ %>
+                                            <%= 0 %>
+                                            <% }else{ %>
+                                            <%= book.hourForLearn %>
+                                            <% } %>
+                                        </li>
+                                        <li>
+                                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                            Number Of Recommend:
+                                            <% if(book.recommendNum == undefined){ %>
+                                            <%= 0 %>
+                                            <% }else{ %>
+                                            <%= book.recommendNum %>
+                                            <% } %>
+                                        </li>
+                                        <li>
+                                            <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+                                            Used: 1
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <div class="col-sm-12">
+
+                                    <h4>Description:</h4>
+
+                                    <div class="pre-scrollable mCustomScrollbar" data-mcs-theme="dark">
+                                        <%= book.description %>
+
+                                    </div>
+                                </div>
                             </div>
-                            <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <a href="#">
-                                            <img class="library-detail-img"
-                                                 src="/images/group-friends/masonry_02-400x400.jpg">
+                            <h4>Your friends are learning this library: </h4>
+
+                            <div class="row">
+                                <div class="col-sm-1">
+                                    <div class="thumbnail">
+                                        <a href="#" title="Click to view profile.">
+                                            <img src="../images/avatar/a01.png">
                                         </a>
                                     </div>
-                                    <div class="col-sm-9">
-                                        <ul>
-                                            <h4>Details:</h4>
-                                            <li>
-                                                <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
-                                                Level: <%= lbrs[i].level %>
-                                            </li>
-                                            <li>
-                                                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                                                Type: <%= lbrs[i].type %>
-                                            </li>
-                                            <li>
-                                                <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
-                                                Number Lesson: <%= lbrs[i].lessonNum %>
-                                            </li>
-                                            <li>
-                                                <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
-                                                Estimate Hour: <%= lbrs[i].hourForLearn %>
-                                            </li>
-                                            <li>
-                                                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                                                Number Of Recommend: <%= lbrs[i].recommendNum %>
-                                            </li>
-                                            <li>
-                                                <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
-                                                Used: <%= lbrs[i].usedNum %>
-                                            </li>
-
-                                        </ul>
-                                    </div>
-                                    <div class="col-sm-12">
-
-                                        <h4>Description:</h4>
-
-                                        <div class="pre-scrollable mCustomScrollbar" data-mcs-theme="dark">
-                                            <%= lbrs[i].description %>
-                                        </div>
-                                    </div>
-                                </div>
-                                <h4>Your friends are learning this library: </h4>
-
-                                <div class="row">
-                                    <div class="col-sm-1">
-                                        <div class="thumbnail">
-                                            <a href="#" title="Click to view profile.">
-                                                <img src="/images/group-friends/masonry_02-400x400.jpg">
-                                            </a>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
-                            <div class="modal-footer">
-                                <a href="#" class="btn btn-success" role="button">Learning This Library</a>
-                                <a href="#" class="btn btn-danger" role="button" data-dismiss="modal">Close</a>
-                            </div>
                         </div>
-                    </div>
-                </div>
-                <!--lib review-->
-                <div class="modal fade" id="lib-review-2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                    <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                            aria-hidden="true">×</span></button>
-                                <h4 class="modal-title">Library - Tu vung chuyen nganh</h4>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row libImg-modal">
-                                    <div class="col-sm-3 invite">
-                                        <div class="row">
-                                            <h3>Lesson learning</h3>
-                                        </div>
-                                        <div class="row">
-                                            <div id="cssmenu-learngroup">
-                                                <ul>
-                                                    <li><a href="#">Lesson learning 1</a></li>
-                                                    <li class="has-sub"><a href="#">Lesson learning 2</a>
-                                                        <ul>
-                                                            <li class="has-sub"><a href="#">Sub Lesson learning</a>
-                                                                <ul>
-                                                                    <li><a href="#">Sub Lesson learning</a></li>
-                                                                    <li><a href="#">Sub Lesson learning </a></li>
-                                                                </ul>
-                                                            </li>
-                                                            <li class="has-sub"><a href="#">Sub Lesson learning</a>
-                                                                <ul>
-                                                                    <li><a href="#">Sub Lesson learning </a></li>
-                                                                    <li><a href="#">Sub Lesson learning </a></li>
-                                                                </ul>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="#">Lesson learning 3</a></li>
-                                                    <li><a href="#">Lesson learning 4</a></li>
-                                                    <li><a href="#">Lesson learning 1</a></li>
-                                                    <li class="has-sub"><a href="#">Lesson learning 2</a>
-                                                        <ul>
-                                                            <li class="has-sub"><a href="#">Sub Lesson learning </a>
-                                                                <ul>
-                                                                    <li><a href="#">Sub Lesson learning </a></li>
-                                                                    <li><a href="#">Sub Lesson learning </a></li>
-                                                                </ul>
-                                                            </li>
-                                                            <li class="has-sub"><a href="#">Sub Lesson learning</a>
-                                                                <ul>
-                                                                    <li><a href="#">Sub Lesson learning 2.2.1</a></li>
-                                                                    <li><a href="#">Sub Lesson learning 2.2.2</a></li>
-                                                                </ul>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="#">Lesson learning 3</a></li>
-                                                    <li><a href="#">Lesson learning 4</a></li>
-                                                    <li><a href="#">Lesson learning 1</a></li>
-                                                    <li class="has-sub"><a href="#">Lesson learning 2</a>
-                                                        <ul>
-                                                            <li class="has-sub"><a href="#">Sub Lesson learning 2.1</a>
-                                                                <ul>
-                                                                    <li><a href="#">Sub Lesson learning 2.1.1</a></li>
-                                                                    <li><a href="#">Sub Lesson learning 2.1.2</a></li>
-                                                                </ul>
-                                                            </li>
-                                                            <li class="has-sub"><a href="#">Sub Lesson learning 2.2</a>
-                                                                <ul>
-                                                                    <li><a href="#">Sub Lesson learning 2.2.1</a></li>
-                                                                    <li><a href="#">Sub Lesson learning 2.2.2</a></li>
-                                                                </ul>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="#">Lesson learning 3</a></li>
-                                                    <li><a href="#">Lesson learning 4</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-9 invite">
-                                        <h3 class="text-center">N3 vocabulary learning group</h3>
-
-                                        <div class="abc"
-                                             style="background-color: rgba(61, 140, 204, 0.39); min-height: 600px"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <a href="#" class="btn btn-success" role="button">Learning This Library</a>
-                                <a href="#" class="btn btn-danger" role="button" data-dismiss="modal">Close</a>
-                            </div>
+                        <div class="modal-footer">
+                            <a href="/japtool/BookMaster/lesson/<%= book.id %>" class="btn btn-success" role="button">Learning
+                                This Library</a>
+                            <a href="#" class="btn btn-danger" role="button" data-dismiss="modal">Close</a>
                         </div>
-                    </div>
-                </div>
-                <% } %>
-
-            </div>
-        </div>
-    </div>
-</div>
-<div class="content-group-friends clearfix content bg-white">
-    <div class="container">
-        <div class="row">
-            <h2 class="text-center">Infomation about learning groups from friends</h2>
-
-            <p class="text-center desc-home">Hiển thị những group học tiếng nhật của bạn bè trong list friends của
-                bạn, bạn join vào để học cùng nhau nhé</p>
-
-            <p class="text-center desc-home"><i><a>View more all</a></i></p>
-
-            <div class="col-sm-6 group-friends">
-                <div class="row">
-                    <div class="col-sm-5">
-                        <a><img src="/images/group-friends/masonry_02-400x400.jpg"/></a>
-                    </div>
-                    <div class="col-sm-7">
-                        <div class="info">
-                            <h3><a>N2 Grammar Learning Group</a></h3>
-                            <span>Author: </span> Billy Tran
-                            <div class="date-info">
-                                <span>Schedule:</span> 2015/05/01 - 2015/08/15
-                            </div>
-                            <div class="using-library-info">
-                                <span>Using library:</span> ABC, XYZ
-                            </div>
-                            <div class="person-info">
-                                <span>Registered:</span> 10 person
-                            </div>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-
-                        </div>
-                        <a class="btn sd-learn-more">Join Group</a>
                     </div>
                 </div>
             </div>
+            <!--lib review-->
+            <div class="modal fade" id="lib-review-<%= book.id %>" tabindex="-1" role="dialog"
+                 aria-labelledby="myModalLabel">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">×</span></button>
+                            <h4 class="modal-title">Library - <%= book.name %></h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row libImg-modal">
+                                <div class="col-sm-3 invite">
+                                    <div class="row">
+                                        <h3>Lesson learning</h3>
+                                    </div>
+                                    <div class="row">
+                                        <div id="cssmenu-learngroup">
+                                            <ul>
+                                                <% arrAllLesson.forEach(function(item){ %>
+                                                <% if(item.idLesson == book.id){ %>
+                                                <% item.arrLesson.forEach(function(uniqueLesson){ %>
+                                                <li class='has-sub'><a
+                                                            href='javascript: void(0)'><%= uniqueLesson %></a>
+                                                    <% book.bookDetail.forEach(function(bookDetail){ %>
+                                                    <% if(uniqueLesson == bookDetail.lesson) { %>
+                                                    <ul>
+                                                        <li><a href='javascript: void(0)'
+                                                               onclick="learn('<%= bookDetail.useModule %>', <%= bookDetail.dataExtractCondition %>, '<%= book.id %>')"><%= bookDetail.subLesson %></a>
+                                                        </li>
+                                                    </ul>
+                                                    <% } %>
+                                                    <% }) %>
+                                                    <% }) %>
+                                                    <% } %>
+                                                    <% }) %>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-9 invite">
+                                    <h3 class="text-center"><%= book.name %></h3>
 
-        </div>
-        <div class="row">
-            <a class="btn sd-learn-more view-more">View More Groups From Friends</a>
+                                    <div class="abc container-learn" id="<%= book.id %>"
+                                         style="background-color: rgba(61, 140, 204, 0.39); min-height: 600px"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="/japtool/BookMaster/lesson/<%= book.id %>" class="btn btn-success" role="button">Learning
+                                This Library</a>
+                            <a href="#" class="btn btn-danger" role="button" data-dismiss="modal">Close</a>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    function learn(module, condition, id) {
+                        var strCondition = JSON.stringify(condition);
+                        $('#' + id).load('/japtool/' + module + '/list/?condition=' + strCondition);
+                    }
+                </script>
+            </div>
+            <% } %>
+            <% }) %>
         </div>
     </div>
+    <% }) %>
+    <ul id="pagination-demo" class="pagination-sm row text-center pull-right"></ul>
+    <script type="text/javascript">
+        window.onload = function () {
+            $('.content').hide();
+            var itemOnPage = 2;
+            for (var i = 0; i < itemOnPage; i++) {
+                $('.library-' + i).show();
+            }
+            var totalPages =
+            <%= uniqueType.length %>/
+            itemOnPage;
+            $('#pagination-demo').twbsPagination({
+                totalPages: totalPages,
+                visiblePages: 4,
+                onPageClick: function (event, page) {
+                    var itemShow = itemOnPage * page;
+                    $('.content').hide();
+                    for (var i = itemShow - itemOnPage; i < itemShow; i++) {
+                        $('.library-' + i).show();
+                    }
+                }
+            });
+        };
+    </script>
 </div>
