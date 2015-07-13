@@ -1,0 +1,19 @@
+﻿JapaneseTrainingOnline Tool
+	- Quyết + Dương:
+		+ Đã làm xong Library
+		+ Đã làm Boder for learning	
+		+ Đã làm một số form addmin manager
+		+ Đang làm Test Module (50%)
+		+ Bắt đầu làm module Acticle 
+	- Tuyền + Tuấn:
+		+ Đã lam xong User, Profile
+		+ Đã làm vocabulary module
+		+ Xử lý layout Admin
+	- Đông + Nam: 
+		+ Đã làm Grammar module
+		+ Đang lam Home sau khi Đăng nhập
+		+ Correct link project.
+		+ Đã lam home trước, Login User, Recommend Full
+		+ Đã làm Recommend module
+	
+	
