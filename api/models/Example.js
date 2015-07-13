@@ -22,7 +22,7 @@ module.exports = {
         },
         grammar: {
           model: 'Grammar'
-        },
+        }
     }
 
 };

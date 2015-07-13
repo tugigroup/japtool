@@ -35,7 +35,7 @@ module.exports = {
         },
         examples: {
             collection: "example",
-            via: "exampleSetKanjiID"
+            via: "kanji"
         }
     },
     //select vocabulary by Level
