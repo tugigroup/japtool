@@ -1,7 +1,7 @@
 module.exports = {
     getStep3: function (req, res) {
-        var lv = req.param('lv');
-        Survey.find({level: lv}).limit(Constants.maxSurveyQuestion).exec(function (err, surveies) {
+
+        Survey.find().limit(Constants.maxSurveyQuestion).exec(function (err, surveies) {
             if (err) {
             }
             res.render('japtool/Recommend/step3', {
