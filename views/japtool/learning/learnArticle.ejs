@@ -1,7 +1,17 @@
 <div class="container-do-test-article" id="do-test-articles">
-    <% data.forEach(function(article, index){ %>
-    <input type="text" hidden="hidden" class="arrArticleID" value="<%= article.id %>"/>
-
+    <%
+    var lengthQues =0;
+    var currentdate = new Date();
+    var startDate =  currentdate.getDate() + "/"
+            + (currentdate.getMonth()+1)  + "/"
+            + currentdate.getFullYear() + " @ "
+            + currentdate.getHours() + ":"
+            + currentdate.getMinutes() + ":"
+            + currentdate.getSeconds();
+    data.forEach(function(article, index){
+    %>
+    <input type="text" hidden="hidden" class="arrArticleID" content="<%= article.content %>" subject="<%= article.subject %>" value="<%= article.id %>"/>
+    <input type="text" hidden="hidden" value="<%=startDate%>" id="dateStart"/>
     <h2></h2>
     <section>
         <div class="row">
@@ -61,7 +71,8 @@
             </div>
             <div class="col-sm-12" id="div-question-list">
                 <%
-                article.questionSetID.forEach(function (question) {
+                article.question.forEach(function (question) {
+                    lengthQues++;
                 %>
 
                 <div class="panel panel-default">
@@ -73,22 +84,26 @@
                         <img src="/media/image/?fd=<%= question.image %>"/>
                         <%
                         } %>
-                        <div class="question-div-info" id="">
+                        <div class="question-div-info" id="<%= question.id %>" ofArticle="<%=article.id%>">
                             <div class="col-sm-6">
-                                <input type="radio" name="<%= question.id %>"
-                                       value="<%= question.resultOption1 %>"><%= question.option1 %>
+                                <input type="radio"  class="<%= question.id %>" name="<%= question.id %>"
+                                       value="<%= question.option1 %>" id="<%= question.id %>1">
+                                <label for="<%= question.id %>1"><%= question.option1 %></label>
                             </div>
                             <div class="col-sm-6">
-                                <input type="radio" name="<%= question.id %>"
-                                       value="<%= question.resultOption2 %>"><%= question.option2 %>
+                                <input type="radio"  class="<%= question.id %>" name="<%= question.id %>"
+                                       value="<%= question.option2 %>" id="<%= question.id %>2">
+                                <label for="<%= question.id %>2"><%= question.option2 %></label>
                             </div>
                             <div class="col-sm-6">
-                                <input type="radio" name="<%= question.id %>"
-                                       value="<%= question.resultOption3 %>"><%= question.option3 %>
+                                <input type="radio"  class="<%= question.id %>" name="<%= question.id %>"
+                                       value="<%= question.option3 %>" id="<%= question.id %>3">
+                                <label for="<%= question.id %>3"><%= question.option3 %></label>
                             </div>
                             <div class="col-sm-6">
-                                <input type="radio" name="<%= question.id %>"
-                                       value="<%= question.resultOption4 %>"><%= question.option4 %>
+                                <input type="radio"  class="<%= question.id %>" name="<%= question.id %>"
+                                       value="<%= question.option4 %>" id="<%= question.id %>4">
+                                <label for="<%= question.id %>4"><%= question.option4 %></label>
                             </div>
                         </div>
                     </div>
@@ -105,6 +120,7 @@
     <!--</div>-->
     <!--</div>-->
     <% }) %>
+    <input type="text" hidden="hidden" value="<%=lengthQues%>" id="lengthQues"/>
 </div>
 <div class="container">
     <div class="col-sm-12" id="div-result">
@@ -131,138 +147,112 @@
             transitionEffect: "slideLeft"
         });
     });
+
+    //get articleID array
     var arrArticleID = [];
+    var arrArticle = [];
+    $('.arrArticleID').each(function () {
+        arrArticleID.push($(this).val());
+        arrArticle.push({
+            arSubject:$(this).attr('subject'),
+            arID:$(this).val(),
+            arContent:$(this).attr('content')
+        });
+    });
+    var dataUserAns = [];
+    var lengthQues = $("#lengthQues").val();
     $("#btnCheckRs").on('click', function () {
-        $('.arrArticleID').each(function () {
-            arrArticleID.push($(this).val());
-        });
-        console.log("Length Ar's ID :" + arrArticleID.length);
-
+        $("#do-test-articles").hide();
         $('.question-div-info').each(function () {
-            var checkedArr = $('input:radio:checked');
-            if(checkedArr!=null){
-                console.log(checkedArr);
-            }
-
+            var idQues = $(this).attr("id");
+            var ofArticle = $(this).attr("ofArticle");
+            var UserOp = $("input[name=" + idQues + "]:checked").val();
+            dataUserAns.push({
+                'UserOp': UserOp,
+                'idQues': idQues,
+                'ofArticle':ofArticle
+            });
         });
+        $.ajax({
+            url: "/japtool/test/checkAnsUser",
+            dataType: "json",
+            data: {
+                dataUserAns: JSON.stringify(dataUserAns),
+                arrArticleID: arrArticleID,
+                lengthQues:lengthQues
+            },
+            method: "GET",
+            success: function (result) {
+                var listEmpty = result[0];
+                var listResultTest = result[1];
+                // variable of user's point
+                var countSum = $("#lengthQues").val();
+                var numAnswerTrue =0;
 
-//        var checkedArr = $('input:radio:checked');
-//        var pointSum = parseInt($("#pointSum").val());
-//        var pointUser = 0;
-//        $("#div-show-Rs-test").empty();
-//        var arrQueNotEm = [];
-//        $.ajax({
-//            url: 'getListArticle',
-//            method: 'post',
-//            data: {
-//                arrArticleID: arrArticleID
-//            },
-//            success: function (articles) {
-
-//                for (var i = 0; i < checkedArr.length; i++) {
-//                    for (var j = 0; j < questions.length; j++) {
-//                        if(questions[j].id == checkedArr[i].name) {
-//                            arrQueNotEm.push(questions[j]);
-//                            console.log("detected a question !");
-//                            questions.splice(j,1);
-//                            break;
-//                        }
-//                    }
-//                }
-//                //show questions aren't choiced
-//                console.log("show questions aren't choiced");
-//                for (var i =0 ; i < questions.length ; i++) {
-//                    console.log(questions[i]);
-//                    $("#"+questions[i].id).val("false");
-//                    $("#div-show-Rs-test").append("" +
-//                    "<div class='col-sm-12'>" +
-//                    "<p><span class='lb-ts-test'>"+questions[i].question+"</span>" +
-//                    "<p><span class='lb-ts-test-fail'>Your ans : Empty</span> "+
-//                    "</div>" +
-//                    "");
-//                }
-//                // check questions are choiced
-//                console.log("check questions are choiced");
-//                for(var i=0;i<checkedArr.length;i++) {
-//                    for(var j =0 ; j < arrQueNotEm.length ; j++) {
-//                        if(checkedArr[i].name==arrQueNotEm[j].id) {
-//                            // if user's choice is true
-//                            if(checkedArr[i].value==arrQueNotEm[j].option1 && arrQueNotEm[j].resultOption1==true) {
-//                                // pass result to textbox
-//                                $("#"+arrQueNotEm[i].id).val("true");
-//                                $("#div-show-Rs-test").append("" +
-//                                "<div class='col-sm-12'>" +
-//                                "<p><span class='lb-ts-test'>"+arrQueNotEm[i].question+"</span>" +
-//                                "<p><span class='lb-ts-test-ok'>Your ans : "+checkedArr[j].value+"</span><span class='label label-success'>True</span>" +
-//                                "</div>" +
-//                                "");
-//                                pointUser++;
-//                                break;
-//                            }
-//                            else if(checkedArr[i].value==arrQueNotEm[j].option2 && arrQueNotEm[j].resultOption2==true) {
-//                                // pass result to textbox
-//                                $("#"+arrQueNotEm[i].id).val("true");
-//                                $("#div-show-Rs-test").append("" +
-//                                "<div class='col-sm-12'>" +
-//                                "<p><span class='lb-ts-test'>"+arrQueNotEm[i].question+"</span>" +
-//                                "<p><span class='lb-ts-test-ok'>Your ans : "+checkedArr[j].value+"</span><span class='label label-success'>True</span>" +
-//                                "</div>" +
-//                                "");
-//                                pointUser++;
-//                                break;
-//                            }
-//                            else if(checkedArr[i].value==arrQueNotEm[j].option3 && arrQueNotEm[j].resultOption3==true) {
-//                                // pass result to textbox
-//                                $("#"+arrQueNotEm[i].id).val("true");
-//                                $("#div-show-Rs-test").append("" +
-//                                "<div class='col-sm-12'>" +
-//                                "<p><span class='lb-ts-test'>"+arrQueNotEm[i].question+"</span>" +
-//                                "<p><span class='lb-ts-test-ok'>Your ans : "+checkedArr[j].value+"</span><span class='label label-success'>True</span>" +
-//                                "</div>" +
-//                                "");
-//                                pointUser++;
-//                                break;
-//                            }
-//                            else if(checkedArr[i].value==arrQueNotEm[j].option4 && arrQueNotEm[j].resultOption4==true) {
-//                                // pass result to textbox
-//                                $("#"+arrQueNotEm[i].id).val("true");
-//                                $("#div-show-Rs-test").append("" +
-//                                "<div class='col-sm-12'>" +
-//                                "<p><span class='lb-ts-test'>"+arrQueNotEm[i].question+"</span>" +
-//                                "<p><span class='lb-ts-test-ok'>Your ans : "+checkedArr[j].value+"</span><span class='label label-success'>True</span>" +
-//                                "</div>" +
-//                                "");
-//                                pointUser++;
-//                                break;
-//                            } else {
-//                                // pass result to textbox
-//                                $("#"+arrQueNotEm[i].id).val("false");
-//                                // if user's choice is false
-//                                $("#div-show-Rs-test").append("" +
-//                                "<div class='col-sm-12'>" +
-//                                "<p><span class='lb-ts-test'>"+arrQueNotEm[i].question+"</span>" +
-//                                "<p><span class='lb-ts-test-fail'>Your ans : <del>"+checkedArr[j].value+"</del></span><span class='label label-danger'>False</span>" +
-//                                "</div>" +
-//                                "");
-//                                break;
-//                            }
-//                        }
-//                    }
-//                }
-//                // count finish percent
-//                var finishRate = (pointUser / pointSum)*100;
-//                // get finish rate and point
-//                $("#div-show-Rs-test-point").append("" +
-//                "<hr>" +
-//                "<div class='col-sm-12'>" +
-//                "   <p><b>Number of Answer's True :</b>" +pointUser+"</p>"+
-//                "   <p><b>Your Lesson's Percent :</b>" +finishRate+"%</p>"+
-//                "</div>" +
-//                "");
-//                // empty list question , that define question is empty
-//                arrQueNotEm.length = 0 ;
-//                checkedArr.length = 0 ;
-//            };
-//        });
+                for(var i = 0 ; i < arrArticle.length;i++){
+                    $("#div-show-Rs-test").append("" +
+                    "<div class='col-sm-12'>" +"" +
+                    "<div class=row>"+
+                    "<p><span>"+"Article's Subject :"+arrArticle[i].arSubject+"</span>" +
+                    "<p><span>"+"Article's Content :"+arrArticle[i].arContent+"</span>" +
+                    "</div>"+
+                    "</div>" +
+                    "");
+                    // get questions empty
+                    for(var j = 0 ; j < listEmpty.length;j++ ){
+                        if(listEmpty[j].article==arrArticle[i].arID){
+                            $("#div-show-Rs-test").append("" +
+                            "<div class='col-sm-12'>" +
+                            "<p><span class='lb-ts-test'>"+listEmpty[j].question+"</span>" +
+                            "<p><span class='lb-ts-test-ok'>Your ans : "+"Empty"+"</span><span class='label label-danger'>False</span>" +
+                            "</div>" +
+                            "");
+                        }
+                    }
+                    // check question : true , false
+                    for(var k = 0 ; k < listResultTest.length ; k++){
+                        if(listResultTest[k].ofArticle==arrArticle[i].arID && listResultTest[k].result==true){
+                            $("#div-show-Rs-test").append("" +
+                            "<div class='col-sm-12'>" +
+                            "<p><span class='lb-ts-test'>"+listResultTest[k].QuesContent+"</span>" +
+                            "<p><span class='lb-ts-test-ok'>Your ans : "+listResultTest[k].UserOp+"</span><span class='label label-success'>True</span>" +
+                            "</div>" +
+                            "");
+                            numAnswerTrue++;
+                        }
+                        if(listResultTest[k].ofArticle==arrArticle[i].arID && listResultTest[k].result==false) {
+                            $("#div-show-Rs-test").append("" +
+                            "<div class='col-sm-12'>" +
+                            "<p><span class='lb-ts-test'>"+listResultTest[k].QuesContent+"</span>" +
+                            "<p><span class='lb-ts-test-fail'>Your ans : <del>"+listResultTest[k].UserOp+"</del></span><span class='label label-danger'>False</span>" +
+                            "</div>" +
+                            "");
+                        }
+                    }
+                }
+                // count point
+                var pointUser = numAnswerTrue/countSum;
+                // get date time
+                var currentdate = new Date();
+                var finishDate = currentdate.getDate() + "/"
+                        + (currentdate.getMonth()+1)  + "/"
+                        + currentdate.getFullYear() + " @ "
+                        + currentdate.getHours() + ":"
+                        + currentdate.getMinutes() + ":"
+                        + currentdate.getSeconds();
+                var dateStart = $("#dateStart").val();
+                $("#div-show-Rs-test-point").append("" +
+                "<div class='col-sm-12'>" +"" +
+                "<hr>"+"" +
+                "<p><span>Your Mark :</span>"+"<span>"+pointUser+"</span>"+
+                "<p><span>Start Date :</span>"+"<span>"+dateStart+"</span>"+
+                "<p><span>Finish Date :</span>"+"<span>"+formatDateFinish+"</span>"+
+                "</div>" +
+                "");
+            },
+            error: function () {
+                $(this).html("Error!");
+            }
+        });
     });
 </script>

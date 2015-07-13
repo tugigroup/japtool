@@ -9,22 +9,22 @@ module.exports = {
     },
     home: function (req, res) {
         try {
-        BookUseHistory.find({userId:req.session.User.id})
-          .populate('bookMaster')
-          .populate('userLearnHistories').exec(function (err, bookUseHistories) {
-          if (err) {
-            sails.log("Err when read data from server:");
-            return res.serverError(err);
-          }
-          if (bookUseHistories == null|| bookUseHistories==undefined) {
-            return res.json({err: "Error"});
-          }
-          bookUseHistories.forEach(function(bookUse){
-            sails.log(bookUse.bookMaster);
-          });
-          //sails.log(bookUseHistories);
-          res.view('japtool/home/home',{bookUseHistories:bookUseHistories});
-        });
+            BookUseHistory.find({userId: req.session.User.id})
+                .populate('bookMaster')
+                .populate('userLearnHistories').exec(function (err, bookUseHistories) {
+                    if (err) {
+                        sails.log("Err when read data from server:");
+                        return res.serverError(err);
+                    }
+                    if (bookUseHistories == null || bookUseHistories == undefined) {
+                        return res.json({err: "Error"});
+                    }
+                    bookUseHistories.forEach(function (bookUse) {
+                        sails.log(bookUse.bookMaster);
+                    });
+                    //sails.log(bookUseHistories);
+                    res.view('japtool/home/home', {bookUseHistories: bookUseHistories});
+                });
         }
         catch (ex) {
             sails.log(ex);
@@ -42,16 +42,16 @@ module.exports = {
     add: function (req, res) {
         try {
             var userId = req.session.User.id;
-            var notes= req.param('notes');
+            var notes = req.param('notes');
             var bookMaster = req.param('bookMaster');
             var startDate = req.param('startDate');
             var finishDate = req.param('finishDate');
             SelfLearning.create({
-                notes:notes,
-                startDate:startDate,
-                finishDate:finishDate,
-                bookMaster:bookMaster,
-                user:userId
+                notes: notes,
+                startDate: startDate,
+                finishDate: finishDate,
+                bookMaster: bookMaster,
+                user: userId
             }).exec(function (err, selfLearning) {
                 if (err) {
                     return res.json({err: err});
@@ -60,11 +60,11 @@ module.exports = {
                     return res.json({err: "Error"});
                 }
                 BookUseHistory.create({
-                    userId:userId,
-                    bookMaster:bookMaster,
-                    startDate:startDate,
-                    finishDate:finishDate,
-                    selfLearning:selfLearning
+                    userId: userId,
+                    bookMaster: bookMaster,
+                    startDate: startDate,
+                    finishDate: finishDate,
+                    selfLearning: selfLearning
                 }).exec(function (err, bookusehistory) {
                     if (err) {
 
@@ -100,17 +100,25 @@ module.exports = {
     },
 
     index: function (req, res) {
-        SelfLearning.find().populate('bookMaster').exec(function (err, selfLearnings) {
+        var arrTag=[];
+        SelfLearning.find().populate('bookMaster', {sort: 'startDate'}).exec(function (err, selfLearnings) {
             if (err) {
                 sails.log("Loi cmnr dm")
             }
             else {
-                res.view({
-                    learnList: selfLearnings
-                });
+                selfLearnings.forEach(function (item, index) {
+                    arrTag.push(item.bookMaster.type);
+                    if (index == (selfLearnings.length - 1)) {
+                        var array = require("array-extended");
+                        var uniqueType = array(arrTag).unique().value();
+                        res.view( {
+                            learnList: selfLearnings,
+                            uniqueType: uniqueType
+                        })
+                    }
+
+                })
             }
-
-
         })
     },
     deleteLearning: function (req, res) {

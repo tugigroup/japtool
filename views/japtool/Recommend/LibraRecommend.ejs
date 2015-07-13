@@ -53,7 +53,7 @@
                                 </li>
                                 <li>
                                     <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Number
-                                    Lesson: <%= book.bookDetail.length %>
+                                    Lesson: <%= book.bookDetails.length %>
                                 </li>
                                 <li>
                                     <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
@@ -105,7 +105,7 @@
                                         </li>
                                         <li>
                                             <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
-                                            Number Lesson: <%= book.bookDetail.length %>
+                                            Number Lesson: <%= book.bookDetails.length %>
                                         </li>
                                         <li>
                                             <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
@@ -186,11 +186,11 @@
                                                 <% item.arrLesson.forEach(function(uniqueLesson){ %>
                                                 <li class='has-sub'><a
                                                             href='javascript: void(0)'><%= uniqueLesson %></a>
-                                                    <% book.bookDetail.forEach(function(bookDetail){ %>
-                                                    <% if(uniqueLesson == bookDetail.lesson) { %>
+                                                    <% book.bookDetails.forEach(function(bookDetails){ %>
+                                                    <% if(uniqueLesson == bookDetails.lesson) { %>
                                                     <ul>
                                                         <li><a href='javascript: void(0)'
-                                                               onclick="learn('<%= bookDetail.useModule %>', <%= bookDetail.dataExtractCondition %>, '<%= book.id %>')"><%= bookDetail.subLesson %></a>
+                                                               onclick="learn('<%= bookDetails.useModule %>', <%= bookDetails.dataExtractCondition %>, '<%= book.id %>')"><%= bookDetails.subLesson %></a>
                                                         </li>
                                                     </ul>
                                                     <% } %>

@@ -11,9 +11,12 @@
                 </div>
             </div>
         </div>
+        <% for(var j = 0;j < uniqueType.length;j++){ %>
         <div class="row">
             <div class="col-sm-3">
-                <h2>Manage Learning</h2>
+                <h2>
+                    <%= uniqueType[j] %>
+                </h2>
             </div>
             <div class="col-sm-12 clearfix">
                 <div class="library-page-line"></div>
@@ -21,6 +24,7 @@
         </div>
         <div class="row manager-learning-item">
             <% for(var i = 0;i < learnList.length;i++){ %>
+            <% if(learnList[i].bookMaster.type == uniqueType[j]){ %>
             <div class="col-sm-4">
                 <div class="row">
                     <div class="col-sm-4">
@@ -55,7 +59,7 @@
                             <li>
                                 <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
                                 <a class="text-danger" href="#" data-toggle="modal" data-target="#lib-1">Preview</a> -
-                                <a href="/japtool/BookMaster/practice/<%=learnList[i].bookMaster.id%>">Go to Learn</a>
+                                <a href="/japtool/BookMaster/practice/<%= learnList[i].bookMaster.id %>">Go to Learn</a>
                             </li>
                         </ul>
                     </div>
@@ -121,6 +125,8 @@
                 </div>
             </div>
             <% } %>
+            <% } %>
         </div>
+        <% } %>
     </div>
 </div>

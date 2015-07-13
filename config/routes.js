@@ -60,7 +60,7 @@ module.exports.routes = {
     '/displayArticleCT/:id':'admin/Article.showArticle',       
     '/showAllArticle':'admin/ArticleController.showAll',
     '/deleteArticle/:id':'admin/ArticleController.delete',
-    'post /editArticle':'admin/ArticleController.editAr',
+    'post /editArticle/:id':'admin/ArticleController.editAr',
     '/sendEditArticle':'admin/ArticleController.editAr',
     'post /updateArticle':'admin/ArticleController.update',
     // Question by duongtd2
