@@ -53,14 +53,14 @@
                                 </li>
                                 <li>
                                     <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Number
-                                    Lesson: <%= book.bookDetail.length %>
+                                    Lesson: <%= book.bookDetails.length %>
                                 </li>
                                 <li>
                                     <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
                                     <a href="#" title="Click to view this library lesson." data-toggle="modal"
                                        data-target="#lib-review-<%= book.id %>" class="text-danger">Preview</a> -
                                     <span></span>
-                                    <a href="/japtool/BookMaster/lesson/<%= book.id %>"
+                                    <a href="/japtool/BookMaster/practice/<%= book.id %>"
                                        title="Click to learn this library." class="text-info">Learning
                                         Library</a>
                                 </li>
@@ -105,7 +105,7 @@
                                         </li>
                                         <li>
                                             <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
-                                            Number Lesson: <%= book.bookDetail.length %>
+                                            Number Lesson: <%= book.bookDetails.length %>
                                         </li>
                                         <li>
                                             <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
@@ -155,7 +155,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <a href="/japtool/BookMaster/lesson/<%= book.id %>" class="btn btn-success" role="button">Learning
+                            <a href="/japtool/BookMaster/practice/<%= book.id %>" class="btn btn-success" role="button">Learning
                                 This Library</a>
                             <a href="#" class="btn btn-danger" role="button" data-dismiss="modal">Close</a>
                         </div>
@@ -185,7 +185,7 @@
                                                 <% if(item.idLesson == book.id){ %>
                                                 <% item.arrLesson.forEach(function(uniqueLesson){ %>
                                                 <li class='has-sub'><a href='javascript: void(0)'><%= uniqueLesson %></a>
-                                                    <% book.bookDetail.forEach(function(bookDetail){ %>
+                                                    <% book.bookDetails.forEach(function(bookDetail){ %>
                                                     <% if(uniqueLesson == bookDetail.lesson) { %>
                                                     <ul>
                                                         <li><a href='javascript: void(0)'
@@ -210,7 +210,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <a href="/japtool/BookMaster/lesson/<%= book.id %>" class="btn btn-success" role="button">Learning
+                            <a href="/japtool/BookMaster/practice/<%= book.id %>" class="btn btn-success" role="button">Learning
                                 This Library</a>
                             <a href="#" class="btn btn-danger" role="button" data-dismiss="modal">Close</a>
                         </div>

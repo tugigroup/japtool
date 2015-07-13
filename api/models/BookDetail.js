@@ -14,7 +14,7 @@ module.exports = {
         useModule: {type: 'string'},
         useCollection: {type: 'string'},
         dataExtractCondition: {type: 'string'},
-        bookID: {
+        bookMaster: {
             model: 'bookMaster'
         }
     }
