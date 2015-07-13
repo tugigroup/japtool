@@ -32,7 +32,7 @@ module.exports = {
         });
     },
     show: function (req, res) {
-        BookMaster.find().populate('bookDetail',{ sort: 'sort ASC' }).exec(function createCB(err, data) {
+        BookMaster.find().populate('bookDetails',{ sort: 'sort ASC' }).exec(function createCB(err, data) {
             if (err) {
                 sails.log(err)
             } else {
@@ -40,14 +40,14 @@ module.exports = {
             }
         })
     },
-    lesson: function (req, res) {
+    practice: function (req, res) {
         var id = req.param('id');
         var array = require("array-extended");
-        BookMaster.findOne({id: id}).populate('bookDetail',{ sort: 'sort ASC' }).exec(function createCB(err, data) {
+        BookMaster.findOne({id: id}).populate('bookDetails',{ sort: 'sort ASC' }).exec(function createCB(err, data) {
             if (err) {
                 sails.log(err)
             } else {
-                var bookDetails = data.bookDetail;
+                var bookDetails = data.bookDetails;
                 var lessons = [];
                 bookDetails.forEach(function (item) {
                     lessons.push(item.lesson);
@@ -64,16 +64,16 @@ module.exports = {
     },
 
     getLibrary: function (req, res) {
-        BookMaster.find({}).populate('bookDetail',{ sort: 'sort ASC' }).exec(function createCB(err, data) {
+        BookMaster.find({}).populate('bookDetails',{ sort: 'sort ASC' }).exec(function createCB(err, data) {
             var arrTag = [];
             var arrAllLesson = [];
 
             data.forEach(function (book) {
                 var arrLesson = [];
-                if (book.bookDetail.length != 0) {
-                    book.bookDetail.forEach(function (item, index) {
+                if (book.bookDetails.length != 0) {
+                    book.bookDetails.forEach(function (item, index) {
                         arrLesson.push(item.lesson);
-                        if (index == (book.bookDetail.length - 1)) {
+                        if (index == (book.bookDetails.length - 1)) {
                             var array = require("array-extended");
                             var uniqueArrLesson = array(arrLesson).unique().value();
                             var objLesson = {
@@ -104,15 +104,15 @@ module.exports = {
 
     getAllLibrary: function (req, res) {
         var type = req.param('type');
-        BookMaster.find({type: type}).populate('bookDetail',{ sort: 'sort ASC' }).exec(function createCB(err, data) {
+        BookMaster.find({type: type}).populate('bookDetails',{ sort: 'sort ASC' }).exec(function createCB(err, data) {
             var arrAllLesson = [];
 
             data.forEach(function (book) {
                 var arrLesson = [];
-                if (book.bookDetail.length != 0) {
-                    book.bookDetail.forEach(function (item, index) {
+                if (book.bookDetails.length != 0) {
+                    book.bookDetails.forEach(function (item, index) {
                         arrLesson.push(item.lesson);
-                        if (index == (book.bookDetail.length - 1)) {
+                        if (index == (book.bookDetails.length - 1)) {
                             var array = require("array-extended");
                             var uniqueArrLesson = array(arrLesson).unique().value();
                             var objLesson = {
