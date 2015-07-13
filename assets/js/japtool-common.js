@@ -276,16 +276,7 @@ $(document).ready(function () {
     });
 
     //Show div search of manage learning
-    $("#btn-show-search").click(function () {
-        $("#default-hide").show();
-        $("#default-show").hide();
-    });
 
-    //Close search of manage learning
-    $("#close-search").click(function () {
-        $("#default-show").show();
-        $("#default-hide").hide();
-    });
 
     //Show and hiden icon Upload avatar image of page create learning
     $("#btnUp").hide();

@@ -6,10 +6,7 @@
             </div>
             <div id="default-show" class="clearfix">
                 <div class="default-show">
-                    <div class="col-md-offset-6 col-sm-1">
-                        <button type="button" class="btn btn-success" id="btn-show-search">Search</button>
-                    </div>
-                    <div class="col-sm-2">
+                    <div class="col-md-offset-7 col-sm-2">
                         <a href="/japtool/learning/create">
                             <button type="button" class="btn btn-danger">Create New Learning</button>
                         </a>
@@ -21,70 +18,43 @@
                 <div class="library-page-line"></div>
             </div>
         </div>
-        <div class="row">
-            <div class="" id="default-hide">
-                <div class="panel-body">
-                    <div class="row close-text">
-                        <button type="button" class="close" data-dismiss="modal" id="close-search" aria-label="Close">
-                            <span aria-hidden="true">×</span></button>
-                    </div>
-                    <form method="" action="">
-                        <div class="col-sm-1">
-                            <div class="lb-name">Name</div>
-                        </div>
-                        <div class="col-sm-3">
-                            <input type="text" class="form-control tb-search-name" placeholder="name">
-                        </div>
-                        <div class="col-sm-offset-1 col-sm-1">
-                            <div class="lb-name">Status</div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="form-group">
-                                <select class="form-control" id="sel1">
-                                    <option>Studying</option>
-                                    <option>Complete</option>
-                                    <option>Not started learning</option>
-                                </select>
-
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <button type="button" class="btn btn-primary">Search <span
-                                        class="glyphicon glyphicon-search"></span>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-        </div>
         <div class="row manager-learning-item">
-            <%for(var i=0;i<learnList.length;i++){%>
+            <% for(var i = 0;i < learnList.length;i++){ %>
             <div class="col-sm-4">
                 <div class="row">
                     <div class="col-sm-4">
-                        <img src="/images/library-icons/8.png"/>
+                        <a href="#" class="text-primary lb-learn-name"
+                           title="Click to view this library details"
+                           data-toggle="modal" data-target="#lib-1"><img class="media-object col-xs-3 libImg"
+
+                                    <% if (learnList[i].bookMaster.image) { %>
+                                                                         src="/media/image/<%= learnList[i].bookMaster.image %>"
+                                    <% } else { %>
+                                                                         src="/images/bookicon.jpg"
+                                    <% } %>
+
+                                                                         title="Click to view this library details"></a>
                     </div>
                     <div class="col-lg-8">
                         <h4 class="media-heading">
                             <a href="#" class="text-primary lb-learn-name"
                                title="Click to view this library details"
-                               data-toggle="modal" data-target="#lib-1"><%=learnList[i].bookMaster.name%></a>
+                               data-toggle="modal" data-target="#lib-1"><%= learnList[i].bookMaster.name %></a>
                         </h4>
                         <ul>
                             <li>
                                 <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
-                                <%=learnList[i].bookMaster.name%>
+                                <%= learnList[i].bookMaster.name %>
 
                             </li>
                             <li>
                                 <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
-                                <%=learnList[i].status%>
+                                <%= learnList[i].status %>
                             </li>
                             <li>
                                 <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
                                 <a class="text-danger" href="#" data-toggle="modal" data-target="#lib-1">Preview</a> -
-                                <a href="/japtool/BookMaster/lesson/<%=learnList[i].bookMaster.id%>">Go to Learn</a>
+                                <a href="/japtool/BookMaster/lesson/<%= learnList[i].bookMaster.id %>">Go to Learn</a>
                             </li>
                         </ul>
                     </div>
@@ -113,20 +83,22 @@
                                                             <h4>Details:</h4>
                                                             <li>
                                                                 <span class="glyphicon glyphicon-play"
-                                                                      aria-hidden="true"></span> From : <%=learnList[i].startDate%>
+                                                                      aria-hidden="true"></span> From
+                                                                : <%= learnList[i].startDate %>
                                                             </li>
                                                             <li>
                                                                 <span class="glyphicon glyphicon-stop"
-                                                                      aria-hidden="true"></span> To : <%=learnList[i].finishDate%>
+                                                                      aria-hidden="true"></span> To
+                                                                : <%= learnList[i].finishDate %>
                                                             </li>
                                                             <li>
                                                                 <span class="glyphicon glyphicon-book"
                                                                       aria-hidden="true"></span>
-                                                                <%=learnList[i].bookMaster.name%>
+                                                                <%= learnList[i].bookMaster.name %>
                                                             </li>
                                                             <li>
                                                                 <h4>Description</h4>
-                                                                <%=learnList[i].bookMaster.description%>
+                                                                <%= learnList[i].bookMaster.description %>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -137,7 +109,8 @@
                                 </div>
                                 <div class="modal-footer">
                                     <a href="#" class="btn btn-primary" role="button">Edit</a>
-                                    <a href="#" onclick="deleteLearning()" title="<%=learnList[i].id%>" id="deleteLearning" class="btn btn-danger" role="button">Delete</a>
+                                    <a href="#" onclick="deleteLearning()" title="<%= learnList[i].id %>"
+                                       id="deleteLearning" class="btn btn-danger" role="button">Delete</a>
                                     <a href="#" class="btn btn-warning" role="button" data-dismiss="modal">Close</a>
                                 </div>
                             </div>
@@ -146,7 +119,7 @@
 
                 </div>
             </div>
-            <%}%>
+            <% } %>
         </div>
     </div>
 </div>
