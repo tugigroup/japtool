@@ -1,0 +1,36 @@
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#vocabularyList").steps({
+      headerTag: "h3",
+      bodyTag: "section",
+      transitionEffect: "slideLeft"
+    });
+  });
+</script>
+<div id="vocabularyList">
+  <% vocabularies.forEach( function(vocabulary, index){ %>
+  <h3><%= vocabulary.item %></h3>
+  <section>
+    <h4 class="text-center text-danger"><%= vocabulary.item %></h4>
+    <p>
+      <span class="text-success">Reading <i class="fa fa-microphone text-danger"></i> : </span><%= vocabulary.reading %>
+    </p>
+
+    <p><span class="text-success">Description: </span><%= vocabulary.description %></p>
+
+    <% if (typeof vocabulary.examples !== 'undefined' && vocabulary.examples.length > 0) { %>
+    <p><span class="text-success">Example: </span></p>
+    <ul class="vocabulary-item-example">
+      <% vocabulary.examples.forEach( function(item){ %>
+      <% if (item.example == 'undefined' || item.example.length == 0){ %>
+      <% }else { %>
+      <li><span class="text-danger"><%= item.example %> : </span><%= item.meaning %></li>
+      <% } %>
+      <% }) %>
+    </ul>
+    <% } %>
+
+  </section>
+  <% }); %>
+
+</div>
