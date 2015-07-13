@@ -1471,13 +1471,18 @@ ul.timeline li .timeline-panel:after {
     color: #aaa;
     cursor: default;
 }
+.wizard .steps .notdisabled a, .wizard .steps .notdisabled a:hover, .wizard .steps .notdisabled a:active {
+    background: #eee;
+    color: #aaa;
+    cursor: pointer;
+}
 
 .wizard .steps .current a,
 .wizard .steps .current a:hover,
 .wizard .steps .current a:active {
     background: #2184be;
     color: #fff;
-    cursor: default;
+    cursor: pointer;
 }
 
 .wizard .steps .done a,

@@ -46,7 +46,7 @@
                                 </li>
                                 <li>
                                     <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Number
-                                    Lesson: <%= book.bookDetail.length %>
+                                    Lesson: <%= book.bookDetails.length %>
                                 </li>
                                 <li>
                                     <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
@@ -92,7 +92,7 @@
                                         </li>
                                         <li>
                                             <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
-                                            Number Lesson: <%= book.bookDetail.length %>
+                                            Number Lesson: <%= book.bookDetails.length %>
                                         </li>
                                         <li>
                                             <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
@@ -172,8 +172,8 @@
                                                 <% if(item.idLesson == book.id){ %>
                                                 <% item.arrLesson.forEach(function(uniqueLesson){ %>
                                                 <li class='has-sub'><a href='#'><%= uniqueLesson %></a>
-                                                    <% if(book.bookDetail.length != 0){ %>
-                                                    <% book.bookDetail.forEach(function(bookDetail){ %>
+                                                    <% if(book.bookDetails.length != 0){ %>
+                                                    <% book.bookDetails.forEach(function(bookDetail){ %>
                                                     <% if(uniqueLesson == bookDetail.lesson) { %>
                                                     <ul>
                                                         <li><a href='#'

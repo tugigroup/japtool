@@ -18,9 +18,9 @@ $.fn.extend({
 
     _enableAria: function (enable)
     {
-        return (enable == null || enable) ? 
-            this.removeClass("disabled")._aria("disabled", "false") : 
-            this.addClass("disabled")._aria("disabled", "true");
+        return (enable == null || enable) ?
+            this.removeClass("disabled")._aria("disabled", "false") :
+            this.addClass("notdisabled")._aria("disabled", "true");
     },
 
     _showAria: function (show)
