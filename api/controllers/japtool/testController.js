@@ -8,12 +8,7 @@
 module.exports = {
     list: function (req, res) {
         var condition = req.param('condition');
-<<<<<<< HEAD
         Article.getLessonArticle({condition: condition}, function(err, articles){
-=======
-        //var condition = '{"level": "N3", "tag" : {"contains":",1991,grammar,"}}';
-        Article.getLessonArticle({condition: condition}, function (err, articles) {
->>>>>>> 12b7d7e4801d06920442c48db2d24ecbb706009c
             res.render('japtool/learning/learnArticle',
                 {
                     data: articles,
