@@ -12,19 +12,19 @@
             <form class="form-group" id="qt<%= i+1 %>">
 
                 <label><%= surveies[i].question %>?</label>
-                <% if(surveies[i].option1 != null){ %>
+                <% if(surveies[i].option1 != null && surveies[i].option2 !=""){ %>
                 <p><input type="radio" name="lib-recommend-3-q<%= i+1 %>"onchange="checkAnswer3()"
                           value="<%= surveies[i].correct1 %>"> <%= surveies[i].option1 %></p>
                 <% } %>
-                <% if(surveies[i].option2 != null){ %>
+                <% if(surveies[i].option2 != null && surveies[i].option2 !=""){ %>
                 <p><input type="radio" name="lib-recommend-3-q<%= i+1 %>"onchange="checkAnswer3()"
                           value="<%= surveies[i].correct2 %>"> <%= surveies[i].option2 %></p>
                 <% } %>
-                <% if(surveies[i].option3 != null){ %>
+                <% if(surveies[i].option3 != null && surveies[i].option2 !=""){ %>
                 <p><input type="radio" name="lib-recommend-3-q<%= i+1 %>"onchange="checkAnswer3()"
                           value="<%= surveies[i].correct3 %>"> <%= surveies[i].option3 %></p>
                 <% } %>
-                <% if(surveies[i].option4 != null){ %>
+                <% if(surveies[i].option4 != null && surveies[i].option2 !=""){ %>
                 <p><input type="radio" name="lib-recommend-3-q<%= i+1 %>" onchange="checkAnswer3()"
                           value="<%= surveies[i].correct4 %>"> <%= surveies[i].option4 %></p>
                 <% } %>
