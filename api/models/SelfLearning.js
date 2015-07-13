@@ -31,12 +31,12 @@ module.exports = {
 
         bookUseHistories: {
             collection: 'BookUseHistory',
-            via: 'learning'
+            via: 'selfLearning'
         },
 
         UserLearnHistories: {
           collection: 'UserLearnHistory',
-          via: 'learning'
+          via: 'selfLearning'
         }
     }
 };

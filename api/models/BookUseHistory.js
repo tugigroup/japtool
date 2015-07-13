@@ -10,8 +10,8 @@ module.exports = {
       required: true
     },
 
-    learning: {
-      model: 'Learning'
+    selfLearning: {
+      model: 'SelfLearning'
     },
     finishRate:{
       type: 'float'

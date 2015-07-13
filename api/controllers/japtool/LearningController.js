@@ -46,17 +46,17 @@ module.exports = {
             var bookMaster = req.param('bookMaster');
             var startDate = req.param('startDate');
             var finishDate = req.param('finishDate');
-            Learning.create({
+            SelfLearning.create({
                 notes:notes,
                 startDate:startDate,
                 finishDate:finishDate,
                 bookMaster:bookMaster,
                 user:userId
-            }).exec(function (err, learning) {
+            }).exec(function (err, selfLearning) {
                 if (err) {
                     return res.json({err: err});
                 }
-                if (!learning) {
+                if (!selfLearning) {
                     return res.json({err: "Error"});
                 }
                 BookUseHistory.create({
@@ -64,7 +64,7 @@ module.exports = {
                     bookMaster:bookMaster,
                     startDate:startDate,
                     finishDate:finishDate,
-                    learning:learning.id
+                    selfLearning:selfLearning
                 }).exec(function (err, bookusehistory) {
                     if (err) {
 
@@ -100,13 +100,13 @@ module.exports = {
     },
 
     index: function (req, res) {
-        Learning.find().populate('bookMaster').exec(function (err, learnings) {
+        SelfLearning.find().populate('bookMaster').exec(function (err, selfLearnings) {
             if (err) {
                 sails.log("Loi cmnr dm")
             }
             else {
                 res.view({
-                    learnList: learnings
+                    learnList: selfLearnings
                 });
             }
 

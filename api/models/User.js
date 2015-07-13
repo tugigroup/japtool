@@ -88,8 +88,8 @@ module.exports = {
         user_country: {
             model: 'country'
         },
-        learnings: {
-            collection: 'Learning',
+        selfLearnings: {
+            collection: 'SelfLearning',
             via: 'user'
         },
     },

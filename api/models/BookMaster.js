@@ -24,8 +24,8 @@ module.exports = {
             collection: 'BookDetail',
             via: 'bookMaster'
         },
-        learnings: {
-            collection: 'Learning',
+        selfLearnings: {
+            collection: 'SelfLearning',
             via: 'bookMaster'
         },
         bookUseHistories: {
