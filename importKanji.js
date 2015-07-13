@@ -24,7 +24,7 @@ var kanjiSchema = mongoose.Schema({
 var kanjiColl = mongoose.model('kanji', kanjiSchema);
 
 var exampleSchema = mongoose.Schema({
-	exampleSetID:  	mongoose.Schema.Types.ObjectId,
+	kanji:  	mongoose.Schema.Types.ObjectId,
 	example: 		String,
 	meaning:   		String
 },{ collection: 'example', versionKey: false  });
@@ -109,7 +109,7 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, kanjis){
 					}else {
 						var items = [];
 						items = example.split(config.chars_split_insite_examples);
-						var insertedExample = new exampleColl({ exampleSetID: item.id,
+						var insertedExample = new exampleColl({ kanji: item.id,
 													example: items[0],
 													meaning: items[1] 
 													});

@@ -21,17 +21,14 @@ var articleSchema = mongoose.Schema({
 var articleColl = mongoose.model('article', articleSchema);
 
 var questionSchema = mongoose.Schema({
-  articleID:     mongoose.Schema.Types.ObjectId,
+  article:     mongoose.Schema.Types.ObjectId,
   sort:          Number,
   question:      String,
   option1:       String,
-  resultOption1: Boolean,
   option2:       String,
-  resultOption2: Boolean,
   option3:       String,
-  resultOption3: Boolean,
   option4:       String,
-  resultOption4: Boolean
+  key: 			 String 
 },{ collection: 'question', versionKey: false  });
 
 var questionColl = mongoose.model('question', questionSchema);
@@ -69,10 +66,7 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, articles){
 	}
 
 	var article;
-	var result1;
-	var result2;
-	var result3;
-	var result4;
+	var key;
 	
 	var errorCount = 0;
 	var insertedArticle;
@@ -96,42 +90,27 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, articles){
 					// insert question record
 				    switch(article[12].toUpperCase()) {
 				    	case "A" :
-				    		result1 = true;
-				    		result2 = false;
-				    		result3 = false;
-				    		result4 = false;
+				    		key = "1";
 				    		break;
 				    	case "B" :
-				    		result1 = false;
-				    		result2 = true;
-				    		result3 = false;
-				    		result4 = false;
+				    		key = "2";
 				    		break;
 				    	case "C" :
-				    		result1 = false;
-				    		result2 = false;
-				    		result3 = true;
-				    		result4 = false;
+				    		key = "3";
 				    		break;
 				    	case "D" :
-				    		result1 = false;
-				    		result2 = false;
-				    		result3 = false;
-				    		result4 = true;
+				    		key = "4";
 				    		break;
 				    }
 					insertedQuestion = new questionColl({
-						articleID:  			insertedArticle._id,
+						article:  			insertedArticle._id,
 					    sort: 				    article[6],
 					    question: 			    article[7],
 					    option1: 				article[8],
-					    resultOption1: 			result1,
 					    option2: 	            article[9],
-					    resultOption2: 			result2,
 					    option3: 	            article[10],
-					    resultOption3: 			result3,
 					    option4: 	            article[11],
-					    resultOption4: 			result4
+					    key: 					key
 					});
 
 					insertedQuestion.save(function (err,data) {
@@ -177,42 +156,27 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, articles){
 				// insert question record
 				switch(article[12].toUpperCase()) {
 				    case "A" :
-				    	result1 = true;
-				    	result2 = false;
-				    	result3 = false;
-				    	result4 = false;
+				    	key = "1";
 				    	break;
 				    case "B" :
-				    	result1 = false;
-				    	result2 = true;
-				    	result3 = false;
-				    	result4 = false;
+				    	key = "2";
 				    	break;
 				    case "C" :
-				    	result1 = false;
-				    	result2 = false;
-				    	result3 = true;
-				    	result4 = false;
+				    	key = "3";
 				    	break;
 				    case "D" :
-				    	result1 = false;
-				    	result2 = false;
-				    	result3 = false;
-				    	result4 = true;
+				    	key = "4";
 				    	break;
 				}
 				insertedQuestion = new questionColl({
-					articleID:  			insertedArticle._id,
+					article:  			insertedArticle._id,
 					sort: 				    article[6],
 					question: 			    article[7],
 					option1: 				article[8],
-					resultOption1: 			result1,
 					option2: 	            article[9],
-					resultOption2: 			result2,
 					option3: 	            article[10],
-					resultOption3: 			result3,
 					option4: 	            article[11],
-					resultOption4: 			result4
+					key: 					key
 				});
 
 				insertedQuestion.save(function (err,data) {
@@ -258,43 +222,28 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, articles){
 
     		switch(article[12].toUpperCase()) {
 			    case "A" :
-			    	result1 = true;
-			    	result2 = false;
-			    	result3 = false;
-			    	result4 = false;
+			    	key = "1";
 			    	break;
 			    case "B" :
-			    	result1 = false;
-			    	result2 = true;
-			    	result3 = false;
-			    	result4 = false;
+			    	key = "2";
 			    	break;
 			    case "C" :
-			    	result1 = false;
-			    	result2 = false;
-			    	result3 = true;
-			    	result4 = false;
+			    	key = "3";
 			    	break;
 			    case "D" :
-			    	result1 = false;
-			    	result2 = false;
-			    	result3 = false;
-			    	result4 = true;
+			    	key = "4";
 			    	break;
 			}
 			// insert question record
 			insertedQuestion = new questionColl({
-				articleID:  			insertedArticle._id,
+				article:  			insertedArticle._id,
 				sort: 				    article[6],
 				question: 			    article[7],
 				option1: 				article[8],
-				resultOption1: 			result1,
 				option2: 	            article[9],
-				resultOption2: 			result2,
 				option3: 	            article[10],
-				resultOption3: 			result3,
 				option4: 	            article[11],
-				resultOption4: 			result4
+				key: 					key
 			});
 
 			insertedQuestion.save(function (err,data) {

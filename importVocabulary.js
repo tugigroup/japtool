@@ -22,7 +22,7 @@ var vocabularySchema = mongoose.Schema({
 var vocabularyColl = mongoose.model('vocabulary', vocabularySchema);
 
 var exampleSchema = mongoose.Schema({
-  exampleSetID:  	mongoose.Schema.Types.ObjectId,
+  vocabulary:  	mongoose.Schema.Types.ObjectId,
   example: 			String,
   meaning:   		String
 },{ collection: 'example', versionKey: false  });
@@ -103,7 +103,7 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, vocabularies){
 					}else {
 						var items = [];
 						items = example.split(config.chars_split_insite_examples);
-						var insertedExample = new exampleColl({ exampleSetID: item.id,
+						var insertedExample = new exampleColl({ vocabulary: item.id,
 													example: items[0],
 													meaning: items[1] 
 													});

@@ -54,7 +54,7 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, lessons){
 	var bookMasterColl = mongoose.model('bookmaster', bookMasterSchema);
 
 	var bookDetailSchema = mongoose.Schema({
-	  bookID:  			mongoose.Schema.Types.ObjectId,
+	  bookMaster:  			mongoose.Schema.Types.ObjectId,
 	  lesson: 					String,
 	  subLesson: 				String,
 	  sort: 					Number,
@@ -86,7 +86,7 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, lessons){
 			} else{
 				// insert book detail record
 				insertedBookDetail = new bookDetailColl({
-					bookID:  				insertedBookMaster._id,
+					bookMaster:  				insertedBookMaster._id,
 				    lesson: 				lesson[8],
 				    subLesson: 				lesson[9],
 				    sort: 					lesson[10],
@@ -140,7 +140,7 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, lessons){
 
 			// insert book detail record
 			insertedBookDetail = new bookDetailColl({
-				bookID:  				insertedBookMaster._id,
+				bookMaster:  				insertedBookMaster._id,
 			    lesson: 				lesson[8],
 			    subLesson: 				lesson[9],
 			    sort: 					lesson[10],
