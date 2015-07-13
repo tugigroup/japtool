@@ -9,10 +9,10 @@ module.exports = {
 
     attributes: {
         vocabulary: {
-            model: 'vocabulary'
+            model: 'Vocabulary'
         },
         kanji: {
-            model: 'kanji'
+            model: 'Kanji'
         },
         example: {
             type: 'string'
