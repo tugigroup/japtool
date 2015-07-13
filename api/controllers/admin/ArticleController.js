@@ -18,16 +18,16 @@ module.exports = {
         var sort=null;
         // upload files and get FD
         // Up load Image
-        fileAction.upload('video', 'files', req, function(err, videoUpload) {
+        FileAction.upload('video', req, function(err, videoUpload) {
             if (err) {
                 return res.negotiate(err);
             }
             else {
-                fileAction.upload('audio', 'files', req, function(err, audioUpload) {
+                FileAction.upload('audio', req, function(err, audioUpload) {
                     if (err) {
                         return res.negotiate(err);
                     } else {
-                        fileAction.upload('img', 'files', req, function(err, imgUploaded) {
+                        FileAction.upload('img', req, function(err, imgUploaded) {
                             if (err) {
                                 return res.negotiate(err);
                             } else {
@@ -217,18 +217,18 @@ module.exports = {
         var isVideoChange = req.param('isVideoChange');
         var isAudioChange = req.param('isAudioChange');
         var isImgChange = req.param('isImgChange');
-        fileAction.upload('video', 'files', req, function(err, videoUpload) {
+        FileAction.upload('video', req, function(err, videoUpload) {
             if (err) {
                 return res.negotiate(err);
             }
             else {
                 console.log("Upload video");
-                fileAction.upload('audio', 'files', req, function(err, audioUpload) {
+                FileAction.upload('audio', req, function(err, audioUpload) {
                     if (err) {
                         return res.negotiate(err);
                     } else {
                         console.log("Upload audio");
-                        fileAction.upload('img', 'files', req, function(err, imgUploaded) {
+                        FileAction.upload('img', req, function(err, imgUploaded) {
                             if (err) {
                                 return res.negotiate(err);
                             } else {
@@ -351,57 +351,7 @@ module.exports = {
             });
         });
     },
-    getImg: function (req, res) {
-        var fd = req.param('fd');
-        if (fd == null) {
-            res.send('null');
-        } else {
-            var skipperAdapter = common.skipperAdapter('files');
-            skipperAdapter.read(fd, function (error, file) {
-                if (error) {
-                    res.json(error);
-                } else {
-                    res.contentType('image/jpg');
-                    res.send(new Buffer(file));
-                }
-            });
-        }
-    },
 
-    getAudio: function (req, res) {
-        var fd = req.param('fd');
-        if (fd == null) {
-            res.send('');
-        } else {
-            var skipperAdapter = common.skipperAdapter('files');
-            skipperAdapter.read(fd, function (error, file) {
-                if (error) {
-                    res.json(error);
-                } else {
-                    res.contentType('audio/mpeg');
-                    res.send(new Buffer(file));
-                }
-            });
-        }
-    },
-
-    getVideo: function (req, res) {
-        var fd = req.param('fd');
-        if (fd == null) {
-            res.send('');
-        } else {
-            var skipperAdapter = common.skipperAdapter('files');
-
-            skipperAdapter.read(fd, function (error, file) {
-                if (error) {
-                    res.json(error);
-                } else {
-                    res.contentType('video/mp4');
-                    res.send(new Buffer(file));
-                }
-            });
-        }
-    },
     showToLearn:function (req,res) {
         Article.find(function foundProduct(err, articles) {
             if (err) {

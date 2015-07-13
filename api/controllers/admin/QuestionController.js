@@ -25,7 +25,7 @@ module.exports = {
         var sort = null;
         // upload files and get FD
         // Up load Image
-        fileAction.upload('img', 'files', req, function (err, imgUpload) {
+        FileAction.upload('img', req, function (err, imgUpload) {
             if (err) {
                 return res.negotiate(err);
             }
@@ -122,22 +122,7 @@ module.exports = {
             });
         });
     },
-    getImg: function (req, res) {
-        var fd = req.param('fd');
-        if (fd == null) {
-            res.send('null');
-        } else {
-            var skipperAdapter = common.skipperAdapter('files');
-            skipperAdapter.read(fd, function (error, file) {
-                if (error) {
-                    res.json(error);
-                } else {
-                    res.contentType('image/jpg');
-                    res.send(new Buffer(file));
-                }
-            });
-        }
-    },
+
     showAll: function (req, res, next) {
         Question.find(function foundQuestion(err, questions) {
             // get a list of Article's Subject
@@ -193,7 +178,7 @@ module.exports = {
         var resultOption4 = req.param('resultOption4');
         var isImgQueChange = req.param('isImgQueChange');
         console.log(isImgQueChange);
-        fileAction.upload('img', 'files', req, function (err, imgUpload) {
+        FileAction.upload('img', req, function (err, imgUpload) {
             if (err) {
                 return res.negotiate(err);
             }

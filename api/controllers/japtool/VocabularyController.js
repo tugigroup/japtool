@@ -71,7 +71,7 @@ module.exports = {
     //pronounce: function(req,res){
     //	var vocabulary = req.allParams();
     //	console.log(vocabulary);
-    //	VocabularyService.googleTranslate('ja',vocabulary.word,function(result){
+    //	Speech.googleTranslate('ja',vocabulary.word,function(result){
     //		//console.log(result);
     //	    if(result.success) {
     //	        res.json(result);
@@ -83,7 +83,7 @@ module.exports = {
     //// pronounce: function(req,res){
     //// 	var vocabulary = req.allParams();
     //// 	console.log(vocabulary);
-    //// 	VocabularyService.voicerRSS('ja-jp',vocabulary.word,function(result){
+    //// 	Speech.voicerRSS('ja-jp',vocabulary.word,function(result){
     //		// //console.log(result);
     //	 //    if(result.success) {
     //	 //        res.json(result);

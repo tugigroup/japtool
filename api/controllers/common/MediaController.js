@@ -12,13 +12,13 @@ module.exports = {
         if (fd == null) {
             res.send('null');
         } else {
-            var skipperAdapter = database.skipperAdapter('files');
+            var skipperAdapter = Database.skipperAdapter('files');
             skipperAdapter.read(fd, function (error, file) {
                 //console.log('file: ' + JSON.stringify(file));
                 if (error) {
                     res.json(error);
                 } else {
-                    res.contentType('image');
+                    res.contentType('image/jpg');
                     res.send(new Buffer(file));
                 }
             });
@@ -30,12 +30,12 @@ module.exports = {
         if (fd == null) {
             res.send('');
         } else {
-            var skipperAdapter = database.skipperAdapter('files');
+            var skipperAdapter = Database.skipperAdapter('files');
             skipperAdapter.read(fd, function (error, file) {
                 if (error) {
                     res.json(error);
                 } else {
-                    res.contentType('audio');
+                    res.contentType('audio/mpeg');
                     res.send(new Buffer(file));
                 }
             });
@@ -47,13 +47,13 @@ module.exports = {
         if (fd == null) {
             res.send('');
         } else {
-            var skipperAdapter = database.skipperAdapter('files');
+            var skipperAdapter = Database.skipperAdapter('files');
 
             skipperAdapter.read(fd, function (error, file) {
                 if (error) {
                     res.json(error);
                 } else {
-                    res.contentType('video');
+                    res.contentType('video/mp4');
                     res.send(new Buffer(file));
                 }
             });

@@ -12,7 +12,11 @@
                 <div class="col-sm-6">
                     <div class="vocabulary-item">
                         <div class="info">
+                            <%if(bookUse.bookMaster!=null&&bookUse.bookMaster!=undefined){%>
                             <h3><a><%=bookUse.bookMaster.name%></a></h3>
+                            <%} else{%>
+                              <h3><a>Book name is NONE</a></h3>
+                            <%}%>
                             <!--Show miss following lesson-->
                             <p>Till now you have miss following lesson</p>
                             <%var missLessons = undefined /*bookUse.getMissLesson()*/%>

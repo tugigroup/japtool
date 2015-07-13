@@ -1,10 +1,10 @@
 module.exports = {
     getStep3: function (req, res) {
         var lv = req.param('lv');
-        Survey.find({level: lv}).limit(constants.maxSurveyQuestion).exec(function (err, surveies) {
+        Survey.find({level: lv}).limit(Constants.maxSurveyQuestion).exec(function (err, surveies) {
             if (err) {
             }
-            res.render('japtool/Recommend/step3', {
+            res.render('japtool/recommend/step3', {
                 surveies: surveies
             });
         })
@@ -14,7 +14,7 @@ module.exports = {
         var cLT = req.param('cLT');
         var listSv = req.param('sV');
         if (listSv == null) {
-            BookMaster.find({level: lv}).limit(constants.maxLibraRs).exec(function (err, lbrs) {
+            BookMaster.find({level: lv}).limit(Constants.maxLibraRs).exec(function (err, lbrs) {
                 if (err) {
                 }
                 User.update({id: req.session.User.id}, {
@@ -23,7 +23,7 @@ module.exports = {
                 }).exec(function (err, ok) {
                     if (err) {
                     }
-                    res.view('japtool/Recommend/LibraRecommend', {
+                    res.view('japtool/recommend/LibraRecommend', {
                         lbrs: lbrs
                     });
                 })
@@ -31,7 +31,7 @@ module.exports = {
         }
         else {
             var listid = req.param("id").split(",");
-            BookMaster.find({level: lv}).limit(constants.maxLibraRec).exec(function (err, lbrs) {
+            BookMaster.find({level: lv}).limit(Constants.maxLibraRec).exec(function (err, lbrs) {
                 if (err) {
                 }
                 User.update({id: req.session.User.id}, {
@@ -63,7 +63,7 @@ module.exports = {
                             }
                         })
                     }
-                    return res.view('japtool/Recommend/LibraRecommend', {
+                    return res.view('japtool/recommend/LibraRecommend', {
                         lbrs: lbrs
                     });
                 })
@@ -72,10 +72,10 @@ module.exports = {
     },
     getLibraryLogin: function (req, res) {
         var lv= req.session.User.currentLevel;
-        BookMaster.find({level: lv}).limit(constants.maxLibraRec).exec(function (err, lbrs) {
+        BookMaster.find({level: lv}).limit(Constants.maxLibraRec).exec(function (err, lbrs) {
             if (err) {
             }
-            res.view('japtool/Recommend/LibraRecommend', {
+            res.view('japtool/recommend/LibraRecommend', {
                 lbrs: lbrs
             });
         })
@@ -84,7 +84,7 @@ module.exports = {
         /*var cLT = req.param('cLT');
         var listSv = req.param('sV');
         if (listSv == null) {
-            BookMaster.find({level: lv}).limit(constants.maxLibraRec).exec(function (err, lbrs) {
+            BookMaster.find({level: lv}).limit(Constants.maxLibraRec).exec(function (err, lbrs) {
                 if (err) {
                 }
                 User.update({id: req.session.User.id}, {
@@ -93,7 +93,7 @@ module.exports = {
                 }).exec(function (err, ok) {
                     if (err) {
                     }
-                    res.render('japtool/Recommend/LibraRecommend', {
+                    res.render('japtool/recommend/LibraRecommend', {
                         lbrs: lbrs
                     });
                 })

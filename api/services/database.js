@@ -1,27 +1,20 @@
 module.exports = {
-	host: function () {
-        return sails.config.connections.someMongodbServer.host;
-    },
-
-    port: function () {
-        return sails.config.connections.someMongodbServer.port;
-    },
-
-    name: function () {
-        return sails.config.connections.someMongodbServer.database;
-    },
+    host: sails.config.connections.someMongodbServer.host,
+    port: sails.config.connections.someMongodbServer.port,
+    name: sails.config.connections.someMongodbServer.database,
+    gridfsName: 'media',
 
     uri: function () {
     	return 'mongodb://' + 
-    			(this).host() + ':' +
-    			(this).port() + '/' +
-    			(this).name();
+    			(this).host + ':' +
+    			(this).port + '/' +
+    			(this).name;
     },
 
-    skipperAdapter: function (collection) {
+    skipperAdapter: function () {
         return require('skipper-gridfs')({
-            uri: (this).uri() + '.' + collection
+            uri: (this).uri() + '.' + (this).gridfsName
         });
     },
-    
+   
 }
