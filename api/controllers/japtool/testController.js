@@ -48,7 +48,7 @@ module.exports = {
                                 // if user choiced this option
                                 if (JsondataUserAns[k].UserOp != undefined && JsondataUserAns[k].idQues == listQues[j].id) {
                                     // check User answers
-                                    if (listQues[j].resultOption1 == true && listQues[j].option1 == JsondataUserAns[k].UserOp) {
+                                    if (listQues[j].key == 1 && listQues[j].option1 == JsondataUserAns[k].UserOp) {
                                         listResult.push({
                                             'ofArticle': JsondataUserAns[k].ofArticle,
                                             'ofQues': listQues[j].id,
@@ -56,7 +56,7 @@ module.exports = {
                                             'UserOp':JsondataUserAns[k].UserOp,
                                             'result': true
                                         });
-                                    } else if (listQues[j].resultOption2 == true && listQues[j].option2 == JsondataUserAns[k].UserOp) {
+                                    } else if (listQues[j].key == 2 && listQues[j].option2 == JsondataUserAns[k].UserOp) {
                                         listResult.push({
                                             'ofArticle': JsondataUserAns[k].ofArticle,
                                             'ofQues': listQues[j].id,
@@ -64,7 +64,7 @@ module.exports = {
                                             'UserOp':JsondataUserAns[k].UserOp,
                                             'result': true
                                         });
-                                    } else if (listQues[j].resultOption3 == true && listQues[j].option3 == JsondataUserAns[k].UserOp) {
+                                    } else if (listQues[j].key == 3 && listQues[j].option3 == JsondataUserAns[k].UserOp) {
                                         listResult.push({
                                             'ofArticle': JsondataUserAns[k].ofArticle,
                                             'ofQues': listQues[j].id,
@@ -72,7 +72,7 @@ module.exports = {
                                             'UserOp':JsondataUserAns[k].UserOp,
                                             'result': true
                                         });
-                                    } else if (listQues[j].resultOption4 == true && listQues[j].option4 == JsondataUserAns[k].UserOp) {
+                                    } else if (listQues[j].key == 4 && listQues[j].option4 == JsondataUserAns[k].UserOp) {
                                         listResult.push({
                                             'ofArticle': JsondataUserAns[k].ofArticle,
                                             'ofQues': listQues[j].id,

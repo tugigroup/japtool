@@ -27,32 +27,16 @@ module.exports = {
             type:'string',
             required:true
         },
-        resultOption1:{
-            type:'boolean',
-            required:true
-        },
         option2:{
             type:'string',
-            required:true
-        },
-        resultOption2:{
-            type:'boolean',
             required:true
         },
         option3:{
             type:'string',
             required:true
         },
-        resultOption3:{
-            type:'boolean',
-            required:true
-        },
         option4:{
             type:'string',
-            required:true
-        },
-        resultOption4:{
-            type:'boolean',
             required:true
         },
         key:{

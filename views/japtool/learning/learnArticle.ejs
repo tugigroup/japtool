@@ -131,10 +131,6 @@
 
         </div>
         <div class="row">
-            <form action="doTest" method="post">
-                <input type="text" hidden="hidden" value="" name="id"/>
-                <button type="submit" class="btn btn-warning">Test Again</button>
-            </form>
             <button type="button" class="btn btn-info" id="btnCheckRs">Check</button>
         </div>
     </div>
@@ -193,8 +189,8 @@
                     $("#div-show-Rs-test").append("" +
                     "<div class='col-sm-12'>" +"" +
                     "<div class=row>"+
-                    "<p><span>"+"Article's Subject :"+arrArticle[i].arSubject+"</span>" +
-                    "<p><span>"+"Article's Content :"+arrArticle[i].arContent+"</span>" +
+                    "<p><span>"+"<b>Article's Subject :</b>"+arrArticle[i].arSubject+"</span>" +
+                    "<p><span>"+"<b>Article's Content :</b>"+arrArticle[i].arContent+"</span>" +
                     "</div>"+
                     "</div>" +
                     "");
@@ -204,7 +200,7 @@
                             $("#div-show-Rs-test").append("" +
                             "<div class='col-sm-12'>" +
                             "<p><span class='lb-ts-test'>"+listEmpty[j].question+"</span>" +
-                            "<p><span class='lb-ts-test-ok'>Your ans : "+"Empty"+"</span><span class='label label-danger'>False</span>" +
+                            "<p><span class='lb-ts-test-ok'><b>Your ans :</b> "+"Empty"+"</span><span class='label label-danger'>False</span>" +
                             "</div>" +
                             "");
                         }
@@ -215,7 +211,7 @@
                             $("#div-show-Rs-test").append("" +
                             "<div class='col-sm-12'>" +
                             "<p><span class='lb-ts-test'>"+listResultTest[k].QuesContent+"</span>" +
-                            "<p><span class='lb-ts-test-ok'>Your ans : "+listResultTest[k].UserOp+"</span><span class='label label-success'>True</span>" +
+                            "<p><span class='lb-ts-test-ok'><b>Your ans : </b>"+listResultTest[k].UserOp+"</span><span class='label label-success'>True</span>" +
                             "</div>" +
                             "");
                             numAnswerTrue++;
@@ -224,7 +220,7 @@
                             $("#div-show-Rs-test").append("" +
                             "<div class='col-sm-12'>" +
                             "<p><span class='lb-ts-test'>"+listResultTest[k].QuesContent+"</span>" +
-                            "<p><span class='lb-ts-test-fail'>Your ans : <del>"+listResultTest[k].UserOp+"</del></span><span class='label label-danger'>False</span>" +
+                            "<p><span class='lb-ts-test-fail'><b>Your ans :</b> <del>"+listResultTest[k].UserOp+"</del></span><span class='label label-danger'>False</span>" +
                             "</div>" +
                             "");
                         }
@@ -244,7 +240,7 @@
                 $("#div-show-Rs-test-point").append("" +
                 "<div class='col-sm-12'>" +"" +
                 "<hr>"+"" +
-                "<p><span>Your Mark :</span>"+"<span>"+pointUser+"</span>"+
+                "<p><span>Your Mark :</span>"+"<span>"+Math.round(pointUser * 100) / 100+"</span>"+
                 "<p><span>Start Date :</span>"+"<span>"+dateStart+"</span>"+
                 "<p><span>Finish Date :</span>"+"<span>"+finishDate+"</span>"+
                 "</div>" +
