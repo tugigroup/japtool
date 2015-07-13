@@ -135,17 +135,11 @@ $(document).ready(function () {
     });
 
     /**
-     * validate jquery by xuandt2
+     * validate create-learning
      */
     $('#create-learning').validate({
         rules: {
-            nameLearning: {
-                required: true,
-                minlength: 5,
-                maxlength: 50
-            },
-
-            description: {
+            notes: {
                 required: true
             },
             startDate: {
@@ -158,12 +152,8 @@ $(document).ready(function () {
         },
 
         messages: {
-            nameLearning: {
-                required: "Please input class name.",
-                minlength: "Class name greater than 5 characters.",
-                maxlength: "Class name less than 50 characters."
-            },
-            description: {
+
+            notes: {
                 required: "Please input description."
             },
             startDate: {

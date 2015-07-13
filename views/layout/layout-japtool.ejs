@@ -19,17 +19,7 @@
         <div class="header-top">
             <div class="container">
                 <div class="row">
-                    <div class="header-top-menu col-md-4 col-sm-offset-5">
-                        <ul>
-                            <li><a>Book Store</a></li>
-
-                            <li><a href="/japtool/BookMaster/getLibrary">Libary</a></li>
-
-                            <li><a>Vocabulary</a></li>
-                            <li><a href="group/group.html">My group</a></li>
-                        </ul>
-                    </div>
-                    <div class="account-right col-sm-3">
+                    <div class="account-right col-sm-7 col-sm-offset-5">
                         <% if(session.authenticated){ %>
                         <span>Welcome <a
                                     href="/japtool/user/show/<%= session.User.id %>"><%= session.User.username %></a></span><a
@@ -52,14 +42,14 @@
                     <div class="col-md-9">
                         <div id='cssmenu' class="pull-right">
                             <ul class="menu-page">
-                                <li><a href='home.html'>Home</a></li>
-                                <li><a href='#'>About</a></li>
+                                <li><a href='/japtool/learning/home'>Home</a></li>
+                                <li><a href='/japtool/page/about'>About</a></li>
 
                                 <li class='active'><a href='/japtool/BookMaster/getLibrary'>Libary</a>
                                 </li>
-                                <li><a href="/japtool/learning">Learning group</a></li>
-                                <li><a>Using guide</a></li>
-                                <li><a href='#'>Contact</a></li>
+                                <li><a href="/japtool/learning">Learning</a></li>
+                                <li><a href="/japtool/page/guide">Using guide</a></li>
+                                <li><a href='/japtool/page/contact'>Contact</a></li>
                             </ul>
                         </div>
                     </div>

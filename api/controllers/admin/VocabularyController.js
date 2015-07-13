@@ -50,7 +50,7 @@ module.exports = {
       path = require('path');
       
       req.file('avatar').upload({
-          maxBytes: sails.config.constants.upFileMaxBytes,
+          maxBytes: sails.config.Constants.upFileMaxBytes,
           dirname: uploadPath
         }, function(err, imgfiles){
           if (err) return res.negotiate(err);
@@ -101,7 +101,7 @@ module.exports = {
       path = require('path');
       
       req.file('avatar').upload({
-          maxBytes: sails.config.constants.upFileMaxBytes,
+          maxBytes: sails.config.Constants.upFileMaxBytes,
           dirname: uploadPath
         }, function(err, imgfiles){
           if (err) return res.negotiate(err);
@@ -173,7 +173,7 @@ module.exports = {
   view: function (req, res) {
 
       var id=req.param("id",null);
-      console.log("constants.upFileMaxBytes: " + constants.upFileMaxBytes);
+      console.log("Constants.upFileMaxBytes: " + Constants.upFileMaxBytes);
 
       Vocabulary.findOne(id).exec(function(err,vocabulary){
    
@@ -187,13 +187,13 @@ module.exports = {
    */
   index: function (req, res) {
 
-      //var database = require('../../common/database');
-      //console.log("constants.upFileMaxBytes: " + constants.upFileMaxBytes);
-      //console.log("constants.testConst: " + constants.testConst);
+      //var Database = require('../../common/Database');
+      //console.log("Constants.upFileMaxBytes: " + Constants.upFileMaxBytes);
+      //console.log("Constants.testConst: " + Constants.testConst);
 
-      //console.log('uri: ' + database.uri());
-      //console.log('host: ' + database.host());
-      //console.log('port: ' + database.port());
+      //console.log('uri: ' + Database.uri());
+      //console.log('host: ' + Database.host());
+      //console.log('port: ' + Database.port());
 
       Vocabulary.find().exec(function findCB(err,vocabularies){
    

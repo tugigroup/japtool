@@ -16,7 +16,6 @@ module.exports = {
         //var extractDataCondition = '{"level": "N2", "tag" : {"contains":",400dongtu,lession1,"}}';
          Vocabulary.selectByLevel({condition: extractDataCondition},function(err,vocabularies){
         if(err) return res.send(err.status);
-
          res.render('japtool/vocabulary/list',{'vocabularies':vocabularies});
         });
     }
@@ -72,7 +71,7 @@ module.exports = {
     //pronounce: function(req,res){
     //	var vocabulary = req.allParams();
     //	console.log(vocabulary);
-    //	VocabularyService.googleTranslate('ja',vocabulary.word,function(result){
+    //	Speech.googleTranslate('ja',vocabulary.word,function(result){
     //		//console.log(result);
     //	    if(result.success) {
     //	        res.json(result);
@@ -84,7 +83,7 @@ module.exports = {
     //// pronounce: function(req,res){
     //// 	var vocabulary = req.allParams();
     //// 	console.log(vocabulary);
-    //// 	VocabularyService.voicerRSS('ja-jp',vocabulary.word,function(result){
+    //// 	Speech.voicerRSS('ja-jp',vocabulary.word,function(result){
     //		// //console.log(result);
     //	 //    if(result.success) {
     //	 //        res.json(result);

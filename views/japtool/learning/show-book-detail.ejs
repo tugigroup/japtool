@@ -75,7 +75,7 @@
                                 <% if(!session.User.avatar){ %>
                                 <img src="/images/avatar/avatar.jpg" id="avatarPreview"/>
                                 <% } else{ %>
-                                <a href="/japtool/user/show/<%= session.User.id %>"><img src="/japtool/user/readAvatarUser/?fd=<%= session.User.avatar %>"/> </a>
+                                <a href="/japtool/user/show/<%= session.User.id %>"><img src="/media/image/?fd=<%= session.User.avatar %>"/> </a>
                                 <% } %>
 
                             </div>

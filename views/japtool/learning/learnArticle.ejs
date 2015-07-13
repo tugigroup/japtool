@@ -42,7 +42,7 @@
                     <% if(article.image != null){
                     %>
                     <p>
-                        <img src="/admin/Article/getImg/?fd=<%= article.image %>"/>
+                        <img src="/media/image/?fd=<%= article.image %>"/>
                     </p>
                     <%
                     }
@@ -52,7 +52,7 @@
                     %>
                     <p>
                         <audio class="audio-form" controls>
-                            <source src="/admin/Article/getAudio/?fd=<%= article.audio %>" type="audio/mpeg">
+                            <source src="/media/audio/?fd=<%= article.audio %>" type="audio/mpeg">
                         </audio>
                     </p>
                     <%
@@ -62,7 +62,7 @@
                     %>
                     <p>
                         <video class="video-form" controls>
-                            <source src="/admin/Article/getVideo/?fd=<%= article.video %>" type="video/mp4">
+                            <source src="/media/video/?fd=<%= article.video %>" type="video/mp4">
                         </video>
                     </p>
                     <%
@@ -81,7 +81,7 @@
                         <% if(question.image != null){
                         %>
                         <h5>Image :</h5>
-                        <img src="/admin/Question/getImg/?fd=<%= question.image %>"/>
+                        <img src="/media/image/?fd=<%= question.image %>"/>
                         <%
                         } %>
                         <div class="question-div-info" id="<%= question.id %>" ofArticle="<%=article.id%>">

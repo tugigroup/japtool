@@ -10,10 +10,11 @@ module.exports = {
     attributes: {
         lesson: {type: 'string'},
         subLesson: {type: 'string'},
+        sort: {type: 'integer'},
         useModule: {type: 'string'},
         useCollection: {type: 'string'},
         dataExtractCondition: {type: 'string'},
-        bookID: {
+        bookMaster: {
             model: 'bookMaster'
         }
     }

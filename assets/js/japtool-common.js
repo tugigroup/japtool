@@ -13,7 +13,7 @@ $(document).ready(function () {
     else {
         answer1 = lv;
         answer2 = crt;
-        $('#lib-recommend-3').load('/japtool/Recommend/getStep3?lv=' + answer1);
+        $('#lib-recommend-3').load('/japtool/recommend/getStep3?lv=' + answer1);
         $('#lib-recommend-3').addClass('fade').modal('show');
     }
 
@@ -26,56 +26,44 @@ function nextQuestion(pre, next) {
         $('#lib-recommend-' + next).addClass('fade').modal('show');
     }
     if (next == 3) {
-        $('#lib-recommend-' + next).load('/japtool/Recommend/getStep3?lv=' + answer1);
+        $('#lib-recommend-' + next).load('/japtool/recommend/getStep3?lv=' + answer1);
         $('#lib-recommend-' + next).addClass('fade').modal('show');
     }
 }
-
-// function checkAnswer1(pre, next) {
-//     $("#recommend-1 option").each(function () {
-//         $(this).click(function () {
-//             answer1 = $("#recommend-1").val();
-//             if (answer1 == 'Choose one') {
-
-//             }
-//             else {
-//                 nextQuestion(pre, next);
-//             }
-
-//         });
-//     });
-// }
-function checkAnswer1(pre, next) {
-    $("#recommend-1").on('change',function () {
-            answer1 = $("#recommend-1").val();
-            if (answer1 == 'Choose one') {
-
-            }
-            else {
-                nextQuestion(pre, next);
-            }
-    });
-}
-
-function checkAnswer2(pre, next) {
-    answer2 = $("#rcm2 input[type='radio']:checked").val();
-    if (answer2 == 4) {
-        window.location.replace('/japtool/Recommend/getLibraryForFirtLogin?lv=' + answer1 + '&cLT=' + answer2);
-
+function checkAnswer1btn(pre, next) {
+    answer1 = $("#recommend-1").val();
+    if (answer1 == 'Choose one') {
     }
     else {
         nextQuestion(pre, next);
     }
-
-
 }
+function checkAnswer1(pre, next) {
+    $("#recommend-1").each(function () {
+        $(this).on('change', function () {
+            answer1 = $("#recommend-1").val();
+            if (answer1 == 'Choose one') {
+            }
+            else {
+                nextQuestion(pre, next);
+            }
 
-
+        });
+    });
+}
+function checkAnswer2(pre, next) {
+    answer2 = $("#rcm2 input[type='radio']:checked").val();
+    if (answer2 == 4) {
+        window.location.replace('/japtool/recommend/getLibraryForFirtLogin?lv=' + answer1 + '&cLT=' + answer2);
+    }
+    else {
+        nextQuestion(pre, next);
+    }
+}
 function checkAnswer3() {
     var check = new Array();
     var equa = 0;
     var lengt = $("#numberquestion").val();
-
     for (var i = 0; i < lengt; i++) {
         listIdSurvey[i] = $("#surVeyid" + i + "").val();
         var q = false;
@@ -100,8 +88,7 @@ function checkAnswer3() {
         }
     }
     if (equa == (lengt)) {
-        window.location.replace('/japtool/Recommend/getLibraryForFirtLogin?lv=' + answer1 + '&cLT=' + answer2 + '&sV=' + answer3 + '&id=' + listIdSurvey);
-
+        window.location.replace('/japtool/recommend/getLibraryForFirtLogin?lv=' + answer1 + '&cLT=' + answer2 + '&sV=' + answer3 + '&id=' + listIdSurvey);
     }
 }
 //END RECOMMENT POPUP
@@ -112,13 +99,47 @@ $(document).ready(function () {
 function checkAnswer1Login() {
     answer2 = $("#rcmlogin input[type='radio']:checked").val();
     if (answer2 == 1) {
-        window.location.replace('/japtool/Recommend/getLibraryLogin');
+        window.location.replace('/japtool/recommend/getLibraryLogin');
     }
     if (answer2 == 2) {
-
     }
 }
+/*choose book*/
+function loadbooks() {
+    $("#show-books").load('/japtool/Learning/getBooks');
+    $('#show-books').modal('show');
+    $('#show-books').addClass('fade').modal('show');
+    $("#placebook").removeChild();
+}
+function addbook(i) {
+    $("#placebook").empty();
+    var imglink = $('#imglink' + i + '').attr('src');
+    var bookname = $('#bookname' + i + '').attr('title');
+    var bookid = $('#bookid' + i + '').val();
+    var booklv = $('#booklv' + i + '').attr('title');
+    $("#placebook").append('<b><img src="' + imglink + '" width="46" height="46"/></b>' +
+    '<input type="hidden" name="bookMaster" value="' + bookid + '">' +
+    '<b>' + bookname + '</b>' +
+    '<b>Level : ' + booklv + '</b>');
+    $('#show-books').modal('hide');
+}
+function deleteLearning() {
+    var learningId = $('#deleteLearning').attr('title');
+    window.location.replace('/japtool/Learning/deleteLearning?id=' + learningId);
+
+}
+function validateCreatLearning() {
+    if (!$.trim($('#show-books').html()).length) {
+        $('#mesage').html("<strong><i><p style='color: #b92c28'>You must choose a book</p></i></strong>");
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+/*end choose book*/
 //end recommend login
+
 //ICON
 $(function () {
     var all_classes = "";
@@ -255,16 +276,7 @@ $(document).ready(function () {
     });
 
     //Show div search of manage learning
-    $("#btn-show-search").click(function () {
-        $("#default-hide").show();
-        $("#default-show").hide();
-    });
 
-    //Close search of manage learning
-    $("#close-search").click(function () {
-        $("#default-show").show();
-        $("#default-hide").hide();
-    });
 
     //Show and hiden icon Upload avatar image of page create learning
     $("#btnUp").hide();

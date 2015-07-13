@@ -8,47 +8,47 @@
 module.exports = {
 
     attributes: {
-        sortIndex: {
+        sort: {
             type: 'Integer'
         },
         level: {
             type: "String"
         },
         firstUsing: {
-            type:"Boolean"
+            type: "Boolean"
         },
         uniqueUsing: {
-            type:"Boolean"
+            type: "Boolean"
         },
         qType: {
-            type:"Integer"
+            type: "Integer"
         },
         question: {
-            type:"String"
+            type: "String"
         },
         option1: {
-            type:"String"
+            type: "String"
         },
         correct1: {
-            type:"Boolean"
+            type: "Boolean"
         },
         option2: {
-            type:"String"
+            type: "String"
         },
         correct2: {
-            type:"Boolean"
+            type: "Boolean"
         },
         option3: {
-            type:"String"
+            type: "String"
         },
         correct3: {
-            type:"Boolean"
+            type: "Boolean"
         },
         option4: {
-            type:"String"
+            type: "String"
         },
         correct4: {
-            type:"Boolean"
+            type: "Boolean"
         }
 
     }

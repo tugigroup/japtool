@@ -23,18 +23,7 @@ It is also supported by most of the currently available browsers if you need ran
   A few examples of scaling generated number to your desired range:
 */
 module.exports = {
-/*countLesson: function (bookId) {
-    //sails.log("read book ID:" + bookId);
-    BookDetail.find({bookID:bookId}).exec(function(err,bookDetails){
-     if (err) {
-     sails.log("Err when read book detail data:");
-     return res.serverError(err);
-     }
-     //sails.log(bookDetails);
-     return bookDetails.length;
-     });
-},*/
-  /*This function generates floating-point between two numbers low (inclusive) and high (exclusive) ([low, high))*/
+/*This function generates floating-point between two numbers low (inclusive) and high (exclusive) ([low, high))*/
 random: function (low, high)
 {
   return Math.random() * (high - low) + low;
