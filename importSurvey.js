@@ -27,11 +27,11 @@ var surveySchema = new mongoose.Schema({
 var surveyColl = mongoose.model('survey', surveySchema);
 
 var insertToSurvey = function(survey,callback){
-	var oneTime = (oneTime === survey[2]);
+	var oneTime = "TRUE";
     var insertedSurvey = new surveyColl({
 		sort:  		survey[0],
 		type: 				survey[1],
-		oneTime: 			oneTime,
+		oneTime: 			(oneTime === survey[2]),
 		tag:				survey[3],
 		question:   		survey[4],
 		option1:   			survey[5],
