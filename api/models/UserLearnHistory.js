@@ -5,18 +5,11 @@
 module.exports = {
 
   attributes: {
-    userId: {
-      type: 'string',
-      required: true
+    user: {
+      model: 'User'
     },
-
     groupId: {
       type: 'string'
-    },
-
-    bookID: {
-      type: 'string',
-      required: true
     },
 
     lesson:{

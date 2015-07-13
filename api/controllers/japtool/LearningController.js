@@ -9,19 +9,21 @@ module.exports = {
     },
     home: function (req, res) {
         try {
-        BookUseHistory.find({userId:req.session.User.id})
+          SelfLearning.find({user:req.session.User.id})
           .populate('bookMaster')
           .populate('userLearnHistories').exec(function (err, bookUseHistories) {
           if (err) {
             sails.log("Err when read data from server:");
             return res.serverError(err);
           }
+          sails.log("Book Use History All.");
+          sails.log(bookUseHistories);
           if (bookUseHistories == null|| bookUseHistories==undefined) {
             return res.json({err: "Error"});
           }
-          bookUseHistories.forEach(function(bookUse){
+          /*bookUseHistories.forEach(function(bookUse){
             sails.log(bookUse.bookMaster);
-          });
+          });*/
           //sails.log(bookUseHistories);
           res.view('japtool/home/home',{bookUseHistories:bookUseHistories});
         });

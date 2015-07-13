@@ -34,7 +34,7 @@ module.exports = {
             via: 'selfLearning'
         },
 
-        UserLearnHistories: {
+        userLearnHistories: {
           collection: 'UserLearnHistory',
           via: 'selfLearning'
         }

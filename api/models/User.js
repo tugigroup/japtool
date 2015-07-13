@@ -92,6 +92,14 @@ module.exports = {
             collection: 'SelfLearning',
             via: 'user'
         },
+        userLearnHistories: {
+            collection: 'UserLearnHistory',
+            via: 'user'
+        },
+        bookUseHistories: {
+            collection: 'BookUseHistory',
+            via: 'user'
+        },
     },
 
     beforeCreate: function (values, next) {
