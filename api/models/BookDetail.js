@@ -16,6 +16,10 @@ module.exports = {
         dataExtractCondition: {type: 'string'},
         bookMaster: {
             model: 'bookMaster'
+        },
+        userLearnHistories: {
+            collection: 'UserLearnHistory',
+            via: 'bookDetail'
         }
     }
 };

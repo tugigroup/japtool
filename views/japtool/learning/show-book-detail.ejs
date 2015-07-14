@@ -6,7 +6,7 @@
 
                 <div class="col-sm-2 invite">
                     <div class="row">
-                        <h3>Lesson learning</h3>
+                        <h3 id="title-learning" name="<%= learnID %>">Lesson learning</h3>
                     </div>
                     <div class="row">
                         <div id='cssmenu-learngroup'>
@@ -16,7 +16,7 @@
                                     <% bookDetails.forEach(function(bookDetail){ %>
                                     <% if(uniqueLesson == bookDetail.lesson) { %>
                                     <ul>
-                                        <li><a href='javascript: void(0)'
+                                        <li><a href='javascript: void(0)' name="<%= bookDetail.id %>" class="sub-lesson"
                                                onclick="learn('<%= bookDetail.useModule %>', <%= bookDetail.dataExtractCondition %>)"><%= bookDetail.subLesson %></a>
                                         </li>
                                     </ul>
@@ -50,6 +50,7 @@
                             </div>
                             <div class="col-sm-11">
                                 <h4>Nguyen Hoang Nam</h4>
+
                                 <div class="comment-desc">
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                     incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
@@ -75,7 +76,8 @@
                                 <% if(!session.User.avatar){ %>
                                 <img src="/images/avatar/avatar.jpg" id="avatarPreview"/>
                                 <% } else{ %>
-                                <a href="/japtool/user/show/<%= session.User.id %>"><img src="/media/image/?fd=<%= session.User.avatar %>"/> </a>
+                                <a href="/japtool/user/show/<%= session.User.id %>"><img
+                                            src="/media/image/?fd=<%= session.User.avatar %>"/> </a>
                                 <% } %>
 
                             </div>
@@ -96,5 +98,23 @@
     function learn(module, condition) {
         var strCondition = JSON.stringify(condition);
         $('#container-learn').load('/japtool/' + module + '/list/?condition=' + strCondition);
+    }
+
+    window.onload = function (){
+        $('.sub-lesson').click(function () {
+            var bookDetail = $(this).attr('name');
+            var user = '<%= session.User.id %>';
+            var selfLearning = $('#title-learning').attr('name');
+            var startDate = new Date();
+            var finishDate = new Date();
+            $.ajax({
+                method: "POST",
+                url: "/japtool/bookDetail/saveHistory",
+                data: {user: user, bookDetail: bookDetail, selfLearning: selfLearning, startDate: startDate, finishDate: finishDate}
+            })
+                    .done(function (msg) {
+                        console.log(msg);
+                    });
+        });
     }
 </script>

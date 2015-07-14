@@ -4,34 +4,32 @@
 
 module.exports = {
 
-  attributes: {
-    user: {
-      model: 'User'
-    },
-    
+    attributes: {
+        user: {
+            model: 'User'
+        },
+        selfLearning: {
+            model: 'SelfLearning'
+        },
+        bookDetail: {
+            model: 'bookDetail'
+        },
+        status: {
+            type: 'integer'
+        },
+        mark: {
+            type: 'float'
+        },
 
-    subLesson:{
-      type: 'string'
-    },
+        startDate: {
+            type: 'datetime'
+        },
 
-    mark:{
-      type: 'float'
-    },
-
-    startDate:{
-      type: 'datetime',
-      required: true
-    },
-
-    finishDate:{
-      type: 'datetime',
-      required: true
-    },
-    bookUseHistory:{
-      model:'BookUseHistory'
-    },
-    selfLearning:{
-      model:'SelfLearning'
+        finishDate: {
+            type: 'datetime'
+        },
+        bookUseHistory: {
+            model: 'BookUseHistory'
+        }
     }
-  }
 };
