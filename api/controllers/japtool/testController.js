@@ -53,7 +53,9 @@ module.exports = {
                                             'ofArticle': JsondataUserAns[k].ofArticle,
                                             'ofQues': listQues[j].id,
                                             'QuesContent': listQues[j].question,
-                                            'UserOp': JsondataUserAns[k].UserOp,
+                                            'UserOp':JsondataUserAns[k].UserOp,
+                                            'positionRd':JsondataUserAns[k].positionRd,
+                                            'key':listQues[j].key,
                                             'result': true
                                         });
                                     } else if (listQues[j].key == 2 && listQues[j].option2 == JsondataUserAns[k].UserOp) {
@@ -61,7 +63,9 @@ module.exports = {
                                             'ofArticle': JsondataUserAns[k].ofArticle,
                                             'ofQues': listQues[j].id,
                                             'QuesContent': listQues[j].question,
-                                            'UserOp': JsondataUserAns[k].UserOp,
+                                            'UserOp':JsondataUserAns[k].UserOp,
+                                            'positionRd':JsondataUserAns[k].positionRd,
+                                            'key':listQues[j].key,
                                             'result': true
                                         });
                                     } else if (listQues[j].key == 3 && listQues[j].option3 == JsondataUserAns[k].UserOp) {
@@ -69,7 +73,9 @@ module.exports = {
                                             'ofArticle': JsondataUserAns[k].ofArticle,
                                             'ofQues': listQues[j].id,
                                             'QuesContent': listQues[j].question,
-                                            'UserOp': JsondataUserAns[k].UserOp,
+                                            'UserOp':JsondataUserAns[k].UserOp,
+                                            'positionRd':JsondataUserAns[k].positionRd,
+                                            'key':listQues[j].key,
                                             'result': true
                                         });
                                     } else if (listQues[j].key == 4 && listQues[j].option4 == JsondataUserAns[k].UserOp) {
@@ -77,7 +83,9 @@ module.exports = {
                                             'ofArticle': JsondataUserAns[k].ofArticle,
                                             'ofQues': listQues[j].id,
                                             'QuesContent': listQues[j].question,
-                                            'UserOp': JsondataUserAns[k].UserOp,
+                                            'UserOp':JsondataUserAns[k].UserOp,
+                                            'positionRd':JsondataUserAns[k].positionRd,
+                                            'key':listQues[j].key,
                                             'result': true
                                         });
                                     } else {
@@ -85,7 +93,9 @@ module.exports = {
                                             'ofArticle': JsondataUserAns[k].ofArticle,
                                             'ofQues': listQues[j].id,
                                             'QuesContent': listQues[j].question,
-                                            'UserOp': JsondataUserAns[k].UserOp,
+                                            'UserOp':JsondataUserAns[k].UserOp,
+                                            'positionRd':JsondataUserAns[k].positionRd,
+                                            'key':listQues[j].key,
                                             'result': false
                                         });
                                     }

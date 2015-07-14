@@ -3,13 +3,13 @@
         $("#vocabularyList").steps({
             headerTag: "h3",
             bodyTag: "section",
-            transitionEffect: "slideLeft"
+            transitionEffect: "slide"
         });
     });
 </script>
 <div id="vocabularyList">
     <% if(kanjis == null || kanjis.length == 0){ %>
-        <h4>Không tìm th?y t? nào</h4>
+    <h5 class="text-center text-danger">Không tìm th?y d? li?u</h5>
     <% }else{ %>
     <% kanjis.forEach( function(kanji, index){ %>
     <h3><%= kanji.item %></h3>
@@ -22,8 +22,7 @@
         </p>
 
         <p>
-            <span class="text-success">kunyomi <i
-                        class="fa fa-microphone text-danger"></i> : </span><%= kanji.kunyomi %>
+            <span class="text-success">kunyomi <i class="fa fa-microphone text-danger"></i> : </span><%= kanji.kunyomi %>
         </p>
 
         <p>

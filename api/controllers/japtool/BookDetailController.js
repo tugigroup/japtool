@@ -21,23 +21,35 @@ module.exports = {
             res.view('admin/article/book-detail', {data: data, layout: 'layout/layout-japtool'});
         })
     },
-    showData: function (req, res) {
-        BookDetail.find().exec(function createCB(err, data) {
-            if (err) {
-                sails.log(err)
+
+    saveHistory: function (req, res) {
+        var pars = req.allParams();
+        //pars.startDate= new Date();
+        UserLearnHistory.findOne({
+            user: pars.user,
+            bookDetail: pars.bookDetail,
+            selfLearning: pars.selfLearning
+        }).exec(function (err, data) {
+            if (data == undefined) {
+                UserLearnHistory.create(pars).exec(function createCB(err, history) {
+                    if (err) {
+                        sails.log(err)
+                    } else {
+                        res.send('Create Learning history successful')
+                    }
+                })
             } else {
-                res.send(data);
+                var currentDate = new Date();
+                data.startDate = currentDate;
+                UserLearnHistory.update({id: data.id}, {startDate: currentDate}).exec(function (err, updated) {
+                    if (err) {
+                        sails.log(err)
+                    } else {
+                        res.send('Record has update');
+                    }
+                })
             }
-        })
-    },
-    show: function (req, res) {
-        var id = req.param('id');
-        BookDetail.findOne({id: id}).exec(function createCB(err, book) {
-            Question.find({id: book.useCollection}).exec(function createCB(err, data) {
-                sails.log(book);
-                res.view('admin/article/show-book-detail', {data: data, book: book})
-            })
-        })
+        });
     }
 };
 
