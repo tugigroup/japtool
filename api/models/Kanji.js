@@ -49,13 +49,13 @@ module.exports = {
                 if (err) {
                     return cb(err);
                 }
-                if (kanji == null || kanji.length == 0) {
-                    err = new Error();
-                    err.message = require('util').format('Cannot find Kanji');
-                    err.status = 404;
-                    console.log(err.message);
-                    return cb(err);
-                }
+                //if (kanji == null || kanji.length == 0) {
+                //    err = new Error();
+                //    err.message = require('util').format('Cannot find Kanji');
+                //    err.status = 404;
+                //    console.log(err.message);
+                //    return cb(err);
+                //}
                 return cb(null, kanji);
             });
     }
