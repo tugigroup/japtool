@@ -103,7 +103,7 @@ module.exports = {
 
                     }
                     else {
-                        SurveyUser.findOne({UserID: user.id}).exec(function (err, svus) {
+                        SurveyResult.findOne({UserID: user.id}).exec(function (err, svus) {
                             if (err) {
 
                             }

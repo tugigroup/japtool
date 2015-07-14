@@ -14,18 +14,10 @@ module.exports = {
         UserID:{
             type: 'String'
         },
-        correct1: {
-            type:"Boolean"
-        },
-        correct2: {
-            type:"Boolean"
-        },
-        correct3: {
-            type:"Boolean"
-        },
-        correct4: {
-            type:"Boolean"
+        Answer: {
+            type:"String"
         }
+
 
     }
 

@@ -165,7 +165,7 @@ module.exports = {
                     });
                 }
                 else {
-                    SurveyUser.find({UserID: user.id}).exec(function (err, svuss) {
+                    SurveyResult.find({UserID: user.id}).exec(function (err, svuss) {
                         if (err) {
 
                         }
