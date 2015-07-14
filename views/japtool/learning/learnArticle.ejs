@@ -2,9 +2,9 @@
     <%
     var lengthQues =0;
     var currentdate = new Date();
-    var startDate =  currentdate.getDate() + "/"
-            + (currentdate.getMonth()+1)  + "/"
-            + currentdate.getFullYear() + " @ "
+    var startDate = currentdate.getFullYear()  + "-"
+            + (currentdate.getMonth()+1)  + "-"
+            +  currentdate.getDate() + "@"
             + currentdate.getHours() + ":"
             + currentdate.getMinutes() + ":"
             + currentdate.getSeconds();
@@ -133,7 +133,7 @@
 </div>
 <div class="container">
     <div class="col-sm-12" id="div-result">
-        <div class="col-sm-12">
+        <div class="col-sm-12 contain-check-btn">
             <button type="button" class="btn btn-info" id="btnCheckRs">Check</button>
         </div>
         <div id="div-show-Rs-test-point" class="row">
@@ -168,7 +168,7 @@
     var dataUserAns = [];
     var lengthQues = $("#lengthQues").val();
     $("#btnCheckRs").on('click', function () {
-//        $("#do-test-articles").hide();
+        $(".contain-check-btn").hide();
         $('.question-div-info').each(function () {
             var idQues = $(this).attr("id");
             var ofArticle = $(this).attr("ofArticle");
@@ -204,7 +204,7 @@
                             var rdPositionTrue = listEmpty[j].id;
                             var key = listEmpty[j].key;
                             $("#" + rdPositionTrue + key + "rd").html('<i class="fa fa-check fa-2x text-success"></i>');
-                            $("#" + rdPositionTrue  + "isEmpty").html('<span class="text-danger">You do not choose any option !</span>');
+                            $("#" + rdPositionTrue  + "isEmpty").html('<span class="text-danger ">You do not choose any option !</span>');
                         }
                     }
                     // check question : true , false
@@ -224,22 +224,22 @@
                     }
                 }
                 // count point
-                var pointUser = numAnswerTrue/countSum;
+                var pointUser = (numAnswerTrue*10)/countSum;
                 // get date time
                 var currentdate = new Date();
-                var finishDate = currentdate.getDate() + "/"
-                        + (currentdate.getMonth()+1)  + "/"
-                        + currentdate.getFullYear() + " @ "
+                var finishDate = currentdate.getFullYear() + "-"
+                        + (currentdate.getMonth()+1)  + "-"
+                        +  currentdate.getDate() + "@"
                         + currentdate.getHours() + ":"
                         + currentdate.getMinutes() + ":"
                         + currentdate.getSeconds();
                 var dateStart = $("#dateStart").val();
                 $("#div-show-Rs-test-point").append("" +
                 "<div class='col-sm-12'>" +"" +
-                "<hr>"+"" +
-                "<p><span>Your Mark :</span>"+"<span>"+Math.round(pointUser * 100) / 100+"</span>"+
-                "<p><span>Start Date :</span>"+"<span>"+dateStart+"</span>"+
-                "<p><span>Finish Date :</span>"+"<span>"+finishDate+"</span>"+
+                "<hr class='hr-rs-point-mark'>"+"" +
+                "<p><span class='user-point-mark'>Your Mark : </span>"+"<span class='details-mark-rs-user'>"+Math.round(pointUser * 100) / 100+" / 10</span>"+
+                "<p><span class='start-date'>Start Date : </span>"+"<span>"+dateStart+"</span>"+
+                "<p><span class='finish-date'>Finish Date : </span>"+"<span>"+finishDate+"</span>"+
                 "</div>" +
                 "");
             },

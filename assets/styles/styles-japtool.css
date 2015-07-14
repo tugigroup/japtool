@@ -1377,6 +1377,26 @@ ul.timeline li .timeline-panel:after {
  .wizard .content .body #div-question-list input{
     display: inline-block;
 }
+
+ /*css for test article*/
+.hr-rs-point-mark{
+    margin-right: 36%;
+    margin-left: -1%;
+    border-top: 1px solid #E6C776;
+}
+.user-point-mark{
+    font-weight: 500;
+}
+.start-date{
+    font-weight: 500;
+}
+.finish-date{
+    font-weight: 500;
+}
+.details-mark-rs-user{
+    color:red;
+    font-weight: 500;
+}
 /*END css by duongtd2*/
 
 

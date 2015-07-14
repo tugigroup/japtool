@@ -8,13 +8,7 @@ module.exports = {
     user: {
       model: 'User'
     },
-    groupId: {
-      type: 'string'
-    },
-
-    lesson:{
-      type: 'string'
-    },
+    
 
     subLesson:{
       type: 'string'
