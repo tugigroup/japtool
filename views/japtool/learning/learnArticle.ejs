@@ -16,7 +16,7 @@
     <section>
         <div class="row">
             <div class="col-sm-12">
-                <h3><%= article.subject %></h3>
+                <h3 class="unescape"><%= article.subject %></h3>
                 <hr>
             </div>
 
@@ -27,7 +27,7 @@
                     <p>
                     <h4>Content</h4>
                     </p>
-                    <p>
+                    <p class="unescape">
                         <%= article.content %>
                     </p>
                     <%
@@ -77,7 +77,7 @@
 
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <h4><%= question.question %></h4>
+                        <h4 class="unescape"><%= question.question %></h4>
                         <% if(question.image != null){
                         %>
                         <h5>Image :</h5>
@@ -89,22 +89,31 @@
                                 <input type="radio"  class="<%= question.id %>" name="<%= question.id %>"
                                        value="<%= question.option1 %>" id="<%= question.id %>1">
                                 <label for="<%= question.id %>1"><%= question.option1 %></label>
+                                <lable id="<%= question.id %>1rd" ></lable>
                             </div>
                             <div class="col-sm-6">
                                 <input type="radio"  class="<%= question.id %>" name="<%= question.id %>"
                                        value="<%= question.option2 %>" id="<%= question.id %>2">
                                 <label for="<%= question.id %>2"><%= question.option2 %></label>
+                                <lable id="<%= question.id %>2rd" ></lable>
                             </div>
                             <div class="col-sm-6">
                                 <input type="radio"  class="<%= question.id %>" name="<%= question.id %>"
                                        value="<%= question.option3 %>" id="<%= question.id %>3">
                                 <label for="<%= question.id %>3"><%= question.option3 %></label>
+                                <lable id="<%= question.id %>3rd" ></lable>
                             </div>
                             <div class="col-sm-6">
                                 <input type="radio"  class="<%= question.id %>" name="<%= question.id %>"
                                        value="<%= question.option4 %>" id="<%= question.id %>4">
                                 <label for="<%= question.id %>4"><%= question.option4 %></label>
+                                <lable id="<%= question.id %>4rd" ></lable>
                             </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="isemptyQ" id="<%= question.id %>isEmpty"></label>
                         </div>
                     </div>
                 </div>
@@ -124,14 +133,11 @@
 </div>
 <div class="container">
     <div class="col-sm-12" id="div-result">
-        <div id="div-show-Rs-test" class="row">
-
+        <div class="col-sm-12">
+            <button type="button" class="btn btn-info" id="btnCheckRs">Check</button>
         </div>
         <div id="div-show-Rs-test-point" class="row">
 
-        </div>
-        <div class="row">
-            <button type="button" class="btn btn-info" id="btnCheckRs">Check</button>
         </div>
     </div>
 </div>
@@ -142,6 +148,10 @@
             bodyTag: "section",
             transitionEffect: "slideLeft"
         });
+
+        $(".unescape").each(function(){
+            $(this).html($(this).text());
+        })
     });
 
     //get articleID array
@@ -158,17 +168,20 @@
     var dataUserAns = [];
     var lengthQues = $("#lengthQues").val();
     $("#btnCheckRs").on('click', function () {
-        $("#do-test-articles").hide();
+//        $("#do-test-articles").hide();
         $('.question-div-info').each(function () {
             var idQues = $(this).attr("id");
             var ofArticle = $(this).attr("ofArticle");
             var UserOp = $("input[name=" + idQues + "]:checked").val();
+            var positionRd = $("input[name=" + idQues + "]:checked").attr("id");
             dataUserAns.push({
                 'UserOp': UserOp,
                 'idQues': idQues,
-                'ofArticle':ofArticle
+                'ofArticle':ofArticle,
+                'positionRd':positionRd
             });
         });
+        console.log(dataUserAns);
         $.ajax({
             url: "/japtool/test/checkAnsUser",
             dataType: "json",
@@ -184,45 +197,29 @@
                 // variable of user's point
                 var countSum = $("#lengthQues").val();
                 var numAnswerTrue =0;
-
                 for(var i = 0 ; i < arrArticle.length;i++){
-                    $("#div-show-Rs-test").append("" +
-                    "<div class='col-sm-12'>" +"" +
-                    "<div class=row>"+
-                    "<p><span>"+"<b>Article's Subject :</b>"+arrArticle[i].arSubject+"</span>" +
-                    "<p><span>"+"<b>Article's Content :</b>"+arrArticle[i].arContent+"</span>" +
-                    "</div>"+
-                    "</div>" +
-                    "");
                     // get questions empty
                     for(var j = 0 ; j < listEmpty.length;j++ ){
                         if(listEmpty[j].article==arrArticle[i].arID){
-                            $("#div-show-Rs-test").append("" +
-                            "<div class='col-sm-12'>" +
-                            "<p><span class='lb-ts-test'>"+listEmpty[j].question+"</span>" +
-                            "<p><span class='lb-ts-test-ok'><b>Your ans :</b> "+"Empty"+"</span><span class='label label-danger'>False</span>" +
-                            "</div>" +
-                            "");
+                            var rdPositionTrue = listEmpty[j].id;
+                            var key = listEmpty[j].key;
+                            $("#" + rdPositionTrue + key + "rd").html('<i class="fa fa-check fa-2x text-success"></i>');
+                            $("#" + rdPositionTrue  + "isEmpty").html('<span class="text-danger">You do not choose any option !</span>');
                         }
                     }
                     // check question : true , false
                     for(var k = 0 ; k < listResultTest.length ; k++){
                         if(listResultTest[k].ofArticle==arrArticle[i].arID && listResultTest[k].result==true){
-                            $("#div-show-Rs-test").append("" +
-                            "<div class='col-sm-12'>" +
-                            "<p><span class='lb-ts-test'>"+listResultTest[k].QuesContent+"</span>" +
-                            "<p><span class='lb-ts-test-ok'><b>Your ans : </b>"+listResultTest[k].UserOp+"</span><span class='label label-success'>True</span>" +
-                            "</div>" +
-                            "");
+                            var rdPosition = listResultTest[k].positionRd;
+                            $("#" + rdPosition + "rd").html('<i class="fa fa-check fa-2x text-success"></i>');
                             numAnswerTrue++;
                         }
                         if(listResultTest[k].ofArticle==arrArticle[i].arID && listResultTest[k].result==false) {
-                            $("#div-show-Rs-test").append("" +
-                            "<div class='col-sm-12'>" +
-                            "<p><span class='lb-ts-test'>"+listResultTest[k].QuesContent+"</span>" +
-                            "<p><span class='lb-ts-test-fail'><b>Your ans :</b> <del>"+listResultTest[k].UserOp+"</del></span><span class='label label-danger'>False</span>" +
-                            "</div>" +
-                            "");
+                            var rdPosition = listResultTest[k].positionRd;
+                            $("#" + rdPosition + "rd").html('<i class="fa fa-times text-danger fa-2x"></i>');
+                            var rdPositionTrue = listResultTest[k].ofQues;
+                            var key = listResultTest[k].key;
+                            $("#" + rdPositionTrue + key + "rd").html('<i class="fa fa-check text-success fa-2x"></i>');
                         }
                     }
                 }

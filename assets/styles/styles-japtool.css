@@ -35,7 +35,10 @@ h2 {
     vertical-align: baseline;
     border-radius: .25em;
 }
-
+label{
+    font-weight: 400 !important;
+}
+.isemptyQ{text-indent: 20px}
 .btn-default, .btn-primary, .btn-success, .btn-info, .btn-warning, .btn-danger {
     text-shadow: none;
     -webkit-box-shadow: none;
