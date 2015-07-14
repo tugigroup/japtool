@@ -6,6 +6,7 @@
     "vocabulary_csv_file" : "work/vocabulary.csv",
     "kanji_csv_file" : "work/kanji.csv",
     "survey_csv_file" : "work/survey.csv",
+    "grammar_csv_file" : "work/grammar.csv",
     "chars_split_between_examples" : "<br>",
     "chars_split_insite_examples" : ":"
 }
