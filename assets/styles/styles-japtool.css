@@ -1622,7 +1622,9 @@ ul.timeline li .timeline-panel:after {
 
 .wizard .loading .spinner {
 }
-
+#vocabularyList h5{
+    font-size: 18px;
+}
 #vocabularyList h4 {
     font-size: 30px;
     font-weight: 700;
