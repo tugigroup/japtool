@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="col-sm-8 invite">
-                    <h3 class="text-center">N3 vocabulary learning group</h3>
+                    <h3 class="text-center" id="add-book-detail">N3 vocabulary learning group</h3>
 
                     <div class="abc" id="container-learn" style="border: 1px solid #ccc;min-height: 600px"></div>
                     <!-- Comment-->
@@ -103,6 +103,7 @@
     window.onload = function (){
         $('.sub-lesson').click(function () {
             var bookDetail = $(this).attr('name');
+            $('#add-book-detail').attr('name', bookDetail);
             var user = '<%= session.User.id %>';
             var selfLearning = $('#title-learning').attr('name');
             var startDate = new Date();
