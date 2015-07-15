@@ -130,7 +130,7 @@ module.exports = {
         FileAction.rm(userAvatar, function (err, file) {
             if (err) {
                 sails.log(err);
-            } 
+            }
         });
         FileAction.upload('uploadAvatar', req, function (err, img) {
             if (err) {

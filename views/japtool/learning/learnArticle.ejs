@@ -8,7 +8,7 @@
             + currentdate.getHours() + ":"
             + currentdate.getMinutes() + ":"
             + currentdate.getSeconds();
-    data.forEach(function(article, index){
+            data.forEach(function(article, index){
     %>
     <input type="text" hidden="hidden" class="arrArticleID" content="<%= article.content %>" subject="<%= article.subject %>" value="<%= article.id %>"/>
     <input type="text" hidden="hidden" value="<%=startDate%>" id="dateStart"/>
@@ -134,7 +134,7 @@
 <div class="container">
     <div class="col-sm-12" id="div-result">
         <div class="col-sm-12 contain-check-btn">
-            <button type="button" class="btn btn-info" id="btnCheckRs">Check</button>
+            <button type="button" class="btn btn-submit-testing" id="btnCheckRs">Submit Testing</button>
         </div>
         <div id="div-show-Rs-test-point" class="row">
 
@@ -153,6 +153,7 @@
             $(this).html($(this).text());
         })
     });
+
 
     //get articleID array
     var arrArticleID = [];
@@ -197,6 +198,7 @@
                 // variable of user's point
                 var countSum = $("#lengthQues").val();
                 var numAnswerTrue =0;
+                var dataUserTestResult = [];
                 for(var i = 0 ; i < arrArticle.length;i++){
                     // get questions empty
                     for(var j = 0 ; j < listEmpty.length;j++ ){
@@ -205,6 +207,12 @@
                             var key = listEmpty[j].key;
                             $("#" + rdPositionTrue + key + "rd").html('<i class="fa fa-check fa-2x text-success"></i>');
                             $("#" + rdPositionTrue  + "isEmpty").html('<span class="text-danger ">You do not choose any option !</span>');
+                            // save result data
+                            dataUserTestResult.push({
+                                answer:undefined,
+                                question:rdPositionTrue,
+                                result:false
+                            });
                         }
                     }
                     // check question : true , false
@@ -213,6 +221,12 @@
                             var rdPosition = listResultTest[k].positionRd;
                             $("#" + rdPosition + "rd").html('<i class="fa fa-check fa-2x text-success"></i>');
                             numAnswerTrue++;
+                            // save result data
+                            dataUserTestResult.push({
+                                question:listResultTest[k].ofQues,
+                                answer:listResultTest[k].UserOp,
+                                result:true
+                            });
                         }
                         if(listResultTest[k].ofArticle==arrArticle[i].arID && listResultTest[k].result==false) {
                             var rdPosition = listResultTest[k].positionRd;
@@ -220,6 +234,12 @@
                             var rdPositionTrue = listResultTest[k].ofQues;
                             var key = listResultTest[k].key;
                             $("#" + rdPositionTrue + key + "rd").html('<i class="fa fa-check text-success fa-2x"></i>');
+                            // save result data
+                            dataUserTestResult.push({
+                                question:listResultTest[k].ofQues,
+                                answer:listResultTest[k].UserOp,
+                                result:false
+                            });
                         }
                     }
                 }
@@ -242,6 +262,23 @@
                 "<p><span class='finish-date'>Finish Date : </span>"+"<span>"+finishDate+"</span>"+
                 "</div>" +
                 "");
+                var userIdOnSession = $('#userIdInSession').attr('userId');
+                var bookDetail = $('#add-book-detail').attr('name');
+                var selfLearning = $('#title-learning').attr('name');
+//                send result data
+                $.ajax({
+                    url: "/japtool/UserLearnHistory/saveResult",
+                    dataType: "json",
+                    data: {
+                        user:userIdOnSession,
+                        bookDetail:bookDetail,
+                        selfLearning:selfLearning,
+                        mark:pointUser,
+                        finishDate:finishDate,
+                        dataUserTestResult:JSON.stringify(dataUserTestResult)
+                    },
+                    method: "GET"
+                });
             },
             error: function () {
                 $(this).html("Error!");
