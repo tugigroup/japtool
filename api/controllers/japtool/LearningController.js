@@ -70,16 +70,16 @@ module.exports = {
     },
     edit: function (req, res) {
         var id = req.param("id");
-        var finishDate=req.param("finishDate");
-        var notes =req.param("notes");
-        SelfLearning.update({id:id},{
-            notes:notes,
-            finishDate:finishDate
-        }).exec(function(err,ok){
-            if(err){
+        var finishDate = req.param("finishDate");
+        var notes = req.param("notes");
+        SelfLearning.update({id: id}, {
+            notes: notes,
+            finishDate: finishDate
+        }).exec(function (err, ok) {
+            if (err) {
 
             }
-            else{
+            else {
                 res.redirect('japtool/learning/');
             }
         })
@@ -93,6 +93,9 @@ module.exports = {
             else {
                 var startdate = learning.startDate;
                 var dds = startdate.getDate();
+                if (dds <= 9) {
+                    dds = "0" + dds;
+                }
                 var mms = startdate.getMonth() + 1;
                 if (mms <= 9) {
                     mms = "0" + mms;
@@ -101,6 +104,9 @@ module.exports = {
                 var startdateString = "" + yyyys + "-" + mms + "-" + dds + "";
                 var finishdate = learning.finishDate;
                 var ddf = finishdate.getDate();
+                if (ddf <= 9) {
+                    ddf = "0" + ddf;
+                }
                 var mmf = finishdate.getMonth() + 1;
                 if (mmf <= 9) {
                     mmf = "0" + mmf;
