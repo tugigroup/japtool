@@ -11,7 +11,7 @@ module.exports = {
     },
     create: function (req, res) {
         var par = req.allParams();
-        fileAction.upload('image', req, function (err, img) {
+        FileAction.upload('image', req, function (err, img) {
             if (err) {
                 sails.log(err)
             } else {
@@ -59,6 +59,7 @@ module.exports = {
                     uniqueLessons: uniqueLessons,
                     learnID: learnID,
                     bookDetails: bookDetails,
+                    nameBook:data.name,
                     layout: 'layout/layout-japtool'
                 });
             }
