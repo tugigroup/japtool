@@ -42,6 +42,7 @@ module.exports = {
     },
     practice: function (req, res) {
         var id = req.param('id');
+        var learnID = req.param('learnID');
         var array = require("array-extended");
         BookMaster.findOne({id: id}).populate('bookDetails',{ sort: 'sort ASC' }).exec(function createCB(err, data) {
             if (err) {
@@ -56,6 +57,7 @@ module.exports = {
                 //uniqueLessons = array.sort(uniqueLessons);
                 res.view('japtool/learning/show-book-detail', {
                     uniqueLessons: uniqueLessons,
+                    learnID: learnID,
                     bookDetails: bookDetails,
                     layout: 'layout/layout-japtool'
                 });

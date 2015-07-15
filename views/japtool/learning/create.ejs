@@ -55,7 +55,23 @@
 
                             <h3></h3>
 
-                            <div class="desc-library" id="placebook" >
+                            <div class="desc-library" id="placebook">
+
+                                <% if(book != null){ %>
+
+                                <img
+                                        <% if (book.image) { %>
+                                     src="/media/image/<%= book.image %>"
+                                        <% } else { %>
+                                     src="/images/bookicon.jpg"
+                                        <% } %>
+                                     width="100" height="100">
+                                <input id="idbook" type="hidden" name="bookMaster" value="<%= book.id %>">
+                                <br>
+                                <b><%= book.name %></b><br>
+                                <b>Level : <%= book.level %></b>
+
+                                <% } %>
                             </div>
                         </div>
                     </div>

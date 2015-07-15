@@ -9,24 +9,24 @@ module.exports = {
     },
     home: function (req, res) {
         try {
-          SelfLearning.find({user:req.session.User.id})
-          .populate('bookMaster')
-          .populate('userLearnHistories').exec(function (err, selfLearnings) {
-          if (err) {
-            sails.log("Err when read data from server:");
-            return res.serverError(err);
-          }
-          sails.log("Book Use History All.");
-          sails.log(selfLearnings);
-          if (selfLearnings == null|| selfLearnings==undefined) {
-            return res.json({err: "Error"});
-          }
-          /*selfLearnings.forEach(function(bookUse){
-            sails.log(bookUse.bookMaster);
-          });*/
-          //sails.log(selfLearnings);
-          res.view('japtool/home/home',{selfLearnings:selfLearnings});
-        });
+            SelfLearning.find({user: req.session.User.id})
+                .populate('bookMaster')
+                .populate('userLearnHistories').exec(function (err, selfLearnings) {
+                    if (err) {
+                        sails.log("Err when read data from server:");
+                        return res.serverError(err);
+                    }
+                    sails.log("Book Use History All.");
+                    sails.log(selfLearnings);
+                    if (selfLearnings == null || selfLearnings == undefined) {
+                        return res.json({err: "Error"});
+                    }
+                    /*selfLearnings.forEach(function(bookUse){
+                     sails.log(bookUse.bookMaster);
+                     });*/
+                    //sails.log(selfLearnings);
+                    res.view('japtool/home/home', {selfLearnings: selfLearnings});
+                });
         }
         catch (ex) {
             sails.log(ex);
@@ -38,8 +38,18 @@ module.exports = {
      * @param res
      */
     create: function (req, res) {
-        res.view('japtool/learning/create');
+        var bookid= req.param('bookid');
+        BookMaster.findOne({id:bookid}).exec(function(err,books){
+            if(err){
 
+            }
+
+            else{
+                res.view('japtool/learning/create',{
+                    book:books
+                });
+            }
+        })
     },
     add: function (req, res) {
         try {
@@ -102,7 +112,7 @@ module.exports = {
     },
 
     index: function (req, res) {
-        var arrTag=[];
+        var arrTag = [];
         SelfLearning.find().populate('bookMaster', {sort: 'startDate'}).exec(function (err, selfLearnings) {
             if (err) {
                 sails.log("Loi cmnr dm")
@@ -111,7 +121,7 @@ module.exports = {
                 selfLearnings.forEach(function (item, index) {
                     arrTag.push(item.bookMaster.type);
                     // if (index == (selfLearnings.length - 1)) {
-                        
+
                     // }
 
                 })
@@ -119,7 +129,7 @@ module.exports = {
 
             var array = require("array-extended");
             var uniqueType = array(arrTag).unique().value();
-            res.view( {
+            res.view({
                 learnList: selfLearnings,
                 uniqueType: uniqueType
             })

@@ -60,6 +60,7 @@ function checkAnswer2(pre, next) {
         nextQuestion(pre, next);
     }
 }
+
 function checkAnswer3() {
     var check = new Array();
     var equa = 0;
@@ -67,18 +68,18 @@ function checkAnswer3() {
     for (var i = 0; i < lengt; i++) {
         listIdSurvey[i] = $("#surVeyid" + i + "").val();
         var q = false;
-        var index = 0;
-        var truePos = 0;
+        var chosed;
         $('input[type="radio"][name="lib-recommend-3-q' + (i + 1) + '"]').each(function () {
             if ($(this).prop("checked")) {
                 q = true;
-                truePos = index;
+                /*chosed =$(this).prop("checked").val();*/
+                chosed = $("#qt" + (i + 1) + " input[type='radio']:checked").val();
+                console.log(chosed);
             }
             else {
             }
-            index++;
         });
-        answer3[i] = truePos;
+        answer3[i] = chosed;
         check[i] = q;
     }
     console.log(answer3);
@@ -102,7 +103,7 @@ function checkAnswer1Login() {
         window.location.replace('/japtool/recommend/getLibraryLogin');
     }
     if (answer2 == 2) {
-      window.location.replace('/japtool/learning/home');
+        window.location.replace('/japtool/learning/home');
     }
 }
 /*choose book*/
@@ -118,9 +119,9 @@ function addbook(i) {
     var bookname = $('#bookname' + i + '').attr('title');
     var bookid = $('#bookid' + i + '').val();
     var booklv = $('#booklv' + i + '').attr('title');
-    $("#placebook").append('<b><img src="' + imglink + '" width="46" height="46"/></b>' +
-    '<input type="hidden" name="bookMaster" value="' + bookid + '">' +
-    '<b>' + bookname + '</b>' +
+    $("#placebook").append('<b><img src="' + imglink + '" width="100" height="100"/></b>' +
+    '<input type="hidden" id="idbook" name="bookMaster" value="' + bookid + '"><br>' +
+    '<b>' + bookname + '</b><br>' +
     '<b>Level : ' + booklv + '</b>');
     $('#show-books').modal('hide');
 }
@@ -130,7 +131,11 @@ function deleteLearning() {
 
 }
 function validateCreatLearning() {
-    if (!$.trim($('#show-books').html()).length) {
+    /*if (!$.trim($('#show-books').html()).length) {
+     $('#mesage').html("<strong><i><p style='color: #b92c28'>You must choose a book</p></i></strong>");
+     return false;
+     }*/
+    if ($('#idbook').val()==null) {
         $('#mesage').html("<strong><i><p style='color: #b92c28'>You must choose a book</p></i></strong>");
         return false;
     }
