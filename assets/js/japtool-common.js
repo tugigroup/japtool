@@ -126,9 +126,11 @@ function addbook(i) {
     $('#show-books').modal('hide');
 }
 function deleteLearning() {
-    var learningId = $('#deleteLearning').attr('title');
-    window.location.replace('/japtool/Learning/deleteLearning?id=' + learningId);
-
+    var a= confirm("Ban co thuc su muon xoa learning nay k?");
+    if(a){
+        var learningId = $('#deleteLearning').attr('title');
+        window.location.replace('/japtool/Learning/deleteLearning?id=' + learningId);
+    }
 }
 function validateCreatLearning() {
     var now= new Date();

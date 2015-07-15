@@ -62,7 +62,56 @@ module.exports = {
                 })
             }
             else {
-                res.redirect("/japtool/BookMaster/practice/?id="+bookid+"&learnID="+learning.id);
+                res.redirect("/japtool/BookMaster/practice/?id=" + bookid + "&learnID=" + learning.id);
+            }
+
+        })
+
+    },
+    edit: function (req, res) {
+        var id = req.param("id");
+        var finishDate=req.param("finishDate");
+        var notes =req.param("notes");
+        SelfLearning.update({id:id},{
+            notes:notes,
+            finishDate:finishDate
+        }).exec(function(err,ok){
+            if(err){
+
+            }
+            else{
+                res.redirect('japtool/learning/');
+            }
+        })
+    },
+    loadEditForm: function (req, res) {
+        var id = req.param("id");
+        SelfLearning.findOne({id: id}).populate('bookMaster', {sort: 'startDate'}).exec(function (err, learning) {
+            if (err) {
+
+            }
+            else {
+                var startdate = learning.startDate;
+                var dds = startdate.getDate();
+                var mms = startdate.getMonth() + 1;
+                if (mms <= 9) {
+                    mms = "0" + mms;
+                }
+                var yyyys = startdate.getFullYear();
+                var startdateString = "" + yyyys + "-" + mms + "-" + dds + "";
+                var finishdate = learning.finishDate;
+                var ddf = finishdate.getDate();
+                var mmf = finishdate.getMonth() + 1;
+                if (mmf <= 9) {
+                    mmf = "0" + mmf;
+                }
+                var yyyyf = finishdate.getFullYear();
+                var finishdateString = "" + yyyyf + "-" + mmf + "-" + ddf + "";
+                res.view('japtool/learning/edit', {
+                    startDateString: startdateString,
+                    finishdate: finishdateString,
+                    learning: learning
+                });
             }
 
         })
