@@ -125,19 +125,24 @@ module.exports = {
     },
     //edit avatar user
     editAvatar: function (req, res, next) {
-        var userIDSession = req.session.User.id;
-
-        FileAction.upload('uploadAvatar', req, function (err, img) {
-            //sails.log(img);
+        var userCodeID = req.param('userCodeID');
+        var userAvatar = req.param('userAvatar');
+        FileAction.rm(userAvatar, function (err, file) {
             if (err) {
-                sails.log(err)
+                sails.log(err);
+            } 
+        });
+        FileAction.upload('uploadAvatar', req, function (err, img) {
+            if (err) {
+                res.negotiate(err);
             } else {
-                User.update({id: userIDSession}, {avatar: img[0].fd}, function (err, updateAvatar) {
+                avatarimg = img[0].fd;
+                User.update({id: userCodeID}, {avatar: avatarimg}, function (err, updateAvatar) {
 
                     if (err) {
                         sails.log(err)
                     } else {
-                        res.redirect('japtool/user/show/' + userIDSession)
+                        res.redirect('japtool/user/show/' + userCodeID)
                     }
                 });
             }
@@ -160,8 +165,8 @@ module.exports = {
                 if (lv == null || lv == '') {
                     /* res.redirect('japtool/user/afterLogin');*/
                     res.view({
-                        lv:'',
-                        crt:''
+                        lv: '',
+                        crt: ''
                     });
                 }
                 else {
@@ -170,14 +175,14 @@ module.exports = {
 
                         }
                         else {
-                            crt=user.currentLearningTime;
+                            crt = user.currentLearningTime;
                             if (svuss == null || svuss == '') {
                                 res.view({
-                                    lv:lv,
-                                    crt:crt
+                                    lv: lv,
+                                    crt: crt
                                 });
                             }
-                            else{
+                            else {
                                 res.redirect('japtool/user/afterLogin');
                             }
                         }

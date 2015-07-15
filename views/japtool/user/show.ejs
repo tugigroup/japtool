@@ -17,7 +17,7 @@
                                     <% if(!user.avatar){ %>
                                     <img src="/images/avatar/avatar.jpg" id="avatarPreview"/>
                                     <% } else{ %>
-                                    <img src="/media/image/?fd=<%= user.avatar %>"/>
+                                    <img src="/media/image/<%= user.avatar %>"/>
                                     <% } %>
                                 </div>
                         </div>
@@ -37,12 +37,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" style="display: none">
                             <div class="col-sm-offset-1 col-sm-10">
                                 <span class="friendUser">List Friends</span>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" style="display: none">
                             <div class="col-sm-offset-1 col-sm-10">
                                 <div class="panel panel-warning">
                                     <!--<div class="panel-heading">Details</div>-->
@@ -97,12 +97,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" style="display: none">
                             <div class="col-sm-offset-1 col-sm-10">
                                 <span class="friendUser">List Joined Group</span>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" style="display: none">
                             <div class="col-sm-offset-1 col-sm-10">
                                 <div class="panel panel-warning">
                                     <!--<div class="panel-heading">Details</div>-->
@@ -161,7 +161,7 @@
             <div class="col-sm-9">
                 <ul class="nav nav-tabs">
                     <li class="active"><a data-toggle="tab" href="#info">Information</a></li>
-                    <li><a data-toggle="tab" href="#friend">Friends</a></li>
+                    <li STYLE="display: none"><a data-toggle="tab" href="#friend">Friends</a></li>
                     <li><a data-toggle="tab" href="#password">Change Password</a></li>
                     <li><a data-toggle="tab" href="#change-avatar">Change Avatar</a></li>
                 </ul>
@@ -172,7 +172,7 @@
                             <%- partial('show-user-info.ejs') %>
                         </div>
                     </div>
-                    <div id="friend" class="tab-pane fade">
+                    <div id="friend" class="tab-pane fade" STYLE="display: none">
                         <div class="row">
                             <div class=" col-sm-12 form-listFriend">
                                 <div class="row">
@@ -489,15 +489,17 @@
                                 <% if(!user.avatar){ %>
                                 <img src="/images/avatar/avatar.jpg" id="avatarPreview"/>
                                 <% } else{ %>
-                                <img src="/media/image/?fd=<%= user.avatar %>" id="avatarPreview"/>
+                                <img src="/media/image/<%= user.avatar %>" id="avatarPreview"/>
                                 <% } %>
                             </div>
                             <div class="col-sm-10">
                                 <form class="form-inline" action="/japtool/user/editAvatar"
                                       enctype="multipart/form-data"
                                       method="POST">
+                                    <input type="hidden" name="userCodeID" value="<%= user.id %>"/>
+                                    <input type="hidden" name="userAvatar" value="<%= user.avatar %>"/>
                                     <div class="form-group">
-                                        <input type="type" id="uploadAvatar" class="form-control"
+                                        <input type="text" id="uploadAvatar" class="form-control"
                                                placeholder="Choose File" disabled="disabled" name="avatarUser">
                                     </div>
 
@@ -505,7 +507,7 @@
                                         <span>Upload</span>
                                         <input id="uploadBtnAvatar" type="file" class="upload" name="uploadAvatar" accept="image/*"/>
                                     </div>
-                                    <button type="submit" class="btn btn-success">Save</button>
+                                    <button type="submit" class="btn btn-success" id="submitAvatar">Save</button>
 
                                 </form>
                             </div>
@@ -517,3 +519,5 @@
     </div>
 </div>
 </div>
+
+
