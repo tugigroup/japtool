@@ -131,18 +131,50 @@ function deleteLearning() {
 
 }
 function validateCreatLearning() {
-    /*if (!$.trim($('#show-books').html()).length) {
-     $('#mesage').html("<strong><i><p style='color: #b92c28'>You must choose a book</p></i></strong>");
-     return false;
-     }*/
+    var now= new Date();
+    var d2 = new Date ( now );
+    var starDate = new Date($("#startDate").val());
+    starDate.setHours(now.getHours());
+    starDate.setMinutes(now.getMinutes());
+    starDate.setSeconds(now.getSeconds()+1);
+    var finishDate = new Date($("#finishDate").val());
+    finishDate.setHours(23,59,59);
+    var validateBook;
+    var validateStartDate;
+    var validateFinishDate;
     if ($('#idbook').val()==null) {
-        $('#mesage').html("<strong><i><p style='color: #b92c28'>You must choose a book</p></i></strong>");
-        return false;
+        $('#mesageBook').html("<i><p style='color: #e32d29'>You must choose a book</p></i>");
+        validateBook= false;
     }
     else {
+        validateBook =true;
+        $('#mesageBook').empty();
+    }
+
+    if (starDate<now) {
+        $('#mesagestartDate').html("<i><p style='color: #d82824'>Ngay bat dau phai lon hon ngay hien tai!!!</p></i>");
+        validateStartDate= false;
+    }
+    else {
+        validateStartDate =true;
+        $('#mesagestartDate').empty();
+    }
+    if (finishDate<now) {
+        $('#mesagefinishDate').html("<i><p style='color: #dc302c'>Ngay ket thuc phai lon hon ngay hien tai!!!</p></i>");
+        validateFinishDate= false;
+    }
+    else {
+        $('#mesagefinishDate').empty();
+        validateFinishDate =true;
+    }
+    if(validateBook && validateStartDate &&validateFinishDate){
         return true;
     }
+    else{
+        return false;
+    }
 }
+
 /*end choose book*/
 //end recommend login
 

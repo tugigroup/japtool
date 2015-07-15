@@ -36,14 +36,20 @@
                                     <label>From</label>
                                 </div>
                                 <div class="col-sm-4">
-                                    <input type="date" class="form-control" name="startDate" id="startDate">
+                                    <input type="date" class="form-control" name="startDate" id="startDate"><br>
+
+                                    <div id="mesagestartDate"></div>
                                 </div>
+
                                 <div class="col-sm-2">
                                     <label>To</label>
                                 </div>
                                 <div class="col-sm-4">
-                                    <input type="date" class="form-control" name="finishDate" id="finishDate">
+                                    <input type="date" class="form-control" name="finishDate" id="finishDate"><br>
+
+                                    <div id="mesagefinishDate"></div>
                                 </div>
+
                             </div>
                         </div>
                         <div class="col-sm-2 hidden-md hidden-xs">
@@ -61,11 +67,11 @@
 
                                 <img
                                         <% if (book.image) { %>
-                                     src="/media/image/<%= book.image %>"
+                                        src="/media/image/<%= book.image %>"
                                         <% } else { %>
-                                     src="/images/bookicon.jpg"
+                                        src="/images/bookicon.jpg"
                                         <% } %>
-                                     width="100" height="100">
+                                        width="100" height="100">
                                 <input id="idbook" type="hidden" name="bookMaster" value="<%= book.id %>">
                                 <br>
                                 <b><%= book.name %></b><br>
@@ -73,13 +79,17 @@
 
                                 <% } %>
                             </div>
+                            <% if(create == "dont"){ %>
+                            <h3>Ban da dang hoc mot learning ve quyen sach nay, ban can xoa learning do de tao 1
+                                learning moi ve no hoac tiep tuc hoc tai <a href="/japtool/BookMaster/practice/?id=<%=book.id%>">day</a> </h3>
+                            <% } %>
                         </div>
                     </div>
                     <!-- Trigger the modal with a button -->
                     <div class="modal fade" id="show-books" data-backdrop="static" data-keyboard="false">
 
                     </div>
-                    <div id="mesage"></div>
+                    <div id="mesageBook"></div>
                     <input type="button"
                            class="btn btn-danger btn-chooseBook"
                            onclick="loadbooks()"
