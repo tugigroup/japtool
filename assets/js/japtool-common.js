@@ -461,6 +461,16 @@ $(document).ready(function () {
         $("#uploadBtnAvatar").change(function () {
             readAvatar(this);
         });
+
+
+    $('#submitAvatar').click(function(){
+        var avatarValue = $('#uploadAvatar').val();
+        if(avatarValue == null || avatarValue.length == 0){
+            alert('Vui lòng chọn ảnh.')
+            return false;
+        }
+    })
+
 });
 
 //END USER
