@@ -59,6 +59,7 @@ module.exports = {
                     uniqueLessons: uniqueLessons,
                     learnID: learnID,
                     bookDetails: bookDetails,
+                    nameBook:data.name,
                     layout: 'layout/layout-japtool'
                 });
             }
