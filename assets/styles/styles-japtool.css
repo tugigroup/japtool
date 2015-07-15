@@ -1398,6 +1398,15 @@ ul.timeline li .timeline-panel:after {
     color:red;
     font-weight: 500;
 }
+
+/*testing*/
+.btn-submit-testing{
+    margin-top: -4%;
+    border-color: rgb(225, 201, 201);
+    border-radius: 0px;
+    padding: 1%;
+    background-color: rgb(238, 238, 238);
+}
 /*END css by duongtd2*/
 
 

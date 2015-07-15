@@ -23,7 +23,6 @@ module.exports = {
         var JsondataUserAns = JSON.parse(dataUserAns);
         var arrArticleID = req.param('arrArticleID');
         var listResult = [];
-        var listQuesEmpty = [];
 
         var data = [];
 
