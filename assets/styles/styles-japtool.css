@@ -9,6 +9,7 @@ body {
 a:hover {
     text-decoration: none;
     cursor: pointer;
+    outline: none;
 }
 
 ul {

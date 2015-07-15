@@ -11,7 +11,7 @@ module.exports = {
     },
     create: function (req, res) {
         var par = req.allParams();
-        FileAction.upload('image', req, function (err, img) {
+        fileAction.upload('image', req, function (err, img) {
             if (err) {
                 sails.log(err)
             } else {

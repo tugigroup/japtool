@@ -127,7 +127,7 @@ module.exports = {
     editAvatar: function (req, res, next) {
         var userIDSession = req.session.User.id;
 
-        FileAction.upload('uploadAvatar', req, function (err, img) {
+        fileAction.upload('uploadAvatar', req, function (err, img) {
             //sails.log(img);
             if (err) {
                 sails.log(err)
