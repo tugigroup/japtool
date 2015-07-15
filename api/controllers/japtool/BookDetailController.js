@@ -24,7 +24,6 @@ module.exports = {
 
     saveHistory: function (req, res) {
         var pars = req.allParams();
-        //pars.startDate= new Date();
         UserLearnHistory.findOne({
             user: pars.user,
             bookDetail: pars.bookDetail,
@@ -40,8 +39,7 @@ module.exports = {
                 })
             } else {
                 var currentDate = new Date();
-                data.startDate = currentDate;
-                UserLearnHistory.update({id: data.id}, {startDate: currentDate}).exec(function (err, updated) {
+                UserLearnHistory.update({id: data.id}, {startDate: currentDate, finishDate: currentDate}).exec(function (err, updated) {
                     if (err) {
                         sails.log(err)
                     } else {
