@@ -80,7 +80,11 @@
                                 <div class="col-sm-3">
                                     <a href="#">
                                         <img class="library-detail-img"
-                                             src="/media/image/?fd=<%= book.image %>">
+                                                <% if (book.image) { %>
+                                             src="/media/image/<%= book.image %>"
+                                                <% } else { %>
+                                             src="/images/book_default_cover.png"
+                                                <% } %>>
                                     </a>
                                 </div>
                                 <div class="col-sm-9">
