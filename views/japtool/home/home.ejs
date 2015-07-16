@@ -1,3 +1,8 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+
+    });
+</script>
 <div class="vocabulary content clearfix">
     <div class="container">
         <div class="row">
@@ -33,16 +38,27 @@
                             <!--Ended Show miss following lesson-->
 
                             <!--Show learn history-->
+                            <%var showNumber =0;%>
                             <div class="row info-learning">
                                 <%if(selfLearning.userLearnHistories!=undefined && selfLearning.userLearnHistories.length>0){%>
                                 <%selfLearning.userLearnHistories.forEach(function(userLearn){%>
-                                  <div class="col-sm-9">
+                                <%if(showNumber>=4){%>
+                                  <div class="col-sm-9" style="display: none">
                                     <!--<span class="label label-primary"><%=userLearn.lesson%></span>-->
                                     <p><span class="glyphicon glyphicon-thumbs-up"></span> You have done <%=userLearn.subLesson%> on <%=userLearn.lesson%></p>
                                   </div>
-                                  <div class="col-sm-3">
+                                  <div class="col-sm-3" style="display: none">
                                     <a class="join-learn btn label-danger" href="/japtool/Learning/create/?bookid=<%=bookMasterId%>">Continue</a>
                                   </div>
+                                <%}else{ showNumber++;%>
+                                    <div class="col-sm-9" style="display: block">
+                                        <!--<span class="label label-primary"><%=userLearn.lesson%></span>-->
+                                        <p><span class="glyphicon glyphicon-thumbs-up"></span> You have done <%=userLearn.subLesson%> on <%=userLearn.lesson%></p>
+                                    </div>
+                                    <div class="col-sm-3" style="display: block">
+                                        <a class="join-learn btn label-danger" href="/japtool/Learning/create/?bookid=<%=bookMasterId%>">Continue</a>
+                                    </div>
+                                <%}%>
                                 <%});%> <!--End for-->
                                 <%} else {%>
                                 <h5>No learn history</h5>

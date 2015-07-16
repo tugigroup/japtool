@@ -225,29 +225,6 @@
                                                 <!--/.nav-collapse -->
                                             </div>
                                         </div>
-
-
-                                        <!--<div id="cssmenu-learngroup">-->
-                                        <!--<ul>-->
-                                        <!--<% arrAllLesson.forEach(function(item){ %>-->
-                                        <!--<% if(item.idLesson == book.id){ %>-->
-                                        <!--<% item.arrLesson.forEach(function(uniqueLesson){ %>-->
-                                        <!--<li class='has-sub'><a-->
-                                        <!--href='javascript: void(0)'><%= uniqueLesson %></a>-->
-                                        <!--<% book.bookDetails.forEach(function(bookDetail){ %>-->
-                                        <!--<% if(uniqueLesson == bookDetail.lesson) { %>-->
-                                        <!--<ul>-->
-                                        <!--<li><a href='javascript: void(0)'-->
-                                        <!--onclick="learn('<%= bookDetail.useModule %>', <%= bookDetail.dataExtractCondition %>, '<%= book.id %>')"><%= bookDetail.subLesson %></a>-->
-                                        <!--</li>-->
-                                        <!--</ul>-->
-                                        <!--<% } %>-->
-                                        <!--<% }) %>-->
-                                        <!--<% }) %>-->
-                                        <!--<% } %>-->
-                                        <!--<% }) %>-->
-                                        <!--</ul>-->
-                                        <!--</div>-->
                                     </div>
                                 </div>
                                 <div class="col-sm-9 invite">
@@ -268,7 +245,11 @@
                 <script>
                     function learn(module, condition, id) {
                         var strCondition = JSON.stringify(condition);
-                        $('#' + id).load('/japtool/' + module + '/list/?condition=' + strCondition);
+                        if(module == 'test'){
+                            $('#' + id).load('/japtool/' + module + '/previewTest/?condition=' + strCondition);
+                        }else{
+                            $('#' + id).load('/japtool/' + module + '/list/?condition=' + strCondition);
+                        }
                     }
                 </script>
             </div>
