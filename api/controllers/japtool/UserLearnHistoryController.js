@@ -22,7 +22,6 @@ module.exports = {
             if (err) {
                 return res.send(err);
             }
-            console.log("Update success !!!");
             //create records userTestResult
         });
         for(var i = 0 ; i < jsonDataUserTestResult.length ; i++){
