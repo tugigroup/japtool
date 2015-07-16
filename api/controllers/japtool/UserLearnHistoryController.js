@@ -23,7 +23,7 @@ module.exports = {
                 return res.send(err);
             }
             console.log("Update success !!!");
-            //create records userTestResult559e3a3063d7292c1582d07c
+            //create records userTestResult
         });
         for(var i = 0 ; i < jsonDataUserTestResult.length ; i++){
             UserTestResult.create(
