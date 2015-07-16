@@ -29,7 +29,7 @@ module.exports = {
             sails.log(ex);
         }
     },
-    missLesson:function (req, res) {
+    missLesson: function (req, res) {
         try {
 
             res.view('japtool/home/missLesson');
@@ -137,89 +137,118 @@ module.exports = {
             var bookMaster = req.param('bookMaster');
             var startDatepr = req.param('startDate');
             var finishDatepr = req.param('finishDate');
-            SelfLearning.findOne({
-                user: userId,
-                bookMaster: bookMaster
-            }).populate('bookMaster', {sort: 'startDate'}).exec(function (err, learning) {
+            SelfLearning.create({
+                notes: notes,
+                startDate: startDatepr,
+                finishDate: finishDatepr,
+                bookMaster: bookMaster,
+                user: userId
+            }).exec(function (err, selfLearning) {
                 if (err) {
-
+                    return res.json({err: err});
                 }
-                if (!learning) {
-                    SelfLearning.create({
-                        notes: notes,
-                        startDate: startDatepr,
-                        finishDate: finishDatepr,
-                        bookMaster: bookMaster,
-                        user: userId
-                    }).exec(function (err, selfLearning) {
-                        if (err) {
-                            return res.json({err: err});
-                        }
-                        if (!selfLearning) {
-                            return res.json({err: "Error"});
-                        }
-                        BookUseHistory.create({
-                            userId: userId,
-                            bookMaster: bookMaster,
-                            startDate: startDatepr,
-                            finishDate: finishDatepr,
-                            selfLearning: selfLearning
-                        }).exec(function (err, bookusehistory) {
-                            if (err) {
-
-                            }
-                            else {
-                                res.redirect('japtool/learning/');
-                            }
-                        })
-
-                    });
+                if (!selfLearning) {
+                    return res.json({err: "Error"});
                 }
-                else {
-                    var startDate = learning.startDate;
-                    var finishDate = learning.finishDate;
-                    var now = new Date();
+                BookUseHistory.create({
+                    userId: userId,
+                    bookMaster: bookMaster,
+                    startDate: startDatepr,
+                    finishDate: finishDatepr,
+                    selfLearning: selfLearning
+                }).exec(function (err, bookusehistory) {
+                    if (err) {
 
-                    if (finishDate > now) {
-                        var create = 'dont';
-                        res.view('japtool/learning/create', {
-                            create: create,
-                            book: learning.bookMaster
-                        });
                     }
                     else {
-                        SelfLearning.create({
-                            notes: notes,
-                            startDate: startDatepr,
-                            finishDate: finishDatepr,
-                            bookMaster: bookMaster,
-                            user: userId
-                        }).exec(function (err, selfLearning) {
-                            if (err) {
-                                return res.json({err: err});
-                            }
-                            if (!selfLearning) {
-                                return res.json({err: "Error"});
-                            }
-                            BookUseHistory.create({
-                                userId: userId,
-                                bookMaster: bookMaster,
-                                startDate: startDatepr,
-                                finishDate: finishDatepr,
-                                selfLearning: selfLearning
-                            }).exec(function (err, bookusehistory) {
-                                if (err) {
-
-                                }
-                                else {
-                                    res.redirect('japtool/learning/');
-                                }
-                            })
-
-                        });
+                        res.redirect('japtool/learning/');
                     }
-                }
-            })
+                })
+
+            });
+            /*SelfLearning.findOne({
+             user: userId,
+             bookMaster: bookMaster
+             }).populate('bookMaster', {sort: 'startDate'}).exec(function (err, learning) {
+             if (err) {
+
+             }
+             if (!learning) {
+             SelfLearning.create({
+             notes: notes,
+             startDate: startDatepr,
+             finishDate: finishDatepr,
+             bookMaster: bookMaster,
+             user: userId
+             }).exec(function (err, selfLearning) {
+             if (err) {
+             return res.json({err: err});
+             }
+             if (!selfLearning) {
+             return res.json({err: "Error"});
+             }
+             BookUseHistory.create({
+             userId: userId,
+             bookMaster: bookMaster,
+             startDate: startDatepr,
+             finishDate: finishDatepr,
+             selfLearning: selfLearning
+             }).exec(function (err, bookusehistory) {
+             if (err) {
+
+             }
+             else {
+             res.redirect('japtool/learning/');
+             }
+             })
+
+             });
+             }
+             else {
+             var startDate = learning.startDate;
+             var finishDate = learning.finishDate;
+             var now = new Date();
+
+             if (finishDate > now) {
+             var create = 'dont';
+             res.view('japtool/learning/create', {
+             create: create,
+             book: learning.bookMaster
+             });
+             }
+             else {
+             SelfLearning.create({
+             notes: notes,
+             startDate: startDatepr,
+             finishDate: finishDatepr,
+             bookMaster: bookMaster,
+             user: userId
+             }).exec(function (err, selfLearning) {
+             if (err) {
+             return res.json({err: err});
+             }
+             if (!selfLearning) {
+             return res.json({err: "Error"});
+             }
+             BookUseHistory.create({
+             userId: userId,
+             bookMaster: bookMaster,
+             startDate: startDatepr,
+             finishDate: finishDatepr,
+             selfLearning: selfLearning
+             }).exec(function (err, bookusehistory) {
+             if (err) {
+
+             }
+             else {
+             res.redirect('japtool/learning/');
+             }
+             })
+
+             });
+             }
+             }
+             })*/
 
         }
         catch (ex) {
@@ -247,8 +276,6 @@ module.exports = {
 
     index: function (req, res) {
         var arrTag = [];
-        var arrStart = new Array();
-        var arrFinish = new Array();
         SelfLearning.find().populate('bookMaster', {sort: 'startDate'}).exec(function (err, selfLearnings) {
             if (err) {
                 sails.log("Loi cmnr")
@@ -266,7 +293,7 @@ module.exports = {
                     }
                     var yyyys = startDate.getFullYear();
                     var startdateString = "" + dds + "-" + mms + "-" + yyyys + "";
-                    arrStart.push(startdateString);
+                    item.startDate = startdateString;
                     var finishDate = item.finishDate;
                     var ddf = finishDate.getDate();
                     if (ddf <= 9) {
@@ -278,7 +305,8 @@ module.exports = {
                     }
                     var yyyyf = finishDate.getFullYear();
                     var finishdateString = "" + ddf + "-" + mmf + "-" + yyyyf + "";
-                    arrFinish.push(finishdateString);
+                    item.finishDate = finishdateString;
+
                     var now = new Date();
                     if (startDate < now < finishDate) {
                         item.status = "Started!";
@@ -298,8 +326,6 @@ module.exports = {
             res.view({
                 learnList: selfLearnings,
                 uniqueType: uniqueType,
-                arrFinish: arrFinish,
-                arrStart: arrStart
             })
         })
     },
