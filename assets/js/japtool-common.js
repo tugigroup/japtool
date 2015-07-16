@@ -1,3 +1,4 @@
+//mahainam begin
 //RECOMMENT POPUP
 var answer1;
 var answer2;
@@ -107,12 +108,7 @@ function checkAnswer1Login() {
     }
 }
 /*choose book*/
-function loadbooks() {
-    $("#show-books").load('/japtool/Learning/getBooks');
-    $('#show-books').modal('show');
-    $('#show-books').addClass('fade').modal('show');
-    $("#placebook").removeChild();
-}
+
 function addbook(i) {
     $("#placebook").empty();
     var imglink = $('#imglink' + i + '').attr('src');
@@ -126,77 +122,109 @@ function addbook(i) {
     $('#show-books').modal('hide');
 }
 function deleteLearning() {
-    var a= confirm("Ban co thuc su muon xoa learning nay k?");
-    if(a){
+    var a = confirm("Ban co thuc su muon xoa learning nay k?");
+    if (a) {
         var learningId = $('#deleteLearning').attr('title');
         window.location.replace('/japtool/Learning/deleteLearning?id=' + learningId);
     }
 }
 function validateCreatLearning() {
-    var now= new Date();
-    var d2 = new Date ( now );
+    var now = new Date();
     var starDate = new Date($("#startDate").val());
     starDate.setHours(now.getHours());
     starDate.setMinutes(now.getMinutes());
-    starDate.setSeconds(now.getSeconds()+1);
+    starDate.setSeconds(now.getSeconds() + 1);
     var finishDate = new Date($("#finishDate").val());
-    finishDate.setHours(23,59,59);
+    finishDate.setHours(23, 59, 59);
     var validateBook;
     var validateStartDate;
     var validateFinishDate;
-    if ($('#idbook').val()==null) {
+
+    if ($('#idbook').val() == null) {
         $('#mesageBook').html("<i><p style='color: #e32d29'>You must choose a book</p></i>");
-        validateBook= false;
+        validateBook = false;
     }
     else {
-        validateBook =true;
+        validateBook = true;
         $('#mesageBook').empty();
     }
 
-    if (starDate<now) {
+    if (starDate < now) {
         $('#mesagestartDate').html("<i><p style='color: #d82824'>Ngay bat dau phai lon hon ngay hien tai!!!</p></i>");
-        validateStartDate= false;
+        validateStartDate = false;
     }
     else {
-        validateStartDate =true;
+        validateStartDate = true;
         $('#mesagestartDate').empty();
     }
-    if (finishDate<now) {
+    if (finishDate < now) {
         $('#mesagefinishDate').html("<i><p style='color: #dc302c'>Ngay ket thuc phai lon hon ngay hien tai!!!</p></i>");
-        validateFinishDate= false;
+        validateFinishDate = false;
     }
     else {
         $('#mesagefinishDate').empty();
-        validateFinishDate =true;
+        validateFinishDate = true;
     }
-    if(validateBook && validateStartDate &&validateFinishDate){
+    if (validateBook && validateStartDate && validateFinishDate) {
         return true;
     }
-    else{
+    else {
         return false;
     }
 }
 function validateEditLearning() {
-    var now= new Date();
+    var now = new Date();
     var finishDate = new Date($("#finishDate").val());
-    finishDate.setHours(23,59,59);
+    finishDate.setHours(23, 59, 59);
     var validateFinishDate;
-    if (finishDate<now) {
+    if (finishDate < now) {
         $('#mesagefinishDate').html("<i><p style='color: #dc302c'>Ngay ket thuc phai lon hon ngay hien tai!!!</p></i>");
-        validateFinishDate= false;
+        validateFinishDate = false;
     }
     else {
         $('#mesagefinishDate').empty();
-        validateFinishDate =true;
+        validateFinishDate = true;
     }
-    if(validateFinishDate){
+    if (validateFinishDate) {
         return true;
     }
-    else{
+    else {
         return false;
     }
 }
+function loadbooks() {
 
+    $("#show-books").load('/japtool/Learning/getBooks');
+    $('#show-books').modal('show');
+    $('#show-books').addClass('fade').modal('show');
+    /*$("#placebook").removeChild();*/
+}
+function loadform(a) {
+    if (a == 1) {
+        var id = $('#idedit').val();
+        $('#lib-1').removeClass('fade').modal('hide');
+        $('#editform').load('/japtool/Learning/loadEditForm/?id=' + id);
+        $('#formedit').addClass('fade').modal('show');
+    }
+    if (a == 2) {
+        $('#lib-1').removeClass('fade').modal('hide');
+        $('#editform').load('/japtool/learning/create');
+        $('#formedit').addClass('fade').modal('show');
+    }
+    /*load("/japtool/Learning/loadEditForm/?id="+id, function() {
+     alert('load successfully');
+     });*/
+}
+function loadformLib() {
+    var bookid=$('#bookidd').val();
+    $('#lib-1').removeClass('fade').modal('hide');
+    $('#editform').load('/japtool/learning/create/?bookid=' + bookid);
+    $('#formedit').addClass('fade').modal('show');
+    /*load("/japtool/Learning/loadEditForm/?id="+id, function() {
+     alert('load successfully');
+     });*/
+}
+//end nam
 /*end choose book*/
 //end recommend login
 
@@ -517,9 +545,9 @@ $(document).ready(function () {
         });
 
 
-    $('#submitAvatar').click(function(){
+    $('#submitAvatar').click(function () {
         var avatarValue = $('#uploadAvatar').val();
-        if(avatarValue == null || avatarValue.length == 0){
+        if (avatarValue == null || avatarValue.length == 0) {
             alert('Vui lòng chọn ảnh.')
             return false;
         }

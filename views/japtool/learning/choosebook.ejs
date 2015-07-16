@@ -8,7 +8,7 @@
                 <div class="col-sm-3">
                     Choose a book
                 </div>
-                <div class="col-sm-8">
+                <div class="col-sm-6">
                     <div class="row form-search-book">
                         <form name="" action="" method="">
                             <div class="col-sm-3">
@@ -16,7 +16,7 @@
                                        id="input-search" placeholder="Search" type="text">
                             </div>
 
-                            <div class="col-sm-3">
+                            <div class="col-sm-2">
                                 <div class="form-group">
                                     <select class="form-control" id="sel1">
                                         <option>Studying</option>
@@ -45,20 +45,22 @@
                     <div class="col-sm-4">
 
                         <div class="row">
-                            <div class="col-sm-2"> 
+                            <div class="col-sm-2">
 
                                 <% if (books[i].image) { %>
-                                    <img id="imglink<%=i%>" src="/media/image/<%=books[i].image%>" width="45" height="45"/>
-                                <% } else {%>
-                                    <img id="imglink<%=i%>" src="/images/bookicon.jpg" width="45" height="45"/>
+                                <img id="imglink<%= i %>" src="/media/image/<%= books[i].image %>" width="45"
+                                     height="45"/>
+                                <% } else { %>
+                                <img id="imglink<%= i %>" src="/images/bookicon.jpg" width="45" height="45"/>
                                 <% } %>
 
                             </div>
                             <div class="col-sm-9">
-                                <input type="hidden" id="bookid<%=i%>" value="<%= books[i].id %>">
-                                <a  onclick="addbook(<%=i%>)" id="bookname<%=i%>" title="<%= books[i].name %>"><p class="lbUser"><%= books[i].name %></p></a>
+                                <input type="hidden" id="bookid<%= i %>" value="<%= books[i].id %>">
+                                <a onclick="addbook(<%= i %>)" id="bookname<%= i %>" title="<%= books[i].name %>"><p
+                                            class="lbUser"><%= books[i].name %></p></a>
 
-                                <p title="<%= books[i].level %>" id="booklv<%=i%>">Level : <%= books[i].level %></p>
+                                <p title="<%= books[i].level %>" id="booklv<%= i %>">Level : <%= books[i].level %></p>
                             </div>
                         </div>
                     </div>

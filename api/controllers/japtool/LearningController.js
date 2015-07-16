@@ -60,7 +60,7 @@ module.exports = {
 
                     }
                     else {
-                        res.view('japtool/learning/create', {
+                        res.render('japtool/learning/create', {
                             create: create,
                             book: books
                         });
@@ -119,7 +119,7 @@ module.exports = {
                 }
                 var yyyyf = finishdate.getFullYear();
                 var finishdateString = "" + yyyyf + "-" + mmf + "-" + ddf + "";
-                res.view('japtool/learning/edit', {
+                res.render('japtool/learning/edit', {
                     startDateString: startdateString,
                     finishdate: finishdateString,
                     learning: learning
@@ -247,6 +247,8 @@ module.exports = {
 
     index: function (req, res) {
         var arrTag = [];
+        var arrStart=new Array();
+        var arrFinish=new Array();
         SelfLearning.find().populate('bookMaster', {sort: 'startDate'}).exec(function (err, selfLearnings) {
             if (err) {
                 sails.log("Loi cmnr")
@@ -254,7 +256,29 @@ module.exports = {
             else {
                 selfLearnings.forEach(function (item, index) {
                     var startDate = item.startDate;
+                    var dds = startDate.getDate();
+                    if (dds <= 9) {
+                        dds = "0" + dds;
+                    }
+                    var mms = startDate.getMonth() + 1;
+                    if (mms <= 9) {
+                        mms = "0" + mms;
+                    }
+                    var yyyys = startDate.getFullYear();
+                    var startdateString = "" + dds + "-" + mms + "-" + yyyys + "";
+                    arrStart.push(startdateString);
                     var finishDate = item.finishDate;
+                    var ddf = finishDate.getDate();
+                    if (ddf <= 9) {
+                        ddf = "0" + ddf;
+                    }
+                    var mmf = finishDate.getMonth() + 1;
+                    if (mmf <= 9) {
+                        mmf = "0" + mmf;
+                    }
+                    var yyyyf = finishDate.getFullYear();
+                    var finishdateString = "" + ddf + "-" + mmf + "-" + yyyyf + "";
+                    arrFinish.push(finishdateString);
                     var now = new Date();
                     if (startDate < now < finishDate) {
                         item.status = "Started!";
@@ -273,7 +297,9 @@ module.exports = {
             var uniqueType = array(arrTag).unique().value();
             res.view({
                 learnList: selfLearnings,
-                uniqueType: uniqueType
+                uniqueType: uniqueType,
+                arrFinish:arrFinish,
+                arrStart:arrStart
             })
         })
     },

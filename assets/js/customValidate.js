@@ -137,7 +137,7 @@ $(document).ready(function () {
     /**
      * validate create-learning
      */
-    $('#create-learning').validate({
+    $('#create-learning-japtool').validate({
         rules: {
             notes: {
                 required: true
@@ -165,7 +165,8 @@ $(document).ready(function () {
             }
         },
 
-        success: {},
+        success: {
+        },
         error: function (element) {
 
         }
