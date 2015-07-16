@@ -70,13 +70,7 @@
                     </div>
                 </div>
             </div>
-            <form action="/japtool/learning/add" method="post" onsubmit="return validateCreatLearning()"
-                  id="create-learning-japtool">
 
-                <div class="modal fade" id="formedit" data-keyboard="false">
-                    <div class="modal-dialog modal-lg" id="editform"></div>
-                </div>
-            </form>
             <!--lib details-->
             <div class="modal fade" id="lib-details-<%= book.id %>" tabindex="-1">
                 <div class="modal-dialog modal-lg">
@@ -284,6 +278,13 @@
         </div>
     </div>
     <% }) %>
+    <form action="/japtool/learning/add" method="post" onsubmit="return validateCreatLearning()"
+          id="create-learning-japtool">
+
+        <div class="modal fade" id="formedit" data-keyboard="false">
+            <div class="modal-dialog modal-lg" id="editform"></div>
+        </div>
+    </form>
     <ul id="pagination-demo" class="pagination-sm row text-center pull-right"></ul>
     <script type="text/javascript">
         window.onload = function () {
