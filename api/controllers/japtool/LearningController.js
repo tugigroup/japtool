@@ -29,15 +29,6 @@ module.exports = {
             sails.log(ex);
         }
     },
-    missLesson:function (req, res) {
-        try {
-
-            res.view('japtool/home/missLesson');
-        }
-        catch (ex) {
-            sails.log(ex);
-        }
-    },
     /**
      * GET: japtool/learning/create
      * @param req
