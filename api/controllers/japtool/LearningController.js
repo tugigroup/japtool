@@ -46,7 +46,7 @@ module.exports = {
     create: function (req, res) {
         var bookid = req.param('bookid');
         var userId = req.session.User.id;
-        var create = "ok";
+        var create = 'ok';
         SelfLearning.findOne({
             user: userId,
             bookMaster: bookid
@@ -54,7 +54,7 @@ module.exports = {
             if (err) {
 
             }
-            if (!learning) {
+            if (learning == undefined) {
                 BookMaster.findOne({id: bookid}).exec(function (err, books) {
                     if (err) {
 
@@ -68,7 +68,7 @@ module.exports = {
                 })
             }
             else {
-                res.redirect("/japtool/BookMaster/practice/?id=" + bookid + "&learnID=" + learning.id);
+                res.send("/japtool/BookMaster/practice/?id=" + bookid + "&learnID=" + learning.id);
             }
 
         })
@@ -247,8 +247,8 @@ module.exports = {
 
     index: function (req, res) {
         var arrTag = [];
-        var arrStart=new Array();
-        var arrFinish=new Array();
+        var arrStart = new Array();
+        var arrFinish = new Array();
         SelfLearning.find().populate('bookMaster', {sort: 'startDate'}).exec(function (err, selfLearnings) {
             if (err) {
                 sails.log("Loi cmnr")
@@ -298,8 +298,8 @@ module.exports = {
             res.view({
                 learnList: selfLearnings,
                 uniqueType: uniqueType,
-                arrFinish:arrFinish,
-                arrStart:arrStart
+                arrFinish: arrFinish,
+                arrStart: arrStart
             })
         })
     },
