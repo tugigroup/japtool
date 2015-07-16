@@ -515,4 +515,6 @@ $(document).ready(function () {
         transitionEffect: "slideLeft"
     });
 });
+
+
 //END VOCABULARY

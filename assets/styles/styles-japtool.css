@@ -36,10 +36,15 @@ h2 {
     vertical-align: baseline;
     border-radius: .25em;
 }
-label{
+
+label {
     font-weight: 400 !important;
 }
-.isemptyQ{text-indent: 20px}
+
+.isemptyQ {
+    text-indent: 20px
+}
+
 .btn-default, .btn-primary, .btn-success, .btn-info, .btn-warning, .btn-danger {
     text-shadow: none;
     -webkit-box-shadow: none;
@@ -84,9 +89,11 @@ input[type=submit]:hover {
         vertical-align: middle;
     margin-left: 16%;
 }
-.model-show-boook{
+
+.model-show-boook {
     margin-left: -14%;
 }
+
 .library-page-line {
     border-bottom: 1px solid rgba(189, 189, 189, 0.44);
     padding-bottom: 1rem;
@@ -376,7 +383,7 @@ div.required .control-label:before {
 }
 
 .btn:hover, .btn:focus, .btn.focus {
-    color: #296192;
+    color: #fff;
     text-decoration: none;
 }
 
@@ -576,6 +583,191 @@ label.valid, p.valid {
 /*}*/
 
 /* LibPage */
+.container-learn, #slider1_container {
+    background: rgb(237, 237, 237);
+}
+
+#slider1_container {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    width: 636px;
+    height: 600px;
+    overflow: hidden;
+}
+
+.slider1_container-slider {
+    cursor: move;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 636px;
+    height: 600px;
+    overflow: hidden;
+}
+
+/*Arrow Navigator Skin Begin*/
+
+.jssora05l, .jssora05r {
+    /*display: block;*/
+    position: absolute;
+    /* size of arrow element */
+    cursor: pointer;
+    /*overflow: hidden;*/
+}
+
+.jssora05l {
+    background-position: -10px -40px;
+}
+
+.jssora05r {
+    background-position: -70px -40px;
+}
+
+.jssora05l:hover {
+    background-position: -130px -40px;
+}
+
+.jssora05r:hover {
+    background-position: -190px -40px;
+}
+
+.jssora05l.jssora05ldn {
+    background-position: -250px -40px;
+}
+
+.jssora05r.jssora05rdn {
+    background-position: -310px -40px;
+}
+
+.jssora05l {
+    bottom: 10px;
+    right: 75px;
+}
+
+.jssora05r {
+    bottom: 10px;
+    right: 8px
+}
+
+.jssort07 {
+    position: absolute;
+    /* size of thumbnail navigator container */
+    height: 50px;
+    width: 636px;
+    top: 0px;
+    left: 0px;
+}
+
+.jssort07 .p {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 125px;
+    height: 55px;
+    background: rgb(19, 177, 146);
+    cursor: pointer;
+
+}
+
+.jssort07 .i {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    filter: alpha(opacity=80);
+    opacity: .8;
+    color: #fff;
+    font-size: 18px;
+}
+
+.jssort07 .p:hover .i, .jssort07 .pav .i {
+    /*filter: alpha(opacity=100);*/
+    /*opacity: 1;*/
+}
+
+/*.jssort07 .o {*/
+    /*position: absolute;*/
+    /*top: 0px;*/
+    /*left: 0px;*/
+    /*width: 97px;*/
+    /*height: 64px;*/
+    /*background: red;*/
+    /*box-sizing: content-box;*/
+    /*transition: border-color .6s;*/
+    /*-moz-transition: border-color .6s;*/
+    /*-webkit-transition: border-color .6s;*/
+    /*-o-transition: border-color .6s;*/
+/*}*/
+
+.jssort07 .pav .o {
+    /*background: white;*/
+    /*color: black;*/
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.jssort07 .p:hover .o {
+    border-color: #fff;
+    transition: none;
+    -moz-transition: none;
+    -webkit-transition: none;
+    -o-transition: none;
+}
+
+.jssort07 .p.pdn .o {
+    border-color: #0099ff;
+}
+
+* html .jssort07 .o {
+    /* ie quirks mode adjust */
+    width /**/: 99px;
+    height /**/: 66px;
+}
+
+.jssora11l, .jssora11r {
+    display: none;
+    color: #fff;
+    position: absolute;
+    /* size of arrow element */
+    width: 37px;
+    height: 37px;
+    cursor: pointer;
+    /*background: url('../images/slide-arrow.png') no-repeat;*/
+    overflow: hidden;
+}
+
+
+
+.jssort07:hover .jssora11l{
+    display: block;
+}
+
+.jssort07:hover .jssora11r {
+    display: block;
+}
+
+.jssora11l.jssora11ldn {
+    background-position: -251px -41px;
+}
+
+.jssora11r.jssora11rdn {
+    background-position: -311px -41px;
+}
+
+.jssora11l {
+    top: 13px !important;
+    left: 8px;
+}
+
+.jssora11r {
+    top: 13px !important;
+    right: -14px;
+}
+#thumbnavigator{
+    left: 0 !important;
+}
+/*<!-- Arrow Left -->*/
+
 .libMaster {
     padding-top: 5px;
     margin-bottom: 2px;
@@ -1350,56 +1542,66 @@ ul.timeline li .timeline-panel:after {
 
 /*END LEARNING GROUP*/
 
-
 /*css by duongtd2*/
 /*css show article to learn*/
 .showArticleLearn {
     min-height: 700px;
 }
-.showArticleLearn .btn-doTest-article{
+
+.showArticleLearn .btn-doTest-article {
     background-image: none;
     background-color: white;
     border-color: white;
     border: none;
 }
+
 .doTestArticle .testHid {
-   display-outside: none;
+    display-outside: none;
     display: none;
     display-inside: block;
 }
+
 .doTestArticle .lb-ts-test-fail {
-   color:red;
-}.doTestArticle .lb-ts-test-ok {
-   color:green;
+    color: red;
 }
-.container-do-test-article{
+
+.doTestArticle .lb-ts-test-ok {
+    color: green;
+}
+
+.container-do-test-article {
     width: 93%;
 }
- .wizard .content .body #div-question-list input{
+
+.wizard .content .body #div-question-list input {
     display: inline-block;
 }
 
- /*css for test article*/
-.hr-rs-point-mark{
+/*css for test article*/
+.hr-rs-point-mark {
     margin-right: 36%;
     margin-left: -1%;
     border-top: 1px solid #E6C776;
 }
-.user-point-mark{
-    font-weight: 500;
-}
-.start-date{
-    font-weight: 500;
-}
-.finish-date{
-    font-weight: 500;
-}
-.details-mark-rs-user{
-    color:red;
-    font-weight: 500;
-}
-/*END css by duongtd2*/
 
+.user-point-mark {
+    font-weight: 500;
+}
+
+.start-date {
+    font-weight: 500;
+}
+
+.finish-date {
+    font-weight: 500;
+}
+
+.details-mark-rs-user {
+    color: red;
+    font-weight: 500;
+}
+
+/*END css by duongtd2*/
 
 /*VOCABYLARY*/
 .wizard,
@@ -1495,6 +1697,7 @@ ul.timeline li .timeline-panel:after {
     color: #aaa;
     cursor: default;
 }
+
 .wizard .steps .notdisabled a, .wizard .steps .notdisabled a:hover, .wizard .steps .notdisabled a:active {
     background: #eee;
     color: #aaa;
@@ -1646,19 +1849,26 @@ ul.timeline li .timeline-panel:after {
 
 .wizard .loading .spinner {
 }
-#vocabularyList h5{
+
+#vocabularyList h5 {
     font-size: 18px;
 }
+
 #vocabularyList h4 {
     font-size: 30px;
     font-weight: 700;
+    width: 100%;
+    display: block;
 }
-#vocabularyList p span{
+
+#vocabularyList p span {
     font-weight: 500;
 }
-.wizard ul.vocabulary-item-example{
+
+.wizard ul.vocabulary-item-example {
     padding-left: 3rem;
 }
+
 /*END VOCABULARY*/
 
 /*END CONTENT*/
