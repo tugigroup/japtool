@@ -176,6 +176,26 @@ function validateCreatLearning() {
         return false;
     }
 }
+function validateEditLearning() {
+    var now= new Date();
+    var finishDate = new Date($("#finishDate").val());
+    finishDate.setHours(23,59,59);
+    var validateFinishDate;
+    if (finishDate<now) {
+        $('#mesagefinishDate').html("<i><p style='color: #dc302c'>Ngay ket thuc phai lon hon ngay hien tai!!!</p></i>");
+        validateFinishDate= false;
+    }
+    else {
+        $('#mesagefinishDate').empty();
+        validateFinishDate =true;
+    }
+    if(validateFinishDate){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
 
 /*end choose book*/
 //end recommend login
@@ -517,4 +537,6 @@ $(document).ready(function () {
         transitionEffect: "slideLeft"
     });
 });
+
+
 //END VOCABULARY
