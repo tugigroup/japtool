@@ -16,17 +16,23 @@ module.exports = {
                         sails.log("Err when read data from server:");
                         return res.serverError(err);
                     }
-                    sails.log("Book Use History All.");
-                    sails.log(selfLearnings);
+                    //sails.log("Book Use History All.");
+                    //sails.log(selfLearnings);
                     if (selfLearnings == null || selfLearnings == undefined) {
                         return res.json({err: "Error"});
                     }
-                    /*selfLearnings.forEach(function(bookUse){
-                     sails.log(bookUse.bookMaster);
-                     });*/
-                    //sails.log(selfLearnings);
+
                     res.view('japtool/home/home', {selfLearnings: selfLearnings});
                 });
+        }
+        catch (ex) {
+            sails.log(ex);
+        }
+    },
+    missLesson:function (req, res) {
+        try {
+
+            res.view('japtool/home/missLesson');
         }
         catch (ex) {
             sails.log(ex);
