@@ -27,7 +27,11 @@
                     <div class="media libMaster">
                         <a href="#" data-toggle="modal" data-target="#lib-details-<%= book.id %>">
                             <img class="media-object col-xs-3 libImg"
-                                 src="/media/image/?fd=<%= book.image %>"
+                                    <% if (book.image) { %>
+                                 src="/media/image/<%= book.image %>"
+                                    <% } else { %>
+                                 src="/images/book_default_cover.png"
+                                    <% } %>
                                  title="Click to view this library details">
                         </a>
 
