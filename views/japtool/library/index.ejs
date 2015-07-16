@@ -61,8 +61,7 @@
                                     <a href="#" title="Click to view this library lesson." data-toggle="modal"
                                        data-target="#lib-review-<%= book.id %>" class="text-danger">Preview</a> -
                                     <span></span>
-                                    <input type="hidden" value="<%= book.id %>" id="bookidd">
-                                    <a  onclick="loadformLib()"
+                                    <a  onclick="loadformLib('<%= book.id %>')"
                                        title="Click to learn this library." class="text-info">Learning
                                         Library</a>
                                 </li>
@@ -71,13 +70,7 @@
                     </div>
                 </div>
             </div>
-            <form action="/japtool/learning/add" method="post" onsubmit="return validateCreatLearning()"
-                  id="create-learning-japtool">
 
-                <div class="modal fade" id="formedit" data-keyboard="false">
-                    <div class="modal-dialog modal-lg" id="editform"></div>
-                </div>
-            </form>
             <!--lib details-->
             <div class="modal fade" id="lib-details-<%= book.id %>" tabindex="-1">
                 <div class="modal-dialog modal-lg">
@@ -164,7 +157,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <a onclick="loadformLib(<%=book.id%>)"
+                            <a onclick="loadformLib('<%= book.id %>')"
                                class="btn btn-success" role="button">Learning
                                 This Library</a>
                             <a href="#" class="btn btn-danger" role="button" data-dismiss="modal">Close</a>
@@ -266,7 +259,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <a onclick="loadformLib(<%=book.id%>)" class="btn btn-success" role="button">Learning
+                            <a onclick="loadformLib('<%= book.id %>')" class="btn btn-success" role="button">Learning
                                 This Library</a>
                             <a href="#" class="btn btn-danger" role="button" data-dismiss="modal">Close</a>
                         </div>
@@ -275,7 +268,11 @@
                 <script>
                     function learn(module, condition, id) {
                         var strCondition = JSON.stringify(condition);
-                        $('#' + id).load('/japtool/' + module + '/list/?condition=' + strCondition);
+                        if(module == 'test'){
+                            $('#' + id).load('/japtool/' + module + '/previewTest/?condition=' + strCondition);
+                        }else{
+                            $('#' + id).load('/japtool/' + module + '/list/?condition=' + strCondition);
+                        }
                     }
                 </script>
             </div>
@@ -285,6 +282,13 @@
         </div>
     </div>
     <% }) %>
+    <form action="/japtool/learning/add" method="post" onsubmit="return validateCreatLearning()"
+          id="create-learning-japtool">
+
+        <div class="modal fade" id="formedit" data-keyboard="false">
+            <div class="modal-dialog modal-lg" id="editform"></div>
+        </div>
+    </form>
     <ul id="pagination-demo" class="pagination-sm row text-center pull-right"></ul>
     <script type="text/javascript">
         window.onload = function () {
