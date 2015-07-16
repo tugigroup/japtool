@@ -29,7 +29,7 @@ module.exports = {
             sails.log(ex);
         }
     },
-<<<<<<< HEAD
+
     missLesson: function (req, res) {
         try {
 
@@ -39,8 +39,6 @@ module.exports = {
             sails.log(ex);
         }
     },
-=======
->>>>>>> fd71f7969bbe4d6504201272bf1349e0da8921dc
     /**
      * GET: japtool/learning/create
      * @param req
