@@ -269,7 +269,11 @@
                 <script>
                     function learn(module, condition, id) {
                         var strCondition = JSON.stringify(condition);
-                        $('#' + id).load('/japtool/' + module + '/list/?condition=' + strCondition);
+                        if(module == 'test'){
+                            $('#' + id).load('/japtool/' + module + '/previewTest/?condition=' + strCondition);
+                        }else{
+                            $('#' + id).load('/japtool/' + module + '/list/?condition=' + strCondition);
+                        }
                     }
                 </script>
             </div>
