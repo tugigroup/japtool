@@ -1,43 +1,43 @@
 //USER
 //validate form register user
 $(document).ready(function () {
-  $('.form-register').validate({
-    rules: {
-      username: {
-        required: true
-      },
-      email: {
-        required: true,
-        email: true
-      },
-      password: {
-        minlength: 6,
-        required: true
-      },
-      confirmation: {
-        minlength: 6,
-        equalTo: "#input-password"
-      }
-    }
-  });
+    $('.form-register').validate({
+        rules: {
+            username: {
+                required: true
+            },
+            email: {
+                required: true,
+                email: true
+            },
+            password: {
+                minlength: 6,
+                required: true
+            },
+            confirmation: {
+                minlength: 6,
+                equalTo: "#input-password"
+            }
+        }
+    });
 //Validate change password user
-  $('#change-pass').validate({
-    rules: {
-      oldPasswordUser: {
-        minlength: 6,
-        required: true
-      },
-      newPasswordUser: {
-        minlength: 6,
-        required: true
-      },
-      newPasswordUserCf: {
-        minlength: 6,
-        required: true,
-        equalTo: "#input-NewPassword"
-      }
-    }
-  });
+    $('#change-pass').validate({
+        rules: {
+            oldPasswordUser: {
+                minlength: 6,
+                required: true
+            },
+            newPasswordUser: {
+                minlength: 6,
+                required: true
+            },
+            newPasswordUserCf: {
+                minlength: 6,
+                required: true,
+                equalTo: "#input-NewPassword"
+            }
+        }
+    });
 //END USER
     $('#createArticleForm').validate({
         rules: {
@@ -54,10 +54,10 @@ $(document).ready(function () {
                 required: true
             },
             level: {
-                required:true
+                required: true
             },
-            tag:{
-                required:true
+            tag: {
+                required: true
             }
         },
         success: function (element) {
@@ -79,10 +79,10 @@ $(document).ready(function () {
                 required: true
             },
             level: {
-                required:true
+                required: true
             },
-            tag:{
-                required:true
+            tag: {
+                required: true
             }
         },
         success: function (element) {
@@ -104,7 +104,7 @@ $(document).ready(function () {
                 required: true
             },
             option4: {
-                required:true
+                required: true
             }
         },
         success: function (element) {
@@ -126,7 +126,7 @@ $(document).ready(function () {
                 required: true
             },
             option4: {
-                required:true
+                required: true
             }
         },
         success: function (element) {
@@ -165,8 +165,40 @@ $(document).ready(function () {
             }
         },
 
-        success: {
+        success: {},
+        error: function (element) {
+
+        }
+    });
+    $('#edit-learning-japtool').validate({
+        rules: {
+            notes: {
+                required: true
+            },
+            startDate: {
+                required: true
+            },
+            finishDate: {
+                required: true,
+                greaterThan: "#startDate"
+            }
         },
+
+        messages: {
+
+            notes: {
+                required: "Please input description."
+            },
+            startDate: {
+                required: "Please input start date."
+            },
+            finishDate: {
+                required: "Please input end date.",
+                greaterStart: "Start date less than end date."
+            }
+        },
+
+        success: {},
         error: function (element) {
 
         }

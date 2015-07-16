@@ -208,13 +208,22 @@ function loadform(a) {
     }
     if (a == 2) {
         $('#lib-1').removeClass('fade').modal('hide');
-        $('#editform').load('/japtool/learning/create');
-        $('#formedit').addClass('fade').modal('show');
+        $('#crform').load('/japtool/learning/create');
+        $('#formecr').addClass('fade').modal('show');
     }
     /*load("/japtool/Learning/loadEditForm/?id="+id, function() {
      alert('load successfully');
      });*/
 }
+/*function checkLearning() {
+    $('#formecr').removeClass('fade').modal('hide');
+    var notes=$('#notes').val();
+    var startDate=$('#startDate').val();
+    var finishDate=$('#finishDate').val();
+    var idbook=$('#idbook').val();
+    $('#crform').load('/japtool/learning/add?notes='+notes+'&startDate='+startDate+'&finishDate='+finishDate+'&idbook='+idbook);
+
+}*/
 function loadformLib(id) {
     //var bookid=$('#bookidd').val();
     $('#lib-1').removeClass('fade').modal('hide');
