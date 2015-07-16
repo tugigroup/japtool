@@ -215,10 +215,18 @@ function loadform(a) {
      alert('load successfully');
      });*/
 }
-function loadformLib() {
-    var bookid=$('#bookidd').val();
+function loadformLib(id) {
+    //var bookid=$('#bookidd').val();
     $('#lib-1').removeClass('fade').modal('hide');
-    $('#editform').load('/japtool/learning/create/?bookid=' + bookid);
+    $('#editform').load('/japtool/learning/create/?bookid=' + id, function (res, status) {
+        var arr = res.split("/");
+        if (arr[3] == "practice") {
+            window.location.replace(res);
+        }
+        else {
+
+        }
+    });
     $('#formedit').addClass('fade').modal('show');
     /*load("/japtool/Learning/loadEditForm/?id="+id, function() {
      alert('load successfully');
