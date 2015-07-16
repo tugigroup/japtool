@@ -37,6 +37,16 @@ module.exports = {
         userLearnHistories: {
           collection: 'UserLearnHistory',
           via: 'selfLearning'
+        },
+        getMissLesson: function (bookId,cb) {
+          BookDetail.find({bookMaster:bookId}).exec(function(err,bookDetails){
+            if (err) {
+              sails.log("Err when read book detail data:");
+              return res.serverError(err);
+            }
+            sails.log("Count Book Detail is: "  + bookDetails.length);
+            return cb(bookDetails);
+          });
         }
     }
 };

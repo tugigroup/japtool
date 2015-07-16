@@ -14,12 +14,13 @@
                         <div class="info">
                             <%if(selfLearning.bookMaster!=null&&selfLearning.bookMaster!=undefined){%>
                             <h3><a><%=selfLearning.bookMaster.name%></a></h3>
+                            <%var bookMasterId = selfLearning.bookMaster.id%>
                             <%} else{%>
                               <h3><a>Book name is NONE</a></h3>
                             <%}%>
                             <!--Show miss following lesson-->
                             <p>Till now you have miss following lesson</p>
-                            <%var missLessons = undefined /*selfLearning.getMissLesson()*/%>
+                            <%var missLessons= undefined%>
                             <%if(missLessons!=undefined && missLessons.length>0){%>
                               <%missLessons.forEach(function(missLesson){%>
                                   <div class="col-sm-3">
@@ -40,7 +41,7 @@
                                     <p><span class="glyphicon glyphicon-thumbs-up"></span> You have done <%=userLearn.subLesson%> on <%=userLearn.lesson%></p>
                                   </div>
                                   <div class="col-sm-3">
-                                    <a class="join-learn btn label-danger">Continue</a>
+                                    <a class="join-learn btn label-danger" href="/japtool/Learning/create/?bookid=<%=bookMasterId%>">Continue</a>
                                   </div>
                                 <%});%> <!--End for-->
                                 <%} else {%>
