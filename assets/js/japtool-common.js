@@ -211,11 +211,18 @@ function loadform(a) {
         $('#editform').load('/japtool/learning/create');
         $('#formedit').addClass('fade').modal('show');
     }
-
     /*load("/japtool/Learning/loadEditForm/?id="+id, function() {
      alert('load successfully');
      });*/
-
+}
+function loadformLib() {
+    var bookid=$('#bookidd').val();
+    $('#lib-1').removeClass('fade').modal('hide');
+    $('#editform').load('/japtool/learning/create/?bookid=' + bookid);
+    $('#formedit').addClass('fade').modal('show');
+    /*load("/japtool/Learning/loadEditForm/?id="+id, function() {
+     alert('load successfully');
+     });*/
 }
 //end nam
 /*end choose book*/
