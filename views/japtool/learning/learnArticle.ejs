@@ -1,141 +1,229 @@
-<div class="container-do-test-article" id="do-test-articles">
-    <%
-    var lengthQues = 0;
-    var questions = [];
-    var currentdate = new Date();
-    var startDate = currentdate.getFullYear() + "-"
-            + (currentdate.getMonth() + 1) + "-"
-            + currentdate.getDate() + "@"
-            + currentdate.getHours() + ":"
-            + currentdate.getMinutes() + ":"
-            + currentdate.getSeconds();
-            data.forEach(function(article, index){
-    %>
-    <input type="text" hidden="hidden" class="arrArticleID" content="<%= article.content %>"
-           subject="<%= article.subject %>" value="<%= article.id %>"/>
-    <input type="text" hidden="hidden" value="<%= startDate %>" id="dateStart"/>
+<script>
+    jQuery(document).ready(function ($) {
+        var options = {
+            $DragOrientation: 0,                                //[Optional] Orientation to drag slide, 0 no drag, 1 horizental, 2 vertical, 3 either, default value is 1 (Note that the $DragOrientation should be the same as $PlayOrientation when $DisplayPieces is greater than 1, or parking position is not 0)
+            $ArrowKeyNavigation: true,   			            //[Optional] Allows keyboard (arrow key) navigation or not, default value is false
+            $ArrowNavigatorOptions: {                           //[Optional] Options to specify and enable arrow navigator or not
+                $Class: $JssorArrowNavigator$,                  //[Requried] Class to create arrow navigator instance
+                $ChanceToShow: 2                                //[Required] 0 Never, 1 Mouse Over, 2 Always
+            },
+            $ThumbnailNavigatorOptions: {
+                $Class: $JssorThumbnailNavigator$,              //[Required] Class to create thumbnail navigator instance
+                $ChanceToShow: 2,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
+                $Loop: 1,                                       //[Optional] Enable loop(circular) of carousel or not, 0: stop, 1: loop, 2 rewind, default value is 1
+                $SpacingX: 3,                                   //[Optional] Horizontal space between each thumbnail in pixel, default value is 0
+                $SpacingY: 3,                                   //[Optional] Vertical space between each thumbnail in pixel, default value is 0
+                $DisplayPieces: 7,                              //[Optional] Number of pieces to display, default value is 1
+                $ParkingPosition: 0,                          //[Optional] The offset position to park thumbnail,
+                $ArrowNavigatorOptions: {
+                    $Class: $JssorArrowNavigator$,              //[Requried] Class to create arrow navigator instance
+                    $ChanceToShow: 2,                           //[Required] 0 Never, 1 Mouse Over, 2 Always
+                    $AutoCenter: 2,                             //[Optional] Auto center arrows in parent container, 0 No, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
+                    $Steps: 5                                   //[Optional] Steps to go for each navigation request, default value is 1
+                }
+            }
+        };
+        var jssor_slider1 = new $JssorSlider$("slider1_container", options);
+        //responsive code begin
+        //you can remove responsive code if you don't want the slider scales while window resizes
+        function ScaleSlider() {
+            var parentWidth = jssor_slider1.$Elmt.parentNode.clientWidth;
+            if (parentWidth)
+                jssor_slider1.$ScaleWidth(Math.min(parentWidth, 748));
+            else
+                window.setTimeout(ScaleSlider, 30);
+        }
 
-    <h2></h2>
-    <section>
-        <div class="row">
-            <div class="col-sm-12">
-                <h3 class="unescape"><%= article.subject %></h3>
-                <hr>
-            </div>
+        ScaleSlider();
+        $(window).bind("load", ScaleSlider);
+        $(window).bind("resize", ScaleSlider);
+        $(window).bind("orientationchange", ScaleSlider);
+        //responsive code end
+    });
+</script>
 
-            <div class="col-sm-12">
-                <div class="">
-                    <p>Level : <%= article.level %></p>
 
-                    <p>
-                    <h4>Content</h4>
-                    </p>
-                    <p class="unescape">
-                        <%= article.content %>
-                    </p>
-                    <%
-                    if(article.image != null || article.audio != null || article.video != null) {
-                    %>
-                    <p>
-                    <h4>Media</h4>
-                    </p>
-                    <%
-                    }
-                    %>
-                    <% if(article.image != null){
-                    %>
-                    <p>
-                        <img src="/media/image/?fd=<%= article.image %>"/>
-                    </p>
-                    <%
-                    }
-                    %>
 
-                    <% if(article.audio != null){
-                    %>
-                    <p>
-                        <audio class="audio-form" controls>
-                            <source src="/media/audio/?fd=<%= article.audio %>" type="audio/mpeg">
-                        </audio>
-                    </p>
-                    <%
-                    } %>
+<div id="test-learning" class="clearfix">
+    <div id="slider1_container" class="clearfix">
+        <!-- Slides Container -->
+        <div u="slides" class="slider1_container-slider clearfix">
+            <% if(data == null || data.length == 0){ %>
+            <h5 class="text-center text-danger">Không tìm th?y d? li?u</h5>
+            <% }else{ %>
 
-                    <% if(article.video != null){
-                    %>
-                    <p>
-                        <video class="video-form" controls>
-                            <source src="/media/video/?fd=<%= article.video %>" type="video/mp4">
-                        </video>
-                    </p>
-                    <%
-                    } %>
-                </div>
-            </div>
-            <div class="col-sm-12" id="div-question-list">
-                <%
-                article.question.forEach(function (question) {
-                    lengthQues++;
-                    questions.push(question);
-                %>
-
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <h4 class="unescape"><%= question.question %></h4>
-                        <% if(question.image != null){
-                        %>
-                        <h5>Image :</h5>
-                        <img src="/media/image/?fd=<%= question.image %>"/>
-                        <%
-                        } %>
-                        <div class="question-div-info" id="<%= question.id %>" ofArticle="<%= article.id %>">
-                            <div class="col-sm-6">
-                                <input type="radio" class="<%= question.id %>" name="<%= question.id %>"
-                                       value="<%= question.option1 %>" id="<%= question.id %>1">
-                                <label for="<%= question.id %>1"><%= question.option1 %></label>
-                                <lable id="<%= question.id %>1rd"></lable>
-                            </div>
-                            <div class="col-sm-6">
-                                <input type="radio" class="<%= question.id %>" name="<%= question.id %>"
-                                       value="<%= question.option2 %>" id="<%= question.id %>2">
-                                <label for="<%= question.id %>2"><%= question.option2 %></label>
-                                <lable id="<%= question.id %>2rd"></lable>
-                            </div>
-                            <div class="col-sm-6">
-                                <input type="radio" class="<%= question.id %>" name="<%= question.id %>"
-                                       value="<%= question.option3 %>" id="<%= question.id %>3">
-                                <label for="<%= question.id %>3"><%= question.option3 %></label>
-                                <lable id="<%= question.id %>3rd"></lable>
-                            </div>
-                            <div class="col-sm-6">
-                                <input type="radio" class="<%= question.id %>" name="<%= question.id %>"
-                                       value="<%= question.option4 %>" id="<%= question.id %>4">
-                                <label for="<%= question.id %>4"><%= question.option4 %></label>
-                                <lable id="<%= question.id %>4rd"></lable>
-                            </div>
-                        </div>
-                    </div>
+            <%
+                var lengthQues = 0;
+                var questions = [];
+                var currentdate = new Date();
+                var startDate = currentdate.getFullYear() + "-"
+                        + (currentdate.getMonth() + 1) + "-"
+                        + currentdate.getDate() + "@"
+                        + currentdate.getHours() + ":"
+                        + currentdate.getMinutes() + ":"
+                        + currentdate.getSeconds();
+                    data.forEach(function(article, index){
+            %>
+            <input type="text" hidden="hidden" class="arrArticleID" content="<%= article.content %>"
+                   subject="<%= article.subject %>" value="<%= article.id %>"/>
+            <input type="text" hidden="hidden" value="<%= startDate %>" id="dateStart"/>
+            <div class="test-learning-x clearfix">
+                <div style="position: absolute; top: 70px; width: 100%; padding: 10px">
                     <div class="row">
                         <div class="col-sm-12">
-                            <label class="isemptyQ" id="<%= question.id %>isEmpty"></label>
+                            <h3 class="unescape"><%= article.subject %></h3>
+                            <hr>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <div class="">
+                                <p>Level : <%= article.level %></p>
+
+                                <p>
+                                <h4>Content</h4>
+                                </p>
+                                <p class="unescape">
+                                    <%= article.content %>
+                                </p>
+                                <%
+                                if(article.image != null || article.audio != null || article.video != null) {
+                                %>
+                                <p>
+                                <h4>Media</h4>
+                                </p>
+                                <%
+                                }
+                                %>
+                                <% if(article.image != null){
+                                %>
+                                <p>
+                                    <img src="/media/image/?fd=<%= article.image %>"/>
+                                </p>
+                                <%
+                                }
+                                %>
+
+                                <% if(article.audio != null){
+                                %>
+                                <p>
+                                    <audio class="audio-form" controls>
+                                        <source src="/media/audio/?fd=<%= article.audio %>" type="audio/mpeg">
+                                    </audio>
+                                </p>
+                                <%
+                                } %>
+
+                                <% if(article.video != null){
+                                %>
+                                <p>
+                                    <video class="video-form" controls>
+                                        <source src="/media/video/?fd=<%= article.video %>" type="video/mp4">
+                                    </video>
+                                </p>
+                                <%
+                                } %>
+                            </div>
+                        </div>
+                        <div class="col-sm-12" id="div-question-list">
+                            <%
+                            article.question.forEach(function (question) {
+                                lengthQues++;
+                                questions.push(question);
+                            %>
+
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <h4 class="unescape"><%= question.question %></h4>
+                                    <% if(question.image != null){
+                                    %>
+                                    <h5>Image :</h5>
+                                    <img src="/media/image/?fd=<%= question.image %>"/>
+                                    <%
+                                    } %>
+                                    <div class="question-div-info" id="<%= question.id %>" ofArticle="<%= article.id %>">
+                                        <div class="col-sm-6">
+                                            <input type="radio" class="<%= question.id %>" name="<%= question.id %>"
+                                                   value="<%= question.option1 %>" id="<%= question.id %>1">
+                                            <label for="<%= question.id %>1"><%= question.option1 %></label>
+                                            <lable id="<%= question.id %>1rd"></lable>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="radio" class="<%= question.id %>" name="<%= question.id %>"
+                                                   value="<%= question.option2 %>" id="<%= question.id %>2">
+                                            <label for="<%= question.id %>2"><%= question.option2 %></label>
+                                            <lable id="<%= question.id %>2rd"></lable>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="radio" class="<%= question.id %>" name="<%= question.id %>"
+                                                   value="<%= question.option3 %>" id="<%= question.id %>3">
+                                            <label for="<%= question.id %>3"><%= question.option3 %></label>
+                                            <lable id="<%= question.id %>3rd"></lable>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="radio" class="<%= question.id %>" name="<%= question.id %>"
+                                                   value="<%= question.option4 %>" id="<%= question.id %>4">
+                                            <label for="<%= question.id %>4"><%= question.option4 %></label>
+                                            <lable id="<%= question.id %>4rd"></lable>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <label class="isemptyQ" id="<%= question.id %>isEmpty"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <%
+                            });
+                            %>
                         </div>
                     </div>
+
                 </div>
-                <%
-                });
-                %>
+
+                <h3 u="thumb"><%= index %></h3>
+            </div>
+            <% }) %>
+            <% } %>
+            <%
+            var encodeURIQuestions = encodeURIComponent(JSON.stringify(questions));
+            var questionsEncodeBase64 = new Buffer(encodeURIQuestions).toString("base64");
+            %>
+            <input type="text" hidden="hidden" value="<%= lengthQues %>" id="lengthQues"/>
+            <input type="text" hidden="hidden" value="<%= questionsEncodeBase64 %>" id="listQuestions"/>
+
+
+
+            <span u="arrowleft" class="jssora05l btn btn-success">Back</span>
+            <!-- Arrow Right -->
+            <span u="arrowright" class="jssora05r btn btn-success">Next</span>
+
+            <!-- thumbnail navigator container -->
+            <!--CH?NH KÍCH TH??C THUMB-->
+            <div u="thumbnavigator" class="jssort07">
+                <!-- Thumbnail Item Skin Begin -->
+                <div u="slides" style="cursor: default;" id="thumbnavigator">
+                    <div u="prototype" class="p">
+                        <div u="thumbnailtemplate" class="i"></div>
+                        <div class="o"></div>
+                    </div>
+                </div>
+
+                <!-- Arrow Left -->
+                <span u="arrowleft" class="jssora11l"><i class="fa fa-chevron-left fa-2x"></i></span>
+                <!-- Arrow Right -->
+                <span u="arrowright" class="jssora11r"><i class="fa fa-chevron-right fa-2x"></i></span>
             </div>
         </div>
-    </section>
-    <% }) %>
-    <%
-        var encodeURIQuestions = encodeURIComponent(JSON.stringify(questions));
-        var questionsEncodeBase64 = new Buffer(encodeURIQuestions).toString("base64");
-    %>
-    <input type="text" hidden="hidden" value="<%= lengthQues %>" id="lengthQues"/>
-    <input type="text" hidden="hidden" value="<%= questionsEncodeBase64 %>" id="listQuestions"/>
-
+    </div>
 </div>
+
+
+
+
+// here
+
+
 <div class="container">
     <div class="col-sm-12" id="div-result">
         <div class="col-sm-12 contain-check-btn">

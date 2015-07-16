@@ -20,9 +20,9 @@ module.exports = {
     previewTest : function(req,res) {
         var condition = req.param('condition');
         Article.getLessonArticle({condition: condition}, function (err, articles) {
-            res.render('japtool/learning/learnArticle',
+            res.render('japtool/learning/previewTestArticle',
                 {
-                    data: articles,
+                    articles: articles,
                     layout: 'layout/layout-japtool'
                 }
             );
