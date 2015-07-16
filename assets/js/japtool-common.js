@@ -126,9 +126,11 @@ function addbook(i) {
     $('#show-books').modal('hide');
 }
 function deleteLearning() {
-    var learningId = $('#deleteLearning').attr('title');
-    window.location.replace('/japtool/Learning/deleteLearning?id=' + learningId);
-
+    var a= confirm("Ban co thuc su muon xoa learning nay k?");
+    if(a){
+        var learningId = $('#deleteLearning').attr('title');
+        window.location.replace('/japtool/Learning/deleteLearning?id=' + learningId);
+    }
 }
 function validateCreatLearning() {
     var now= new Date();
@@ -168,6 +170,26 @@ function validateCreatLearning() {
         validateFinishDate =true;
     }
     if(validateBook && validateStartDate &&validateFinishDate){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+function validateEditLearning() {
+    var now= new Date();
+    var finishDate = new Date($("#finishDate").val());
+    finishDate.setHours(23,59,59);
+    var validateFinishDate;
+    if (finishDate<now) {
+        $('#mesagefinishDate').html("<i><p style='color: #dc302c'>Ngay ket thuc phai lon hon ngay hien tai!!!</p></i>");
+        validateFinishDate= false;
+    }
+    else {
+        $('#mesagefinishDate').empty();
+        validateFinishDate =true;
+    }
+    if(validateFinishDate){
         return true;
     }
     else{
