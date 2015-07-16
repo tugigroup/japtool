@@ -159,16 +159,6 @@
         })
 
     });
-
-    //get articleID array
-    var arrArticleID = [];
-    var arrArticle = [];
-    $('.arrArticleID').each(function () {
-        arrArticleID.push($(this).val());
-        arrArticle.push({
-            arID: $(this).val()
-        });
-    });
     var dataUserAns = [];
     var lengthQues = $("#lengthQues").val();
     $("#btnCheckRs").on('click', function () {
@@ -198,8 +188,6 @@
             for (var j = 0; j < questions.length; j++) {
                 //if (questions[j].article == arrArticle[i].arID && questions[j].id == dataUserAns[j].idQues) {
                 //if (questions[j].id == dataUserAns[j].idQues) {
-                    console.log (questions[j]);
-                console.log(dataUserAns[j]);
                     if (questions[j].key == 1 && questions[j].option1 == dataUserAns[j].UserOp) {
                         var rdPosition = dataUserAns[j].positionRd;
                         $("#" + rdPosition + "rd").html('<i class="fa fa-check fa-2x text-success"></i>');
