@@ -1,6 +1,7 @@
 /**
  * Created by TuanNT22 on 17-07-2015.
  */
+/*
 var tts = require('node-google-text-to-speech')
 module.exports = {
   tts: function (req, res) {
@@ -13,3 +14,4 @@ module.exports = {
     });
   }
 }
+*/
