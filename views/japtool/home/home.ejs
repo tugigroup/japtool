@@ -2,8 +2,14 @@
   window.onload = function (){
     $(".bookMaterIdClass").each(function(){
       var bookId = $(this).val();
+      var startDate = $("#startDate"+bookId).val();
+      var finishDate = $("#finishDate"+bookId).val();
+      alert(startDate);
+      alert(finishDate);
       var data = {
-        bookId: bookId
+        bookId: bookId,
+        startDate:startDate,
+        finishDate:finishDate
       };
       $.ajax({
         method: "GET",
@@ -29,9 +35,7 @@
     <div class="container">
         <div class="row">
             <h2 class="text-center clearfix">Learning Your Self</h2>
-
             <p class="text-center desc-home">Hiển thị những group học tiếng nhật của bạn bè trong list friends của bạn, bạn join vào để học cùng nhau nhé</p>
-
             <p class="text-center desc-home"><i><a>View more all</a></i></p>
             <!--Show bool user History-->
             <%if(selfLearnings!=undefined && selfLearnings.length>0){%>
@@ -43,6 +47,8 @@
                             <h3><a><%=selfLearning.bookMaster.name%></a></h3>
                             <%var bookMasterId = selfLearning.bookMaster.id%>
                             <input type="hidden" value="<%=bookMasterId%>" class="bookMaterIdClass" />
+                            <input type="hidden" value="<%=selfLearning.startDate%>" id="startDate<%= bookMasterId %>" />
+                            <input type="hidden" value="<%=selfLearning.finishDate%>" id="finishDate<%= bookMasterId %>" />
                             <%} else{%>
                               <h3><a>Book name is NONE</a></h3>
                             <%}%>
@@ -62,7 +68,7 @@
                                     <p><span class="glyphicon glyphicon-thumbs-up"></span> You have done <%=userLearn.subLesson%> on <%=userLearn.lesson%></p>
                                   </div>
                                   <div class="col-sm-3" style="display: none">
-                                    <a class="join-learn btn label-danger" href="/japtool/Learning/create/?bookid=<%=bookMasterId%>">Continue</a>
+                                    <a class="join-learn btn label-danger" href="/japtool/BookMaster/practice/?id=<%=bookMasterId%>&learnID=<%=selfLearning.id%>">Continue</a>
                                   </div>
                                 <%}else{ showNumber++;%>
                                     <div class="col-sm-9" style="display: block">
@@ -70,7 +76,7 @@
                                         <p><span class="glyphicon glyphicon-thumbs-up"></span> You have done <%=userLearn.subLesson%> on <%=userLearn.lesson%></p>
                                     </div>
                                     <div class="col-sm-3" style="display: block">
-                                        <a class="join-learn btn label-danger" href="/japtool/Learning/create/?bookid=<%=bookMasterId%>">Continue</a>
+                                        <a class="join-learn btn label-danger" href="/japtool/BookMaster/practice/?id=<%=bookMasterId%>&learnID=<%=selfLearning.id%>">Continue</a>
                                     </div>
                                 <%}%>
                                 <%});%> <!--End for-->

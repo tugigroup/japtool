@@ -21,7 +21,10 @@ module.exports = {
                     if (selfLearnings == null || selfLearnings == undefined) {
                         return res.json({err: "Error"});
                     }
-
+                    selfLearnings.forEach(function(item){
+                      sails.log("Server Start Date:" + item.startDate);
+                      sails.log("Server Finish Date:" + item.finishDate);
+                    });
                     res.view('japtool/home/home', {selfLearnings: selfLearnings});
                 });
         }

@@ -51,11 +51,19 @@ module.exports = {
     },
     getMissLesson: function (req, res) {
       var bookId = req.param('bookId');
+      var startDate = req.param('startDate');
+      var finishDate = req.param('finishDate');
       BookDetail.find({bookMaster:bookId}).exec(function(err,bookDetails){
         if (err) {
           sails.log("Err when read book detail data:");
           return res.serverError(err);
         }
+
+        sails.log("Start Date: " + startDate);
+        sails.log("Finish Date: " + finishDate);
+        /*var dateTotal = new Date(finishDate) - new Date(startDate);
+        sails.log("Finish Date: " + dateTotal);*/
+
         res.send(bookDetails);
       });
     },
