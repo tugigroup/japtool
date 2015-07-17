@@ -1,178 +1,95 @@
-<div class="wrapper learning-group">
-    <div class="container">
-        <div class="row">
-            <div class="content">
+<div class="modal-content">
+
+        <div class="modal-header">
+            <h4 class="modal-title">Edit your learning</h4>
+
+            <div class="library-content-desc" style="margin-bottom: 150px">
                 <div class="col-sm-12">
-                    <h2>Edit learning</h2>
+                    <div class="desc-library" id="placebook">
+
+                        <% if(learning){ %>
+                        <img
+                                <% if (learning.bookMaster.image) { %>
+                                src="/media/image/<%= learning.bookMaster.image %>"
+                                <% } else { %>
+                                src="/images/bookicon.jpg"
+                                <% } %>
+                                width="100" height="100">
+                        <input id="idbook" type="hidden" name="bookMaster"
+                               value="<%= learning.bookMaster.id %>">
+                        <br>
+                        <b><%= learning.bookMaster.name %></b><br>
+                        <b>Level : <%= learning.bookMaster.level %></b>
+
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-body">
+            <div class="content">
+                <div class="clearfix">
+                    <div class="col-sm-10 learning-group-item">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <label>Notes</label>
+                            </div>
+                            <div class="col-sm-10">
+                                    <textarea class="form-control"
+                                              rows="4"
+                                              id="notes"
+                                              name="notes"><%= learning.notes %></textarea>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="clearfix">
                     <div class="col-sm-10 learning-group-item">
                         <div class="row">
-                            <form action="" method="POST">
-                                <div class="col-sm-2">
-                                    <label>Learning Name: </label>
-                                </div>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="" placeholder="Class Name">
-                                </div>
-                                <div class="col-sm-2">
-                                    <label>Short Description</label>
-                                </div>
-                                <div class="col-sm-10">
+                            <div class="col-sm-2">
+                                <label>From</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="hidden" value="<%= learning.id %>" name="id">
+                                <input type="date" disabled="true" class="form-control"
+                                       value="<%= startDateString %>" name="startDate"
+                                       id="startDate"><br>
 
-                                    <textarea class="form-control" rows="4"></textarea>
-                                </div>
-                            </form>
+                                <div id="mesagestartDate"></div>
+                            </div>
+
+                            <div class="col-sm-2">
+                                <label>To</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="date" class="form-control" value="<%= finishdate %>"
+                                       name="finishDate" id="finishDate"><br>
+
+                                <div id="mesagefinishDate"></div>
+                            </div>
+
                         </div>
                     </div>
                     <div class="col-sm-2 hidden-md hidden-xs">
-                        <div class="learning-group-image">
-                            <label for="fileButton"><img id="imgGr" src="../images/group-friends/masonry_02-400x400.jpg"/></label>
-                            <span class="glyphicon glyphicon-upload icon-upload" id="btnUp" for="fileButton"></span>
-                            <input type="file" id="fileButton"/>
-                        </div>
                     </div>
                 </div>
-                <div class="form-group formStartFinish">
-                    <label class="col-md-2 control-label">Learning plant: </label>
 
-                    <div class="col-md-10">
-                        <div class="row">
-                            <div class="col-md-12" id="datepicker">
-                                <div class="input-group">
-                                    <span class="input-group-addon">From:</span>
-                                    <input type="date" class="form-control" name="start">
-                                    <span class="input-group-addon">To:</span>
-                                    <input type="date" class="form-control" name="end">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="library-content-desc">
-                    <h2>Book Information</h2>
-                    <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3>
-                    <div class="desc-library">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                            ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-                            anim id est laborum Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                            deserunt mollit anim id est laborum</p>
-                    </div>
-
-                </div>
                 <!-- Trigger the modal with a button -->
-                <button type="button" class="btn btn-info btn-chooseBook" data-toggle="modal" data-target="#myModal">Choose a
-                    book
-                </button>
-                <!-- Modal -->
-                <div class="modal fade" id="myModal" role="dialog">
-                    <div class="modal-dialog">
+                <div class="modal fade" id="show-books" data-backdrop="static" data-keyboard="false">
 
-                        <!-- Modal content-->
-                        <div class="modal-content popup-book">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal"></button>
-                                <h4 class="modal-title">Book Library</h4>
-
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        Choose a book
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="row form-search-book">
-                                            <form name="" action="" method="">
-                                                <div class="col-sm-3">
-                                                    <input class="form-control" name="tbSearch" value=""
-                                                           id="input-search" placeholder="Search" type="text">
-                                                </div>
-                                                <div class="col-sm-2">
-                                                    <button type="submit" class="btn btn-primary"><span
-                                                                class="glyphicon glyphicon-search"></span></button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4 form-by">
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="lead"><span class="label label-success lbBy">By</span></div>
-                                            </div>
-                                            <div class="col-sm-6 slcBook">
-                                                <select name="slcTypeBook">
-                                                    <option value="">---Choose One---</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-body">
-                                <div class="pre-scrollable showBook mCustomScrollbar" data-mcs-theme="dark">
-                                    <!--start three book info-->
-                                    <div class="row form-showBook">
-                                        <div class="col-sm-4">
-                                            <div class="row">
-                                                <div class="col-sm-1"><input type="radio" name="chooseBook" value="value">
-                                                </div>
-                                                <div class="col-sm-2"><img src="../images/Book-icon-orange.png"
-                                                                           width="46" height="46"/></div>
-                                                <div class="col-sm-9">
-                                                    <a href=""><p class="lbUser">Học nghe</p></a>
-
-                                                    <p>Level : 10</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div class="row">
-                                                <div class="col-sm-1"><input type="radio" name="chooseBook" value="value">
-                                                </div>
-                                                <div class="col-sm-2"><img src="../images/Book-icon-orange.png"
-                                                                           width="46" height="46"/></div>
-                                                <div class="col-sm-9">
-                                                    <a href=""><p class="lbUser">Học nghe</p></a>
-
-                                                    <p>Level : 10</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div class="row">
-                                                <div class="col-sm-1"><input type="radio" name="chooseBook" value="value">
-                                                </div>
-                                                <div class="col-sm-2"><img src="../images/Book-icon-orange.png"
-                                                                           width="46" height="46"/></div>
-                                                <div class="col-sm-9">
-                                                    <a href=""><p class="lbUser">Học nghe</p></a>
-
-                                                    <p>Level : 10</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <hr class="lineBook">
-                                    <!--finish three book info-->
-                                </div>
-
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-success btn-flat" data-dismiss="modal">Choose</button>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-                <!--finish hidden div-->
-                <button type="button" class="btn btn-success btn-flat" data-dismiss="modal">Save</button>
+                <div id="mesageBook"></div>
             </div>
-
         </div>
-    </div>
+        <div class="modal-footer">
+            <input type="submit"
+                   class="btn btn-success"
+                   value="Save"
+                   id="btnCreateLearning"/>
+            <a href="#" class="btn btn-warning" role="button" data-dismiss="modal">Close</a>
+        </div>
 </div>
+
+
+

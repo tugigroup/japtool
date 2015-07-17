@@ -4,20 +4,19 @@
             <div id="default-show" class="clearfix">
                 <div class="default-show">
                     <div class="col-md-offset-10 col-sm-2">
-                        <a href="/japtool/learning/create">
-                            <button type="button" class="btn btn-danger">Create New Learning</button>
-                        </a>
+                        <button onclick="loadform(2)" class="btn btn-danger">Create New Learning</button>
                     </div>
                 </div>
             </div>
         </div>
-        <%if(learnList.length<=0){%>
-      <div class="container">
-        <div class="row" style="height: 200px">
-          <h2 class="text-center">Ban chua co mot learning nao! Tao mot learning tai <u><a href="/japtool/learning/create">day</a></u> hoac thoat'!!!</h2>
+        <% if(learnList.length <= 0){ %>
+        <div class="container">
+            <div class="row" style="height: 200px">
+                <h2 class="text-center">Ban chua co mot learning nao! Tao mot learning tai <u><a
+                                href="/japtool/learning/create">day</a></u> hoac thoat'!!!</h2>
+            </div>
         </div>
-      </div>
-        <%}%>
+        <% } %>
         <% for(var j = 0;j < uniqueType.length;j++){ %>
         <div class="row">
             <div class="col-sm-3">
@@ -66,7 +65,8 @@
                             <li>
                                 <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
                                 <a class="text-danger" href="#" data-toggle="modal" data-target="#lib-1">Preview</a> -
-                                <a href="/japtool/BookMaster/practice/?id=<%= learnList[i].bookMaster.id %>&learnID=<%= learnList[i].id %>">Go to Learn</a>
+                                <a href="/japtool/BookMaster/practice/?id=<%= learnList[i].bookMaster.id %>&learnID=<%= learnList[i].id %>">Go
+                                    to Learn</a>
                             </li>
                         </ul>
                     </div>
@@ -97,12 +97,12 @@
                                                             <li>
                                                                 <span class="glyphicon glyphicon-play"
                                                                       aria-hidden="true"></span> From
-                                                                : <%= learnList[i].startDate %>
+                                                                : <%= learnList[i].bookMaster.startDate %>
                                                             </li>
                                                             <li>
                                                                 <span class="glyphicon glyphicon-stop"
                                                                       aria-hidden="true"></span> To
-                                                                : <%= learnList[i].finishDate %>
+                                                                : <%= learnList[i].bookMaster.finishDate %>
                                                             </li>
                                                             <li>
                                                                 <span class="glyphicon glyphicon-book"
@@ -121,7 +121,9 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <a href="#" class="btn btn-primary" role="button">Edit</a>
+                                    <input type="hidden" id="idedit" value="<%= learnList[i].id %>">
+                                    <button onclick="loadform(1)" class="btn btn-warning">Edit</button>
+
                                     <a href="#" onclick="deleteLearning()" title="<%= learnList[i].id %>"
                                        id="deleteLearning" class="btn btn-danger" role="button">Delete</a>
                                     <a href="#" class="btn btn-warning" role="button" data-dismiss="modal">Close</a>
@@ -136,5 +138,24 @@
             <% } %>
         </div>
         <% } %>
+        <form action="/japtool/learning/edit" method="post" id="edit-learning-japtool"
+              onsubmit="return validateEditLearning()">
+            <div class="modal fade" id="formedit" data-keyboard="false">
+                <div class="modal-dialog modal-lg" id="editform"></div>
+            </div>
+        </form>
+        <form action="/japtool/learning/add" method="post" onsubmit="return validateCreatLearning()"
+              id="create-learning-japtool">
+            <input type="hidden" id="listLearn" value="<%= learnList %>">
+            <input type="hidden" id="iduser" value="<%= session.User.id %>">
+
+            <div class="modal fade" id="formecr" data-keyboard="false">
+                <div class="modal-dialog modal-lg" id="crform"></div>
+            </div>
+        </form>
+        <div class="modal fade" id="show-books" data-backdrop="static" data-keyboard="false">
+
+        </div>
     </div>
+
 </div>

@@ -32,17 +32,6 @@ module.exports = {
           collection: 'BookUseHistory',
           via: 'bookMaster'
         },
-        getMissLesson: function () {
-         //sails.log("read book ID:" + bookId);
-         BookDetail.find({bookID:id}).exec(function(err,bookDetails){
-         if (err) {
-         sails.log("Err when read book detail data:");
-         return res.serverError(err);
-         }
-         //sails.log(bookDetails);
-         return bookDetails;
-         });
-         }
     }
 };
 

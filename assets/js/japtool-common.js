@@ -1,3 +1,4 @@
+//mahainam begin
 //RECOMMENT POPUP
 var answer1;
 var answer2;
@@ -107,12 +108,7 @@ function checkAnswer1Login() {
     }
 }
 /*choose book*/
-function loadbooks() {
-    $("#show-books").load('/japtool/Learning/getBooks');
-    $('#show-books').modal('show');
-    $('#show-books').addClass('fade').modal('show');
-    $("#placebook").removeChild();
-}
+
 function addbook(i) {
     $("#placebook").empty();
     var imglink = $('#imglink' + i + '').attr('src');
@@ -126,23 +122,144 @@ function addbook(i) {
     $('#show-books').modal('hide');
 }
 function deleteLearning() {
-    var learningId = $('#deleteLearning').attr('title');
-    window.location.replace('/japtool/Learning/deleteLearning?id=' + learningId);
-
+    var a = confirm("Ban co thuc su muon xoa learning nay k?");
+    if (a) {
+        var learningId = $('#deleteLearning').attr('title');
+        window.location.replace('/japtool/Learning/deleteLearning?id=' + learningId);
+    }
 }
+/*function checkLearning() {
+    var result;
+    var listLearn = new Array();
+    var bookid = $('#idbook').val();
+    var iduser = $('#iduser').val();
+    listLearn = $('#listLearn').val();
+    alert(listLearn[1].bookMaster);
+    for (var i = 0; i < listLearn.length; i++) {
+        if (listLearn[i].bookMaster == bookid && listLearn[i].user == iduser) {
+            result = false;
+        }
+        else {
+
+        }
+    }
+
+}*/
 function validateCreatLearning() {
-    /*if (!$.trim($('#show-books').html()).length) {
-     $('#mesage').html("<strong><i><p style='color: #b92c28'>You must choose a book</p></i></strong>");
-     return false;
-     }*/
-    if ($('#idbook').val()==null) {
-        $('#mesage').html("<strong><i><p style='color: #b92c28'>You must choose a book</p></i></strong>");
-        return false;
+
+    var now = new Date();
+    var starDate = new Date($("#startDate").val());
+    starDate.setHours(now.getHours());
+    starDate.setMinutes(now.getMinutes());
+    starDate.setSeconds(now.getSeconds() + 1);
+    var finishDate = new Date($("#finishDate").val());
+    finishDate.setHours(23, 59, 59);
+    var validateBook;
+    var validateStartDate;
+    var validateFinishDate;
+
+    if ($('#idbook').val() == null) {
+        $('#mesageBook').html("<i><p style='color: #e32d29'>You must choose a book</p></i>");
+        validateBook = false;
     }
     else {
+        validateBook = true;
+        $('#mesageBook').empty();
+    }
+
+    if (starDate < now) {
+        $('#mesagestartDate').html("<i><p style='color: #d82824'>Ngay bat dau phai lon hon ngay hien tai!!!</p></i>");
+        validateStartDate = false;
+    }
+    else {
+        validateStartDate = true;
+        $('#mesagestartDate').empty();
+    }
+    if (finishDate < now) {
+        $('#mesagefinishDate').html("<i><p style='color: #dc302c'>Ngay ket thuc phai lon hon ngay hien tai!!!</p></i>");
+        validateFinishDate = false;
+    }
+    else {
+        $('#mesagefinishDate').empty();
+        validateFinishDate = true;
+    }
+    if (validateBook && validateStartDate && validateFinishDate) {
         return true;
     }
+    else {
+        return false;
+    }
 }
+function validateEditLearning() {
+    var now = new Date();
+    var finishDate = new Date($("#finishDate").val());
+    finishDate.setHours(23, 59, 59);
+    var validateFinishDate;
+    if (finishDate < now) {
+        $('#mesagefinishDate').html("<i><p style='color: #dc302c'>Ngay ket thuc phai lon hon ngay hien tai!!!</p></i>");
+        validateFinishDate = false;
+    }
+    else {
+        $('#mesagefinishDate').empty();
+        validateFinishDate = true;
+    }
+    if (validateFinishDate) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+function loadbooks() {
+
+    $("#show-books").load('/japtool/Learning/getBooks');
+    $('#show-books').modal('show');
+    $('#show-books').addClass('fade').modal('show');
+    /*$("#placebook").removeChild();*/
+}
+function loadform(a) {
+    if (a == 1) {
+        var id = $('#idedit').val();
+        $('#lib-1').removeClass('fade').modal('hide');
+        $('#editform').load('/japtool/Learning/loadEditForm/?id=' + id);
+        $('#formedit').addClass('fade').modal('show');
+    }
+    if (a == 2) {
+        $('#lib-1').removeClass('fade').modal('hide');
+        $('#crform').load('/japtool/learning/create');
+        $('#formecr').addClass('fade').modal('show');
+    }
+    /*load("/japtool/Learning/loadEditForm/?id="+id, function() {
+     alert('load successfully');
+     });*/
+}
+/*function checkLearning() {
+ $('#formecr').removeClass('fade').modal('hide');
+ var notes=$('#notes').val();
+ var startDate=$('#startDate').val();
+ var finishDate=$('#finishDate').val();
+ var idbook=$('#idbook').val();
+ $('#crform').load('/japtool/learning/add?notes='+notes+'&startDate='+startDate+'&finishDate='+finishDate+'&idbook='+idbook);
+
+ }*/
+function loadformLib(id) {
+    //var bookid=$('#bookidd').val();
+    $('#lib-1').removeClass('fade').modal('hide');
+    $('#editform').load('/japtool/learning/create/?bookid=' + id, function (res, status) {
+        var arr = res.split("/");
+        if (arr[3] == "practice") {
+            window.location.replace(res);
+        }
+        else {
+
+        }
+    });
+    $('#formedit').addClass('fade').modal('show');
+    /*load("/japtool/Learning/loadEditForm/?id="+id, function() {
+     alert('load successfully');
+     });*/
+}
+//end nam
 /*end choose book*/
 //end recommend login
 
@@ -461,6 +578,16 @@ $(document).ready(function () {
         $("#uploadBtnAvatar").change(function () {
             readAvatar(this);
         });
+
+
+    $('#submitAvatar').click(function () {
+        var avatarValue = $('#uploadAvatar').val();
+        if (avatarValue == null || avatarValue.length == 0) {
+            alert('Vui lòng chọn ảnh.')
+            return false;
+        }
+    })
+
 });
 
 //END USER
@@ -473,4 +600,6 @@ $(document).ready(function () {
         transitionEffect: "slideLeft"
     });
 });
+
+
 //END VOCABULARY

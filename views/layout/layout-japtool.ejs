@@ -6,7 +6,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <link type="text/css" rel="stylesheet" href="/styles/bootstrap.min.css">
-    <link type="text/css" rel="stylesheet" href="/styles/bootstrap-theme.min.css">
     <link type="text/css" rel="stylesheet" href="/styles/bootstrap-social.css">
     <link type="text/css" rel="stylesheet" href="/styles/font-awesome.css">
     <link type="text/css" rel="stylesheet" href="/styles/font-roboto.css">
@@ -21,7 +20,7 @@
                 <div class="row">
                     <div class="account-right col-sm-7 col-sm-offset-5">
                         <% if(session.authenticated){ %>
-                        <span>Welcome <a
+                        <span>Welcome <a id="userIdInSession" userId="<%= session.User.id %>"
                                     href="/japtool/user/show/<%= session.User.id %>"><%= session.User.username %></a></span><a
                                 href="/japtool/auth/destroy">Sign Out</a>
                         <% } %>
@@ -125,6 +124,8 @@
     <script src="/js/dependencies/jquery.steps.js"></script>
     <script src="/js/dependencies/jquery.validate.min.js"></script>
     <script src="/js/dependencies/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="/js/dependencies/jssor.js"></script>
+    <script src="/js/dependencies/jssor.slider.js"></script>
     <script src="/js/dependencies/sails.io.js"></script>
     <script src="/js/menu.js"></script>
     <script src="/js/customValidate.js"></script>

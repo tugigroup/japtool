@@ -1,50 +1,128 @@
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#vocabularyList").steps({
-            headerTag: "h3",
-            bodyTag: "section",
-            transitionEffect: "slide"
-        });
+<script>
+  jQuery(document).ready(function ($) {
+    var options = {
+      $DragOrientation: 1,                                //[Optional] Orientation to drag slide, 0 no drag, 1 horizental, 2 vertical, 3 either, default value is 1 (Note that the $DragOrientation should be the same as $PlayOrientation when $DisplayPieces is greater than 1, or parking position is not 0)
+      $ArrowKeyNavigation: true,   			            //[Optional] Allows keyboard (arrow key) navigation or not, default value is false
+      $ArrowNavigatorOptions: {                           //[Optional] Options to specify and enable arrow navigator or not
+        $Class: $JssorArrowNavigator$,                  //[Requried] Class to create arrow navigator instance
+        $ChanceToShow: 2                                //[Required] 0 Never, 1 Mouse Over, 2 Always
+      },
+      $ThumbnailNavigatorOptions: {
+        $Class: $JssorThumbnailNavigator$,              //[Required] Class to create thumbnail navigator instance
+        $ChanceToShow: 2,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
+        $Loop: 1,                                       //[Optional] Enable loop(circular) of carousel or not, 0: stop, 1: loop, 2 rewind, default value is 1
+        $SpacingX: 3,                                   //[Optional] Horizontal space between each thumbnail in pixel, default value is 0
+        $SpacingY: 3,                                   //[Optional] Vertical space between each thumbnail in pixel, default value is 0
+        $DisplayPieces: 7,                              //[Optional] Number of pieces to display, default value is 1
+        $ParkingPosition: 0,                          //[Optional] The offset position to park thumbnail,
+        $ArrowNavigatorOptions: {
+          $Class: $JssorArrowNavigator$,              //[Requried] Class to create arrow navigator instance
+          $ChanceToShow: 2,                           //[Required] 0 Never, 1 Mouse Over, 2 Always
+          $AutoCenter: 2,                             //[Optional] Auto center arrows in parent container, 0 No, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
+          $Steps: 5                                   //[Optional] Steps to go for each navigation request, default value is 1
+        }
+      }
+    };
+    var jssor_slider1 = new $JssorSlider$("slider1_container", options);
+    //responsive code begin
+    //you can remove responsive code if you don't want the slider scales while window resizes
+    function ScaleSlider() {
+      var parentWidth = jssor_slider1.$Elmt.parentNode.clientWidth;
+      if (parentWidth)
+        jssor_slider1.$ScaleWidth(Math.min(parentWidth, 720));
+      else
+        window.setTimeout(ScaleSlider, 30);
+    }
+
+    ScaleSlider();
+    $(window).bind("load", ScaleSlider);
+    $(window).bind("resize", ScaleSlider);
+    $(window).bind("orientationchange", ScaleSlider);
+    //responsive code end
+  });
+  // Google TEXT TO SPEECH
+  function text2speech(w, tl, id) {
+    var speech = 'select * from data.uri where url="http://translate.google.com/translate_tts?ie=utf-8&tl=' + encodeURIComponent(tl) + "&q=" + encodeURIComponent(w) + '"';
+    $.getJSON('https://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent(speech) + '&format=json&diagnostics=true', function (data) {
+      var audioSrc = data.query.results.url;
+      if (data && audioSrc !== undefined) {
+        $('#' + id)[0].src = audioSrc;
+      }
     });
+  }
+  function playAudio(id) {
+    $('#' + id)[0].play();
+  }
+  //END TEXT2SPEECH
 </script>
+
 <div id="vocabularyList">
-    <% if(kanjis == null || kanjis.length == 0){ %>
-    <h5 class="text-center text-danger">Kh�ng t�m th?y d? li?u</h5>
-    <% }else{ %>
-    <% kanjis.forEach( function(kanji, index){ %>
-    <h3><%= kanji.item %></h3>
-    <section>
-        <h4 class="text-center text-danger"><%= kanji.item %></h4>
+  <div id="slider1_container">
+    <!-- Slides Container -->
+    <div u="slides" class="slider1_container-slider">
+      <% if(kanjis == null || kanjis.length == 0){ %>
+      <h5 class="text-center text-danger">Không tìm thấy dữ liệu</h5>
+      <% }else{ %>
+      <% kanjis.forEach( function(kanji, index){ %>
+      <div>
+        <div style="position: absolute; top: 70px; width: 100%; padding: 10px">
+          <h4 class="text-center text-danger"><%= kanji.item %></h4>
+          <% if(kanji.hanviet.length > 0){ %>
+          <p>
+            <span class="text-success">hanviet<i class="fa fa-microphone text-danger"></i> : </span><%= kanji.hanviet %>
+          </p>
+          <% } %>
+          <% if(kanji.kunyomi.length > 0){ %>
+          <p>
+            <span class="text-success">kunyomi
+              <i class="fa fa-microphone text-danger" onclick="playAudio('kanji-kunyomi-audio-<%= index %>')"></i> :
+            </span><%= kanji.kunyomi %>
+            <audio id="kanji-kunyomi-audio-<%= index %>"></audio>
+            <script>
+              text2speech('<%= kanji.kunyomi %>', 'ja', "kanji-kunyomi-audio-<%= index %>");
+            </script>
+          </p>
+          <% } %>
+          <% if(kanji.onyomi.length > 0){ %>
+          <p><span class="text-success">onyomi
+              <i class="fa fa-microphone text-danger" onclick="playAudio('kanji-onyomi-audio-<%= index %>')"></i> :
+            </span><%= kanji.onyomi %>
+            <audio id="kanji-onyomi-audio-<%= index %>"></audio>
+            <script>
+              text2speech('<%= kanji.onyomi %>', 'ja', "kanji-onyomi-audio-<%= index %>");
+            </script>
+          </p>
+          <% } %>
+          <% if(kanji.description.length > 0){ %>
+          <p><span class="text-success">Description: </span><%= kanji.description %></p>
+          <% } %>
+        </div>
 
-        <p>
-            <span class="text-success">hanviet <i
-                        class="fa fa-microphone text-danger"></i> : </span><%= kanji.hanviet %>
-        </p>
+        <h3 u="thumb"><%= index %>. <%= kanji.item %></h3>
+      </div>
+      <% }) %>
+      <% } %>
 
-        <p>
-            <span class="text-success">kunyomi <i class="fa fa-microphone text-danger"></i> : </span><%= kanji.kunyomi %>
-        </p>
+      <span u="arrowleft" class="jssora05l btn btn-success">Back</span>
+      <!-- Arrow Right -->
+      <span u="arrowright" class="jssora05r btn btn-success">Next</span>
 
-        <p>
-            <span class="text-success">onyomi <i class="fa fa-microphone text-danger"></i> : </span><%= kanji.onyomi %>
-        </p>
+      <!-- thumbnail navigator container -->
+      <!--CHỈNH KÍCH THƯỚC THUMB-->
+      <div u="thumbnavigator" class="jssort07">
+        <!-- Thumbnail Item Skin Begin -->
+        <div u="slides" style="cursor: default;" id="thumbnavigator">
+          <div u="prototype" class="p">
+            <div u="thumbnailtemplate" class="i"></div>
+            <div class="o"></div>
+          </div>
+        </div>
 
-        <p><span class="text-success">Description: </span><%= kanji.description %></p>
-
-        <% if (typeof kanji.examples !== 'undefined' && kanji.examples.length > 0) { %>
-        <p><span class="text-success">Example: </span></p>
-        <ul class="vocabulary-item-example">
-            <% kanji.examples.forEach( function(item){ %>
-            <% if (item.example == 'undefined' || item.example.length == 0){ %>
-            <% }else { %>
-            <li><span class="text-danger"><%= item.example %> : </span><%= item.meaning %></li>
-            <% } %>
-            <% }) %>
-        </ul>
-        <% } %>
-
-    </section>
-    <% }); %>
-    <% } %>
-
+        <!-- Arrow Left -->
+        <span u="arrowleft" class="jssora11l"><i class="fa fa-chevron-left fa-2x"></i></span>
+        <!-- Arrow Right -->
+        <span u="arrowright" class="jssora11r"><i class="fa fa-chevron-right fa-2x"></i></span>
+      </div>
+    </div>
+  </div>
 </div>

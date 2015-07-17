@@ -8,7 +8,7 @@ module.exports = {
     var extractDataCondition = req.param('condition');
     Grammar.selectByLevel({condition: extractDataCondition}, function (err, grammars) {
       if (err) return res.send(err.status);
-      res.render('japtool/grammar/list', {'vocabularies': grammars});
+      res.render('japtool/grammar/list', {grammars: grammars});
     });
   }
 }

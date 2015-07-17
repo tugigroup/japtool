@@ -37,6 +37,6 @@ module.exports = {
         userLearnHistories: {
           collection: 'UserLearnHistory',
           via: 'selfLearning'
-        }
+        },
     }
 };
