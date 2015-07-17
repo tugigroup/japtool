@@ -607,6 +607,7 @@ label.valid, p.valid {
     overflow: hidden;
 }
 
+
 /*Arrow Navigator Skin Begin*/
 
 .jssora05l, .jssora05r {
@@ -681,9 +682,10 @@ label.valid, p.valid {
     font-size: 18px;
 }
 
-.jssort07 .p:hover .i, .jssort07 .pav .i {
-    /*filter: alpha(opacity=100);*/
-    /*opacity: 1;*/
+.jssort07 .p:hover, .jssort07 .pav {
+    filter: alpha(opacity=100);
+    opacity: 1;
+    background: #d9534f;
 }
 
 /*.jssort07 .o {*/
