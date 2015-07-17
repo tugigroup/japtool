@@ -8,7 +8,7 @@
                             <div class="row">
                                 <input type="hidden" name="userID" id="userID" value="<%= user.id %>"/>
 
-                                <div class="col-sm-12"><span class="lbUser"><%- user.username %></span></div>
+                                <div class="col-sm-12"><span class="lbUser"><%= user.username %></span></div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-12"><span class="lbLever">Lever Of User</span></div>
@@ -26,11 +26,11 @@
                                 <div class="panel panel-warning">
                                     <!--<div class="panel-heading">Details</div>-->
                                     <div class="panel-body">
-                                        <p>First Name : <%- user.firstname %></p>
+                                        <p>First Name : <%= user.firstname %></p>
 
-                                        <p>Last Name : <%- user.lastname %></p>
+                                        <p>Last Name : <%= user.lastname %></p>
 
-                                        <p>Join Date : <%- user.createdAt %></p>
+                                        <p>Join Date : <%= user.createdAt %></p>
 
                                         <p>Total lesson : value</p>
                                     </div>
