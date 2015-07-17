@@ -1,177 +1,146 @@
 <form id="edit-info">
-    <div class="row">
-        <div class="col-sm-offset-1 col-sm-10">
-            <input type="hidden" value="<%- user.id %>" name="userInfoId">
+  <div class="row">
+    <div class="col-sm-offset-1 col-sm-10">
+      <input type="hidden" value="<%- user.id %>" name="userInfoId">
 
-            <p class="leadInfo">User Name</p>
-            <hr>
-            <div class="required">
-                <label class="col-sm-3 control-label" for="input-firstname">First Name :</label>
+      <p class="leadInfo">User Name</p>
+      <hr>
 
-                <div class="col-sm-9">
-                    <p><input class="form-control" type="text" name="firstname" value="<%= user.firstname %>"
-                              placeholder="Your First Name" id="input-firstname"></p>
+      <label class="col-sm-3 control-label" for="input-firstname">First Name :</label>
 
-                    <p id="user-edit-mess-fName" style="display: none"></p>
-                </div>
-                <label class="col-sm-3 control-label" for="input-lastname">Last Name :</label>
+      <div class="col-sm-9">
+        <p>
+          <% if(user.firstname === 'undefined'){ %>
+          <input class="form-control" type="text" name="firstname" value="" placeholder="Your First Name"
+                 id="input-firstname">
+          <% }else{ %>
+          <input class="form-control" type="text" name="firstname" value="<%= user.firstname %>"
+                 placeholder="Your First Name" id="input-firstname">
+          <% } %>
+        </p>
 
-                <div class="col-sm-9">
-                    <p><input class="form-control" type="text" name="lastname" value="<%= user.lastname %>"
-                              placeholder="Your Last Name" id="input-lastname"></p>
+        <p id="user-edit-mess-fName" style="display: none"></p>
+      </div>
+      <label class="col-sm-3 control-label" for="input-lastname">Last Name :</label>
 
-                    <p id="user-edit-mess-lName" style="display: none"></p>
-                </div>
-                <label class="col-sm-3 control-label" for="input-email">Your email :</label>
+      <div class="col-sm-9">
+        <p>
+          <% if(user.lastname === 'undefined'){ %>
+          <input class="form-control" type="text" name="lastname" value="" placeholder="Your Last Name"
+                 id="input-lastname">
+          <% }else{ %>
+          <input class="form-control" type="text" name="lastname" value="<%= user.lastname %>"
+                 placeholder="Your Last Name" id="input-lastname">
+          <% } %>
+        </p>
 
-                <div class="col-sm-9">
-                    <p><input class="form-control" type="text" name="email" value="<%= user.email %>"
-                              placeholder="Your email" id="input-email"></p>
+        <p id="user-edit-mess-lName" style="display: none"></p>
+      </div>
 
-                    <p id="user-edit-mess-email" style="display: none"></p>
-                </div>
-            </div>
-            <label class="col-sm-3 control-label" for="input-telephone">E-Telephone :</label>
+      <label class="col-sm-3 control-label" for="input-telephone">E-Telephone :</label>
 
-            <div class="col-sm-9">
-                <p><input class="form-control" type="text" name="telephone" value="<%= user.telephone %>"
-                          placeholder="Your telephone" id="input-telephone"></p>
-            </div>
-            <label class="col-sm-3 control-label" for="input-fax">Fax :</label>
+      <div class="col-sm-9">
+        <p>
+          <% if(user.telephone === 'undefined'){ %>
+          <input class="form-control" type="text" name="telephone" value="" placeholder="Your telephone"
+                 id="input-telephone">
+          <% }else{ %>
+          <input class="form-control" type="text" name="telephone" value="<%= user.telephone %>"
+                 placeholder="Your telephone" id="input-telephone">
+          <% } %>
 
-            <div class="col-sm-9">
-                <p><input class="form-control" type="text" name="fax" value="<%= user.fax %>"
-                          placeholder="Your fax" id="input-fax"></p>
-            </div>
-        </div>
+        </p>
+      </div>
+      <label class="col-sm-3 control-label" for="input-fax">Fax :</label>
+
+      <div class="col-sm-9">
+        <p>
+          <% if(user.fax === 'undefined'){ %>
+          <input class="form-control" type="text" name="fax" value="" placeholder="Your fax" id="input-fax">
+          <% }else{ %>
+          <input class="form-control" type="text" name="fax" value="<%= user.fax %>" placeholder="Your fax"
+                 id="input-fax">
+          <% } %>
+        </p>
+      </div>
     </div>
-    <div class="row">
-        <div class="col-sm-offset-1 col-sm-10">
-            <p class="leadInfo">User Address</p>
-            <hr>
-            <label class="col-sm-3 control-label" for="input-company">Company :</label>
+  </div>
+  <div class="row">
+    <div class="col-sm-offset-1 col-sm-10">
+      <p class="leadInfo">User Address</p>
+      <hr>
+      <label class="col-sm-3 control-label" for="input-company">Company :</label>
 
-            <div class="col-sm-9">
-                <p><input class="form-control" type="text" name="yourAddress[company]"
-                          value="<%= user.yourAddress.company %>"
-                          placeholder="Your Company" id="input-company"></p>
-            </div>
-            <label class="col-sm-3 control-label" for="input-address">Address :</label>
+      <div class="col-sm-9">
+        <p><input class="form-control" type="text" name="yourAddress[company]"
+                  value="<%= user.yourAddress.company %>"
+                  placeholder="Your Company" id="input-company"></p>
+      </div>
+      <label class="col-sm-3 control-label" for="input-address">Address :</label>
 
-            <div class="col-sm-9">
-                <p><input class="form-control" type="text" name="yourAddress[address]"
-                          value="<%= user.yourAddress.address %>"
-                          placeholder="Your Address" id="input-address"></p>
-            </div>
-            <label class="col-sm-3 control-label" for="input-city">City :</label>
+      <div class="col-sm-9">
+        <p><input class="form-control" type="text" name="yourAddress[address]"
+                  value="<%= user.yourAddress.address %>"
+                  placeholder="Your Address" id="input-address"></p>
+      </div>
+      <label class="col-sm-3 control-label" for="input-city">City :</label>
 
-            <div class="col-sm-9">
-                <p><input class="form-control" type="text" name="yourAddress[city]" value="<%= user.yourAddress.city %>"
-                          placeholder="Your City" id="input-city"></p>
-            </div>
-            <label class="col-sm-3 control-label" for="input-postCode">Post Code :</label>
+      <div class="col-sm-9">
+        <p><input class="form-control" type="text" name="yourAddress[city]" value="<%= user.yourAddress.city %>"
+                  placeholder="Your City" id="input-city"></p>
+      </div>
+      <label class="col-sm-3 control-label" for="input-postCode">Post Code :</label>
 
-            <div class="col-sm-9">
-                <p><input class="form-control" type="text" name="yourAddress[postCode]"
-                          value="<%= user.yourAddress.postCode %>"
-                          placeholder="Your PostCode" id="input-postCode"></p>
-            </div>
-            <label class="col-sm-3 control-label" for="input-country">Country</label>
+      <div class="col-sm-9">
+        <p><input class="form-control" type="text" name="yourAddress[postCode]"
+                  value="<%= user.yourAddress.postCode %>"
+                  placeholder="Your PostCode" id="input-postCode"></p>
+      </div>
+      <label class="col-sm-3 control-label" for="input-country">Country</label>
 
-            <div class="col-sm-9">
-                <p><select name="yourAddress[country]" id="input-country" class="form-control">
-                        <% _.each(listCountry, function(listCountryItem){ %>
-                        <% if (user.yourAddress.country == listCountryItem.name){ %>
-                        <option value="<%= user.yourAddress.country %>"
-                                selected> <%= user.yourAddress.country %></option>
-                        <% } else{ %>
-                        <option value="<%= listCountryItem.name %>"><%= listCountryItem.name %></option>
-                        <% } %>
-                        <% }) %>
-                    </select>
-            </div>
-            <label class="col-sm-3 control-label" for="input-country"></label>
+      <div class="col-sm-9">
+        <p><select name="yourAddress[country]" id="input-country" class="form-control">
+            <% _.each(listCountry, function(listCountryItem){ %>
+            <% if (user.yourAddress.country == listCountryItem.name){ %>
+            <option value="<%= user.yourAddress.country %>" selected> <%= user.yourAddress.country %></option>
+            <% } else{ %>
+            <option value="<%= listCountryItem.name %>"><%= listCountryItem.name %></option>
+            <% } %>
+            <% }) %>
+          </select>
+      </div>
+      <label class="col-sm-3 control-label" for="input-country"></label>
 
-            <div class="col-sm-9">
-                <button type="button" class="btn btn-sm btn-edit pull-right" id="btnSaveEdit">Save <span
-                            class="glyphicon glyphicon-saved"></span></button>
-            </div>
-        </div>
+      <div class="col-sm-9">
+        <button type="button" class="btn btn-sm btn-edit pull-right" id="btnSaveEdit">Save <span
+            class="glyphicon glyphicon-saved"></span></button>
+      </div>
     </div>
+  </div>
 </form>
 
 <script type="text/javascript">
-    $('#input-firstname').keyup(function () {
-        var fName = $('#input-firstname').val();
-        var messfName = $('#user-edit-mess-fName').removeClass();
-
-        if (fName == "" || fName == null) {
-            messfName.addClass('error').text('First name is required!').show();
-        } else {
-            messfName.hide();
-        }
+  $("#btnSaveEdit").click(function () {
+    var fName = $('#input-firstname').val().trim();
+    var lName = $('#input-lastname').val().trim();
+    if (!fName) {
+      $('#input-firstname').val("");
+    }
+    if (!lName) {
+      $('#input-lastname').val("");
+    }
+    $.ajax({
+      url: '/japtool/user/update',
+      type: 'POST',
+      data: $('form#edit-info').serialize(),
+      cache: false,
+      success: function (data) {
+        $('#default-show').html('');
+        $('#default-show').html(data);
+      },
+      error: function () {
+        alert('loi roi nhe');
+      }
     });
-    $('#input-lastname').keyup(function () {
-        var lName = $('#input-lastname').val();
-        var messlName = $('#user-edit-mess-lName').removeClass();
-
-        if (lName == "" || lName == null) {
-            messlName.addClass('error').text('Last name is required!').show();
-        } else {
-            messlName.hide();
-        }
-    });
-    $('#input-email').keyup(function () {
-        var emailREG = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-        var email = $('#input-email').val();
-        var messemail = $('#user-edit-mess-email').removeClass();
-
-        if (email == "" || email == null) {
-            messemail.addClass('error').text('Email is required!').show();
-        } else if (!emailREG.test(email)) {
-            messemail.addClass('error').text('Your email is invalid!').show();
-        } else {
-            messemail.hide();
-        }
-    });
-    $("#btnSaveEdit").click(function () {
-        var fName = $('#input-firstname').val();
-        var messfName = $('user-edit-mess-fName').removeClass();
-        var lName = $('#input-lastname').val();
-        var messlName = $('#user-edit-mess-lName').removeClass();
-        var emailREG = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-        var email = $('#input-email').val();
-        var messemail = $('#user-edit-mess-email').removeClass();
-        var valid = true;
-        if (fName == "" || fName == null) {
-            messfName.addClass('error').text('First name is required!').show();
-            valid = false;
-        }
-        if (lName == "" || lName == null) {
-            messlName.addClass('error').text('Last name is required!').show();
-            valid = false;
-        }
-        if (email == "" || email == null) {
-            messemail.addClass('error').text('Email is required!').show();
-            valid = false;
-        } else if (!emailREG.test(email)) {
-            messemail.addClass('error').text('Your email is invalid!').show();
-            valid = false;
-        }
-        if (valid) {
-            $.ajax({
-                url: '/japtool/user/update',
-                type: 'POST',
-                data: $('form#edit-info').serialize(),
-                cache: false,
-                success: function (data) {
-                    $('#default-show').html('');
-                    $('#default-show').html(data);
-                },
-                error: function () {
-                    alert('loi roi nhe');
-                }
-            });
-        }
-    });
+  });
 </script>

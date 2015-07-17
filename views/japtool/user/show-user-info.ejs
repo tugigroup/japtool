@@ -1,65 +1,69 @@
 <div class="row">
-    <div class="col-sm-offset-1 col-sm-10 form-info">
-        <div class="row">
-            <div class="col-sm-10">
-                <input type="hidden" value="<%- user.id %>" id="idUser">
+  <div class="col-sm-offset-1 col-sm-10 form-info">
+    <div class="row">
+      <div class="col-sm-10">
+        <input type="hidden" value="<%- user.id %>" id="idUser">
 
-                <p class="leadInfo"><%- user.username %></p>
-            </div>
-            <div class="col-sm-2">
-                <button type="button" class="btn btn-sm btn-edit" id="btnShow">Edit <span
-                            class="glyphicon glyphicon-edit"></span></button>
-            </div>
-        </div>
-        <hr>
-        <div class="detail-info"></div>
-        <p>First Name : <span><%= user.firstname %></span></p>
-
-        <p>Last Name : <span><%= user.lastname %></span></p>
-
-        <p>E-Mail : <span><%= user.email %></span></p>
-
-        <p>E-Telephone : <span><%= user.telephone %></span></p>
-
-        <p>Fax : <span><%= user.fax %></span></p>
+        <p class="leadInfo"><%- user.username %></p>
+      </div>
+      <div class="col-sm-2">
+        <button type="button" class="btn btn-sm btn-edit" id="btnShow">Edit <span
+            class="glyphicon glyphicon-edit"></span></button>
+      </div>
     </div>
+    <hr>
+    <div class="detail-info"></div>
+    <p>First Name : <span><%= user.firstname %></span></p>
+
+    <p>Last Name : <span><%= user.lastname %></span></p>
+
+    <p>E-Mail : <span><%= user.email %></span></p>
+
+    <p>E-Telephone : <span><%= user.telephone %></span></p>
+
+    <p>Fax : <span><%= user.fax %></span></p>
+  </div>
 </div>
 <div class="row">
-    <div class="col-sm-offset-1 col-sm-10 form-info">
-        <p class="leadInfo">User Address</p>
-        <hr>
+  <div class="col-sm-offset-1 col-sm-10 form-info">
+    <p class="leadInfo">User Address</p>
+    <hr>
 
-        <p>Company : <%= user.yourAddress.company %></p>
+    <p>Company : <%= user.yourAddress.company %></p>
 
-        <p>Address : <%= user.yourAddress.address %></p>
+    <p>Address : <%= user.yourAddress.address %></p>
 
-        <p>City : <%= user.yourAddress.city %></p>
+    <p>City : <%= user.yourAddress.city %></p>
 
-        <p>Post Code : <%= user.yourAddress.postCode %></p>
+    <p>Post Code : <%= user.yourAddress.postCode %></p>
 
-        <p>Country : <%= user.yourAddress.country %></p>
-    </div>
+    <p>Country :
+      <% if(user.yourAddress.country){ %>
+      <%= user.yourAddress.country %>
+      <% } %>
+    </p>
+  </div>
 </div>
 
 <script type="text/javascript">
-    // edit user profile page
-    $('#btnShow').click(function () {
-        var idUser = $('#idUser').val();
-        $.ajax({
-            url: '/japtool/user/edit',
-            type: 'GET',
-            data: {
-                id: idUser
-            },
-            cache: false,
-            async: false,
-            success: function (data) {
-                $('#default-show').html('');
-                $('#default-show').html(data);
-            },
-            error: function () {
-                alert('Error')
-            }
-        })
-    });
+  // edit user profile page
+  $('#btnShow').click(function () {
+    var idUser = $('#idUser').val();
+    $.ajax({
+      url: '/japtool/user/edit',
+      type: 'GET',
+      data: {
+        id: idUser
+      },
+      cache: false,
+      async: false,
+      success: function (data) {
+        $('#default-show').html('');
+        $('#default-show').html(data);
+      },
+      error: function () {
+        alert('Error')
+      }
+    })
+  });
 </script>
