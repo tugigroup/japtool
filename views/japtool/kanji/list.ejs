@@ -63,26 +63,33 @@
       <h5 class="text-center text-danger">Không tìm thấy dữ liệu</h5>
       <% }else{ %>
       <% kanjis.forEach( function(kanji, index){ %>
+      <audio style="display: none" id="kanji-vocabulary-audio-<%= index %>">
+        <source src="" type="audio/mpeg">
+      </audio>
       <div>
         <div style="position: absolute; top: 70px; width: 100%; padding: 10px">
           <h4 class="text-center text-danger"><%= kanji.item %></h4>
-
+          <% if(kanji.hanviet.length > 0){ %>
           <p>
-                        <span class="text-success">hanviet<i
-                            class="fa fa-microphone text-danger"></i> : </span><%= kanji.hanviet %>
+            <span class="text-success">hanviet<i class="fa fa-microphone text-danger"></i> : </span><%= kanji.hanviet %>
           </p>
-
+          <% } %>
+          <% if(kanji.kunyomi.length > 0){ %>
           <p>
             <span class="text-success">kunyomi
               <i class="fa fa-microphone text-danger" onclick="text2speech('<%= kanji.kunyomi %>','ja')"></i> :
             </span><%= kanji.kunyomi %>
           </p>
-
-          <p><span class="text-success">onyomi <i class="fa fa-microphone text-danger"
-                                                  onclick="text2speech('<%= kanji.onyomi %>','ja')"></i> : </span><%= kanji.onyomi %>
+          <% } %>
+          <% if(kanji.onyomi.length > 0){ %>
+          <p><span class="text-success">onyomi
+              <i class="fa fa-microphone text-danger" onclick="text2speech('<%= kanji.onyomi %>','ja')"></i> :
+            </span><%= kanji.onyomi %>
           </p>
-
+          <% } %>
+          <% if(kanji.description.length > 0){ %>
           <p><span class="text-success">Description: </span><%= kanji.description %></p>
+          <% } %>
         </div>
 
         <h3 u="thumb"><%= index %>. <%= kanji.item %></h3>
