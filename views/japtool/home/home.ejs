@@ -4,8 +4,6 @@
       var bookId = $(this).val();
       var startDate = $("#startDate"+bookId).val();
       var finishDate = $("#finishDate"+bookId).val();
-      alert(startDate);
-      alert(finishDate);
       var data = {
         bookId: bookId,
         startDate:startDate,
@@ -18,11 +16,11 @@
       }).done(function (data) {
         console.log(data);
         data.forEach(function(item){
-          /*$("#" + bookId).append(
+          $("#" + bookId).append(
             '<div class="col-sm-3">' +
             '<div class="info-lesson label-warning"><a>' + item.lesson + ' </a></div>' +
             '</div>'
-          );*/
+          );
         });
 
       });
