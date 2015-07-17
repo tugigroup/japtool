@@ -99,7 +99,7 @@ module.exports = {
         bookUseHistories: {
             collection: 'BookUseHistory',
             via: 'user'
-        },
+        }
     },
 
     beforeCreate: function (values, next) {

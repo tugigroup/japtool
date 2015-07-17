@@ -128,25 +128,36 @@ function deleteLearning() {
         window.location.replace('/japtool/Learning/deleteLearning?id=' + learningId);
     }
 }
-/*function checkLearning() {
-    var result;
-    var listLearn = new Array();
-    var bookid = $('#idbook').val();
-    var iduser = $('#iduser').val();
-    listLearn = $('#listLearn').val();
-    alert(listLearn[1].bookMaster);
-    for (var i = 0; i < listLearn.length; i++) {
-        if (listLearn[i].bookMaster == bookid && listLearn[i].user == iduser) {
-            result = false;
-        }
-        else {
-
-        }
+function check() {
+    var a = validateCreatLearning();
+    if (!a) {
+        return;
     }
+    var url = "/japtool/learning/add"; // the script where you handle the form input.
+    alert(url);
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: $("#create-learning-japtool").serialize(), // serializes the form's elements.
+        success: function (res) {
+            alert(res);
+            if (res == "japtool/learning/") {
+                window.location.replace("/" + res);
+            }
+            else {
+                $('#crform').empty();
+                $('#crform').append(res);
+            }
+        }
+    });
 
-}*/
+    return false; // avoid to execute the actual submit of the form.
+    //});
+
+}
 function validateCreatLearning() {
-
+    var checkStartDate = $("#startDate").val();
+    var checkFinishDate = $("#finishDate").val();
     var now = new Date();
     var starDate = new Date($("#startDate").val());
     starDate.setHours(now.getHours());
@@ -157,7 +168,40 @@ function validateCreatLearning() {
     var validateBook;
     var validateStartDate;
     var validateFinishDate;
-
+    if (checkStartDate == "" || checkStartDate == null) {
+        $('#mesagestartDate').html("<i><p style='color: #d82824'>Ban chua chon ngay bat dau</p></i>");
+        validateStartDate = false;
+    }
+    else {
+        if (starDate < now) {
+            $('#mesagestartDate').html("<i><p style='color: #d82824'>Ngay bat dau phai lon hon ngay hien tai!!!</p></i>");
+            validateStartDate = false;
+        }
+        else {
+            validateStartDate = true;
+            $('#mesagestartDate').empty();
+        }
+    }
+    if (checkFinishDate == "" || checkFinishDate == null) {
+        $('#mesagefinishDate').html("<i><p style='color: #d82824'>Ban chua chon ngay bat dau</p></i>");
+        validateFinishDate = false;
+    }
+    else {
+        if (finishDate < now) {
+            $('#mesagefinishDate').html("<i><p style='color: #dc302c'>Ngay ket thuc phai lon hon ngay hien tai!!!</p></i>");
+            validateFinishDate = false;
+        }
+        else {
+            if (finishDate < starDate) {
+                $('#mesagefinishDate').html("<i><p style='color: #dc302c'>Ngay ket thuc phai lon hon ngay bat dau!!!</p></i>");
+                validateFinishDate = false;
+            }
+            else {
+                $('#mesagefinishDate').empty();
+                validateFinishDate = true;
+            }
+        }
+    }
     if ($('#idbook').val() == null) {
         $('#mesageBook').html("<i><p style='color: #e32d29'>You must choose a book</p></i>");
         validateBook = false;
@@ -167,22 +211,7 @@ function validateCreatLearning() {
         $('#mesageBook').empty();
     }
 
-    if (starDate < now) {
-        $('#mesagestartDate').html("<i><p style='color: #d82824'>Ngay bat dau phai lon hon ngay hien tai!!!</p></i>");
-        validateStartDate = false;
-    }
-    else {
-        validateStartDate = true;
-        $('#mesagestartDate').empty();
-    }
-    if (finishDate < now) {
-        $('#mesagefinishDate').html("<i><p style='color: #dc302c'>Ngay ket thuc phai lon hon ngay hien tai!!!</p></i>");
-        validateFinishDate = false;
-    }
-    else {
-        $('#mesagefinishDate').empty();
-        validateFinishDate = true;
-    }
+
     if (validateBook && validateStartDate && validateFinishDate) {
         return true;
     }
@@ -235,13 +264,11 @@ function loadform(a) {
 }
 /*function checkLearning() {
  $('#formecr').removeClass('fade').modal('hide');
- var notes=$('#notes').val();
- var startDate=$('#startDate').val();
- var finishDate=$('#finishDate').val();
- var idbook=$('#idbook').val();
- $('#crform').load('/japtool/learning/add?notes='+notes+'&startDate='+startDate+'&finishDate='+finishDate+'&idbook='+idbook);
-
+ $('#crform').load('/japtool/learning/add');
+ $('#formecr').addClass('fade').modal('show');
  }*/
+
+
 function loadformLib(id) {
     //var bookid=$('#bookidd').val();
     $('#lib-1').removeClass('fade').modal('hide');
