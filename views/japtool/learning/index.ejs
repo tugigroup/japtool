@@ -146,6 +146,8 @@
         </form>
         <form action="/japtool/learning/add" method="post" onsubmit="return validateCreatLearning()"
               id="create-learning-japtool">
+            <input type="hidden" id="listLearn" value="<%= learnList %>">
+            <input type="hidden" id="iduser" value="<%= session.User.id %>">
 
             <div class="modal fade" id="formecr" data-keyboard="false">
                 <div class="modal-dialog modal-lg" id="crform"></div>
