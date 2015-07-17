@@ -1550,6 +1550,7 @@ var $Jssor$ = window.$Jssor$ = new function () {
     _This.$EmptyFunction = function () { };
 
     function Attribute(elmt, name, value) {
+
         if (value == undefined)
             return elmt.getAttribute(name);
 
