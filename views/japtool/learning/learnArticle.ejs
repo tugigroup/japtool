@@ -35,7 +35,7 @@
                     <p>
                     <h4>Content</h4>
                     </p>
-                    <p class="unescape">
+                    <p class="unescape lb-content-test-article">
                         <%= article.content %>
                     </p>
                     <%
@@ -121,7 +121,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-sm-offset-1 col-sm-11">
                             <label class="isemptyQ" id="<%= question.id %>isEmpty"></label>
                         </div>
                     </div>
@@ -253,7 +253,7 @@
                 var rdPositionTrue = questions[j].id;
                 var key = questions[j].key;
                 $("#" + rdPositionTrue + key + "rd").html('<i class="fa fa-check fa-2x text-success"></i>');
-                $("#" + rdPositionTrue + "isEmpty").html('<span class="text-danger ">You do not choose any option !</span>');
+                $("#" + rdPositionTrue + "isEmpty").html('<span class="text-danger lb-empty-question">You do not choose any option !</span>');
                 // save result data
                 dataUserTestResult.push({
                     answer: undefined,

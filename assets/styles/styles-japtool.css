@@ -42,7 +42,9 @@ label {
 }
 
 .isemptyQ {
-    text-indent: 20px
+    text-indent: 20px;
+    font-size: 19px;
+    color:red;
 }
 
 .btn-default, .btn-primary, .btn-success, .btn-info, .btn-warning, .btn-danger {
@@ -1598,22 +1600,6 @@ ul.timeline li .timeline-panel:after {
 .choose-modul-learn-article{
     margin-top: 10%;
 }
-<<<<<<< HEAD
-=======
-/*#test-learning #slider1_container{*/
-/*height: auto !important;*/
-/*}*/
-/*#test-learning #slider1_container .slider1_container-slider{*/
-
-/*}*/
-/*#test-learning #slider1_container .test-learning-x{*/
-/*height: auto !important;*/
-/*top: 0px;*/
-/*left: 0px;*/
-/*position: relative !important;*/
-/*overflow: visible !important;*/
-/*}*/
->>>>>>> 91952562527693429fbf4d4eba8515b78e882132
 
 #container-learn{
     padding-top: 1.5%;
@@ -1630,6 +1616,13 @@ ul.timeline li .timeline-panel:after {
     border-radius: 3px!important;
     padding-right: 15px !important;
     padding-left: 15px !important;
+}
+.lb-content-test-article{
+    font-size: 22px;
+}
+
+.lb-empty-question{
+    color: red;
 }
 /*END css by duongtd2*/
 
