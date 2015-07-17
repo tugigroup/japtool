@@ -13,10 +13,9 @@ module.exports = {
     },
     list: function (req, res) {
         var extractDataCondition = req.param('condition');
-        //var extractDataCondition = '{"level": "N2", "tag" : {"contains":",400dongtu,lession1,"}}';
+        //var extractDataCondition = '{"level": "N3", "tag" : {"contains":",tap1,lession5,"}}';
          Vocabulary.selectByLevel({condition: extractDataCondition},function(err,vocabularies){
         if(err) return res.send(err.status);
-             console.log(vocabularies);
          res.render('japtool/vocabulary/list',{'vocabularies':vocabularies});
         });
     }

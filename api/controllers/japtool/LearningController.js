@@ -21,7 +21,6 @@ module.exports = {
                     if (selfLearnings == null || selfLearnings == undefined) {
                         return res.json({err: "Error"});
                     }
-
                     res.view('japtool/home/home', {selfLearnings: selfLearnings});
                 });
         }

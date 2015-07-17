@@ -35,7 +35,7 @@
         }
 
         ScaleSlider();
-       $(window).bind("load", ScaleSlider);
+        $(window).bind("load", ScaleSlider);
         $(window).bind("resize", ScaleSlider);
         $(window).bind("orientationchange", ScaleSlider);
         //responsive code end
@@ -55,9 +55,6 @@
                     <h4 class="text-center text-danger"><%= vocabulary.item %></h4>
                     <p> <span class="text-success">Reading <i class="fa fa-microphone text-danger"></i> : </span><%= vocabulary.reading %></p>
                     <p><span class="text-success">Description: </span><%= vocabulary.description %></p>
-
-                  <p>fuck</p>
-
                     <% if (typeof vocabulary.examples !== 'undefined' && vocabulary.examples.length > 0) { %>
                     <p><span class="text-success">Example: </span></p>
                     <ul class="vocabulary-item-example">

@@ -1136,7 +1136,7 @@ function renderTitle(wizard, options, state, header, index)
             index: index + 1,
             title: header.html()
         }),
-        stepItem = $("<li role=\"tab\"><a id=\"" + uniqueStepId + "\" href=\"#" + uniqueHeaderId + 
+        stepItem = $("<li role=\"tab\"><a class='box-style-blue-test-article' id=\"" + uniqueStepId + "\" href=\"#" + uniqueHeaderId +
             "\" aria-controls=\"" + uniqueBodyId + "\">" + title + "</a></li>");
         
     stepItem._enableAria(options.enableAllSteps || state.currentIndex > index);
@@ -1709,7 +1709,7 @@ var defaults = $.fn.steps.defaults = {
      * @default "<span class=\"number\">#index#.</span> #title#"
      * @for defaults
      **/
-    titleTemplate: "<span class=\"number\">#index#.</span> #title#",
+    titleTemplate: "<span class=\"number\">#index#</span> #title#",
 
     /**
      * The loading template which will be used to create the loading animation.
