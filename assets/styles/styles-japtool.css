@@ -601,7 +601,7 @@ label.valid, p.valid {
 }
 
 .slider1_container-slider {
-   
+
     position: absolute;
     left: 0px;
     top: 0px;
@@ -610,6 +610,12 @@ label.valid, p.valid {
     overflow: hidden;
 }
 
+.slider1_container-item {
+    position: absolute;
+    top: 70px;
+    width: 100%;
+    padding: 10px
+}
 
 /*Arrow Navigator Skin Begin*/
 
@@ -683,6 +689,7 @@ label.valid, p.valid {
     opacity: .8;
     color: #fff;
     font-size: 18px;
+   
 }
 
 .jssort07 .p:hover, .jssort07 .pav {
@@ -692,17 +699,17 @@ label.valid, p.valid {
 }
 
 /*.jssort07 .o {*/
-    /*position: absolute;*/
-    /*top: 0px;*/
-    /*left: 0px;*/
-    /*width: 97px;*/
-    /*height: 64px;*/
-    /*background: red;*/
-    /*box-sizing: content-box;*/
-    /*transition: border-color .6s;*/
-    /*-moz-transition: border-color .6s;*/
-    /*-webkit-transition: border-color .6s;*/
-    /*-o-transition: border-color .6s;*/
+/*position: absolute;*/
+/*top: 0px;*/
+/*left: 0px;*/
+/*width: 97px;*/
+/*height: 64px;*/
+/*background: red;*/
+/*box-sizing: content-box;*/
+/*transition: border-color .6s;*/
+/*-moz-transition: border-color .6s;*/
+/*-webkit-transition: border-color .6s;*/
+/*-o-transition: border-color .6s;*/
 /*}*/
 
 .jssort07 .pav .o {
@@ -742,9 +749,7 @@ label.valid, p.valid {
     overflow: hidden;
 }
 
-
-
-.jssort07:hover .jssora11l{
+.jssort07:hover .jssora11l {
     display: block;
 }
 
@@ -769,33 +774,41 @@ label.valid, p.valid {
     top: 13px !important;
     right: -14px;
 }
-#thumbnavigator{
+
+.thumbnavigator {
     left: 0 !important;
 }
-@media only screen and (max-width : 990px) {
-    #vocabularyList #slider1_container h4{
+
+@media only screen and (max-width: 990px) {
+    #vocabularyList #slider1_container h4 {
         font-size: 50px !important;
     }
-    #vocabularyList #slider1_container p{
+
+    #vocabularyList #slider1_container p {
         font-size: 20px !important;
     }
 }
-@media only screen and (max-width : 480px) {
-    #vocabularyList #slider1_container h4{
+
+@media only screen and (max-width: 480px) {
+    #vocabularyList #slider1_container h4 {
         font-size: 80px !important;
     }
-    #vocabularyList #slider1_container p{
+
+    #vocabularyList #slider1_container p {
         font-size: 40px !important;
     }
-    .btn{
+
+    .btn {
         font-size: 30px;
         padding: 15px 30px;
     }
+
     .jssora05l {
         right: 150px;
     }
 }
-    /*<!-- Arrow Left -->*/
+
+/*<!-- Arrow Left -->*/
 
 .libMaster {
     padding-top: 5px;
@@ -1286,42 +1299,48 @@ ul.timeline li .timeline-panel:after {
     -webkit-box-shadow: none;
     box-shadow: none;
 }
-.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover{
+
+.dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover {
     background: none !important;
     color: rgb(19, 177, 146);
 }
-.caret{
+
+.caret {
     margin-top: 10px;
 }
-.navbar-collapse{
+
+.navbar-collapse {
     max-height: 600px !important;
     overflow-x: hidden !important;
     overflow-y: hidden !important;
 
 }
+
 /* make sidebar nav vertical */
 @media (min-width: 768px) {
     .sidebar-nav .navbar .navbar-collapse {
         padding: 0;
         max-height: none;
     }
+
     .sidebar-nav .navbar ul {
         float: none;
     }
+
     .sidebar-nav .navbar ul:not {
         display: block;
     }
+
     .sidebar-nav .navbar li {
         float: none;
         display: block;
     }
+
     .sidebar-nav .navbar li a {
         padding-top: 12px;
         padding-bottom: 12px;
     }
 }
-
-
 
 /*css for creating learning*/
 .learning-group-item .col-sm-10 {
@@ -1560,7 +1579,7 @@ ul.timeline li .timeline-panel:after {
 }
 
 /*testing*/
-.btn-submit-testing{
+.btn-submit-testing {
     margin-top: -4%;
     border-color: rgb(232, 206, 194);
     border-radius: 0px;
@@ -1579,6 +1598,22 @@ ul.timeline li .timeline-panel:after {
 .choose-modul-learn-article{
     margin-top: 10%;
 }
+<<<<<<< HEAD
+=======
+/*#test-learning #slider1_container{*/
+/*height: auto !important;*/
+/*}*/
+/*#test-learning #slider1_container .slider1_container-slider{*/
+
+/*}*/
+/*#test-learning #slider1_container .test-learning-x{*/
+/*height: auto !important;*/
+/*top: 0px;*/
+/*left: 0px;*/
+/*position: relative !important;*/
+/*overflow: visible !important;*/
+/*}*/
+>>>>>>> 91952562527693429fbf4d4eba8515b78e882132
 
 #container-learn{
     padding-top: 1.5%;
