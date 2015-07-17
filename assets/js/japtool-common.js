@@ -134,14 +134,16 @@ function check() {
         return;
     }
     var url = "/japtool/learning/add"; // the script where you handle the form input.
-    alert(url);
     $.ajax({
         type: "POST",
         url: url,
         data: $("#create-learning-japtool").serialize(), // serializes the form's elements.
         success: function (res) {
-            alert(res);
-            if (res == "japtool/learning/") {
+            var a = res.split('/')
+            if (a[1] == "learning") {
+                window.location.replace("/" + res);
+            }
+            if (a[1] == "BookMaster") {
                 window.location.replace("/" + res);
             }
             else {
@@ -240,7 +242,6 @@ function validateEditLearning() {
     }
 }
 function loadbooks() {
-
     $("#show-books").load('/japtool/Learning/getBooks');
     $('#show-books').modal('show');
     $('#show-books').addClass('fade').modal('show');
@@ -254,6 +255,8 @@ function loadform(a) {
         $('#formedit').addClass('fade').modal('show');
     }
     if (a == 2) {
+
+        $('#editform').empty();
         $('#lib-1').removeClass('fade').modal('hide');
         $('#crform').load('/japtool/learning/create');
         $('#formecr').addClass('fade').modal('show');
@@ -278,13 +281,9 @@ function loadformLib(id) {
             window.location.replace(res);
         }
         else {
-
         }
     });
     $('#formedit').addClass('fade').modal('show');
-    /*load("/japtool/Learning/loadEditForm/?id="+id, function() {
-     alert('load successfully');
-     });*/
 }
 //end nam
 /*end choose book*/

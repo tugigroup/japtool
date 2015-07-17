@@ -137,39 +137,6 @@ $(document).ready(function () {
     /**
      * validate create-learning
      */
-    $('#create-learning-japtool').validate({
-        rules: {
-            notes: {
-                required: true
-            },
-            startDate: {
-                required: true
-            },
-            finishDate: {
-                required: true,
-                greaterThan: "#startDate"
-            }
-        },
-
-        messages: {
-
-            notes: {
-                required: "Please input description."
-            },
-            startDate: {
-                required: "Please input start date."
-            },
-            finishDate: {
-                required: "Please input end date.",
-                greaterStart: "Start date less than end date."
-            }
-        },
-
-        success: {},
-        error: function (element) {
-
-        }
-    });
     $('#edit-learning-japtool').validate({
         rules: {
             notes: {
