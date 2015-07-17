@@ -128,7 +128,25 @@ function deleteLearning() {
         window.location.replace('/japtool/Learning/deleteLearning?id=' + learningId);
     }
 }
+/*function checkLearning() {
+    var result;
+    var listLearn = new Array();
+    var bookid = $('#idbook').val();
+    var iduser = $('#iduser').val();
+    listLearn = $('#listLearn').val();
+    alert(listLearn[1].bookMaster);
+    for (var i = 0; i < listLearn.length; i++) {
+        if (listLearn[i].bookMaster == bookid && listLearn[i].user == iduser) {
+            result = false;
+        }
+        else {
+
+        }
+    }
+
+}*/
 function validateCreatLearning() {
+
     var now = new Date();
     var starDate = new Date($("#startDate").val());
     starDate.setHours(now.getHours());
@@ -208,13 +226,22 @@ function loadform(a) {
     }
     if (a == 2) {
         $('#lib-1').removeClass('fade').modal('hide');
-        $('#editform').load('/japtool/learning/create');
-        $('#formedit').addClass('fade').modal('show');
+        $('#crform').load('/japtool/learning/create');
+        $('#formecr').addClass('fade').modal('show');
     }
     /*load("/japtool/Learning/loadEditForm/?id="+id, function() {
      alert('load successfully');
      });*/
 }
+/*function checkLearning() {
+ $('#formecr').removeClass('fade').modal('hide');
+ var notes=$('#notes').val();
+ var startDate=$('#startDate').val();
+ var finishDate=$('#finishDate').val();
+ var idbook=$('#idbook').val();
+ $('#crform').load('/japtool/learning/add?notes='+notes+'&startDate='+startDate+'&finishDate='+finishDate+'&idbook='+idbook);
+
+ }*/
 function loadformLib(id) {
     //var bookid=$('#bookidd').val();
     $('#lib-1').removeClass('fade').modal('hide');

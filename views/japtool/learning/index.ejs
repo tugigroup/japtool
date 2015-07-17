@@ -97,12 +97,12 @@
                                                             <li>
                                                                 <span class="glyphicon glyphicon-play"
                                                                       aria-hidden="true"></span> From
-                                                                : <%= arrStart[i] %>
+                                                                : <%= learnList[i].bookMaster.startDate %>
                                                             </li>
                                                             <li>
                                                                 <span class="glyphicon glyphicon-stop"
                                                                       aria-hidden="true"></span> To
-                                                                : <%= arrFinish[i] %>
+                                                                : <%= learnList[i].bookMaster.finishDate %>
                                                             </li>
                                                             <li>
                                                                 <span class="glyphicon glyphicon-book"
@@ -138,11 +138,19 @@
             <% } %>
         </div>
         <% } %>
-        <form action="/japtool/learning/add" method="post" onsubmit="return validateCreatLearning()"
-              id="create-learning-japtool">
-
+        <form action="/japtool/learning/edit" method="post" id="edit-learning-japtool"
+              onsubmit="return validateEditLearning()">
             <div class="modal fade" id="formedit" data-keyboard="false">
                 <div class="modal-dialog modal-lg" id="editform"></div>
+            </div>
+        </form>
+        <form action="/japtool/learning/add" method="post" onsubmit="return validateCreatLearning()"
+              id="create-learning-japtool">
+            <input type="hidden" id="listLearn" value="<%= learnList %>">
+            <input type="hidden" id="iduser" value="<%= session.User.id %>">
+
+            <div class="modal fade" id="formecr" data-keyboard="false">
+                <div class="modal-dialog modal-lg" id="crform"></div>
             </div>
         </form>
         <div class="modal fade" id="show-books" data-backdrop="static" data-keyboard="false">

@@ -1,10 +1,7 @@
 <div class="container-do-test-article" id="do-test-articles">
     <%
-            data.forEach(function(article, index){
+            articles.forEach(function(article, index){
     %>
-    <input type="text" hidden="hidden" class="arrArticleID" content="<%= article.content %>"
-           subject="<%= article.subject %>" value="<%= article.id %>"/>
-    <input type="text" hidden="hidden" value="<%= startDate %>" id="dateStart"/>
 
     <h2></h2>
     <section>
@@ -66,8 +63,6 @@
             <div class="col-sm-12" id="div-question-list">
                 <%
                 article.question.forEach(function (question) {
-                    lengthQues++;
-                    questions.push(question);
                 %>
 
                 <div class="panel panel-default">
@@ -103,3 +98,18 @@
     </section>
     <% }) %>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#do-test-articles").steps({
+            headerTag: "h2",
+            bodyTag: "section",
+            transitionEffect: "slideLeft"
+        });
+
+        $(".unescape").each(function () {
+            $(this).html($(this).text());
+        })
+
+    });
+</script>

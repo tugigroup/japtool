@@ -61,7 +61,7 @@
                                     <a href="#" title="Click to view this library lesson." data-toggle="modal"
                                        data-target="#lib-review-<%= book.id %>" class="text-danger">Preview</a> -
                                     <span></span>
-                                    <a  onclick="loadformLib('<%= book.id %>')"
+                                    <a onclick="loadformLib('<%= book.id %>')"
                                        title="Click to learn this library." class="text-info">Learning
                                         Library</a>
                                 </li>
@@ -266,6 +266,7 @@
             <div class="modal-dialog modal-lg" id="editform"></div>
         </div>
     </form>
+    <div class="modal fade" id="show-books" data-backdrop="static" data-keyboard="false"></div>
     <ul id="pagination-demo" class="pagination-sm row text-center pull-right"></ul>
     <script type="text/javascript">
         window.onload = function () {
