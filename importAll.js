@@ -49,3 +49,13 @@ importSurvey = exec('node importSurvey.js {{args}}',
       console.log('exec error: ' + error);
     } 
 });
+
+var importGrammar;
+importGrammar = exec('node importGrammar.js {{args}}',
+  function (error, stdout, stderr) {
+    console.log('stdout: ' + stdout);
+    console.log('stderr: ' + stderr);
+    if (error !== null) {
+      console.log('exec error: ' + error);
+    } 
+});
