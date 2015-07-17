@@ -1,7 +1,29 @@
 <script type="text/javascript">
-    $(document).ready(function () {
+  window.onload = function (){
+    $(".bookMaterIdClass").each(function(){
+      var bookId = $(this).val();
+      var data = {
+        bookId: bookId
+      };
+      $.ajax({
+        method: "GET",
+        url: "/japtool/bookDetail/getMissLesson",
+        data: data
+      }).done(function (data) {
+        console.log(data);
+        data.forEach(function(item){
+          /*$("#" + bookId).append(
+            '<div class="col-sm-3">' +
+            '<div class="info-lesson label-warning"><a>' + item.lesson + ' </a></div>' +
+            '</div>'
+          );*/
+        });
+
+      });
 
     });
+
+  };
 </script>
 <div class="vocabulary content clearfix">
     <div class="container">
@@ -20,21 +42,13 @@
                             <%if(selfLearning.bookMaster!=null&&selfLearning.bookMaster!=undefined){%>
                             <h3><a><%=selfLearning.bookMaster.name%></a></h3>
                             <%var bookMasterId = selfLearning.bookMaster.id%>
+                            <input type="hidden" value="<%=bookMasterId%>" class="bookMaterIdClass" />
                             <%} else{%>
                               <h3><a>Book name is NONE</a></h3>
                             <%}%>
                             <!--Show miss following lesson-->
                             <p>Till now you have miss following lesson</p>
-                            <%var missLessons= undefined%>
-                            <%if(missLessons!=undefined && missLessons.length>0){%>
-                              <%missLessons.forEach(function(missLesson){%>
-                                  <div class="col-sm-3">
-                                    <div class="info-lesson label-warning"><a><%= missLesson.subLesson%></a></div>
-                                  </div>
-                              <%});%> <!--End for-->
-                            <%} else {%>
-                                <h5>don't miss following lesson</h5>
-                            <%}%> <!--End if-->
+                            <div id="<%= bookMasterId %>"></div>
                             <!--Ended Show miss following lesson-->
 
                             <!--Show learn history-->
