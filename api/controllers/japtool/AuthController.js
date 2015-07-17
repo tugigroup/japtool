@@ -144,7 +144,7 @@ module.exports = {
                         res.redirect('/japtool/user');
                     }
                 });
-            })(req, res, next);
+        })(req, res, next);
     },
 
     _config: {
