@@ -536,6 +536,12 @@ label.valid, p.valid {
 
 .slider-nav h3{
     background: rgb(19, 177, 146);
+    padding: 10px;
+    color: #fff;
+    font-size: 18px;
+    margin: 0;
+    cursor: pointer;
+    border: 1px solid #fff;
 }
 
 .vocabulary-item {
@@ -1395,7 +1401,7 @@ ul.timeline li .timeline-panel:after {
 }
 
 #container-learn{
-    padding-top: 1.5%;
+    /*padding-top: 1.5%;*/
 }
 .lb-question-minion{
     font-size: 22px;
