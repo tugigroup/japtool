@@ -142,6 +142,36 @@ async.series([
 				callback(null,'survey was removed all documents.')
 			}
 		});
+	},
+	function(callback){
+		// survey collection
+		var surveySchema = mongoose.Schema({
+			},{ collection: 'userlearnhistory', versionKey: false });
+
+		var survey = mongoose.model('userlearnhistory', surveySchema);
+
+		survey.remove({}, function (err) {
+			if (err) {
+				callback(err)
+			}else {
+				callback(null,'userlearnhistory was removed all documents.')
+			}
+		});
+	},
+	function(callback){
+		// survey collection
+		var surveySchema = mongoose.Schema({
+			},{ collection: 'selflearning', versionKey: false });
+
+		var survey = mongoose.model('selflearning', surveySchema);
+
+		survey.remove({}, function (err) {
+			if (err) {
+				callback(err)
+			}else {
+				callback(null,'selflearning was removed all documents.')
+			}
+		});
 	}
 	],
 	// optional callback
@@ -158,6 +188,8 @@ async.series([
 			console.log(results[6].toString());
 			console.log(results[7].toString());
 			console.log(results[8].toString());
+			console.log(results[9].toString());
+			console.log(results[10].toString());
 			console.log('========================');
 			console.log('END: REMOVED DOCUMENTS');		
 		}
