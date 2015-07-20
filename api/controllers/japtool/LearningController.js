@@ -187,7 +187,8 @@ module.exports = {
                             var create = '<h3>Ban da dang hoc mot learning ve quyen sach nay, ban can xoa learning do de tao 1 learningmoivenohoactieptuchoctai <a href = "/japtool/BookMaster/practice/?id=<%= book.id %>" > day < /a></h3 > ';
                             res.render('japtool/learning/create', {
                                 create: create,
-                                book: learning.bookMaster
+                                book: learning.bookMaster,
+                                learning:learning
                             });
                         }
 
