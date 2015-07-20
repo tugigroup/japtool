@@ -61,12 +61,13 @@ module.exports = {
 
         sails.log("Start Date: " + startDate);
         sails.log("Finish Date: " + finishDate);
-        var dds = startDate.getDate();
-        sails.log("Start getDate: " + dds);
-        var mms = startDate.getMonth();
-        sails.log("Start getMonth: " + mms);
-        /*var dateTotal = new Date(finishDate) - new Date(startDate);
-        sails.log("Finish Date: " + dateTotal);*/
+
+        finishDate = new Date(finishDate);
+        startDate = new Date(startDate);
+        var totalDay = (finishDate - startDate)/86400000 + 1;
+        console.log("Day = " + totalDay);
+        //number Lesson / Day
+        var lesson = Math.round(bookDetails/totalDay);
 
         res.send(bookDetails);
       });
