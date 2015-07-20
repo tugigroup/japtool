@@ -80,11 +80,13 @@
 
             <div id="mesageBook"></div>
             <div style="padding-left: 150px">
+                <% if(!book){ %>
                 <input type="button"
                        class="btn btn-danger btn-chooseBook"
                        onclick="loadbooks()"
                        value="Choose a book"
                        id="btn-show-books"/>
+                <% } %>
                 <input type="button"
                        onclick="check()"
                        class="btn btn-success"
