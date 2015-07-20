@@ -1,101 +1,62 @@
 <script>
-    jQuery(document).ready(function ($) {
-        var options = {
-            $DragOrientation: 0,                                //[Optional] Orientation to drag slide, 0 no drag, 1 horizental, 2 vertical, 3 either, default value is 1 (Note that the $DragOrientation should be the same as $PlayOrientation when $DisplayPieces is greater than 1, or parking position is not 0)
-            $ArrowKeyNavigation: true,   			            //[Optional] Allows keyboard (arrow key) navigation or not, default value is false
-            $ArrowNavigatorOptions: {                           //[Optional] Options to specify and enable arrow navigator or not
-                $Class: $JssorArrowNavigator$,                  //[Requried] Class to create arrow navigator instance
-                $ChanceToShow: 2                                //[Required] 0 Never, 1 Mouse Over, 2 Always
-            },
-            $ThumbnailNavigatorOptions: {
-                $Class: $JssorThumbnailNavigator$,              //[Required] Class to create thumbnail navigator instance
-                $ChanceToShow: 2,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
-                $Loop: 1,                                       //[Optional] Enable loop(circular) of carousel or not, 0: stop, 1: loop, 2 rewind, default value is 1
-                $SpacingX: 3,                                   //[Optional] Horizontal space between each thumbnail in pixel, default value is 0
-                $SpacingY: 3,                                   //[Optional] Vertical space between each thumbnail in pixel, default value is 0
-                $DisplayPieces: 7,                              //[Optional] Number of pieces to display, default value is 1
-                $ParkingPosition: 0,                          //[Optional] The offset position to park thumbnail,
-                $ArrowNavigatorOptions: {
-                    $Class: $JssorArrowNavigator$,              //[Requried] Class to create arrow navigator instance
-                    $ChanceToShow: 2,                           //[Required] 0 Never, 1 Mouse Over, 2 Always
-                    $AutoCenter: 2,                             //[Optional] Auto center arrows in parent container, 0 No, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
-                    $Steps: 5                                   //[Optional] Steps to go for each navigation request, default value is 1
-                }
-            }
-        };
-        var jssor_slider1 = new $JssorSlider$("slider1_container", options);
-        //responsive code begin
-        //you can remove responsive code if you don't want the slider scales while window resizes
-        function ScaleSlider() {
-            var parentWidth = jssor_slider1.$Elmt.parentNode.clientWidth;
-            if (parentWidth)
-                jssor_slider1.$ScaleWidth(Math.min(parentWidth, 748));
-            else
-                window.setTimeout(ScaleSlider, 30);
-        }
+    $('.slider-for').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+//        arrows: true,
+        fade: false,
+        asNavFor: '.slider-nav',
+        draggable: false,
+        prevArrow: '<button type="button" data-role="none" class="btn btn-prevArrow btn-success" aria-label="Previous" tabindex="0" role="button">Previous</button>',
+        nextArrow: '<button type="button" data-role="none" class="btn btn-nextArrow btn-success" aria-label="Next" tabindex="0" role="button">Next</button>'
 
-        ScaleSlider();
-        $(window).bind("load", ScaleSlider);
-        $(window).bind("resize", ScaleSlider);
-        $(window).bind("orientationchange", ScaleSlider);
-        //responsive code end
+
+    });
+    $('.slider-nav').slick({
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        asNavFor: '.slider-for',
+        dots: false,
+        centerMode: false,
+        focusOnSelect: true
     });
 </script>
 
 <div id="vocabularyList">
-    <div id="slider1_container">
-        <!-- Slides Container -->
-        <div u="slides" class="slider1_container-slider">
-            <% if(vocabularies == null || vocabularies.length == 0){ %>
-            <h5 class="text-center text-danger">Không tìm thấy dữ liệu</h5>
-            <% }else{ %>
-            <% vocabularies.forEach( function(vocabulary, index){ %>
-            <div>
-                <div style="position: absolute; top: 70px; width: 100%; padding: 10px">
-                    <h4 class="text-center text-danger"><%= vocabulary.item %></h4>
-                    <p> <span class="text-success">Reading <i class="fa fa-microphone text-danger"></i> : </span><%= vocabulary.reading %></p>
-                    <p><span class="text-success">Description: </span><%= vocabulary.description %></p>
-                    <% if (typeof vocabulary.examples !== 'undefined' && vocabulary.examples.length > 0) { %>
-                    <p><span class="text-success">Example: </span></p>
-                    <ul class="vocabulary-item-example">
-                        <% vocabulary.examples.forEach( function(item){ %>
-                        <% if (item.example == 'undefined' || item.example.length == 0){ %>
-                        <% }else { %>
-                        <li><span class="text-danger"><%= item.example %> : </span><%= item.meaning %></li>
-                        <% } %>
-                        <% }) %>
-                    </ul>
-                    <% } %>
+    <% if(vocabularies == null || vocabularies.length == 0){ %>
+    <h5 class="text-center text-danger">Không tìm thấy dữ liệu</h5>
+    <% }else{ %>
+    <div class="slider slider-nav">
+        <% vocabularies.forEach( function(vocabulary, index){ %>
+        <div><h3><%= index %>. <%= vocabulary.item %></h3></div>
 
-                </div>
-
-                <h3 u="thumb"><%= index %>. <%= vocabulary.item %></h3>
-            </div>
-            <% }) %>
-            <% } %>
-
-            <span u="arrowleft" class="jssora05l btn btn-success">Back</span>
-            <!-- Arrow Right -->
-            <span u="arrowright" class="jssora05r btn btn-success">Next</span>
-
-            <!-- thumbnail navigator container -->
-            <!--CHỈNH KÍCH THƯỚC THUMB-->
-            <div u="thumbnavigator" class="jssort07">
-                <!-- Thumbnail Item Skin Begin -->
-                <div u="slides" style="cursor: default;" id="thumbnavigator">
-                    <div u="prototype" class="p">
-                        <div u="thumbnailtemplate" class="i"></div>
-                        <div class="o"></div>
-                    </div>
-                </div>
-
-                <!-- Arrow Left -->
-                <span u="arrowleft" class="jssora11l"><i class="fa fa-chevron-left fa-2x"></i></span>
-                <!-- Arrow Right -->
-                <span u="arrowright" class="jssora11r"><i class="fa fa-chevron-right fa-2x"></i></span>
-            </div>
-        </div>
+        <% }) %>
     </div>
+
+    <div class="slider slider-for">
+        <% vocabularies.forEach( function(vocabulary, index){ %>
+        <div class="slider-for-deital clearfix">
+            <h4 class="text-center text-danger"><%= vocabulary.item %></h4>
+
+            <p><span class="text-success">Reading <i
+                            class="fa fa-microphone text-danger"></i> : </span><%= vocabulary.reading %></p>
+
+            <p><span class="text-success">Description: </span><%= vocabulary.description %></p>
+            <% if (typeof vocabulary.examples !== 'undefined' && vocabulary.examples.length > 0) { %>
+            <p><span class="text-success">Example: </span></p>
+            <ul class="vocabulary-item-example">
+                <% vocabulary.examples.forEach( function(item){ %>
+                <% if (item.example == 'undefined' || item.example.length == 0){ %>
+                <% }else { %>
+                <li><span class="text-danger"><%= item.example %> : </span><%= item.meaning %></li>
+                <% } %>
+                <% }) %>
+            </ul>
+            <% } %>
+        </div>
+
+        <% }) %>
+    </div>
+    <% } %>
 </div>
 
 

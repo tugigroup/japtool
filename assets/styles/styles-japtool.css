@@ -529,6 +529,10 @@ label.valid, p.valid {
 
 /*Vocabulary*/
 
+.slider-nav h3{
+    background: rgb(19, 177, 146);
+}
+
 .vocabulary-item {
     margin-bottom: 1rem;
 }
@@ -584,226 +588,8 @@ label.valid, p.valid {
 /*}*/
 
 /* LibPage */
-.container-learn, #slider1_container {
-    background: rgb(237, 237, 237);
-}
 
-#slider1_container {
-    position: relative;
-    top: 0px;
-    left: 0px;
-    width: 748px;
-    height: 600px;
-    overflow: hidden;
-}
 
-.slider1_container-slider {
-
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    width: 748px;
-    height: 600px;
-    overflow: hidden;
-}
-
-.slider1_container-item {
-    position: absolute;
-    top: 70px;
-    width: 100%;
-    padding: 10px
-}
-
-/*Arrow Navigator Skin Begin*/
-
-.jssora05l, .jssora05r {
-    /*display: block;*/
-    position: absolute;
-    /* size of arrow element */
-    cursor: pointer;
-    /*overflow: hidden;*/
-}
-
-.jssora05l {
-    background-position: -10px -40px;
-}
-
-.jssora05r {
-    background-position: -70px -40px;
-}
-
-.jssora05l:hover {
-    background-position: -130px -40px;
-}
-
-.jssora05r:hover {
-    background-position: -190px -40px;
-}
-
-.jssora05l.jssora05ldn {
-    background-position: -250px -40px;
-}
-
-.jssora05r.jssora05rdn {
-    background-position: -310px -40px;
-}
-
-.jssora05l {
-    bottom: 10px;
-    right: 75px;
-}
-
-.jssora05r {
-    bottom: 10px;
-    right: 8px
-}
-
-.jssort07 {
-    position: absolute;
-    /* size of thumbnail navigator container */
-    height: 50px;
-    width: 748px;
-    top: 0px;
-    left: 0px;
-}
-
-.jssort07 .p {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 148px !important;
-    height: 55px;
-    background: rgb(19, 177, 146);
-    cursor: pointer;
-
-}
-
-.jssort07 .i {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    filter: alpha(opacity=80);
-    opacity: .8;
-    color: #fff;
-    font-size: 18px;
-   
-}
-
-.jssort07 .p:hover, .jssort07 .pav {
-    filter: alpha(opacity=100);
-    opacity: 1;
-    background: #d9534f;
-}
-
-/*.jssort07 .o {*/
-/*position: absolute;*/
-/*top: 0px;*/
-/*left: 0px;*/
-/*width: 97px;*/
-/*height: 64px;*/
-/*background: red;*/
-/*box-sizing: content-box;*/
-/*transition: border-color .6s;*/
-/*-moz-transition: border-color .6s;*/
-/*-webkit-transition: border-color .6s;*/
-/*-o-transition: border-color .6s;*/
-/*}*/
-
-.jssort07 .pav .o {
-    /*background: white;*/
-    /*color: black;*/
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.jssort07 .p:hover .o {
-    border-color: #fff;
-    transition: none;
-    -moz-transition: none;
-    -webkit-transition: none;
-    -o-transition: none;
-}
-
-.jssort07 .p.pdn .o {
-    border-color: #0099ff;
-}
-
-* html .jssort07 .o {
-    /* ie quirks mode adjust */
-    width /**/: 99px;
-    height /**/: 66px;
-}
-
-.jssora11l, .jssora11r {
-    display: none;
-    color: #fff;
-    position: absolute;
-    /* size of arrow element */
-    width: 37px;
-    height: 37px;
-    cursor: pointer;
-    /*background: url('../images/slide-arrow.png') no-repeat;*/
-    overflow: hidden;
-}
-
-.jssort07:hover .jssora11l {
-    display: block;
-}
-
-.jssort07:hover .jssora11r {
-    display: block;
-}
-
-.jssora11l.jssora11ldn {
-    background-position: -251px -41px;
-}
-
-.jssora11r.jssora11rdn {
-    background-position: -311px -41px;
-}
-
-.jssora11l {
-    top: 13px !important;
-    left: 8px;
-}
-
-.jssora11r {
-    top: 13px !important;
-    right: -14px;
-}
-
-.thumbnavigator {
-    left: 0 !important;
-}
-
-@media only screen and (max-width: 990px) {
-    #vocabularyList #slider1_container h4 {
-        font-size: 50px !important;
-    }
-
-    #vocabularyList #slider1_container p {
-        font-size: 20px !important;
-    }
-}
-
-@media only screen and (max-width: 480px) {
-    #vocabularyList #slider1_container h4 {
-        font-size: 80px !important;
-    }
-
-    #vocabularyList #slider1_container p {
-        font-size: 40px !important;
-    }
-
-    .btn {
-        font-size: 30px;
-        padding: 15px 30px;
-    }
-
-    .jssora05l {
-        right: 150px;
-    }
-}
 
 /*<!-- Arrow Left -->*/
 
@@ -1010,7 +796,14 @@ a:hover {
 .learning-group .invite h3 {
     font-weight: 300;
 }
-
+.learning-group .invite #vocabularyList h3{
+   padding: 10px;
+    color: #fff;
+    font-size: 18px;
+    margin: 0;
+    cursor: pointer;
+    border: 1px solid #fff;
+}
 .learning-group .invite .col-sm-4 {
     margin-bottom: 1rem;
 }
