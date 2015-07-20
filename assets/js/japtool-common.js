@@ -134,14 +134,16 @@ function check() {
         return;
     }
     var url = "/japtool/learning/add"; // the script where you handle the form input.
-    alert(url);
     $.ajax({
         type: "POST",
         url: url,
         data: $("#create-learning-japtool").serialize(), // serializes the form's elements.
         success: function (res) {
-            alert(res);
-            if (res == "japtool/learning/") {
+            var a = res.split('/')
+            if (a[1] == "learning") {
+                window.location.replace("/" + res);
+            }
+            if (a[1] == "BookMaster") {
                 window.location.replace("/" + res);
             }
             else {
@@ -169,12 +171,12 @@ function validateCreatLearning() {
     var validateStartDate;
     var validateFinishDate;
     if (checkStartDate == "" || checkStartDate == null) {
-        $('#mesagestartDate').html("<i><p style='color: #d82824'>Ban chua chon ngay bat dau</p></i>");
+        $('#mesagestartDate').html("<i><p style='color: #d82824'>Start date is Invalid!!</p></i>");
         validateStartDate = false;
     }
     else {
         if (starDate < now) {
-            $('#mesagestartDate').html("<i><p style='color: #d82824'>Ngay bat dau phai lon hon ngay hien tai!!!</p></i>");
+            $('#mesagestartDate').html("<i><p style='color: #d82824'>Start date must be greater than today!!!</p></i>");
             validateStartDate = false;
         }
         else {
@@ -183,17 +185,17 @@ function validateCreatLearning() {
         }
     }
     if (checkFinishDate == "" || checkFinishDate == null) {
-        $('#mesagefinishDate').html("<i><p style='color: #d82824'>Ban chua chon ngay bat dau</p></i>");
+        $('#mesagefinishDate').html("<i><p style='color: #d82824'>Finish date is Invalid!!</p></i>");
         validateFinishDate = false;
     }
     else {
         if (finishDate < now) {
-            $('#mesagefinishDate').html("<i><p style='color: #dc302c'>Ngay ket thuc phai lon hon ngay hien tai!!!</p></i>");
+            $('#mesagefinishDate').html("<i><p style='color: #dc302c'>Finish date must be greater than today!!!</p></i>");
             validateFinishDate = false;
         }
         else {
             if (finishDate < starDate) {
-                $('#mesagefinishDate').html("<i><p style='color: #dc302c'>Ngay ket thuc phai lon hon ngay bat dau!!!</p></i>");
+                $('#mesagefinishDate').html("<i><p style='color: #dc302c'>Finish date must be greater than start date!!!</p></i>");
                 validateFinishDate = false;
             }
             else {
@@ -225,7 +227,7 @@ function validateEditLearning() {
     finishDate.setHours(23, 59, 59);
     var validateFinishDate;
     if (finishDate < now) {
-        $('#mesagefinishDate').html("<i><p style='color: #dc302c'>Ngay ket thuc phai lon hon ngay hien tai!!!</p></i>");
+        $('#mesagefinishDate').html("<i><p style='color: #dc302c'>Finish date must be greater than today!</p></i>");
         validateFinishDate = false;
     }
     else {
@@ -240,7 +242,6 @@ function validateEditLearning() {
     }
 }
 function loadbooks() {
-
     $("#show-books").load('/japtool/Learning/getBooks');
     $('#show-books').modal('show');
     $('#show-books').addClass('fade').modal('show');
@@ -254,6 +255,8 @@ function loadform(a) {
         $('#formedit').addClass('fade').modal('show');
     }
     if (a == 2) {
+
+        $('#editform').empty();
         $('#lib-1').removeClass('fade').modal('hide');
         $('#crform').load('/japtool/learning/create');
         $('#formecr').addClass('fade').modal('show');
@@ -278,13 +281,21 @@ function loadformLib(id) {
             window.location.replace(res);
         }
         else {
-
         }
     });
     $('#formedit').addClass('fade').modal('show');
-    /*load("/japtool/Learning/loadEditForm/?id="+id, function() {
-     alert('load successfully');
-     });*/
+}
+function Learn(id) {
+    $('#lib-1').removeClass('fade').modal('hide');
+    $('#editform').load('/japtool/learning/checkLearning/?learnID=' + id, function (res, status) {
+        var arr = res.split("/");
+        if (arr[3] == "practice") {
+            window.location.replace(res);
+        }
+        else {
+        }
+    });
+    $('#formedit').addClass('fade').modal('show');
 }
 //end nam
 /*end choose book*/

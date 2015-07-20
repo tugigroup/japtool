@@ -65,7 +65,7 @@
                             <li>
                                 <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
                                 <a class="text-danger" href="#" data-toggle="modal" data-target="#lib-1">Preview</a> -
-                                <a href="/japtool/BookMaster/practice/?id=<%= learnList[i].bookMaster.id %>&learnID=<%= learnList[i].id %>">Go
+                                <a onclick="Learn('<%= learnList[i].id %>')">Go
                                     to Learn</a>
                             </li>
                         </ul>
@@ -97,12 +97,12 @@
                                                             <li>
                                                                 <span class="glyphicon glyphicon-play"
                                                                       aria-hidden="true"></span> From
-                                                                : <%= learnList[i].bookMaster.startDate %>
+                                                                : <%= learnList[i].startDate %>
                                                             </li>
                                                             <li>
                                                                 <span class="glyphicon glyphicon-stop"
                                                                       aria-hidden="true"></span> To
-                                                                : <%= learnList[i].bookMaster.finishDate %>
+                                                                : <%= learnList[i].finishDate %>
                                                             </li>
                                                             <li>
                                                                 <span class="glyphicon glyphicon-book"

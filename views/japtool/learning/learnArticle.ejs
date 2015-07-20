@@ -1,8 +1,8 @@
-<!-- <div class="choose-modul-learn-article text-center">
-    <h3>Choose One :</h3>
-    <button type="button" class="btn btn-danger" id="btnTestAll">Test all article</button>
-    <button type="button" class="btn btn-success" id="btnPraticle">Just Praticle</button>
-</div> -->
+<!--<div class="choose-modul-learn-article text-center">-->
+    <!--<h3>Choose One :</h3>-->
+    <!--<button type="button" class="btn btn-danger" id="btnTestAll">Test all article</button>-->
+    <!--<button type="button" class="btn btn-success" id="btnPraticle">Just Praticle</button>-->
+<!--</div>-->
 <div class="container-do-test-article" id="do-test-articles">
     <%
     var lengthQues = 0;
@@ -35,7 +35,7 @@
                     <p>
                     <h4>Content</h4>
                     </p>
-                    <p class="unescape">
+                    <p class="unescape lb-content-test-article">
                         <%= article.content %>
                     </p>
                     <%
@@ -86,7 +86,7 @@
 
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <h4 class="unescape"><%= question.question %></h4>
+                        <h4 class="unescape lb-question-minion"><%= question.question %></h4>
                         <% if(question.image != null){
                         %>
                         <h5>Image :</h5>
@@ -97,31 +97,31 @@
                             <div class="col-sm-6">
                                 <input type="radio" class="<%= question.id %>" name="<%= question.id %>"
                                        value="<%= question.option1 %>" id="<%= question.id %>1">
-                                <label for="<%= question.id %>1"><%= question.option1 %></label>
+                                <label class="lb-option-article-test-practice" for="<%= question.id %>1"><%= question.option1 %></label>
                                 <lable id="<%= question.id %>1rd"></lable>
                             </div>
                             <div class="col-sm-6">
                                 <input type="radio" class="<%= question.id %>" name="<%= question.id %>"
                                        value="<%= question.option2 %>" id="<%= question.id %>2">
-                                <label for="<%= question.id %>2"><%= question.option2 %></label>
-                                <lable id="<%= question.id %>2rd"></lable>
+                                <label class="lb-option-article-test-practice" for="<%= question.id %>2"><%= question.option2 %></label>
+                                <lable  id="<%= question.id %>2rd"></lable>
                             </div>
                             <div class="col-sm-6">
                                 <input type="radio" class="<%= question.id %>" name="<%= question.id %>"
                                        value="<%= question.option3 %>" id="<%= question.id %>3">
-                                <label for="<%= question.id %>3"><%= question.option3 %></label>
+                                <label class="lb-option-article-test-practice" for="<%= question.id %>3"><%= question.option3 %></label>
                                 <lable id="<%= question.id %>3rd"></lable>
                             </div>
                             <div class="col-sm-6">
                                 <input type="radio" class="<%= question.id %>" name="<%= question.id %>"
                                        value="<%= question.option4 %>" id="<%= question.id %>4">
-                                <label for="<%= question.id %>4"><%= question.option4 %></label>
+                                <label class="lb-option-article-test-practice" for="<%= question.id %>4"><%= question.option4 %></label>
                                 <lable id="<%= question.id %>4rd"></lable>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-sm-offset-1 col-sm-11">
                             <label class="isemptyQ" id="<%= question.id %>isEmpty"></label>
                         </div>
                     </div>
@@ -153,9 +153,9 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
-        // $(".container-do-test-article").hide()
-        // $("#btnCheckRs").hide()
-        // $("#btnCheckQuickly").hide()
+//         $(".container-do-test-article").hide();
+//         $("#btnCheckRs").hide();
+//         $("#btnCheckQuickly").hide();
 
         $("#do-test-articles").steps({
             headerTag: "h2",
@@ -173,9 +173,9 @@
 
     $("#btnCheckQuickly").on('click', function () {
         var positionAr = "";
-        $('a[id^="do-test-articles"]').each(function() {
+        $('a[id^="do-test-articles"]').each(function () {
             var test1 = $(this).parent().attr("aria-selected");
-            if ( test1 == "true") {
+            if (test1 == "true") {
                 positionAr = $(this).attr("id").slice(-1);
                 return false;
             }
@@ -253,7 +253,7 @@
                 var rdPositionTrue = questions[j].id;
                 var key = questions[j].key;
                 $("#" + rdPositionTrue + key + "rd").html('<i class="fa fa-check fa-2x text-success"></i>');
-                $("#" + rdPositionTrue + "isEmpty").html('<span class="text-danger ">You do not choose any option !</span>');
+                $("#" + rdPositionTrue + "isEmpty").html('<span class="text-danger lb-empty-question">You do not choose any option !</span>');
                 // save result data
                 dataUserTestResult.push({
                     answer: undefined,

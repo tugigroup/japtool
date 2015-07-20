@@ -42,7 +42,9 @@ label {
 }
 
 .isemptyQ {
-    text-indent: 20px
+    text-indent: 20px;
+    font-size: 19px;
+    color:red;
 }
 
 .btn-default, .btn-primary, .btn-success, .btn-info, .btn-warning, .btn-danger {
@@ -354,7 +356,10 @@ div.required .control-label:before {
     padding: 8px 40px;
     background-color: #ffffff;
 }
-
+.btn-edit:hover{
+    color: #d9534f !important;
+    border: 1px solid #d9534f !important;
+}
 .profile .btn-success {
     margin-right: 50px;
 }
@@ -1388,20 +1393,30 @@ ul.timeline li .timeline-panel:after {
 .choose-modul-learn-article{
     margin-top: 10%;
 }
-/*#test-learning #slider1_container{*/
-/*height: auto !important;*/
-/*}*/
-/*#test-learning #slider1_container .slider1_container-slider{*/
 
-/*}*/
-/*#test-learning #slider1_container .test-learning-x{*/
-/*height: auto !important;*/
-/*top: 0px;*/
-/*left: 0px;*/
-/*position: relative !important;*/
-/*overflow: visible !important;*/
-/*}*/
+#container-learn{
+    padding-top: 1.5%;
+}
+.lb-question-minion{
+    font-size: 22px;
+    font-weight: 600;
+    color: rgb(82, 123, 156);
+}
+.lb-option-article-test-practice{
+    font-size: 18px;
+}
+.box-style-blue-test-article{
+    border-radius: 3px!important;
+    padding-right: 15px !important;
+    padding-left: 15px !important;
+}
+.lb-content-test-article{
+    font-size: 22px;
+}
 
+.lb-empty-question{
+    color: red;
+}
 /*END css by duongtd2*/
 
 /*VOCABYLARY*/
@@ -1587,7 +1602,7 @@ ul.timeline li .timeline-panel:after {
 }
 
 .wizard .content .body label {
-    display: inline-block;
+    display: initial;
     margin-bottom: 0.5em;
 }
 
