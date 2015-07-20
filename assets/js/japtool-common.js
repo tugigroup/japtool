@@ -115,10 +115,10 @@ function addbook(i) {
     var bookname = $('#bookname' + i + '').attr('title');
     var bookid = $('#bookid' + i + '').val();
     var booklv = $('#booklv' + i + '').attr('title');
-    $("#placebook").append('<b><img src="' + imglink + '" width="100" height="100"/></b>' +
-    '<input type="hidden" id="idbook" name="bookMaster" value="' + bookid + '"><br>' +
-    '<b>' + bookname + '</b><br>' +
-    '<b>Level : ' + booklv + '</b>');
+    $("#placebook").append('<div class="col-sm-2"><b><img src="' + imglink + '" width="100" height="100"/></b>' +
+    '<input type="hidden" id="idbook" name="bookMaster" value="' + bookid + '"><br></div>' +
+    '<div class="col-sm-4" style="padding-top: 40px"><b>' + bookname + '</b><br>' +
+    '<b>Level : ' + booklv + '</b></div>');
     $('#show-books').modal('hide');
 }
 function deleteLearning() {
