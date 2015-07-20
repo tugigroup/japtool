@@ -54,7 +54,7 @@ module.exports = {
             if (err) {
 
             }
-            if (learning == undefined) {
+            else if (learning == undefined) {
                 BookMaster.findOne({id: bookid}).exec(function (err, books) {
                     if (err) {
 
@@ -68,8 +68,26 @@ module.exports = {
                 })
             }
             else {
+                var now = new Date();
+                var startDate = new Date(learning.startDate);
+                var endDate = new Date(learning.finishDate);
+                if (now < startDate) {
 
-                res.send("/japtool/BookMaster/practice/?id=" + bookid + "&learnID=" + learning.id);
+                    var msg = 'Chua den ngay hoc!!!';
+                    res.render('japtool/learning/mesage', {
+                        msg: msg
+                    });
+                }
+                else if (endDate < now) {
+                    var msg = 'Hoc xong roi!!!';
+                    res.render('japtool/learning/mesage', {
+                        msg: msg
+                    });
+                }
+                else {
+                    res.send("/japtool/BookMaster/practice/?id=" + learning.bookMaster.id + "&learnID=" + learning.id);
+                }
+
             }
 
         })
@@ -84,16 +102,20 @@ module.exports = {
             }
             else {
                 var now = new Date();
-                sails.log(now);
                 var startDate = new Date(learning.startDate);
-                sails.log(startDate);
-                var endDate = new Date( learning.finishDate);
-                sails.log(endDate);
+                var endDate = new Date(learning.finishDate);
                 if (now < startDate) {
-                    var msg = '<p><h3><a></a></h3></p> ';
+
+                    var msg = 'Chua den ngay hoc!!!';
+                    res.render('japtool/learning/mesage', {
+                        msg: msg
+                    });
                 }
                 else if (endDate < now) {
-
+                    var msg = 'Hoc xong roi!!!';
+                    res.render('japtool/learning/mesage', {
+                        msg: msg
+                    });
                 }
                 else {
                     res.send("/japtool/BookMaster/practice/?id=" + learning.bookMaster.id + "&learnID=" + learning.id);

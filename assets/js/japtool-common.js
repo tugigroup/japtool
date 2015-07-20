@@ -285,6 +285,18 @@ function loadformLib(id) {
     });
     $('#formedit').addClass('fade').modal('show');
 }
+function Learn(id) {
+    $('#lib-1').removeClass('fade').modal('hide');
+    $('#editform').load('/japtool/learning/checkLearning/?learnID=' + id, function (res, status) {
+        var arr = res.split("/");
+        if (arr[3] == "practice") {
+            window.location.replace(res);
+        }
+        else {
+        }
+    });
+    $('#formedit').addClass('fade').modal('show');
+}
 //end nam
 /*end choose book*/
 //end recommend login
