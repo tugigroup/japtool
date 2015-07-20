@@ -171,12 +171,12 @@ function validateCreatLearning() {
     var validateStartDate;
     var validateFinishDate;
     if (checkStartDate == "" || checkStartDate == null) {
-        $('#mesagestartDate').html("<i><p style='color: #d82824'>Ban chua chon ngay bat dau</p></i>");
+        $('#mesagestartDate').html("<i><p style='color: #d82824'>Start date is Invalid!!</p></i>");
         validateStartDate = false;
     }
     else {
         if (starDate < now) {
-            $('#mesagestartDate').html("<i><p style='color: #d82824'>Ngay bat dau phai lon hon ngay hien tai!!!</p></i>");
+            $('#mesagestartDate').html("<i><p style='color: #d82824'>Start date must be greater than today!!!</p></i>");
             validateStartDate = false;
         }
         else {
@@ -185,17 +185,17 @@ function validateCreatLearning() {
         }
     }
     if (checkFinishDate == "" || checkFinishDate == null) {
-        $('#mesagefinishDate').html("<i><p style='color: #d82824'>Ban chua chon ngay bat dau</p></i>");
+        $('#mesagefinishDate').html("<i><p style='color: #d82824'>Finish date is Invalid!!</p></i>");
         validateFinishDate = false;
     }
     else {
         if (finishDate < now) {
-            $('#mesagefinishDate').html("<i><p style='color: #dc302c'>Ngay ket thuc phai lon hon ngay hien tai!!!</p></i>");
+            $('#mesagefinishDate').html("<i><p style='color: #dc302c'>Finish date must be greater than today!!!</p></i>");
             validateFinishDate = false;
         }
         else {
             if (finishDate < starDate) {
-                $('#mesagefinishDate').html("<i><p style='color: #dc302c'>Ngay ket thuc phai lon hon ngay bat dau!!!</p></i>");
+                $('#mesagefinishDate').html("<i><p style='color: #dc302c'>Finish date must be greater than start date!!!</p></i>");
                 validateFinishDate = false;
             }
             else {
@@ -227,7 +227,7 @@ function validateEditLearning() {
     finishDate.setHours(23, 59, 59);
     var validateFinishDate;
     if (finishDate < now) {
-        $('#mesagefinishDate').html("<i><p style='color: #dc302c'>Ngay ket thuc phai lon hon ngay hien tai!!!</p></i>");
+        $('#mesagefinishDate').html("<i><p style='color: #dc302c'>Finish date must be greater than today!</p></i>");
         validateFinishDate = false;
     }
     else {

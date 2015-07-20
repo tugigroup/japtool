@@ -68,11 +68,38 @@ module.exports = {
                 })
             }
             else {
+
                 res.send("/japtool/BookMaster/practice/?id=" + bookid + "&learnID=" + learning.id);
             }
 
         })
+    },
+    checkLearning: function (req, res) {
+        var learnId = req.param('learnID');
+        SelfLearning.findOne({
+            id: learnId
+        }).populate('bookMaster', {sort: 'startDate'}).exec(function (err, learning) {
+            if (err) {
 
+            }
+            else {
+                var now = new Date();
+                sails.log(now);
+                var startDate = new Date(learning.startDate);
+                sails.log(startDate);
+                var endDate = new Date( learning.finishDate);
+                sails.log(endDate);
+                if (now < startDate) {
+                    var msg = '<p><h3><a></a></h3></p> ';
+                }
+                else if (endDate < now) {
+
+                }
+                else {
+                    res.send("/japtool/BookMaster/practice/?id=" + learning.bookMaster.id + "&learnID=" + learning.id);
+                }
+            }
+        })
     },
     edit: function (req, res) {
         var id = req.param("id");
@@ -188,7 +215,7 @@ module.exports = {
                             res.render('japtool/learning/create', {
                                 create: create,
                                 book: learning.bookMaster,
-                                learning:learning
+                                learning: learning
                             });
                         }
 
@@ -259,7 +286,7 @@ module.exports = {
 
                                 }
                                 else {
-                                    res.send('japtool/BookMaster/practice/?id='+bookMaster);
+                                    res.send('japtool/BookMaster/practice/?id=' + bookMaster);
                                 }
                             })
 
@@ -302,7 +329,7 @@ module.exports = {
 
                                     }
                                     else {
-                                        res.send('japtool/BookMaster/practice/?id='+bookMaster);
+                                        res.send('japtool/BookMaster/practice/?id=' + bookMaster);
                                     }
                                 })
 
@@ -387,7 +414,7 @@ module.exports = {
             var uniqueType = array(arrTag).unique().value();
             res.view({
                 learnList: selfLearnings,
-                uniqueType: uniqueType,
+                uniqueType: uniqueType
             })
         })
     },
