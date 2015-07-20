@@ -1,8 +1,9 @@
-Thong ke cac trang tieng nhatngon
+Thong ke cac trang tieng nhat
+
+list link
 http://www.nhk.or.jp/
 http://daytiengnhatban.com/
 http://loptiengnhat.edu.vn/
-http://www.vnjpclub.com/
 http://www.vnjpclub.com/
 http://vietnamjapan.vn/
 http://akira.edu.vn/
@@ -18,8 +19,20 @@ http://jplang.tufs.ac.jp/vi/ka/2/1.html
 
 http://chuyenngoaingu.com
 
+http://kakijun.jp/page/12226200.html
+
 
 http://www.ritsumei.ac.jp/~kitade/nihongo.htm
 http://language.tiu.ac.jp/
 http://www.e-hon.jp/
 http://study.u-biq.org/
+
+1. http://daytiengnhatban.com/ -> nhieu du lieu huu ich copy duoc
+Nghĩa tiếng việt của 1000 chữ hán
+http://daytiengnhatban.com/1000-chu-han-phan-1-tu-1-den-100
+
+Ngữ pháp từ N5 có giải thích nghĩa đầy đủ
+http://daytiengnhatban.com/ngu-phap-n5-mau-cau-41-50
+
+2. Thu tu cach viet kanji
+http://kakijun.jp/page/12226200.html
