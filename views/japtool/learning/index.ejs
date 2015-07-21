@@ -28,13 +28,13 @@
                 <div class="library-page-line"></div>
             </div>
         </div>
+        <% for(var i = 0;i < learnList.length;i++){ %>
+        <% if(learnList[i].bookMaster.type == uniqueType[j]){ %>
         <div class="row manager-learning-item">
-            <% for(var i = 0;i < learnList.length;i++){ %>
-            <% if(learnList[i].bookMaster.type == uniqueType[j]){ %>
             <div class="col-sm-4">
                 <div class="row">
                     <div class="col-sm-4">
-                        <a href="#" class="text-primary lb-learn-name"
+                        <a class="text-primary lb-learn-name"
                            title="Click to view this library details"
                            data-toggle="modal" data-target="#lib-1"><img class="media-object col-xs-3 libImg"
 
@@ -64,14 +64,14 @@
                             </li>
                             <li>
                                 <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-                                <a class="text-danger" href="#" data-toggle="modal" data-target="#lib-1">Preview</a> -
+                                <a class="text-danger"  data-toggle="modal" data-target="#lib-<%=i%>">Preview</a> -
                                 <a onclick="Learn('<%= learnList[i].id %>')">Go
                                     to Learn</a>
                             </li>
                         </ul>
                     </div>
 
-                    <div class="modal fade" id="lib-1">
+                    <div class="modal fade" id="lib-<%=i%>">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -97,12 +97,12 @@
                                                             <li>
                                                                 <span class="glyphicon glyphicon-play"
                                                                       aria-hidden="true"></span> From
-                                                                : <%= learnList[i].startDate %>
+                                                                : <%= learnList[i].stringStartDate %>
                                                             </li>
                                                             <li>
                                                                 <span class="glyphicon glyphicon-stop"
                                                                       aria-hidden="true"></span> To
-                                                                : <%= learnList[i].finishDate %>
+                                                                : <%= learnList[i].stringFinishDate %>
                                                             </li>
                                                             <li>
                                                                 <span class="glyphicon glyphicon-book"
@@ -121,9 +121,7 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <input type="hidden" id="idedit" value="<%= learnList[i].id %>">
-                                    <button onclick="loadform(1)" class="btn btn-warning">Edit</button>
-
+                                    <button onclick="loadform('<%= learnList[i].id %>')" class="btn btn-warning">Edit</button>
                                     <a href="#" onclick="deleteLearning()" title="<%= learnList[i].id %>"
                                        id="deleteLearning" class="btn btn-danger" role="button">Delete</a>
                                     <a href="#" class="btn btn-warning" role="button" data-dismiss="modal">Close</a>
@@ -134,9 +132,9 @@
 
                 </div>
             </div>
-            <% } %>
-            <% } %>
         </div>
+        <% } %>
+        <% } %>
         <% } %>
         <form action="/japtool/learning/edit" method="post" id="edit-learning-japtool"
               onsubmit="return validateEditLearning()">

@@ -187,6 +187,9 @@ module.exports = {
             var bookMaster = req.param('bookMaster');
             var startDatepr = req.param('startDate');
             var finishDatepr = req.param('finishDate');
+            var format = require('date-format');
+            var stringStartDate = format.asString('dd-MM-yyyy', new Date(req.param('startDate')));
+            var stringFinishDate = format.asString('dd-MM-yyyy', new Date(req.param('finishDate')));
             if (!lbr) {
 
                 SelfLearning.findOne({
@@ -201,6 +204,8 @@ module.exports = {
                             notes: notes,
                             startDate: startDatepr,
                             finishDate: finishDatepr,
+                            stringStartDate:stringStartDate,
+                            stringFinishDate:stringFinishDate,
                             bookMaster: bookMaster,
                             user: userId
                         }).exec(function (err, selfLearning) {
@@ -246,6 +251,8 @@ module.exports = {
                                 notes: notes,
                                 startDate: startDatepr,
                                 finishDate: finishDatepr,
+                                stringStartDate:stringStartDate,
+                                stringFinishDate:stringFinishDate,
                                 bookMaster: bookMaster,
                                 user: userId
                             }).exec(function (err, selfLearning) {
@@ -288,6 +295,8 @@ module.exports = {
                             notes: notes,
                             startDate: startDatepr,
                             finishDate: finishDatepr,
+                            stringStartDate:stringStartDate,
+                            stringFinishDate:stringFinishDate,
                             bookMaster: bookMaster,
                             user: userId
                         }).exec(function (err, selfLearning) {
@@ -331,6 +340,8 @@ module.exports = {
                                 notes: notes,
                                 startDate: startDatepr,
                                 finishDate: finishDatepr,
+                                stringStartDate:stringStartDate,
+                                stringFinishDate:stringFinishDate,
                                 bookMaster: bookMaster,
                                 user: userId
                             }).exec(function (err, selfLearning) {
@@ -394,30 +405,7 @@ module.exports = {
             else {
                 selfLearnings.forEach(function (item, index) {
                     var startDate = item.startDate;
-                    var dds = startDate.getDate();
-                    if (dds <= 9) {
-                        dds = "0" + dds;
-                    }
-                    var mms = startDate.getMonth() + 1;
-                    if (mms <= 9) {
-                        mms = "0" + mms;
-                    }
-                    var yyyys = startDate.getFullYear();
-                    var startdateString = "" + dds + "-" + mms + "-" + yyyys + "";
-                    item.startDate = startdateString;
                     var finishDate = item.finishDate;
-                    var ddf = finishDate.getDate();
-                    if (ddf <= 9) {
-                        ddf = "0" + ddf;
-                    }
-                    var mmf = finishDate.getMonth() + 1;
-                    if (mmf <= 9) {
-                        mmf = "0" + mmf;
-                    }
-                    var yyyyf = finishDate.getFullYear();
-                    var finishdateString = "" + ddf + "-" + mmf + "-" + yyyyf + "";
-                    item.finishDate = finishdateString;
-
                     var now = new Date();
                     if (startDate < now < finishDate) {
                         item.status = "Started!";
