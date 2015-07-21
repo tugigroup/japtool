@@ -126,11 +126,19 @@
                             <h3><span><%= item %></span>
                             </h3>
                         </div>
+                        <% var num = 0; %>
+                        <% for(var i = 0;i < data.length;i++){ %>
+                        <% if(data[i].type == item){ %>
+                        <% num = num + 1 %>
+                        <% } %>
+                        <% } %>
+                        <% if(num > Constants.maxLibOnPage){ %>
                         <div class="col-sm-2">
                             <div class="join-learn btn label-primary">
                                 <a href="/japtool/BookMaster/getAllLibrary/?type=<%= item %>">View more Library</a>
                             </div>
                         </div>
+                        <% } %>
                     </div>
                     <div class="library-page-line"></div>
                 </div>
@@ -201,11 +209,12 @@
                                     <a href="#">
                                         <img class="library-detail-img"
 
-                                            <% if (book.image) { %>
+                                                <% if (book.image) { %>
                                              src="/media/image/<%= book.image %>"
-                                            <% } else { %>
+                                                <% } else { %>
                                              src="/images/book_default_cover.png"
-                                        <% } %>/>
+                                                <% } %>
+                                                />
 
                                     </a>
                                 </div>
