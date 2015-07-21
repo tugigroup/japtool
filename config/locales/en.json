@@ -1,4 +1,15 @@
 {
 	"Welcome": "Welcome",
-	"A brand new app.": "A brand new app."
+	"Sign Up": "Sign Up",
+	"Sign In": "Sign In",
+	"Sign Out": "Sign Out",
+	"Home":"Home",
+	"About":"About",
+	"Library":"Library",
+	"Learning":"Learning",
+	"Use Guide":"Use Guide",
+	"Contact":"Contact",
+
+
+
 }
