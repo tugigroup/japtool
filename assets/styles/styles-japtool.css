@@ -1396,6 +1396,14 @@ ul.timeline li .timeline-panel:after {
     background-color: rgb(57, 157, 69);
     color: rgb(255, 255, 255);
 }
+.btn-refresh-rs-question{
+    margin-top: -4%;
+    border-color: rgb(232, 206, 194);
+    border-radius: 0px;
+    padding: 1%;
+    background-color: rgb(243, 184, 30);
+    color: rgb(255, 255, 255);
+}
 .choose-modul-learn-article{
     margin-top: 10%;
 }
