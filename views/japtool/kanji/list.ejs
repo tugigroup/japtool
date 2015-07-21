@@ -5,12 +5,9 @@
 //        arrows: true,
     fade: false,
     asNavFor: '.slider-nav',
-    draggable:false,
+    draggable: false,
     prevArrow: '<button type="button" data-role="none" class="btn btn-prevArrow btn-success" aria-label="Previous" tabindex="0" role="button">Previous</button>',
     nextArrow: '<button type="button" data-role="none" class="btn btn-nextArrow btn-success" aria-label="Next" tabindex="0" role="button">Next</button>'
-
-
-
   });
   $('.slider-nav').slick({
     slidesToShow: 4,
@@ -36,17 +33,17 @@
     <% kanjis.forEach( function(kanji, index){ %>
     <div class="slider-for-deital clearfix">
       <h4 class="text-center text-danger"><%= kanji.item %></h4>
+
       <p>
-            <span class="text-success">hanviet
-              <i class="fa fa-microphone text-danger" ></i> : </span><%= kanji.hanviet %>
+        <span class="text-success">hanviet : </span><%= kanji.hanviet %>
       </p>
 
       <p>
-        <span class="text-success">kunyomi <i class="fa fa-microphone text-danger"></i> : </span><%= kanji.kunyomi %>
+        <span class="text-success">kunyomi : </span><%= kanji.kunyomi %>
       </p>
 
       <p>
-        <span class="text-success">onyomi <i class="fa fa-microphone text-danger"></i> : </span><%= kanji.onyomi %>
+        <span class="text-success">onyomi : </span><%= kanji.onyomi %>
       </p>
 
       <p><span class="text-success">Description: </span><%= kanji.description %></p>
@@ -63,13 +60,7 @@
       </ul>
       <% } %>
     </div>
-
     <% }) %>
   </div>
   <% } %>
-
-
-
-
-
 </div>
