@@ -43,6 +43,9 @@ module.exports = {
         birthday: {
             type: 'date'
         },
+        language: {
+            type: 'string'
+        },
         website: {
             type: 'string'
         },

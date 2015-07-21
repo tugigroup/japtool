@@ -1,43 +1,16 @@
-<div class="modal-dialog modal-lg nam">
+<div class="modal-dialog modal-lg">
     <div class="modal-content model-show-boook">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal"></button>
             <h4 class="modal-title">Book Library</h4>
-
             <div class="row">
                 <div class="col-sm-3">
                     Choose a book
                 </div>
-                <div class="col-sm-6">
-                    <div class="row form-search-book">
-                        <form name="" action="" method="">
-                            <div class="col-sm-3">
-                                <input class="form-control" name="tbSearch" value=""
-                                       id="input-search" placeholder="Search" type="text">
-                            </div>
-
-                            <div class="col-sm-2">
-                                <div class="form-group">
-                                    <select class="form-control" id="sel1">
-                                        <option>Studying</option>
-                                        <option>Complete</option>
-                                        <option>Not started learning</option>
-                                    </select>
-
-                                </div>
-                            </div>
-                            <div class="col-sm-1">
-                                <button type="submit" class="btn btn-primary"><span
-                                            class="glyphicon glyphicon-search"></span></button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
             </div>
         </div>
-
         <div class="modal-body">
-            <div class="pre-scrollable showBook mCustomScrollbar" data-mcs-theme="dark">
+            <div class="pre-scrollable choose-book-pre" data-mcs-theme="dark">
                 <!--start three book info-->
 
                 <div class="row form-showBook">
@@ -72,8 +45,11 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-default " data-dismiss="modal">Close
-            </button>
+            <input type="button"
+                   class="btn btn-warning"
+                   role="button"
+                   value="Close"
+                   data-dismiss="modal"/>
         </div>
     </div>
 </div>

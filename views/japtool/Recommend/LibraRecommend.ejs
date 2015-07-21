@@ -157,7 +157,7 @@
 
                         <div class="media-body">
                             <h4 class="media-heading">
-                                <a href="#" class="text-primary" title="Click to view this library details"
+                                <a class="text-primary" title="Click to view this library details"
                                    data-toggle="modal" data-target="#lib-details-<%= book.id %>">
                                     <%= book.name %>
                                 </a>
@@ -205,7 +205,7 @@
                                              src="/media/image/<%= book.image %>"
                                             <% } else { %>
                                              src="/images/book_default_cover.png"
-                                        <% } %>
+                                        <% } %>/>
 
                                     </a>
                                 </div>

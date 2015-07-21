@@ -4,110 +4,61 @@
             <div class="content">
                 <h2>learning group</h2>
 
-                <div class="col-sm-2 invite">
-                    <div class="row">
-                        <h3 id="title-learning" name="<%= learnID %>">Lesson learning</h3>
-                    </div>
-                    <div class="row">
-                        <div class="sidebar-nav">
-                            <div class="navbar navbar-default" role="navigation">
-                                <div class="navbar-header">
-                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
-                                        <span class="sr-only">Lesson Learning</span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                    </button>
-                                    <span class="visible-xs navbar-brand">Sidebar menu</span>
-                                </div>
-                                <div class="navbar-collapse collapse sidebar-navbar-collapse mCustomScrollbar light" data-mcs-theme="minimal-dark">
-                                    <ul class="nav navbar-nav">
-                                        <% uniqueLessons.forEach(function(uniqueLesson){ %>
+                <div id="learning-nav" class="skin-green sidebar-mini">
+                    <div class="wrapper">
+                        <header class="main-header">
+                            <!-- Logo -->
+                            <a href="" class="logo" data-toggle="offcanvas" role="button">
+                                <!-- mini logo for sidebar mini 50x50 pixels -->
+                                <span class="logo-mini" class="sidebar-toggle"><i class="fa fa-bars"></i></span>
+                                <!-- logo for regular state and mobile devices -->
+                                <span class="logo-lg"><i class="fa fa-bars"></i> Lesson</span>
+                            </a>
+                            <!-- Header Navbar: style can be found in header.less -->
+                        </header>
+                        <!-- Left side column. contains the logo and sidebar -->
+                        <aside class="main-sidebar">
+                            <!-- sidebar: style can be found in sidebar.less -->
+                            <section class="sidebar">
+                                <!-- Sidebar user panel -->
+                                <ul class="sidebar-menu">
+                                    <% uniqueLessons.forEach(function(uniqueLesson){ %>
+                                    <li class="treeview">
+                                        <a href="javascript: void(0)">
+                                            <i class="fa fa-edit"></i> <span><%= uniqueLesson %></span>
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </a>
+                                        <% bookDetails.forEach(function(bookDetail){ %>
+                                        <% if(uniqueLesson == bookDetail.lesson) { %>
+                                        <ul class="treeview-menu">
+                                            <li><a href='javascript: void(0)' name="<%= bookDetail.id %>"
+                                                   onclick="learn('<%= bookDetail.useModule %>', <%= bookDetail.dataExtractCondition %>)"><i
+                                                            class="fa fa-circle-o"></i> <%= bookDetail.subLesson %></a>
+                                            </li>
 
-                                        <li class="dropdown">
-                                            <a href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown"><%= uniqueLesson %> <b class="caret pull-right"></b></a>
-                                            <% bookDetails.forEach(function(bookDetail){ %>
-                                            <% if(uniqueLesson == bookDetail.lesson) { %>
-                                            <ul class="dropdown-menu">
-                                                <li><a href='javascript: void(0)' name="<%= bookDetail.id %>" class="sub-lesson"
-                                                       onclick="learn('<%= bookDetail.useModule %>', <%= bookDetail.dataExtractCondition %>)"><%= bookDetail.subLesson %></a></li>
-                                            </ul>
-                                            <% } %>
-                                            <% }) %>
-                                        </li>
-
+                                        </ul>
+                                        <% } %>
                                         <% }) %>
-                                    </ul>
-                                </div><!--/.nav-collapse -->
-                            </div>
-                        </div>
-
-
-
-                    </div>
-                </div>
-                <div class="col-sm-8 invite">
-                    <h3 class="text-center" id="add-book-detail"><%= nameBook %></h3>
-
-                    <div class="abc" id="container-learn" style="border: 1px solid #ccc;min-height: 600px"></div>
-                    <!-- Comment-->
-                    <div class="comment">
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <h3>Comments</h3>
-                            </div>
-                            <div class="col-sm-3">
-                                <a href="" class="view-comment">View more comments</a>
-                            </div>
-                            <div class="col-sm-3">
-                                <a href="" class="view-comment">Hide some comments</a>
-                            </div>
-                        </div>
-                        <div class="row comment-items">
-                            <div class="col-sm-1 col-xs-1">
-                                <img src="/images/group-friends/masonry_05-400x400.jpg"/>
-                            </div>
-                            <div class="col-sm-11">
-                                <h4>Nguyen Hoang Nam</h4>
-
-                                <div class="comment-desc">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                    </li>
+                                    <% }) %>
+                                </ul>
+                            </section>
+                            <!-- /.sidebar -->
+                        </aside>
+                        <!-- Content Wrapper. Contains page content -->
+                        <div class="content-wrapper">
+                            <h3 class="text-center" id="add-book-detail"><%= nameBook %></h3>
+                            <section class="content-wrapper-body">
+                                <div class="row">
+                                    <div id="container-learn"></div>
                                 </div>
-                            </div>
+                            </section>
                         </div>
                     </div>
-                    <form action="" method="">
-                        <textarea rows="5" class="comment-area"></textarea>
-                        <button type="button" class="btn btn-danger">Send comment</button>
-                    </form>
-
-                    <!-- End comment -->
-
+                    <!-- ./wrapper -->
                 </div>
-                <div class="col-sm-2 invite">
-                    <div class="row">
-                        <h3>Invite Friends</h3>
-
-                        <div class="invite-member clearfix">
-                            <div class="col-xs-4">
-                                <% if(!session.User.avatar){ %>
-                                <img src="/images/avatar/avatar.jpg" id="avatarPreview"/>
-                                <% } else{ %>
-                                <a href="/japtool/user/show/<%= session.User.id %>"><img
-                                            src="/media/image/?fd=<%= session.User.avatar %>"/> </a>
-                                <% } %>
-
-                            </div>
-                            <div class="col-xs-8">
-                                <a href="/japtool/user/show/<%= session.User.id %>"><%= session.User.username %></a>
-                            </div>
-                        </div>
 
 
-                    </div>
-                </div>
             </div>
 
         </div>
@@ -119,7 +70,7 @@
         $('#container-learn').load('/japtool/' + module + '/list/?condition=' + strCondition);
     }
 
-    window.onload = function (){
+    window.onload = function () {
         $('.sub-lesson').click(function () {
             var bookDetail = $(this).attr('name');
             $('#add-book-detail').attr('name', bookDetail);
@@ -130,7 +81,13 @@
             $.ajax({
                 method: "POST",
                 url: "/japtool/bookDetail/saveHistory",
-                data: {user: user, bookDetail: bookDetail, selfLearning: selfLearning, startDate: startDate, finishDate: finishDate}
+                data: {
+                    user: user,
+                    bookDetail: bookDetail,
+                    selfLearning: selfLearning,
+                    startDate: startDate,
+                    finishDate: finishDate
+                }
             })
                     .done(function (msg) {
                         console.log(msg);
