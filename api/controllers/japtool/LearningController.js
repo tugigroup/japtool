@@ -69,16 +69,15 @@ module.exports = {
             }
             else {
                 var now = new Date();
-                var startDate = new Date(learning.startDate);
-                var endDate = new Date(learning.finishDate);
-                if (now < startDate) {
+                if (now < learning.startDate) {
+                    var day = Math.floor(((learning.startDate - now) / 86400000) + 1)
 
-                    var msg = 'Chua den ngay hoc!!!';
+                    var msg = 'Chua den ngay hoc!!! Con ' + day + ' ngay nua!!';
                     res.render('japtool/learning/mesage', {
                         msg: msg
                     });
                 }
-                else if (endDate < now) {
+                else if (learning.finishDate < now) {
                     var msg = 'Hoc xong roi!!!';
                     res.render('japtool/learning/mesage', {
                         msg: msg
@@ -87,7 +86,6 @@ module.exports = {
                 else {
                     res.send("/japtool/BookMaster/practice/?id=" + learning.bookMaster.id + "&learnID=" + learning.id);
                 }
-
             }
 
         })
@@ -102,16 +100,15 @@ module.exports = {
             }
             else {
                 var now = new Date();
-                var startDate = new Date(learning.startDate);
-                var endDate = new Date(learning.finishDate);
-                if (now < startDate) {
+                if (now < learning.startDate) {
+                    var day = Math.floor(((learning.startDate - now) / 86400000) + 1)
 
-                    var msg = 'Chua den ngay hoc!!!';
+                    var msg = 'Chua den ngay hoc!!! Con ' + day + ' ngay nua!!';
                     res.render('japtool/learning/mesage', {
                         msg: msg
                     });
                 }
-                else if (endDate < now) {
+                else if (learning.finishDate < now) {
                     var msg = 'Hoc xong roi!!!';
                     res.render('japtool/learning/mesage', {
                         msg: msg

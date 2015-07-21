@@ -93,8 +93,8 @@ input[type=submit]:hover {
 }
 
 .model-show-boook {
-    margin-left: -14%;
-    margin-right: -14%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .library-page-line {
@@ -642,11 +642,6 @@ a:hover {
     padding-right: 10px;
 }
 
-.showBook {
-    max-height: 300px !important;
-    overflow-y: hidden;
-    overflow-x: hidden;
-}
 
 .read-more-library {
     font-size: 15px;
@@ -1238,6 +1233,10 @@ ul.timeline li .timeline-panel:after {
 /*css for manager learning*/
 .body-manager-learning .img-book {
     width: 209px;
+}
+
+.body-manager-learning .choose-book-pre {
+    overflow-x: hidden;
 }
 
 .body-manager-learning .showLearing {
