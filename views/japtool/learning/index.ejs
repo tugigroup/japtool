@@ -64,14 +64,14 @@
                             </li>
                             <li>
                                 <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-                                <a class="text-danger"  data-toggle="modal" data-target="#lib-<%=i%>">Preview</a> -
+                                <a class="text-danger" data-toggle="modal" data-target="#lib-<%= i %>">Preview</a> -
                                 <a onclick="Learn('<%= learnList[i].id %>')">Go
                                     to Learn</a>
                             </li>
                         </ul>
                     </div>
 
-                    <div class="modal fade" id="lib-<%=i%>">
+                    <div class="modal fade" data-backdrop="static" id="lib-<%= i %>">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -121,7 +121,8 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button onclick="loadform('<%= learnList[i].id %>')" class="btn btn-warning">Edit</button>
+                                    <button onclick="loadform('<%= learnList[i].id %>')" class="btn btn-warning">Edit
+                                    </button>
                                     <a href="#" onclick="deleteLearning()" title="<%= learnList[i].id %>"
                                        id="deleteLearning" class="btn btn-danger" role="button">Delete</a>
                                     <a href="#" class="btn btn-warning" role="button" data-dismiss="modal">Close</a>
@@ -138,20 +139,19 @@
         <% } %>
         <form action="/japtool/learning/edit" method="post" id="edit-learning-japtool"
               onsubmit="return validateEditLearning()">
-            <div class="modal fade" id="formedit" data-keyboard="false">
+            <div class="modal fade" id="formedit" data-backdrop="static" data-keyboard="false">
                 <div class="modal-dialog modal-lg" id="editform"></div>
             </div>
         </form>
-        <form action=""
-              id="create-learning-japtool">
+        <form id="create-learning-japtool">
             <input type="hidden" id="listLearn" value="<%= learnList %>">
             <input type="hidden" id="iduser" value="<%= session.User.id %>">
 
-            <div class="modal fade" id="formecr" data-keyboard="false">
+            <div class="modal fade" data-backdrop="static" id="formecr" data-keyboard="false">
                 <div class="modal-dialog modal-lg" id="crform"></div>
             </div>
         </form>
-        <div class="modal fade" id="show-books" data-backdrop="static" data-keyboard="false">
+        <div class="modal fade" id="show-books" data-keyboard="false">
 
         </div>
     </div>
