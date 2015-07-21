@@ -53,7 +53,7 @@
                             <div class="col-sm-4">
                                 <input type="hidden" value="<%= learning.id %>" name="id">
                                 <input type="date" disabled="true" class="form-control"
-                                       value="<%= startDateString %>" name="startDate"
+                                       value="<%= learning.stringStartDate %>" name="startDate"
                                        id="startDate"><br>
 
                                 <div id="mesagestartDate"></div>
@@ -63,7 +63,7 @@
                                 <label>To</label>
                             </div>
                             <div class="col-sm-4">
-                                <input type="date" class="form-control" value="<%= finishdate %>"
+                                <input type="date" class="form-control" value="<%= learning.stringFinishDate %>"
                                        name="finishDate" id="finishDate"><br>
 
                                 <div id="mesagefinishDate"></div>
