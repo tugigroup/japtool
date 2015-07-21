@@ -1,5 +1,6 @@
 <div class="container library-page example">
     <% uniqueType.forEach(function(item, indexLibrary){ %>
+
     <div class="row content library-<%= indexLibrary %>" id="">
         <div class="media">
             <div class="media-body">
@@ -9,11 +10,19 @@
                             <h3><span><%= item %></span>
                             </h3>
                         </div>
+                        <% var num = 0; %>
+                        <% for(var i = 0;i < data.length;i++){ %>
+                        <% if(data[i].type==item){ %>
+                        <% num=num+1 %>
+                        <% } %>
+                        <% } %>
+                        <% if(num > Constants.maxLibOnPage){ %>
                         <div class="col-sm-2">
                             <div class="join-learn btn label-primary">
                                 <a href="/japtool/BookMaster/getAllLibrary/?type=<%= item %>">View more Library</a>
                             </div>
                         </div>
+                        <% } %>
                     </div>
                     <div class="library-page-line"></div>
                 </div>

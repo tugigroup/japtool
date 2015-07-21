@@ -535,8 +535,8 @@ label.valid, p.valid {
 /*Vocabulary*/
 
 .slider-nav h3{
-    background: rgb(19, 177, 146);
-    padding: 10px;
+    background: #aaa;
+    padding: 15px;
     color: #fff;
     font-size: 18px;
     margin: 0;
@@ -821,7 +821,16 @@ a:hover {
 .change-learning .change-learning-lesson-item {
     color: #fff;
 }
-
+#add-book-detail{
+    font-size: 25px;
+    font-weight: 300;
+    background-color: #fff;
+    width: 100%;
+    display: block;
+    margin: 0;
+    padding: 11px;
+    border-bottom: 1px solid #D2D6DE;
+}
 /** timeline box structure **/
 .timeline {
     list-style: none;
@@ -1393,6 +1402,14 @@ ul.timeline li .timeline-panel:after {
     border-radius: 0px;
     padding: 1%;
     background-color: rgb(57, 157, 69);
+    color: rgb(255, 255, 255);
+}
+.btn-refresh-rs-question{
+    margin-top: -4%;
+    border-color: rgb(232, 206, 194);
+    border-radius: 0px;
+    padding: 1%;
+    background-color: rgb(243, 184, 30);
     color: rgb(255, 255, 255);
 }
 .choose-modul-learn-article{
