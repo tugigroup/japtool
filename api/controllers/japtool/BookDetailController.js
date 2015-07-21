@@ -39,7 +39,10 @@ module.exports = {
                 })
             } else {
                 var currentDate = new Date();
-                UserLearnHistory.update({id: data.id}, {startDate: currentDate, finishDate: currentDate}).exec(function (err, updated) {
+                UserLearnHistory.update({id: data.id}, {
+                    startDate: currentDate,
+                    finishDate: currentDate
+                }).exec(function (err, updated) {
                     if (err) {
                         sails.log(err)
                     } else {
@@ -50,27 +53,52 @@ module.exports = {
         });
     },
     getMissLesson: function (req, res) {
-      var bookId = req.param('bookId');
-      var startDate = req.param('startDate');
-      var finishDate = req.param('finishDate');
-      BookDetail.find({bookMaster:bookId}).exec(function(err,bookDetails){
-        if (err) {
-          sails.log("Err when read book detail data:");
-          return res.serverError(err);
+        var bookId = req.param('bookId');
+        var learningId = req.param('learningId');
+        /*console.log("learningId: " + learningId);*/
+        var startDate = req.param('startDate');
+        var finishDate = req.param('finishDate');
+        finishDate = new Date(finishDate);
+        startDate = new Date(startDate);
+        /*sails.log("Start Date: " + startDate);
+        sails.log("Finish Date: " + finishDate);*/
+        var currentDate = Date.now();
+        //Only recommend when in learning time
+        if(currentDate < startDate||currentDate > finishDate)
+        {
+            return res.send([]);
         }
-
-        sails.log("Start Date: " + startDate);
-        sails.log("Finish Date: " + finishDate);
-
-        finishDate = new Date(finishDate);
-        startDate = new Date(startDate);
-        var totalDay = (finishDate - startDate)/86400000 + 1;
-        console.log("Day = " + totalDay);
-        //number Lesson / Day
-        var lesson = Math.round(bookDetails/totalDay);
-
-        res.send(bookDetails);
-      });
+        BookDetail.find({bookMaster: bookId}).exec(function (err, bookDetails) {
+            if (err) {
+                sails.log("Err when read book detail data:");
+                return res.serverError(err);
+            }
+            SelfLearning.findOne({user: req.session.User.id,id:learningId})
+                .populate('bookMaster')
+                .populate('userLearnHistories').exec(function (err, selfLearning) {
+                    if (err) {
+                        sails.log("Err when read data from server:");
+                        return res.serverError(err);
+                    }
+                    //sails.log("Book Use History All.");
+                    //sails.log(selfLearnings);
+                    if (selfLearning == null || selfLearning == undefined) {
+                        return res.send([]);
+                    }
+                    var totalDay = Math.round((finishDate - startDate) / 86400000 + 1);
+                    //console.log("Day = " + totalDay);
+                    //number Lesson / Day
+                    var lesson = Math.round(bookDetails / totalDay);
+                    var currentTotalDay = Math.round((currentDate - startDate) / 86400000 + 1);
+                    //console.log("Current Day = " + currentTotalDay);
+                    //Only recommend when in learning time
+                    if(currentDate < startDate||currentDate > finishDate)
+                    {
+                        return res.send([]);
+                    }
+                    res.send(bookDetails);
+                });
+        });
     },
 };
 

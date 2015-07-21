@@ -1,96 +1,111 @@
 <script type="text/javascript">
-  window.onload = function (){
-    $(".bookMaterIdClass").each(function(){
-      var bookId = $(this).val();
-      var startDate = $("#startDate"+bookId).val();
-      var finishDate = $("#finishDate"+bookId).val();
-      var data = {
-        bookId: bookId,
-        startDate:startDate,
-        finishDate:finishDate
-      };
-      $.ajax({
-        method: "GET",
-        url: "/japtool/bookDetail/getMissLesson",
-        data: data
-      }).done(function (data) {
-        console.log(data);
-        data.forEach(function(item){
-          $("#" + bookId).append(
-            '<div class="col-sm-3">' +
-            '<div class="info-lesson label-warning"><a>' + item.lesson + ' </a></div>' +
-            '</div>'
-          );
+    window.onload = function () {
+        $(".bookMaterIdClass").each(function () {
+            var bookId = $(this).val();
+            var startDate = $("#startDate" + bookId).val();
+            var finishDate = $("#finishDate" + bookId).val();
+            var learningId = $("#learningId" + bookId).val();
+            var data = {
+                bookId: bookId,
+                startDate: startDate,
+                finishDate: finishDate,
+                learningId: learningId
+            };
+            $.ajax({
+                method: "GET",
+                url: "/japtool/bookDetail/getMissLesson",
+                data: data
+            }).done(function (data) {
+                console.log(data);
+                data.forEach(function (item) {
+                    $("#" + bookId).append(
+                            '<div class="col-sm-3">' +
+                            '<div class="info-lesson label-warning"><a>' + item.lesson + ' </a></div>' +
+                            '</div>'
+                    );
+                });
+
+            });
+
         });
 
-      });
-
-    });
-
-  };
+    };
 </script>
 <div class="vocabulary content clearfix">
     <div class="container">
         <div class="row">
             <h2 class="text-center clearfix">Learning Your Self</h2>
-            <p class="text-center desc-home">Hiển thị những group học tiếng nhật của bạn bè trong list friends của bạn, bạn join vào để học cùng nhau nhé</p>
+
+            <p class="text-center desc-home">Hiển thị những group học tiếng nhật của bạn bè trong list friends của bạn,
+                bạn join vào để học cùng nhau nhé</p>
+
             <p class="text-center desc-home"><i><a>View more all</a></i></p>
             <!--Show bool user History-->
-            <%if(selfLearnings!=undefined && selfLearnings.length>0){%>
-              <%selfLearnings.forEach(function(selfLearning){%>
-                <div class="col-sm-6">
-                    <div class="vocabulary-item">
-                        <div class="info">
-                            <%if(selfLearning.bookMaster!=null&&selfLearning.bookMaster!=undefined){%>
-                            <h3><a><%=selfLearning.bookMaster.name%></a></h3>
-                            <%var bookMasterId = selfLearning.bookMaster.id%>
-                            <input type="hidden" value="<%=bookMasterId%>" class="bookMaterIdClass" />
-                            <input type="hidden" value="<%=selfLearning.startDate%>" id="startDate<%= bookMasterId %>" />
-                            <input type="hidden" value="<%=selfLearning.finishDate%>" id="finishDate<%= bookMasterId %>" />
-                            <%} else{%>
-                              <h3><a>Book name is NONE</a></h3>
-                            <%}%>
-                            <!--Show miss following lesson-->
-                            <p>Till now you have miss following lesson</p>
-                            <div id="<%= bookMasterId %>"></div>
-                            <!--Ended Show miss following lesson-->
+            <% if(selfLearnings != undefined && selfLearnings.length > 0){ %>
+            <% selfLearnings.forEach(function(selfLearning){ %>
+            <div class="col-sm-6">
+                <div class="vocabulary-item">
+                    <div class="info">
+                        <% if(selfLearning.bookMaster != null && selfLearning.bookMaster != undefined){ %>
+                        <h3><a><%= selfLearning.bookMaster.name %></a></h3>
+                        <% var bookMasterId = selfLearning.bookMaster.id %>
+                        <input type="hidden" value="<%= bookMasterId %>" class="bookMaterIdClass"/>
+                        <input type="hidden" value="<%= selfLearning.startDate %>" id="startDate<%= bookMasterId %>"/>
+                        <input type="hidden" value="<%= selfLearning.finishDate %>" id="finishDate<%= bookMasterId %>"/>
+                        <input type="hidden" value="<%= selfLearning.id %>" id="learningId<%= bookMasterId %>"/>
+                        <% } else{ %>
+                        <h3><a>Book name is NONE</a></h3>
+                        <% } %>
+                        <!--Show miss following lesson-->
+                        <p>Till now you have miss following lesson</p>
 
-                            <!--Show learn history-->
-                            <%var showNumber =0;%>
-                            <div class="row info-learning">
-                                <%if(selfLearning.userLearnHistories!=undefined && selfLearning.userLearnHistories.length>0){%>
-                                <%selfLearning.userLearnHistories.forEach(function(userLearn){%>
-                                <%if(showNumber>=4){%>
-                                  <div class="col-sm-9" style="display: none">
-                                    <!--<span class="label label-primary"><%=userLearn.lesson%></span>-->
-                                    <p><span class="glyphicon glyphicon-thumbs-up"></span> You have done <%=userLearn.subLesson%> on <%=userLearn.lesson%></p>
-                                  </div>
-                                  <div class="col-sm-3" style="display: none">
-                                    <a class="join-learn btn label-danger" href="/japtool/BookMaster/practice/?id=<%=bookMasterId%>&learnID=<%=selfLearning.id%>">Continue</a>
-                                  </div>
-                                <%}else{ showNumber++;%>
-                                    <div class="col-sm-9" style="display: block">
-                                        <!--<span class="label label-primary"><%=userLearn.lesson%></span>-->
-                                        <p><span class="glyphicon glyphicon-thumbs-up"></span> You have done <%=userLearn.subLesson%> on <%=userLearn.lesson%></p>
-                                    </div>
-                                    <div class="col-sm-3" style="display: block">
-                                        <a class="join-learn btn label-danger" href="/japtool/BookMaster/practice/?id=<%=bookMasterId%>&learnID=<%=selfLearning.id%>">Continue</a>
-                                    </div>
-                                <%}%>
-                                <%});%> <!--End for-->
-                                <%} else {%>
-                                <h5>No learn history</h5>
-                                <%}%> <!--End if-->
+                        <div id="<%= bookMasterId %>"></div>
+                        <!--Ended Show miss following lesson-->
+
+                        <!--Show learn history-->
+                        <% var showNumber = 0; %>
+                        <div class="row info-learning">
+                            <% if(selfLearning.userLearnHistories != undefined && selfLearning.userLearnHistories.length > 0){ %>
+                            <% selfLearning.userLearnHistories.forEach(function(userLearn){ %>
+                            <% if(showNumber >= 4){ %>
+                            <div class="col-sm-9" style="display: none">
+                                <!--<span class="label label-primary"><%= userLearn.lesson %></span>-->
+                                <p><span class="glyphicon glyphicon-thumbs-up"></span> You have
+                                    done <%= userLearn.subLesson %> on <%= userLearn.lesson %></p>
                             </div>
-                            <!--Ended Show learn history-->
-                            <p class="text-center desc-home"><i><a>View more all</a></i></p>
+                            <div class="col-sm-3" style="display: none">
+                                <a class="join-learn btn label-danger"
+                                   href="/japtool/BookMaster/practice/?id=<%= bookMasterId %>&learnID=<%= selfLearning.id %>">Continue</a>
+                            </div>
+                            <% }else{ showNumber++; %>
+                            <div class="col-sm-9" style="display: block">
+                                <!--<span class="label label-primary"><%= userLearn.lesson %></span>-->
+                                <p><span class="glyphicon glyphicon-thumbs-up"></span> You have
+                                    done <%= userLearn.subLesson %> on <%= userLearn.lesson %></p>
+                            </div>
+                            <div class="col-sm-3" style="display: block">
+                                <a class="join-learn btn label-danger"
+                                   href="/japtool/BookMaster/practice/?id=<%= bookMasterId %>&learnID=<%= selfLearning.id %>">Continue</a>
+                            </div>
+                            <% } %>
+                            <% }); %>
+                            <!--End for-->
+                            <% } else { %>
+                            <h5>No learn history</h5>
+                            <% } %>
+                            <!--End if-->
                         </div>
+                        <!--Ended Show learn history-->
+                        <p class="text-center desc-home"><i><a>View more all</a></i></p>
                     </div>
                 </div>
-              <%});%> <!--End for-->
-            <%} else {%>
+            </div>
+            <% }); %>
+            <!--End for-->
+            <% } else { %>
             <div><h1>No Content</h1></div>
-            <%}%> <!--End if-->
+            <% } %>
+            <!--End if-->
         </div>
     </div>
 </div>
