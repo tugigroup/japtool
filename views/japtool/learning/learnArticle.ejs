@@ -156,11 +156,11 @@
 <div class="container">
     <div class="col-sm-12" id="div-result">
         <div class="col-sm-12 contain-check-btn">
-            <button type="button" class="btn btn-submit-testing" data-toggle="modal" data-target="#resultModal"
+            <button type="button" class="btn btn-danger btn-submit-testing" data-toggle="modal" data-target="#resultModal"
                     id="btnCheckRs">Submit Testing
             </button>
-            <button type="button" class="btn btn-submit-check" id="btnCheckQuickly">check Quickly</button>
-            <button type="button" class="btn btn-refresh-rs-question" id="btnRefresh">Refresh this</button>
+            <button type="button" class="btn btn-success btn-submit-check" id="btnCheckQuickly">check Quickly</button>
+            <button type="button" class="btn btn-warning btn-refresh-rs-question" id="btnRefresh">Refresh this</button>
         </div>
         <!-- Modal -->
         <div id="resultModal" class="modal fade" role="dialog">
@@ -194,13 +194,16 @@
         $("#do-test-articles").steps({
             headerTag: "h2",
             bodyTag: "section",
-            transitionEffect: "slideLeft"
+            transitionEffect: "slideLeft",
+
         });
 
         $(".unescape").each(function () {
             $(this).html($(this).text());
         })
 
+        $(".steps").addClass('mCustomScrollbar');
+        $(".steps").attr("data-mcs-theme","dark");
     });
 
     // module test all article

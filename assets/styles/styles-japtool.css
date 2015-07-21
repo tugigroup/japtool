@@ -1390,27 +1390,12 @@ ul.timeline li .timeline-panel:after {
 /*testing*/
 .btn-submit-testing {
     margin-top: -4%;
-    border-color: rgb(232, 206, 194);
-    border-radius: 0px;
-    padding: 1%;
-    background-color: rgb(213, 77, 73);
-    color: rgb(255, 255, 255);
 }
 .btn-submit-check{
     margin-top: -4%;
-    border-color: rgb(232, 206, 194);
-    border-radius: 0px;
-    padding: 1%;
-    background-color: rgb(57, 157, 69);
-    color: rgb(255, 255, 255);
 }
 .btn-refresh-rs-question{
     margin-top: -4%;
-    border-color: rgb(232, 206, 194);
-    border-radius: 0px;
-    padding: 1%;
-    background-color: rgb(243, 184, 30);
-    color: rgb(255, 255, 255);
 }
 .choose-modul-learn-article{
     margin-top: 10%;
@@ -1537,8 +1522,8 @@ ul.timeline li .timeline-panel:after {
 }
 
 .wizard .steps .notdisabled a, .wizard .steps .notdisabled a:hover, .wizard .steps .notdisabled a:active {
-    background: #eee;
-    color: #aaa;
+    background: #D9D9D9;
+    color: #000;
     cursor: pointer;
 }
 
@@ -1565,7 +1550,6 @@ ul.timeline li .timeline-panel:after {
 }
 
 .wizard .content {
-    background: #eee;
     display: block;
     margin: 0.5em;
     min-height: 35em;
