@@ -219,6 +219,7 @@
         $("#btnCheckQuickly").show();
         $("#btnRefresh").show();
         $("#btnCheckRs").hide();
+        $('#btnRefresh').prop('disabled',true);
     });
 
 
@@ -232,6 +233,8 @@
         $('.displayResult-'+articleIDCurrent).empty();
         $('.isemptyQ-'+articleIDCurrent).empty();
         $('.rd-'+articleIDCurrent).prop('checked', false);
+        $('.rd-'+articleIDCurrent).attr('disabled',false);
+        $('#btnRefresh').prop('disabled',true);
     });
 
     var dataUserAns = [];
@@ -288,6 +291,10 @@
                 $("#" + rdPositionTrue + key + "rd").html('<i class="fa fa-check text-success fa-2x"></i>');
             }
         }
+        // disable radio button
+        $('.rd-'+articleIDCurrent).attr('disabled',true);
+        //disable button refresh
+        $('#btnRefresh').prop('disabled',false);
     });
     // module test all article
     $("#btnCheckRs").on('click', function () {
