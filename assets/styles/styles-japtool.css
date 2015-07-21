@@ -93,8 +93,8 @@ input[type=submit]:hover {
 }
 
 .model-show-boook {
-    margin-left: -14%;
-    margin-right: -14%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .library-page-line {
@@ -642,11 +642,6 @@ a:hover {
     padding-right: 10px;
 }
 
-.showBook {
-    max-height: 300px !important;
-    overflow-y: hidden;
-    overflow-x: hidden;
-}
 
 .read-more-library {
     font-size: 15px;
@@ -1249,6 +1244,10 @@ ul.timeline li .timeline-panel:after {
     width: 209px;
 }
 
+.body-manager-learning .choose-book-pre {
+    overflow-x: hidden;
+}
+
 .body-manager-learning .showLearing {
     overflow-x: hidden;
     overflow-y: hidden;
@@ -1366,8 +1365,8 @@ ul.timeline li .timeline-panel:after {
 
 /*css for test article*/
 .hr-rs-point-mark {
-    margin-right: 36%;
-    margin-left: -1%;
+    margin-right: 26%;
+    margin-left: 26%;
     border-top: 1px solid #E6C776;
 }
 
@@ -1403,6 +1402,14 @@ ul.timeline li .timeline-panel:after {
     border-radius: 0px;
     padding: 1%;
     background-color: rgb(57, 157, 69);
+    color: rgb(255, 255, 255);
+}
+.btn-refresh-rs-question{
+    margin-top: -4%;
+    border-color: rgb(232, 206, 194);
+    border-radius: 0px;
+    padding: 1%;
+    background-color: rgb(243, 184, 30);
     color: rgb(255, 255, 255);
 }
 .choose-modul-learn-article{

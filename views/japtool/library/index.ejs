@@ -83,15 +83,15 @@
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <a href="#">
+                                    <a>
                                         <img class="library-detail-img"
 
-                                            <% if (book.image) { %>
+                                                <% if (book.image) { %>
                                              src="/media/image/<%= book.image %>"
-                                            <% } else { %>
+                                                <% } else { %>
                                              src="/images/book_default_cover.png"
-                                        <% } %>
-
+                                                <% } %>
+                                                />
                                     </a>
                                 </div>
                                 <div class="col-sm-9">
@@ -245,9 +245,9 @@
                 <script>
                     function learn(module, condition, id) {
                         var strCondition = JSON.stringify(condition);
-                        if(module == 'test'){
+                        if (module == 'test') {
                             $('#' + id).load('/japtool/' + module + '/previewTest/?condition=' + strCondition);
-                        }else{
+                        } else {
                             $('#' + id).load('/japtool/' + module + '/list/?condition=' + strCondition);
                         }
                     }
