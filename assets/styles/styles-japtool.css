@@ -535,8 +535,8 @@ label.valid, p.valid {
 /*Vocabulary*/
 
 .slider-nav h3{
-    background: rgb(19, 177, 146);
-    padding: 10px;
+    background: #aaa;
+    padding: 15px;
     color: #fff;
     font-size: 18px;
     margin: 0;
@@ -826,7 +826,16 @@ a:hover {
 .change-learning .change-learning-lesson-item {
     color: #fff;
 }
-
+#add-book-detail{
+    font-size: 25px;
+    font-weight: 300;
+    background-color: #fff;
+    width: 100%;
+    display: block;
+    margin: 0;
+    padding: 11px;
+    border-bottom: 1px solid #D2D6DE;
+}
 /** timeline box structure **/
 .timeline {
     list-style: none;
