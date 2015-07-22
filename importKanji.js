@@ -1,8 +1,8 @@
 var fs = require('fs');
 var async = require('async');
+var Grid = require('gridfs-stream');
 var parse = require('csv-parse');
 var parser = parse({delimiter : ','});
-
 var mongoose = require('mongoose');
 var config = require('./config.json');
 
@@ -15,6 +15,7 @@ var kanjiSchema = mongoose.Schema({
 	kunyomi:   		String,
 	onyomi:   		String,
 	description:   	String,
+	image:   		String,
 	level:   		String,
 	sort:   		Number,
 	tag:   			String,
@@ -31,6 +32,12 @@ var exampleSchema = mongoose.Schema({
 
 var exampleColl = mongoose.model('example', exampleSchema);
 
+var imageSchema = mongoose.Schema({
+    img: { data: Buffer, contentType: String }
+},{ collection: 'media', versionKey: false  });
+
+var imageColl = mongoose.model('media', imageSchema);
+
 parse(data, {delimiter : ',', comment: '#'}, function(err, kanjis){
 
 	if (err) {
@@ -45,7 +52,7 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, kanjis){
 	}
 
 	var header = kanjis[0];
-	if (header.length < 10 ){
+	if (header.length < 11 ){
 		// header[0] != 'item' ||
 		// header[1] != 'hanviet' ||
 		// header[2] != 'kunyomi' ||
@@ -61,33 +68,102 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, kanjis){
 	}
 
     var example_array = [];
+    var kanjis_array = [];
+    var imageInsertCount = 0;
     var kanjiInsertCount = 0;
 	var exampleInsertCount = 0;
 	// connect to mongodb
 	mongoose.connect('mongodb://' + config.dbhost + '/' + config.database);
+	var conn = mongoose.connection;
 	console.log('START: IMPORTING DATA...');
 	console.log('========================');
 	async.series([
 		function(callback){
-			//console.log(kanji_array[0]);
+			var insertCount = 0;
+			
+			//console.log(kanjis[0]);
 			kanjis.forEach(function(item) {
+				var fileId = new mongoose.Types.ObjectId();
+				var filename = item[5] + '.gif' ;
+				var imgPath = config.kanji_image_folder + filename;
+				if(fs.existsSync(imgPath)){
+					conn.once('open', function () {
+					    var gfs = Grid(conn.db, mongoose.mongo);
+					    // streaming to gridfs
+					    //filename to store in mongodb
+					    var writestream = gfs.createWriteStream({
+					    	_id: fileId,
+					        filename: filename,
+					        mode: 'w',
+					        content_type: 'image/gif',
+					        root: 'media',
+					        metadata:{
+					        	fd:fileId
+					        }
+					    });
+					    fs.createReadStream(imgPath).pipe(writestream);
+					 
+					    writestream.on('close', function (file) {
+					        // do something with `file`
+					        kanjis_array.push({
+				        		item:  			item[0],
+								hanviet: 		item[1],
+								kunyomi: 		item[2],
+								onyomi:   		item[3],
+								description:   	item[4],
+								image:   		file._id,
+								examples:       item[6],
+								level:   		item[7],
+								sort:   		item[8],
+								tag:   			item[9],
+								category:   	item[10],
+				        	});
+				        	imageInsertCount ++;
+				        	insertCount++;
+				        	if(insertCount == kanjis.length){
+				        		callback(null, imageInsertCount);
+				        	}
+					    });
+					});
+				}else {
+					console.log('Not Found file');
+					insertCount++;
+					kanjis_array.push({
+				        item:  			item[0],
+						hanviet: 		item[1],
+						kunyomi: 		item[2],
+						onyomi:   		item[3],
+						description:   	item[4],
+						examples:       item[6],
+						level:   		item[7],
+						sort:   		item[8],
+						tag:   			item[9],
+						category:   	item[10],
+				    });
+				}
+			});
+	    },
+		function(callback){
+			//console.log(kanji_array[0]);
+			kanjis_array.forEach(function(kanji) {
 				var insertedKanji = new kanjiColl({
-					item:  			item[0],
-					hanviet: 		item[1],
-					kunyomi: 		item[2],
-					onyomi:   		item[3],
-					description:   	item[4],
-					level:   		item[6],
-					sort:   		item[7],
-					tag:   			item[8],
-					category:   	item[9]
+					item:  			kanji.item,
+					hanviet: 		kanji.hanviet,
+					kunyomi: 		kanji.kunyomi,
+					onyomi:   		kanji.onyomi,
+					description:   	kanji.description,
+					image:   		kanji.image,
+					level:   		kanji.level,
+					sort:   		kanji.sort,
+					tag:   			kanji.tag,
+					category:   	kanji.category
 				});
 
 				insertedKanji.save(function (err,data) {
 			        if(err) {
 			            callback(err);
 			        }else {
-			        	example_array.push({id: data._id, exampleStr: item[5]});
+			        	example_array.push({id: data._id, exampleStr: kanji.examples});
 			        	kanjiInsertCount ++;
 			        	if(kanjiInsertCount == kanjis.length){
 			        		callback(null, kanjiInsertCount);
@@ -138,8 +214,9 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, kanjis){
 		if(err) {
  			console.log(err);
 		}else {
-	    	console.log('kanji collection: ' + results[0].toString() + ' records was inserted.');
-			console.log('example collection: ' + results[1].toString() + ' records was inserted.');
+	    	console.log('kanji collection: ' + results[1].toString() + ' records was inserted.');
+	    	console.log('media collection: ' + results[0].toString() + ' records was inserted.');
+			console.log('example collection: ' + results[2].toString() + ' records was inserted.');
 			console.log('========================');
 			console.log('END: IMPORTED DATA');		
 		}

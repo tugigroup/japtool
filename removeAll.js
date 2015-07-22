@@ -9,6 +9,36 @@ console.log('START: REMOVING DOCUMENTS...');
 console.log('========================');	
 async.series([
 	function(callback){
+		// media.chunks collection
+		var mediaSchema = mongoose.Schema({
+			},{ collection: 'media.chunks', versionKey: false });
+
+		var media = mongoose.model('media.chunks', mediaSchema);
+
+		media.remove({}, function (err) {
+			if (err) {
+				callback(err)
+			}else {
+				callback(null,'media.chunks was removed all documents.')
+			}
+		});
+	},
+	function(callback){
+		// media.files collection
+		var mediaSchema = mongoose.Schema({
+			},{ collection: 'media.files', versionKey: false });
+
+		var media = mongoose.model('media.files', mediaSchema);
+
+		media.remove({}, function (err) {
+			if (err) {
+				callback(err)
+			}else {
+				callback(null,'media.files was removed all documents.')
+			}
+		});
+	},
+	function(callback){
 		// example collection
 		var exampleSchema = mongoose.Schema({
 			},{ collection: 'example', versionKey: false });
@@ -144,7 +174,7 @@ async.series([
 		});
 	},
 	function(callback){
-		// survey collection
+		// userlearnhistory collection
 		var surveySchema = mongoose.Schema({
 			},{ collection: 'userlearnhistory', versionKey: false });
 
@@ -159,7 +189,7 @@ async.series([
 		});
 	},
 	function(callback){
-		// survey collection
+		// selflearning collection
 		var surveySchema = mongoose.Schema({
 			},{ collection: 'selflearning', versionKey: false });
 
@@ -190,6 +220,8 @@ async.series([
 			console.log(results[8].toString());
 			console.log(results[9].toString());
 			console.log(results[10].toString());
+			console.log(results[11].toString());
+			console.log(results[12].toString());
 			console.log('========================');
 			console.log('END: REMOVED DOCUMENTS');		
 		}
