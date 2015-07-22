@@ -1,0 +1,81 @@
+<p>Test of webkitSpeechRecognition.</p>
+
+<textarea id="question"></textarea>
+
+<div id="status">---</div>
+
+<h1>Results.</h1>
+<textarea id="result"></textarea>
+<div id="check">check</div>
+
+<input id="btn-start" type="button" value="start" onclick="start();"/>
+
+<script>
+  var recognition = new webkitSpeechRecognition();
+
+  //recognition.lang = "vi";
+  recognition.lang = "ja";
+  recognition.maxAlternatives = 5;
+  recognition.continuous = true;
+  recognition.interimResults = true;
+
+  function addMessage(msg) {
+    var question = $("#question").val();
+    if (msg == question){
+        $("#check").html("OK");
+        stop();
+    } else {
+        $("#check").html("NG");
+    }
+    $("#result").val(msg);
+  }
+
+  function stop() {
+    $('#status').html("stop");
+    recognition.stop();
+    $('#btn-start').removeClass('btn-danger');
+
+  }
+
+  function start() {
+    $('#status').html("start");
+    $('#btn-start').addClass('btn-danger');
+    recognition.start();
+  }
+
+
+  recognition.onsoundstart = function () {
+    $('#status').html("dang xac nhan");
+  };
+
+  recognition.onnomatch = function () {
+    $('#status').html("lai lan nua");
+  };
+
+  recognition.onerror = function () {
+    $('#status').html("loi !!!!!");
+  };
+
+  recognition.onsoundend = function () {
+    $('#status').html("dang dung lai");
+  };
+  recognition.onend = function () {
+    $('#status').html("khoi dong lai");
+    stop();
+  };
+
+  recognition.onresult = function (event) {
+    var results = event.results;
+    for (var i = event.resultIndex; i < results.length; i++) {
+      var text = $.trim(results[i][0].transcript);
+      if (results[i].isFinal) {
+        addMessage(text);
+        $('#status').html("---");
+      } else {
+        $('#status').html(text);
+        //addMessage(text);
+        continue;
+      }
+    }
+  };
+</script>

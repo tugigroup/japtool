@@ -1,134 +1,138 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Home</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <link type="text/css" rel="stylesheet" href="/styles/bootstrap.min.css">
-    <link type="text/css" rel="stylesheet" href="/styles/bootstrap-social.css">
-    <link type="text/css" rel="stylesheet" href="/styles/font-awesome.css">
-    <link type="text/css" rel="stylesheet" href="/styles/font-roboto.css">
-    <link type="text/css" rel="stylesheet" href="/styles/menu.css">
-    <link type="text/css" rel="stylesheet" href="/styles/jquery.mCustomScrollbar.css">
-    <link type="text/css" rel="stylesheet" href="/styles/styles-japtool.css">
+  <link type="text/css" rel="stylesheet" href="/styles/bootstrap.min.css">
+  <link type="text/css" rel="stylesheet" href="/styles/bootstrap-social.css">
+  <link type="text/css" rel="stylesheet" href="/styles/font-awesome.css">
+  <link type="text/css" rel="stylesheet" href="/styles/font-roboto.css">
+  <link type="text/css" rel="stylesheet" href="/styles/menu.css">
+  <link type="text/css" rel="stylesheet" href="/styles/menu-learning.css">
+  <link type="text/css" rel="stylesheet" href="/styles/jquery.mCustomScrollbar.css">
+  <link type="text/css" rel="stylesheet" href="/styles/slick.css">
+  <link type="text/css" rel="stylesheet" href="/styles/slick-theme.css">
+  <link type="text/css" rel="stylesheet" href="/styles/styles-japtool.css">
 </head>
 <body>
-    <div class="header">
-        <div class="header-top">
-            <div class="container">
-                <div class="row">
-                    <div class="account-right col-sm-7 col-sm-offset-5">
-                        <% if(session.authenticated){ %>
-                        <span>Welcome <a id="userIdInSession" userId="<%= session.User.id %>"
-                                    href="/japtool/user/show/<%= session.User.id %>"><%= session.User.username %></a></span><a
-                                href="/japtool/auth/destroy">Sign Out</a>
-                        <% } %>
-                        <% if (!session.authenticated) { %>
-                        <a href="/japtool/auth">Login</a>
-                        <a href="/japtool/user/new">Register</a>
-                        <% } %>
-                    </div>
-                </div>
-            </div>
+<div class="header">
+  <div class="header-top">
+    <div class="container">
+      <div class="row">
+        <div class="account-right col-sm-7 col-sm-offset-5">
+          <% if(session.authenticated){ %>
+          <span>Welcome <a id="userIdInSession" userId="<%= session.User.id %>"
+                           href="/japtool/user/show/<%= session.User.id %>"><%= session.User.username %></a></span><a
+            href="/japtool/auth/destroy">Sign Out</a>
+          <% } %>
+          <% if (!session.authenticated) { %>
+          <a href="/japtool/auth">Login</a>
+          <a href="/japtool/user/new">Register</a>
+          <% } %>
         </div>
-        <div class="header-center clearfix">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-3">
-                        <a class="logo"><img src="/images/logo.png"></a>
-                    </div>
-                    <div class="col-md-9">
-                        <div id='cssmenu' class="pull-right">
-                            <ul class="menu-page">
-                                <li><a href='/japtool/learning/home'>Home</a></li>
-                                <li><a href='/japtool/page/about'>About</a></li>
-
-                                <li class='active'><a href='/japtool/BookMaster/getLibrary'>Libary</a>
-                                </li>
-                                <li><a href="/japtool/learning">Learning</a></li>
-                                <li><a href="/japtool/page/guide">Using guide</a></li>
-                                <li><a href='/japtool/page/contact'>Contact</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="stripe_color"></div>
-            <div class="stripe_image"></div>
+      </div>
+    </div>
+  </div>
+  <div class="header-center clearfix">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3">
+          <a class="logo"><img src="/images/logo.png"></a>
         </div>
+        <div class="col-md-9">
+          <div id='cssmenu' class="pull-right">
+            <ul class="menu-page">
+              <li><a href='/japtool/learning/home'>Home</a></li>
+              <li><a href='/japtool/page/about'>About</a></li>
+
+              <li class='active'><a href='/japtool/BookMaster/getLibrary'>Libary</a>
+              </li>
+              <li><a href="/japtool/learning">Learning</a></li>
+              <li><a href="/japtool/page/guide">Using guide</a></li>
+              <li><a href='/japtool/page/contact'>Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <%- body %>
+    <div class="stripe_color"></div>
+    <div class="stripe_image"></div>
+  </div>
+</div>
 
-    <div class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-4">
-                    <div class="logo-footer">
-                        <a><img src="/images/logo.png"/> </a>
+<%- body %>
 
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <a class="btn btn-block btn-sm btn-social btn-facebook">
-                                    <i class="fa fa-facebook"></i> Follow on Facebook
-                                </a>
-                            </div>
-                            <div class="col-sm-6">
-                                <a class="btn btn-block btn-sm btn-social btn-twitter">
-                                    <i class="fa fa-twitter"></i> Follow on Twitter
-                                </a>
-                            </div>
-                        </div>
+<div class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="logo-footer">
+          <a><img src="/images/logo.png"/> </a>
 
-
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <h3>Address</h3>
-                    <ul>
-                        <li><i class="iconentypo-home"></i> 11 Fifth Ave, Loftus - NEW JERSEY, US</li>
-                        <li><i class="iconentypo-phone"></i> Telephone: + 61 (2) 8093 3400</li>
-                        <li><i class="iconentypo-print"></i> Fax: +61 (2) 9542 3599</li>
-                        <li><i class="iconentypo-mail"></i> Email: <a href="#">submissions@domain.com</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-4">
-                    <h3>Quick links</h3>
-                    <ul>
-                        <li><a>Colleges & Schools</a></li>
-                        <li><a>Course Catalog</a></li>
-                        <li><a>Single Course</a></li>
-                        <li><a>Colleges & Schools</a></li>
-                        <li><a>Course Catalog</a></li>
-                        <li><a>Single Course</a></li>
-
-                    </ul>
-                </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <a class="btn btn-block btn-sm btn-social btn-facebook">
+                <i class="fa fa-facebook"></i> Follow on Facebook
+              </a>
             </div>
-        </div>
-    </div>
-    <div class="copyright">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12 text-center">
-                    © 2015 All Rights Reserved. Terms of use and Privacy Policy
-                </div>
+            <div class="col-sm-6">
+              <a class="btn btn-block btn-sm btn-social btn-twitter">
+                <i class="fa fa-twitter"></i> Follow on Twitter
+              </a>
             </div>
+          </div>
+
+
         </div>
+      </div>
+      <div class="col-sm-4">
+        <h3>Address</h3>
+        <ul>
+          <li><i class="iconentypo-home"></i> 11 Fifth Ave, Loftus - NEW JERSEY, US</li>
+          <li><i class="iconentypo-phone"></i> Telephone: + 61 (2) 8093 3400</li>
+          <li><i class="iconentypo-print"></i> Fax: +61 (2) 9542 3599</li>
+          <li><i class="iconentypo-mail"></i> Email: <a href="#">submissions@domain.com</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-4">
+        <h3>Quick links</h3>
+        <ul>
+          <li><a>Colleges & Schools</a></li>
+          <li><a>Course Catalog</a></li>
+          <li><a>Single Course</a></li>
+          <li><a>Colleges & Schools</a></li>
+          <li><a>Course Catalog</a></li>
+          <li><a>Single Course</a></li>
+
+        </ul>
+      </div>
     </div>
-    <script src="/js/dependencies/jquery.js"></script>
-    <script src="/js/dependencies/jquery.twbsPagination.js"></script>
-    <script src="/js/dependencies/bootstrap.min.js"></script>
-    <script src="/js/dependencies/jquery.steps.js"></script>
-    <script src="/js/dependencies/jquery.validate.min.js"></script>
-    <script src="/js/dependencies/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="/js/dependencies/jssor.js"></script>
-    <script src="/js/dependencies/jssor.slider.js"></script>
-    <script src="/js/dependencies/sails.io.js"></script>
-    <script src="/js/menu.js"></script>
-    <script src="/js/customValidate.js"></script>
-    <script src="/js/japtool-common.js"></script>
+  </div>
+</div>
+<div class="copyright">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        © 2015 All Rights Reserved. Terms of use and Privacy Policy
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/js/dependencies/jquery.js"></script>
+<script src="/js/dependencies/jquery.twbsPagination.js"></script>
+<script src="/js/dependencies/bootstrap.min.js"></script>
+<script src="/js/dependencies/jquery.steps.js"></script>
+<script src="/js/dependencies/jquery.validate.min.js"></script>
+<script src="/js/dependencies/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="/js/dependencies/slick.js"></script>
+<script src="/js/dependencies/jquery.flip.js"></script>
+<script src="/js/menu-learning.js"></script>
+<script src="/js/dependencies/sails.io.js"></script>
+<script src="/js/menu.js"></script>
+<script src="/js/customValidate.js"></script>
+<script src="/js/japtool-common.js"></script>
 </body>
 </html>

@@ -82,6 +82,13 @@ module.exports.routes = {
 
 
     // End router by duongtd2
+    //demo speech
+    '/speech':{
+        view:'japtool/demoSpeech/speech',
+        locals: {
+            layout: 'layout/layout-japtool'
+        }
+    },
     /***************************************************************************
      *                                                                          *
      * Custom routes here...                                                    *

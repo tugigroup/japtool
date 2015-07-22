@@ -1,5 +1,6 @@
 <div class="container library-page example">
     <% uniqueType.forEach(function(item, indexLibrary){ %>
+
     <div class="row content library-<%= indexLibrary %>" id="">
         <div class="media">
             <div class="media-body">
@@ -9,11 +10,19 @@
                             <h3><span><%= item %></span>
                             </h3>
                         </div>
+                        <% var num = 0; %>
+                        <% for(var i = 0;i < data.length;i++){ %>
+                        <% if(data[i].type == item){ %>
+                        <% num = num + 1 %>
+                        <% } %>
+                        <% } %>
+                        <% if(num > Constants.maxLibOnPage){ %>
                         <div class="col-sm-2">
                             <div class="join-learn btn label-primary">
                                 <a href="/japtool/BookMaster/getAllLibrary/?type=<%= item %>">View more Library</a>
                             </div>
                         </div>
+                        <% } %>
                     </div>
                     <div class="library-page-line"></div>
                 </div>
@@ -21,9 +30,12 @@
         </div>
         <div class="clearfix"></div>
         <div id="lib-1">
-            <% data.forEach(function(book, index){ %>
+            <% var index = 0;
+            data.forEach(function(book){ %>
             <% if(book.type == item) { %>
-            <% if(index <= 7) { %>
+            <% if(index < Constants.maxLibOnPage) {
+                index++;
+            %>
             <div class="col-sm-4 lib-cell">
                 <div class="row">
                     <div class="media libMaster">
@@ -83,15 +95,15 @@
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <a href="#">
+                                    <a>
                                         <img class="library-detail-img"
 
-                                            <% if (book.image) { %>
+                                                <% if (book.image) { %>
                                              src="/media/image/<%= book.image %>"
-                                            <% } else { %>
+                                                <% } else { %>
                                              src="/images/book_default_cover.png"
-                                        <% } %>
-
+                                                <% } %>
+                                                />
                                     </a>
                                 </div>
                                 <div class="col-sm-9">
@@ -245,9 +257,9 @@
                 <script>
                     function learn(module, condition, id) {
                         var strCondition = JSON.stringify(condition);
-                        if(module == 'test'){
+                        if (module == 'test') {
                             $('#' + id).load('/japtool/' + module + '/previewTest/?condition=' + strCondition);
-                        }else{
+                        } else {
                             $('#' + id).load('/japtool/' + module + '/list/?condition=' + strCondition);
                         }
                     }

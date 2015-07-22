@@ -1,12 +1,77 @@
-<script type="text/javascript">
-  $(document).ready(function () {
-    $("#vocabularyList").steps({
-      headerTag: "h3",
-      bodyTag: "section",
-      transitionEffect: "slide"
-    });
+<script>
+  $('.slider-for').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+//        arrows: true,
+    fade: false,
+    asNavFor: '.slider-nav',
+    draggable:false,
+    prevArrow: '<button type="button" data-role="none" class="btn btn-prevArrow btn-success" aria-label="Previous" tabindex="0" role="button">Previous</button>',
+    nextArrow: '<button type="button" data-role="none" class="btn btn-nextArrow btn-success" aria-label="Next" tabindex="0" role="button">Next</button>'
+
+
+
+  });
+  $('.slider-nav').slick({
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    asNavFor: '.slider-for',
+    dots: false,
+    centerMode: false,
+    focusOnSelect: true
   });
 </script>
+
+<div id="vocabularyList">
+  <div class="slider slider-nav">
+    <% kanjis.forEach( function(kanji, index){ %>
+    <div><h3><%= index %>. <%= kanji.item %></h3></div>
+
+    <% }) %>
+  </div>
+
+  <div class="slider slider-for">
+    <% kanjis.forEach( function(kanji, index){ %>
+    <div class="slider-for-deital clearfix">
+      <h4 class="text-center text-danger"><%= kanji.item %></h4>
+      <p>
+            <span class="text-success">hanviet
+              <i class="fa fa-microphone text-danger" ></i> : </span><%= kanji.hanviet %>
+      </p>
+
+      <p>
+        <span class="text-success">kunyomi <i class="fa fa-microphone text-danger"></i> : </span><%= kanji.kunyomi %>
+      </p>
+
+      <p>
+        <span class="text-success">onyomi <i class="fa fa-microphone text-danger"></i> : </span><%= kanji.onyomi %>
+      </p>
+
+      <p><span class="text-success">Description: </span><%= kanji.description %></p>
+
+      <% if (typeof kanji.examples !== 'undefined' && kanji.examples.length > 0) { %>
+      <p><span class="text-success">Example: </span></p>
+      <ul class="vocabulary-item-example">
+        <% kanji.examples.forEach( function(item){ %>
+        <% if (item.example == 'undefined' || item.example.length == 0){ %>
+        <% }else { %>
+        <li><span class="text-danger"><%= item.example %> : </span><%= item.meaning %></li>
+        <% } %>
+        <% }) %>
+      </ul>
+      <% } %>
+    </div>
+
+    <% }) %>
+  </div>
+
+
+
+</div>
+
+
+
+
 <div id="vocabularyList">
   <% if(kanjis == null || kanjis.length == 0){ %>
   <h5 class="text-center text-danger">Kh�ng t�m th?y d? li?u</h5>
