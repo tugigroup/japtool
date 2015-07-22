@@ -2,7 +2,7 @@
   $('.slider-for').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
-//        arrows: true,
+//  arrows: true,
     fade: false,
     asNavFor: '.slider-nav',
     draggable: false,
@@ -17,44 +17,68 @@
     centerMode: false,
     focusOnSelect: true
   });
+  function show(index) {
+    var exam = '[custom = display-delay-' + index + ']';
+    $(exam).delay(2000).slideDown();
+  }
+  $('.slider-for').on('init reInit afterChange', function (event, slick, currentSlide) {
+    var i = (currentSlide ? currentSlide : 0) + 1;
+    show(i);
+  });
+  function showDetails(item) {
+    $('.' + item).slideDown();
+  }
+  $(".card").flip();
+  $('span').tooltip();
 </script>
-
 <div id="vocabularyList">
+  <div class="pagingInfo"></div>
   <% if(kanjis == null || kanjis.length == 0){ %>
   <h5 class="text-center text-danger">Không tìm thấy dữ liệu</h5>
   <% }else{ %>
   <div class="slider slider-nav">
     <% kanjis.forEach( function(kanji, index){ %>
-    <div><h3><%= index %>. <%= kanji.item %></h3></div>
-
+    <div><h3><%= index + 1 %>. <%= kanji.item %></h3></div>
     <% }) %>
   </div>
   <div class="slider slider-for">
     <% kanjis.forEach( function(kanji, index){ %>
     <div class="slider-for-deital clearfix">
-      <h4 class="text-center text-danger"><%= kanji.item %></h4>
-
-      <p>
+      <div class="card">
+        <div class="front">
+          <h4 class="text-center text-danger" onclick="showDetails('<%= index %>')"><%= kanji.item %></h4>
+        </div>
+        <div class="back">
+          <img class="center-block" src="/images/avatar/a02.png"/>
+        </div>
+      </div>
+      <p class="not-display <%= index %>">
         <span class="text-success">hanviet : </span><%= kanji.hanviet %>
       </p>
-
-      <p>
+      <% if(kanji.kunyomi){ %>
+      <p class="not-display <%= index %>">
         <span class="text-success">kunyomi : </span><%= kanji.kunyomi %>
       </p>
-
-      <p>
+      <% } %>
+      <% if(kanji.onyomi){ %>
+      <p class="not-display <%= index %>">
         <span class="text-success">onyomi : </span><%= kanji.onyomi %>
       </p>
-
+      <% } %>
+      <% if(kanji.description){ %>
       <p><span class="text-success">Description: </span><%= kanji.description %></p>
-
+      <% } %>
       <% if (typeof kanji.examples !== 'undefined' && kanji.examples.length > 0) { %>
-      <p><span class="text-success">Example: </span></p>
-      <ul class="vocabulary-item-example">
-        <% kanji.examples.forEach( function(item){ %>
+      <p custom="display-delay-<%= index + 1 %>"><span class="text-success">Example: </span></p>
+      <ul custom="display-delay-<%= index + 1 %>" class="vocabulary-item-example">
+        <% kanji.examples.forEach( function(item, index){ %>
         <% if (item.example == 'undefined' || item.example.length == 0){ %>
         <% }else { %>
-        <li><span class="text-danger"><%= item.example %> : </span><%= item.meaning %></li>
+        <li>
+          <span data-toggle="tooltip" data-placement="right" title="<%= item.meaning %>" class="text-danger">
+            <%= index + 1 %>. <%= item.example %>
+          </span>
+        </li>
         <% } %>
         <% }) %>
       </ul>
@@ -64,3 +88,8 @@
   </div>
   <% } %>
 </div>
+<script>
+  (function () {
+    $("[custom = 'display-delay-1']").delay(2000).slideDown();
+  })();
+</script>
