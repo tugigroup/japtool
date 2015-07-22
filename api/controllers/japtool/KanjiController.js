@@ -2,6 +2,13 @@
  * Created by TuyenTV1 on 7/10/2015.
  */
 module.exports = {
+  //list: function (req, res) {
+  //  var extractDataCondition = req.param('condition');
+  //  Kanji.selectByLevel({condition: extractDataCondition}, function (err, kanjis) {
+  //    res.render('japtool/kanji/list', {'kanjis': kanjis});
+  //  });
+  //},
+  //Đây thực chất là hàm exercise nhưng vì chưa có link đến đây, nên để tạm là list để test
   list: function (req, res) {
     var extractDataCondition = req.param('condition');
     Kanji.selectByLevel({condition: extractDataCondition}, function (err, kanjis) {
@@ -21,7 +28,7 @@ module.exports = {
         //console.log(item.hanviet, randomArr);
         item.randomKanjis = randomArr;
       });
-      res.render('japtool/kanji/list', {'kanjis': kanjis});
+      res.render('japtool/kanji/exercise', {'kanjis': kanjis});
     });
   },
   _config: {
