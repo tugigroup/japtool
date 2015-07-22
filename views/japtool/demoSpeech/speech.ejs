@@ -1,1 +1,52 @@
-Hello World !!!
+<br/>
+<br/>
+<br/>
+<textarea id="text"></textarea>
+<button onclick="talk()">Talk It!</button>
+<button onclick="listen()">Voice</button>
+<br/>
+<p id="status" style="color: red"></p>
+<script src="/js/platform.js"></script>
+<script src="/js/webspeech.js"></script>
+<br/>
+<br/>
+<br/>
+<script>
+  var lang = "ja_JP";
+  /*var speaker = new RobotSpeaker();
+   var listener = new AudioListener();
+   */
+  var speaker;
+  try {
+    speaker = new RobotSpeaker();
+  }
+  catch (ex) {
+    speaker = null;
+    document.getElementById("status").innerHTML = ex;
+  }
+
+  function talk() {
+    if (speaker) {
+      speaker.speak(lang, document.getElementById("text").value);
+    }
+  }
+
+
+  var listener;
+  try {
+    listener = new AudioListener();
+  }
+  catch (ex) {
+    listener = null;
+    document.getElementById("status").innerHTML = ex;
+  }
+
+  function listen() {
+    if (listener) {
+      listener.listen(lang, function (text) {
+        document.getElementById("text").value = "";
+        document.getElementById("text").value = text;
+      });
+    }
+  }
+</script>
