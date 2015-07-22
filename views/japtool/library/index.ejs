@@ -12,8 +12,8 @@
                         </div>
                         <% var num = 0; %>
                         <% for(var i = 0;i < data.length;i++){ %>
-                        <% if(data[i].type==item){ %>
-                        <% num=num+1 %>
+                        <% if(data[i].type == item){ %>
+                        <% num = num + 1 %>
                         <% } %>
                         <% } %>
                         <% if(num > Constants.maxLibOnPage){ %>
@@ -30,9 +30,12 @@
         </div>
         <div class="clearfix"></div>
         <div id="lib-1">
-            <% data.forEach(function(book, index){ %>
+            <% var index = 0;
+            data.forEach(function(book){ %>
             <% if(book.type == item) { %>
-            <% if(index <= 7) { %>
+            <% if(index < Constants.maxLibOnPage) {
+                index++;
+            %>
             <div class="col-sm-4 lib-cell">
                 <div class="row">
                     <div class="media libMaster">
