@@ -13,127 +13,131 @@
         <div class="container">
             <div class="row" style="height: 200px">
                 <h2 class="text-center">Ban chua co mot learning nao! Tao mot learning tai <u><a
-                                href="/japtool/learning/create">day</a></u> hoac thoat'!!!</h2>
+                                onclick="loadform(2)">day</a></u> hoac thoat'!!!</h2>
             </div>
         </div>
         <% } %>
         <% for(var j = 0;j < uniqueType.length;j++){ %>
-        <div class="row">
-            <div class="col-sm-3">
-                <h2>
-                    <%= uniqueType[j] %>
-                </h2>
+        <div class="row content library-<%= j %>" id="">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h2>
+                        <%= uniqueType[j] %>
+                    </h2>
+                </div>
+                <div class="col-sm-12 clearfix">
+                    <div class="library-page-line"></div>
+                </div>
             </div>
-            <div class="col-sm-12 clearfix">
-                <div class="library-page-line"></div>
-            </div>
-        </div>
-        <% for(var i = 0;i < learnList.length;i++){ %>
-        <% if(learnList[i].bookMaster.type == uniqueType[j]){ %>
-        <div class="row manager-learning-item">
-            <div class="col-sm-4">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <a class="text-primary lb-learn-name"
-                           title="Click to view this library details"
-                           data-toggle="modal" data-target="#lib-<%=i%>"><img class="media-object col-xs-3 libImg"
-
-                                    <% if (learnList[i].bookMaster.image) { %>
-                                                                         src="/media/image/<%= learnList[i].bookMaster.image %>"
-                                    <% } else { %>
-                                                                         src="/images/bookicon.jpg"
-                                    <% } %>
-
-                                                                         title="Click to view this library details"></a>
-                    </div>
-                    <div class="col-lg-8">
-                        <h4 class="media-heading">
-                            <a href="#" class="text-primary lb-learn-name"
+            <% for(var i = 0;i < learnList.length;i++){ %>
+            <% if(learnList[i].bookMaster.type == uniqueType[j]){ %>
+            <div class="row manager-learning-item">
+                <div class="col-sm-4">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <a class="text-primary lb-learn-name"
                                title="Click to view this library details"
-                               data-toggle="modal" data-target="#lib-<%=i%>"><%= learnList[i].bookMaster.name %></a>
-                        </h4>
-                        <ul>
-                            <li>
-                                <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
-                                <%= learnList[i].bookMaster.name %>
+                               data-toggle="modal" data-target="#lib-<%= i %>"><img class="media-object col-xs-3 libImg"
 
-                            </li>
-                            <li>
-                                <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
-                                <%= learnList[i].status %>
-                            </li>
-                            <li>
-                                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-                                <a class="text-danger" data-toggle="modal" data-target="#lib-<%= i %>">Preview</a> -
-                                <a onclick="Learn('<%= learnList[i].id %>')">Go
-                                    to Learn</a>
-                            </li>
-                        </ul>
-                    </div>
+                                        <% if (learnList[i].bookMaster.image) { %>
+                                                                                    src="/media/image/<%= learnList[i].bookMaster.image %>"
+                                        <% } else { %>
+                                                                                    src="/images/bookicon.jpg"
+                                        <% } %>
 
-                    <div class="modal fade" data-backdrop="static" id="lib-<%= i %>">
-                        <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal"
-                                            aria-label="Close"><span
-                                                aria-hidden="true">×</span></button>
-                                    <h4 class="modal-title">Learning Details</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <div class="row">
-                                                <div class="media">
-                                                    <div class="media-left">
+                                                                                    title="Click to view this library details"></a>
+                        </div>
+                        <div class="col-lg-8">
+                            <h4 class="media-heading">
+                                <a href="#" class="text-primary lb-learn-name"
+                                   title="Click to view this library details"
+                                   data-toggle="modal"
+                                   data-target="#lib-<%= i %>"><%= learnList[i].bookMaster.name %></a>
+                            </h4>
+                            <ul>
+                                <li>
+                                    <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+                                    <%= learnList[i].bookMaster.name %>
+
+                                </li>
+                                <li>
+                                    <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+                                    <%= learnList[i].status %>
+                                </li>
+                                <li>
+                                    <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                                    <a class="text-danger" data-toggle="modal" data-target="#lib-<%= i %>">Preview</a> -
+                                    <a onclick="Learn('<%= learnList[i].id %>')">Go
+                                        to Learn</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="modal fade" data-backdrop="static" id="lib-<%= i %>">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close"><span
+                                                    aria-hidden="true">×</span></button>
+                                        <h4 class="modal-title">Learning Details</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="row">
+                                                    <div class="media">
+                                                        <div class="media-left">
                                                             <img class="media-object img-book"
                                                                  src="/images/track.jpg">
-                                                    </div>
-                                                    <div class="media-body">
-                                                        <ul>
-                                                            <h4>Details:</h4>
-                                                            <li>
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <ul>
+                                                                <h4>Details:</h4>
+                                                                <li>
                                                                 <span class="glyphicon glyphicon-play"
                                                                       aria-hidden="true"></span> From
-                                                                : <%= learnList[i].stringStartDate %>
-                                                            </li>
-                                                            <li>
+                                                                    : <%= learnList[i].stringStartDate %>
+                                                                </li>
+                                                                <li>
                                                                 <span class="glyphicon glyphicon-stop"
                                                                       aria-hidden="true"></span> To
-                                                                : <%= learnList[i].stringFinishDate %>
-                                                            </li>
-                                                            <li>
+                                                                    : <%= learnList[i].stringFinishDate %>
+                                                                </li>
+                                                                <li>
                                                                 <span class="glyphicon glyphicon-book"
                                                                       aria-hidden="true"></span>
-                                                                <%= learnList[i].bookMaster.name %>
-                                                            </li>
-                                                            <li>
-                                                                <h4>Description</h4>
-                                                                <%= learnList[i].bookMaster.description %>
-                                                            </li>
-                                                        </ul>
+                                                                    <%= learnList[i].bookMaster.name %>
+                                                                </li>
+                                                                <li>
+                                                                    <h4>Description</h4>
+                                                                    <%= learnList[i].bookMaster.description %>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <a href="#" onclick="deleteLearning()" title="<%= learnList[i].id %>"
-                                       id="deleteLearning" class="btn btn-danger" role="button">Delete</a>
-                                    <button onclick="loadform('<%= learnList[i].id %>')" class="btn btn-success">Edit
-                                    </button>
-                                    <a href="#" class="btn btn-warning" role="button" data-dismiss="modal">Close</a>
+                                    <div class="modal-footer">
+                                        <a href="#" onclick="deleteLearning()" title="<%= learnList[i].id %>"
+                                           id="deleteLearning" class="btn btn-danger" role="button">Delete</a>
+                                        <button onclick="loadform('<%= learnList[i].id %>')" class="btn btn-success">
+                                            Edit
+                                        </button>
+                                        <a href="#" class="btn btn-warning" role="button" data-dismiss="modal">Close</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
             </div>
+            <% } %>
+            <% } %>
         </div>
-        <% } %>
-        <% } %>
         <% } %>
         <form action="/japtool/learning/edit" method="post" id="edit-learning-japtool"
               onsubmit="return validateEditLearning()">
@@ -153,5 +157,28 @@
 
         </div>
     </div>
-
+    <ul id="pagination-demo" class="pagination-sm row text-center pull-right"></ul>
+    <script type="text/javascript">
+        window.onload = function () {
+            $('.content').hide();
+            var itemOnPage = 2;
+            for (var i = 0; i < itemOnPage; i++) {
+                $('.library-' + i).show();
+            }
+            var totalPages =
+            <%= uniqueType.length %>/
+            itemOnPage;
+            $('#pagination-demo').twbsPagination({
+                totalPages: Math.ceil(totalPages),
+                visiblePages: 4,
+                onPageClick: function (event, page) {
+                    var itemShow = itemOnPage * page;
+                    $('.content').hide();
+                    for (var i = itemShow - itemOnPage; i < itemShow; i++) {
+                        $('.library-' + i).show();
+                    }
+                }
+            });
+        };
+    </script>
 </div>

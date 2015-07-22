@@ -4,9 +4,14 @@
     </div>
     <div class="modal-body">
         <div class="content">
+            <% if(msg == 1){ %>
             <div id="mesageBook">
-                <%=msg%>
+                <h4>Chua den ngay hoc</h4>
             </div>
+            <% }else{ %>
+            <h4>'Da qua ngay hoc!!!' Ban can gia han ngay ket thuc de hoc tiep tai <a
+                        onclick="loadform('<%= learning.id %>')">day</a></h4>
+            <% } %>
 
         </div>
     </div>
