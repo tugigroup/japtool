@@ -1,52 +1,81 @@
-<br/>
-<br/>
-<br/>
-<textarea id="text"></textarea>
-<button onclick="talk()">Talk It!</button>
-<button onclick="listen()">Voice</button>
-<br/>
-<p id="status" style="color: red"></p>
-<script src="/js/platform.js"></script>
-<script src="/js/webspeech.js"></script>
-<br/>
-<br/>
-<br/>
+<p>Test of webkitSpeechRecognition.</p>
+
+<textarea id="question"></textarea>
+
+<div id="status">---</div>
+
+<h1>Results.</h1>
+<textarea id="result"></textarea>
+<div id="check">check</div>
+
+<input id="btn-start" type="button" value="start" onclick="start();"/>
+
 <script>
-  var lang = "ja_JP";
-  /*var speaker = new RobotSpeaker();
-   var listener = new AudioListener();
-   */
-  var speaker;
-  try {
-    speaker = new RobotSpeaker();
-  }
-  catch (ex) {
-    speaker = null;
-    document.getElementById("status").innerHTML = ex;
-  }
+  var recognition = new webkitSpeechRecognition();
 
-  function talk() {
-    if (speaker) {
-      speaker.speak(lang, document.getElementById("text").value);
+  //recognition.lang = "vi";
+  recognition.lang = "ja";
+  recognition.maxAlternatives = 5;
+  recognition.continuous = true;
+  recognition.interimResults = true;
+
+  function addMessage(msg) {
+    var question = $("#question").val();
+    if (msg == question){
+        $("#check").html("OK");
+        stop();
+    } else {
+        $("#check").html("NG");
     }
+    $("#result").val(msg);
+  }
+
+  function stop() {
+    $('#status').html("stop");
+    recognition.stop();
+    $('#btn-start').removeClass('btn-danger');
+
+  }
+
+  function start() {
+    $('#status').html("start");
+    $('#btn-start').addClass('btn-danger');
+    recognition.start();
   }
 
 
-  var listener;
-  try {
-    listener = new AudioListener();
-  }
-  catch (ex) {
-    listener = null;
-    document.getElementById("status").innerHTML = ex;
-  }
+  recognition.onsoundstart = function () {
+    $('#status').html("dang xac nhan");
+  };
 
-  function listen() {
-    if (listener) {
-      listener.listen(lang, function (text) {
-        document.getElementById("text").value = "";
-        document.getElementById("text").value = text;
-      });
+  recognition.onnomatch = function () {
+    $('#status').html("lai lan nua");
+  };
+
+  recognition.onerror = function () {
+    $('#status').html("loi !!!!!");
+  };
+
+  recognition.onsoundend = function () {
+    $('#status').html("dang dung lai");
+  };
+  recognition.onend = function () {
+    $('#status').html("khoi dong lai");
+    stop();
+  };
+
+  recognition.onresult = function (event) {
+    var results = event.results;
+    for (var i = event.resultIndex; i < results.length; i++) {
+      var text = $.trim(results[i][0].transcript);
+      if (results[i].isFinal) {
+        addMessage(text);
+        $('#status').html("---");
+      } else {
+        $('#status').html(text);
+        //addMessage(text);
+        continue;
+      }
     }
-  }
+  };
 </script>
