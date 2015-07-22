@@ -121,11 +121,19 @@ function addbook(i) {
     '<b>Level : ' + booklv + '</b></div>');
     $('#show-books').modal('hide');
 }
-function deleteLearning() {
+function deleteLearning(id) {
     var a = confirm("Ban co thuc su muon xoa learning nay k?");
     if (a) {
-        var learningId = $('#deleteLearning').attr('title');
-        window.location.replace('/japtool/Learning/deleteLearning?id=' + learningId);
+        $('#lib-' + id + '').removeClass('fade').modal('hide');
+        $('#editform').load('/japtool/Learning/deleteLearning?id=' + id, function (res, status) {
+            var arr = res.split("/");
+            if (arr[0] == "japtool") {
+                window.location.replace('/' + res);
+            }
+            else {
+            }
+        });
+        $('#formedit').addClass('fade').modal('show');
     }
 }
 function check() {

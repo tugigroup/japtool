@@ -69,17 +69,21 @@ module.exports = {
             }
             else {
                 var now = new Date();
+                var finish = learning.finishDate;
+                finish.setHours(23, 59, 59);
                 if (now < learning.startDate) {
-                    var day = Math.floor(((learning.startDate - now) / 86400000) + 1)
-
-                    var msg = 'Chua den ngay hoc!!! Con ' + day + ' ngay nua!!';
+                    var day = Math.floor(((learning.startDate - now) / 86400000) + 1);
+                    var msg = 1;
                     res.render('japtool/learning/mesage', {
-                        msg: msg
+                        day:day,
+                        msg: msg,
+                        learning: learning
                     });
                 }
-                else if (learning.finishDate < now) {
-                    var msg = 'Hoc xong roi!!!';
+                else if (finish < now) {
+                    var msg = 2;
                     res.render('japtool/learning/mesage', {
+                        learning: learning,
                         msg: msg
                     });
                 }
@@ -107,6 +111,7 @@ module.exports = {
 
                     var msg = 1;
                     res.render('japtool/learning/mesage', {
+                        day:day,
                         msg: msg,
                         learning: learning
                     });
@@ -368,14 +373,31 @@ module.exports = {
     },
     deleteLearning: function (req, res) {
         var id = req.param('id');
-        SelfLearning.destroy({id: id}).exec(function (err, ok) {
+        SelfLearning.findOne({id: id}).exec(function (err, selfLearn) {
             if (err) {
 
             }
             else {
-                res.redirect('japtool/learning/');
+                var now = new Date();
+                if (selfLearn.finishDate < now) {
+                    var msg = '3';
+                    res.render('japtool/learning/mesage', {
+                        msg: msg
+                    });
+                }
+                else {
+                    SelfLearning.destroy({id: id}).exec(function (err, ok) {
+                        if (err) {
+
+                        }
+                        else {
+                            res.send('japtool/learning/');
+                        }
+                    })
+                }
             }
         })
+
     },
     _config: {
         locals: {
