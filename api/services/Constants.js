@@ -8,5 +8,6 @@ module.exports= {
     upFileMaxBytes: 1000000,
     maxSurveyQuestion:5,
     maxLibraRs:10,
+    maxLibOnPage:6
 
 };

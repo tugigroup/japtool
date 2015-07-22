@@ -1,9 +1,12 @@
-<!--<div class="choose-modul-learn-article text-center">-->
-    <!--<h3>Choose One :</h3>-->
-    <!--<button type="button" class="btn btn-danger" id="btnTestAll">Test all article</button>-->
-    <!--<button type="button" class="btn btn-success" id="btnPraticle">Just Praticle</button>-->
-<!--</div>-->
+<div class="choose-modul-learn-article text-center">
+<h4><span class="glyphicon glyphicon-bell"></span> Choose One :</h4>
+<button type="button" class="btn btn-danger" id="btnTestAll">Test all article</button>
+<button type="button" class="btn btn-success" id="btnPraticle">Just Praticle</button>
+</div>
 <div class="container-do-test-article" id="do-test-articles">
+    <div class="col-sm-12 text-center">
+        <div id="div-show-Rs-test-point-1"></div>
+    </div>
     <%
     var lengthQues = 0;
     var questions = [];
@@ -95,34 +98,38 @@
                         } %>
                         <div class="question-div-info" id="<%= question.id %>" ofArticle="<%= article.id %>">
                             <div class="col-sm-6">
-                                <input type="radio" class="<%= question.id %>" name="<%= question.id %>"
+                                <input type="radio" class="<%= question.id %> rd-<%= article.id %>" name="<%= question.id %>"
                                        value="<%= question.option1 %>" id="<%= question.id %>1">
-                                <label class="lb-option-article-test-practice" for="<%= question.id %>1"><%= question.option1 %></label>
-                                <lable id="<%= question.id %>1rd"></lable>
+                                <label class="lb-option-article-test-practice"
+                                       for="<%= question.id %>1"><%= question.option1 %></label>
+                                <lable class="displayResult-<%= article.id %>" id="<%= question.id %>1rd"></lable>
                             </div>
                             <div class="col-sm-6">
-                                <input type="radio" class="<%= question.id %>" name="<%= question.id %>"
+                                <input type="radio" class="<%= question.id %> rd-<%= article.id %>" name="<%= question.id %>"
                                        value="<%= question.option2 %>" id="<%= question.id %>2">
-                                <label class="lb-option-article-test-practice" for="<%= question.id %>2"><%= question.option2 %></label>
-                                <lable  id="<%= question.id %>2rd"></lable>
+                                <label class="lb-option-article-test-practice"
+                                       for="<%= question.id %>2"><%= question.option2 %></label>
+                                <lable class="displayResult-<%= article.id %>" id="<%= question.id %>2rd"></lable>
                             </div>
                             <div class="col-sm-6">
-                                <input type="radio" class="<%= question.id %>" name="<%= question.id %>"
+                                <input type="radio" class="<%= question.id %> rd-<%= article.id %>" name="<%= question.id %>"
                                        value="<%= question.option3 %>" id="<%= question.id %>3">
-                                <label class="lb-option-article-test-practice" for="<%= question.id %>3"><%= question.option3 %></label>
-                                <lable id="<%= question.id %>3rd"></lable>
+                                <label class="lb-option-article-test-practice"
+                                       for="<%= question.id %>3"><%= question.option3 %></label>
+                                <lable class="displayResult-<%= article.id %>" id="<%= question.id %>3rd"></lable>
                             </div>
                             <div class="col-sm-6">
-                                <input type="radio" class="<%= question.id %>" name="<%= question.id %>"
+                                <input type="radio" class="<%= question.id %> rd-<%= article.id %>" name="<%= question.id %>"
                                        value="<%= question.option4 %>" id="<%= question.id %>4">
-                                <label class="lb-option-article-test-practice" for="<%= question.id %>4"><%= question.option4 %></label>
-                                <lable id="<%= question.id %>4rd"></lable>
+                                <label class="lb-option-article-test-practice"
+                                       for="<%= question.id %>4"><%= question.option4 %></label>
+                                <lable class="displayResult-<%= article.id %>" id="<%= question.id %>4rd"></lable>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-offset-1 col-sm-11">
-                            <label class="isemptyQ" id="<%= question.id %>isEmpty"></label>
+                            <div class="row">
+                                <div class="col-sm-offset-1 col-sm-11">
+                                    <label class="isemptyQ-<%= article.id %>" id="<%= question.id %>isEmpty"></label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -134,28 +141,55 @@
     </section>
     <% }) %>
     <%
+    // convert data question and article to base96
     var encodeURIQuestions = encodeURIComponent(JSON.stringify(questions));
     var questionsEncodeBase64 = new Buffer(encodeURIQuestions).toString("base64");
+    var encodeURIArticle = encodeURIComponent(JSON.stringify(data));
+    var articleEncodeBase64 = new Buffer(encodeURIArticle).toString("base64");
     %>
     <input type="text" hidden="hidden" value="<%= lengthQues %>" id="lengthQues"/>
+    <!--get all question in database-->
     <input type="text" hidden="hidden" value="<%= questionsEncodeBase64 %>" id="listQuestions"/>
+    <!--get all article in database-->
+    <input type="text" hidden="hidden" value="<%= articleEncodeBase64 %>" id="listArticle"/>
 </div>
 <div class="container">
     <div class="col-sm-12" id="div-result">
         <div class="col-sm-12 contain-check-btn">
-            <button type="button" class="btn btn-submit-testing" id="btnCheckRs">Submit Testing</button>
-            <button type="button" class="btn btn-submit-check" id="btnCheckQuickly">check Quickly</button>
+            <button type="button" class="btn btn-danger btn-submit-testing" data-toggle="modal" data-target="#resultModal"
+                    id="btnCheckRs">Submit Testing
+            </button>
+            <button type="button" class="btn btn-success btn-submit-check" id="btnCheckQuickly">check Quickly</button>
+            <button type="button" class="btn btn-warning btn-refresh-rs-question" id="btnRefresh">Refresh this</button>
         </div>
-        <div id="div-show-Rs-test-point" class="row">
+        <!-- Modal -->
+        <div id="resultModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
 
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Your result</h4>
+                    </div>
+                    <div class="modal-body" id="div-show-Rs-test-point-2">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
-//         $(".container-do-test-article").hide();
-//         $("#btnCheckRs").hide();
-//         $("#btnCheckQuickly").hide();
+         $("#do-test-articles").hide();
+         $("#btnCheckRs").hide();
+         $("#btnCheckQuickly").hide();
+         $("#btnRefresh").hide();
 
         $("#do-test-articles").steps({
             headerTag: "h2",
@@ -167,21 +201,104 @@
             $(this).html($(this).text());
         })
 
+        $(".steps").addClass('mCustomScrollbar');
+        $(".steps").attr("data-mcs-theme","dark");
     });
+
+    // module test all article
+    $('#btnTestAll').on('click',function(){
+        $(".choose-modul-learn-article").hide(400);
+        $("#do-test-articles").show(400);
+        $("#btnCheckRs").show();
+        $("#btnCheckQuickly").hide();
+        $("#btnRefresh").hide();
+    });
+
+    // when user choose module just practice
+    $('#btnPraticle').on('click',function (){
+        $(".choose-modul-learn-article").hide(400);
+        $("#do-test-articles").show(400);
+        $("#btnCheckQuickly").show();
+        $("#btnRefresh").show();
+        $("#btnCheckRs").hide();
+        $('#btnRefresh').prop('disabled',true);
+    });
+
+
+    // get list article
+    var listArticle = JSON.parse(decodeURIComponent(atob($('#listArticle').val())));
+
+    // when user click refresh button
+    $('#btnRefresh').on('click',function(){
+        var positionAr =getPostionAr();
+        var articleIDCurrent = listArticle[positionAr].id;
+        $('.displayResult-'+articleIDCurrent).empty();
+        $('.isemptyQ-'+articleIDCurrent).empty();
+        $('.rd-'+articleIDCurrent).prop('checked', false);
+        $('.rd-'+articleIDCurrent).attr('disabled',false);
+        $('#btnRefresh').prop('disabled',true);
+    });
+
     var dataUserAns = [];
     var lengthQues = $("#lengthQues").val();
-
+    //module practice
     $("#btnCheckQuickly").on('click', function () {
-        var positionAr = "";
-        $('a[id^="do-test-articles"]').each(function () {
-            var test1 = $(this).parent().attr("aria-selected");
-            if (test1 == "true") {
-                positionAr = $(this).attr("id").slice(-1);
-                return false;
+        var dataUserAnsCur = [];
+        var positionAr = getPostionAr();
+        var questionListCurrent = [];
+        var articleIDCurrent;
+        // get current question
+        questionListCurrent = listArticle[positionAr].question;
+        // get article's ID current
+        articleIDCurrent = listArticle[positionAr].id;
+        // get all of radio buttons
+        $('.question-div-info').each(function () {
+            var idQues = $(this).attr("id");
+            var ofArticle = $(this).attr("ofArticle");
+            var UserOp = $("input[name=" + idQues + "]:checked").val();
+            var positionRd = $("input[name=" + idQues + "]:checked").attr("id");
+            if (ofArticle == articleIDCurrent) {
+                dataUserAnsCur.push({
+                    'UserOp': UserOp,
+                    'idQues': idQues,
+                    'ofArticle': ofArticle,
+                    'positionRd': positionRd
+                });
             }
         });
-
+        // check user's answers
+        for (var j = 0; j < questionListCurrent.length; j++) {
+            if (questionListCurrent[j].key == 1 && questionListCurrent[j].option1 == dataUserAnsCur[j].UserOp) {
+                var rdPosition = dataUserAnsCur[j].positionRd;
+                $("#" + rdPosition + "rd").html('<i class="fa fa-check fa-2x text-success"></i>');
+            } else if (questionListCurrent[j].key == 2 && questionListCurrent[j].option2 == dataUserAnsCur[j].UserOp) {
+                var rdPosition = dataUserAnsCur[j].positionRd;
+                $("#" + rdPosition + "rd").html('<i class="fa fa-check fa-2x text-success"></i>');
+            } else if (questionListCurrent[j].key == 3 && questionListCurrent[j].option3 == dataUserAnsCur[j].UserOp) {
+                var rdPosition = dataUserAnsCur[j].positionRd;
+                $("#" + rdPosition + "rd").html('<i class="fa fa-check fa-2x text-success"></i>');
+            } else if (questionListCurrent[j].key == 4 && questionListCurrent[j].option4 == dataUserAnsCur[j].UserOp) {
+                var rdPosition = dataUserAnsCur[j].positionRd;
+                $("#" + rdPosition + "rd").html('<i class="fa fa-check fa-2x text-success"></i>');
+            } else if (dataUserAnsCur[j].UserOp == undefined) {
+                var rdPositionTrue = questionListCurrent[j].id;
+                var key = questionListCurrent[j].key;
+                $("#" + rdPositionTrue + key + "rd").html('<i class="fa fa-check fa-2x text-success"></i>');
+                $("#" + rdPositionTrue + "isEmpty").html('<span class="text-danger lb-empty-question">You do not choose any option !</span>');
+            } else {
+                var rdPosition = dataUserAnsCur[j].positionRd;
+                $("#" + rdPosition + "rd").html('<i class="fa fa-times text-danger fa-2x"></i>');
+                var rdPositionTrue = questionListCurrent[j].id;
+                var key = questionListCurrent[j].key;
+                $("#" + rdPositionTrue + key + "rd").html('<i class="fa fa-check text-success fa-2x"></i>');
+            }
+        }
+        // disable radio button
+        $('.rd-'+articleIDCurrent).attr('disabled',true);
+        //disable button refresh
+        $('#btnRefresh').prop('disabled',false);
     });
+    // module test all article
     $("#btnCheckRs").on('click', function () {
         // get list questions
         var questions = JSON.parse(decodeURIComponent(atob($('#listQuestions').val())));
@@ -205,7 +322,6 @@
         var countSum = $("#lengthQues").val();
         var numAnswerTrue = 0;
         var dataUserTestResult = [];
-        //for (var i = 0; i < arrArticle.length; i++) {
         for (var j = 0; j < questions.length; j++) {
             //if (questions[j].article == arrArticle[i].arID && questions[j].id == dataUserAns[j].idQues) {
             //if (questions[j].id == dataUserAns[j].idQues) {
@@ -273,9 +389,7 @@
                     result: false
                 });
             }
-            // }
         }
-        //}
         // count point
         var pointUser = (numAnswerTrue * 10) / countSum;
         // get date time
@@ -287,13 +401,19 @@
                 + currentdate.getMinutes() + ":"
                 + currentdate.getSeconds();
         var dateStart = $("#dateStart").val();
-        $("#div-show-Rs-test-point").append("" +
-        "<div class='col-sm-12'>" + "" +
+        $("#div-show-Rs-test-point-1").append("" +
         "<hr class='hr-rs-point-mark'>" + "" +
         "<p><span class='user-point-mark'>Your Mark : </span>" + "<span class='details-mark-rs-user'>" + Math.round(pointUser * 100) / 100 + " / 10</span>" +
+        "<p><span class='user-point-mark'>The exact total : </span>" + "<span class='details-mark-rs-user'>" + numAnswerTrue + "/" + countSum + "</span>" +
         "<p><span class='start-date'>Start Date : </span>" + "<span>" + dateStart + "</span>" +
         "<p><span class='finish-date'>Finish Date : </span>" + "<span>" + finishDate + "</span>" +
-        "</div>" +
+        "<hr class='hr-rs-point-mark'>" + "" +
+        "")
+        $("#div-show-Rs-test-point-2").append("" +
+        "<p><span class='user-point-mark'>Your Mark : </span>" + "<span class='details-mark-rs-user'>" + Math.round(pointUser * 100) / 100 + " / 10</span>" +
+        "<p><span class='user-point-mark'>The exact total : </span>" + "<span class='details-mark-rs-user'>" + numAnswerTrue + "/" + countSum + "</span>" +
+        "<p><span class='start-date'>Start Date : </span>" + "<span>" + dateStart + "</span>" +
+        "<p><span class='finish-date'>Finish Date : </span>" + "<span>" + finishDate + "</span>" +
         "");
         var userIdOnSession = $('#userIdInSession').attr('userId');
         var bookDetail = $('#add-book-detail').attr('name');
@@ -312,5 +432,20 @@
             },
             method: "GET"
         });
+        $('input:radio').attr('disabled',true);
     });
+
+    // function get position article
+    function getPostionAr(){
+        var positionAr;
+        $('a[id^="do-test-articles"]').each(function () {
+            var test = $(this).parent().attr("aria-selected");
+            if (test == "true") {
+                positionAr = $(this).attr("id").slice(-1);
+                return false;
+            }
+        });
+        return positionAr;
+    }
+
 </script>

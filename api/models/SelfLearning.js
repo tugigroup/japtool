@@ -13,6 +13,7 @@ module.exports = {
         },
 
         startDate: {
+            required: true,
             type: 'datetime'
 
         },
@@ -21,7 +22,16 @@ module.exports = {
             type: 'datetime',
             required: true
         },
+        stringStartDate: {
+            type: 'String',
+            required: true
 
+
+        },
+        stringFinishDate: {
+            type: 'String',
+            required: true
+        },
         bookMaster: {
             model: 'BookMaster'
         },
@@ -35,8 +45,8 @@ module.exports = {
         },
 
         userLearnHistories: {
-          collection: 'UserLearnHistory',
-          via: 'selfLearning'
+            collection: 'UserLearnHistory',
+            via: 'selfLearning'
         },
     }
 };

@@ -69,16 +69,15 @@ module.exports = {
             }
             else {
                 var now = new Date();
-                var startDate = new Date(learning.startDate);
-                var endDate = new Date(learning.finishDate);
-                if (now < startDate) {
+                if (now < learning.startDate) {
+                    var day = Math.floor(((learning.startDate - now) / 86400000) + 1)
 
-                    var msg = 'Chua den ngay hoc!!!';
+                    var msg = 'Chua den ngay hoc!!! Con ' + day + ' ngay nua!!';
                     res.render('japtool/learning/mesage', {
                         msg: msg
                     });
                 }
-                else if (endDate < now) {
+                else if (learning.finishDate < now) {
                     var msg = 'Hoc xong roi!!!';
                     res.render('japtool/learning/mesage', {
                         msg: msg
@@ -87,7 +86,6 @@ module.exports = {
                 else {
                     res.send("/japtool/BookMaster/practice/?id=" + learning.bookMaster.id + "&learnID=" + learning.id);
                 }
-
             }
 
         })
@@ -102,16 +100,17 @@ module.exports = {
             }
             else {
                 var now = new Date();
-                var startDate = new Date(learning.startDate);
-                var endDate = new Date(learning.finishDate);
-                if (now < startDate) {
+                var finish=learning.finishDate;
+                finish.setHours(23,59,59);
+                if (now < learning.startDate) {
+                    var day = Math.floor(((learning.startDate - now) / 86400000) + 1)
 
-                    var msg = 'Chua den ngay hoc!!!';
+                    var msg = 'Chua den ngay hoc!!! Con ' + day + ' ngay nua!!';
                     res.render('japtool/learning/mesage', {
                         msg: msg
                     });
                 }
-                else if (endDate < now) {
+                else if (finish < now) {
                     var msg = 'Hoc xong roi!!!';
                     res.render('japtool/learning/mesage', {
                         msg: msg
@@ -125,11 +124,14 @@ module.exports = {
     },
     edit: function (req, res) {
         var id = req.param("id");
+        var format = require('date-format');
+        var stringFinishDate = format.asString('dd-MM-yyyy', new Date(req.param('finishDate')));
         var finishDate = req.param("finishDate");
         var notes = req.param("notes");
         SelfLearning.update({id: id}, {
             notes: notes,
-            finishDate: finishDate
+            finishDate: finishDate,
+            stringFinishDate: stringFinishDate
         }).exec(function (err, ok) {
             if (err) {
 
@@ -146,31 +148,11 @@ module.exports = {
 
             }
             else {
-                var startdate = learning.startDate;
-                var dds = startdate.getDate();
-                if (dds <= 9) {
-                    dds = "0" + dds;
-                }
-                var mms = startdate.getMonth() + 1;
-                if (mms <= 9) {
-                    mms = "0" + mms;
-                }
-                var yyyys = startdate.getFullYear();
-                var startdateString = "" + yyyys + "-" + mms + "-" + dds + "";
-                var finishdate = learning.finishDate;
-                var ddf = finishdate.getDate();
-                if (ddf <= 9) {
-                    ddf = "0" + ddf;
-                }
-                var mmf = finishdate.getMonth() + 1;
-                if (mmf <= 9) {
-                    mmf = "0" + mmf;
-                }
-                var yyyyf = finishdate.getFullYear();
-                var finishdateString = "" + yyyyf + "-" + mmf + "-" + ddf + "";
+                var startdate = learning.stringStartDate.split("-");
+                learning.stringStartDate = "" + startdate[2] + "-" + startdate[1] + "-" + startdate[0] + "";
+                var finishdate = learning.stringFinishDate.split("-");
+                learning.stringFinishDate = "" + finishdate[2] + "-" + finishdate[1] + "-" + finishdate[0] + "";
                 res.render('japtool/learning/edit', {
-                    startDateString: startdateString,
-                    finishdate: finishdateString,
                     learning: learning
                 });
             }
@@ -187,6 +169,9 @@ module.exports = {
             var bookMaster = req.param('bookMaster');
             var startDatepr = req.param('startDate');
             var finishDatepr = req.param('finishDate');
+            var format = require('date-format');
+            var stringStartDate = format.asString('dd-MM-yyyy', new Date(req.param('startDate')));
+            var stringFinishDate = format.asString('dd-MM-yyyy', new Date(req.param('finishDate')));
             if (!lbr) {
 
                 SelfLearning.findOne({
@@ -201,6 +186,8 @@ module.exports = {
                             notes: notes,
                             startDate: startDatepr,
                             finishDate: finishDatepr,
+                            stringStartDate: stringStartDate,
+                            stringFinishDate: stringFinishDate,
                             bookMaster: bookMaster,
                             user: userId
                         }).exec(function (err, selfLearning) {
@@ -246,6 +233,8 @@ module.exports = {
                                 notes: notes,
                                 startDate: startDatepr,
                                 finishDate: finishDatepr,
+                                stringStartDate: stringStartDate,
+                                stringFinishDate: stringFinishDate,
                                 bookMaster: bookMaster,
                                 user: userId
                             }).exec(function (err, selfLearning) {
@@ -283,11 +272,13 @@ module.exports = {
                     if (err) {
 
                     }
-                    if (!learning) {
+                    else {
                         SelfLearning.create({
                             notes: notes,
                             startDate: startDatepr,
                             finishDate: finishDatepr,
+                            stringStartDate: stringStartDate,
+                            stringFinishDate: stringFinishDate,
                             bookMaster: bookMaster,
                             user: userId
                         }).exec(function (err, selfLearning) {
@@ -311,52 +302,7 @@ module.exports = {
                                     res.send('japtool/BookMaster/practice/?id=' + bookMaster);
                                 }
                             })
-
                         });
-                    }
-                    else {
-                        var startDate = learning.startDate;
-                        var finishDate = learning.finishDate;
-                        var now = new Date();
-
-                        if (finishDate > now) {
-                            var create = '<h3>Ban da dang hoc mot learning ve quyen sach nay, ban can xoa learning do de tao 1 learning moi ve no hoac tieptuchoctai <a href = "/japtool/BookMaster/practice/?id=<%= book.id %>" > day < /a></h3 > ';
-                            res.render('japtool/learning/create', {
-                                create: create,
-                                book: learning.bookMaster
-                            });
-                        }
-                        else {
-                            SelfLearning.create({
-                                notes: notes,
-                                startDate: startDatepr,
-                                finishDate: finishDatepr,
-                                bookMaster: bookMaster,
-                                user: userId
-                            }).exec(function (err, selfLearning) {
-                                if (err) {
-                                    return res.json({err: err});
-                                }
-                                if (!selfLearning) {
-                                    return res.json({err: "Error"});
-                                }
-                                BookUseHistory.create({
-                                    userId: userId,
-                                    bookMaster: bookMaster,
-                                    startDate: startDatepr,
-                                    finishDate: finishDatepr,
-                                    selfLearning: selfLearning
-                                }).exec(function (err, bookusehistory) {
-                                    if (err) {
-
-                                    }
-                                    else {
-                                        res.send('japtool/BookMaster/practice/?id=' + bookMaster);
-                                    }
-                                })
-
-                            });
-                        }
                     }
                 })
             }
@@ -394,30 +340,8 @@ module.exports = {
             else {
                 selfLearnings.forEach(function (item, index) {
                     var startDate = item.startDate;
-                    var dds = startDate.getDate();
-                    if (dds <= 9) {
-                        dds = "0" + dds;
-                    }
-                    var mms = startDate.getMonth() + 1;
-                    if (mms <= 9) {
-                        mms = "0" + mms;
-                    }
-                    var yyyys = startDate.getFullYear();
-                    var startdateString = "" + dds + "-" + mms + "-" + yyyys + "";
-                    item.startDate = startdateString;
                     var finishDate = item.finishDate;
-                    var ddf = finishDate.getDate();
-                    if (ddf <= 9) {
-                        ddf = "0" + ddf;
-                    }
-                    var mmf = finishDate.getMonth() + 1;
-                    if (mmf <= 9) {
-                        mmf = "0" + mmf;
-                    }
-                    var yyyyf = finishDate.getFullYear();
-                    var finishdateString = "" + ddf + "-" + mmf + "-" + yyyyf + "";
-                    item.finishDate = finishdateString;
-
+                    finishDate.setHours(23,59,59);
                     var now = new Date();
                     if (startDate < now < finishDate) {
                         item.status = "Started!";
