@@ -1,63 +1,110 @@
-<p>Test of webkitSpeechRecognition.</p>
+<div class="container">
+  <label id="checkBrowser"></label>
+  <br/>
 
-<textarea id="question"></textarea>
+  <h1>Question.</h1>
+  <textarea id="question"></textarea>
+  <br/>
+  <br/>
 
-<div id="status">---</div>
+  <h1>Receiving....</h1>
 
-<h1>Results.</h1>
-<textarea id="result"></textarea>
-<div id="check">check</div>
+  <div id="status">Not Started</div>
 
-<input id="btn-start" type="button" value="start" onclick="start();"/>
+  <br/>
+  <br/>
 
+  <h1>Received.</h1>
+  <textarea id="result"></textarea>
+  <br/>
+  <br/>
+
+  <h1>Result Check.</h1>
+
+  <div id="check">check</div>
+  <br/>
+  <br/>
+  <a id="btn-start" onclick="startVoice();"><i class="fa fa-microphone fa-5x"></i></a>
+</div>
+<br/>
+<br/>
+<br/>
+<script src="/js/dependencies/bowser.min.js"></script>
 <script>
-  var recognition = new webkitSpeechRecognition();
+  function checkBrowser() {
+    var chromeName = "chrome";
+    var browserName = bowser.name.toLowerCase();
+    if (chromeName != browserName) {
+      var msg = "Browser is " + browserName + " not supported! Must using " + chromeName;
+      document.getElementById("checkBrowser").innerHTML = msg;
+      document.getElementById("checkBrowser").className = 'text-danger';
+      return msg;
+    } else {
+      return "OK";
+    }
+  }
 
-  //recognition.lang = "vi";
-  recognition.lang = "ja";
-  recognition.maxAlternatives = 5;
+  var isChrome = checkBrowser();
+
+
+  var recognition = new webkitSpeechRecognition();
+  recognition.lang = "ja-JP";
   recognition.continuous = true;
   recognition.interimResults = true;
 
   function addMessage(msg) {
     var question = $("#question").val();
-    if (msg == question){
-        $("#check").html("OK");
-        stop();
+    if (msg == question) {
+      $("#check").html("OK");
+      stop();
     } else {
-        $("#check").html("NG");
+      $("#check").html("NG");
+      $("#check").addClass("text-danger");
     }
     $("#result").val(msg);
   }
 
   function stop() {
-    $('#status').html("stop");
+    $('#btn-start').val('start');
     recognition.stop();
-    $('#btn-start').removeClass('btn-danger');
+    $('#btn-start').removeClass('text-danger');
 
   }
 
   function start() {
-    $('#status').html("start");
-    $('#btn-start').addClass('btn-danger');
+    $('#btn-start').addClass('text-danger');
     recognition.start();
   }
 
+  function startVoice() {
+    if (isChrome == "OK") {
+      if (!$('#btn-start').hasClass('text-danger')) {
+        start();
+      } else {
+        stop();
+      }
+    } else {
+      alert(isChrome);
+    }
+  }
 
   recognition.onsoundstart = function () {
     $('#status').html("dang xac nhan");
   };
 
   recognition.onnomatch = function () {
+    alert("nomath");
     $('#status').html("lai lan nua");
   };
 
   recognition.onerror = function () {
     $('#status').html("loi !!!!!");
+    stop();
   };
 
   recognition.onsoundend = function () {
     $('#status').html("dang dung lai");
+    stop();
   };
   recognition.onend = function () {
     $('#status').html("khoi dong lai");
@@ -65,16 +112,20 @@
   };
 
   recognition.onresult = function (event) {
+    if (typeof(event.results) == 'undefined') {
+      recognition.onend = null;
+      stop();
+      return;
+    }
     var results = event.results;
+    console.log(results);
     for (var i = event.resultIndex; i < results.length; i++) {
       var text = $.trim(results[i][0].transcript);
       if (results[i].isFinal) {
         addMessage(text);
-        $('#status').html("---");
+        $('#status').html("processing");
       } else {
         $('#status').html(text);
-        //addMessage(text);
-        continue;
       }
     }
   };
