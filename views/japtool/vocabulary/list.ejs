@@ -17,6 +17,30 @@
     centerMode: false,
     focusOnSelect: true
   });
+  //Chơi audio
+  var isPlayAudio = true;
+  //Hiển thị nghĩa và cách đọc
+  var isShowDetail = true;
+  function changeAudioSetting() {
+    if (isPlayAudio) {
+      isPlayAudio = false;
+      $('#audio-setting').removeClass('fa-microphone').addClass('fa-microphone-slash');
+    } else {
+      isPlayAudio = true;
+      $('#audio-setting').removeClass('fa-microphone-slash').addClass('fa-microphone');
+    }
+    console.log('Audio', isPlayAudio);
+  }
+  function changeShowSetting() {
+    if (isShowDetail) {
+      isShowDetail = false;
+      $('#show-setting').removeClass('fa-info').addClass('fa-exclamation');
+    } else {
+      isShowDetail = true;
+      $('#show-setting').removeClass('fa-exclamation').addClass('fa-info');
+    }
+    console.log('Show', isShowDetail);
+  }
   // Google TEXT TO SPEECH
   function text2speech(w, tl, id) {
     var speech = 'select * from data.uri where url="http://translate.google.com/translate_tts?ie=utf-8&tl=' + encodeURIComponent(tl) + "&q=" + encodeURIComponent(w) + '"';
@@ -28,7 +52,10 @@
     });
   }
   function playAudio(id) {
-    $('#' + id)[0].play();
+    console.log('Play audio: ', isPlayAudio);
+    if (isPlayAudio) {
+      $('#' + id)[0].play();
+    }
   }
   //END TEXT2SPEECH
   function show(index) {
@@ -40,13 +67,21 @@
     show(i);
   });
   function showDetails(item) {
-    $('.' + item).slideDown();
+    console.log('Show details: ', isShowDetail);
+    if (isShowDetail) {
+      $('.' + item).slideDown();
+    }
   }
   $(".card").flip();
   $('span').tooltip();
 </script>
 
 <div id="vocabularyList">
+  <div>Setting:
+    <i id='audio-setting' class="fa fa-microphone fa-2x text-danger" onclick="changeAudioSetting();"></i>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <i id='show-setting' class="fa fa-info fa-2x text-danger" onclick="changeShowSetting();"></i>
+  </div>
   <% if(vocabularies == null || vocabularies.length == 0){ %>
   <h5 class="text-center text-danger">Không tìm thấy dữ liệu</h5>
   <% }else{ %>
