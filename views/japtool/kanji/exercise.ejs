@@ -21,7 +21,7 @@
     $('.slider-for').on('init reInit afterChange', function (event, slick, currentSlide) {
         var i = (currentSlide ? currentSlide : 0) + 1;
     });
-    function checkAnswer(hanviet, hanviet2) {
+    function checkAnswer(hanviet, hanviet2,optionID) {
         if (hanviet == hanviet2) {
             $("#audioTrue").trigger('play');
             // set color
@@ -80,7 +80,7 @@
     <h5 class="text-center text-danger">Không tìm thấy dữ liệu</h5>
     <% }else{ %>
     <div class="slider slider-for">
-        <% kanjis.forEach( function(kanji){ %>
+        <% kanjis.forEach( function(kanji ,index){ %>
         <div class="excercise-kanji">
             <div class="col-sm-offset-1 col-sm-10">
                 <i class="fa fa-check-circle-o info-on"></i>
@@ -98,10 +98,10 @@
                             </div>
                         </div>
                         <div class="row">
-                            <% kanji.randomKanjis.forEach( function(hanviet){ %>
+                            <% kanji.randomKanjis.forEach( function(hanviet , indexOption){ %>
                             <div class="col-sm-6">
                                 <div class="panel panel-default text-center panel-choose-hanviet">
-                                    <div class="panel-body" onclick="checkAnswer('<%= hanviet %>','<%= kanji.hanviet %>')">
+                                    <div class="panel-body" onclick="checkAnswer('<%= hanviet %>','<%= kanji.hanviet %>','<%=index%><%=indexOption%>')" id="<%=index%><%=indexOption%>">
                                         <span class="option-exe-hanviet"><%= hanviet %></span>
                                     </div>
                                 </div>
