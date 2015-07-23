@@ -6,6 +6,7 @@
  */
 
 var bcrypt = require('bcryptjs');
+var format = require('date-format');
 module.exports = {
 //This loads the sign-up page new.ejs
     'new': function (req, res) {
@@ -87,7 +88,8 @@ module.exports = {
             if (!user) {
                 return next();
             }
-            res.view({user: user});
+            var createdAt = format.asString('yyyy-MM-dd', new Date(user.createdAt));
+            res.view({user: user, createDate: createdAt});
         });
     },
 

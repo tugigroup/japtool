@@ -1,54 +1,123 @@
 <script>
-  $('.slider-for').slick({
-    slidesToShow: 1,
-    slidesToScroll: 1,
+    $('.slider-for').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
 //  arrows: true,
-    fade: false,
-    asNavFor: '.slider-nav',
-    draggable: false,
-    prevArrow: '<button type="button" data-role="none" class="btn btn-prevArrow btn-success" aria-label="Previous" tabindex="0" role="button">Previous</button>',
-    nextArrow: '<button type="button" data-role="none" class="btn btn-nextArrow btn-success" aria-label="Next" tabindex="0" role="button">Next</button>'
-  });
-  $('.slider-nav').slick({
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    asNavFor: '.slider-for',
-    dots: false,
-    centerMode: false,
-    focusOnSelect: true
-  });
-  $('.slider-for').on('init reInit afterChange', function (event, slick, currentSlide) {
-    var i = (currentSlide ? currentSlide : 0) + 1;
-  });
-  function checkAnswer(hanviet, hanviet2) {
-    if (hanviet == hanviet2) {
-      alert('Bạn đã chọn đúng');
-      //Trễ 2s và next sang câu tiếp theo.
-    }else{
-      alert('Sai rồi');
-    }
-  }
-</script>
-<div id="vocabularyList">
-  <div class="pagingInfo"></div>
-  <% if(kanjis == null || kanjis.length == 0){ %>
-  <h5 class="text-center text-danger">Không tìm thấy dữ liệu</h5>
-  <% }else{ %>
-  <div class="slider slider-nav">
-    <% kanjis.forEach( function(kanji, index){ %>
-    <div><h3><%= index + 1 %>. <%= kanji.item %></h3></div>
-    <% }) %>
-  </div>
-  <div class="slider slider-for">
-    <% kanjis.forEach( function(kanji){ %>
-    <div class="slider-for-deital clearfix">
-      <h4 class="text-center text-danger"><%= kanji.item %></h4>
+        fade: false,
+        asNavFor: '.slider-nav',
+        draggable: true,
+        prevArrow: '<button type="button" data-role="none" class="btn btn-show-list btn-arrow-left" aria-label="Previous" tabindex="0" role="button"><i class="fa fa-chevron-left"></i></button>',
+        nextArrow: '<button type="button" data-role="none" class="btn btn-show-list btn-arrow-right" aria-label="Next" tabindex="0" role="button"><i class="fa fa-chevron-right"></i></button>'
+    });
+    $('.slider-nav').slick({
+        slidesToShow: 6,
+        slidesToScroll: 6,
+        asNavFor: '.slider-for',
+        dots: false,
+        centerMode: false,
+        focusOnSelect: true,
 
-      <% kanji.randomKanjis.forEach( function(hanviet){ %>
-      <p onclick="checkAnswer('<%= hanviet %>','<%= kanji.hanviet %>')"><%= hanviet %></p>
-      <% }) %>
+    });
+    $('.slider-for').on('init reInit afterChange', function (event, slick, currentSlide) {
+        var i = (currentSlide ? currentSlide : 0) + 1;
+    });
+    function checkAnswer(hanviet, hanviet2) {
+        if (hanviet == hanviet2) {
+            $("#audioTrue").trigger('play');
+            // set color
+            var $el = $('#'+optionID),
+                    x = 200,
+                    originalColor = $el.css("background"),
+                    i = 3; //counter
+
+            (function loop() { //recurisve IIFE
+                $el.css("background", "#13B192");
+                setTimeout(function () {
+                    $el.css("background", originalColor);
+                }, x);
+            }());
+            //Trễ 2s và next sang câu tiếp theo.
+        } else {
+            $("#audioFalse").trigger('play');
+            // set color
+            var $el = $('#'+optionID),
+                    x = 200,
+                    originalColor = $el.css("background"),
+                    i = 3; //counter
+
+            (function loop() { //recurisve IIFE
+                $el.css("background", "#E32828");
+                setTimeout(function () {
+                    $el.css("background", originalColor);
+                }, x);
+            }());
+        }
+    }
+    $(document).ready(function(){
+        $('.info-off').hide();
+        $('.info-on').on('click',function(){
+            $('.info-off').show();
+            $('.info-on').hide();
+        });
+        $('.info-off').on('click',function(){
+            $('.info-on').show();
+            $('.info-off').hide();
+        });
+    });
+</script>
+<div class="exe-kanji">
+
+    <!--div audio-->
+    <audio id="audioTrue">
+        <source src="/sound/true.wav" type="audio/wav">
+    </audio>
+    <audio id="audioFalse">
+        <source src="/sound/false.wav" type="audio/wav">
+    </audio>
+    <!--finish div audio-->
+
+    <% if(kanjis == null || kanjis.length == 0){ %>
+    <h5 class="text-center text-danger">Không tìm thấy dữ liệu</h5>
+    <% }else{ %>
+    <div class="slider slider-for">
+        <% kanjis.forEach( function(kanji){ %>
+        <div class="excercise-kanji">
+            <div class="col-sm-offset-1 col-sm-10">
+                <i class="fa fa-check-circle-o info-on"></i>
+                <i class="fa fa-minus-circle info-off"></i>
+                <label class="lable" >On/Off information</label>
+            </div>
+            <div class="col-sm-offset-1 col-sm-10">
+                <div class="panel panel-default panel-kanji-slide">
+                    <div class="panel-body">
+                        <div class="vocabulary text-center">
+                            <div class="card">
+                                <div class="front">
+                                    <h4 class="text-center text-danger"><%= kanji.item %></h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <% kanji.randomKanjis.forEach( function(hanviet){ %>
+                            <div class="col-sm-6">
+                                <div class="panel panel-default text-center panel-choose-hanviet">
+                                    <div class="panel-body" onclick="checkAnswer('<%= hanviet %>','<%= kanji.hanviet %>')">
+                                        <span class="option-exe-hanviet"><%= hanviet %></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <% }) %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% }) %>
     </div>
-    <% }) %>
-  </div>
-  <% } %>
+    <div class="slider slider-nav">
+        <% kanjis.forEach( function(kanji, index){ %>
+        <div><h3><%= index + 1 %>. <%= kanji.item %></h3></div>
+        <% }) %>
+    </div>
+    <% } %>
 </div>
