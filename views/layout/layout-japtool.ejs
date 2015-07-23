@@ -26,8 +26,7 @@
           <span>Welcome <a id="userIdInSession" userId="<%= session.User.id %>"
                            href="/japtool/user/show/<%= session.User.id %>"><%= session.User.username %></a></span><a
             href="/japtool/auth/destroy">Sign Out</a>
-          <% } %>
-          <% if (!session.authenticated) { %>
+          <% } else {%>
           <a href="/japtool/auth">Login</a>
           <a href="/japtool/user/new">Register</a>
           <% } %>
