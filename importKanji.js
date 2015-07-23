@@ -93,12 +93,13 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, kanjis){
 					    //filename to store in mongodb
 					    var writestream = gfs.createWriteStream({
 					    	_id: fileId,
-					        filename: filename,
+					        filename: fileId.toString(),
 					        mode: 'w',
 					        content_type: 'image/gif',
 					        root: 'media',
 					        metadata:{
-					        	fd:fileId.toString()
+					        	fd: fileId.toString(),
+					        	"dirname" : "."
 					        }
 					    });
 					    fs.createReadStream(imgPath).pipe(writestream);
