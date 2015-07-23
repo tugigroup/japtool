@@ -31,7 +31,7 @@
         <div class="clearfix"></div>
         <div id="lib-1">
             <% var index = 0;
-            data.forEach(function(book){ %>
+                    data.forEach(function(book){ %>
             <% if(book.type == item) { %>
             <% if(index < Constants.maxLibOnPage) {
                 index++;
@@ -187,63 +187,68 @@
                                         aria-hidden="true">×</span></button>
                             <h4 class="modal-title">Library - <%= book.name %></h4>
                         </div>
-                        <div class="modal-body">
-                            <div class="row libImg-modal">
-                                <div class="col-sm-3 invite">
-                                    <div class="row">
-                                        <h3>Lesson learning</h3>
-                                    </div>
-                                    <div class="row">
+                        <div class="wrapper">
+                            <div class="modal-body">
+                                <div class="row libImg-modal">
+                                    <div class="col-sm-3 invite">
 
-                                        <div class="sidebar-nav">
-                                            <div class="navbar navbar-default" role="navigation">
-                                                <div class="navbar-header">
-                                                    <button type="button" class="navbar-toggle" data-toggle="collapse"
-                                                            data-target=".sidebar-navbar-collapse">
-                                                        <span class="sr-only">Lesson Learning</span>
-                                                        <span class="icon-bar"></span>
-                                                        <span class="icon-bar"></span>
-                                                        <span class="icon-bar"></span>
-                                                    </button>
-                                                    <span class="visible-xs navbar-brand">Sidebar menu</span>
-                                                </div>
-                                                <div class="navbar-collapse collapse sidebar-navbar-collapse mCustomScrollbar light"
-                                                     data-mcs-theme="minimal-dark">
-                                                    <ul class="nav navbar-nav">
+                                        <header class="main-header">
+                                            <!-- Logo -->
+                                            <a href="" class="logo" data-toggle="offcanvas" role="button">
+                                                <!-- mini logo for sidebar mini 50x50 pixels -->
+                                                        <span class="logo-mini" class="sidebar-toggle"><i
+                                                                    class="fa fa-bars"></i></span>
+                                                <!-- logo for regular state and mobile devices -->
+                                                <span class="logo-lg"><i class="fa fa-bars"></i> Lesson</span>
+                                            </a>
+                                            <!-- Header Navbar: style can be found in header.less -->
+                                        </header>
+
+
+                                        <aside class="main-sidebar">
+                                            <!-- sidebar: style can be found in sidebar.less -->
+                                            <div class="pre-scrollable per-scroll-lib-review">
+                                                <section class="sidebar">
+
+                                                    <!-- Sidebar user panel -->
+                                                    <ul class="sidebar-menu">
                                                         <% arrAllLesson.forEach(function(item){ %>
                                                         <% if(item.idLesson == book.id){ %>
                                                         <% item.arrLesson.forEach(function(uniqueLesson){ %>
-
-                                                        <li class="dropdown">
-                                                            <a href="javascript: void(0)" class="dropdown-toggle"
-                                                               data-toggle="dropdown"><%= uniqueLesson %> <b
-                                                                        class="caret pull-right"></b></a>
+                                                        <li class="treeview">
+                                                            <a href="javascript: void(0)">
+                                                                <i class="fa fa-edit"></i>
+                                                                <span><%= uniqueLesson %></span>
+                                                                <i class="fa fa-angle-left pull-right"></i>
+                                                            </a>
                                                             <% book.bookDetails.forEach(function(bookDetail){ %>
                                                             <% if(uniqueLesson == bookDetail.lesson) { %>
-                                                            <ul class="dropdown-menu">
+                                                            <ul class="treeview-menu">
                                                                 <li><a href='javascript: void(0)'
                                                                        onclick="learn('<%= bookDetail.useModule %>', <%= bookDetail.dataExtractCondition %>, '<%= book.id %>')">- <%= bookDetail.subLesson %></a>
                                                                 </li>
+
                                                             </ul>
                                                             <% } %>
                                                             <% }) %>
                                                         </li>
-
                                                         <% }) %>
                                                         <% } %>
                                                         <% }) %>
                                                     </ul>
-                                                </div>
-                                                <!--/.nav-collapse -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-9 invite">
-                                    <h3 class="text-center"><%= book.name %></h3>
 
-                                    <div class=" container-learn" id="<%= book.id %>"
-                                         style="min-height: 600px"></div>
+                                                </section>
+                                            </div>
+                                            <!-- /.sidebar -->
+                                        </aside>
+
+                                    </div>
+                                    <div class="col-sm-9 invite">
+                                        <h3 class="text-center"><%= book.name %></h3>
+
+                                        <div class=" container-learn" id="<%= book.id %>"
+                                             style="min-height: 600px"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -254,16 +259,7 @@
                         </div>
                     </div>
                 </div>
-                <script>
-                    function learn(module, condition, id) {
-                        var strCondition = JSON.stringify(condition);
-                        if (module == 'test') {
-                            $('#' + id).load('/japtool/' + module + '/previewTest/?condition=' + strCondition);
-                        } else {
-                            $('#' + id).load('/japtool/' + module + '/list/?condition=' + strCondition);
-                        }
-                    }
-                </script>
+
             </div>
             <% } %>
             <% } %>
@@ -282,6 +278,28 @@
     <ul id="pagination-demo" class="pagination-sm row text-center pull-right"></ul>
     <script type="text/javascript">
         window.onload = function () {
+            $('.sub-lesson').click(function () {
+                var bookDetail = $(this).attr('name');
+                $('#add-book-detail').attr('name', bookDetail);
+                var user = '<%= session.User.id %>';
+                var selfLearning = $('#title-learning').attr('name');
+                var startDate = new Date();
+                var finishDate = new Date();
+                $.ajax({
+                    method: "POST",
+                    url: "/japtool/bookDetail/saveHistory",
+                    data: {
+                        user: user,
+                        bookDetail: bookDetail,
+                        selfLearning: selfLearning,
+                        startDate: startDate,
+                        finishDate: finishDate
+                    }
+                })
+                        .done(function (msg) {
+                            console.log(msg);
+                        });
+            });
             $('.content').hide();
             var itemOnPage = 2;
             for (var i = 0; i < itemOnPage; i++) {
@@ -302,5 +320,13 @@
                 }
             });
         };
+        function learn(module, condition, id) {
+            var strCondition = JSON.stringify(condition);
+            if (module == 'test') {
+                $('#' + id).load('/japtool/' + module + '/previewTest/?condition=' + strCondition);
+            } else {
+                $('#' + id).load('/japtool/' + module + '/list/?condition=' + strCondition);
+            }
+        }
     </script>
 </div>
