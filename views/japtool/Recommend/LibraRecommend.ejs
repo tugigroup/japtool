@@ -305,71 +305,60 @@
                                         aria-hidden="true">×</span></button>
                             <h4 class="modal-title">Library - <%= book.name %></h4>
                         </div>
-                        <div class="wrapper">
-                            <div class="modal-body">
-                                <div class="row libImg-modal">
-                                    <div class="col-sm-3 invite">
 
-                                        <header class="main-header">
-                                            <!-- Logo -->
-                                            <a href="" class="logo" data-toggle="offcanvas" role="button">
-                                                <!-- mini logo for sidebar mini 50x50 pixels -->
-                                                        <span class="logo-mini" class="sidebar-toggle"><i
-                                                                    class="fa fa-bars"></i></span>
-                                                <!-- logo for regular state and mobile devices -->
-                                                <span class="logo-lg"><i class="fa fa-bars"></i> Lesson</span>
-                                            </a>
-                                            <!-- Header Navbar: style can be found in header.less -->
-                                        </header>
+                        <div class="modal-body">
+                            <div class="row libImg-modal">
+                                <div class="col-xs-3">
+                                    <div>
+                                        <h1>Lession</h1>
+                                    </div>
+                                    <aside class="">
+                                        <!-- sidebar: style can be found in sidebar.less -->
+                                        <div class="pre-scrollable per-scroll-lib-review">
+                                            <section class="sidebar">
 
+                                                <!-- Sidebar user panel -->
+                                                <ul class="sidebar-menu">
+                                                    <% arrAllLesson.forEach(function(item){ %>
+                                                    <% if(item.idLesson == book.id){ %>
+                                                    <% item.arrLesson.forEach(function(uniqueLesson){ %>
+                                                    <li class="treeview">
+                                                        <a href="javascript: void(0)">
+                                                            <i class="fa fa-edit"></i>
+                                                            <span><%= uniqueLesson %></span>
+                                                            <i class="fa fa-angle-left pull-right"></i>
+                                                        </a>
+                                                        <% book.bookDetails.forEach(function(bookDetail){ %>
+                                                        <% if(uniqueLesson == bookDetail.lesson) { %>
+                                                        <ul class="treeview-menu">
+                                                            <li><a href='javascript: void(0)'
+                                                                   onclick="learn('<%= bookDetail.useModule %>', <%= bookDetail.dataExtractCondition %>, '<%= book.id %>')">- <%= bookDetail.subLesson %></a>
+                                                            </li>
 
-                                        <aside class="main-sidebar">
-                                            <!-- sidebar: style can be found in sidebar.less -->
-                                            <div class="pre-scrollable per-scroll-lib-review">
-                                                <section class="sidebar">
-
-                                                    <!-- Sidebar user panel -->
-                                                    <ul class="sidebar-menu">
-                                                        <% arrAllLesson.forEach(function(item){ %>
-                                                        <% if(item.idLesson == book.id){ %>
-                                                        <% item.arrLesson.forEach(function(uniqueLesson){ %>
-                                                        <li class="treeview">
-                                                            <a href="javascript: void(0)">
-                                                                <i class="fa fa-edit"></i>
-                                                                <span><%= uniqueLesson %></span>
-                                                                <i class="fa fa-angle-left pull-right"></i>
-                                                            </a>
-                                                            <% book.bookDetails.forEach(function(bookDetail){ %>
-                                                            <% if(uniqueLesson == bookDetail.lesson) { %>
-                                                            <ul class="treeview-menu">
-                                                                <li><a href='javascript: void(0)'
-                                                                       onclick="learn('<%= bookDetail.useModule %>', <%= bookDetail.dataExtractCondition %>, '<%= book.id %>')">- <%= bookDetail.subLesson %></a>
-                                                                </li>
-
-                                                            </ul>
-                                                            <% } %>
-                                                            <% }) %>
-                                                        </li>
-                                                        <% }) %>
+                                                        </ul>
                                                         <% } %>
                                                         <% }) %>
-                                                    </ul>
+                                                    </li>
+                                                    <% }) %>
+                                                    <% } %>
+                                                    <% }) %>
+                                                </ul>
 
-                                                </section>
-                                            </div>
-                                            <!-- /.sidebar -->
-                                        </aside>
+                                            </section>
+                                        </div>
+                                        <!-- /.sidebar -->
+                                    </aside>
 
-                                    </div>
-                                    <div class="col-sm-9 invite">
-                                        <h3 class="text-center"><%= book.name %></h3>
+                                </div>
+                                <div class="col-xs-9 ">
+                                    <h3 class="text-center"><%= book.name %></h3>
 
-                                        <div class=" container-learn" id="<%= book.id %>"
-                                             style="min-height: 600px"></div>
-                                    </div>
+                                    <div class=" container-learn" id="<%= book.id %>"
+                                         style="min-height: 600px"></div>
                                 </div>
                             </div>
                         </div>
+
                         <div class="modal-footer">
                             <a onclick="loadformLib('<%= book.id %>')" class="btn btn-success" role="button">Learning
                                 This Library</a>

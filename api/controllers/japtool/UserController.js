@@ -88,7 +88,8 @@ module.exports = {
       if (!user) {
         return next();
       }
-      res.view({user: user});
+      var createDate = format.asString('dd-MM-yyyy', new Date(user.createdAt));
+      res.view({user: user,createDate:createDate});
     });
   },
   //render the edit view edit.ejs
