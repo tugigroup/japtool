@@ -537,7 +537,9 @@ label.valid, p.valid {
 /* reading-practice */
 
 /*Vocabulary*/
-
+.voca-list-sum{
+  margin-top: 7% ;
+}
 .slider-nav h3 {
   background: #aaa;
   padding: 15px;
@@ -1828,6 +1830,35 @@ ul.timeline li .timeline-panel:after {
 }
 .vocabulary-item-example{
   margin-left: 4%;
+}
+.info-on{
+  cursor:pointer;
+  font-size: 29px;
+}
+.info-off{
+  cursor:pointer;
+  font-size: 29px;
+}
+.mic-on{
+  cursor:pointer;
+  font-size: 29px;
+}
+.mic-off{
+  cursor:pointer;
+  font-size: 29px;
+}
+.panel-choose-hanviet{
+  border-radius: 0px;
+  cursor:pointer;
+}
+.option-exe-hanviet{
+  font-weight: 500;
+}
+.exe-kanji{
+  margin-top: 8%;
+}
+.exe-voca{
+  margin-top: 8%;
 }
 /*END KANJI*/
 
