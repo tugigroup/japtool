@@ -3,13 +3,23 @@
 	"Sign Up": "Sign Up",
 	"Sign In": "Sign In",
 	"Sign Out": "Sign Out",
+	"register": "REGISTER",
 	"Home":"Home",
 	"About":"About",
 	"Library":"Library",
 	"Learning":"Learning",
 	"Use Guide":"Use Guide",
 	"Contact":"Contact",
-
-
-
+	"User":"User",
+	"Group":"Group",
+	"Vocabulary":"Vocabulary",
+	"If you haven't account, you can click here":"If you haven't account, you can click here",
+	"or you can login with other accounts follow":"or you can login with other accounts follow",
+	"If you want not to register":"If you want not to register",
+	"Click Here To Take Your View Tour":"Click Here To Take Your View Tour",
+	"more":"more",
+	"more":"more",
+	"more":"more",
+	"more":"more",
+	"more":"more"
 }

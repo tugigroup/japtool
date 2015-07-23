@@ -6,21 +6,16 @@
  */
 
 module.exports = {
-  _config: {
-    locals: {
-      layout: 'layout/layout-japtool'
-    }
-  },
-  //list: function (req, res) {
-  //  var extractDataCondition = req.param('condition');
-  //  //var extractDataCondition = '{"level": "N3", "tag" : {"contains":",tap1,lession5,"}}';
-  //  Vocabulary.selectByLevel({condition: extractDataCondition}, function (err, vocabularies) {
-  //    if (err) return res.send(err.status);
-  //    res.render('japtool/vocabulary/list', {'vocabularies': vocabularies});
-  //  });
-  //},
-  //Đây thực chất là hàm exercise nhưng vì chưa có link đến đây, nên để tạm là list để test
   list: function (req, res) {
+    var extractDataCondition = req.param('condition');
+    //var extractDataCondition = '{"level": "N3", "tag" : {"contains":",tap1,lession5,"}}';
+    Vocabulary.selectByLevel({condition: extractDataCondition}, function (err, vocabularies) {
+      if (err) return res.send(err.status);
+      res.render('japtool/vocabulary/list', {'vocabularies': vocabularies});
+    });
+  },
+  //Đây thực chất là hàm exercise nhưng vì chưa có link đến đây, nên để tạm là list để test
+  exercise: function (req, res) {
     var extractDataCondition = req.param('condition');
     //var extractDataCondition = '{"level": "N3", "tag" : {"contains":",tap1,lession5,"}}';
     Vocabulary.selectByLevel({condition: extractDataCondition}, function (err, vocabularies) {
@@ -41,10 +36,12 @@ module.exports = {
       });
       res.render('japtool/vocabulary/exercise', {'vocabularies': vocabularies});
     });
+  },
+  _config: {
+    locals: {
+      layout: 'layout/layout-japtool'
+    }
   }
-
-
-
   ////index page
   //index: function(red,res) {
   //	return res.view('japtool/vocabulary/index');

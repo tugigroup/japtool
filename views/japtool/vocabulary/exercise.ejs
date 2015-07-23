@@ -2,20 +2,37 @@
   $('.slider-for').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
-//        arrows: true,
+//  arrows: true,
     fade: false,
     asNavFor: '.slider-nav',
-    draggable: false,
-    prevArrow: '<button type="button" data-role="none" class="btn btn-prevArrow btn-primary" aria-label="Previous" tabindex="0" role="button">Previous</button>',
-    nextArrow: '<button type="button" data-role="none" class="btn btn-nextArrow btn-primary" aria-label="Next" tabindex="0" role="button">Next</button>'
+    draggable: true,
+    prevArrow: '<button type="button" data-role="none" class="btn btn-show-list btn-arrow-left" aria-label="Previous" tabindex="0" role="button"><i class="fa fa-chevron-left"></i></button>',
+    nextArrow: '<button type="button" data-role="none" class="btn btn-show-list btn-arrow-right" aria-label="Next" tabindex="0" role="button"><i class="fa fa-chevron-right"></i></button>'
   });
   $('.slider-nav').slick({
-    slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToShow: 6,
+    slidesToScroll: 6,
     asNavFor: '.slider-for',
     dots: false,
     centerMode: false,
     focusOnSelect: true
+  });
+  $('.slider-for').on('init reInit afterChange', function (event, slick, currentSlide) {
+    var i = (currentSlide ? currentSlide : 0) + 1;
+  });
+  var audioconfig = true;
+  $(document).ready(function () {
+    $('.mic-off').hide();
+    $('.mic-on').on('click', function () {
+      $('.mic-off').show();
+      $('.mic-on').hide();
+      audioconfig = false;
+    });
+    $('.mic-off').on('click', function () {
+      $('.mic-on').show();
+      $('.mic-off').hide();
+      audioconfig = true;
+    });
   });
   // Google TEXT TO SPEECH
   function text2speech(w, tl, id) {
@@ -28,41 +45,107 @@
     });
   }
   function playAudio(id) {
-    $('#' + id)[0].play();
+    if (audioconfig) {
+      $('#' + id)[0].play();
+    }
   }
   //END TEXT2SPEECH
   $('.slider-for').on('init reInit afterChange', function (event, slick, currentSlide) {
     var i = (currentSlide ? currentSlide : 0) + 1;
   });
-  function checkAnswer(description, description2) {
+  function checkAnswer(description, description2, optionID) {
     if (description == description2) {
-      alert('Bạn đã chọn đúng');
+      if (audioconfig) {
+        $("#audioTrue").trigger('play');
+      }
+      // set color
+      var $el = $('#' + optionID),
+        x = 200,
+        originalColor = $el.css("background"),
+        i = 3; //counter
+      (function loop() { //recurisve IIFE
+        $el.css("background", "#13B192");
+        setTimeout(function () {
+          $el.css("background", originalColor);
+        }, x);
+      }());
       //Trễ 2s và next sang câu tiếp theo.
     } else {
-      alert('Sai rồi');
+      if (audioconfig) {
+        $("#audioFalse").trigger('play');
+      }
+      // set color
+      var $el = $('#' + optionID),
+        x = 200,
+        originalColor = $el.css("background"),
+        i = 3; //counter
+      (function loop() { //recurisve IIFE
+        $el.css("background", "#E32828");
+        setTimeout(function () {
+          $el.css("background", originalColor);
+        }, x);
+      }());
     }
   }
 </script>
 
-<div id="vocabularyList">
+<div class="exe-voca">
+
+  <!--div audio-->
+  <audio id="audioTrue">
+    <source src="/sound/true.wav" type="audio/wav">
+  </audio>
+  <audio id="audioFalse">
+    <source src="/sound/false.wav" type="audio/wav">
+  </audio>
+  <!--finish div audio-->
+
   <% if(vocabularies == null || vocabularies.length == 0){ %>
   <h5 class="text-center text-danger">Không tìm thấy dữ liệu</h5>
   <% }else{ %>
+  <div class="slider slider-for">
+    <% vocabularies.forEach( function(vocabulary, index){ %>
+    <div class="excercise-kanji">
+      <div class="col-sm-offset-1 col-sm-10">
+        <i class="fa fa-microphone mic-on"></i>
+        <i class="fa fa-microphone-slash mic-off"></i>
+        <label class="lable">On/Off sound</label>
+      </div>
+      <div class="col-sm-offset-1 col-sm-10">
+        <div class="panel panel-default panel-kanji-slide">
+          <div class="panel-body">
+            <div class="vocabulary text-center">
+              <div class="card">
+                <div class="front">
+                  <h4 class="text-center text-danger"
+                      onclick="playAudio('vocabulary-audio-<%= index %>');"><%= vocabulary.item %>
+                  </h4>
+                  <audio id="vocabulary-audio-<%= index %>"></audio>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <% vocabulary.randomVocabularies.forEach( function(description, indexOption){ %>
+              <div class="col-sm-6">
+                <div class="panel panel-default text-center panel-choose-hanviet">
+                  <div class="panel-body"
+                       onclick="checkAnswer('<%= description %>','<%= vocabulary.description %>','<%= index %> <%= indexOption %>')"
+                       id="<%= index %> <%= indexOption %>">
+                    <%= description %>
+                  </div>
+                </div>
+              </div>
+              <% }) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% }) %>
+  </div>
   <div class="slider slider-nav">
     <% vocabularies.forEach( function(vocabulary, index){ %>
     <div><h3><%= index + 1 %>. <%= vocabulary.item %></h3></div>
-    <% }) %>
-  </div>
-  <div class="slider slider-for">
-    <% vocabularies.forEach( function(vocabulary, index){ %>
-    <div class="slider-for-deital clearfix">
-      <h4 class="text-center text-danger" onclick="playAudio('vocabulary-audio-<%= index %>');"><%= vocabulary.item %>
-      </h4>
-      <audio id="vocabulary-audio-<%= index %>"></audio>
-      <% vocabulary.randomVocabularies.forEach( function(description){ %>
-      <p onclick="checkAnswer('<%= description %>','<%= vocabulary.description %>')"><%= description %></p>
-      <% }) %>
-    </div>
     <% }) %>
   </div>
   <% } %>

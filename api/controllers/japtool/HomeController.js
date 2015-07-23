@@ -8,6 +8,16 @@ module.exports = {
         var library;
         var group;
         var voca;
+        //console.log(req.session.languagePreference);
+        var lang;
+        if (req.param('lang') == 'vi') {
+            req.setLocale('vi');
+            req.session.lang = 'vi';
+        } else {
+            req.setLocale('en');
+            req.session.lang = 'en';
+        };
+
         User.count().exec(function (err, u) {
             if (err) {
                 user = 0;
