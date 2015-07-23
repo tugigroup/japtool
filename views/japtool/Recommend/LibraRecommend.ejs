@@ -117,6 +117,7 @@
 <% if(data.length > 0){ %>
 <div class="container library-page example">
     <% uniqueType.forEach(function(item, indexLibrary){ %>
+
     <div class="row content library-<%= indexLibrary %>" id="">
         <div class="media">
             <div class="media-body">
@@ -146,26 +147,31 @@
         </div>
         <div class="clearfix"></div>
         <div id="lib-1">
-            <% data.forEach(function(book, index){ %>
+            <% var index = 0;
+                    data.forEach(function(book){ %>
             <% if(book.type == item) { %>
+            <% if(index < Constants.maxLibOnPage) {
+                index++;
+            %>
             <div class="col-sm-4 lib-cell">
                 <div class="row">
                     <div class="media libMaster">
-                        <a href="#" data-toggle="modal" data-target="#lib-details-<%= book.id %>">
-                            <img class="media-object col-xs-3 libImg"
+                        <div class="hidden-xs">
+                            <a href="#" data-toggle="modal" data-target="#lib-details-<%= book.id %>">
+                                <img class="media-object col-xs-3 libImg"
 
-                                    <% if (book.image) { %>
-                                 src="/media/image/<%= book.image %>"
-                                    <% } else { %>
-                                 src="/images/bookicon.jpg"
-                                    <% } %>
+                                        <% if (book.image) { %>
+                                     src="/media/image/<%= book.image %>"
+                                        <% } else { %>
+                                     src="/images/bookicon.jpg"
+                                        <% } %>
 
-                                 title="Click to view this library details">
-                        </a>
-
+                                     title="Click to view this library details">
+                            </a>
+                        </div>
                         <div class="media-body">
                             <h4 class="media-heading">
-                                <a class="text-primary" title="Click to view this library details"
+                                <a href="#" class="text-primary" title="Click to view this library details"
                                    data-toggle="modal" data-target="#lib-details-<%= book.id %>">
                                     <%= book.name %>
                                 </a>
@@ -194,6 +200,7 @@
                     </div>
                 </div>
             </div>
+
             <!--lib details-->
             <div class="modal fade" id="lib-details-<%= book.id %>" tabindex="-1">
                 <div class="modal-dialog modal-lg">
@@ -206,7 +213,7 @@
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <a href="#">
+                                    <a>
                                         <img class="library-detail-img"
 
                                                 <% if (book.image) { %>
@@ -215,7 +222,6 @@
                                              src="/images/book_default_cover.png"
                                                 <% } %>
                                                 />
-
                                     </a>
                                 </div>
                                 <div class="col-sm-9">
@@ -281,7 +287,8 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <a onclick="loadformLib('<%= book.id %>')" class="btn btn-success" role="button">Learning
+                            <a onclick="loadformLib('<%= book.id %>')"
+                               class="btn btn-success" role="button">Learning
                                 This Library</a>
                             <a href="#" class="btn btn-danger" role="button" data-dismiss="modal">Close</a>
                         </div>
@@ -298,41 +305,68 @@
                                         aria-hidden="true">×</span></button>
                             <h4 class="modal-title">Library - <%= book.name %></h4>
                         </div>
-                        <div class="modal-body">
-                            <div class="row libImg-modal">
-                                <div class="col-sm-3 invite">
-                                    <div class="row">
-                                        <h3>Lesson learning</h3>
-                                    </div>
-                                    <div class="row">
-                                        <div id="cssmenu-learngroup">
-                                            <ul>
-                                                <% arrAllLesson.forEach(function(item){ %>
-                                                <% if(item.idLesson == book.id){ %>
-                                                <% item.arrLesson.forEach(function(uniqueLesson){ %>
-                                                <li class='has-sub'><a
-                                                            href='javascript: void(0)'><%= uniqueLesson %></a>
-                                                    <% book.bookDetails.forEach(function(bookDetails){ %>
-                                                    <% if(uniqueLesson == bookDetails.lesson) { %>
-                                                    <ul>
-                                                        <li><a href='javascript: void(0)'
-                                                               onclick="learn('<%= bookDetails.useModule %>', <%= bookDetails.dataExtractCondition %>, '<%= book.id %>')"><%= bookDetails.subLesson %></a>
-                                                        </li>
-                                                    </ul>
-                                                    <% } %>
-                                                    <% }) %>
-                                                    <% }) %>
-                                                    <% } %>
-                                                    <% }) %>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-9 invite">
-                                    <h3 class="text-center"><%= book.name %></h3>
+                        <div class="wrapper">
+                            <div class="modal-body">
+                                <div class="row libImg-modal">
+                                    <div class="col-sm-3 invite">
 
-                                    <div class="abc container-learn" id="<%= book.id %>"
-                                         style="background-color: rgba(61, 140, 204, 0.39); min-height: 600px"></div>
+                                        <header class="main-header">
+                                            <!-- Logo -->
+                                            <a href="" class="logo" data-toggle="offcanvas" role="button">
+                                                <!-- mini logo for sidebar mini 50x50 pixels -->
+                                                        <span class="logo-mini" class="sidebar-toggle"><i
+                                                                    class="fa fa-bars"></i></span>
+                                                <!-- logo for regular state and mobile devices -->
+                                                <span class="logo-lg"><i class="fa fa-bars"></i> Lesson</span>
+                                            </a>
+                                            <!-- Header Navbar: style can be found in header.less -->
+                                        </header>
+
+
+                                        <aside class="main-sidebar">
+                                            <!-- sidebar: style can be found in sidebar.less -->
+                                            <div class="pre-scrollable per-scroll-lib-review">
+                                                <section class="sidebar">
+
+                                                    <!-- Sidebar user panel -->
+                                                    <ul class="sidebar-menu">
+                                                        <% arrAllLesson.forEach(function(item){ %>
+                                                        <% if(item.idLesson == book.id){ %>
+                                                        <% item.arrLesson.forEach(function(uniqueLesson){ %>
+                                                        <li class="treeview">
+                                                            <a href="javascript: void(0)">
+                                                                <i class="fa fa-edit"></i>
+                                                                <span><%= uniqueLesson %></span>
+                                                                <i class="fa fa-angle-left pull-right"></i>
+                                                            </a>
+                                                            <% book.bookDetails.forEach(function(bookDetail){ %>
+                                                            <% if(uniqueLesson == bookDetail.lesson) { %>
+                                                            <ul class="treeview-menu">
+                                                                <li><a href='javascript: void(0)'
+                                                                       onclick="learn('<%= bookDetail.useModule %>', <%= bookDetail.dataExtractCondition %>, '<%= book.id %>')">- <%= bookDetail.subLesson %></a>
+                                                                </li>
+
+                                                            </ul>
+                                                            <% } %>
+                                                            <% }) %>
+                                                        </li>
+                                                        <% }) %>
+                                                        <% } %>
+                                                        <% }) %>
+                                                    </ul>
+
+                                                </section>
+                                            </div>
+                                            <!-- /.sidebar -->
+                                        </aside>
+
+                                    </div>
+                                    <div class="col-sm-9 invite">
+                                        <h3 class="text-center"><%= book.name %></h3>
+
+                                        <div class=" container-learn" id="<%= book.id %>"
+                                             style="min-height: 600px"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -343,19 +377,14 @@
                         </div>
                     </div>
                 </div>
-                <script>
-                    function learn(module, condition, id) {
-                        var strCondition = JSON.stringify(condition);
-                        $('#' + id).load('/japtool/' + module + '/list/?condition=' + strCondition);
-                    }
-                </script>
+
             </div>
+            <% } %>
             <% } %>
             <% }) %>
         </div>
     </div>
     <% }) %>
-    <ul id="pagination-demo" class="pagination-sm row text-center pull-right"></ul>
     <form action="/japtool/learning/add" method="post" onsubmit="return validateCreatLearning()"
           id="create-learning-japtool">
 
@@ -364,8 +393,31 @@
         </div>
     </form>
     <div class="modal fade" id="show-books" data-backdrop="static" data-keyboard="false"></div>
+    <ul id="pagination-demo" class="pagination-sm row text-center pull-right"></ul>
     <script type="text/javascript">
         window.onload = function () {
+            $('.sub-lesson').click(function () {
+                var bookDetail = $(this).attr('name');
+                $('#add-book-detail').attr('name', bookDetail);
+                var user = '<%= session.User.id %>';
+                var selfLearning = $('#title-learning').attr('name');
+                var startDate = new Date();
+                var finishDate = new Date();
+                $.ajax({
+                    method: "POST",
+                    url: "/japtool/bookDetail/saveHistory",
+                    data: {
+                        user: user,
+                        bookDetail: bookDetail,
+                        selfLearning: selfLearning,
+                        startDate: startDate,
+                        finishDate: finishDate
+                    }
+                })
+                        .done(function (msg) {
+                            console.log(msg);
+                        });
+            });
             $('.content').hide();
             var itemOnPage = 2;
             for (var i = 0; i < itemOnPage; i++) {
@@ -375,7 +427,7 @@
             <%= uniqueType.length %>/
             itemOnPage;
             $('#pagination-demo').twbsPagination({
-                totalPages: totalPages,
+                totalPages: Math.ceil(totalPages),
                 visiblePages: 4,
                 onPageClick: function (event, page) {
                     var itemShow = itemOnPage * page;
@@ -386,6 +438,14 @@
                 }
             });
         };
+        function learn(module, condition, id) {
+            var strCondition = JSON.stringify(condition);
+            if (module == 'test') {
+                $('#' + id).load('/japtool/' + module + '/previewTest/?condition=' + strCondition);
+            } else {
+                $('#' + id).load('/japtool/' + module + '/list/?condition=' + strCondition);
+            }
+        }
     </script>
 </div>
 <% } %>
