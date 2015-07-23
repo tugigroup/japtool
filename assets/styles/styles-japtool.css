@@ -1757,6 +1757,7 @@ ul.timeline li .timeline-panel:after {
 
 /*END FOOTER*/
 
+
 /*KANJI*/
 .not-display, *[custom|='display-delay'] {
   display: none;
@@ -1774,4 +1775,57 @@ ul.timeline li .timeline-panel:after {
   font-size: 120px !important;
 }
 
+.btn-show-list,.btn-show-list:active{
+  background: none;
+  font-size: 30px;
+  line-height: 0;
+  position: absolute;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  padding: 0;
+  cursor: pointer;
+  border: none;
+  outline: none !important;
+  z-index: 99;
+}
+.btn-arrow-right{
+  right: 6%;
+}.btn-arrow-left{
+   left: 6%;
+ }
+.btn-show-list:hover{
+  color: #2BA9E1;
+}
+.details-voca{
+  margin-top: 2%;
+}
+.size-lb{
+  font-size: 18px;
+}
+.lb-example{
+  font-weight: 500;
+}
+.lb-on{
+  font-weight: 500;
+}
+.lb-kun{
+  font-weight: 500;
+}
+.lb-name-voca-mean{
+  font-size: 29px;
+  color: rgb(43, 169, 225);
+}
+
+.details-voca{
+  margin-left: 1% ;
+}
+#kanji-List{
+  margin-top: 6%;
+}
+.vocabulary-item-example{
+  margin-left: 4%;
+}
 /*END KANJI*/
+
