@@ -6,6 +6,7 @@
  */
 
 var bcrypt = require('bcryptjs');
+var format = require('date-format');
 module.exports = {
 //This loads the sign-up page new.ejs
   'new': function (req, res) {
