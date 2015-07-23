@@ -151,18 +151,19 @@
             <div class="col-sm-4 lib-cell">
                 <div class="row">
                     <div class="media libMaster">
-                        <a href="#" data-toggle="modal" data-target="#lib-details-<%= book.id %>">
-                            <img class="media-object col-xs-3 libImg"
+                        <div class="hidden-xs">
+                            <a href="#" data-toggle="modal" data-target="#lib-details-<%= book.id %>">
+                                <img class="media-object col-xs-3 libImg"
 
-                                    <% if (book.image) { %>
-                                 src="/media/image/<%= book.image %>"
-                                    <% } else { %>
-                                 src="/images/bookicon.jpg"
-                                    <% } %>
+                                        <% if (book.image) { %>
+                                     src="/media/image/<%= book.image %>"
+                                        <% } else { %>
+                                     src="/images/bookicon.jpg"
+                                        <% } %>
 
-                                 title="Click to view this library details">
-                        </a>
-
+                                     title="Click to view this library details">
+                            </a>
+                        </div>
                         <div class="media-body">
                             <h4 class="media-heading">
                                 <a class="text-primary" title="Click to view this library details"
