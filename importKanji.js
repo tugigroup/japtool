@@ -98,7 +98,7 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, kanjis){
 					        content_type: 'image/gif',
 					        root: 'media',
 					        metadata:{
-					        	fd:fileId
+					        	fd:fileId.toString()
 					        }
 					    });
 					    fs.createReadStream(imgPath).pipe(writestream);
