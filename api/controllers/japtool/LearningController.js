@@ -71,16 +71,7 @@ module.exports = {
                 var now = new Date();
                 var finish = learning.finishDate;
                 finish.setHours(23, 59, 59);
-                if (now < learning.startDate) {
-                    var day = Math.floor(((learning.startDate - now) / 86400000) + 1);
-                    var msg = 1;
-                    res.render('japtool/learning/mesage', {
-                        day:day,
-                        msg: msg,
-                        learning: learning
-                    });
-                }
-                else if (finish < now) {
+                if (finish < now) {
                     var msg = 2;
                     res.render('japtool/learning/mesage', {
                         learning: learning,
@@ -106,17 +97,7 @@ module.exports = {
                 var now = new Date();
                 var finish = learning.finishDate;
                 finish.setHours(23, 59, 59);
-                if (now < learning.startDate) {
-                    var day = Math.floor(((learning.startDate - now) / 86400000) + 1)
-
-                    var msg = 1;
-                    res.render('japtool/learning/mesage', {
-                        day:day,
-                        msg: msg,
-                        learning: learning
-                    });
-                }
-                else if (finish < now) {
+                if (finish < now) {
                     var msg = 2;
                     res.render('japtool/learning/mesage', {
                         learning: learning,

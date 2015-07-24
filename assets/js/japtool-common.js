@@ -110,16 +110,29 @@ function checkAnswer1Login() {
 /*choose book*/
 
 function addbook(i) {
-    $("#placebook").empty();
-    var imglink = $('#imglink' + i + '').attr('src');
-    var bookname = $('#bookname' + i + '').attr('title');
-    var bookid = $('#bookid' + i + '').val();
-    var booklv = $('#booklv' + i + '').attr('title');
-    $("#placebook").append('<div class="col-sm-2 hidden-xs"><b><img src="' + imglink + '" width="100" height="100"/></b>' +
-    '<input type="hidden" id="idbook" name="bookMaster" value="' + bookid + '"><br></div>' +
-    '<div class="col-sm-4" style="padding-top: 30px"><b>' + bookname + '</b><br>' +
-    '<b>Level : ' + booklv + '</b></div>');
-    $('#show-books').modal('hide');
+    if (i) {
+        $("#placebook").empty();
+        var imglink = $('#imglink' + i + '').attr('src');
+        var bookname = $('#bookname' + i + '').attr('title');
+        var bookid = $('#bookid' + i + '').val();
+        var booklv = $('#booklv' + i + '').attr('title');
+        $("#placebook").append('<div class="col-sm-2 hidden-xs"><b><img src="' + imglink + '" width="100" height="100"/></b>' +
+        '<input type="hidden" id="idbook" name="bookMaster" value="' + bookid + '"><br></div>' +
+        '<div class="col-sm-4" style="padding-top: 30px"><b>' + bookname + '</b><br>' +
+        '<b>Level : ' + booklv + '</b></div>');
+        $('#show-books').removeClass('fade').modal('hide');
+        $('#formecr').addClass('fade').modal('show');
+        $('.modal').on('shown.bs.modal', function (e) {
+            $("body").addClass("modal-open");
+        });
+    }
+    if (!i) {
+        $('#show-books').removeClass('fade').modal('hide');
+        $('#formecr').addClass('fade').modal('show');
+        $('.modal').on('shown.bs.modal', function (e) {
+            $("body").addClass("modal-open");
+        });
+    }
 }
 function deleteLearning(id) {
     var a = confirm("Ban co thuc su muon xoa learning nay k?");
@@ -250,10 +263,10 @@ function validateEditLearning() {
     }
 }
 function loadbooks() {
+    $('#formecr').removeClass('fade').modal('hide');
     $("#show-books").load('/japtool/Learning/getBooks');
     $('#show-books').modal('show');
     $('#show-books').addClass('fade').modal('show');
-    /*$("#placebook").removeChild();*/
 }
 function loadform(a) {
 
