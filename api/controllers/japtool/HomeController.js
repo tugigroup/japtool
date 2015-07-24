@@ -13,8 +13,8 @@ module.exports = {
         var library;
         var group;
         var voca;
-        //console.log(req.session.languagePreference);
-        var lang;
+        
+        // set languge for interface
         if (req.param('lang') == 'vi') {
             req.setLocale('vi');
             req.session.lang = 'vi';
