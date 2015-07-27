@@ -1716,7 +1716,11 @@ ul.timeline li .timeline-panel:after {
 .wizard ul.vocabulary-item-example {
   padding-left: 3rem;
 }
-
+.text-center-exe{
+  background: none !important;
+  font-size: 710%;
+  cursor: pointer;
+}
 /*END VOCABULARY*/
 
 /*END CONTENT*/
@@ -1776,7 +1780,7 @@ ul.timeline li .timeline-panel:after {
 }
 
 .card .front h4 {
-  font-size: 120px !important;
+  font-size: 74px !important;
 }
 
 .btn-show-list,.btn-show-list:active{
@@ -1795,9 +1799,9 @@ ul.timeline li .timeline-panel:after {
   z-index: 99;
 }
 .btn-arrow-right{
-  right: 6%;
+  right: 21%;
 }.btn-arrow-left{
-   left: 6%;
+   left: 21%;
  }
 .btn-show-list:hover{
   color: #2BA9E1;
@@ -1847,7 +1851,7 @@ ul.timeline li .timeline-panel:after {
   cursor:pointer;
   font-size: 29px;
 }
-.panel-choose-hanviet{
+.panel-choose-exe{
   border-radius: 0px;
   cursor:pointer;
 }
@@ -1860,5 +1864,23 @@ ul.timeline li .timeline-panel:after {
 .exe-voca{
   margin-top: 8%;
 }
+.btn-arrow-left-exe{
+  left:15%;
+}
+.btn-arrow-right-exe{
+  right:15%;
+}
 /*END KANJI*/
 
+/*slide*/
+.slide-main{
+  margin-bottom: -12px;
+}
+.text-center-list-voca{
+  background: none !important;
+  font-size: 600%;
+}
+.text-center-list-kanji{
+  background: none !important;
+  font-size: 1000%;
+}
