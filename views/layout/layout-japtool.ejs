@@ -22,6 +22,12 @@
     <div class="container">
       <div class="row">
         <div class="account-right col-sm-7 col-sm-offset-5">
+          <% if (req.session.lang == 'vi')  { %>
+              <a href="?lang=en" data-toggle="tooltip" data-placement="left" title="<%= __('Click to change language interface') %>"> <img src="/images/vi-icon.png"></a>
+          <% } else { %>
+              <a href="?lang=vi" data-toggle="tooltip" data-placement="left" title="<%= __('Click to change language interface') %>"> <img src="/images/en-icon.png"></a>
+          <% } %>
+          
           <% if(session.authenticated){ %>
           <span>Welcome <a id="userIdInSession" userId="<%= session.User.id %>"
                            href="/japtool/user/show/<%= session.User.id %>"><%= session.User.username %></a></span><a
