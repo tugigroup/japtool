@@ -9,5 +9,6 @@
     "survey_csv_file" : "work/survey.csv",
     "grammar_csv_file" : "work/grammar.csv",
     "chars_split_between_examples" : "<br>",
-    "chars_split_insite_examples" : ":"
+    "chars_split_insite_examples" : ":",
+    "speed_csv_file" : "work/speed.csv"
 }

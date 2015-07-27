@@ -202,6 +202,21 @@ async.series([
 				callback(null,'selflearning was removed all documents.')
 			}
 		});
+	},
+	function(callback){
+		// sentence collection
+		var sentenceSchema = mongoose.Schema({
+			},{ collection: 'sentence', versionKey: false });
+
+		var speed = mongoose.model('sentence', sentenceSchema);
+
+		speed.remove({}, function (err) {
+			if (err) {
+				callback(err)
+			}else {
+				callback(null,'sentence was removed all documents.')
+			}
+		});
 	}
 	],
 	// optional callback
@@ -222,6 +237,7 @@ async.series([
 			console.log(results[10].toString());
 			console.log(results[11].toString());
 			console.log(results[12].toString());
+			console.log(results[13].toString());
 			console.log('========================');
 			console.log('END: REMOVED DOCUMENTS');		
 		}
