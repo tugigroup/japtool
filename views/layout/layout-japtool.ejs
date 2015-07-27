@@ -29,12 +29,12 @@
           <% } %>
           
           <% if(session.authenticated){ %>
-          <span>Welcome <a id="userIdInSession" userId="<%= session.User.id %>"
+          <span><%= __('Welcome') %> <a id="userIdInSession" userId="<%= session.User.id %>"
                            href="/japtool/user/show/<%= session.User.id %>"><%= session.User.username %></a></span><a
-            href="/japtool/auth/destroy">Sign Out</a>
+            href="/japtool/auth/destroy"><%= __('Sign Out') %></a>
           <% } else {%>
-          <a href="/japtool/auth">Login</a>
-          <a href="/japtool/user/new">Register</a>
+          <a href="/japtool/auth"><%= __('Sign In') %></a>
+          <a href="/japtool/user/new"><%= __('register') %></a>
           <% } %>
         </div>
       </div>
