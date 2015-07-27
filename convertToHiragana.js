@@ -1,15 +1,34 @@
 var querystring = require('querystring');
-var http = require('http');
 var request = require('request');
 var async = require('async');
+var fs = require('fs');
+var parse = require('csv-parse');
+var parser = parse({delimiter : ','});
 var mongoose = require('mongoose');
 var config = require('./config.json');
 
 var collection = 'example';
 var fromColl = 'example';
 var toColl = 'reading';
+var array = [];
 
-var array=["漢字が混ざっている文章(しんせつ)","日本","韓国","ひらがな化APIを利用すると、日本語文字列をひらがな、カタカナによる記載に変換するアプリケーションを作成できます。"]
+data = fs.readFileSync('./convertToHiragana/data.csv',{"encoding":"utf8"});
+
+//var array=["漢字が混ざっている文章(しんせつ)","日本","家のローンを３回払ったきりだ。会社を首になったので、これ以上払えない。","ひらがな化APIを利用すると、日本語文字列をひらがな、カタカナによる記載に変換するアプリケーションを作成できます。"]
+parse(data, {delimiter : ',', comment: '#'}, function(err, arrays){
+  arrays.forEach(function(item) {
+     array.push(item[1]);
+  });
+  async.map(array, fetch, function(err, results){
+    if (err) {
+      console.log(err);
+    }else {
+      results.forEach(function(item) {
+        console.log(item.converted);
+      });
+    }
+  });
+});
 
 var fetch = function(sentence,callback){
   var post_data = querystring.stringify({
@@ -31,12 +50,3 @@ var fetch = function(sentence,callback){
       }
   });
 };
-async.map(array, fetch, function(err, results){
-  if (err) {
-    console.log(err);
-  }else {
-    results.forEach(function(item) {
-      console.log(item.converted);
-    });
-  }
-});
