@@ -11,8 +11,7 @@ module.exports = {
         Article.getLessonArticle({condition: condition}, function (err, articles) {
             res.render('japtool/learning/learnArticle',
                 {
-                    data: articles,
-                    layout: 'layout/layout-japtool'
+                    data: articles
                 }
             );
         })
@@ -22,11 +21,15 @@ module.exports = {
         Article.getLessonArticle({condition: condition}, function (err, articles) {
             res.render('japtool/learning/previewTestArticle',
                 {
-                    articles: articles,
-                    layout: 'layout/layout-japtool'
+                    articles: articles
                 }
             );
         })
+    },
+    _config: {
+        locals: {
+            layout: 'layout/layout-japtool'
+        }
     }
 };
 

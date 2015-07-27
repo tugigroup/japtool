@@ -7,37 +7,37 @@
 
 module.exports = {
 
-    list: function (req, res) {
+    lesson: function (req, res) {
         var extractDataCondition = req.param('condition');
         //var extractDataCondition = '{"level": "N3", "tag" : {"contains":",tap1,lession5,"}}';
         Vocabulary.selectByLevel({condition: extractDataCondition}, function (err, vocabularies) {
             if (err) return res.send(err.status);
-            res.render('japtool/vocabulary/list', {'vocabularies': vocabularies});
+            res.render('japtool/vocabulary/lesson', {'vocabularies': vocabularies});
         });
     },
     //Đây thực chất là hàm exercise nhưng vì chưa có link đến đây, nên để tạm là list để test
-    //list: function (req, res) {
-    //    var extractDataCondition = req.param('condition');
-    //    //var extractDataCondition = '{"level": "N3", "tag" : {"contains":",tap1,lession5,"}}';
-    //    Vocabulary.selectByLevel({condition: extractDataCondition}, function (err, vocabularies) {
-    //        if (err) return res.send(err.status);
-    //        var min = 1;
-    //        var max = vocabularies.length;
-    //        vocabularies.forEach(function (item, index) {
-    //            var randomArr = [];
-    //            for (var i = 0; randomArr.length < 3; i++) {
-    //                var randomResult = Math.floor(Math.random() * (max - min) + min);
-    //                if (!(randomArr.indexOf(randomResult) > -1) && randomResult != index) {
-    //                    randomArr[randomArr.length] = vocabularies[randomResult].description;
-    //                }
-    //            }
-    //            randomArr.push(item.description);
-    //            randomArr.sort();
-    //            item.randomVocabularies = randomArr;
-    //        });
-    //        res.render('japtool/vocabulary/exercise', {'vocabularies': vocabularies});
-    //    });
-    //},
+    practice: function (req, res) {
+        var extractDataCondition = req.param('condition');
+        //var extractDataCondition = '{"level": "N3", "tag" : {"contains":",tap1,lession5,"}}';
+        Vocabulary.selectByLevel({condition: extractDataCondition}, function (err, vocabularies) {
+            if (err) return res.send(err.status);
+            var min = 1;
+            var max = vocabularies.length;
+            vocabularies.forEach(function (item, index) {
+                var randomArr = [];
+                for (var i = 0; randomArr.length < 3; i++) {
+                    var randomResult = Math.floor(Math.random() * (max - min) + min);
+                    if (!(randomArr.indexOf(randomResult) > -1) && randomResult != index) {
+                        randomArr[randomArr.length] = vocabularies[randomResult].description;
+                    }
+                }
+                randomArr.push(item.description);
+                randomArr.sort();
+                item.randomVocabularies = randomArr;
+            });
+            res.render('japtool/vocabulary/practice', {'vocabularies': vocabularies});
+        });
+    },
     _config: {
         locals: {
             layout: 'layout/layout-japtool'
