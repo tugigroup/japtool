@@ -26,40 +26,30 @@ module.exports.policies = {
      * access)                                                                  *
      *                                                                          *
      ***************************************************************************/
-    '*': 'localize',
+    '*': 'generalize',
     
-     //'*': 'sessionAuth',
-     '*': 'flash',
-
      'japtool/user': {
-         'new': "flash",
+         'new': "generalize",
          '*': "authenticated",
-         create: "flash",
-         '*': 'localize'
+         create: "generalize"
      },
      'japtool/auth': {
-         '*': 'flash',
-         '*': 'localize'
+         '*': 'generalize'
      },
      'japtool/vocabulary': {
-         '*': 'authenticated',
-         '*': 'localize'
+         '*': 'authenticated'
      },
      'japtool/BookMaster': {
-         '*': 'authenticated',
-         '*': 'localize'
+         '*': 'authenticated'
      },
      'japtool/BookDetail': {
-         '*': 'authenticated',
-         '*': 'localize'
+         '*': 'authenticated'
      },
      'japtool/Learning': {
-         '*': 'authenticated',
-         '*': 'localize'
+         '*': 'authenticated'
      },
      'japtool/Library': {
-         '*': 'authenticated',
-         '*': 'localize'
+         '*': 'authenticated'
      }
 
     
