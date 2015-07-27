@@ -162,7 +162,7 @@
 
     $(".card-text").on("click", function(e) {  // See here, i have our selector set to "li", so this jQuery object will grab all li tags on the page
         $(this).addClass("card-text-click");
-        $('.card-image').show(1000);
+        $('.card-image').slideDown(1000);
     });
 
     // On before slide change slide

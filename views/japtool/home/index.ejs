@@ -19,10 +19,17 @@
     <div class="header-center clearfix">
         <div class="container">
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-sm-5">
                     <a class="logo"><img src="images/logo.png"></a>
+
+                    <% if (req.session.lang == 'vi')  { %>
+                        <a href="?lang=en" data-toggle="tooltip" data-placement="left" title="<%= __('Click to change language interface') %>"> <img src="/images/vi-icon.png" class="lang-option"></a>
+                    <% } else { %>
+                        <a href="?lang=vi" data-toggle="tooltip" data-placement="left" title="<%= __('Click to change language interface') %>"> <img src="/images/en-icon.png" class="lang-option"></a>
+                    <% } %>
+
                 </div>
-                <div class="col-sm-2">
+                <!-- <div class="col-sm-2">
                     <nav>
                       <ul class="pagination pagination-sm">
                         <% if (req.session.lang == 'vi')  { %>
@@ -35,7 +42,7 @@
                       </ul>
                     </nav>
 
-                </div>
+                </div> -->
                 <div class="col-md-7">
                     <div id='cssmenu' class="pull-right">
                         <ul class="menu-page">

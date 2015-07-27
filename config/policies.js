@@ -26,32 +26,43 @@ module.exports.policies = {
      * access)                                                                  *
      *                                                                          *
      ***************************************************************************/
-    '*': 'sessionAuth',
-    '*': 'flash',
+    '*': 'localize',
+    
+     //'*': 'sessionAuth',
+     '*': 'flash',
 
-    'japtool/user': {
-        'new': "flash",
-        '*': "authenticated",
-        create: "flash"
-    },
-    'japtool/auth': {
-        '*': 'flash'
-    },
-    'japtool/vocabulary': {
-        '*': 'authenticated'
-    },
-    'japtool/BookMaster': {
-        '*': 'authenticated'
-    },
-    'japtool/BookDetail': {
-        '*': 'authenticated'
-    },
-    'japtool/Learning': {
-        '*': 'authenticated'
-    },
-    'japtool/Library': {
-        '*': 'authenticated'
-    }
+     'japtool/user': {
+         'new': "flash",
+         '*': "authenticated",
+         create: "flash",
+         '*': 'localize'
+     },
+     'japtool/auth': {
+         '*': 'flash',
+         '*': 'localize'
+     },
+     'japtool/vocabulary': {
+         '*': 'authenticated',
+         '*': 'localize'
+     },
+     'japtool/BookMaster': {
+         '*': 'authenticated',
+         '*': 'localize'
+     },
+     'japtool/BookDetail': {
+         '*': 'authenticated',
+         '*': 'localize'
+     },
+     'japtool/Learning': {
+         '*': 'authenticated',
+         '*': 'localize'
+     },
+     'japtool/Library': {
+         '*': 'authenticated',
+         '*': 'localize'
+     }
+
+    
 
 
 

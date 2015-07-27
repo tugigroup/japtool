@@ -83,10 +83,10 @@
     outline: none;
 }
 
-.slick-track .slick-current h3,.slick-track h3:hover{
-    background: #2184be;
+/*.slick-track .slick-current h3,.slick-track h3:hover{*/
+    /*background: #2184be;*/
 
-}
+/*}*/
 [dir='rtl'] .slick-slide
 {
     float: right;
