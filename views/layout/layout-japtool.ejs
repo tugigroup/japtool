@@ -22,13 +22,19 @@
     <div class="container">
       <div class="row">
         <div class="account-right col-sm-7 col-sm-offset-5">
+          <% if (req.session.lang == 'vi')  { %>
+              <a href="?lang=en" data-toggle="tooltip" data-placement="left" title="<%= __('Click to change language interface') %>"> <img src="/images/vi-icon.png"></a>
+          <% } else { %>
+              <a href="?lang=vi" data-toggle="tooltip" data-placement="left" title="<%= __('Click to change language interface') %>"> <img src="/images/en-icon.png"></a>
+          <% } %>
+          
           <% if(session.authenticated){ %>
-          <span>Welcome <a id="userIdInSession" userId="<%= session.User.id %>"
+          <span><%= __('Welcome') %> <a id="userIdInSession" userId="<%= session.User.id %>"
                            href="/japtool/user/show/<%= session.User.id %>"><%= session.User.username %></a></span><a
-            href="/japtool/auth/destroy">Sign Out</a>
+            href="/japtool/auth/destroy"><%= __('Sign Out') %></a>
           <% } else {%>
-          <a href="/japtool/auth">Login</a>
-          <a href="/japtool/user/new">Register</a>
+          <a href="/japtool/auth"><%= __('Sign In') %></a>
+          <a href="/japtool/user/new"><%= __('register') %></a>
           <% } %>
         </div>
       </div>
@@ -43,14 +49,14 @@
         <div class="col-md-9">
           <div id='cssmenu' class="pull-right">
             <ul class="menu-page">
-              <li><a href='/japtool/learning/home'>Home</a></li>
-              <li><a href='/japtool/page/about'>About</a></li>
+              <li><a href='/japtool/learning/home'><%= __('Home') %></a></li>
+              <li><a href='/japtool/page/about'><%= __('About') %></a></li>
 
-              <li class='active'><a href='/japtool/BookMaster/getLibrary'>Libary</a>
+              <li class='active'><a href='/japtool/BookMaster/getLibrary'><%= __('Library') %></a>
               </li>
-              <li><a href="/japtool/learning">Learning</a></li>
-              <li><a href="/japtool/page/guide">Using guide</a></li>
-              <li><a href='/japtool/page/contact'>Contact</a></li>
+              <li><a href="/japtool/learning"><%= __('Learning') %></a></li>
+              <li><a href="/japtool/page/guide"><%= __('Use Guide') %></a></li>
+              <li><a href='/japtool/page/contact'><%= __('Contact') %></a></li>
             </ul>
           </div>
         </div>

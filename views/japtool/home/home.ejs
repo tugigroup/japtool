@@ -47,12 +47,12 @@
                 <div class="vocabulary-item">
                     <div class="info">
                         <% if(selfLearning.bookMaster != null && selfLearning.bookMaster != undefined){ %>
-                        <h3><a><%= selfLearning.bookMaster.name %></a></h3>
                         <% var bookMasterId = selfLearning.bookMaster.id %>
                         <input type="hidden" value="<%= bookMasterId %>" class="bookMaterIdClass"/>
                         <input type="hidden" value="<%= selfLearning.startDate %>" id="startDate<%= bookMasterId %>"/>
                         <input type="hidden" value="<%= selfLearning.finishDate %>" id="finishDate<%= bookMasterId %>"/>
                         <input type="hidden" value="<%= selfLearning.id %>" id="learningId<%= bookMasterId %>"/>
+                        <h4><a href="/japtool/BookMaster/practice/?id=<%= bookMasterId %>&learnID=<%= selfLearning.id %>"><%= selfLearning.bookMaster.name %></a></h4>
                         <% } else{ %>
                         <h3><a>Book name is NONE</a></h3>
                         <% } %>

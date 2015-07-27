@@ -17,7 +17,7 @@
     centerMode: false,
     focusOnSelect: true
   });
-  $('.slider-for').on('init reInit afterChange', function (event, slick, currentSlide) {
+  $('.slider-for').on('init reInit beforeChange', function (event, slick, currentSlide) {
     var i = (currentSlide ? currentSlide : 0) + 1;
   });
   var audioconfig = true;

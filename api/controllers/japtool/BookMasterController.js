@@ -67,6 +67,7 @@ module.exports = {
     },
 
     getLibrary: function (req, res) {
+
         BookMaster.find({}).populate('bookDetails', {sort: 'sort ASC'}).exec(function createCB(err, data) {
             var arrTag = [];
             var arrAllLesson = [];
