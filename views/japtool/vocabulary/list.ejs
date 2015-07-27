@@ -6,7 +6,8 @@
 //  arrows: true,
         fade: false,
         asNavFor: '.slider-nav',
-        draggable: true,
+        draggable: false,
+        touchMove:false,
         prevArrow: '<button type="button" data-role="none" class="btn btn-show-list btn-arrow-left" aria-label="Previous" tabindex="0" role="button"><i class="fa fa-chevron-left"></i></button>',
         nextArrow: '<button type="button" data-role="none" class="btn btn-show-list btn-arrow-right" aria-label="Next" tabindex="0" role="button"><i class="fa fa-chevron-right"></i></button>'
     });
@@ -26,6 +27,8 @@
             $('.info-off').show();
             $('.info-on').hide();
             infoconfig = false;
+            //Hide all info
+            $("[class^='info-item-']").hide();
         });
         $('.info-off').on('click', function () {
             $('.info-on').show();
@@ -38,14 +41,34 @@
             $('.mic-on').hide();
             audioconfig = false;
         });
-        $('.mic-off').on('click', function () {
-            $('.mic-on').show();
-            $('.mic-off').hide();
-            audioconfig = true;
+    });
+    // Google TEXT TO SPEECH
+    function text2speech(w, tl, id) {
+        var speech = 'select * from data.uri where url="http://translate.google.com/translate_tts?ie=utf-8&tl=' + encodeURIComponent(tl) + "&q=" + encodeURIComponent(w) + '"';
+        $.getJSON('https://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent(speech) + '&format=json&diagnostics=true', function (data) {
+            var audioSrc = data.query.results.url;
+            if (data && audioSrc !== undefined) {
+                $('#vocabulary-audio-' + id)[0].src = audioSrc;
+            }
         });
-        $('[data-toggle="tooltip"]').tooltip();
-
-
+    }
+    function playAudio(id) {
+//    console.log('Play audio: ', id);
+        if (audioconfig) {
+            $('#vocabulary-audio-' + id)[0].play();
+        }
+    }
+    //END TEXT2SPEECH
+    function showExample(index) {
+        var exam = '[custom = display-delay-' + index + ']';
+        $(exam).delay(1000).slideDown();
+    }
+    function showDetails(index) {
+        if (infoconfig) {
+            $('.info-item-' + index).slideDown();
+        }
+    }
+    $(document).ready(function () {
         // count page
         var $status = $('.pagingCnt');
         var $slickElement = $('.slider-for');
@@ -54,51 +77,40 @@
             var i = (currentSlide ? currentSlide : 0) + 1;
             $status.text(i + '/' + slick.slideCount);
         });
-
-    });
-    // Google TEXT TO SPEECH
-    function text2speech(w, tl, id) {
-        var speech = 'select * from data.uri where url="http://translate.google.com/translate_tts?ie=utf-8&tl=' + encodeURIComponent(tl) + "&q=" + encodeURIComponent(w) + '"';
-        $.getJSON('https://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent(speech) + '&format=json&diagnostics=true', function (data) {
-            var audioSrc = data.query.results.url;
-            if (data && audioSrc !== undefined) {
-                $('#' + id)[0].src = audioSrc;
-            }
+        $('.slider-for').on('afterChange', function (event, slick, currentSlide) {
+//      var i = (currentSlide ? currentSlide : 0) + 1;
+            //Show Example
+            showExample(currentSlide);
+            //Show Details
+            showDetails(currentSlide);
+            //Play audio
+            playAudio(currentSlide);
         });
-    }
-    function playAudio(id) {
-        if (audioconfig) {
-            $('#' + id)[0].play();
-        }
-    }
-    //END TEXT2SPEECH
-    function show(index) {
-        var exam = '[custom = display-delay-' + index + ']';
-        $(exam).delay(2000).slideDown();
-    }
-    $('.slider-for').on('init reInit afterChange', function (event, slick, currentSlide) {
-        var i = (currentSlide ? currentSlide : 0) + 1;
-        show(i);
+        $('.slider-for').on('beforeChange', function (event, slick, currentSlide) {
+//      var i = (currentSlide ? currentSlide : 0) + 1;
+            showDetails(currentSlide);
+        });
+        (function () {
+            $("[custom = 'display-delay-1']").delay(2000).slideDown();
+            //Show Details of first voca
+            showDetails(0);
+            //Play audio of first voca
+            playAudio(0);
+        })();
     });
-    function showDetails(item) {
-        if (infoconfig) {
-            $('.' + item).slideDown();
-        }
-    }
     $('span').tooltip();
-
 </script>
 
 <div id="vocabularyList" class="voca-list-sum">
     <%
-    var sumPage=vocabularies.length;
+    var sumPage = vocabularies.length;
     if(vocabularies == null || vocabularies.length == 0){
     %>
     <h5 class="text-center text-danger">Không tìm thấy dữ liệu</h5>
     <% }else{ %>
     <div class="slider slider-for">
         <%
-            vocabularies.forEach( function(vocabulary, index){
+        vocabularies.forEach( function(vocabulary, index){
         %>
 
         <div class="learn-kanji">
@@ -118,7 +130,7 @@
                                 <p class="not-display <%= index %>">
                                     <span class="text-success">Reading
                                       <i class="fa fa-microphone text-danger"
-                                         onclick="playAudio('vocabulary-audio-<%= index %>');"></i> :
+                                         onclick="playAudio(<%= index %>);"></i> :
                                     </span>
                                     <%= vocabulary.reading %>
                                     <audio id="vocabulary-audio-<%= index %>"></audio>
@@ -126,12 +138,12 @@
                                 <!--end 1-->
                                 <div class="front">
                                     <h3 class="text-center text-danger text-center-list-voca"
-                                        onclick="showDetails('<%= index %>'); playAudio('vocabulary-audio-<%= index %>');"><%= vocabulary.item %>
+                                        onclick="showDetails('<%= index %>'); playAudio(<%= index %>);"><%= vocabulary.item %>
                                     </h3>
                                 </div>
                             </div>
                         </div>
-                        <div class="details-voca not-display <%= index %>">
+                        <div class="info-item-<%= index %> details-voca not-display ">
 
                             <% if(vocabulary.description){ %>
                             <p>
@@ -162,7 +174,7 @@
                             <!--end 3-->
                         </div>
                         <div class="col-sm-offset-10 col-sm-1">
-                            <span class="pagingCnt">1/<%=sumPage%></span>
+                            <span class="pagingCnt">1/<%= sumPage %></span>
                         </div>
                     </div>
                 </div>
@@ -180,15 +192,11 @@
     </div>
     <% } %>
 </div>
-<script>
-    (function () {
-        $("[custom = 'display-delay-1']").delay(2000).slideDown();
-    })();
-</script>
+
 <!--GET AUDIO DATA-->
 <% vocabularies.forEach( function(vocabulary, index){ %>
 <script>
-    text2speech('<%= vocabulary.reading %>', 'ja', 'vocabulary-audio-<%= index %>');
+    text2speech('<%= vocabulary.reading %>', 'ja', <%= index %>);
 </script>
 <% }) %>
 <!--END GET AUDIO DATA-->

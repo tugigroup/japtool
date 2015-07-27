@@ -1772,11 +1772,43 @@ ul.timeline li .timeline-panel:after {
 }
 
 .card {
+  position: relative;
   min-height: 200px;
 }
 
-.card img {
-  width: 30%;
+.text-center-list-kanji{
+  background: none !important;
+  cursor: pointer;
+  font-size: 1000%;
+  transition:All 1s ease;
+  -webkit-transition:All 1s ease;
+  -moz-transition:All 1s ease;
+  -o-transition:All 1s ease;
+  transform: rotate(0deg) scale(0.802) skew(1deg) translate(-2px);
+  -webkit-transform: rotate(0deg) scale(0.802) skew(1deg) translate(-2px);
+  -moz-transform: rotate(0deg) scale(0.802) skew(1deg) translate(-2px);
+  -o-transform: rotate(0deg) scale(0.802) skew(1deg) translate(-2px);
+  -ms-transform: rotate(0deg) scale(0.802) skew(1deg) translate(-2px);
+}
+.card-text-click .text-center-list-kanji{
+
+  transform: rotate(0deg) scale(0.787) skew(1deg) translate(-150px);
+  -webkit-transform: rotate(0deg) scale(0.787) skew(1deg) translate(-41%);
+  -moz-transform: rotate(0deg) scale(0.787) skew(1deg) translate(-41%);
+  -o-transform: rotate(0deg) scale(0.787) skew(1deg) translate(-41%);
+  -ms-transform: rotate(0deg) scale(0.787) skew(1deg) translate(-41%);
+  /*position: absolute;*/
+  /*top:0;*/
+  /*left: 10px;*/
+}
+.card-image{
+  position: absolute;
+  top: 8px;
+  right:  -12%;
+  display: none;
+}
+.card-image img{
+  width: 65%;
 }
 
 .card .front h4 {
@@ -1797,11 +1829,12 @@ ul.timeline li .timeline-panel:after {
   border: none;
   outline: none !important;
   z-index: 99;
+  top: 37%;
 }
 .btn-arrow-right{
-  right: 21%;
+  right: 14%;
 }.btn-arrow-left{
-   left: 21%;
+   left: 14%;
  }
 .btn-show-list:hover{
   color: #2BA9E1;
@@ -1834,6 +1867,7 @@ ul.timeline li .timeline-panel:after {
 }
 .vocabulary-item-example{
   margin-left: 4%;
+  font-size: 22px;
 }
 .info-on{
   cursor:pointer;
@@ -1879,8 +1913,5 @@ ul.timeline li .timeline-panel:after {
 .text-center-list-voca{
   background: none !important;
   font-size: 600%;
-}
-.text-center-list-kanji{
-  background: none !important;
-  font-size: 1000%;
+  cursor: pointer;
 }

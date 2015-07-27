@@ -1,12 +1,15 @@
 <script>
+
     $('.slider-for').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
+//  arrows: true,
         fade: false,
         asNavFor: '.slider-nav',
-        draggable: true,
-        prevArrow: '<button type="button" data-role="none" class="btn btn-show-list btn-arrow-left-exe" aria-label="Previous" tabindex="0" role="button"><i class="fa fa-chevron-left"></i></button>',
-        nextArrow: '<button type="button" data-role="none" class="btn btn-show-list btn-arrow-right-exe" aria-label="Next" tabindex="0" role="button"><i class="fa fa-chevron-right"></i></button>'
+        draggable: false,
+        touchMove:false,
+        prevArrow: '<button type="button" data-role="none" class="btn btn-show-list btn-arrow-left" aria-label="Previous" tabindex="0" role="button"><i class="fa fa-chevron-left"></i></button>',
+        nextArrow: '<button type="button" data-role="none" class="btn btn-show-list btn-arrow-right" aria-label="Next" tabindex="0" role="button"><i class="fa fa-chevron-right"></i></button>'
     });
     $('.slider-nav').slick({
         slidesToShow: 3,
@@ -15,6 +18,9 @@
         dots: false,
         centerMode: false,
         focusOnSelect: true
+    });
+    $('.slider-for').on('init reInit beforeChange', function (event, slick, currentSlide) {
+        var i = (currentSlide ? currentSlide : 0) + 1;
     });
     $('.slider-for').on('init reInit afterChange', function (event, slick, currentSlide) {
         var i = (currentSlide ? currentSlide : 0) + 1;
@@ -43,11 +49,13 @@
             }
         });
     }
+
     function playAudio(id) {
         if (audioconfig) {
             $('#' + id)[0].play();
         }
     }
+
     //END TEXT2SPEECH
     $('.slider-for').on('init reInit afterChange', function (event, slick, currentSlide) {
         var i = (currentSlide ? currentSlide : 0) + 1;

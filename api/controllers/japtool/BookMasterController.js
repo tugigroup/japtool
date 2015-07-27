@@ -67,6 +67,14 @@ module.exports = {
     },
 
     getLibrary: function (req, res) {
+        // set languge for interface
+        console.log(req.session.lang);
+        if (req.session.lang == 'vi') {
+            req.setLocale('vi');
+        } else {
+            req.setLocale('en');
+        };
+
         BookMaster.find({}).populate('bookDetails', {sort: 'sort ASC'}).exec(function createCB(err, data) {
             var arrTag = [];
             var arrAllLesson = [];
