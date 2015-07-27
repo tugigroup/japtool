@@ -639,17 +639,39 @@ $(document).ready(function () {
 
 //END USER
 
-//VOCABULARY
+
 $(document).ready(function () {
+    //VOCABULARY
     $("#vocabularyList").steps({
         headerTag: "h3",
         bodyTag: "section",
         transitionEffect: "slideLeft"
     });
+
+//SPEECH
+    $("#one-time").steps({
+        headerTag: "h1",
+        bodyTag: "section",
+        transitionEffect: "fade"
+    });
+
+    $('.slider-for').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        fade: true,
+        asNavFor: '.slider-nav'
+    });
+    $('.slider-nav').slick({
+        slidesToShow: 10,
+        slidesToScroll: 1,
+        asNavFor: '.slider-for',
+        dots: true,
+        centerMode: true,
+        focusOnSelect: true
+    });
 });
 
-
-//END VOCABULARY
 
 
 
