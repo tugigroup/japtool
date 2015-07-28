@@ -69,6 +69,7 @@ module.exports = {
 
                 req.session.authenticated = true;
                 req.session.User = user;
+                req.session.lang = user.language;
 
                 //If the user is also an admin redirect to the user list(/view/user/index.ejs)
                 //This is user in conjuntion with config/policies.js file
