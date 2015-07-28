@@ -22,16 +22,17 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, lessons){
 		header[1] != 'description' ||
 		header[2] != 'type' ||
 		header[3] != 'level' ||
-		header[4] != 'lessonNum' ||
-		header[5] != 'hoursForLearn' ||
-		header[6] != 'usedNum' ||
-		header[7] != 'recommendNum' ||
-		header[8] != 'lesson' ||
-		header[9] != 'subLesson' ||
-		header[10] != 'sort' ||
-		header[11] != 'useModule' ||
-		header[12] != 'useCollection' ||
-		header[13] != 'dataExtractCondition' ){
+		header[4] != 'sort' ||
+		header[5] != 'lessonNum' ||
+		header[6] != 'hoursForLearn' ||
+		header[7] != 'usedNum' ||
+		header[8] != 'recommendNum' ||
+		header[9] != 'lesson' ||
+		header[10] != 'subLesson' ||
+		header[11] != 'sort' ||
+		header[12] != 'useModule' ||
+		header[13] != 'useCollection' ||
+		header[14] != 'dataExtractCondition' ){
 
 		console.log('Error! Format of csv file is not correct.');
 		return;
@@ -45,6 +46,7 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, lessons){
 	  description: 		String,
 	  type:   			String,
 	  level:   			String,
+	  sort: 			Number,
 	  lessonNum:   		Number,
 	  hoursForLearn:   	Number,
 	  usedNum: 			Number,
@@ -87,12 +89,12 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, lessons){
 				// insert book detail record
 				insertedBookDetail = new bookDetailColl({
 					bookMaster:  				insertedBookMaster._id,
-				    lesson: 				lesson[8],
-				    subLesson: 				lesson[9],
-				    sort: 					lesson[10],
-				    useModule: 				lesson[11],
-				    useCollection: 			lesson[12],
-				    dataExtractCondition: 	lesson[13]
+				    lesson: 				lesson[9],
+				    subLesson: 				lesson[10],
+				    sort: 					lesson[11],
+				    useModule: 				lesson[12],
+				    useCollection: 			lesson[13],
+				    dataExtractCondition: 	lesson[14]
 				});
 
 				insertedBookDetail.save(function (err,data) {
@@ -122,10 +124,11 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, lessons){
 				description: 	lesson[1],
 				type:   		lesson[2],
 				level:   		lesson[3],
-				lessonNum:   	lesson[4],
-				hoursForLearn:  lesson[5],
-				usedNum: 		lesson[6],
-				recommendNum:   lesson[7]
+				sort:   		lesson[4],
+				lessonNum:   	lesson[5],
+				hoursForLearn:  lesson[6],
+				usedNum: 		lesson[7],
+				recommendNum:   lesson[8]
 			});
 
 			insertedBookMaster.save(function (err,data) {
@@ -140,13 +143,13 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, lessons){
 
 			// insert book detail record
 			insertedBookDetail = new bookDetailColl({
-				bookMaster:  				insertedBookMaster._id,
-			    lesson: 				lesson[8],
-			    subLesson: 				lesson[9],
-			    sort: 					lesson[10],
-			    useModule: 				lesson[11],
-			    useCollection: 			lesson[12],
-			    dataExtractCondition: 	lesson[13]
+				bookMaster:  			insertedBookMaster._id,
+			    lesson: 				lesson[9],
+			    subLesson: 				lesson[10],
+			    sort: 					lesson[11],
+			    useModule: 				lesson[12],
+			    useCollection: 			lesson[13],
+			    dataExtractCondition: 	lesson[14]
 			});
 
 			insertedBookDetail.save(function (err,data) {
