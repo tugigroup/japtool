@@ -27,7 +27,7 @@ module.exports.policies = {
      *                                                                          *
      ***************************************************************************/
     '*': 'generalize',
-    
+
      // 'japtool/user': {
      //     'new': "generalize",
      //     '*': "authenticated",
@@ -52,7 +52,7 @@ module.exports.policies = {
      //     '*': 'authenticated'
      // }
 
-    
+
 
 
 
