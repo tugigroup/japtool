@@ -143,35 +143,41 @@
                 kanjis.forEach( function(kanji, index){ %>
         <div class="excercise-kanji">
             <div class="col-sm-offset-2 col-sm-8">
-                <i class="fa fa-check-circle-o info-on" title="off informations"></i>
-                <i class="fa fa-minus-circle info-off" title="on informations"></i>
-            </div>
-            <div class="col-sm-offset-2 col-sm-8">
                 <div class="panel panel-default panel-paper-slide-exe">
                     <div class="panel-body">
-                        <% if(kanji.kunyomi){ %>
-                        <p class="not-display <%= index %>">
-                            <span class="glyphicon glyphicon-hand-right"></span><span
-                                    class="lb-on size-lb"> Kunyomi : </span><span
-                                    class="lb-on-con size-lb"><%= kanji.kunyomi %></span>
-                        </p>
-                        <% } %>
-                        <% if(kanji.onyomi){ %>
-                        <p class="not-display <%= index %>">
-                            <span class="glyphicon glyphicon-hand-right"></span><span
-                                    class="lb-kun size-lb"> Onyomi : </span><span
-                                    class="lb-on-kun size-lb"><%= kanji.onyomi %></span>
-                        </p>
-                        <% } %>
-                        <div class="vocabulary text-center">
-                            <div class="card">
-                                <div class="front">
-                                    <h3 onclick="showDetails('<%= index %>');"
-                                        class="text-center text-danger text-center-exe"><%= kanji.item %></h3>
+                        <div class="row">
+                            <div class="col-sm-1">
+                                <div class="col-sm-offset-2 col-sm-8">
+                                    <i class="fa fa-check-circle-o info-on" title="off informations"></i>
+                                    <i class="fa fa-minus-circle info-off" title="on informations"></i>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="col-sm-12">
+                            <% if(kanji.kunyomi){ %>
+                            <p class="not-display <%= index %>">
+                                <span class="glyphicon glyphicon-hand-right"></span><span
+                                        class="lb-on size-lb"> Kunyomi : </span><span
+                                        class="lb-on-con size-lb"><%= kanji.kunyomi %></span>
+                            </p>
+                            <% } %>
+                            <% if(kanji.onyomi){ %>
+                            <p class="not-display <%= index %>">
+                                <span class="glyphicon glyphicon-hand-right"></span><span
+                                        class="lb-kun size-lb"> Onyomi : </span><span
+                                        class="lb-on-kun size-lb"><%= kanji.onyomi %></span>
+                            </p>
+                            <% } %>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="vocabulary text-center">
+                                <div class="card">
+                                    <div class="front">
+                                        <h3 onclick="showDetails('<%= index %>');"
+                                            class="text-center text-danger text-center-exe"><%= kanji.item %></h3>
+                                    </div>
+                                </div>
+                            </div>
                             <% kanji.randomKanjis.forEach( function(hanviet, indexOption){ %>
                             <div class="col-sm-6">
                                 <div class="panel panel-default text-center panel-choose-exe">
@@ -183,8 +189,8 @@
                             </div>
                             <% }) %>
                         </div>
-                        <div class="col-sm-offset-10 col-sm-1">
-                            <span class="pagingCnt">1/<%= sumPage %></span>
+                        <div class="col-sm-offset-9 col-sm-3">
+                            page :<span class="pagingCnt">1/<%= sumPage %></span>
                         </div>
                     </div>
                 </div>

@@ -539,9 +539,6 @@ label.valid, p.valid {
 /* reading-practice */
 
 /*Vocabulary*/
-.voca-list-sum {
-    margin-top: 7%;
-}
 
 .slider-nav h3 {
     background: #aaa;
@@ -1338,6 +1335,12 @@ ul.timeline li .timeline-panel:after {
 .slick-track .slick-current h3{
     background: rgb(43, 169, 225);
 }
+.main-sidebar  .pre-scrollable{
+    max-height: 675px;
+}
+.content-lesson{
+    min-height: 675px !important;
+}
     /*END LEARNING GROUP*/
 
 /*css by duongtd2*/
@@ -1432,6 +1435,9 @@ ul.timeline li .timeline-panel:after {
     /*padding-top: 1.5%;*/
 }
 
+#container-learn .slick-slider{
+    margin-bottom: 9px;
+}
 .lb-question-minion {
     font-size: 22px;
     font-weight: 600;
@@ -1726,6 +1732,12 @@ ul.timeline li .timeline-panel:after {
   font-size: 710%;
   cursor: pointer;
 }
+.panel-paper-slide-voca{
+    height:478px !important
+}
+.voca-list-sum{
+    margin-top: 2%;
+}
 /*END VOCABULARY*/
 
 /*END CONTENT*/
@@ -1920,10 +1932,13 @@ ul.timeline li .timeline-panel:after {
   right:15%;
 }
 .panel-paper-slide{
-    height: 605px !important;
+    min-height: 605px !important;
 }
-.pratice-kanji{
-
+.exe-kanji{
+    margin-top: 2%;
+}
+.excercise-kanji .panel-paper-slide-exe{
+    min-height: 590px !important;
 }
 /*END KANJI*/
 
