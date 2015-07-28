@@ -687,9 +687,7 @@ $(document).ready(function () {
     // localization
     $("#lang-en-option").click(function () {
         var url = window.location.href;
-        
         url = url.replace("lang=vi","lang=en");
-        alert(url);
         if (url.indexOf("lang=en") < 0 ){
             if (url.indexOf("?") < 0 )
                 url += "?lang=en";
@@ -701,9 +699,7 @@ $(document).ready(function () {
     });
     $("#lang-vi-option").click(function () {
         var url = window.location.href;
-        
         url = url.replace("lang=en","lang=vi");
-        alert(url);
         if (url.indexOf("lang=vi") < 0 ){
              if (url.indexOf("?") < 0 )
                 url += "?lang=vi";

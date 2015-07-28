@@ -19,7 +19,7 @@ module.exports = {
         var randomArr = [];
         for (var i = 0; randomArr.length < 3; i++) {
           var randomResult = Math.floor(Math.random() * (max - min) + min);
-          if (!(randomArr.indexOf(randomResult) > -1) && randomResult != index) {
+          if (!(randomArr.indexOf(kanjis[randomResult].hanviet) > -1) && randomResult != index) {
             randomArr[randomArr.length] = kanjis[randomResult].hanviet;
           }
         }
