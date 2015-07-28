@@ -41,6 +41,11 @@
             $('.mic-on').hide();
             audioconfig = false;
         });
+        $('.mic-off').on('click', function () {
+            $('.mic-on').show();
+            $('.mic-off').hide();
+            audioconfig = true;
+        });
     });
     // Google TEXT TO SPEECH
     function text2speech(w, tl, id) {
@@ -115,63 +120,65 @@
 
         <div class="learn-kanji">
             <div class="col-sm-offset-3 col-sm-6">
-                <i class="fa fa-check-circle-o info-on" title="off informations"></i>
-                <i class="fa fa-minus-circle info-off" title="on informations"></i>
-                &nbsp;
-                <i class="fa fa-volume-up mic-on" data-toggle="tooltip" data-placement="top" title="off audio"></i>
-                <i class="fa fa-volume-off mic-off" data-toggle="tooltip" data-placement="top" title="on audio"></i>
-            </div>
-            <div class="col-sm-offset-3 col-sm-6">
-                <div class="panel panel-default panel-paper-slide">
+                <div class="panel panel-default panel-paper-slide-voca">
                     <div class="panel-body">
-                        <div class="vocabulary text-center">
-                            <div class="card">
-                                <!--1-->
-                                <p class="not-display <%= index %>">
+                        <div class="col-sm-4">
+                            <i class="fa fa-check-circle-o info-on" title="off informations"></i>
+                            <i class="fa fa-minus-circle info-off" title="on informations"></i>
+                            &nbsp;
+                            <i class="fa fa-volume-up mic-on" data-toggle="tooltip" data-placement="top" title="off audio"></i>
+                            <i class="fa fa-volume-off mic-off" data-toggle="tooltip" data-placement="top" title="on audio"></i>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="vocabulary text-center">
+                                <div class="card">
+                                    <!--1-->
+                                    <p class="not-display <%= index %>">
                                     <span class="text-success">Reading
                                       <i class="fa fa-microphone text-danger"
                                          onclick="playAudio(<%= index %>);"></i> :
                                     </span>
-                                    <%= vocabulary.reading %>
-                                    <audio id="vocabulary-audio-<%= index %>"></audio>
-                                </p>
-                                <!--end 1-->
-                                <div class="front">
-                                    <h3 class="text-center text-danger text-center-list-voca"
-                                        onclick="showDetails('<%= index %>'); playAudio(<%= index %>);"><%= vocabulary.item %>
-                                    </h3>
+                                        <%= vocabulary.reading %>
+                                        <audio id="vocabulary-audio-<%= index %>"></audio>
+                                    </p>
+                                    <!--end 1-->
+                                    <div class="front">
+                                        <h3 class="text-center text-danger text-center-list-voca"
+                                            onclick="showDetails('<%= index %>'); playAudio(<%= index %>);"><%= vocabulary.item %>
+                                        </h3>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="info-item-<%= index %> details-voca not-display ">
+                            <div class="info-item-<%= index %> details-voca not-display ">
 
-                            <% if(vocabulary.description){ %>
-                            <p>
+                                <% if(vocabulary.description){ %>
+                                <p>
                             <span class="lb-mean size-lb"><span
                                         class="glyphicon glyphicon-screenshot"></span> Description: <%= vocabulary.description %></span>
-                            </p>
-                            <% } %>
+                                </p>
+                                <% } %>
 
-                            <!--3-->
-                            <% if (typeof vocabulary.examples !== 'undefined' && vocabulary.examples.length > 0) { %>
-                            <p custom="display-delay-<%= index + 1 %>">
-                                <span class="text-success">Example: </span>
-                            </p>
-                            <ul custom="display-delay-<%= index + 1 %>" class="vocabulary-item-example">
-                                <% vocabulary.examples.forEach( function(item, index){ %>
-                                <% if (item.example == 'undefined' || item.example.length == 0){ %>
-                                <% }else { %>
-                                <li>
+                                <!--3-->
+                                <% if (typeof vocabulary.examples !== 'undefined' && vocabulary.examples.length > 0) { %>
+                                <p custom="display-delay-<%= index + 1 %>">
+                                    <span class="text-success">Example: </span>
+                                </p>
+                                <ul custom="display-delay-<%= index + 1 %>" class="vocabulary-item-example">
+                                    <% vocabulary.examples.forEach( function(item, index){ %>
+                                    <% if (item.example == 'undefined' || item.example.length == 0){ %>
+                                    <% }else { %>
+                                    <li>
                                   <span class="text-danger" data-toggle="tooltip" data-placement="right"
                                         title="<%= item.meaning %>">
                                     <%= index + 1 %>. <%= item.example %>
                                   </span>
-                                </li>
+                                    </li>
+                                    <% } %>
+                                    <% }) %>
+                                </ul>
                                 <% } %>
-                                <% }) %>
-                            </ul>
-                            <% } %>
-                            <!--end 3-->
+                                <!--end 3-->
+                            </div>
                         </div>
                         <div class="col-sm-offset-10 col-sm-1">
                             <span class="pagingCnt">1/<%= sumPage %></span>

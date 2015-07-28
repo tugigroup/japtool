@@ -11,72 +11,74 @@
 
         <div class="learn-kanji">
             <div class="col-sm-offset-3 col-sm-6">
-                <i class="fa fa-check-circle-o info-on" title="off informations"></i>
-                <i class="fa fa-minus-circle info-off" title="on informations"></i>
-            </div>
-            <div class="col-sm-offset-3 col-sm-6">
                 <div class="panel panel-default panel-paper-slide">
                     <div class="panel-body">
-                        <div class="vocabulary text-center">
-                            <div class="card">
-                                <div class="card-text default-show">
-                                    <h3 class="text-center text-danger text-center-list-kanji"
-                                        onclick="showDetails('<%= index %>')"><%= kanji.item %></h3>
-                                </div>
-                                <div class="card-image default-hide">
-                                    <img class="center-block" src="/media/image/<%=kanji.image%>"/>
+                        <div class="col-sm-1">
+                            <i class="fa fa-check-circle-o info-on" title="off informations"></i>
+                            <i class="fa fa-minus-circle info-off" title="on informations"></i>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="vocabulary text-center">
+                                <div class="card">
+                                    <div class="card-text default-show">
+                                        <h3 class="text-center text-danger text-center-list-kanji"
+                                            onclick="showDetails('<%= index %>')"><%= kanji.item %></h3>
+                                    </div>
+                                    <div class="card-image default-hide">
+                                        <img class="center-block" src="/media/image/<%=kanji.image%>"/>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="details-voca">
-                            <p class="text-center not-display <%= index %>">
-                                <span class="lb-name-voca-mean"><%= kanji.hanviet %></span>
-                            </p>
-                            <% if(kanji.kunyomi){ %>
-                            <p class="not-display <%= index %>">
-                                <span class="glyphicon glyphicon-hand-right"></span><span
-                                        class="lb-on size-lb"> kunyomi :</span><span
-                                        class="lb-on-con size-lb"><%= kanji.kunyomi %></span>
-                            </p>
-                            <% } %>
-                            <% if(kanji.onyomi){ %>
-                            <p class="not-display <%= index %>">
-                                <span class="glyphicon glyphicon-hand-right"></span><span
-                                        class="lb-kun size-lb"> onyomi :</span><span
-                                        class="lb-on-kun size-lb"><%= kanji.onyomi %></span>
-                            </p>
-                            <% } %>
-                            <% if(kanji.description){ %>
-                            <p>
+                            <div class="details-voca">
+                                <p class="text-center not-display <%= index %>">
+                                    <span class="lb-name-voca-mean"><%= kanji.hanviet %></span>
+                                </p>
+                                <% if(kanji.kunyomi){ %>
+                                <p class="not-display <%= index %>">
+                                    <span class="glyphicon glyphicon-hand-right"></span><span
+                                            class="lb-on size-lb"> kunyomi :</span><span
+                                            class="lb-on-con size-lb"><%= kanji.kunyomi %></span>
+                                </p>
+                                <% } %>
+                                <% if(kanji.onyomi){ %>
+                                <p class="not-display <%= index %>">
+                                    <span class="glyphicon glyphicon-hand-right"></span><span
+                                            class="lb-kun size-lb"> onyomi :</span><span
+                                            class="lb-on-kun size-lb"><%= kanji.onyomi %></span>
+                                </p>
+                                <% } %>
+                                <% if(kanji.description){ %>
+                                <p>
                             <span class="lb-mean size-lb"><span
                                         class="glyphicon glyphicon-screenshot"></span> Description: <%= kanji.description %></span>
-                            </p>
-                            <% } %>
+                                </p>
+                                <% } %>
 
-                            <!--5-->
-                            <% if (typeof kanji.examples !== 'undefined' && kanji.examples.length > 0) { %>
-                            <p custom="display-delay-<%= index + 1 %>">
-                                <span class="glyphicon glyphicon-screenshot"></span><span class="lb-example size-lb"> Example :</span>
-                            </p>
+                                <!--5-->
+                                <% if (typeof kanji.examples !== 'undefined' && kanji.examples.length > 0) { %>
+                                <p custom="display-delay-<%= index + 1 %>">
+                                    <span class="glyphicon glyphicon-screenshot"></span><span class="lb-example size-lb"> Example :</span>
+                                </p>
 
-                            <ul custom="display-delay-<%= index + 1 %>" class="vocabulary-item-example">
-                                <% kanji.examples.forEach( function(item, index){ %>
-                                <% if (item.example == 'undefined' || item.example.length == 0){ %>
-                                <% }else { %>
-                                <li>
+                                <ul custom="display-delay-<%= index + 1 %>" class="vocabulary-item-example">
+                                    <% kanji.examples.forEach( function(item, index){ %>
+                                    <% if (item.example == 'undefined' || item.example.length == 0){ %>
+                                    <% }else { %>
+                                    <li>
                                           <span data-toggle="tooltip" data-placement="right" title="<%= item.meaning %>"
                                                 class="text-danger size-lb ">
                                             <%= index + 1 %>. <%= item.example %>
                                           </span>
-                                </li>
+                                    </li>
+                                    <% } %>
+                                    <% }) %>
+                                </ul>
                                 <% } %>
-                                <% }) %>
-                            </ul>
-                            <% } %>
-                            <!--end 5-->
+                                <!--end 5-->
+                            </div>
                         </div>
-                        <div class="col-sm-offset-10 col-sm-1">
-                            <span class="pagingCnt">1/<%= sumPage %></span>
+                        <div class="col-sm-offset-9 col-sm-3">
+                            page :<span class="pagingCnt"> 1/<%= sumPage %></span>
                         </div>
                     </div>
                 </div>

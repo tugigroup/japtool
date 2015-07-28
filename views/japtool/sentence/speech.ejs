@@ -7,12 +7,13 @@
             <label id="checkBrowser"></label>
 
             <div class="slider slider-for">
+                <% sentences.forEach( function(sentenceItem, index){ %>
                 <div>
                     <section>
                         <div class="row">
                             <div class="col-sm-12">
                                 <h2 class="text-danger text-center"><i class="fa fa-question-circle"></i><span
-                                            class="question">こんにちは</span></h2>
+                                            class="question<%= index %>"><%= sentenceItem.sentence %></span></h2>
                             </div>
 
                             <div class="col-sm-6">
@@ -32,13 +33,13 @@
                                 <h3 class="text-right">Result: </h3>
                             </div>
                             <div class="col-sm-6">
-                                <h3 class="check">Watting</h3>
+                                <h3 class="check<%= index %>">Watting</h3>
                             </div>
                         </div>
 
                         <div class="text-center">
 
-                            <a class="text-center btn-start" onclick="startVoice();">
+                            <a class="text-center btn-start<%= index %>" onclick="startVoice();">
                                 <div class="check-voice">
                                     <i class="fa fa-microphone fa-5x"></i>
                                 </div>
@@ -46,69 +47,22 @@
                         </div>
                     </section>
                 </div>
-
-                <div><h3>2</h3></div>
-                <div><h3>3</h3></div>
-                <div><h3>4</h3></div>
-                <div><h3>5</h3></div>
+                <% }) %>
             </div>
             <div class="slider slider-nav">
-                <div><h3>1</h3></div>
-                <div><h3>2</h3></div>
-                <div><h3>3</h3></div>
-                <div><h3>4</h3></div>
-                <div><h3>5</h3></div>
+                <% sentences.forEach( function(sentenceItem, index){ %>
+                <div><h3><%= index %></h3></div>
+                <% }) %>
+
             </div>
-
-
-            <!--<div id="one-time">-->
-                <!--<h1 class="text-center">Question</h1>-->
-                <!--<section>-->
-                    <!--<div class="row">-->
-                        <!--<div class="col-sm-12">-->
-                            <!--<h2 class="text-danger text-center"><i class="fa fa-question-circle"></i><span-->
-                                        <!--class="question">こんにちは</span></h2>-->
-                        <!--</div>-->
-
-                        <!--<div class="col-sm-6">-->
-                            <!--<h3 class="text-right">Receiving: </h3>-->
-                        <!--</div>-->
-                        <!--<div class="col-sm-6">-->
-                            <!--<h3 class="status">Not Started</h3>-->
-                        <!--</div>-->
-
-                        <!--<div class="col-sm-6">-->
-                            <!--<h3 class="text-right">Received: </h3>-->
-                        <!--</div>-->
-                        <!--<div class="col-sm-6 clearfix">-->
-                            <!--<h3 class="result">Watting</h3>-->
-                        <!--</div>-->
-                        <!--<div class="col-sm-6">-->
-                            <!--<h3 class="text-right">Result: </h3>-->
-                        <!--</div>-->
-                        <!--<div class="col-sm-6">-->
-                            <!--<h3 class="check">Watting</h3>-->
-                        <!--</div>-->
-                    <!--</div>-->
-
-                    <!--<div class="text-center">-->
-
-                        <!--<a class="text-center btn-start" onclick="startVoice();">-->
-                            <!--<div class="check-voice">-->
-                                <!--<i class="fa fa-microphone fa-5x"></i>-->
-                            <!--</div>-->
-                        <!--</a>-->
-                    <!--</div>-->
-                <!--</section>-->
-            <!--</div>-->
         </div>
     </div>
 </div>
-<br/>
-<br/>
-<br/>
+<span id="sentencesL" forValue="<%= sentences.length %>"></span>
 <script src="/js/dependencies/bowser.min.js"></script>
 <script>
+    var i;
+    var question
     function checkBrowser() {
         var chromeName = "chrome";
         var browserName = bowser.name.toLowerCase();
@@ -129,37 +83,57 @@
     recognition.lang = "ja-JP";
     recognition.continuous = true;
     recognition.interimResults = true;
-
+    var autoPlayRun = false;
+    var sentencesL = document.getElementById('sentencesL').getAttribute('forValue');
     function addMessage(msg) {
-        var question = $(".question").text();
-        if (msg == question) {
-            $(".check").html("<span class='text-success'><i class='fa fa-check'></i> Correct</span>");
-            stop();
-        } else {
-            $(".check").html("<span class='text-danger'><i class='fa fa-times'></i> Incorrect</span>");
+
+        for (i = 0; i <= sentencesL; i++) {
+            question = $(".question"+i).text();
+            $(".check"+i).html("");
+            if (msg == question) {
+                $(".check"+i).html("<span class='text-success'><i class='fa fa-check'></i> Correct</span>");
+                stop();
+                autoPlayRun = true;
+            } else {
+                $(".check"+i).html("<span class='text-danger'><i class='fa fa-times'></i> Incorrect</span>");
+            }
+            $(".result"+i).html(msg);
+            if (autoPlayRun){
+
+            }
         }
-        $(".result").html(msg);
+
+
     }
 
     function stop() {
-        $('.btn-start').val('start');
         recognition.stop();
-        $('.btn-start').removeClass('text-danger');
+        for (i = 0; i <= sentencesL; i++) {
+            $('.btn-start'+i).val('start');
+            $('.btn-start'+i).removeClass('text-danger');
+        }
+
 
     }
 
     function start() {
-        $('.btn-start').addClass('text-danger');
         recognition.start();
+        for (i = 0; i <= sentencesL; i++) {
+            $('.btn-start'+i).addClass('text-danger');
+        }
+
     }
 
     function startVoice() {
         if (isChrome == "OK") {
-            if (!$('.btn-start').hasClass('text-danger')) {
-                start();
-            } else {
-                stop();
+            for (i = 0; i <= sentencesL; i++) {
+                if (!$('.btn-start'+i).hasClass('text-danger')) {
+                    start();
+                } else {
+                    stop();
+                }
             }
+
         } else {
             alert(isChrome);
         }

@@ -7,7 +7,7 @@
         fade: false,
         asNavFor: '.slider-nav',
         draggable: false,
-        touchMove:false,
+        touchMove: false,
         prevArrow: '<button type="button" data-role="none" class="btn btn-show-list btn-arrow-left" aria-label="Previous" tabindex="0" role="button"><i class="fa fa-chevron-left"></i></button>',
         nextArrow: '<button type="button" data-role="none" class="btn btn-show-list btn-arrow-right" aria-label="Next" tabindex="0" role="button"><i class="fa fa-chevron-right"></i></button>'
     });
@@ -26,18 +26,17 @@
         var i = (currentSlide ? currentSlide : 0) + 1;
     });
     var audioconfig = true;
-    $(document).ready(function () {
+    //    on or off sound
+    $('.mic-off').hide();
+    $('.mic-on').on('click', function () {
+        $('.mic-off').show();
+        $('.mic-on').hide();
+        audioconfig = false;
+    });
+    $('.mic-off').on('click', function () {
+        $('.mic-on').show();
         $('.mic-off').hide();
-        $('.mic-on').on('click', function () {
-            $('.mic-off').show();
-            $('.mic-on').hide();
-            audioconfig = false;
-        });
-        $('.mic-off').on('click', function () {
-            $('.mic-on').show();
-            $('.mic-off').hide();
-            audioconfig = true;
-        });
+        audioconfig = true;
     });
     // Google TEXT TO SPEECH
     function text2speech(w, tl, id) {
@@ -127,38 +126,36 @@
         <%
             var sumPage = vocabularies.length;
                 vocabularies.forEach( function(vocabulary, index){ %>
-        <div class="excercise-kanji">
-            <div class="col-sm-offset-2 col-sm-8">
-                <i class="fa fa-microphone mic-on" title="Off Audio"></i>
-                <i class="fa fa-microphone-slash mic-off" title="On Audio"></i>
-            </div>
+        <div class="pratice-voca">
             <div class="col-sm-offset-2 col-sm-8">
                 <div class="panel panel-default panel-paper-slide">
                     <div class="panel-body">
-                        <div class="vocabulary text-center">
-                            <div class="card">
-                                <div class="front">
-                                    <h3 class="text-center text-danger text-center-exe"
-                                        onclick="playAudio('vocabulary-audio-<%= index %>');"><%= vocabulary.item %>
-                                    </h3>
-                                    <audio id="vocabulary-audio-<%= index %>"></audio>
-                                </div>
-                            </div>
+                        <div class="col-sm-1">
+                            <i class="fa fa-microphone mic-on" title="Off Audio"></i>
+                            <i class="fa fa-microphone-slash mic-off" title="On Audio"></i>
                         </div>
-                        <div class="row">
-                            <% vocabulary.randomVocabularies.forEach( function(description, indexOption){ %>
-                            <div class="row">
-                                <div class="col-sm-offset-1 col-sm-10">
-                                    <div class="panel panel-default text-center panel-choose-exe">
-                                        <div id="<%= indexOption %>-<%= index %>" class="panel-body"
-                                             onclick="checkAnswer('<%= description %>','<%= vocabulary.description %>','<%= indexOption %>-<%= index %>')">
-                                            <%= description %>
-                                        </div>
+                        <div class="col-sm-12">
+                            <div class="vocabulary text-center">
+                                <div class="card">
+                                    <div class="front">
+                                        <h3 class="text-center text-danger text-center-exe"
+                                            onclick="playAudio('vocabulary-audio-<%= index %>');"><%= vocabulary.item %>
+                                        </h3>
+                                        <audio id="vocabulary-audio-<%= index %>"></audio>
                                     </div>
                                 </div>
                             </div>
-                            <% }) %>
                         </div>
+                        <% vocabulary.randomVocabularies.forEach( function(description, indexOption){ %>
+                        <div class="col-sm-offset-1 col-sm-10">
+                            <div class="panel panel-default text-center panel-choose-exe">
+                                <div id="<%= indexOption %>-<%= index %>" class="panel-body"
+                                     onclick="checkAnswer('<%= description %>','<%= vocabulary.description %>','<%= indexOption %>-<%= index %>')">
+                                    <%= description %>
+                                </div>
+                            </div>
+                        </div>
+                        <% }) %>
                         <div class="col-sm-offset-10 col-sm-1">
                             <span class="pagingCnt">1/<%= sumPage %></span>
                         </div>
