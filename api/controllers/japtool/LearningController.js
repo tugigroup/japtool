@@ -48,7 +48,7 @@ module.exports = {
                     });
                 }
                 else {
-                    res.send("/japtool/BookMaster/practice/?id=" + learning.bookMaster.id + "&learnID=" + learning.id);
+                    res.send("/japtool/Learning/practice/?id=" + learning.bookMaster.id + "&learnID=" + learning.id);
                 }
             }
 
@@ -74,7 +74,7 @@ module.exports = {
                     });
                 }
                 else {
-                    res.send("/japtool/BookMaster/practice/?id=" + learning.bookMaster.id + "&learnID=" + learning.id);
+                    res.send("/japtool/Learning/practice/?id=" + learning.bookMaster.id + "&learnID=" + learning.id);
                 }
             }
         })
@@ -177,7 +177,7 @@ module.exports = {
                         var now = new Date();
 
                         if (finishDate > now) {
-                            var create = '<h3>Ban da dang hoc mot learning ve quyen sach nay, ban can xoa learning do de tao 1 learningmoivenohoactieptuchoctai <a href = "/japtool/BookMaster/practice/?id=<%= book.id %>" > day < /a></h3 > ';
+                            var create = '<h3>Ban da dang hoc mot learning ve quyen sach nay, ban can xoa learning do de tao 1 learningmoivenohoactieptuchoctai <a href = "/japtool/Learning/practice/?id=<%= book.id %>" > day < /a></h3 > ';
                             res.render('japtool/learning/create', {
                                 create: create,
                                 book: learning.bookMaster,
@@ -256,7 +256,7 @@ module.exports = {
 
                                 }
                                 else {
-                                    res.send('japtool/BookMaster/practice/?id=' + bookMaster);
+                                    res.send('japtool/Learning/practice/?id=' + bookMaster);
                                 }
                             })
                         });
@@ -349,4 +349,127 @@ module.exports = {
         })
 
     },
+
+    practice: function (req, res) {
+        var id = req.param('id');
+        var learnID = req.param('learnID');
+        var array = require("array-extended");
+        BookMaster.findOne({id: id}).populate('bookDetails', {sort: 'sort ASC'}).exec(function createCB(err, data) {
+            if (err) {
+                sails.log(err)
+            } else {
+                var bookDetails = data.bookDetails;
+                var lessons = [];
+                bookDetails.forEach(function (item) {
+                    lessons.push(item.lesson);
+                });
+                var uniqueLessons = array(lessons).unique().value();
+                //uniqueLessons = array.sort(uniqueLessons);
+                res.view('japtool/learning/show-book-detail', {
+                    uniqueLessons: uniqueLessons,
+                    learnID: learnID,
+                    bookDetails: bookDetails,
+                    nameBook: data.name,
+                    layout: 'layout/layout-japtool'
+                });
+            }
+        })
+    },
+
+    saveHistory: function (req, res) {
+        var pars = req.allParams();
+        UserLearnHistory.findOne({
+            user: pars.user,
+            bookDetail: pars.bookDetail,
+            selfLearning: pars.selfLearning
+        }).exec(function (err, data) {
+            if (data == undefined) {
+                UserLearnHistory.create(pars).exec(function createCB(err, history) {
+                    if (err) {
+                        sails.log(err)
+                    } else {
+                        res.send('Create Learning history successful')
+                    }
+                })
+            } else {
+                var currentDate = new Date();
+                UserLearnHistory.update({id: data.id}, {
+                    startDate: currentDate,
+                    finishDate: currentDate
+                }).exec(function (err, updated) {
+                    if (err) {
+                        sails.log(err)
+                    } else {
+                        res.send('Record has update');
+                    }
+                })
+            }
+        });
+    },
+    getMissLesson: function (req, res) {
+        var bookId = req.param('bookId');
+        var learningId = req.param('learningId');
+        var startDate = req.param('startDate');
+        var finishDate = req.param('finishDate');
+        finishDate = new Date(finishDate);
+        startDate = new Date(startDate);
+        var currentDate = Date.now();
+        //Only recommend when in learning time
+        if (currentDate < startDate || currentDate > finishDate) {
+            return res.send([]);
+        }
+        SelfLearning.findOne({user: req.session.User.id, id: learningId})
+            .populate('bookMaster')
+            .populate('userLearnHistories').exec(function (err, selfLearning) {
+                if (err) {
+                    sails.log("Err when read data from server:");
+                    return res.serverError(err);
+                }
+                BookDetail.find({bookMaster: bookId}).exec(function (err, bookDetails) {
+                    if (err) {
+                        sails.log("Err when read book detail data:");
+                        return res.serverError(err);
+                    }
+                    if (selfLearning == null || selfLearning == undefined) {
+                        return res.send([]);
+                    }
+                    //Only recommend when in learning time
+                    if (currentDate < startDate || currentDate > finishDate) {
+                        return res.send([]);
+                    }
+                    //Total learning Day
+                    var totalDay = Math.ceil((finishDate - startDate) / 86400000) + 1;
+                    // Total Lesson Day
+                    var lessonDay = Math.ceil(bookDetails.length / totalDay);
+                    //Total Current Day
+                    var currentTotalDay = Math.ceil((currentDate - startDate) / 86400000) + 1;
+                    //current total Lesson Day
+                    var currentTotalLessonDay = Math.ceil(currentTotalDay * lessonDay);
+                    //current total lesson learning
+                    var lessonLearning = selfLearning.userLearnHistories.length;
+
+                    //miss total lesson
+                    if (lessonDay > bookDetails.length || lessonLearning >= currentTotalLessonDay) {
+                        /*sails.log("current total lesson learning: "
+                         + lessonLearning + "-current total Lesson Day: " + currentTotalLessonDay);*/
+                        return res.send([]);
+                    }
+                    else {
+                        var bookMissLessons = new Array();
+                        for (var i = 0; i < currentTotalLessonDay; i++) {
+                            for (var j = 0; j < selfLearning.userLearnHistories.length; j++) {
+                                if (bookDetails[i].id == selfLearning.userLearnHistories[j].bookDetail) {
+                                    bookMissLessons.push(bookDetails[i]);
+                                    break;
+                                }
+                                if (i == currentTotalLessonDay - 1 && j == selfLearning.userLearnHistories.length - 1)
+                                {
+                                    res.send(bookMissLessons);
+                                }
+                            }
+                        }
+                    }
+                });
+            });
+    }
 };

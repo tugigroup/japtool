@@ -28,29 +28,29 @@ module.exports.policies = {
      ***************************************************************************/
     '*': 'generalize',
     
-     'japtool/user': {
-         'new': "generalize",
-         '*': "authenticated",
-         create: "generalize"
-     },
-     'japtool/auth': {
-         '*': 'generalize'
-     },
-     'japtool/vocabulary': {
-         '*': 'authenticated'
-     },
-     'japtool/BookMaster': {
-         '*': 'authenticated'
-     },
-     'japtool/BookDetail': {
-         '*': 'authenticated'
-     },
-     'japtool/Learning': {
-         '*': 'authenticated'
-     },
-     'japtool/Library': {
-         '*': 'authenticated'
-     }
+     // 'japtool/user': {
+     //     'new': "generalize",
+     //     '*': "authenticated",
+     //     create: "generalize"
+     // },
+     // 'japtool/auth': {
+     //     '*': 'generalize'
+     // },
+     // 'japtool/vocabulary': {
+     //     '*': 'authenticated'
+     // },
+     // 'japtool/BookMaster': {
+     //     '*': 'authenticated'
+     // },
+     // 'japtool/BookDetail': {
+     //     '*': 'authenticated'
+     // },
+     // 'japtool/Learning': {
+     //     '*': 'authenticated'
+     // },
+     // 'japtool/Library': {
+     //     '*': 'authenticated'
+     // }
 
     
 
