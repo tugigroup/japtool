@@ -1,6 +1,5 @@
 var stringify = require('csv-stringify');
 var fs = require('fs');
-var parser = parse({delimiter : ','});
 
 var mongoose = require('mongoose');
 var config = require('./../config.json');
@@ -31,6 +30,8 @@ mongoose.connect('mongodb://' + config.dbhost + '/' + config.database, function 
 	    return console.log(err);
 	}
 });
+console.log('START: EXPORTING DATA...');
+console.log('========================');
 //count documents of collection
 model.count({}, function( err, count){
 	if (err) {
@@ -48,13 +49,15 @@ model.find({}, function (err, docs) {
 			]);
 		}
 	});
-	console.log(array);
-	stringify(array,{header:true, columns: columns}, function(err, output){
-  		console.log(output.length);
+	stringify(array,{header:false, columns: columns}, function(err, output){
+  		//console.log(output.length);
   		fs.writeFile('./data.csv', output, function (err) {
 		  	if (err) throw err;
+		  	console.log("Exported documents to file data.csv");
 		  	//disconect mongodb
 			mongoose.disconnect();
+			console.log('========================');
+			console.log('END: EXPORTED DATA');	
 
 		});
 	});
