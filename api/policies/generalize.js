@@ -27,7 +27,6 @@ module.exports = function(req, res, next) {
     res.redirect('/japtool/auth');
 
   }
-
 	// pre check validate
 	res.locals.flash ={};
   if(req.session.flash){
