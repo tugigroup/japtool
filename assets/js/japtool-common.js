@@ -683,6 +683,36 @@ $(document).ready(function () {
         centerMode: true,
         focusOnSelect: true
     });
+
+    // localization
+    $("#lang-en-option").click(function () {
+        var url = window.location.href;
+        
+        url = url.replace("lang=vi","lang=en");
+        alert(url);
+        if (url.indexOf("lang=en") < 0 ){
+            if (url.indexOf("?") < 0 )
+                url += "?lang=en";
+            else
+                url += "&lang=en";
+        }
+        
+        window.location.replace(url);
+    });
+    $("#lang-vi-option").click(function () {
+        var url = window.location.href;
+        
+        url = url.replace("lang=en","lang=vi");
+        alert(url);
+        if (url.indexOf("lang=vi") < 0 ){
+             if (url.indexOf("?") < 0 )
+                url += "?lang=vi";
+            else
+                url += "&lang=vi";
+        }
+        
+        window.location.replace(url);
+    });
 });
 
 
