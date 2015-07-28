@@ -23,9 +23,9 @@
       <div class="row">
         <div class="account-right col-sm-7 col-sm-offset-5">
           <% if (req.session.lang == 'vi')  { %>
-              <a href="?lang=en" data-toggle="tooltip" data-placement="left" title="<%= __('Click to change language interface') %>"> <img src="/images/vi-icon.png"></a>
+              <a id="lang-en-option" data-toggle="tooltip" data-placement="left" title="<%= __('Click to change language interface') %>"> <img src="/images/vi-icon.png"></a>
           <% } else { %>
-              <a href="?lang=vi" data-toggle="tooltip" data-placement="left" title="<%= __('Click to change language interface') %>"> <img src="/images/en-icon.png"></a>
+              <a id="lang-vi-option"  data-toggle="tooltip" data-placement="left" title="<%= __('Click to change language interface') %>"> <img src="/images/en-icon.png"></a>
           <% } %>
           
           <% if(session.authenticated){ %>
@@ -52,7 +52,7 @@
               <li><a href='/japtool/learning/home'><%= __('Home') %></a></li>
               <li><a href='/japtool/page/about'><%= __('About') %></a></li>
 
-              <li class='active'><a href='/japtool/BookMaster/getLibrary'><%= __('Library') %></a>
+              <li class='active'><a href='/japtool/Library/getLibrary'><%= __('Library') %></a>
               </li>
               <li><a href="/japtool/learning"><%= __('Learning') %></a></li>
               <li><a href="/japtool/page/guide"><%= __('Use Guide') %></a></li>

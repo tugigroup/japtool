@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="content">
-                <h2>learning group</h2>
+                <h2 id="add-book-detail"><%= nameBook %></h2>
 
                 <div id="learning-nav" class="skin-green sidebar-mini">
                     <div class="wrapper">
@@ -19,7 +19,7 @@
                         <!-- Left side column. contains the logo and sidebar -->
                         <aside class="main-sidebar">
                             <!-- sidebar: style can be found in sidebar.less -->
-                            <section class="sidebar">
+                            <section class="sidebar pre-scrollable">
                                 <!-- Sidebar user panel -->
                                 <ul class="sidebar-menu">
                                     <% uniqueLessons.forEach(function(uniqueLesson){ %>
@@ -46,8 +46,7 @@
                             <!-- /.sidebar -->
                         </aside>
                         <!-- Content Wrapper. Contains page content -->
-                        <div class="content-wrapper">
-                            <h3 class="text-center" id="add-book-detail"><%= nameBook %></h3>
+                        <div class="content-wrapper content-lesson">
                             <section class="content-wrapper-body">
                                 <div class="row">
                                     <div id="container-learn"></div>
@@ -67,7 +66,8 @@
 <script>
     function learn(module, condition) {
         var strCondition = JSON.stringify(condition);
-        $('#container-learn').load('/japtool/' + module + '/list/?condition=' + strCondition);
+        console.log(strCondition);
+        $('#container-learn').load('/japtool/' + module + '/?condition=' + strCondition);
     }
 
     window.onload = function () {
@@ -80,7 +80,7 @@
             var finishDate = new Date();
             $.ajax({
                 method: "POST",
-                url: "/japtool/bookDetail/saveHistory",
+                url: "/japtool/Learning/saveHistory",
                 data: {
                     user: user,
                     bookDetail: bookDetail,

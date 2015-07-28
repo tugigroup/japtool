@@ -19,7 +19,7 @@
                         <% if(num > Constants.maxLibOnPage){ %>
                         <div class="col-sm-2">
                             <div class="join-learn btn label-primary">
-                                <a href="/japtool/BookMaster/getAllLibrary/?type=<%= item %>">View more Library</a>
+                                <a href="/japtool/Library/getAllLibrary/?type=<%= item %>">View more Library</a>
                             </div>
                         </div>
                         <% } %>
@@ -277,7 +277,7 @@
                 var finishDate = new Date();
                 $.ajax({
                     method: "POST",
-                    url: "/japtool/bookDetail/saveHistory",
+                    url: "/japtool/Learning/saveHistory",
                     data: {
                         user: user,
                         bookDetail: bookDetail,
@@ -315,7 +315,7 @@
             if (module == 'test') {
                 $('#' + id).load('/japtool/' + module + '/previewTest/?condition=' + strCondition);
             } else {
-                $('#' + id).load('/japtool/' + module + '/list/?condition=' + strCondition);
+                $('#' + id).load('/japtool/' + module + '/?condition=' + strCondition);
             }
         }
     </script>
