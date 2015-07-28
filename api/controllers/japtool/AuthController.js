@@ -127,9 +127,13 @@ module.exports = {
 
     destroy: function (req, res, next) {
         //wipe out the session (log out)
+        var lang = req.session.lang;
+        if(!lang) lang = 'en';
+        
         req.session.destroy();
+
         //redirect the browser to the sign-in screen
-        res.redirect('/japtool/auth');
+        res.redirect('/japtool/auth?lang='+lang);
 
     },
     facebook: function (req, res, next) {
