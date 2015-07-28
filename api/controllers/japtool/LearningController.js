@@ -48,7 +48,7 @@ module.exports = {
                     });
                 }
                 else {
-                    res.send("/japtool/BookMaster/practice/?id=" + learning.bookMaster.id + "&learnID=" + learning.id);
+                    res.send("/japtool/Learning/practice/?id=" + learning.bookMaster.id + "&learnID=" + learning.id);
                 }
             }
 
@@ -74,7 +74,7 @@ module.exports = {
                     });
                 }
                 else {
-                    res.send("/japtool/BookMaster/practice/?id=" + learning.bookMaster.id + "&learnID=" + learning.id);
+                    res.send("/japtool/Learning/practice/?id=" + learning.bookMaster.id + "&learnID=" + learning.id);
                 }
             }
         })
@@ -177,7 +177,7 @@ module.exports = {
                         var now = new Date();
 
                         if (finishDate > now) {
-                            var create = '<h3>Ban da dang hoc mot learning ve quyen sach nay, ban can xoa learning do de tao 1 learningmoivenohoactieptuchoctai <a href = "/japtool/BookMaster/practice/?id=<%= book.id %>" > day < /a></h3 > ';
+                            var create = '<h3>Ban da dang hoc mot learning ve quyen sach nay, ban can xoa learning do de tao 1 learningmoivenohoactieptuchoctai <a href = "/japtool/Learning/practice/?id=<%= book.id %>" > day < /a></h3 > ';
                             res.render('japtool/learning/create', {
                                 create: create,
                                 book: learning.bookMaster,
@@ -256,7 +256,7 @@ module.exports = {
 
                                 }
                                 else {
-                                    res.send('japtool/BookMaster/practice/?id=' + bookMaster);
+                                    res.send('japtool/Learning/practice/?id=' + bookMaster);
                                 }
                             })
                         });
