@@ -27,7 +27,7 @@
     });
     var audioconfig = true;
     $(document).ready(function () {
-        $('.mic-off').hide();
+        $('.mic-on').hide();
         $('.mic-on').on('click', function () {
             $('.mic-off').show();
             $('.mic-on').hide();
@@ -127,7 +127,7 @@
         <%
             var sumPage = vocabularies.length;
                 vocabularies.forEach( function(vocabulary, index){ %>
-        <div class="excercise-kanji">
+        <div class="pratice-voca">
             <div class="col-sm-offset-2 col-sm-8">
                 <i class="fa fa-microphone mic-on" title="Off Audio"></i>
                 <i class="fa fa-microphone-slash mic-off" title="On Audio"></i>

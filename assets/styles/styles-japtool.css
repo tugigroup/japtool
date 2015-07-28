@@ -1335,8 +1335,10 @@ ul.timeline li .timeline-panel:after {
 .manager-learning-item h4 a {
     color: #000;
 }
-
-/*END LEARNING GROUP*/
+.slick-track .slick-current h3{
+    background: rgb(43, 169, 225);
+}
+    /*END LEARNING GROUP*/
 
 /*css by duongtd2*/
 /*css show article to learn*/
@@ -1806,7 +1808,7 @@ ul.timeline li .timeline-panel:after {
 .card-image{
   position: absolute;
   top: 8px;
-  right:  -12%;
+  right:  -8%;
   display: none;
 }
 .card-image img{
@@ -1911,18 +1913,17 @@ ul.timeline li .timeline-panel:after {
     font-weight: 500;
 }
 
-.exe-kanji {
-    margin-top: 8%;
-}
-
-.exe-voca {
-    margin-top: 8%;
-}
 .btn-arrow-left-exe{
   left:15%;
 }
 .btn-arrow-right-exe{
   right:15%;
+}
+.panel-paper-slide{
+    height: 605px !important;
+}
+.pratice-kanji{
+
 }
 /*END KANJI*/
 

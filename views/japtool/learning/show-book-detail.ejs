@@ -67,6 +67,7 @@
 <script>
     function learn(module, condition) {
         var strCondition = JSON.stringify(condition);
+        console.log(strCondition);
         $('#container-learn').load('/japtool/' + module + '/?condition=' + strCondition);
     }
 

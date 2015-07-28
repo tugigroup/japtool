@@ -147,7 +147,7 @@
                 <i class="fa fa-minus-circle info-off" title="on informations"></i>
             </div>
             <div class="col-sm-offset-2 col-sm-8">
-                <div class="panel panel-default panel-paper-slide">
+                <div class="panel panel-default panel-paper-slide-exe">
                     <div class="panel-body">
                         <% if(kanji.kunyomi){ %>
                         <p class="not-display <%= index %>">
@@ -175,8 +175,8 @@
                             <% kanji.randomKanjis.forEach( function(hanviet, indexOption){ %>
                             <div class="col-sm-6">
                                 <div class="panel panel-default text-center panel-choose-exe">
-                                    <div id="<%= indexOption %> <%= index %>" class="panel-body"
-                                         onclick="checkAnswer('<%= hanviet %>','<%= kanji.hanviet %>','<%= indexOption %> <%= index %>')">
+                                    <div id="<%= indexOption %>-<%= index %>" class="panel-body"
+                                         onclick="checkAnswer('<%= hanviet %>','<%= kanji.hanviet %>','<%= indexOption %>-<%= index %>')">
                                         <span class="option-exe-hanviet"><%= hanviet %></span>
                                     </div>
                                 </div>
