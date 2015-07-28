@@ -11,6 +11,7 @@ data = fs.readFileSync(config.speed_csv_file,{"encoding":"utf8"});
 var speedSchema = mongoose.Schema({
 	sentence : String,
 	description	: String,
+	readingTime : Number,
 	level : String,
 	sort : Number,
 	tag	: String
@@ -34,9 +35,10 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, speeds){
 				var speedlst = new speedColl({
 					sentence	: item[0],
 					description	: item[1],
-					level		: item[2],
-					sort		: item[3],
-					tag			: item[4]
+					readingTime	: item[2],
+					level		: item[3],
+					sort		: item[4],
+					tag			: item[5]
 				});
 
 				speedlst.save(function (err,data) {
