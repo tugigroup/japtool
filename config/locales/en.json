@@ -28,22 +28,15 @@
   "Click to view profile.": "Click to view profile.",
   "Click to change language interface": "Click to change language interface",
   "more": "more",
-  "more": "more",
-  "more": "more",
-  "more": "more",
-  "more": "more",
-  "more": "more",
-  "more": "more",
-  //USER VIEW
-  //  active-account-success.ejs
+
   "Active Success": "Active Success",
   "Welcome to Japtool Learning": "Welcome to Japtool Learning.",
   "Click here to login system": "Click here to login system",
   "Login": "Login",
   "Active Fail": "Active Fail",
   "Your account is invalid": "Your account is invalid.",
-  "Click here to sign up": "Click here to sign up"
-  //  edit.ejs
+  "Click here to sign up": "Click here to sign up",
+
   "Edit an account": "Edit an account",
   "Last Name": "Last Name",
   "First Name": "First Name",
@@ -51,7 +44,7 @@
   "Address": "Address",
   "Website": "Website",
   "Update": "Update",
-  //  edit-user-information.ejs
+
   "User Name": "User Name",
   "E-Telephone": "E-Telephone",
   "Fax": "Fax",
@@ -69,11 +62,11 @@
   "Your Address": "Your Address",
   "Your City": "Your City",
   "Your PostCode": "Your PostCode",
-  //  forget-password.ejs
+
   "Did You Forget Your Password": "Did You Forget Your Password",
   "Enter the e-mail address associated with your account. Click submit to have your password e-mailed to you": "Enter the e-mail address associated with your account. Click submit to have your password e-mailed to you",
   "Continue": "Continue",
-  //  new.ejs
+
   "Register Account": "Register Account",
   "If you already have an account with us, please login at the": "If you already have an account with us, please login at the",
   "login page": "login page",
@@ -83,12 +76,12 @@
   "Password": "Password",
   "Password Confirm": "Password Confirm",
   "Your Personal Details": "Your Personal Details",
-  //  new-success.ejs
+
   "Resgiter Success": "Resgiter Success",
   "Congratulation": "Congratulation",
   "successfully registered account": "successfully registered account",
   "We sent active email for you, please active to complete registration": "We sent active email for you, please active to complete registration",
-  //  show.ejs
+
   "Lever Of User": "Lever Of User",
   "Join Date": "Join Date",
   "Total lesson": "Total lesson",
@@ -107,7 +100,7 @@
   "Confirm Your Password": "Confirm Your Password",
   "Choose File": "Choose File",
   "Upload": "Upload",
-  //  show-user-info.ejs
+
   "Edit": "Edit"
-  //END USER VIEW
+
 }
