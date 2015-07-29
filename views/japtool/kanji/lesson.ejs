@@ -10,15 +10,15 @@
         %>
 
         <div class="learn-kanji">
-            <div class="col-sm-offset-3 col-sm-6">
+            <div class="col-sm-offset-2 col-sm-8">
                 <div class="panel panel-default panel-paper-slide">
                     <div class="panel-body">
-                        <div class="col-sm-1">
+                        <div class="col-sm-1 row-icon">
                             <i class="fa fa-check-circle-o info-on" title="off informations"></i>
                             <i class="fa fa-minus-circle info-off" title="on informations"></i>
                         </div>
                         <div class="col-sm-12">
-                            <div class="vocabulary text-center">
+                            <div class="kanji-text-block text-center">
                                 <div class="card">
                                     <div class="card-text default-show">
                                         <h3 class="text-center text-danger text-center-list-kanji"
@@ -65,7 +65,7 @@
                                     <% if (item.example == 'undefined' || item.example.length == 0){ %>
                                     <% }else { %>
                                     <li>
-                                          <span data-toggle="tooltip" data-placement="right" title="<%= item.meaning %>"
+                                          <span data-toggle="tooltip" data-placement="top" title="<%= item.meaning %>"
                                                 class="text-danger size-lb ">
                                             <%= index + 1 %>. <%= item.example %>
                                           </span>
@@ -77,8 +77,8 @@
                                 <!--end 5-->
                             </div>
                         </div>
-                        <div class="col-sm-offset-9 col-sm-3">
-                            page :<span class="pagingCnt"> 1/<%= sumPage %></span>
+                        <div class="pull-right count-page">
+                            <span class="pagingCnt"> 1/<%= sumPage %></span>
                         </div>
                     </div>
                 </div>
@@ -88,7 +88,7 @@
     </div>
     <% } %>
     <!--6-->
-    <div class="col-sm-offset-3 col-sm-6">
+    <div class="col-sm-offset-2 col-sm-8">
         <div class="slider slider-nav">
             <% kanjis.forEach( function(kanji, index){ %>
             <div><h3><%= kanji.item %></h3></div>
