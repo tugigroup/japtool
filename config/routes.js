@@ -31,14 +31,14 @@ module.exports.routes = {
      * `assets` directory)                                                      *
      *                                                                          *
      ***************************************************************************/
-
-    '/': 'japtool/HomeController.index',
+    '/': 'japtool/IndexController.index',
     /* Start common */
     '/admin':{view:'admin/index', locals: {layout: 'layout/layout-admin'}},
     '/media/audio/:fd':'common/MediaController.getAudio',
     '/media/video/:fd':'common/MediaController.getVideo',
     '/media/image/:fd':'common/MediaController.getImg'
     /* End common */
+
     /***************************************************************************
      *                                                                          *
      * Custom routes here...                                                    *
