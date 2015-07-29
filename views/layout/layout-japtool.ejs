@@ -46,12 +46,21 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-3">
-                    <a class="logo"><img src="/images/logo.png"></a>
+                    <% if(session.authenticated){ %>
+                        <a class="logo" href="/japtool/home"><img src="/images/logo.png"></a>
+                    <% } else { %>
+                        <a class="logo" href="/"><img src="/images/logo.png"></a>
+                    <% } %>
                 </div>
                 <div class="col-md-9">
                     <div id='cssmenu' class="pull-right">
                         <ul class="menu-page">
-                            <li><a href='/japtool/index'><%= __('Home') %></a></li>
+                            <% if(session.authenticated){ %>
+                                <li><a href='/japtool/home'><%= __('Home') %></a></li>
+                            <% } else { %>
+                                <li><a href='/'><%= __('Home') %></a></li>
+                            <% } %>
+                            
                             <li><a href='/japtool/page/about'><%= __('About') %></a></li>
                             <li class='active'><a href='/japtool/Library/getLibrary'><%= __('Library') %></a>
                             </li>

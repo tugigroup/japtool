@@ -104,7 +104,7 @@ function checkAnswer1Login() {
         window.location.replace('/japtool/recommend/getLibraryLogin');
     }
     if (answer2 == 2) {
-        window.location.replace('/japtool/home/getContent');
+        window.location.replace('/japtool/home');
     }
 }
 /*choose book*/

@@ -25,21 +25,21 @@ module.exports.policies = {
      *                                                                          *
      ***************************************************************************/
 
-    // '*': 'generalize',
-    'japtool/home': {
-        '*': "generalize"
-    },
-    'japtool/page': {
-        '*': "generalize"
-    },
+    '*': 'generalize',
+    // 'japtool/home': {
+    //     '*': "generalize"
+    // },
+    // 'japtool/page': {
+    //     '*': "generalize"
+    // },
     'japtool/user': {
         '*': ["authenticated", "generalize"],
         new: "generalize",
         create:"generalize"
     },
-    'japtool/auth': {
-        '*': "generalize"
-    },
+    // 'japtool/auth': {
+    //     '*': "generalize"
+    // },
     'japtool/vocabulary': {
         '*': ["authenticated", "generalize"]
     },

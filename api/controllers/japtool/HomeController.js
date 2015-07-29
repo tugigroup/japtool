@@ -8,7 +8,7 @@ module.exports = {
         }
     },
 //This loads index.ejs
-    getContent: function (req, res) {
+    index: function (req, res) {
         try {
             SelfLearning.find({user: req.session.User.id})
                 .populate('bookMaster')
