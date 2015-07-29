@@ -161,10 +161,10 @@ function check() {
         data: $("#create-learning-japtool").serialize(), // serializes the form's elements.
         success: function (res) {
             var a = res.split('/')
-            if (a[1] == "learning") {
+            if (a[1] == "Learning") {
                 window.location.replace("/" + res);
             }
-            if (a[1] == "BookMaster") {
+            else if (a[1] == "BookMaster") {
                 window.location.replace("/" + res);
             }
             else {
@@ -173,7 +173,6 @@ function check() {
             }
         }
     });
-
     return false; // avoid to execute the actual submit of the form.
     //});
 
@@ -687,26 +686,26 @@ $(document).ready(function () {
     // localization
     $("#lang-en-option").click(function () {
         var url = window.location.href;
-        url = url.replace("lang=vi","lang=en");
-        if (url.indexOf("lang=en") < 0 ){
-            if (url.indexOf("?") < 0 )
+        url = url.replace("lang=vi", "lang=en");
+        if (url.indexOf("lang=en") < 0) {
+            if (url.indexOf("?") < 0)
                 url += "?lang=en";
             else
                 url += "&lang=en";
         }
-        
+
         window.location.replace(url);
     });
     $("#lang-vi-option").click(function () {
         var url = window.location.href;
-        url = url.replace("lang=en","lang=vi");
-        if (url.indexOf("lang=vi") < 0 ){
-             if (url.indexOf("?") < 0 )
+        url = url.replace("lang=en", "lang=vi");
+        if (url.indexOf("lang=vi") < 0) {
+            if (url.indexOf("?") < 0)
                 url += "?lang=vi";
             else
                 url += "&lang=vi";
         }
-        
+
         window.location.replace(url);
     });
 });
