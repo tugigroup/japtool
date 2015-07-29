@@ -31,64 +31,14 @@ module.exports.routes = {
      * `assets` directory)                                                      *
      *                                                                          *
      ***************************************************************************/
-
-    '/': 'japtool/HomeController.index',
-    'get/ new_group':'BuddyGroupController.create',
-    /*Router by QuyetND2*/
-    //'/':'admin/BookMasterController.index',
-    '/createBookMaster':{view:'admin/article/book-master'},
-    '/createBookDetail':'japtool/BookDetailController.getBookDetail',
-    /*End QuyetND2*/
-
+    '/': 'japtool/IndexController.index',
     /* Start common */
     '/admin':{view:'admin/index', locals: {layout: 'layout/layout-admin'}},
     '/media/audio/:fd':'common/MediaController.getAudio',
     '/media/video/:fd':'common/MediaController.getVideo',
-    '/media/image/:fd':'common/MediaController.getImg',
+    '/media/image/:fd':'common/MediaController.getImg'
     /* End common */
 
-    // router by Duongtd2
-    //article by duongtd2
-    '/addArticle':{
-        view:'admin/article/addArticle',
-        locals: {
-            layout: 'layout/layout-admin'
-        }
-    },
-    'post /createArticle':'admin/Article.create',
-    '/displayArticle':'admin/Article.showArticle',
-    '/displayArticleCT/:id':'admin/Article.showArticle',       
-    '/showAllArticle':'admin/ArticleController.showAll',
-    '/deleteArticle/:id':'admin/ArticleController.delete',
-    'post /editArticle/:id':'admin/ArticleController.editAr',
-    '/sendEditArticle':'admin/ArticleController.editAr',
-    'post /updateArticle':'admin/ArticleController.update',
-    // Question by duongtd2
-    '/addQuestion':{
-        view:'admin/question/addQuestion',
-        locals: {
-            layout: 'layout/layout-admin'
-        }
-    },
-    'post /createQuestion':'admin/Question.create',
-    '/displayQuestion':'admin/Question.showQuestion',
-    '/displayQuestionCT/:id':'admin/Question.showQuestion',    
-    '/sendEditQuestion':'admin/Question.editQue',
-    '/showAllQuestion':'admin/Question.showAll',
-    'post /editQues':'admin/Question.editQue',
-    '/deleteQuestion/:id':'admin/Question.delete',
-    'post /updateQuestion':'admin/Question.update',
-
-
-
-    // End router by duongtd2
-    //demo speech
-    '/speech':{
-        view:'japtool/demoSpeech/speech',
-        locals: {
-            layout: 'layout/layout-japtool'
-        }
-    },
     /***************************************************************************
      *                                                                          *
      * Custom routes here...                                                    *
