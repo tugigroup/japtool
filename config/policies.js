@@ -25,7 +25,7 @@ module.exports.policies = {
      *                                                                          *
      ***************************************************************************/
 
-    //'*': 'generalize',
+    // '*': 'generalize',
     'japtool/home': {
         '*': "generalize"
     },
@@ -52,8 +52,7 @@ module.exports.policies = {
         '*': "generalize"
     },
     'japtool/Learning': {
-        '*': "authenticated",
-        '*': "generalize"
+        '*': ["authenticated", "generalize"]
     },
     'japtool/Library': {
         '*': "authenticated",
