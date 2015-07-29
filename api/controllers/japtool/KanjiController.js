@@ -8,7 +8,7 @@ module.exports = {
       res.render('japtool/kanji/lesson', {'kanjis': kanjis});
     });
   },
-  //Đây thực chất là hàm exercise nhưng vì chưa có link đến đây, nên để tạm là list để test
+
   practice: function (req, res) {
     var extractDataCondition = req.param('condition');
     Kanji.selectByLevel({condition: extractDataCondition}, function (err, kanjis) {
@@ -27,6 +27,10 @@ module.exports = {
         randomArr.sort();
         //console.log(item.hanviet, randomArr);
         item.randomKanjis = randomArr;
+      });
+      //Ramdom practice
+      kanjis.sort(function () {
+        return Math.round(Math.random()) - 0.5;
       });
       res.render('japtool/kanji/practice', {'kanjis': kanjis});
     });

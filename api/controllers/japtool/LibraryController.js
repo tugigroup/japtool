@@ -12,7 +12,9 @@ module.exports = {
 
     getLibrary: function (req, res) {
 
-        BookMaster.find({}).populate('bookDetails', {sort: 'sort ASC'}).exec(function createCB(err, data) {
+        BookMaster.find()
+        .sort('sort asc')
+        .populate('bookDetails', {sort: 'sort ASC'}).exec(function createCB(err, data) {
             var arrTag = [];
             var arrAllLesson = [];
             if (data.length == 0) {
@@ -56,7 +58,9 @@ module.exports = {
 
     getAllLibrary: function (req, res) {
         var type = req.param('type');
-        BookMaster.find({type: type}).populate('bookDetails', {sort: 'sort ASC'}).exec(function createCB(err, data) {
+        BookMaster.find({type: type})
+        .sort('sort asc')
+        .populate('bookDetails', {sort: 'sort ASC'}).exec(function createCB(err, data) {
             var arrAllLesson = [];
 
             data.forEach(function (book) {

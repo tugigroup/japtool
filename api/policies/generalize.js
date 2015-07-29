@@ -5,7 +5,12 @@ module.exports = function(req, res, next) {
 
 	// set languge for interface
 	if ( req.param('lang') ) {
-	    req.session.lang = req.param('lang');
+    req.session.lang = req.param('lang');
+    if (req.session.authenticated){
+      // update interface language for user
+      User.update({id: req.session.User.id}, {language: req.session.lang}, function (err, updateUser) {
+      });
+    }
 	}
 
 	req.setLocale(req.session.lang);
@@ -27,7 +32,6 @@ module.exports = function(req, res, next) {
     res.redirect('/japtool/auth');
 
   }
-
 	// pre check validate
 	res.locals.flash ={};
   if(req.session.flash){

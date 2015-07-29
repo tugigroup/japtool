@@ -7,37 +7,37 @@
         <p class="leadInfo"><%= user.username %></p>
       </div>
       <div class="col-sm-2">
-        <button type="button" class="btn btn-sm btn-edit" id="btnShow">Edit <span
+        <button type="button" class="btn btn-sm btn-edit" id="btnShow"><%= __('Edit') %> <span
             class="glyphicon glyphicon-edit"></span></button>
       </div>
     </div>
     <hr>
     <div class="detail-info"></div>
-    <p>First Name : <span><%= user.firstname %></span></p>
+    <p><%= __('First Name') %> : <span><%= user.firstname %></span></p>
 
-    <p>Last Name : <span><%= user.lastname %></span></p>
+    <p><%= __('Last Name') %> : <span><%= user.lastname %></span></p>
 
-    <p>E-Mail : <span><%= user.email %></span></p>
+    <p><%= __('Email') %> : <span><%= user.email %></span></p>
 
-    <p>E-Telephone : <span><%= user.telephone %></span></p>
+    <p><%= __('E-Telephone') %> : <span><%= user.telephone %></span></p>
 
-    <p>Fax : <span><%= user.fax %></span></p>
+    <p><%= __('Fax') %> : <span><%= user.fax %></span></p>
   </div>
 </div>
 <div class="row">
   <div class="col-sm-offset-1 col-sm-10 form-info">
-    <p class="leadInfo">User Address</p>
+    <p class="leadInfo"><%= __('User Address') %></p>
     <hr>
 
-    <p>Company : <%= user.yourAddress.company %></p>
+    <p><%= __('Company') %> : <%= user.yourAddress.company %></p>
 
-    <p>Address : <%= user.yourAddress.address %></p>
+    <p><%= __('Address') %> : <%= user.yourAddress.address %></p>
 
-    <p>City : <%= user.yourAddress.city %></p>
+    <p><%= __('City') %> : <%= user.yourAddress.city %></p>
 
-    <p>Post Code : <%= user.yourAddress.postCode %></p>
+    <p><%= __('Post Code') %> : <%= user.yourAddress.postCode %></p>
 
-    <p>Country :
+    <p><%= __('Country') %> :
       <% if(user.yourAddress.country){ %>
       <%= user.yourAddress.country %>
       <% } %>

@@ -3,62 +3,63 @@
     <div class="col-sm-offset-1 col-sm-10">
       <input type="hidden" value="<%- user.id %>" name="userInfoId">
 
-      <p class="leadInfo">User Name</p>
+      <p class="leadInfo"><%= __('User Name') %></p>
       <hr>
 
-      <label class="col-sm-3 control-label" for="input-firstname">First Name :</label>
+      <label class="col-sm-3 control-label" for="input-firstname"><%= __('First Name') %> :</label>
 
       <div class="col-sm-9">
         <p>
           <% if(user.firstname === 'undefined'){ %>
-          <input class="form-control" type="text" name="firstname" value="" placeholder="Your First Name"
+          <input class="form-control" type="text" name="firstname" value="" placeholder="<%= __('Your First Name') %>"
                  id="input-firstname">
           <% }else{ %>
           <input class="form-control" type="text" name="firstname" value="<%= user.firstname %>"
-                 placeholder="Your First Name" id="input-firstname">
+                 placeholder="<%= __('Your First Name') %>" id="input-firstname">
           <% } %>
         </p>
 
         <p id="user-edit-mess-fName" style="display: none"></p>
       </div>
-      <label class="col-sm-3 control-label" for="input-lastname">Last Name :</label>
+      <label class="col-sm-3 control-label" for="input-lastname"><%= __('Last Name') %> :</label>
 
       <div class="col-sm-9">
         <p>
           <% if(user.lastname === 'undefined'){ %>
-          <input class="form-control" type="text" name="lastname" value="" placeholder="Your Last Name"
+          <input class="form-control" type="text" name="lastname" value="" placeholder="<%= __('Your Last Name') %>"
                  id="input-lastname">
           <% }else{ %>
           <input class="form-control" type="text" name="lastname" value="<%= user.lastname %>"
-                 placeholder="Your Last Name" id="input-lastname">
+                 placeholder="<%= __('Your Last Name') %>" id="input-lastname">
           <% } %>
         </p>
 
         <p id="user-edit-mess-lName" style="display: none"></p>
       </div>
 
-      <label class="col-sm-3 control-label" for="input-telephone">E-Telephone :</label>
+      <label class="col-sm-3 control-label" for="input-telephone"><%= __('E-Telephone') %> :</label>
 
       <div class="col-sm-9">
         <p>
           <% if(user.telephone === 'undefined'){ %>
-          <input class="form-control" type="text" name="telephone" value="" placeholder="Your telephone"
+          <input class="form-control" type="text" name="telephone" value="" placeholder="<%= __('Your telephone') %>"
                  id="input-telephone">
           <% }else{ %>
           <input class="form-control" type="text" name="telephone" value="<%= user.telephone %>"
-                 placeholder="Your telephone" id="input-telephone">
+                 placeholder="<%= __('Your telephone') %>" id="input-telephone">
           <% } %>
 
         </p>
       </div>
-      <label class="col-sm-3 control-label" for="input-fax">Fax :</label>
+      <label class="col-sm-3 control-label" for="input-fax"><%= __('Fax') %> :</label>
 
       <div class="col-sm-9">
         <p>
           <% if(user.fax === 'undefined'){ %>
-          <input class="form-control" type="text" name="fax" value="" placeholder="Your fax" id="input-fax">
+          <input class="form-control" type="text" name="fax" value="" placeholder="<%= __('Your fax') %>"
+                 id="input-fax">
           <% }else{ %>
-          <input class="form-control" type="text" name="fax" value="<%= user.fax %>" placeholder="Your fax"
+          <input class="form-control" type="text" name="fax" value="<%= user.fax %>" placeholder="<%= __('Your fax') %>"
                  id="input-fax">
           <% } %>
         </p>
@@ -67,36 +68,36 @@
   </div>
   <div class="row">
     <div class="col-sm-offset-1 col-sm-10">
-      <p class="leadInfo">User Address</p>
+      <p class="leadInfo"><%= __('User Address') %></p>
       <hr>
-      <label class="col-sm-3 control-label" for="input-company">Company :</label>
+      <label class="col-sm-3 control-label" for="input-company"><%= __('Company') %> :</label>
 
       <div class="col-sm-9">
         <p><input class="form-control" type="text" name="yourAddress[company]"
                   value="<%= user.yourAddress.company %>"
-                  placeholder="Your Company" id="input-company"></p>
+                  placeholder="<%= __('Your Company') %>" id="input-company"></p>
       </div>
-      <label class="col-sm-3 control-label" for="input-address">Address :</label>
+      <label class="col-sm-3 control-label" for="input-address"><%= __('Address') %> :</label>
 
       <div class="col-sm-9">
         <p><input class="form-control" type="text" name="yourAddress[address]"
                   value="<%= user.yourAddress.address %>"
-                  placeholder="Your Address" id="input-address"></p>
+                  placeholder="<%= __('Your Address') %>" id="input-address"></p>
       </div>
-      <label class="col-sm-3 control-label" for="input-city">City :</label>
+      <label class="col-sm-3 control-label" for="input-city"><%= __('City') %> :</label>
 
       <div class="col-sm-9">
         <p><input class="form-control" type="text" name="yourAddress[city]" value="<%= user.yourAddress.city %>"
-                  placeholder="Your City" id="input-city"></p>
+                  placeholder="<%= __('Your City') %>" id="input-city"></p>
       </div>
-      <label class="col-sm-3 control-label" for="input-postCode">Post Code :</label>
+      <label class="col-sm-3 control-label" for="input-postCode"><%= __('Post Code') %> :</label>
 
       <div class="col-sm-9">
         <p><input class="form-control" type="text" name="yourAddress[postCode]"
                   value="<%= user.yourAddress.postCode %>"
-                  placeholder="Your PostCode" id="input-postCode"></p>
+                  placeholder="<%= __('Your PostCode') %>" id="input-postCode"></p>
       </div>
-      <label class="col-sm-3 control-label" for="input-country">Country</label>
+      <label class="col-sm-3 control-label" for="input-country"><%= __('Country') %></label>
 
       <div class="col-sm-9">
         <p><select name="yourAddress[country]" id="input-country" class="form-control">
@@ -112,7 +113,7 @@
       <label class="col-sm-3 control-label" for="input-country"></label>
 
       <div class="col-sm-9">
-        <button type="button" class="btn btn-sm btn-edit pull-right" id="btnSaveEdit">Save <span
+        <button type="button" class="btn btn-sm btn-edit pull-right" id="btnSaveEdit"><%= __('Save') %> <span
             class="glyphicon glyphicon-saved"></span></button>
       </div>
     </div>

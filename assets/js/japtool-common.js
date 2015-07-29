@@ -161,10 +161,10 @@ function check() {
         data: $("#create-learning-japtool").serialize(), // serializes the form's elements.
         success: function (res) {
             var a = res.split('/')
-            if (a[1] == "learning") {
+            if (a[2] == "" || a[2] == null) {
                 window.location.replace("/" + res);
             }
-            if (a[1] == "BookMaster") {
+            else if (a[2] == "practice") {
                 window.location.replace("/" + res);
             }
             else {
@@ -173,7 +173,6 @@ function check() {
             }
         }
     });
-
     return false; // avoid to execute the actual submit of the form.
     //});
 
@@ -669,44 +668,49 @@ $(document).ready(function () {
     });
 
     $('.slider-for').slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: false,
-        fade: true,
-        asNavFor: '.slider-nav'
+      slidesToShow: 1,
+      slidesToScroll: 1,
+  //  arrows: true,
+      fade: false,
+      touchMove:false,
+      draggable: false,
+      asNavFor: '.slider-nav',
+      prevArrow: '<button type="button" data-role="none" class="btn btn-show-list btn-arrow-left-exe" aria-label="Previous" tabindex="0" role="button"><i class="fa fa-chevron-left"></i></button>',
+      nextArrow: '<button type="button" data-role="none" class="btn btn-show-list btn-arrow-right-exe" aria-label="Next" tabindex="0" role="button"><i class="fa fa-chevron-right"></i></button>'
     });
+
     $('.slider-nav').slick({
-        slidesToShow: 10,
-        slidesToScroll: 1,
-        asNavFor: '.slider-for',
-        dots: true,
-        centerMode: true,
-        focusOnSelect: true
+      slidesToShow: 3,
+      slidesToScroll: 3,
+      asNavFor: '.slider-for',
+      dots: false,
+      centerMode: false,
+      focusOnSelect: true
     });
 
     // localization
     $("#lang-en-option").click(function () {
         var url = window.location.href;
-        url = url.replace("lang=vi","lang=en");
-        if (url.indexOf("lang=en") < 0 ){
-            if (url.indexOf("?") < 0 )
+        url = url.replace("lang=vi", "lang=en");
+        if (url.indexOf("lang=en") < 0) {
+            if (url.indexOf("?") < 0)
                 url += "?lang=en";
             else
                 url += "&lang=en";
         }
-        
+
         window.location.replace(url);
     });
     $("#lang-vi-option").click(function () {
         var url = window.location.href;
-        url = url.replace("lang=en","lang=vi");
-        if (url.indexOf("lang=vi") < 0 ){
-             if (url.indexOf("?") < 0 )
+        url = url.replace("lang=en", "lang=vi");
+        if (url.indexOf("lang=vi") < 0) {
+            if (url.indexOf("?") < 0)
                 url += "?lang=vi";
             else
                 url += "&lang=vi";
         }
-        
+
         window.location.replace(url);
     });
 });

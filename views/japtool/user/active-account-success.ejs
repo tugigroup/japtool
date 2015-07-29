@@ -3,11 +3,14 @@
   <div class="container">
 
     <div class="col-sm-12 text-center success-register">
-      <h3>Active Success</h3>
+      <h3><%= __('Active Success') %></h3>
 
-      <p>Welcome to Japtool Learning.</p>
+      <p><%= __('Welcome to Japtool Learning.') %></p>
 
-      <p>Please You click here to login system <span class="label-success label"><a class="login-back" href="/japtool/auth">Login</a></span></p>
+      <p><%= __('Click here to login system') %>
+        <span class="label-success label">
+          <a class="login-back" href="/japtool/auth"><%= __('Login') %></a>
+        </span>
       </p>
     </div>
   </div>
@@ -17,11 +20,14 @@
   <div class="container">
 
     <div class="col-sm-12 text-center success-register">
-      <h3>Active Fail</h3>
+      <h3><%= __('Active Fail') %></h3>
 
-      <p>Tài khoản của bạn không hợp lệ.</p>
+      <p><%= __('Your account is invalid.') %></p>
 
-      <p>Mời bạn click vào đây để đăng kí lại tài khoản <span class="label-danger label"><a href="/japtool/user/new">Sign Up</a></span></p>
+      <p><%= __('Click here to sign up') %>
+        <span class="label-danger label">
+          <a href="/japtool/user/new"><%= __('Sign Up') %></a>
+        </span>
       </p>
     </div>
   </div>
