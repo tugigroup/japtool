@@ -18,52 +18,62 @@
 
 
 module.exports.policies = {
-  /***************************************************************************
-   *                                                                          *
-   * Default policy for all controllers and actions (`true` allows public     *
-   * access)                                                                  *
-   *                                                                          *
-   ***************************************************************************/
+    /***************************************************************************
+     *                                                                          *
+     * Default policy for all controllers and actions (`true` allows public     *
+     * access)                                                                  *
+     *                                                                          *
+     ***************************************************************************/
 
-  '*': 'generalize',
-  // 'japtool/user': {
-  //     'new': "generalize",
-  //     '*': "authenticated",
-  //     create: "generalize"
-  // },
-  // 'japtool/auth': {
-  //     '*': 'generalize'
-  // },
-  // 'japtool/vocabulary': {
-  //     '*': 'authenticated'
-  // },
-  // 'japtool/BookMaster': {
-  //     '*': 'authenticated'
-  // },
-  // 'japtool/BookDetail': {
-  //     '*': 'authenticated'
-  // },
-  // 'japtool/Learning': {
-  //     '*': 'authenticated'
-  // },
-  // 'japtool/Library': {
-  //     '*': 'authenticated'
-  // }
-  /***************************************************************************
-   *                                                                          *
-   * Here's an example of mapping some policies to run before a controller    *
-   * and its actions                                                          *
-   *                                                                          *
-   ***************************************************************************/
-  // RabbitController: {
-  // Apply the `false` policy as the default for all of RabbitController's actions
-  // (`false` prevents all access, which ensures that nothing bad happens to our rabbits)
-  // '*': false,
-  // For the action `nurture`, apply the 'isRabbitMother' policy
-  // (this overrides `false` above)
-  // nurture	: 'isRabbitMother',
-  // Apply the `isNiceToAnimals` AND `hasRabbitFood` policies
-  // before letting any users feed our rabbits
-  // feed : ['isNiceToAnimals', 'hasRabbitFood']
-  // }
+    //'*': 'generalize',
+    'japtool/home': {
+        '*': "generalize"
+    },
+    'japtool/page': {
+        '*': "generalize"
+    },
+    'japtool/user': {
+        '*': "authenticated",
+        '*': "generalize"
+    },
+    'japtool/auth': {
+        '*': 'generalize'
+    },
+    'japtool/vocabulary': {
+        '*': "authenticated",
+        '*': "generalize"
+    },
+    'japtool/BookMaster': {
+        '*': "authenticated",
+        '*': "generalize"
+    },
+    'japtool/BookDetail': {
+        '*': "authenticated",
+        '*': "generalize"
+    },
+    'japtool/Learning': {
+        '*': "authenticated",
+        '*': "generalize"
+    },
+    'japtool/Library': {
+        '*': "authenticated",
+        '*': "generalize"
+    }
+    /***************************************************************************
+     *                                                                          *
+     * Here's an example of mapping some policies to run before a controller    *
+     * and its actions                                                          *
+     *                                                                          *
+     ***************************************************************************/
+    // RabbitController: {
+    // Apply the `false` policy as the default for all of RabbitController's actions
+    // (`false` prevents all access, which ensures that nothing bad happens to our rabbits)
+    // '*': false,
+    // For the action `nurture`, apply the 'isRabbitMother' policy
+    // (this overrides `false` above)
+    // nurture	: 'isRabbitMother',
+    // Apply the `isNiceToAnimals` AND `hasRabbitFood` policies
+    // before letting any users feed our rabbits
+    // feed : ['isNiceToAnimals', 'hasRabbitFood']
+    // }
 };
