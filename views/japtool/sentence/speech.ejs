@@ -1,183 +1,195 @@
 <div class="container">
-    <div class="row">
-        <div class="col-sm-12">
-            <h2 class="text-primary">Speech</h2>
+  <div class="row">
+    <div class="col-sm-12">
+      <h2 class="text-primary">Speech</h2>
 
-            <div class="library-page-line"></div>
-            <label id="checkBrowser"></label>
+      <div class="library-page-line"></div>
+      <label id="checkBrowser"></label>
 
-            <div class="slider slider-for speech-control">
-                <% sentences.forEach( function(sentenceItem, index){ %>
-                <div>
-                    <section>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <h2 class="text-danger text-center"><i class="fa fa-question-circle"></i><span
-                                            class="question<%= index %>"><%= sentenceItem.sentence %></span></h2>
-                            </div>
+      <div class="slider slider-for speech-control">
+        <% sentences.forEach( function(sentenceItem, index){ %>
+        <div>
+          <section>
+            <div class="row">
+              <div class="col-sm-12">
+                <h2 class="text-danger text-center"><i class="fa fa-question-circle"></i><span
+                    class="question<%= index %>"><%= sentenceItem.sentence %></span></h2>
+              </div>
 
-                            <div class="col-sm-6">
-                                <h3 class="text-right">Receiving: </h3>
-                            </div>
-                            <div class="col-sm-6">
-                                <h3 class="status">Not Started</h3>
-                            </div>
+              <div class="col-sm-6">
+                <h3 class="text-right">Receiving: </h3>
+              </div>
+              <div class="col-sm-6">
+                <h3 class="status">Not Started</h3>
+              </div>
 
-                            <div class="col-sm-6">
-                                <h3 class="text-right">Received: </h3>
-                            </div>
-                            <div class="col-sm-6 clearfix">
-                                <h3 class="result">Watting</h3>
-                            </div>
-                            <div class="col-sm-6">
-                                <h3 class="text-right">Result: </h3>
-                            </div>
-                            <div class="col-sm-6">
-                                <h3 class="check<%= index %>">Watting</h3>
-                            </div>
-                        </div>
+              <div class="col-sm-6">
+                <h3 class="text-right">Received: </h3>
+              </div>
+              <div class="col-sm-6 clearfix">
+                <h3 class="result">Watting</h3>
+              </div>
+              <div class="col-sm-6">
+                <h3 class="text-right">Result: </h3>
+              </div>
+              <div class="col-sm-6">
+                <h3 class="check<%= index %>">Watting</h3>
+              </div>
+            </div>
 
-                        <div class="text-center">
+            <div class="text-center">
 
-                            <a class="text-center btn-start<%= index %>" onclick="startVoice();">
-                                <div class="check-voice">
-                                    <i class="fa fa-microphone fa-5x"></i>
-                                </div>
-                            </a>
-                        </div>
-                    </section>
+              <a class="text-center btn-start<%= index %>" onclick="startVoice();">
+                <div class="check-voice">
+                  <i class="fa fa-microphone fa-5x"></i>
                 </div>
-                <% }) %>
+              </a>
             </div>
-            <div class="slider slider-nav">
-                <% sentences.forEach( function(sentenceItem, index){ %>
-                <div><h3><%= index %></h3></div>
-                <% }) %>
-
-            </div>
+          </section>
         </div>
+        <% }) %>
+      </div>
+      <div class="slider slider-nav">
+        <% sentences.forEach( function(sentenceItem, index){ %>
+        <div><h3><%= index %></h3></div>
+        <% }) %>
+
+      </div>
     </div>
+  </div>
 </div>
 <span id="sentencesL" forValue="<%= sentences.length %>"></span>
+<script src="/js/dependencies/jquery.js"></script>
+<script src="/js/dependencies/slick.js"></script>
 <script src="/js/dependencies/bowser.min.js"></script>
 <script>
+  var i;
+  var question
+  function checkBrowser() {
+    var chromeName = "chrome";
+    var browserName = bowser.name.toLowerCase();
+    if (chromeName != browserName) {
+      var msg = "Browser is " + browserName + " not supported! Must using " + chromeName;
+      document.getElementById("checkBrowser").innerHTML = msg;
+      document.getElementById("checkBrowser").className = 'text-danger';
+      return msg;
+    } else {
+      return "OK";
+    }
+  }
+
+  var isChrome = checkBrowser();
+
+  var recognition = new webkitSpeechRecognition();
+  recognition.lang = "ja-JP";
+  recognition.continuous = true;
+  recognition.interimResults = true;
+  var autoPlayRun = false;
+  var sentencesL = document.getElementById('sentencesL').getAttribute('forValue');
+
+
+  function addMessage(msg) {
     var i;
-    var question
-    function checkBrowser() {
-        var chromeName = "chrome";
-        var browserName = bowser.name.toLowerCase();
-        if (chromeName != browserName) {
-            var msg = "Browser is " + browserName + " not supported! Must using " + chromeName;
-            document.getElementById("checkBrowser").innerHTML = msg;
-            document.getElementById("checkBrowser").className = 'text-danger';
-            return msg;
+    $('.slick-slide').each(function () {
+      if ($(this).hasClass('slick-current')) {
+        i = $(this).attr('data-slick-index');
+      }
+    });
+
+    question = $(".question" + i).text();
+
+    $(".check" + i).html("");
+
+    if (msg == question) {
+      $(".check" + i).html("<span class='text-success'><i class='fa fa-check'></i> Correct</span>");
+      stop();
+      $('.slider-for').slick('slickNext');
+      $('.slider-nav').slick('slickNext');
+    } else {
+      $(".check" + i).html("<span class='text-danger'><i class='fa fa-times'></i> Incorrect</span>");
+    }
+
+    $(".result" + i).html(msg);
+
+  }
+
+  function stop() {
+    recognition.stop();
+    for (i = 0; i <= sentencesL; i++) {
+      $('.btn-start' + i).removeClass('text-danger');
+    }
+  }
+
+  function start() {
+    recognition.start();
+    for (i = 0; i <= sentencesL; i++) {
+      $('.btn-start' + i).addClass('text-danger');
+    }
+  }
+
+  function startVoice() {
+    if (isChrome == "OK") {
+      for (i = 0; i <= sentencesL; i++) {
+        if (!$('.btn-start' + i).hasClass('text-danger')) {
+          start();
         } else {
-            return "OK";
+          stop();
         }
+      }
+    } else {
+      alert(isChrome);
     }
+  }
 
-    var isChrome = checkBrowser();
+  $(".slider-nav h3").click(function () {
+    stop();
+  });
 
+  $(document).ready(function () {
+    $('.slider-for').on('afterChange', function (event, slick, currentSlide) {
+      stop();
+    });
+  });
 
-    var recognition = new webkitSpeechRecognition();
-    recognition.lang = "ja-JP";
-    recognition.continuous = true;
-    recognition.interimResults = true;
-    var autoPlayRun = false;
-    var sentencesL = document.getElementById('sentencesL').getAttribute('forValue');
-    function addMessage(msg) {
+  recognition.onsoundstart = function () {
+    $('.status').html("dang xac nhan");
+  };
 
-        for (i = 0; i <= sentencesL; i++) {
-            question = $(".question"+i).text();
-            $(".check"+i).html("");
-            if (msg == question) {
-                $(".check"+i).html("<span class='text-success'><i class='fa fa-check'></i> Correct</span>");
-                stop();
-                autoPlayRun = true;
-            } else {
-                $(".check"+i).html("<span class='text-danger'><i class='fa fa-times'></i> Incorrect</span>");
-            }
-            $(".result"+i).html(msg);
-            if (autoPlayRun){
+  recognition.onnomatch = function () {
+    alert("nomath");
+    $('.status').html("lai lan nua");
+  };
 
-            }
-        }
+  recognition.onerror = function () {
+    $('.status').html("loi !!!!!");
+    stop();
+  };
 
+  recognition.onsoundend = function () {
+    $('.status').html("dang dung lai");
+    stop();
+  };
+  recognition.onend = function () {
+    $('.status').html("khoi dong lai");
+    stop();
+  };
 
+  recognition.onresult = function (event) {
+    if (typeof(event.results) == 'undefined') {
+      recognition.onend = null;
+      stop();
+      return;
     }
-
-    function stop() {
-        recognition.stop();
-        for (i = 0; i <= sentencesL; i++) {
-            $('.btn-start'+i).val('start');
-            $('.btn-start'+i).removeClass('text-danger');
-        }
-
-
+    var results = event.results;
+    console.log(results);
+    for (var i = event.resultIndex; i < results.length; i++) {
+      var text = $.trim(results[i][0].transcript);
+      if (results[i].isFinal) {
+        addMessage(text);
+        $('.status').html("processing");
+      } else {
+        $('.status').html(text);
+      }
     }
-
-    function start() {
-        recognition.start();
-        for (i = 0; i <= sentencesL; i++) {
-            $('.btn-start'+i).addClass('text-danger');
-        }
-
-    }
-
-    function startVoice() {
-        if (isChrome == "OK") {
-            for (i = 0; i <= sentencesL; i++) {
-                if (!$('.btn-start'+i).hasClass('text-danger')) {
-                    start();
-                } else {
-                    stop();
-                }
-            }
-
-        } else {
-            alert(isChrome);
-        }
-    }
-
-    recognition.onsoundstart = function () {
-        $('.status').html("dang xac nhan");
-    };
-
-    recognition.onnomatch = function () {
-        alert("nomath");
-        $('.status').html("lai lan nua");
-    };
-
-    recognition.onerror = function () {
-        $('.status').html("loi !!!!!");
-        stop();
-    };
-
-    recognition.onsoundend = function () {
-        $('.status').html("dang dung lai");
-        stop();
-    };
-    recognition.onend = function () {
-        $('.status').html("khoi dong lai");
-        stop();
-    };
-
-    recognition.onresult = function (event) {
-        if (typeof(event.results) == 'undefined') {
-            recognition.onend = null;
-            stop();
-            return;
-        }
-        var results = event.results;
-        console.log(results);
-        for (var i = event.resultIndex; i < results.length; i++) {
-            var text = $.trim(results[i][0].transcript);
-            if (results[i].isFinal) {
-                addMessage(text);
-                $('.status').html("processing");
-            } else {
-                $('.status').html(text);
-            }
-        }
-    };
+  };
 </script>
