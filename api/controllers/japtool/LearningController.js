@@ -256,7 +256,7 @@ module.exports = {
 
                                 }
                                 else {
-                                    res.send('japtool/Learning/practice/?id=' + bookMaster);
+                                    res.send('japtool/learning/practice/?id=' + bookMaster);
                                 }
                             })
                         });

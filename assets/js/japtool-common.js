@@ -161,10 +161,10 @@ function check() {
         data: $("#create-learning-japtool").serialize(), // serializes the form's elements.
         success: function (res) {
             var a = res.split('/')
-            if (a[1] == "Learning") {
+            if (a[2] == "" || a[2] == null) {
                 window.location.replace("/" + res);
             }
-            else if (a[1] == "BookMaster") {
+            else if (a[2] == "practice") {
                 window.location.replace("/" + res);
             }
             else {
