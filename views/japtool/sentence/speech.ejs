@@ -20,20 +20,20 @@
                 <h3 class="text-right">Receiving: </h3>
               </div>
               <div class="col-sm-6">
-                <h3 class="status">Not Started</h3>
+                <h3 class="status<%= index %>">Not Started</h3>
               </div>
 
               <div class="col-sm-6">
                 <h3 class="text-right">Received: </h3>
               </div>
               <div class="col-sm-6 clearfix">
-                <h3 class="result<%= index %>">Watting</h3>
+                <h3 class="result<%= index %>">Waiting</h3>
               </div>
               <div class="col-sm-6">
                 <h3 class="text-right">Result: </h3>
               </div>
               <div class="col-sm-6">
-                <h3 class="check<%= index %>">Watting</h3>
+                <h3 class="check<%= index %>">Waiting</h3>
               </div>
             </div>
 
@@ -64,7 +64,9 @@
 <script src="/js/dependencies/bowser.min.js"></script>
 <script>
   var i;
-  var question
+  var question;
+  var delay=1500;
+
   function checkBrowser() {
     var chromeName = "chrome";
     var browserName = bowser.name.toLowerCase();
@@ -84,11 +86,10 @@
   recognition.lang = "ja-JP";
   recognition.continuous = true;
   recognition.interimResults = true;
-  var autoPlayRun = false;
+
   var sentencesL = document.getElementById('sentencesL').getAttribute('forValue');
 
-
-  function getCurrentActive(){
+  function getCurrentActive() {
     var i;
     $('.slick-slide').each(function () {
       if ($(this).hasClass('slick-current')) {
@@ -99,85 +100,98 @@
     return i;
   }
 
-  function addMessage(msg) {
+  function stop() {
+    recognition.stop();
+    var i = getCurrentActive();
+    $('.btn-start' + i).removeClass('text-danger');
+  }
+
+  function start() {
+    recognition.start();
+    var i = getCurrentActive();
+    $('.btn-start' + i).addClass('text-danger');
+  }
+
+  function replaceChar(str) {
+    var pattern = ['。', '、', '！', ' ', '　'];
+    $.each(pattern, function (index, value) {
+      str = str.replace(value, '');
+    });
+    return str;
+  }
+
+  function addMessage(msgCheck) {
 
     var i = getCurrentActive();
-    question = $.trim($(".question" + i).html());
+    question = replaceChar($.trim($(".question" + i).html()));
+    msg = replaceChar(msgCheck);
 
     $(".check" + i).html("");
 
     if (msg == question) {
       $(".check" + i).html("<span class='text-success'><i class='fa fa-check'></i> Correct</span>");
-      stop();
-      $('.slider-for').slick('slickNext');
-      $('.slider-nav').slick('slickNext');
+      $('.status' + i).html("<span class='text-success'><i class='fa fa-check'></i> Completed</span>");
+      //stop();
+
+      setTimeout(function(){
+        $('.slider-for').slick('slickNext');
+        $('.slider-nav').slick('slickNext');
+      }, delay);
+
     } else {
       $(".check" + i).html("<span class='text-danger'><i class='fa fa-times'></i> Incorrect</span>");
+      $('.status' + i).html("<span class='text-danger'><i class='fa fa-times'></i> Try again</span>");
     }
 
-    $(".result" + i).html(msg);
-
-  }
-
-  function stop() {
-    recognition.stop();
-    for (i = 0; i <= sentencesL; i++) {
-      $('.btn-start' + i).removeClass('text-danger');
-    }
-  }
-
-  function start() {
-    recognition.start();
-    for (i = 0; i <= sentencesL; i++) {
-      $('.btn-start' + i).addClass('text-danger');
-    }
+    $(".result" + i).html("<i class='fa fa-share-square'></i>" + msgCheck);
   }
 
   function startVoice() {
     if (isChrome == "OK") {
-      for (i = 0; i <= sentencesL; i++) {
-        if (!$('.btn-start' + i).hasClass('text-danger')) {
-          start();
-        } else {
-          stop();
-        }
+      var i = getCurrentActive();
+      if (!$('.btn-start' + i).hasClass('text-danger')) {
+        start();
+      } else {
+        stop();
       }
     } else {
       alert(isChrome);
     }
   }
 
-  $(".slider-nav h3").click(function () {
-    stop();
-  });
-
   $(document).ready(function () {
     $('.slider-for').on('afterChange', function (event, slick, currentSlide) {
-      stop();
+      //stop();
+      var i = getCurrentActive();
+      $('.btn-start' + i).addClass('text-danger');
     });
   });
 
   recognition.onsoundstart = function () {
-    $('.status').html("dang xac nhan");
+    var current = getCurrentActive();
+    $('.status' + current).html("Started");
   };
 
   recognition.onnomatch = function () {
-    alert("nomath");
-    $('.status').html("lai lan nua");
+    var current = getCurrentActive();
+    $('.status' + current).html("<span class='text-danger'><i class='fa fa-times'></i> Try again</span>");
   };
 
   recognition.onerror = function () {
-    $('.status').html("loi !!!!!");
+    var current = getCurrentActive();
+    $('.status' + current).html("<span class='text-danger'><i class='fa fa-times'></i> Error</span>");
     stop();
   };
 
   recognition.onsoundend = function () {
-    $('.status').html("dang dung lai");
-    stop();
+    var current = getCurrentActive();
+    $('.status' + current).html("Stopping");
+    //stop();
   };
   recognition.onend = function () {
-    $('.status').html("khoi dong lai");
-    stop();
+    var current = getCurrentActive();
+    $('.status' + current).html("Not Started");
+    //stop();
   };
 
   recognition.onresult = function (event) {
@@ -187,14 +201,13 @@
       return;
     }
     var results = event.results;
-    console.log(results);
+    var current = getCurrentActive();
     for (var i = event.resultIndex; i < results.length; i++) {
       var text = $.trim(results[i][0].transcript);
       if (results[i].isFinal) {
         addMessage(text);
-        $('.status').html("processing");
       } else {
-        $('.status').html(text);
+        $('.status' + current).html(text);
       }
     }
   };
