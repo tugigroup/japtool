@@ -69,6 +69,7 @@ module.exports = {
 
                 req.session.authenticated = true;
                 req.session.User = user;
+                req.session.lang = user.language;
 
                 //If the user is also an admin redirect to the user list(/view/user/index.ejs)
                 //This is user in conjuntion with config/policies.js file
@@ -126,9 +127,13 @@ module.exports = {
 
     destroy: function (req, res, next) {
         //wipe out the session (log out)
+        var lang = req.session.lang;
+        if(!lang) lang = 'en';
+        
         req.session.destroy();
+
         //redirect the browser to the sign-in screen
-        res.redirect('/japtool/auth');
+        res.redirect('/japtool/auth?lang='+lang);
 
     },
     facebook: function (req, res, next) {

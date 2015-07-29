@@ -12,6 +12,7 @@ module.exports = {
         description: {type: 'string'},
         type: {type: 'string'},
         level: {type: 'string'},
+        sort: {type: 'integer'},
         published: {type: 'boolean'},
         image: {type: 'string'},
         category: {type: 'string'},

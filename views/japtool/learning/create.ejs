@@ -62,18 +62,21 @@
                                         width="100" height="100">
                                 <input id="idbook" type="hidden" name="bookMaster" value="<%= book.id %>">
                             </div>
-                            <div class="col-sm-4" style="padding-top: 40px">
+                            <div class="col-sm-2" style="padding-top: 40px">
                                 <b><%= book.name %></b><br>
                                 <b>Level : <%= book.level %></b>
                             </div>
                             <% } %>
+                            <div class="col-sm-4" style="padding-top: 15px">
+                                <% if(create != "" && create != null){ %>
+                                <h4>Ban da dang hoc mot learning ve quyen sach nay, ban can xoa learning do de tao 1
+                                    learning moi ve no hoac tiep tuc hoc tai <a
+                                            href="/japtool/Learning/practice/?id=<%= book.id %>&learnID=<%= learning.id %>">day</a>
+                                </h4>
+                                <% } %>
+                            </div>
                         </div>
-                        <% if(create != "" && create != null){ %>
-                        <h3>Ban da dang hoc mot learning ve quyen sach nay, ban can xoa learning do de tao 1
-                            learning moi ve no hoac tiep tuc hoc tai <a
-                                    href="/japtool/Learning/practice/?id=<%= book.id %>&learnID=<%= learning.id %>">day</a>
-                        </h3>
-                        <% } %>
+
                     </div>
                 </div>
             </div>
