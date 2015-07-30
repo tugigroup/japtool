@@ -9,6 +9,9 @@ body {
 .language{
     margin-top: 20px;
 }
+.language a{
+    margin-left: 5px;
+}
 .nopadding {
     padding: 0 !important;
     margin: 0 !important;
