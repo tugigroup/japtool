@@ -65,8 +65,8 @@
 <script>
   var i;
   var question;
-  var delay=1500;
-
+  var delay = 1500;
+  var ON_OFF = false;
   function checkBrowser() {
     var chromeName = "chrome";
     var browserName = bowser.name.toLowerCase();
@@ -113,7 +113,7 @@
   }
 
   function replaceChar(str) {
-    var pattern = ['。', '、', '！', ' ', '　'];
+    var pattern = ['。', '、', '！', ' ', '　','～'];
     $.each(pattern, function (index, value) {
       str = str.replace(value, '');
     });
@@ -143,7 +143,7 @@
       $('.status' + i).html("<span class='text-danger'><i class='fa fa-times'></i> Try again</span>");
     }
 
-    $(".result" + i).html("<i class='fa fa-share-square'></i>" + msgCheck);
+    $(".result" + i).html("<i class='fa fa-paper-plane'></i>" + msgCheck);
   }
 
   function startVoice() {
@@ -151,8 +151,10 @@
       var i = getCurrentActive();
       if (!$('.btn-start' + i).hasClass('text-danger')) {
         start();
+        ON_OFF = true;
       } else {
         stop();
+        ON_OFF = false;
       }
     } else {
       alert(isChrome);
@@ -163,7 +165,11 @@
     $('.slider-for').on('afterChange', function (event, slick, currentSlide) {
       //stop();
       var i = getCurrentActive();
-      $('.btn-start' + i).addClass('text-danger');
+      if (ON_OFF) {
+        $('.btn-start' + i).addClass('text-danger');
+      } else {
+        $('.btn-start' + i).removeClass('text-danger');
+      }
     });
   });
 
@@ -192,6 +198,8 @@
     var current = getCurrentActive();
     $('.status' + current).html("Not Started");
     //stop();
+    $('.btn-start' + current).removeClass('text-danger');
+    ON_OFF = false;
   };
 
   recognition.onresult = function (event) {
