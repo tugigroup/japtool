@@ -267,49 +267,6 @@
     <div class="modal fade" id="show-books" data-backdrop="static" data-keyboard="false"></div>
     <ul id="pagination-demo" class="pagination-sm row text-center pull-right"></ul>
     <script type="text/javascript">
-        window.onload = function () {
-            $('.sub-lesson').click(function () {
-                var bookDetail = $(this).attr('name');
-                $('#add-book-detail').attr('name', bookDetail);
-                var user = '<%= session.User.id %>';
-                var selfLearning = $('#title-learning').attr('name');
-                var startDate = new Date();
-                var finishDate = new Date();
-                $.ajax({
-                    method: "POST",
-                    url: "/japtool/Learning/saveHistory",
-                    data: {
-                        user: user,
-                        bookDetail: bookDetail,
-                        selfLearning: selfLearning,
-                        startDate: startDate,
-                        finishDate: finishDate
-                    }
-                })
-                        .done(function (msg) {
-                            console.log(msg);
-                        });
-            });
-            $('.content').hide();
-            var itemOnPage = 2;
-            for (var i = 0; i < itemOnPage; i++) {
-                $('.library-' + i).show();
-            }
-            var totalPages =
-            <%= uniqueType.length %>/
-            itemOnPage;
-            $('#pagination-demo').twbsPagination({
-                totalPages: Math.ceil(totalPages),
-                visiblePages: 4,
-                onPageClick: function (event, page) {
-                    var itemShow = itemOnPage * page;
-                    $('.content').hide();
-                    for (var i = itemShow - itemOnPage; i < itemShow; i++) {
-                        $('.library-' + i).show();
-                    }
-                }
-            });
-        };
         function learn(module, condition, id) {
             var strCondition = JSON.stringify(condition);
             if (module == 'test') {

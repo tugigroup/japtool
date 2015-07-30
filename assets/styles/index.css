@@ -6,7 +6,12 @@ body {
     background-size: cover;
     font-family: Roboto, Helvetica, Verdana, Arial, sans-serif;
 }
-
+.language{
+    margin-top: 20px;
+}
+.language a{
+    margin-left: 5px;
+}
 .nopadding {
     padding: 0 !important;
     margin: 0 !important;
@@ -27,7 +32,10 @@ body {
     position: absolute;
     opacity: 0.6;
 }
-
+.menu-page {
+    padding-bottom: 1.5rem !important;
+    padding-top: 1.5rem !important;
+}
 .logo img {
     padding-top: 3rem;
 }

@@ -28,17 +28,20 @@
                                             <i class="fa fa-edit"></i> <span><%= uniqueLesson %></span>
                                             <i class="fa fa-angle-left pull-right"></i>
                                         </a>
-                                        <% bookDetails.forEach(function(bookDetail){ %>
-                                        <% if(uniqueLesson == bookDetail.lesson) { %>
+                                        <% if(bookDetails){ %>
                                         <ul class="treeview-menu">
-                                            <li><a href='javascript: void(0)' name="<%= bookDetail.id %>"
+                                            <% bookDetails.forEach(function(bookDetail){ %>
+                                            <% if(uniqueLesson == bookDetail.lesson) { %>
+                                            <li><a class="sub-lesson" href='javascript: void(0)'
+                                                   name="<%= bookDetail.id %>"
                                                    onclick="learn('<%= bookDetail.useModule %>', <%= bookDetail.dataExtractCondition %>)"><i
                                                             class="fa fa-circle-o"></i> <%= bookDetail.subLesson %></a>
                                             </li>
-
+                                            <% } %>
+                                            <% }) %>
                                         </ul>
                                         <% } %>
-                                        <% }) %>
+
                                     </li>
                                     <% }) %>
                                 </ul>
