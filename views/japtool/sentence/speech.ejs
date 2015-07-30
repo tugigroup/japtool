@@ -192,6 +192,7 @@
     var current = getCurrentActive();
     $('.status' + current).html("Not Started");
     //stop();
+    $('.btn-start' + current).removeClass('text-danger');
   };
 
   recognition.onresult = function (event) {
