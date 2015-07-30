@@ -22,13 +22,16 @@
         <div class="container">
             <div class="row">
                 <div class="account-right col-sm-7 col-sm-offset-5">
-                    <% if (req.session.lang == 'vi')  { %>
+                    
                     <a id="lang-en-option" data-toggle="tooltip" data-placement="left"
-                       title="<%= __('Click to change language interface') %>"> <img src="/images/vi-icon.png"></a>
-                    <% } else { %>
+                       title="<%= __('Click to change language interface') %>"> <img src="/images/vi.png"></a>
+                    
                     <a id="lang-vi-option" data-toggle="tooltip" data-placement="left"
-                       title="<%= __('Click to change language interface') %>"> <img src="/images/en-icon.png"></a>
-                    <% } %>
+                       title="<%= __('Click to change language interface') %>"> <img src="/images/en.png"></a>
+
+                    <a id="lang-ja-option" data-toggle="tooltip" data-placement="left"
+                       title="<%= __('Click to change language interface') %>"> <img src="/images/ja.png"></a>
+                    
 
                     <% if(session.authenticated){ %>
                     <span><%= __('Welcome') %> <a id="userIdInSession" userId="<%= session.User.id %>"

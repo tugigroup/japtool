@@ -19,19 +19,19 @@
     <div class="header-center clearfix">
         <div class="container">
             <div class="row">
+                <div class="col-xs-12">
+                    <div class="pull-right">
+                        <a href="?lang=vi" data-toggle="tooltip" data-placement="left" title="<%= __('Click to change language interface') %>"> <img src="/images/vi.png"></a>&nbsp;&nbsp;&nbsp;
+                        <a href="?lang=en" data-toggle="tooltip" data-placement="left" title="<%= __('Click to change language interface') %>"> <img src="/images/en.png"></a>&nbsp;&nbsp;&nbsp;
+                        <a href="?lang=ja" data-toggle="tooltip" data-placement="left" title="<%= __('Click to change language interface') %>"> <img src="/images/ja.png"></a>
+                    </div>
+                </div>
                 <div class="col-sm-3">
                     <a class="logo" href="/"><img src="/images/logo.png"></a>
                 </div>
                 <div class="col-md-9">
                     <div id='cssmenu' class="pull-right">
                         <ul class="menu-page">
-                            <li>
-                                <% if (req.session.lang == 'vi')  { %>
-                                    <a href="?lang=en" data-toggle="tooltip" data-placement="left" title="<%= __('Click to change language interface') %>"> <img src="/images/vi-icon.png" class="lang-option"></a>
-                                <% } else { %>
-                                    <a href="?lang=vi" data-toggle="tooltip" data-placement="left" title="<%= __('Click to change language interface') %>"> <img src="/images/en-icon.png" class="lang-option"></a>
-                                <% } %>
-                            </li>
                             <li><a href='/'><%= __('Home') %></a></li>
                             <li><a href='/japtool/page/about'><%= __('About') %></a></li>
                             <li><a href="/japtool/learning"><%= __('Learning') %></a></li>
