@@ -37,14 +37,15 @@
               </div>
             </div>
 
-            <div class="text-center">
 
-              <a class="text-center btn-start<%= index %>" onclick="startVoice();">
+
+              <a class="voice-start btn-start<%= index %>" onclick="startVoice();">
                 <div class="check-voice">
                   <i class="fa fa-microphone fa-5x"></i>
+                    <div class="gt-speech-item"></div>
                 </div>
               </a>
-            </div>
+
           </section>
         </div>
         <% }) %>
@@ -104,12 +105,14 @@
     recognition.stop();
     var i = getCurrentActive();
     $('.btn-start' + i).removeClass('text-danger');
+    $('.btn-start' + i).removeClass('gt-speech');
   }
 
   function start() {
     recognition.start();
     var i = getCurrentActive();
     $('.btn-start' + i).addClass('text-danger');
+    $('.btn-start' + i).addClass('gt-speech');
   }
 
   function replaceChar(str) {
@@ -165,10 +168,13 @@
     $('.slider-for').on('afterChange', function (event, slick, currentSlide) {
       //stop();
       var i = getCurrentActive();
+
       if (ON_OFF) {
         $('.btn-start' + i).addClass('text-danger');
+        $('.btn-start' + i).addClass('gt-speech');
       } else {
         $('.btn-start' + i).removeClass('text-danger');
+        $('.btn-start' + i).removeClass('gt-speech');
       }
     });
   });
@@ -199,6 +205,7 @@
     $('.status' + current).html("Not Started");
     //stop();
     $('.btn-start' + current).removeClass('text-danger');
+    $('.btn-start' + current).removeClass('gt-speech');
     ON_OFF = false;
   };
 
