@@ -2204,3 +2204,15 @@ ul.timeline li .timeline-panel:after {
     background: none;
 }
 
+.gt-speech-l4 {
+  z-index: 101;
+  width: 96px;
+  height: 96px;
+  top: 15px;
+  left: 15px;
+  border-radius: 100%;
+  border: 2px solid #bababa;
+  -webkit-animation: pulsate 1.2s 0s infinite;
+  -webkit-animation-direction: normal;
+  -webkit-transition: opacity .218s;
+}
