@@ -31,7 +31,8 @@
                                         <% bookDetails.forEach(function(bookDetail){ %>
                                         <% if(uniqueLesson == bookDetail.lesson) { %>
                                         <ul class="treeview-menu">
-                                            <li><a href='javascript: void(0)' name="<%= bookDetail.id %>"
+                                            <li><a class="sub-lesson" href='javascript: void(0)'
+                                                   name="<%= bookDetail.id %>"
                                                    onclick="learn('<%= bookDetail.useModule %>', <%= bookDetail.dataExtractCondition %>)"><i
                                                             class="fa fa-circle-o"></i> <%= bookDetail.subLesson %></a>
                                             </li>
