@@ -112,7 +112,7 @@
     if (!percent) {
       return sum;
     } else {
-      return Math.round((sum * 100) / firstLength);
+      return Math.round((sum * 200) / (firstLength + secondLength));
     }
   }
 
@@ -214,7 +214,7 @@
 
     var percentCorrect = similar_text(question,msg,true);
 
-    if (percentCorrect == 100 && msg == question) {
+    if (percentCorrect == 100) {
       $(".check" + i).html("<span class='text-success'><i class='fa fa-check'></i> Correct : 100% </span>");
       $('.status' + i).html("<span class='text-success'><i class='fa fa-check'></i> Completed</span>");
       $(".result" + i).html("<span class='text-success'><i class='fa fa-bullhorn'></i> " + msgCheck + "</span>");
