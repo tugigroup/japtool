@@ -17,7 +17,7 @@
               </div>
 
               <div class="col-sm-6">
-                <h3 class="text-right">Receiving: </h3>
+                <h3 class="text-right">Listening: </h3>
               </div>
               <div class="col-sm-6">
                 <h3 class="status<%= index %>">Not Started</h3>
@@ -38,13 +38,13 @@
             </div>
 
 
+            <a class="voice-start btn-start<%= index %>" onclick="startVoice();">
+              <div class="check-voice">
+                <i class="fa fa-microphone fa-5x"></i>
 
-              <a class="voice-start btn-start<%= index %>" onclick="startVoice();">
-                <div class="check-voice">
-                  <i class="fa fa-microphone fa-5x"></i>
-                    <div class="gt-speech-item"></div>
-                </div>
-              </a>
+                <div class="gt-speech-item"></div>
+              </div>
+            </a>
 
           </section>
         </div>
@@ -63,7 +63,90 @@
 <script src="/js/dependencies/jquery.js"></script>
 <script src="/js/dependencies/slick.js"></script>
 <script src="/js/dependencies/bowser.min.js"></script>
+<script src="/js/dependencies/diff.js"></script>
 <script>
+
+  function similar_text(first, second, percent) {
+    if (first === null || second === null || typeof first === 'undefined' || typeof second === 'undefined') {
+      return 0;
+    }
+
+    first += '';
+    second += '';
+
+    var pos1 = 0,
+      pos2 = 0,
+      max = 0,
+      firstLength = first.length,
+      secondLength = second.length,
+      p, q, l, sum;
+
+    max = 0;
+
+    for (p = 0; p < firstLength; p++) {
+      for (q = 0; q < secondLength; q++) {
+        for (l = 0;
+             (p + l < firstLength) && (q + l < secondLength) && (first.charAt(p + l) === second.charAt(q + l)); l++)
+          ;
+        if (l > max) {
+          max = l;
+          pos1 = p;
+          pos2 = q;
+        }
+      }
+    }
+
+    sum = max;
+
+    if (sum) {
+      if (pos1 && pos2) {
+        sum += this.similar_text(first.substr(0, pos1), second.substr(0, pos2));
+      }
+
+      if ((pos1 + max < firstLength) && (pos2 + max < secondLength)) {
+        sum += this.similar_text(first.substr(pos1 + max, firstLength - pos1 - max), second.substr(pos2 + max,
+          secondLength - pos2 - max));
+      }
+    }
+
+    if (!percent) {
+      return sum;
+    } else {
+      return Math.round((sum * 100) / firstLength);
+    }
+  }
+
+
+  var diffType = "diffChars";
+  function changed(dest, src) {
+    var diff = JsDiff[diffType](src, dest);
+    var addText = "";
+
+
+    for (var i = 0; i < diff.length; i++) {
+
+      if (diff[i].added && diff[i + 1] && diff[i + 1].removed) {
+        var swap = diff[i];
+        diff[i] = diff[i + 1];
+        diff[i + 1] = swap;
+      }
+
+      if (diff[i].removed) {
+        addText += "<span class='text-danger'>"
+        addText += diff[i].value;
+        addText += "</span>";
+      } else if (diff[i].added) {
+        //addText += diff[i].value;
+      } else {
+        addText += "<span class='text-success'>"
+        addText += diff[i].value;
+        addText += "</span>";
+      }
+    }
+
+    return addText;
+  }
+
   var i;
   var question;
   var delay = 1500;
@@ -116,7 +199,7 @@
   }
 
   function replaceChar(str) {
-    var pattern = ['。', '、', '！', ' ', '　','～'];
+    var pattern = ['。', '、', '！', ' ', '　', '～'];
     $.each(pattern, function (index, value) {
       str = str.replace(value, '');
     });
@@ -129,24 +212,24 @@
     question = replaceChar($.trim($(".question" + i).html()));
     msg = replaceChar(msgCheck);
 
-    $(".check" + i).html("");
+    var percentCorrect = similar_text(question,msg,true);
 
-    if (msg == question) {
-      $(".check" + i).html("<span class='text-success'><i class='fa fa-check'></i> Correct</span>");
+    if (percentCorrect == 100) {
+      $(".check" + i).html("<span class='text-success'><i class='fa fa-check'></i> Correct : 100% </span>");
       $('.status' + i).html("<span class='text-success'><i class='fa fa-check'></i> Completed</span>");
+      $(".result" + i).html("<span class='text-success'><i class='fa fa-paper-plane'></i>" + msgCheck + "</span>");
       //stop();
 
-      setTimeout(function(){
+      setTimeout(function () {
         $('.slider-for').slick('slickNext');
         $('.slider-nav').slick('slickNext');
       }, delay);
 
     } else {
-      $(".check" + i).html("<span class='text-danger'><i class='fa fa-times'></i> Incorrect</span>");
+      $(".check" + i).html("<span class='text-danger'><i class='fa fa-times'></i> Correct : " + percentCorrect + "% </span>");
       $('.status' + i).html("<span class='text-danger'><i class='fa fa-times'></i> Try again</span>");
+      $(".result" + i).html("<i class='fa fa-paper-plane'></i>" + changed(question, msg));
     }
-
-    $(".result" + i).html("<i class='fa fa-paper-plane'></i>" + msgCheck);
   }
 
   function startVoice() {
