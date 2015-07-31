@@ -7,8 +7,8 @@ module.exports = {
   // don't allow the total upload size to exceed ~1MB
   upFileMaxBytes: 1000000,
   maxSurveyQuestion: 5,
-  maxLibraRs: 10,
-  maxLibOnPage: 6,
+  maxLibraRs: 30,
+  maxLibOnPage: 9,
   //Email
   user: 'mrbotno@gmail.com',
   clientId: '109620886904-3i95hnuu084hoc937tnoikl818kd445k.apps.googleusercontent.com',

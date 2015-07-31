@@ -28,17 +28,20 @@
                                             <i class="fa fa-edit"></i> <span><%= uniqueLesson %></span>
                                             <i class="fa fa-angle-left pull-right"></i>
                                         </a>
-                                        <% bookDetails.forEach(function(bookDetail){ %>
-                                        <% if(uniqueLesson == bookDetail.lesson) { %>
+                                        <% if(bookDetails){ %>
                                         <ul class="treeview-menu">
-                                            <li><a href='javascript: void(0)' name="<%= bookDetail.id %>"
+                                            <% bookDetails.forEach(function(bookDetail){ %>
+                                            <% if(uniqueLesson == bookDetail.lesson) { %>
+                                            <li><a class="sub-lesson" href='javascript: void(0)'
+                                                   name="<%= bookDetail.id %>"
                                                    onclick="learn('<%= bookDetail.useModule %>', <%= bookDetail.dataExtractCondition %>)"><i
                                                             class="fa fa-circle-o"></i> <%= bookDetail.subLesson %></a>
                                             </li>
-
+                                            <% } %>
+                                            <% }) %>
                                         </ul>
                                         <% } %>
-                                        <% }) %>
+
                                     </li>
                                     <% }) %>
                                 </ul>
@@ -63,11 +66,52 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="checktest"
+     data-backdrop="static"
+     data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Type of test.</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-group" id="istest">
+                    <p><input type="radio" name="optradio" value="1" data-dismiss="modal"
+                              id="luyentap">Luyen tap.</p>
+
+                    <p><input type="radio" name="optradio" value="2" data-dismiss="modal"
+                              id="kiemtra">Kiem tra.</p>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-success" role="button"
+                   data-dismiss="modal">Close</a>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
     function learn(module, condition) {
-        var strCondition = JSON.stringify(condition);
-        console.log(strCondition);
-        $('#container-learn').load('/japtool/' + module + '/?condition=' + strCondition);
+        if (module == "vocabulary/practice") {
+            $('#checktest').modal('show');
+            $('#luyentap').click(function () {
+                var strCondition = JSON.stringify(condition);
+                console.log(strCondition);
+                $('#container-learn').load('/japtool/' + module + '/?condition=' + strCondition + '&istest=' + 1);
+            });
+            $('#kiemtra').click(function () {
+                var strCondition = JSON.stringify(condition);
+                console.log(strCondition);
+                $('#container-learn').load('/japtool/' + module + '/?condition=' + strCondition + '&istest=' + 2);
+            })
+
+        }
+        else {
+            var strCondition = JSON.stringify(condition);
+            console.log(strCondition);
+            $('#container-learn').load('/japtool/' + module + '/?condition=' + strCondition);
+        }
+
     }
 
     window.onload = function () {
