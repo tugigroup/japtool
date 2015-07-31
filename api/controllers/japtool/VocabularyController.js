@@ -15,7 +15,6 @@ module.exports = {
         });
     },
     practice: function (req, res) {
-        var istest = req.param('istest');
         var extractDataCondition = req.param('condition');
         //var extractDataCondition = '{"level": "N3", "tag" : {"contains":",tap1,lession5,"}}';
         Vocabulary.selectByLevel({condition: extractDataCondition}, function (err, vocabularies) {
@@ -38,7 +37,7 @@ module.exports = {
             vocabularies.sort(function () {
                 return Math.round(Math.random()) - 0.5;
             });
-            res.render('japtool/vocabulary/practice', {'vocabularies': vocabularies, istest: istest});
+            res.render('japtool/vocabulary/practice', {'vocabularies': vocabularies});
         });
     },
     _config: {
