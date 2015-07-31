@@ -149,6 +149,6 @@
 }
 @media (max-width: 1000px){
     .learning-group .invite #vocabularyList h3,.slider-nav h3 {
-        min-height: 110px;
+        min-height: 50px;
     }
 }

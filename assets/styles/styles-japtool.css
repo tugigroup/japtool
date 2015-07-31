@@ -540,6 +540,7 @@ label.valid, p.valid {
 
 /*Vocabulary*/
 
+
 .slider-nav h3 {
     background: #aaa;
     padding: 15px;
@@ -1735,20 +1736,50 @@ ul.timeline li .timeline-panel:after {
     padding-left: 3rem;
 }
 
-.text-center-exe {
+.pratice-voca .text-center-exe {
     background: none !important;
-    font-size: 710%;
+    font-size: 550%;
     cursor: pointer;
 }
 
-.panel-paper-slide-voca {
-    height: 478px ;
-}
 
 .voca-list-sum {
     margin-top: 2%;
 }
 
+.mics-audio-practice-voca{
+    position: relative;
+}
+
+.voca-prac-txt-cntr .card{
+    min-height: 168px;
+    margin-top: -11%;
+}
+.pratice-voca .panel-paper-slide{
+    min-height: 510px;
+    margin-bottom: 0px;
+}
+.exe-voca{
+    margin-top: 1%;
+}
+.voca-list-sum .card{
+    position: relative;
+    min-height: 154px;
+     margin-top: 0%;
+}
+.icon-controll-prac-voca{
+    position: absolute;
+    z-index: 100;
+}
+.voca-list-sum .pagingCnt{
+    position: absolute;
+    right: 5%;
+    bottom: 1%;
+}
+.voca-list-sum .panel-paper-slide-voca{
+    margin-bottom: 0px;
+    min-height: 448px;
+}
 /*END VOCABULARY*/
 
 /*END CONTENT*/
@@ -1917,14 +1948,14 @@ ul.timeline li .timeline-panel:after {
     margin-left: 4%;
 }
 
-.info-on {
+#kanji-List .info-on {
     cursor: pointer;
     font-size: 29px;
     position: absolute;
     z-index: 999;
 }
 
-.info-off {
+#kanji-List .info-off {
     cursor: pointer;
     font-size: 29px;
     position: absolute;
@@ -1959,21 +1990,40 @@ ul.timeline li .timeline-panel:after {
 }
 
 .panel-paper-slide {
-    min-height: 605px;
-}
-
-.exe-kanji {
-    margin-top: 2%;
+    min-height: 489px;
 }
 
 .excercise-kanji .panel-paper-slide-exe {
-    min-height: 590px !important;
+    min-height: 389px;
+    margin-bottom: 0px;
 }
 
 .kanji-text-block {
     margin-bottom: -29px;
 }
 
+.kanji-text-big .card{
+    min-height: 103px;
+}
+.count-page-exe-kanji{
+    position: absolute;
+    bottom: 2%;
+    right: 5%;
+}
+#kanji-List{
+    margin-top: 10px;
+}
+.exe-kanji{
+    margin-top: 10px;
+}
+
+.kanji-text-big .text-center-exe{
+    background: none !important;
+    font-size: 90px;
+}
+.ans-kanji-exe{
+    bottom: 0px;
+}
 /*END KANJI*/
 
 /*slide*/
@@ -1987,7 +2037,7 @@ ul.timeline li .timeline-panel:after {
     cursor: pointer;
 }
 
-.row-icon {
+#kanji-List .row-icon {
     margin-top: -11px;
 }
 .count-page{
@@ -1999,39 +2049,41 @@ ul.timeline li .timeline-panel:after {
     margin-bottom: 0%;
 }
 /*END slide*/
-@media (max-width: 475px) {
-    .learn-kanji .card-image{
-        right: -20%;
-        width: 175px;
+
+/*responsive lesson kanji*/
+@media only screen and (max-width: 475px) {
+    #kanji-List .learn-kanji .card-image{
+        right: -16%;
+        width: 145px;
     }
-    .text-center-list-kanji{
-        font-size: 120px;
+    #kanji-List .text-center-list-kanji{
+        font-size: 100px;
     }
-    .card-text-click .text-center-list-kanji{
+    #kanji-List .card-text-click .text-center-list-kanji{
         transform: rotate(0deg) scale(0.787) skew(1deg) translate(-150px);
         -webkit-transform: rotate(0deg) scale(0.787) skew(1deg) translate(-38%);
         -moz-transform: rotate(0deg) scale(0.787) skew(1deg) translate(-41%);
         -o-transform: rotate(0deg) scale(0.787) skew(1deg) translate(-41%);
         -ms-transform: rotate(0deg) scale(0.787) skew(1deg) translate(-41%);
     }
-    .learning-group .invite #vocabularyList h3, .slider-nav h3 {
+    #kanji-List .learning-group .invite #vocabularyList h3, .slider-nav h3 {
         min-height: 50px;
     }
-    .learn-kanji .panel{
+    #kanji-List .learn-kanji .panel{
         margin-bottom:0px;
-        min-height: 424px;
+        min-height: 387px;
     }
     .size-lb {
         font-size: 16px;
     }
-    .card{
-        margin-top: -44px;
-        min-height: 134px;
+    #kanji-List .card{
+        margin-top: -33px;
+        min-height: 117px;
     }
-    .info-on{
+    #kanji-List .info-on{
         margin-left: -24px;
     }
-    .info-off{
+    #kanji-List .info-off{
         margin-left: -24px;
     }
     .count-page{
@@ -2046,8 +2098,20 @@ ul.timeline li .timeline-panel:after {
     .btn-arrow-left{
         left: 5%;
     }
+    .kanji-text-block {
+        margin-bottom: -33px;
+    }
+    .text-meaning-kanji-les{
+        margin-bottom: 0px;
+    }
+    .cut-bottom{
+        margin-bottom: -10px;
+    }
+    .cut-bottom-lb{
+        margin-bottom: -1px;
+    }
 }
-@media(min-width: 476px) and  (max-width: 500px) {
+@media only screen and (min-width: 476px) and  (max-width: 500px) {
     .learn-kanji .card-image{
         right: -6%;
         width: 175px;
@@ -2067,19 +2131,19 @@ ul.timeline li .timeline-panel:after {
     }
     .learn-kanji .panel{
         margin-bottom:0px;
-        min-height: 424px;
+        min-height: 454px;
     }
     .size-lb {
         font-size: 16px;
     }
-    .card{
-        margin-top: -44px;
+    #kanji-List .card{
+        margin-top: -33px;
         min-height: 134px;
     }
-    .info-on{
+    #kanji-List .info-on{
         margin-left: -24px;
     }
-    .info-off{
+    #kanji-List .info-off{
         margin-left: -24px;
     }
     .count-page{
@@ -2094,8 +2158,9 @@ ul.timeline li .timeline-panel:after {
     .btn-arrow-left{
         left: 5%;
     }
+
 }
-@media (min-width: 501px) and  (max-width: 700px)  {
+@media only screen and (min-width: 501px) and  (max-width: 700px)  {
     .text-center-list-kanji{
         font-size: 122px;
     }
@@ -2111,7 +2176,7 @@ ul.timeline li .timeline-panel:after {
         width: 157px;
         margin-top: 4%;
     }
-    .row-icon{
+    #kanji-List .row-icon{
         margin-left: -23px;
     }
     .kanji-text-block{
@@ -2120,15 +2185,15 @@ ul.timeline li .timeline-panel:after {
     .size-lb {
         font-size: 15px;
     }
-    .card{
+    #kanji-List .card{
         margin-top: -44px;
     }
-    .info-on{
-        font-size: 25px;
-        position: absolute;
-        z-index: 999;
-    }
-    .info-off{
+    #kanji-List .info-on{
+         font-size: 25px;
+         position: absolute;
+         z-index: 999;
+     }
+    #kanji-List .info-off{
         font-size: 25px;
         z-index: 999;
         position: absolute;
@@ -2144,7 +2209,7 @@ ul.timeline li .timeline-panel:after {
     }
 }
 
-@media (min-width: 701px)and  (max-width: 800px)  {
+@media only screen and (min-width: 701px)and  (max-width: 1024px)  {
     .learn-kanji .card-image{
         right: -16%;
     }
@@ -2160,18 +2225,209 @@ ul.timeline li .timeline-panel:after {
     }
     .learn-kanji .panel{
         margin-bottom:0px;
-        min-height: 424px;
+        min-height: 447px;
     }
     .size-lb {
         font-size: 15px;
     }
-    .card{
-        margin-top: -44px;
+    #kanji-List .card{
+        margin-top: -39px;
     }
-    .count-page{
+    .count-page-exe-kanji{
+        right: 8%;
+    }
+    #kanji-List .count-page{
         right: 7%;
     }
 }
+/*END responsive lesson kanji*/
+
+/*responsive practice kanji*/
+
+@media only screen and (min-width: 319px) and (max-width: 479px){
+    .panel-paper-slide-exe .panel-body{
+        padding: 1px;
+    }
+    .count-page-exe-kanji{
+        right: 8%;
+        bottom: 0%;
+    }
+    .excercise-kanji .panel-paper-slide-exe{
+        min-height: 385px;
+    }
+    .btn-arrow-right-exe{
+        right: 6%;
+    }
+    .btn-arrow-left-exe{
+        left: 6%;
+    }
+    .kanji-text-big .text-center-exe{
+        font-size: 77px;
+    }
+    .kanji-text-big .card {
+        min-height: 84px;
+    }
+    .excercise-kanji .panel-choose-exe{
+        margin-bottom: 10px;
+    }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 767px){
+    .panel-paper-slide-exe .panel-body{
+        padding: 11px;
+    }
+    .excercise-kanji .panel-paper-slide-exe{
+        min-height: 505.109px;
+    }
+    .btn-arrow-right-exe{
+        right: 4%;
+    }
+    .btn-arrow-left-exe{
+        left: 4%;
+    }
+    .count-page-exe-kanji{
+        bottom: 1%;
+        right: 7%;
+    }
+}
+@media only screen and (min-width: 768px) and (max-width: 1000px){
+    .panel-paper-slide-exe .panel-body{
+        padding: 6px;
+    }
+    .exe-kanji .text-center-exe{
+        font-size: 640%;
+    }
+}
+/*END responsive practice kanji*/
+
+
+/*responsive layout practice vocabulary*/
+
+@media only screen and (min-width: 319px) and (max-width: 479px){
+    .exe-voca .panel-body{
+        padding: 7px;
+    }
+    .exe-voca .text-center-exe{
+        font-size: 369%;
+    }
+    .voca-prac-txt-cntr .card{
+        margin-top: -24%;
+        min-height: 114px;
+    }
+    .pratice-voca .panel-paper-slide{
+        min-height: 381.109px;
+    }
+    .exe-voca .slick-slide h3{
+        min-height: 70px;
+    }
+}
+@media only screen and (min-width: 480px) and (max-width: 767px){
+    .voca-prac-txt-cntr .card {
+        min-height: 150px;
+        margin-top: -15%;
+    }
+    .pratice-voca .text-center-exe{
+        font-size: 490%;
+    }
+    .pratice-voca .panel-paper-slide{
+        min-height: 454px;
+    }
+    .exe-voca .panel-paper-slide .panel-bd-all{
+        padding: 11px;
+    }
+}
+@media only screen and (min-width: 768px) and (max-width: 1000px){
+    .pratice-voca .panel-paper-slide {
+        min-height: 457px;
+        margin-bottom: 0px;
+    }
+    .voca-prac-txt-cntr .text-center-exe{
+        font-size: 473%;
+    }
+    .voca-prac-txt-cntr .card{
+
+    }
+}
+/*END responsive layout practice vocabulary*/
+
+
+/* responsive layout lesson vocabulary*/
+@media only screen and (min-width: 320px) and (max-width: 479px){
+    .voca-list-sum .text-center-list-voca{
+        font-size: 417%;
+    }
+    .voca-list-sum .front{
+        margin-top: -5%;
+    }
+    .voca-list-sum .info-on{
+        font-size: 24px;
+    }
+    .voca-list-sum .info-off{
+        font-size: 24px;
+    }
+    .voca-list-sum .mic-on{
+        font-size: 24px;
+    }
+    .voca-list-sum .mic-off{
+        font-size: 24px;
+    }
+    .voca-list-sum .exam-cont{
+        margin-bottom: -3%;
+        font-size: 16px;
+    }
+    .voca-list-sum .pagingCnt{
+        right: 7%;
+    }
+    .vocabulary-item-example{
+        margin-left: 0%;
+    }
+    .voca-list-sum .lb-example{
+        margin-bottom: -3%;
+    }
+    .panel-paper-slide-voca .panel-body{
+        padding: 5px;
+    }
+    .voca-list-sum .panel-paper-slide-voca{
+        min-height: 430px;
+    }
+    .voca-list-sum .slick-list .slick-slide h3{
+        min-height: 70px;
+    }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 767px){
+    .text-center-list-voca{
+        font-size: 426%;
+    }
+    .panel-paper-slide-voca .panel-body{
+        padding: 5px;
+    }
+    .panel-paper-slide-voca{
+        min-height: 454px;
+    }
+    .vocabulary-item-example{
+        margin-left: 0px;
+    }
+}
+@media only screen and (min-width: 768px) and (max-width: 1000px){
+    .text-center-list-voca{
+        font-size: 468%;
+    }
+    .voca-list-sum .exam-cont{
+        font-size: 18px;
+        margin-bottom: -2%;
+    }
+    .voca-list-sum .lb-example{
+        margin-bottom: -2%;
+    }
+    .voca-list-sum .vocabulary-item-example{
+        margin-left: 0%;
+    }
+    .panel-paper-slide-voca .panel-body{
+        padding: 6px;
+    }
+}
+/*END responsive layout lesson vocabulary*/
 
 /*SPEECH*/
 #one-time h2 {

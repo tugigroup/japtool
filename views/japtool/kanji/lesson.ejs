@@ -30,18 +30,18 @@
                                 </div>
                             </div>
                             <div class="details-voca">
-                                <p class="text-center not-display <%= index %>">
+                                <p class="text-center not-display <%= index %> text-meaning-kanji-les">
                                     <span class="lb-name-voca-mean"><%= kanji.hanviet %></span>
                                 </p>
                                 <% if(kanji.kunyomi){ %>
-                                <p class="not-display <%= index %>">
+                                <p class="cut-bottom-lb not-display <%= index %>">
                                     <span class="glyphicon glyphicon-hand-right"></span><span
                                             class="lb-on size-lb"> kunyomi :</span><span
                                             class="lb-on-con size-lb"><%= kanji.kunyomi %></span>
                                 </p>
                                 <% } %>
                                 <% if(kanji.onyomi){ %>
-                                <p class="not-display <%= index %>">
+                                <p class="cut-bottom-lb not-display <%= index %>">
                                     <span class="glyphicon glyphicon-hand-right"></span><span
                                             class="lb-kun size-lb"> onyomi :</span><span
                                             class="lb-on-kun size-lb"><%= kanji.onyomi %></span>
@@ -56,7 +56,7 @@
 
                                 <!--5-->
                                 <% if (typeof kanji.examples !== 'undefined' && kanji.examples.length > 0) { %>
-                                <p custom="display-delay-<%= index + 1 %>">
+                                <p class="cut-bottom-lb" custom="display-delay-<%= index + 1 %>">
                                     <span class="glyphicon glyphicon-screenshot"></span><span class="lb-example size-lb"> Example :</span>
                                 </p>
 
@@ -64,7 +64,7 @@
                                     <% kanji.examples.forEach( function(item, index){ %>
                                     <% if (item.example == 'undefined' || item.example.length == 0){ %>
                                     <% }else { %>
-                                    <li>
+                                    <li class="cut-bottom">
                                           <span data-toggle="tooltip" data-placement="top" title="<%= item.meaning %>"
                                                 class="text-danger size-lb ">
                                             <%= index + 1 %>. <%= item.example %>
@@ -105,6 +105,7 @@
         fade: false,
         asNavFor: '.slider-nav',
         draggable: false,
+        accessibility:true,
         touchMove:false,
         prevArrow: '<button type="button" data-role="none" class="btn btn-show-list btn-arrow-left" aria-label="Previous" tabindex="0" role="button"><i class="fa fa-chevron-left"></i></button>',
         nextArrow: '<button type="button" data-role="none" class="btn btn-show-list btn-arrow-right" aria-label="Next" tabindex="0" role="button"><i class="fa fa-chevron-right"></i></button>'

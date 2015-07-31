@@ -1,5 +1,5 @@
 <script>
-
+    var isNext ;
     $('.slider-for').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -8,6 +8,7 @@
         asNavFor: '.slider-nav',
         draggable: false,
         touchMove: false,
+        accessibility:true,
         prevArrow: '<button type="button" data-role="none" class="btn btn-show-list btn-arrow-left" aria-label="Previous" tabindex="0" role="button"><i class="fa fa-chevron-left"></i></button>',
         nextArrow: '<button type="button" data-role="none" class="btn btn-show-list btn-arrow-right" aria-label="Next" tabindex="0" role="button"><i class="fa fa-chevron-right"></i></button>'
     });
@@ -59,6 +60,13 @@
     $('.slider-for').on('init reInit afterChange', function (event, slick, currentSlide) {
         var i = (currentSlide ? currentSlide : 0) + 1;
     });
+    //set isNext when next slide
+    $('.slider-for').on('afterChange', function(event, slick, currentSlide, nextSlide){
+        isNext = false;
+    });
+    $('.ans-box').on('click', function () {
+        isNext = true;
+    });
     function checkAnswer(description, description2, optionID) {
         if (description == description2) {
             if (audioconfig) {
@@ -66,7 +74,7 @@
             }
             // set color
             var $el = $('#' + optionID),
-                    x = 200,
+                    x = 100,
                     originalColor = $el.css("background"),
                     i = 3; //counter
             (function loop() { //recurisve IIFE
@@ -78,7 +86,9 @@
             //Trễ 2s và next sang câu tiếp theo.
             setTimeout(
                     function () {
-                        $('.slider-for').slick('slickNext');
+                        if(isNext){
+                            $('.slider-for').slick('slickNext');
+                        }
                     }, 1000);
         } else {
             if (audioconfig) {
@@ -86,7 +96,7 @@
             }
             // set color
             var $el = $('#' + optionID),
-                    x = 200,
+                    x = 100,
                     originalColor = $el.css("background"),
                     i = 3; //counter
             (function loop() { //recurisve IIFE
@@ -106,6 +116,7 @@
         var i = (currentSlide ? currentSlide : 0) + 1;
         $status.text(i + '/' + slick.slideCount);
     });
+
 </script>
 
 <div class="exe-voca">
@@ -129,13 +140,13 @@
         <div class="pratice-voca">
             <div class="col-sm-offset-2 col-sm-8">
                 <div class="panel panel-default panel-paper-slide">
-                    <div class="panel-body">
-                        <div class="col-sm-1">
+                    <div class="panel-body panel-bd-all">
+                        <div class="mics-audio-practice-voca">
                             <i class="fa fa-microphone mic-on" title="Off Audio"></i>
                             <i class="fa fa-microphone-slash mic-off" title="On Audio"></i>
                         </div>
                         <div class="col-sm-12">
-                            <div class="vocabulary text-center">
+                            <div class="voca-prac-txt-cntr text-center">
                                 <div class="card">
                                     <div class="front">
                                         <h3 class="text-center text-danger text-center-exe"
@@ -149,7 +160,7 @@
                         <% vocabulary.randomVocabularies.forEach( function(description, indexOption){ %>
                         <div class="col-sm-offset-1 col-sm-10">
                             <div class="panel panel-default text-center panel-choose-exe">
-                                <div id="<%= indexOption %>-<%= index %>" class="panel-body"
+                                <div id="<%= indexOption %>-<%= index %>" class="panel-body ans-box"
                                      onclick="checkAnswer('<%= description %>','<%= vocabulary.description %>','<%= indexOption %>-<%= index %>')">
                                     <%= description %>
                                 </div>

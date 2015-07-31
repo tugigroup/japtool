@@ -207,8 +207,8 @@
 
     // module test all article
     $('#btnTestAll').on('click',function(){
-        $(".choose-modul-learn-article").hide(400);
-        $("#do-test-articles").show(400);
+        $(".choose-modul-learn-article").slideDown(400);
+        $("#do-test-articles").slideUp(400);
         $("#btnCheckRs").show();
         $("#btnCheckQuickly").hide();
         $("#btnRefresh").hide();
@@ -216,8 +216,8 @@
 
     // when user choose module just practice
     $('#btnPraticle').on('click',function (){
-        $(".choose-modul-learn-article").hide(400);
-        $("#do-test-articles").show(400);
+        $(".choose-modul-learn-article").slideDown(400);
+        $("#do-test-articles").slideUp(400);
         $("#btnCheckQuickly").show();
         $("#btnRefresh").show();
         $("#btnCheckRs").hide();
