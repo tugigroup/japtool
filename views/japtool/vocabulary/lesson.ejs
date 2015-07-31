@@ -7,8 +7,8 @@
         fade: false,
         asNavFor: '.slider-nav',
         draggable: false,
-        touchMove:false,
-        accessibility:true,
+        touchMove: false,
+        accessibility: true,
         prevArrow: '<button type="button" data-role="none" class="btn btn-show-list btn-arrow-left" aria-label="Previous" tabindex="0" role="button"><i class="fa fa-chevron-left"></i></button>',
         nextArrow: '<button type="button" data-role="none" class="btn btn-show-list btn-arrow-right" aria-label="Next" tabindex="0" role="button"><i class="fa fa-chevron-right"></i></button>'
     });
@@ -128,14 +128,14 @@
                             <i class="fa fa-check-circle-o fa-2x info-on" title="off informations"></i>
                             <i class="fa fa-minus-circle fa-2x info-off" title="on informations"></i>
                             &nbsp;
-                            <i class="fa fa-volume-up mic-on" data-toggle="tooltip"  title="off audio"></i>
-                            <i class="fa fa-volume-off mic-off" data-toggle="tooltip"  title="on audio"></i>
+                            <i class="fa fa-volume-up mic-on" data-toggle="tooltip" title="off audio"></i>
+                            <i class="fa fa-volume-off mic-off" data-toggle="tooltip" title="on audio"></i>
                         </div>
                         <div class="col-sm-12">
                             <div class="card text-center">
                                 <!--1-->
                                 <p class="not-display info-item-<%= index %>">
-                                    <span class="text-success">Reading
+                                    <span class="text-success">
                                       <i class="fa fa-microphone text-danger"
                                          onclick="playAudio(<%= index %>);"></i> :
                                     </span>
@@ -153,14 +153,14 @@
 
                                 <% if(vocabulary.description){ %>
                                 <p>
-                                    <span class="lb-mean size-lb"><span class="glyphicon glyphicon-screenshot"></span> Description: <%= vocabulary.description %></span>
+                                    <span class="lb-mean size-lb"><i class="fa fa-flag-o fa-2x"  title="description"></i> <%= vocabulary.description %></span>
                                 </p>
                                 <% } %>
 
                                 <!--3-->
                                 <% if (typeof vocabulary.examples !== 'undefined' && vocabulary.examples.length > 0) { %>
                                 <p custom="display-delay-<%= index + 1 %>" class="lb-example">
-                                    <span class="text-success">Example: </span>
+                                    <span class="text-success"><i class="fa fa-file-text fa-lg" title="Example"></i></span>
                                 </p>
                                 <ul custom="display-delay-<%= index + 1 %>" class="vocabulary-item-example">
                                     <% vocabulary.examples.forEach( function(item, index){ %>
