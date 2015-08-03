@@ -1,187 +1,272 @@
 <script>
-  var isNext;
-  $('.slider-for').slick({
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    fade: false,
-    touchMove: false,
-    draggable: false,
-    accessibility: true,
-    asNavFor: '.slider-nav',
-    prevArrow: '<button type="button" data-role="none" class="btn btn-show-list btn-arrow-left-exe" aria-label="Previous" tabindex="0" role="button"><i class="fa fa-chevron-left"></i></button>',
-    nextArrow: '<button type="button" data-role="none" class="btn btn-show-list btn-arrow-right-exe" aria-label="Next" tabindex="0" role="button"><i class="fa fa-chevron-right"></i></button>'
-  });
-  $('.slider-nav').slick({
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    asNavFor: '.slider-for',
-    dots: false,
-    centerMode: false,
-    focusOnSelect: true
-  });
-  //set isNext when next slide
-  $('.slider-for').on('afterChange', function (event, slick, currentSlide, nextSlide) {
-    isNext = false;
-  });
-  $('.ans-box').on('click', function () {
-    isNext = true;
-  });
-  function checkAnswer(hanviet, hanviet2, optionID) {
-    if (hanviet == hanviet2) {
-      $("#audioTrue").trigger('play');
-      // set color
-      var $el = $('#' + optionID),
-        x = 100,
-        originalColor = $el.css("background"),
-        i = 3; //counter
-      (function loop() { //recurisve IIFE
-        $el.css("background", "#13B192");
-        setTimeout(function () {
-          $el.css("background", originalColor);
-        }, x);
-      }());
-      //Trễ 2s và next sang câu tiếp theo.
-      setTimeout(
-        function () {
-          if (isNext) {
-            $('.slider-for').slick('slickNext');
-          }
-        }, 1000);
-    } else {
-      $("#audioFalse").trigger('play');
-      // set color
-      var $el = $('#' + optionID),
-        x = 100,
-        originalColor = $el.css("background"),
-        i = 3; //counter
-      (function loop() { //recurisve IIFE
-        $el.css("background", "#EA5552");
-        setTimeout(function () {
-          $el.css("background", originalColor);
-        }, x);
-      }());
-    }
-  }
-  var infoconfig = true;
-  var current_slide = 0;
-  $(document).ready(function () {
-    $('.info-off').hide();
-    $('.info-on').on('click', function () {
-      $('.info-off').show();
-      $('.info-on').hide();
-      infoconfig = false;
-      //Hide all info
-      $("[class^='info-item-']").slideUp(500);
+    var isNext;
+    $('.slider-for').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        fade: false,
+        touchMove: false,
+        draggable: false,
+        accessibility: true,
+        asNavFor: '.slider-nav',
+        prevArrow: '<button type="button" data-role="none" class="btn btn-show-list btn-arrow-left-exe" aria-label="Previous" tabindex="0" role="button"><i class="fa fa-chevron-left"></i></button>',
+        nextArrow: '<button type="button" data-role="none" class="btn btn-show-list btn-arrow-right-exe" aria-label="Next" tabindex="0" role="button"><i class="fa fa-chevron-right"></i></button>'
     });
-    $('.info-off').on('click', function () {
-      $('.info-on').show();
-      $('.info-off').hide();
-      infoconfig = true;
-      //Show current slide details
-      showDetails(current_slide);
+    $('.slider-nav').slick({
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        asNavFor: '.slider-for',
+        dots: false,
+        centerMode: false,
+        focusOnSelect: true
     });
-  });
-  function showDetails(index) {
-    if (infoconfig) {
-      $('.info-item-' + index).slideDown();
+    //set isNext when next slide
+    $('.slider-for').on('afterChange', function (event, slick, currentSlide, nextSlide) {
+        isNext = false;
+    });
+    $('.ans-box').on('click', function () {
+        isNext = true;
+    });
+    var truee = 0;
+    var total = 0;
+    var sum = $('#sum').val();
+    var AnsweredArr = new Array();
+    function checkAnswer(hanviet, hanviet2, optionID) {
+        var optionIDArr = optionID.split('-');
+        var numOfQuestion = optionIDArr[1];
+        var isAnswered = false;
+        for (var i = 0; i < AnsweredArr.length; i++) {
+            if (numOfQuestion == AnsweredArr[i]) {
+                isAnswered = true;
+                break;
+            }
+        }
+        if (!isAnswered) {
+            total++;
+            AnsweredArr.push(numOfQuestion);
+            if (hanviet == hanviet2) {
+                truee++;
+                $("#audioTrue").trigger('play');
+                // set color
+                var $el = $('#' + optionID),
+                        x = 100,
+                        originalColor = $el.css("background"),
+                        i = 3; //counter
+                (function loop() { //recurisve IIFE
+                    $el.css("background", "#13B192");
+                    setTimeout(function () {
+                        $el.css("background", originalColor);
+                    }, x);
+                }());
+                //Trễ 2s và next sang câu tiếp theo.
+                setTimeout(
+                        function () {
+                            if (isNext) {
+                                $('.slider-for').slick('slickNext');
+                            }
+                        }, 1000);
+            } else {
+                $("#audioFalse").trigger('play');
+                // set color
+                var $el = $('#' + optionID),
+                        x = 100,
+                        originalColor = $el.css("background"),
+                        i = 3; //counter
+                (function loop() { //recurisve IIFE
+                    $el.css("background", "#EA5552");
+                    setTimeout(function () {
+                        $el.css("background", originalColor);
+                    }, x);
+                }());
+            }
+            if (total == sum) {
+                if (truee / total > $('#ispassed').val()) {
+                    alert("Passed! Your score is: " + (truee / total) * 100);
+                    var bookDetail = $('.sub-lesson').attr('name');
+                    var user = '<%= session.User.id %>';
+                    var selfLearning = $('#title-learning').attr('name');
+                    var startDate = new Date();
+                    var finishDate = new Date();
+                    $.ajax({
+                        method: "POST",
+                        url: "/japtool/Learning/saveHistory",
+                        data: {
+                            user: user,
+                            bookDetail: bookDetail,
+                            selfLearning: selfLearning,
+                            startDate: startDate,
+                            finishDate: finishDate
+                        }
+                    })
+                            .done(function (msg) {
+                                console.log(msg);
+                            });
+                }
+                else {
+
+                    alert("False! Your score is: " + (truee / total) * 100);
+                }
+            }
+        }
+        else {
+            if (hanviet == hanviet2) {
+                $("#audioTrue").trigger('play');
+                // set color
+                var $el = $('#' + optionID),
+                        x = 100,
+                        originalColor = $el.css("background"),
+                        i = 3; //counter
+                (function loop() { //recurisve IIFE
+                    $el.css("background", "#13B192");
+                    setTimeout(function () {
+                        $el.css("background", originalColor);
+                    }, x);
+                }());
+                //Trễ 2s và next sang câu tiếp theo.
+                setTimeout(
+                        function () {
+                            if (isNext) {
+                                $('.slider-for').slick('slickNext');
+                            }
+                        }, 1000);
+            } else {
+                $("#audioFalse").trigger('play');
+                // set color
+                var $el = $('#' + optionID),
+                        x = 100,
+                        originalColor = $el.css("background"),
+                        i = 3; //counter
+                (function loop() { //recurisve IIFE
+                    $el.css("background", "#EA5552");
+                    setTimeout(function () {
+                        $el.css("background", originalColor);
+                    }, x);
+                }());
+            }
+        }
+
     }
-  }
-  // count page
-  var $status = $('.pagingCnt');
-  var $slickElement = $('.slider-for');
-  $slickElement.on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
-    //currentSlide is undefined on init -- set it to 0 in this case (currentSlide is 0 based)
-    var i = (currentSlide ? currentSlide : 0) + 1;
-    $status.text(i + '/' + slick.slideCount);
-    current_slide = currentSlide;
-    //Show Details
-    showDetails(currentSlide);
-  });
+    var infoconfig = true;
+    var current_slide = 0;
+    $(document).ready(function () {
+        $('.info-off').hide();
+        $('.info-on').on('click', function () {
+            $('.info-off').show();
+            $('.info-on').hide();
+            infoconfig = false;
+            //Hide all info
+            $("[class^='info-item-']").slideUp(500);
+        });
+        $('.info-off').on('click', function () {
+            $('.info-on').show();
+            $('.info-off').hide();
+            infoconfig = true;
+            //Show current slide details
+            showDetails(current_slide);
+        });
+    });
+    function showDetails(index) {
+        if (infoconfig) {
+            $('.info-item-' + index).slideDown();
+        }
+    }
+    // count page
+    var $status = $('.pagingCnt');
+    var $slickElement = $('.slider-for');
+    $slickElement.on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
+        //currentSlide is undefined on init -- set it to 0 in this case (currentSlide is 0 based)
+        var i = (currentSlide ? currentSlide : 0) + 1;
+        $status.text(i + '/' + slick.slideCount);
+        current_slide = currentSlide;
+        //Show Details
+        showDetails(currentSlide);
+    });
 </script>
+<input type="hidden" id="sum" value="<%= kanjis.length %>">
+<input type="hidden" id="ispassed" value="<%= Constants.isPassed %>">
 <div class="exe-kanji">
 
-  <!--div audio-->
-  <audio id="audioTrue">
-    <source src="/sound/true.wav" type="audio/wav">
-  </audio>
-  <audio id="audioFalse">
-    <source src="/sound/false.wav" type="audio/wav">
-  </audio>
-  <!--finish div audio-->
+    <!--div audio-->
+    <audio id="audioTrue">
+        <source src="/sound/true.wav" type="audio/wav">
+    </audio>
+    <audio id="audioFalse">
+        <source src="/sound/false.wav" type="audio/wav">
+    </audio>
+    <!--finish div audio-->
 
-  <% if(kanjis == null || kanjis.length == 0){ %>
-  <h5 class="text-center text-danger">Không tìm thấy dữ liệu</h5>
-  <% }else{ %>
-  <div class="slider slider-for">
-    <%
-      var sumPage = kanjis.length;
-      kanjis.forEach( function(kanji, index){ %>
-    <div class="excercise-kanji">
-      <div class="col-sm-offset-2 col-sm-8">
-        <div class="panel panel-default panel-paper-slide-exe">
-          <div class="panel-body">
-            <div class="col-sm-1">
-              <i class="fa fa-check-circle-o  fa-2x  info-on" title="off informations"></i>
-              <i class="fa fa-minus-circle  fa-2x  info-off" title="on informations"></i>
-            </div>
-            <div class="col-sm-11">
-              <% if(kanji.kunyomi){ %>
-              <p class="info-item-<%= index %> not-display">
-                <span class="glyphicon glyphicon-hand-right"></span><span
-                  class="lb-on size-lb"> Kunyomi : </span><span
-                  class="lb-on-con size-lb"><%= kanji.kunyomi %></span>
-              </p>
-              <% } %>
-              <% if(kanji.onyomi){ %>
-              <p class="info-item-<%= index %> not-display">
-                <span class="glyphicon glyphicon-hand-right"></span><span
-                  class="lb-kun size-lb"> Onyomi : </span><span
-                  class="lb-on-kun size-lb"><%= kanji.onyomi %></span>
-              </p>
-              <% } %>
-            </div>
-            <div class="col-sm-12">
-              <div class="kanji-text-big text-center">
-                <div class="card">
-                  <div class="front">
-                    <h3 class="text-center text-danger text-center-exe"><%= kanji.item %></h3>
-                  </div>
+    <% if(kanjis == null || kanjis.length == 0){ %>
+    <h5 class="text-center text-danger">Không tìm thấy dữ liệu</h5>
+    <% }else{ %>
+    <div class="slider slider-for">
+        <%
+            var sumPage = kanjis.length;
+                kanjis.forEach( function(kanji, index){ %>
+        <div class="excercise-kanji">
+            <div class="col-sm-offset-2 col-sm-8">
+                <div class="panel panel-default panel-paper-slide-exe">
+                    <div class="panel-body">
+                        <div class="col-sm-1">
+                            <i class="fa fa-check-circle-o  fa-2x  info-on" title="off informations"></i>
+                            <i class="fa fa-minus-circle  fa-2x  info-off" title="on informations"></i>
+                        </div>
+                        <div class="col-sm-11">
+                            <% if(kanji.kunyomi){ %>
+                            <p class="info-item-<%= index %> not-display">
+                                <span class="glyphicon glyphicon-hand-right"></span><span
+                                        class="lb-on size-lb"> Kunyomi : </span><span
+                                        class="lb-on-con size-lb"><%= kanji.kunyomi %></span>
+                            </p>
+                            <% } %>
+                            <% if(kanji.onyomi){ %>
+                            <p class="info-item-<%= index %> not-display">
+                                <span class="glyphicon glyphicon-hand-right"></span><span
+                                        class="lb-kun size-lb"> Onyomi : </span><span
+                                        class="lb-on-kun size-lb"><%= kanji.onyomi %></span>
+                            </p>
+                            <% } %>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="kanji-text-big text-center">
+                                <div class="card">
+                                    <div class="front">
+                                        <h3 class="text-center text-danger text-center-exe"><%= kanji.item %></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 ans-kanji-exe">
+                            <% kanji.randomKanjis.forEach( function(hanviet, indexOption){ %>
+                            <div class="col-sm-6">
+                                <div class="panel panel-default text-center panel-choose-exe">
+                                    <div id="<%= indexOption %>-<%= index %>" class="panel-body ans-box"
+                                         onclick="checkAnswer('<%= hanviet %>','<%= kanji.hanviet %>','<%= indexOption %>-<%= index %>')">
+                                        <span class="option-exe-hanviet"><%= hanviet %></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <% }) %>
+                        </div>
+                        <div class="count-page-exe-kanji">
+                            <span class="pagingCnt">1/<%= sumPage %></span>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-            <div class="col-sm-12 ans-kanji-exe">
-              <% kanji.randomKanjis.forEach( function(hanviet, indexOption){ %>
-              <div class="col-sm-6">
-                <div class="panel panel-default text-center panel-choose-exe">
-                  <div id="<%= indexOption %>-<%= index %>" class="panel-body ans-box"
-                       onclick="checkAnswer('<%= hanviet %>','<%= kanji.hanviet %>','<%= indexOption %>-<%= index %>')">
-                    <span class="option-exe-hanviet"><%= hanviet %></span>
-                  </div>
-                </div>
-              </div>
-              <% }) %>
-            </div>
-            <div class="count-page-exe-kanji">
-              <span class="pagingCnt">1/<%= sumPage %></span>
-            </div>
-          </div>
         </div>
-      </div>
+        <% }) %>
     </div>
-    <% }) %>
-  </div>
-  <div class="col-sm-offset-2 col-sm-8">
-    <div class="slider slider-nav">
-      <% kanjis.forEach( function(kanji){ %>
-      <div><h3><%= kanji.item %></h3></div>
-      <% }) %>
+    <div class="col-sm-offset-2 col-sm-8">
+        <div class="slider slider-nav">
+            <% kanjis.forEach( function(kanji){ %>
+            <div><h3><%= kanji.item %></h3></div>
+            <% }) %>
+        </div>
     </div>
-  </div>
-  <% } %>
+    <% } %>
 </div>
 <script>
-  (function () {
-    //Show details of first voca
-    showDetails(0);
-  })();
+    (function () {
+        //Show details of first voca
+        showDetails(0);
+    })();
 </script>
