@@ -139,13 +139,13 @@
                 <% if(vocabulary.description){ %>
                 <p class="info-item-<%= index %> not-display">
                   <span class="lb-mean size-lb">
-                    <i class="fa fa-flag-o fa-2x" title="description"></i> <%= vocabulary.description %>
+                    <i class="fa fa-flag-o fa-lg" title="description"></i> <%= vocabulary.description %>
                   </span>
                 </p>
                 <% } %>
                 <% if (typeof vocabulary.examples !== 'undefined' && vocabulary.examples.length > 0) { %>
                 <p class="exam-<%= index %> not-display lb-example">
-                  <span class="text-success"><i class="fa fa-file-text fa-lg" title="Example"></i></span>
+                  <i class="fa fa-file-text fa-lg" title="Example"></i>
                 </p>
                 <ul class="exam-<%= index %> not-display vocabulary-item-example">
                   <% vocabulary.examples.forEach( function(item, index){ %>
