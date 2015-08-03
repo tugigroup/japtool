@@ -12,11 +12,11 @@
     nextArrow: '<button type="button" data-role="none" class="btn btn-show-list btn-arrow-right-exe" aria-label="Next" tabindex="0" role="button"><i class="fa fa-chevron-right"></i></button>'
   });
   $('.slider-nav').slick({
-    slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToShow: 5,
+    slidesToScroll: 5,
     asNavFor: '.slider-for',
     dots: false,
-    centerMode: false,
+    centerMode: true,
     focusOnSelect: true
   });
   //set isNext when next slide
@@ -26,40 +26,121 @@
   $('.ans-box').on('click', function () {
     isNext = true;
   });
+  var truee = 0;
+  var total = 0;
+  var sum = $('#sum').val();
+  var AnsweredArr = new Array();
   function checkAnswer(hanviet, hanviet2, optionID) {
-    if (hanviet == hanviet2) {
-      $("#audioTrue").trigger('play');
-      // set color
-      var $el = $('#' + optionID),
-        x = 100,
-        originalColor = $el.css("background"),
-        i = 3; //counter
-      (function loop() { //recurisve IIFE
-        $el.css("background", "#13B192");
-        setTimeout(function () {
-          $el.css("background", originalColor);
-        }, x);
-      }());
-      //Trễ 2s và next sang câu tiếp theo.
-      setTimeout(
-        function () {
-          if (isNext) {
-            $('.slider-for').slick('slickNext');
-          }
-        }, 1000);
-    } else {
-      $("#audioFalse").trigger('play');
-      // set color
-      var $el = $('#' + optionID),
-        x = 100,
-        originalColor = $el.css("background"),
-        i = 3; //counter
-      (function loop() { //recurisve IIFE
-        $el.css("background", "#EA5552");
-        setTimeout(function () {
-          $el.css("background", originalColor);
-        }, x);
-      }());
+    var optionIDArr = optionID.split('-');
+    var numOfQuestion = optionIDArr[1];
+    var isAnswered = false;
+    for (var i = 0; i < AnsweredArr.length; i++) {
+      if (numOfQuestion == AnsweredArr[i]) {
+        isAnswered = true;
+        break;
+      }
+    }
+    if (!isAnswered) {
+      total++;
+      AnsweredArr.push(numOfQuestion);
+      if (hanviet == hanviet2) {
+        truee++;
+        $("#audioTrue").trigger('play');
+        // set color
+        var $el = $('#' + optionID),
+          x = 100,
+          originalColor = $el.css("background"),
+          i = 3; //counter
+        (function loop() { //recurisve IIFE
+          $el.css("background", "#13B192");
+          setTimeout(function () {
+            $el.css("background", originalColor);
+          }, x);
+        }());
+        //Trễ 2s và next sang câu tiếp theo.
+        setTimeout(
+          function () {
+            if (isNext) {
+              $('.slider-for').slick('slickNext');
+            }
+          }, 1000);
+      } else {
+        $("#audioFalse").trigger('play');
+        // set color
+        var $el = $('#' + optionID),
+          x = 100,
+          originalColor = $el.css("background"),
+          i = 3; //counter
+        (function loop() { //recurisve IIFE
+          $el.css("background", "#EA5552");
+          setTimeout(function () {
+            $el.css("background", originalColor);
+          }, x);
+        }());
+      }
+      if (total == sum) {
+        if (truee / total > $('#ispassed').val()) {
+          alert("Passed! Your score is: " + (truee / total) * 100);
+          var bookDetail = $('.sub-lesson').attr('name');
+          var user = '<%= session.User.id %>';
+          var selfLearning = $('#title-learning').attr('name');
+          var startDate = new Date();
+          var finishDate = new Date();
+          $.ajax({
+            method: "POST",
+            url: "/japtool/Learning/saveHistory",
+            data: {
+              user: user,
+              bookDetail: bookDetail,
+              selfLearning: selfLearning,
+              startDate: startDate,
+              finishDate: finishDate
+            }
+          })
+            .done(function (msg) {
+              console.log(msg);
+            });
+        }
+        else {
+          alert("False! Your score is: " + (truee / total) * 100);
+        }
+      }
+    }
+    else {
+      if (hanviet == hanviet2) {
+        $("#audioTrue").trigger('play');
+        // set color
+        var $el = $('#' + optionID),
+          x = 100,
+          originalColor = $el.css("background"),
+          i = 3; //counter
+        (function loop() { //recurisve IIFE
+          $el.css("background", "#13B192");
+          setTimeout(function () {
+            $el.css("background", originalColor);
+          }, x);
+        }());
+        //Trễ 2s và next sang câu tiếp theo.
+        setTimeout(
+          function () {
+            if (isNext) {
+              $('.slider-for').slick('slickNext');
+            }
+          }, 1000);
+      } else {
+        $("#audioFalse").trigger('play');
+        // set color
+        var $el = $('#' + optionID),
+          x = 100,
+          originalColor = $el.css("background"),
+          i = 3; //counter
+        (function loop() { //recurisve IIFE
+          $el.css("background", "#EA5552");
+          setTimeout(function () {
+            $el.css("background", originalColor);
+          }, x);
+        }());
+      }
     }
   }
   var infoconfig = true;
@@ -86,6 +167,9 @@
       $('.info-item-' + index).slideDown();
     }
   }
+  function alwaysShowDetails(index) {
+    $('.info-item-' + index).slideDown();
+  }
   // count page
   var $status = $('.pagingCnt');
   var $slickElement = $('.slider-for');
@@ -98,6 +182,8 @@
     showDetails(currentSlide);
   });
 </script>
+<input type="hidden" id="sum" value="<%= kanjis.length %>">
+<input type="hidden" id="ispassed" value="<%= Constants.isPassed %>">
 <div class="exe-kanji">
 
   <!--div audio-->
@@ -144,7 +230,9 @@
               <div class="kanji-text-big text-center">
                 <div class="card">
                   <div class="front">
-                    <h3 class="text-center text-danger text-center-exe"><%= kanji.item %></h3>
+                    <h3 class="text-center text-danger text-center-exe" onclick="alwaysShowDetails(<%= index %>)">
+                      <%= kanji.item %>
+                    </h3>
                   </div>
                 </div>
               </div>

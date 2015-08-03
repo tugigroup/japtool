@@ -1,7 +1,7 @@
 <div class="choose-modul-learn-article text-center">
-<h4><span class="glyphicon glyphicon-bell"></span> Choose One :</h4>
-<button type="button" class="btn btn-danger" id="btnTestAll">Test all article</button>
-<button type="button" class="btn btn-success" id="btnPraticle">Just Praticle</button>
+    <h4><span class="glyphicon glyphicon-bell"></span> Choose One :</h4>
+    <button type="button" class="btn btn-danger" id="btnTestAll">Test all article</button>
+    <button type="button" class="btn btn-success" id="btnPraticle">Just Praticle</button>
 </div>
 <div class="container-do-test-article" id="do-test-articles">
     <div class="col-sm-12 text-center">
@@ -98,28 +98,32 @@
                         } %>
                         <div class="question-div-info" id="<%= question.id %>" ofArticle="<%= article.id %>">
                             <div class="col-sm-6">
-                                <input type="radio" class="<%= question.id %> rd-<%= article.id %>" name="<%= question.id %>"
+                                <input type="radio" class="<%= question.id %> rd-<%= article.id %>"
+                                       name="<%= question.id %>"
                                        value="<%= question.option1 %>" id="<%= question.id %>1">
                                 <label class="lb-option-article-test-practice"
                                        for="<%= question.id %>1"><%= question.option1 %></label>
                                 <lable class="displayResult-<%= article.id %>" id="<%= question.id %>1rd"></lable>
                             </div>
                             <div class="col-sm-6">
-                                <input type="radio" class="<%= question.id %> rd-<%= article.id %>" name="<%= question.id %>"
+                                <input type="radio" class="<%= question.id %> rd-<%= article.id %>"
+                                       name="<%= question.id %>"
                                        value="<%= question.option2 %>" id="<%= question.id %>2">
                                 <label class="lb-option-article-test-practice"
                                        for="<%= question.id %>2"><%= question.option2 %></label>
                                 <lable class="displayResult-<%= article.id %>" id="<%= question.id %>2rd"></lable>
                             </div>
                             <div class="col-sm-6">
-                                <input type="radio" class="<%= question.id %> rd-<%= article.id %>" name="<%= question.id %>"
+                                <input type="radio" class="<%= question.id %> rd-<%= article.id %>"
+                                       name="<%= question.id %>"
                                        value="<%= question.option3 %>" id="<%= question.id %>3">
                                 <label class="lb-option-article-test-practice"
                                        for="<%= question.id %>3"><%= question.option3 %></label>
                                 <lable class="displayResult-<%= article.id %>" id="<%= question.id %>3rd"></lable>
                             </div>
                             <div class="col-sm-6">
-                                <input type="radio" class="<%= question.id %> rd-<%= article.id %>" name="<%= question.id %>"
+                                <input type="radio" class="<%= question.id %> rd-<%= article.id %>"
+                                       name="<%= question.id %>"
                                        value="<%= question.option4 %>" id="<%= question.id %>4">
                                 <label class="lb-option-article-test-practice"
                                        for="<%= question.id %>4"><%= question.option4 %></label>
@@ -156,7 +160,8 @@
 <div class="container">
     <div class="col-sm-12" id="div-result">
         <div class="col-sm-12 contain-check-btn">
-            <button type="button" class="btn btn-danger btn-submit-testing" data-toggle="modal" data-target="#resultModal"
+            <button type="button" class="btn btn-danger btn-submit-testing" data-toggle="modal"
+                    data-target="#resultModal"
                     id="btnCheckRs">Submit Testing
             </button>
             <button type="button" class="btn btn-success btn-submit-check" id="btnCheckQuickly">check Quickly</button>
@@ -186,10 +191,10 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
-         $("#do-test-articles").hide();
-         $("#btnCheckRs").hide();
-         $("#btnCheckQuickly").hide();
-         $("#btnRefresh").hide();
+        $("#do-test-articles").hide();
+        $("#btnCheckRs").hide();
+        $("#btnCheckQuickly").hide();
+        $("#btnRefresh").hide();
 
         $("#do-test-articles").steps({
             headerTag: "h2",
@@ -202,26 +207,26 @@
         })
 
         $(".steps").addClass('mCustomScrollbar');
-        $(".steps").attr("data-mcs-theme","dark");
+        $(".steps").attr("data-mcs-theme", "dark");
     });
 
     // module test all article
-    $('#btnTestAll').on('click',function(){
-        $(".choose-modul-learn-article").slideDown(400);
-        $("#do-test-articles").slideUp(400);
-        $("#btnCheckRs").show();
-        $("#btnCheckQuickly").hide();
-        $("#btnRefresh").hide();
+    $('#btnTestAll').on('click', function () {
+        $(".choose-modul-learn-article").hide("slow");
+        $("#do-test-articles").show("slow");
+        $("#btnCheckRs").show("slow");
+        $("#btnCheckQuickly").hide("slow");
+        $("#btnRefresh").hide("slow");
     });
 
     // when user choose module just practice
-    $('#btnPraticle').on('click',function (){
-        $(".choose-modul-learn-article").slideDown(400);
-        $("#do-test-articles").slideUp(400);
-        $("#btnCheckQuickly").show();
-        $("#btnRefresh").show();
-        $("#btnCheckRs").hide();
-        $('#btnRefresh').prop('disabled',true);
+    $('#btnPraticle').on('click', function () {
+        $(".choose-modul-learn-article").hide("slow");
+        $("#do-test-articles").show("slow");
+        $("#btnCheckQuickly").show("slow");
+        $("#btnRefresh").show("slow");
+        $("#btnCheckRs").hide("slow");
+        $('#btnRefresh').prop('disabled', true);
     });
 
 
@@ -229,14 +234,14 @@
     var listArticle = JSON.parse(decodeURIComponent(atob($('#listArticle').val())));
 
     // when user click refresh button
-    $('#btnRefresh').on('click',function(){
-        var positionAr =getPostionAr();
+    $('#btnRefresh').on('click', function () {
+        var positionAr = getPostionAr();
         var articleIDCurrent = listArticle[positionAr].id;
-        $('.displayResult-'+articleIDCurrent).empty();
-        $('.isemptyQ-'+articleIDCurrent).empty();
-        $('.rd-'+articleIDCurrent).prop('checked', false);
-        $('.rd-'+articleIDCurrent).attr('disabled',false);
-        $('#btnRefresh').prop('disabled',true);
+        $('.displayResult-' + articleIDCurrent).empty();
+        $('.isemptyQ-' + articleIDCurrent).empty();
+        $('.rd-' + articleIDCurrent).prop('checked', false);
+        $('.rd-' + articleIDCurrent).attr('disabled', false);
+        $('#btnRefresh').prop('disabled', true);
     });
 
     var dataUserAns = [];
@@ -294,9 +299,9 @@
             }
         }
         // disable radio button
-        $('.rd-'+articleIDCurrent).attr('disabled',true);
+        $('.rd-' + articleIDCurrent).attr('disabled', true);
         //disable button refresh
-        $('#btnRefresh').prop('disabled',false);
+        $('#btnRefresh').prop('disabled', false);
     });
     // module test all article
     $("#btnCheckRs").on('click', function () {
@@ -432,11 +437,11 @@
             },
             method: "GET"
         });
-        $('input:radio').attr('disabled',true);
+        $('input:radio').attr('disabled', true);
     });
 
     // function get position article
-    function getPostionAr(){
+    function getPostionAr() {
         var positionAr;
         $('a[id^="do-test-articles"]').each(function () {
             var test = $(this).parent().attr("aria-selected");

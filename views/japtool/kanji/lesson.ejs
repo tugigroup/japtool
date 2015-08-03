@@ -20,7 +20,7 @@
                 <div class="card">
                   <div class="card-text default-show">
                     <h3 class="text-center text-danger text-center-list-kanji"
-                        onclick="showDetails('<%= index %>')"><%= kanji.item %></h3>
+                        onclick="alwaysShowDetails(<%= index %>)"><%= kanji.item %></h3>
                   </div>
                   <div class="card-image default-hide">
                     <img class="center-block" src="/media/image/<%= kanji.image %>"/>
@@ -109,12 +109,12 @@
     nextArrow: '<button type="button" data-role="none" class="btn btn-show-list btn-arrow-right" aria-label="Next" tabindex="0" role="button"><i class="fa fa-chevron-right"></i></button>'
   });
   $('.slider-nav').slick({
-    slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToShow: 5,
+    slidesToScroll: 5,
     asNavFor: '.slider-for',
     dots: false,
     touchMove: false,
-    centerMode: false,
+    centerMode: true,
     focusOnSelect: true
   });
   function showExample(index) {
@@ -125,7 +125,9 @@
       $('.info-item-' + index).slideDown();
     }
   }
-
+  function alwaysShowDetails(index) {
+    $('.info-item-' + index).slideDown();
+  }
   var infoconfig = true;
   var current_slide = 0;
   $(document).ready(function () {
@@ -145,11 +147,6 @@
       showDetails(current_slide);
     });
   });
-  function showDetails(index) {
-    if (infoconfig) {
-      $('.info-item-' + index).slideDown();
-    }
-  }
   // count page
   var $status = $('.pagingCnt');
   var $slickElement = $('.slider-for');
@@ -163,7 +160,6 @@
     //Show Example
     showExample(currentSlide);
   });
-
   $(".card-text").on("click", function (e) {  // See here, i have our selector set to "li", so this jQuery object will grab all li tags on the page
     $(this).addClass("card-text-click");
     $('.card-image').slideDown(1000);

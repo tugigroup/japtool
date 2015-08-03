@@ -1425,11 +1425,7 @@ ul.timeline li .timeline-panel:after {
 
 .btn-submit-check {
     margin-top: -4%;
-    border-color: rgb(232, 206, 194);
-    border-radius: 0px;
-    padding: 1%;
-    background-color: rgb(57, 157, 69);
-    color: rgb(255, 255, 255);
+    background-color: #399D45;
 }
 
 .btn-refresh-rs-question {
@@ -1451,7 +1447,7 @@ ul.timeline li .timeline-panel:after {
 
 .lb-question-minion {
     font-size: 22px;
-    font-weight: 600;
+    font-weight: 500;
     color: rgb(82, 123, 156);
 }
 
@@ -1782,6 +1778,9 @@ ul.timeline li .timeline-panel:after {
 .voca-list-sum .panel-paper-slide-voca{
     margin-bottom: 0px;
     min-height: 448px;
+}
+.voca-list-sum .info-on{
+    cursor: pointer;
 }
 /*END VOCABULARY*/
 

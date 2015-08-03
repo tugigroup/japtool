@@ -12,7 +12,7 @@
                                 <!-- mini logo for sidebar mini 50x50 pixels -->
                                 <span class="logo-mini" class="sidebar-toggle"><i class="fa fa-bars"></i></span>
                                 <!-- logo for regular state and mobile devices -->
-                                <span class="logo-lg"><i class="fa fa-bars"></i> Lesson</span>
+                                <span class="logo-lg"><i class="fa fa-bars"></i><%= __('Lesson') %></span>
                             </a>
                             <!-- Header Navbar: style can be found in header.less -->
                         </header>
@@ -74,27 +74,6 @@
     }
 
     window.onload = function () {
-        $('.sub-lesson').click(function () {
-            var bookDetail = $(this).attr('name');
-            $('#add-book-detail').attr('name', bookDetail);
-            var user = '<%= session.User.id %>';
-            var selfLearning = $('#title-learning').attr('name');
-            var startDate = new Date();
-            var finishDate = new Date();
-            $.ajax({
-                method: "POST",
-                url: "/japtool/Learning/saveHistory",
-                data: {
-                    user: user,
-                    bookDetail: bookDetail,
-                    selfLearning: selfLearning,
-                    startDate: startDate,
-                    finishDate: finishDate
-                }
-            })
-                    .done(function (msg) {
-                        console.log(msg);
-                    });
-        });
+
     }
 </script>
