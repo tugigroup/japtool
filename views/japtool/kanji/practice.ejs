@@ -12,11 +12,11 @@
         nextArrow: '<button type="button" data-role="none" class="btn btn-show-list btn-arrow-right-exe" aria-label="Next" tabindex="0" role="button"><i class="fa fa-chevron-right"></i></button>'
     });
     $('.slider-nav').slick({
-        slidesToShow: 4,
-        slidesToScroll: 4,
+        slidesToShow: 5,
+        slidesToScroll: 5,
         asNavFor: '.slider-for',
         dots: false,
-        centerMode: false,
+        centerMode: true,
         focusOnSelect: true
     });
     //set isNext when next slide
@@ -79,29 +79,29 @@
                 }());
             }
             if (total == sum) {
-                var bookDetail = $('.sub-lesson').attr('name');
-                var user = '<%= session.User.id %>';
-                var startDate = new Date();
-                var finishDate = new Date();
-                $.ajax({
-                    method: "POST",
-                    url: "/japtool/Learning/saveHistory",
-                    data: {
-                        user: user,
-                        bookDetail: bookDetail,
-                        startDate: startDate,
-                        finishDate: finishDate
-                    }
-                })
-                        .done(function (msg) {
-                            console.log(msg);
-                        });
                 if (truee / total > $('#ispassed').val()) {
                     alert("Passed! Your score is: " + (truee / total) * 100);
-
+                    var bookDetail = $('.sub-lesson').attr('name');
+                    var user = '<%= session.User.id %>';
+                    var selfLearning = $('#title-learning').attr('name');
+                    var startDate = new Date();
+                    var finishDate = new Date();
+                    $.ajax({
+                        method: "POST",
+                        url: "/japtool/Learning/saveHistory",
+                        data: {
+                            user: user,
+                            bookDetail: bookDetail,
+                            selfLearning: selfLearning,
+                            startDate: startDate,
+                            finishDate: finishDate
+                        }
+                    })
+                            .done(function (msg) {
+                                console.log(msg);
+                            });
                 }
                 else {
-
                     alert("False! Your score is: " + (truee / total) * 100);
                 }
             }
@@ -142,7 +142,6 @@
                 }());
             }
         }
-
     }
     var infoconfig = true;
     var current_slide = 0;
@@ -167,6 +166,9 @@
         if (infoconfig) {
             $('.info-item-' + index).slideDown();
         }
+    }
+    function alwaysShowDetails(index) {
+        $('.info-item-' + index).slideDown();
     }
     // count page
     var $status = $('.pagingCnt');
@@ -228,7 +230,10 @@
                             <div class="kanji-text-big text-center">
                                 <div class="card">
                                     <div class="front">
-                                        <h3 class="text-center text-danger text-center-exe"><%= kanji.item %></h3>
+                                        <h3 class="text-center text-danger text-center-exe"
+                                            onclick="alwaysShowDetails(<%= index %>)">
+                                            <%= kanji.item %>
+                                        </h3>
                                     </div>
                                 </div>
                             </div>
