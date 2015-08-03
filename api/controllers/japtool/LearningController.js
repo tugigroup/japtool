@@ -383,7 +383,8 @@ module.exports = {
         sails.log(pars);
         UserLearnHistory.findOne({
             user: pars.user,
-            bookDetail: pars.bookDetail
+            bookDetail: pars.bookDetail,
+            lesson: pars.lesson
         }).exec(function (err, data) {
             if (data == undefined) {
                 UserLearnHistory.create(pars).exec(function createCB(err, history) {
