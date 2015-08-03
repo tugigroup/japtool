@@ -74,6 +74,9 @@
       $('.info-item-' + index).slideDown();
     }
   }
+  function alwaysShowDetails(index) {
+    $('.info-item-' + index).slideDown();
+  }
   $(document).ready(function () {
     // count page
     var $status = $('.pagingCnt');
@@ -131,7 +134,7 @@
                 <div class="front">
                   <audio id="vocabulary-audio-<%= index %>"></audio>
                   <h3 class="text-center text-danger text-center-list-voca"
-                      onclick="showDetails('<%= index %>'); playAudio('<%= index %>');"><%= vocabulary.item %>
+                      onclick="alwaysShowDetails(<%= index %>); playAudio('<%= index %>');"><%= vocabulary.item %>
                   </h3>
                 </div>
               </div>
