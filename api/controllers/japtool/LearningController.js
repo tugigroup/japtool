@@ -277,17 +277,17 @@ module.exports = {
 
     getBooks: function (req, res) {
         BookMaster.find()
-        .sort('sort asc')
-        .exec(function (err, books) {
-            if (err) {
+            .sort('sort asc')
+            .exec(function (err, books) {
+                if (err) {
 
-            }
-            else {
-                res.render('japtool/learning/choosebook', {
-                    books: books
-                });
-            }
-        })
+                }
+                else {
+                    res.render('japtool/learning/choosebook', {
+                        books: books
+                    });
+                }
+            })
     },
 
     index: function (req, res) {
@@ -380,10 +380,10 @@ module.exports = {
 
     saveHistory: function (req, res) {
         var pars = req.allParams();
+        sails.log(pars);
         UserLearnHistory.findOne({
             user: pars.user,
-            bookDetail: pars.bookDetail,
-            selfLearning: pars.selfLearning
+            bookDetail: pars.bookDetail
         }).exec(function (err, data) {
             if (data == undefined) {
                 UserLearnHistory.create(pars).exec(function createCB(err, history) {
@@ -394,17 +394,27 @@ module.exports = {
                     }
                 })
             } else {
-                var currentDate = new Date();
-                UserLearnHistory.update({id: data.id}, {
-                    startDate: currentDate,
-                    finishDate: currentDate
-                }).exec(function (err, updated) {
-                    if (err) {
-                        sails.log(err)
-                    } else {
-                        res.send('Record has update');
+                if (!pars.status) {
+                    sails.log("khong co status");
+                }
+                else {
+                    if (data.status == "passed") {
                     }
-                })
+                    else {
+                        UserLearnHistory.update({id: data.id}, {
+                            status: pars.status
+                        }).exec(function (err, updated) {
+                            if (err) {
+                                sails.log(err)
+                            } else {
+                                res.send('Record has update');
+                            }
+                        })
+                    }
+                    sails.log(pars.status);
+                }
+
+
             }
         });
     },
@@ -464,8 +474,7 @@ module.exports = {
                                     bookMissLessons.push(bookDetails[i]);
                                     break;
                                 }
-                                if (i == currentTotalLessonDay - 1 && j == selfLearning.userLearnHistories.length - 1)
-                                {
+                                if (i == currentTotalLessonDay - 1 && j == selfLearning.userLearnHistories.length - 1) {
                                     res.send(bookMissLessons);
                                 }
                             }

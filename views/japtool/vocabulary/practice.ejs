@@ -96,11 +96,12 @@
                 }());
             }
             if (total == sum) {
+
                 if (truee / total > $('#ispassed').val()) {
                     alert("Passed! Your score is: " + (truee / total) * 100);
+                    var status = "passed"
                     var bookDetail = $('.sub-lesson').attr('name');
                     var user = '<%= session.User.id %>';
-                    var selfLearning = $('#title-learning').attr('name');
                     var startDate = new Date();
                     var finishDate = new Date();
                     $.ajax({
@@ -108,8 +109,8 @@
                         url: "/japtool/Learning/saveHistory",
                         data: {
                             user: user,
+                            status: status,
                             bookDetail: bookDetail,
-                            selfLearning: selfLearning,
                             startDate: startDate,
                             finishDate: finishDate
                         }
@@ -117,10 +118,28 @@
                             .done(function (msg) {
                                 console.log(msg);
                             });
+
                 }
                 else {
-
                     alert("False! Your score is: " + (truee / total) * 100);
+                    var bookDetail = $('.sub-lesson').attr('name');
+                    var status = "false";
+                    var user = '<%= session.User.id %>';
+                    var startDate = new Date();
+                    var finishDate = new Date();
+                    $.ajax({
+                        method: "POST",
+                        url: "/japtool/Learning/saveHistory",
+                        data: {
+                            user: user,
+                            status: status,
+                            bookDetail: bookDetail,
+                            startDate: startDate,
+                        }
+                    })
+                            .done(function (msg) {
+                                console.log(msg);
+                            });
                 }
             }
         }

@@ -15,7 +15,10 @@ module.exports = {
             model: 'bookDetail'
         },
         status: {
-            type: 'integer'
+            type: 'String'
+        },
+        lesson: {
+            type: 'String'
         },
         mark: {
             type: 'float'

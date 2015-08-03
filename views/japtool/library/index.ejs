@@ -274,6 +274,27 @@
             } else {
                 $('#' + id).load('/japtool/' + module + '/?condition=' + strCondition);
             }
-        }
+        };
+        window.onload = function () {
+            $('.content').hide();
+            var itemOnPage = 2;
+            for (var i = 0; i < itemOnPage; i++) {
+                $('.library-' + i).show();
+            }
+            var totalPages =
+            <%= uniqueType.length %>/
+            itemOnPage;
+            $('#pagination-demo').twbsPagination({
+                totalPages: Math.ceil(totalPages),
+                visiblePages: 4,
+                onPageClick: function (event, page) {
+                    var itemShow = itemOnPage * page;
+                    $('.content').hide();
+                    for (var i = itemShow - itemOnPage; i < itemShow; i++) {
+                        $('.library-' + i).show();
+                    }
+                }
+            });
+        };
     </script>
 </div>

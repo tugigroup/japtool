@@ -22,19 +22,19 @@
                             <section class="sidebar pre-scrollable">
                                 <!-- Sidebar user panel -->
                                 <ul class="sidebar-menu">
-                                    <% uniqueLessons.forEach(function(uniqueLesson){ %>
+                                    <% for(var i = 0;i < uniqueLessons.length;i++){ %>
                                     <li class="treeview">
-                                        <a href="javascript: void(0)">
-                                            <i class="fa fa-edit"></i> <span><%= uniqueLesson %></span>
+                                        <a id="lesson" href="javascript: void(0)">
+                                            <i class="fa fa-edit"></i> <span><%= uniqueLessons[i] %></span>
                                             <i class="fa fa-angle-left pull-right"></i>
                                         </a>
                                         <% if(bookDetails){ %>
                                         <ul class="treeview-menu">
                                             <% bookDetails.forEach(function(bookDetail){ %>
-                                            <% if(uniqueLesson == bookDetail.lesson) { %>
+                                            <% if(uniqueLessons[i] == bookDetail.lesson) { %>
                                             <li><a class="sub-lesson" href='javascript: void(0)'
                                                    name="<%= bookDetail.id %>"
-                                                   onclick="learn('<%= bookDetail.useModule %>', <%= bookDetail.dataExtractCondition %>)"><i
+                                                   onclick="father('<%= bookDetail.useModule %>', <%= bookDetail.dataExtractCondition %>,'<%= bookDetail.lesson %>');"><i
                                                             class="fa fa-circle-o"></i> <%= bookDetail.subLesson %></a>
                                             </li>
                                             <% } %>
@@ -43,7 +43,7 @@
                                         <% } %>
 
                                     </li>
-                                    <% }) %>
+                                    <% } %>
                                 </ul>
                             </section>
                             <!-- /.sidebar -->
@@ -67,12 +67,36 @@
     </div>
 </div>
 <script>
+    function father(module, condition, lesson) {
+        learn(module, condition);
+        savee(lesson);
+    }
     function learn(module, condition) {
         var strCondition = JSON.stringify(condition);
         console.log(strCondition);
         $('#container-learn').load('/japtool/' + module + '/?condition=' + strCondition);
     }
+    function savee(lesson) {
+        alert(lesson);
 
+        var bookDetail = $('.sub-lesson').attr('name');
+        var user = '<%= session.User.id %>';
+        var startDate = new Date();
+
+        $.ajax({
+            method: "POST",
+            url: "/japtool/Learning/saveHistory",
+            data: {
+                lesson: lesson,
+                user: user,
+                bookDetail: bookDetail,
+                startDate: startDate
+            }
+        })
+                .done(function (msg) {
+                    console.log(msg);
+                });
+    }
     window.onload = function () {
 
     }
