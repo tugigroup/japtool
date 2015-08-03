@@ -660,33 +660,7 @@ $(document).ready(function () {
         transitionEffect: "slideLeft"
     });
 
-//SPEECH
-    $("#one-time").steps({
-        headerTag: "h1",
-        bodyTag: "section",
-        transitionEffect: "fade"
-    });
 
-    $('.slider-for').slick({
-      slidesToShow: 1,
-      slidesToScroll: 1,
-  //  arrows: true,
-      fade: false,
-      touchMove:false,
-      draggable: false,
-      asNavFor: '.slider-nav',
-      prevArrow: '<button type="button" data-role="none" class="btn btn-show-list btn-arrow-left-exe" aria-label="Previous" tabindex="0" role="button"><i class="fa fa-chevron-left"></i></button>',
-      nextArrow: '<button type="button" data-role="none" class="btn btn-show-list btn-arrow-right-exe" aria-label="Next" tabindex="0" role="button"><i class="fa fa-chevron-right"></i></button>'
-    });
-
-    $('.slider-nav').slick({
-      slidesToShow: 3,
-      slidesToScroll: 3,
-      asNavFor: '.slider-for',
-      dots: false,
-      centerMode: false,
-      focusOnSelect: true
-    });
 
     // localization
     $("#lang-en-option").click(function () {

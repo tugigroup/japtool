@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-    list: function (req, res) {
+    index: function (req, res) {
         var condition = req.param('condition');
         Article.getLessonArticle({condition: condition}, function (err, articles) {
             res.render('japtool/learning/learnArticle',
