@@ -177,7 +177,7 @@ module.exports = {
                         var now = new Date();
 
                         if (finishDate > now) {
-                            var create = '<h3>Ban da dang hoc mot learning ve quyen sach nay, ban can xoa learning do de tao 1 learningmoivenohoactieptuchoctai <a href = "/japtool/Learning/practice/?id=<%= book.id %>" > day < /a></h3 > ';
+                            var create = '<h3> __("book already") <a href = "/japtool/Learning/practice/?id=<%= book.id %>" > < /a></h3 > ';
                             res.render('japtool/learning/create', {
                                 create: create,
                                 book: learning.bookMaster,
@@ -367,11 +367,19 @@ module.exports = {
                 });
                 var uniqueLessons = array(lessons).unique().value();
                 //uniqueLessons = array.sort(uniqueLessons);
+                sails.log(data);
                 res.view('japtool/learning/show-book-detail', {
                     uniqueLessons: uniqueLessons,
                     learnID: learnID,
                     bookDetails: bookDetails,
                     nameBook: data.name,
+                    description:data.description,
+                    type:data.type,
+                    level:data.level,
+                    sort:data.sort,
+                    lessonNum:data.lessonNum,
+                    hoursForLearn:data.hoursForLearn,
+                    usedNum:data.usedNum,
                     layout: 'layout/layout-japtool'
                 });
             }
