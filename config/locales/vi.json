@@ -106,6 +106,7 @@
 
 
   "Lesson":"Bài Học",
+<<<<<<< HEAD
 
   "off audio":"tắt âm",
   "on audio":"bật âm",
@@ -205,4 +206,7 @@
   "you have miss following lesson":"bạn đã bỏ lỡ bài học",
   "There's not any book":"Không có quyển sách nào",
   "view all":"Xem tất cả",
+
+  "book already":"Ban dang hoc mot learning ve quyen sach nay, ban can xoa learning do de tao 1 learningmoivenohoactieptuchoctai"
+
 }

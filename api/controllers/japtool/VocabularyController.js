@@ -8,6 +8,7 @@
 module.exports = {
     lesson: function (req, res) {
         var extractDataCondition = req.param('condition');
+
         //var extractDataCondition = '{"level": "N3", "tag" : {"contains":",tap1,lession5,"}}';
         Vocabulary.selectByLevel({condition: extractDataCondition}, function (err, vocabularies) {
             if (err) return res.send(err.status);
@@ -16,6 +17,10 @@ module.exports = {
     },
     practice: function (req, res) {
         var extractDataCondition = req.param('condition');
+        var CVExtractDataCondition = extractDataCondition.replace('lesson', 'Bài ');
+        var arr = CVExtractDataCondition.split(',');
+        var lessonn = arr[3];
+        sails.log(lessonn);
         //var extractDataCondition = '{"level": "N3", "tag" : {"contains":",tap1,lession5,"}}';
         Vocabulary.selectByLevel({condition: extractDataCondition}, function (err, vocabularies) {
             if (err) return res.send(err.status);
@@ -37,7 +42,7 @@ module.exports = {
             vocabularies.sort(function () {
                 return Math.round(Math.random()) - 0.5;
             });
-            res.render('japtool/vocabulary/practice', {'vocabularies': vocabularies});
+            res.render('japtool/vocabulary/practice', {'vocabularies': vocabularies, 'lessonn': lessonn});
         });
     },
     _config: {

@@ -107,6 +107,7 @@
 
 
   "Lesson":"授業",
+<<<<<<< HEAD
 
   "off audio":"off audio",
   "on audio":"on audio",
@@ -207,4 +208,7 @@
   "you have miss following lesson":"you have miss following lesson",
   "There's not any book":"There's not any book",
   "view all":"view all",
+
+  "book already":"Ban dang hoc mot learning ve quyen sach nay, ban can xoa learning do de tao 1 learningmoivenohoactieptuchoctai"
+
 }
