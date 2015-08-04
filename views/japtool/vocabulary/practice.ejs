@@ -205,7 +205,7 @@
     </audio>
     <!--finish div audio-->
     <% if(vocabularies == null || vocabularies.length == 0){ %>
-    <h5 class="text-center text-danger">Không tìm thấy dữ liệu</h5>
+    <h5 class="text-center text-danger"><%=__("didn't find any data")%></h5>
     <% }else{ %>
     <div class="slider slider-for">
         <%
@@ -216,8 +216,8 @@
                 <div class="panel panel-default panel-paper-slide">
                     <div class="panel-body panel-bd-all">
                         <div class="mics-audio-practice-voca">
-                            <i class="fa fa-volume-up mic-on" data-toggle="tooltip" title="off audio"></i>
-                            <i class="fa fa-volume-off mic-off" data-toggle="tooltip" title="on audio"></i>
+                            <i class="fa fa-volume-up mic-on" data-toggle="tooltip" title='<%=__("off audio")%>'></i>
+                            <i class="fa fa-volume-off mic-off" data-toggle="tooltip" title="<%=__("on audio")%>"></i>
                         </div>
                         <div class="col-sm-12">
                             <div class="voca-prac-txt-cntr text-center">

@@ -106,5 +106,105 @@
 
 
 
-  "Lesson":"授業"
+  "Lesson":"授業",
+
+  "off audio":"off audio",
+  "on audio":"on audio",
+  "didn't find any data":"didn't find any data",
+
+
+  "off informations":"off informations",
+  "on informations":"on informations",
+
+
+  "Listening":"Listening",
+  "Not Started":"Not Started",
+  "Received":"Received",
+  "Waiting":"Waiting",
+  "Result":"Result",
+
+
+
+  "Overview of exercise":"Overview of exercise",
+  "Back":"Back",
+  "Total of question":"Total of question",
+  "answered":"answered",
+  "Result Lesson":"Result Lesson",
+  "Total of lesson":"Total of lesson",
+
+  "Web site don't have data":"Web site don't have data ! sorry about this",
+  "About Page":"About Page",
+  "View more Library":"View more Library",
+  "Click to view this library details":"Click to view this library details",
+  "Level":"Level",
+  "Used":"Used",
+  "Number Lesson":"Number Lesson",
+  "Click to view this library lesson":"Click to view this library lesson",
+  "Click to learn this library":"Click to learn this library",
+  "Learning Library":"Learning Library",
+  "Estimate Hour":"Estimate Hour",
+  "Details":"Details",
+  "Type":"Type",
+  "Description":"Description",
+  "Number Of Recommend":"Number Of Recommend",
+  "Your friends are learning this library":"Your friends are learning this library",
+  "Learning This Library":"Learning This Library",
+  "Close":"Close",
+
+  "You don't have any survey , Click Skip to continue":"You don't have any survey , Click Skip to continue",
+  "Contact Page":"Contact Page",
+  "Guide Page":"Guide Page",
+  "Preview":"Preview",
+  "We are so sorry! Now we haven't any library":"We are so sorry! Now we haven't any library",
+
+  "Lesson learning":"Lesson learning",
+
+  "message from system":"message from system",
+
+  "Studying has not yet begun":"Studying has not yet begun",
+  "more day":"more day",
+  "ok":"ok",
+  "You can't delete this learning":"You can't delete this learning",
+  "here":"here",
+  "Studying finished . if you want to learn more click":"Studying finished . if you want to learn more click",
+  "Studying has not yet begun":"Studying has not yet begun",
+
+  "Choose One":"Choose One",
+  "Test all article":"Test all article",
+  "Just Praticle":"Just Praticle",
+  "content":"content",
+  "Media":"Media",
+  "Image":"Image",
+  "Refresh this":"Refresh this",
+  "Your result":"Your result",
+  "Your Mark":"Your Mark",
+  "The exact total":"The exact total",
+  "Start Date":"Start Date",
+  "Finish Date":"Finish Date",
+  "check Quickly":"check Quickly",
+  "Submit Testing":"Submit Testing",
+
+  "From":"From",
+  "Learning Details":"Learning Details",
+  "Go to Learn":"Go to Learn",
+  "or cancle":"or cancle",
+  "here":"here",
+  "You don't have any learning , Click":"You don't have any learning , Click",
+  "Create New Learning":"Create New Learning",
+
+  "Notes":"Notes",
+  "To":"To",
+  "notice coincidence":"you have already learned this book . If you want to learn , you must delete it . you can continue learning",
+  "Book Library":"Book Library",
+  "Choose a book":"Choose a book",
+  "Example":"Example",
+
+  "Display japanese learning group of your friend , let's join now":"Display japanese learning group of your friend , let's join now",
+  "view all":"view all",
+  "No Content":"No Content",
+  "on":"on",
+  "You have done ":"You have done ",
+  "you have miss following lesson":"you have miss following lesson",
+  "There's not any book":"There's not any book",
+  "view all":"view all",
 }

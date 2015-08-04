@@ -1,7 +1,7 @@
 <div class="choose-modul-learn-article text-center">
-    <h4><span class="glyphicon glyphicon-bell"></span> Choose One :</h4>
-    <button type="button" class="btn btn-danger" id="btnTestAll">Test all article</button>
-    <button type="button" class="btn btn-success" id="btnPraticle">Just Praticle</button>
+    <h4><span class="glyphicon glyphicon-bell"></span> <%=__("Choose One")%> :</h4>
+    <button type="button" class="btn btn-danger" id="btnTestAll"><%=__("Test all article")%></button>
+    <button type="button" class="btn btn-success" id="btnPraticle"><%=__("Just Praticle")%></button>
 </div>
 <div class="container-do-test-article" id="do-test-articles">
     <div class="col-sm-12 text-center">
@@ -33,10 +33,10 @@
 
             <div class="col-sm-12">
                 <div class="">
-                    <p>Level : <%= article.level %></p>
+                    <p><%=__("Level")%> : <%= article.level %></p>
 
                     <p>
-                    <h4>Content</h4>
+                    <h4><%=__("Content")%></h4>
                     </p>
                     <p class="unescape lb-content-test-article">
                         <%= article.content %>
@@ -45,7 +45,7 @@
                     if(article.image != null || article.audio != null || article.video != null) {
                     %>
                     <p>
-                    <h4>Media</h4>
+                    <h4><%=__("Media")%></h4>
                     </p>
                     <%
                     }
@@ -92,7 +92,7 @@
                         <h4 class="unescape lb-question-minion"><%= question.question %></h4>
                         <% if(question.image != null){
                         %>
-                        <h5>Image :</h5>
+                        <h5><%=__("Image")%> :</h5>
                         <img src="/media/image/?fd=<%= question.image %>"/>
                         <%
                         } %>
@@ -162,10 +162,10 @@
         <div class="col-sm-12 contain-check-btn">
             <button type="button" class="btn btn-danger btn-submit-testing" data-toggle="modal"
                     data-target="#resultModal"
-                    id="btnCheckRs">Submit Testing
+                    id="btnCheckRs"><%=__("Submit Testing")%>
             </button>
-            <button type="button" class="btn btn-success btn-submit-check" id="btnCheckQuickly">check Quickly</button>
-            <button type="button" class="btn btn-warning btn-refresh-rs-question" id="btnRefresh">Refresh this</button>
+            <button type="button" class="btn btn-success btn-submit-check" id="btnCheckQuickly"><%=__("check Quickly")%></button>
+            <button type="button" class="btn btn-warning btn-refresh-rs-question" id="btnRefresh"><%=__("Refresh this")%></button>
         </div>
         <!-- Modal -->
         <div id="resultModal" class="modal fade" role="dialog">
@@ -175,13 +175,13 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Your result</h4>
+                        <h4 class="modal-title"><%=__("Your result")%></h4>
                     </div>
                     <div class="modal-body" id="div-show-Rs-test-point-2">
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><%=__("Close")%></button>
                     </div>
                 </div>
 

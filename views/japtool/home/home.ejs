@@ -36,10 +36,9 @@
         <div class="row">
             <h2 class="text-center clearfix">Learning Your Self</h2>
 
-            <p class="text-center desc-home">Hiển thị những group học tiếng nhật của bạn bè trong list friends của bạn,
-                bạn join vào để học cùng nhau nhé</p>
+            <p class="text-center desc-home"><%=__("Display japanese learning group of your friend , let's join now")%></p>
 
-            <p class="text-center desc-home"><i><a>View more all</a></i></p>
+            <p class="text-center desc-home"><i><a><%=__("view all")%></a></i></p>
             <!--Show bool user History-->
             <% if(selfLearnings != undefined && selfLearnings.length > 0){ %>
             <% selfLearnings.forEach(function(selfLearning){ %>
@@ -54,10 +53,10 @@
                         <input type="hidden" value="<%= selfLearning.id %>" id="learningId<%= bookMasterId %>"/>
                         <h4><a href="/japtool/Learning/practice/?id=<%= bookMasterId %>&learnID=<%= selfLearning.id %>"><%= selfLearning.bookMaster.name %></a></h4>
                         <% } else{ %>
-                        <h3><a>Book name is NONE</a></h3>
+                        <h3><a><%=__("There's not any book")%></a></h3>
                         <% } %>
                         <!--Show miss following lesson-->
-                        <p>Till now you have miss following lesson</p>
+                        <p><%=__("you have miss following lesson")%></p>
 
                         <div id="<%= bookMasterId %>"></div>
                         <!--Ended Show miss following lesson-->
@@ -70,22 +69,20 @@
                             <% if(showNumber >= 4){ %>
                             <div class="col-sm-9" style="display: none">
                                 <!--<span class="label label-primary"><%= userLearn.lesson %></span>-->
-                                <p><span class="glyphicon glyphicon-thumbs-up"></span> You have
-                                    done <%= userLearn.subLesson %> on <%= userLearn.lesson %></p>
+                                <p><span class="glyphicon glyphicon-thumbs-up"></span> <%=__("You have done ")%><%= userLearn.subLesson %> <%=__("on")%> <%= userLearn.lesson %></p>
                             </div>
                             <div class="col-sm-3" style="display: none">
                                 <a class="join-learn btn label-danger"
-                                   href="/japtool/Learning/practice/?id=<%= bookMasterId %>&learnID=<%= selfLearning.id %>">Continue</a>
+                                   href="/japtool/Learning/practice/?id=<%= bookMasterId %>&learnID=<%= selfLearning.id %>"><%=__("Continue")%></a>
                             </div>
                             <% }else{ showNumber++; %>
                             <div class="col-sm-9" style="display: block">
                                 <!--<span class="label label-primary"><%= userLearn.lesson %></span>-->
-                                <p><span class="glyphicon glyphicon-thumbs-up"></span> You have
-                                    done <%= userLearn.subLesson %> on <%= userLearn.lesson %></p>
+                                <p><span class="glyphicon glyphicon-thumbs-up"></span><%=__("You have done ")%> <%= userLearn.subLesson %> <%=__("on")%> <%= userLearn.lesson %></p>
                             </div>
                             <div class="col-sm-3" style="display: block">
                                 <a class="join-learn btn label-danger"
-                                   href="/japtool/Learning/practice/?id=<%= bookMasterId %>&learnID=<%= selfLearning.id %>">Continue</a>
+                                   href="/japtool/Learning/practice/?id=<%= bookMasterId %>&learnID=<%= selfLearning.id %>"><%=__("Continue")%></a>
                             </div>
                             <% } %>
                             <% }); %>
@@ -96,14 +93,14 @@
                             <!--End if-->
                         </div>
                         <!--Ended Show learn history-->
-                        <p class="text-center desc-home"><i><a>View more all</a></i></p>
+                        <p class="text-center desc-home"><i><a><%=__("view all")%></a></i></p>
                     </div>
                 </div>
             </div>
             <% }); %>
             <!--End for-->
             <% } else { %>
-            <div><h1>No Content</h1></div>
+            <div><h1><%=__("No Content")%></h1></div>
             <% } %>
             <!--End if-->
         </div>
