@@ -288,13 +288,12 @@ module.exports = {
                     });
                 }
             })
-    },
-
+    }
     index: function (req, res) {
         var arrTag = [];
         SelfLearning.find().populate('bookMaster', {sort: 'startDate'}).exec(function (err, selfLearnings) {
             if (err) {
-                sails.log("Loi cmnr")
+                sails.log("Err")
             }
             else {
                 selfLearnings.forEach(function (item, index) {
@@ -367,7 +366,6 @@ module.exports = {
                 });
                 var uniqueLessons = array(lessons).unique().value();
                 //uniqueLessons = array.sort(uniqueLessons);
-                sails.log(data);
                 res.view('japtool/learning/show-book-detail', {
                     uniqueLessons: uniqueLessons,
                     learnID: learnID,

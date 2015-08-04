@@ -3,6 +3,7 @@
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal"></button>
             <h4 class="modal-title">Book Library</h4>
+
             <div class="row">
                 <div class="col-sm-3">
                     Choose a book
@@ -10,39 +11,77 @@
             </div>
         </div>
         <div class="modal-body">
-            <div class="pre-scrollable choose-book-pre" data-mcs-theme="dark">
-                <!--start three book info-->
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#allbook">All Books</a></li>
+                <li><a data-toggle="tab" href="#vocabulary">Vocabulary</a></li>
+                <li><a data-toggle="tab" href="#kanji">Kanji</a></li>
+                <li><a data-toggle="tab" href="#speech">Speech</a></li>
+            </ul>
+            <div class="tab-content choose-book">
+                <div id="allbook" class="tab-pane fade in active">
+                    <div class="pre-scrollable choose-book-pre" data-mcs-theme="dark">
+                        <!--start three book info-->
+                        <div class="row form-showBook">
+                            <% for(var i = 0;i < books.length;i++){ %>
+                            <div class="col-sm-4">
 
-                <div class="row form-showBook">
-                    <% for(var i = 0;i < books.length;i++){ %>
-                    <div class="col-sm-4">
+                                <div class="row">
+                                    <div class="col-sm-2">
 
-                        <div class="row">
-                            <div class="col-sm-2">
+                                        <% if (books[i].image) { %>
+                                        <img id="imglink<%= i %>" src="/media/image/<%= books[i].image %>" width="45"
+                                             height="45"/>
+                                        <% } else { %>
+                                        <img id="imglink<%= i %>" src="/images/bookicon.jpg" width="45" height="45"/>
+                                        <% } %>
 
-                                <% if (books[i].image) { %>
-                                <img id="imglink<%= i %>" src="/media/image/<%= books[i].image %>" width="45"
-                                     height="45"/>
-                                <% } else { %>
-                                <img id="imglink<%= i %>" src="/images/bookicon.jpg" width="45" height="45"/>
-                                <% } %>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <input type="hidden" id="bookid<%= i %>" value="<%= books[i].id %>">
+                                        <a onclick="addbook(<%= i %>)" id="bookname<%= i %>"
+                                           title="<%= books[i].name %>"><p
+                                                    class="lbUser"><%= books[i].name %></p></a>
 
+                                        <p title="<%= books[i].level %>" id="booklv<%= i %>">Level
+                                            : <%= books[i].level %></p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-sm-9">
-                                <input type="hidden" id="bookid<%= i %>" value="<%= books[i].id %>">
-                                <a onclick="addbook(<%= i %>)" id="bookname<%= i %>" title="<%= books[i].name %>"><p
-                                            class="lbUser"><%= books[i].name %></p></a>
-
-                                <p title="<%= books[i].level %>" id="booklv<%= i %>">Level : <%= books[i].level %></p>
-                            </div>
+                            <% } %>
                         </div>
+
+                        <hr class="lineBook">
+                        <!--finish three book info-->
                     </div>
-                    <% } %>
+                </div>
+                <div id="vocabulary" class="tab-pane fade">
+                    <h3>Section B</h3>
+
+                    <p>Vestibulum nec erat eu nulla rhoncus fringilla ut non neque. Vivamus nibh urna, ornare id gravida
+                        ut, mollis a magna. Aliquam porttitor condimentum nisi, eu viverra ipsum porta ut. Nam hendrerit
+                        bibendum turpis, sed molestie mi fermentum id. Aenean volutpat velit sem. Sed consequat ante in
+                        rutrum convallis. Nunc facilisis leo at faucibus adipiscing.</p>
+                </div>
+                <div id="kanji" class="tab-pane fade">
+                    <h3>Section B</h3>
+
+                    <p>Vestibulum nec erat eu nulla rhoncus fringilla ut non neque. Vivamus nibh urna, ornare id gravida
+                        ut, mollis a magna. Aliquam porttitor condimentum nisi, eu viverra ipsum porta ut. Nam hendrerit
+                        bibendum turpis, sed molestie mi fermentum id. Aenean volutpat velit sem. Sed consequat ante in
+                        rutrum convallis. Nunc facilisis leo at faucibus adipiscing.</p>
+                </div>
+                <div id="speech" class="tab-pane fade">
+                    <h3>Section B</h3>
+
+                    <p>Vestibulum nec erat eu nulla rhoncus fringilla ut non neque. Vivamus nibh urna, ornare id gravida
+                        ut, mollis a magna. Aliquam porttitor condimentum nisi, eu viverra ipsum porta ut. Nam hendrerit
+                        bibendum turpis, sed molestie mi fermentum id. Aenean volutpat velit sem. Sed consequat ante in
+                        rutrum convallis. Nunc facilisis leo at faucibus adipiscing.</p>
                 </div>
 
-                <hr class="lineBook">
-                <!--finish three book info-->
             </div>
+
+
         </div>
         <div class="modal-footer">
             <input type="button"
