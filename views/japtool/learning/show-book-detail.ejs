@@ -23,6 +23,7 @@
                                 <!-- Sidebar user panel -->
                                 <ul class="sidebar-menu">
                                     <% for(var i = 0;i < uniqueLessons.length;i++){ %>
+                                    <input type="hidden" id="learnID" value="<%= learnID %>">
                                     <li class="treeview">
                                         <a id="lesson" href="javascript: void(0)">
                                             <i class="fa fa-edit"></i> <span><%= uniqueLessons[i] %></span>
@@ -54,6 +55,7 @@
                                 <div class="row">
                                     <div id="container-learn">
                                         <h3 class="text-center text-danger"><%= nameBook %></h3>
+
                                         <div class="row">
                                             <div class="col-sm-6 text-right"><span>Type: </span></div>
                                             <div class="col-sm-6"><%= type %></div>
@@ -95,6 +97,7 @@
         $('#container-learn').load('/japtool/' + module + '/?condition=' + strCondition);
     }
     function savee(lesson) {
+        var learnID = $('#learnID').val();
         var bookDetail = $('.sub-lesson').attr('name');
         var user = '<%= session.User.id %>';
         var startDate = new Date();
@@ -105,6 +108,7 @@
             data: {
                 lesson: lesson,
                 user: user,
+                learnID: learnID,
                 bookDetail: bookDetail,
                 startDate: startDate
             }

@@ -96,45 +96,46 @@
                 }());
             }
             if (total == sum) {
-
+                var status = "passed"
+                var lesson = $('#lessonn').val();
+                var mark = (truee / total) * 100;
+                var learnID = $('#learnID').val();
+                var bookDetail = $('.sub-lesson').attr('name');
+                var user = '<%= session.User.id %>';
+                var finishDate = new Date();
                 if (truee / total > $('#ispassed').val()) {
+
                     alert("Passed! Your score is: " + (truee / total) * 100);
-                    var status = "passed"
-                    var bookDetail = $('.sub-lesson').attr('name');
-                    var user = '<%= session.User.id %>';
-                    var startDate = new Date();
-                    var finishDate = new Date();
+
                     $.ajax({
                         method: "POST",
                         url: "/japtool/Learning/saveHistory",
                         data: {
                             user: user,
                             status: status,
+                            lesson: lesson,
+                            mark: mark,
+                            learnID: learnID,
                             bookDetail: bookDetail,
-                            startDate: startDate,
                             finishDate: finishDate
                         }
                     })
                             .done(function (msg) {
                                 console.log(msg);
                             });
-
                 }
                 else {
                     alert("False! Your score is: " + (truee / total) * 100);
-                    var bookDetail = $('.sub-lesson').attr('name');
-                    var status = "false";
-                    var user = '<%= session.User.id %>';
-                    var startDate = new Date();
-                    var finishDate = new Date();
                     $.ajax({
                         method: "POST",
                         url: "/japtool/Learning/saveHistory",
                         data: {
                             user: user,
+                            learnID: learnID,
                             status: status,
-                            bookDetail: bookDetail,
-                            startDate: startDate,
+                            mark: mark,
+                            lesson: lesson,
+                            bookDetail: bookDetail
                         }
                     })
                             .done(function (msg) {
@@ -194,6 +195,7 @@
     });
 </script>
 <input type="hidden" id="sum" value="<%= vocabularies.length %>">
+<input type="hidden" id="lessonn" value="<%= lessonn %>">
 <input type="hidden" id="ispassed" value="<%= Constants.isPassed %>">
 <div class="exe-voca">
     <!--div audio-->
