@@ -289,6 +289,38 @@ module.exports = {
                 }
             })
     },
+    getItemsBooks: function (req, res) {
+        var s = req.param('chooseBookCat');
+        sails.log(s);
+        if (s == 1) {
+            BookMaster.find({type: 'vocabulary'}).exec(function (err, vocabularyBooks) {
+                if (err) {
+                    console.log(err)
+                } else {
+                    res.render('japtool/learning/chooseBookItems', {vocabularyBooks: vocabularyBooks});
+                }
+            })
+        } else if (s == 2) {
+            BookMaster.find({type: 'kanji'}).exec(function (err, kanjiBooks) {
+                if (err) {
+                    console.log(err)
+                } else {
+                    res.render('japtool/learning/chooseBookItems', {kanjiBooks: kanjiBooks});
+                }
+            })
+        }
+        else {
+            BookMaster.find({type: 'speech'}).exec(function (err, speechBooks) {
+                if (err) {
+                    console.log(err)
+                } else {
+                    res.render('japtool/learning/chooseBookItems', {speechBooks: speechBooks});
+                }
+            })
+        }
+
+
+    },
     index: function (req, res) {
         var arrTag = [];
         SelfLearning.find().populate('bookMaster', {sort: 'startDate'}).exec(function (err, selfLearnings) {

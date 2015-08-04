@@ -13,9 +13,9 @@
         <div class="modal-body">
             <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#allbook">All Books</a></li>
-                <li><a data-toggle="tab" href="#vocabulary">Vocabulary</a></li>
-                <li><a data-toggle="tab" href="#kanji">Kanji</a></li>
-                <li><a data-toggle="tab" href="#speech">Speech</a></li>
+                <li><a data-toggle="tab" href="#vocabulary" chooseBookCat="1" class="chosseBookItem">Vocabulary</a></li>
+                <li><a data-toggle="tab" href="#kanji" chooseBookCat="2" class="chosseBookItem">Kanji</a></li>
+                <li><a data-toggle="tab" href="#speech" chooseBookCat="3" class="chosseBookItem">Speech</a></li>
             </ul>
             <div class="tab-content choose-book">
                 <div id="allbook" class="tab-pane fade in active">
@@ -55,28 +55,13 @@
                     </div>
                 </div>
                 <div id="vocabulary" class="tab-pane fade">
-                    <h3>Section B</h3>
 
-                    <p>Vestibulum nec erat eu nulla rhoncus fringilla ut non neque. Vivamus nibh urna, ornare id gravida
-                        ut, mollis a magna. Aliquam porttitor condimentum nisi, eu viverra ipsum porta ut. Nam hendrerit
-                        bibendum turpis, sed molestie mi fermentum id. Aenean volutpat velit sem. Sed consequat ante in
-                        rutrum convallis. Nunc facilisis leo at faucibus adipiscing.</p>
                 </div>
                 <div id="kanji" class="tab-pane fade">
-                    <h3>Section B</h3>
 
-                    <p>Vestibulum nec erat eu nulla rhoncus fringilla ut non neque. Vivamus nibh urna, ornare id gravida
-                        ut, mollis a magna. Aliquam porttitor condimentum nisi, eu viverra ipsum porta ut. Nam hendrerit
-                        bibendum turpis, sed molestie mi fermentum id. Aenean volutpat velit sem. Sed consequat ante in
-                        rutrum convallis. Nunc facilisis leo at faucibus adipiscing.</p>
                 </div>
                 <div id="speech" class="tab-pane fade">
-                    <h3>Section B</h3>
 
-                    <p>Vestibulum nec erat eu nulla rhoncus fringilla ut non neque. Vivamus nibh urna, ornare id gravida
-                        ut, mollis a magna. Aliquam porttitor condimentum nisi, eu viverra ipsum porta ut. Nam hendrerit
-                        bibendum turpis, sed molestie mi fermentum id. Aenean volutpat velit sem. Sed consequat ante in
-                        rutrum convallis. Nunc facilisis leo at faucibus adipiscing.</p>
                 </div>
 
             </div>
@@ -92,3 +77,24 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $(".chosseBookItem").on('click', function () {
+        var chooseBookCat = $(this).attr('chooseBookCat');
+        $.ajax({
+            url: '/japtool/learning/getItemsBooks',
+            type: 'POST',
+            data: {
+                chooseBookCat: chooseBookCat
+            },
+            dataType: 'json',
+            cache: false,
+            success: function (data) {
+                $('#vocabulary').html('');
+                $('#vocabulary').html(data);
+            },
+            error: function () {
+                alert('loi roi nhe');
+            }
+        });
+    });
+</script>
