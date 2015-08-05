@@ -261,6 +261,28 @@ function validateEditLearning() {
         return false;
     }
 }
+//CHOSSE BOOK WITH CATEGORY
+$(".chosseBookItem").on('click', function () {
+    var chooseBookCat = $(this).attr('chooseBookCat');
+    $.ajax({
+        url: '/japtool/learning/getItemsBooks',
+        type: 'POST',
+        data: {
+            chooseBookCat: chooseBookCat
+        },
+        dataType: 'json',
+        cache: false,
+        success: function (data) {
+            console.log(data);
+            $('#vocabulary').html('');
+            $('#vocabulary').html(data);
+        },
+        error: function () {
+            alert('loi roi nhe');
+        }
+    });
+});
+//END CHOSSE BOOK WITH CATEGORY
 function loadbooks() {
     $('#formecr').removeClass('fade').modal('hide');
     $("#show-books").load('/japtool/Learning/getBooks');
@@ -659,7 +681,6 @@ $(document).ready(function () {
         bodyTag: "section",
         transitionEffect: "slideLeft"
     });
-
 
 
     // localization
