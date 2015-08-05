@@ -211,8 +211,8 @@
     var percentCorrect = similar_text(question,msg,true);
 
     if (percentCorrect == 100) {
-      $(".check" + i).html("<span class='text-success'><i class='fa fa-check'></i> Correct : 100% </span>");
-      $('.status' + i).html("<span class='text-success'><i class='fa fa-check'></i> Completed</span>");
+      $(".check" + i).html("<span class='text-success'><i class='fa fa-check'></i> "+__('Correct')+" : 100% </span>");
+      $('.status' + i).html("<span class='text-success'><i class='fa fa-check'></i>"+__('Completed')+"</span>");
       $(".result" + i).html("<span class='text-success'><i class='fa fa-bullhorn'></i> " + msgCheck + "</span>");
       //stop();
 
@@ -222,8 +222,8 @@
       }, delay);
 
     } else {
-      $(".check" + i).html("<span class='text-danger'><i class='fa fa-times'></i> Correct : " + percentCorrect + "% </span>");
-      $('.status' + i).html("<span class='text-danger'><i class='fa fa-times'></i> Try again</span>");
+      $(".check" + i).html("<span class='text-danger'><i class='fa fa-times'></i> "+__('Correct')+" : " + percentCorrect + "% </span>");
+      $('.status' + i).html("<span class='text-danger'><i class='fa fa-times'></i> "+__('Try again')+"</span>");
       $(".result" + i).html("<i class='fa fa-bullhorn'></i> " + changed(question, msg));
     }
   }
@@ -260,28 +260,28 @@
 
   recognition.onsoundstart = function () {
     var current = getCurrentActive();
-    $('.status' + current).html("Started");
+    $('.status' + current).html(__('Started'));
   };
 
   recognition.onnomatch = function () {
     var current = getCurrentActive();
-    $('.status' + current).html("<span class='text-danger'><i class='fa fa-times'></i> Try again</span>");
+    $('.status' + current).html("<span class='text-danger'><i class='fa fa-times'></i> "+__('Try again')+"</span>");
   };
 
   recognition.onerror = function () {
     var current = getCurrentActive();
-    $('.status' + current).html("<span class='text-danger'><i class='fa fa-times'></i> Error</span>");
+    $('.status' + current).html("<span class='text-danger'><i class='fa fa-times'></i> "+__('error')+"</span>");
     stop();
   };
 
   recognition.onsoundend = function () {
     var current = getCurrentActive();
-    $('.status' + current).html("Stopping");
+    $('.status' + current).html(__('Stopping'));
     //stop();
   };
   recognition.onend = function () {
     var current = getCurrentActive();
-    $('.status' + current).html("Not Started");
+    $('.status' + current).html(__('Not Started'));
     //stop();
     $('.btn-start' + current).removeClass('text-danger');
     $('.btn-start' + current).removeClass('gt-speech');

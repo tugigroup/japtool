@@ -303,13 +303,13 @@ module.exports = {
                     finishDate.setHours(23, 59, 59);
                     var now = new Date();
                     if (startDate < now < finishDate) {
-                        item.status = "Started!";
+                        item.status = req.__("Started");
                     }
                     if (now < startDate) {
-                        item.status = "Prepar!";
+                        item.status = req.__("Prepare");
                     }
                     if (now > finishDate) {
-                        item.status = "Out of date!";
+                        item.status = req.__("Out of date");
                     }
                     arrTag.push(item.bookMaster.type);
                 })

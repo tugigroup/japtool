@@ -33,7 +33,7 @@
                                 <a onclick="addbook(<%= i %>)" id="bookname<%= i %>" title="<%= books[i].name %>"><p
                                             class="lbUser"><%= books[i].name %></p></a>
 
-                                <p title="<%= books[i].level %>" id="booklv<%= i %>">Level : <%= books[i].level %></p>
+                                <p title="<%= books[i].level %>" id="booklv<%= i %>"><%=__("Level")%> : <%= books[i].level %></p>
                             </div>
                         </div>
                     </div>
@@ -49,7 +49,7 @@
                    onclick="addbook()"
                    class="btn btn-warning"
                    role="button"
-                   value="Close"/>
+                   value="<%=__('Close')%>"/>
         </div>
     </div>
 </div>

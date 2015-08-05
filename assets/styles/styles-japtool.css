@@ -1415,22 +1415,16 @@ ul.timeline li .timeline-panel:after {
 /*testing*/
 .btn-submit-testing {
 
-    margin-top: -4%;
-    border-color: rgb(232, 206, 194);
-    border-radius: 0px;
-    padding: 1%;
-    background-color: rgb(213, 77, 73);
-    color: rgb(255, 255, 255);
+    margin-top: -6%;
 }
 
 .btn-submit-check {
-    margin-top: -4%;
+    margin-top: -6%;
     background-color: #399D45;
 }
 
 .btn-refresh-rs-question {
-    margin-top: -4%;
-    background-color: #EC9418;
+    margin-top: -6%;
 }
 
 .choose-modul-learn-article {

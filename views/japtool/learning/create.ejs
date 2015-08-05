@@ -1,6 +1,6 @@
 <div class="modal-content">
     <div class="modal-header">
-        <h2><%=__("Create new learning")%></h2>
+        <h2><%= __("Create new learning big") %></h2>
     </div>
     <div class="modal-body">
         <div class="content">
@@ -9,7 +9,7 @@
                 <div class="col-sm-10 learning-group-item">
                     <div class="row">
                         <div class="col-sm-2">
-                            <label><%=__("From")%></label>
+                            <label><%= __("From") %></label>
                         </div>
                         <div class="col-sm-4">
                             <input type="date" class="form-control" name="startDate" id="startDate"><br>
@@ -18,7 +18,7 @@
                         </div>
 
                         <div class="col-sm-2">
-                            <label><%=__("To")%></label>
+                            <label><%= __("To") %></label>
                         </div>
                         <div class="col-sm-4">
                             <input type="date" class="form-control" name="finishDate" id="finishDate"><br>
@@ -35,7 +35,7 @@
                 <div class="col-sm-10 learning-group-item">
                     <div class="row">
                         <div class="col-sm-2">
-                            <label><%=__("Notes")%></label>
+                            <label><%= __("Notes") %></label>
                         </div>
                         <div class="col-sm-10">
                                     <textarea class="form-control"
@@ -69,8 +69,8 @@
                             <% } %>
                             <div class="col-sm-4" style="padding-top: 15px">
                                 <% if(create != "" && create != null){ %>
-                                <h4><%=__("notice coincidence")%><a
-                                            href="/japtool/Learning/practice/?id=<%= book.id %>&learnID=<%= learning.id %>"><%=__("here")%></a>
+                                <h4><%= __("notice coincidence") %><a
+                                            href="/japtool/Learning/practice/?id=<%= book.id %>&learnID=<%= learning.id %>"><%= __("here") %></a>
                                 </h4>
                                 <% } %>
                             </div>
@@ -87,18 +87,18 @@
                 <input type="button"
                        class="btn btn-danger btn-chooseBook"
                        onclick="loadbooks()"
-                       value="Choose a book"
+                       value="<%= __('Choose a book') %>"
                        id="btn-show-books"/>
                 <% } %>
                 <input type="button"
                        onclick="check()"
                        class="btn btn-success"
-                       value="Create learning"
+                       value="<%= __('Create learning') %>"
                        id="btnCreateLearning"/>
                 <input type="button"
                        class="btn btn-warning"
                        role="button"
-                       value="Close"
+                       value="<%= __('Close') %>"
                        data-dismiss="modal"/>
             </div>
         </div>

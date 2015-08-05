@@ -13,10 +13,10 @@
 
             <div class="col-sm-12">
                 <div class="">
-                    <p>Level : <%= article.level %></p>
+                    <p><%=__("Level")%> : <%= article.level %></p>
 
                     <p>
-                    <h4>Content</h4>
+                    <h4><%=__("content")%></h4>
                     </p>
                     <p class="unescape">
                         <%= article.content %>
@@ -25,7 +25,7 @@
                     if(article.image != null || article.audio != null || article.video != null) {
                     %>
                     <p>
-                    <h4>Media</h4>
+                    <h4><%=__("Media")%></h4>
                     </p>
                     <%
                     }
