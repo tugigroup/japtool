@@ -9,6 +9,12 @@ module.exports = {
     },
 //This loads index.ejs
     index: function (req, res) {
+
+        var b = new Array();
+        var array = require("array-extended");
+
+        sails.log(b);
+
         try {
             SelfLearning.find({user: req.session.User.id})
                 .populate('bookMaster')
@@ -17,12 +23,39 @@ module.exports = {
                         sails.log("Err when read data from server:");
                         return res.serverError(err);
                     }
-                    //sails.log("Book Use History All.");
-                    //sails.log(selfLearnings);
-                    if (selfLearnings == null || selfLearnings == undefined) {
+                    else if (selfLearnings == null || selfLearnings == undefined) {
                         return res.json({err: "Error"});
                     }
-                    res.view('japtool/home/home', {selfLearnings: selfLearnings});
+                    else {
+                        for (var i = 0; i < selfLearnings.length; i++) {
+                            sails.log("**********Start***********************");
+                            sails.log(selfLearnings[i]);
+                            sails.log("**********END***********************");
+                            BookMaster.findOne({id: selfLearnings[i].bookMaster.id}).populate('bookDetails', {sort: 'sort ASC'}).exec(function createCB(err, data) {
+                                if (err) {
+                                    sails.log("Lois")
+                                } else {
+                                    var bookDetails = data.bookDetails;
+                                    var lessons = [];
+                                    bookDetails.forEach(function (item) {
+                                        lessons.push(item.lesson);
+                                    });
+                                    var uniqueLessons = array(lessons).unique().value();
+                                    b.push(uniqueLessons);
+                                    if (b.length == selfLearnings.length) {
+                                        sails.log("da du");
+                                        res.view('japtool/home/home', {selfLearnings: selfLearnings, b: b});
+                                    }
+                                    else {
+                                        sails.log(b.length);
+
+                                    }
+                                }
+                            })
+                        }
+                    }
+
+
                 });
         }
         catch (ex) {

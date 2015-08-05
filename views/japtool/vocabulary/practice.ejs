@@ -96,7 +96,7 @@
                 }());
             }
             if (total == sum) {
-                var status = "passed"
+                var status;
                 var lesson = $('#lessonn').val();
                 var mark = (truee / total) * 100;
                 var learnID = $('#learnID').val();
@@ -104,6 +104,7 @@
                 var user = '<%= session.User.id %>';
                 var finishDate = new Date();
                 if (truee / total > $('#ispassed').val()) {
+                    status = "passed";
                     $('#myModalLabel').text('Xin chúc mừng! Bạn đã hoàn thành bài học! ');
                     $('#myModalContent').text('Điểm của bạn là: ' + (truee / total) * 100);
                     $('#myModal').modal('show');
@@ -115,7 +116,7 @@
                             status: status,
                             lesson: lesson,
                             mark: mark,
-                            learnID: learnID,
+                            selfLearning: learnID,
                             bookDetail: bookDetail,
                             finishDate: finishDate
                         }
@@ -125,6 +126,7 @@
                             });
                 }
                 else {
+                    status = "false"
                     $('#myModalLabel').text('Sorry! Bạn có chắc đã nắm vững lý thuyết?!');
                     $('#myModalContent').text('Điểm của bạn chỉ là: ' + (truee / total) * 100);
                     $('#myModal').modal('show');
@@ -133,7 +135,7 @@
                         url: "/japtool/Learning/saveHistory",
                         data: {
                             user: user,
-                            learnID: learnID,
+                            selfLearning: learnID,
                             status: status,
                             mark: mark,
                             lesson: lesson,

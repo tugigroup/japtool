@@ -1,63 +1,94 @@
 <script type="text/javascript">
-    window.onload = function () {
-        $(".bookMaterIdClass").each(function () {
-            var bookId = $(this).val();
-            var startDate = $("#startDate" + bookId).val();
-            var finishDate = $("#finishDate" + bookId).val();
-            var learningId = $("#learningId" + bookId).val();
-            var data = {
-                bookId: bookId,
-                startDate: startDate,
-                finishDate: finishDate,
-                learningId: learningId
-            };
-            $.ajax({
-                method: "GET",
-                url: "/japtool/Learning/getMissLesson",
-                data: data
-            }).done(function (data) {
-                console.log(data);
-                data.forEach(function (item) {
-                    $("#" + bookId).append(
-                            '<div class="col-sm-3">' +
-                            '<div class="info-lesson label-warning"><a>' + item.lesson + ' </a></div>' +
-                            '</div>'
-                    );
-                });
+    /*window.onload = function () {
+     $(".bookMaterIdClass").each(function () {
+     var bookId = $(this).val();
+     var startDate = $("#startDate" + bookId).val();
+     var finishDate = $("#finishDate" + bookId).val();
+     var learningId = $("#learningId" + bookId).val();
+     var data = {
+     bookId: bookId,
+     startDate: startDate,
+     finishDate: finishDate,
+     learningId: learningId
+     };
+     $.ajax({
+     method: "GET",
+     url: "/japtool/Learning/getMissLesson",
+     data: data
+     }).done(function (data) {
+     console.log(data);
+     data.forEach(function (item) {
+     $("#" + bookId).append(
+     '<div class="col-sm-3">' +
+     '<div class="info-lesson label-warning"><a>' + item.lesson + ' </a></div>' +
+     '</div>'
+     );
+     });
 
-            });
+     });
 
-        });
+     });
 
-    };
+     };*/
 </script>
 <div class="vocabulary content clearfix">
     <div class="container">
+
+        <% if(selfLearnings != undefined && selfLearnings.length > 0){ %>
+        <% selfLearnings.forEach(function(selfLearning, index){ %>
         <div class="row">
-            <h2 class="text-center clearfix">Learning Your Self</h2>
+            <h2 class="text-left clearfix"><%= selfLearning.bookMaster.name %></h2>
+            <% for(var j = 0;j < b[index].length;j++){ %>
+            <% var a = false; %>
+            <% var d; %>
+            <% for(var i = 0;i < selfLearning.userLearnHistories.length;i++){ %>
+            <% if(b[index][j] == selfLearning.userLearnHistories[i].lesson){ %>
+            <% a = true; %>
+            <% if(selfLearning.userLearnHistories[i].status){ %>
+            <% if(selfLearning.userLearnHistories[i].status == 'passed'){ %>
+            <% d = 1; %>
+            <% }else if(selfLearning.userLearnHistories[i].status == 'false'){ %>
+            <% d = 2; %>
+            <% } %>
+            <% } %>
+            <% } %>
+            <% } %>
+            <div class="row">
 
-            <p class="text-center desc-home">Hiển thị những group học tiếng nhật của bạn bè trong list friends của bạn,
-                bạn join vào để học cùng nhau nhé</p>
+                <% if(a == true){ %>
+                <% if(d == 1){ %>
+                <h6 style="color: #008800">
+                    <%= b[index][j] %></h6>
+                <% }else if(d == 2){ %>
+                <h6 style="color: #880000">
+                    <%= b[index][j] %></h6>
+                <% }else{ %>
+                <h6 style="color: #ffff00">
+                    <%= b[index][j] %></h6>
+                <% } %>
 
-            <p class="text-center desc-home"><i><a>View more all</a></i></p>
+                <% }else{ %>
+                <h6>
+                    <%= b[index][j] %></h6>
+                <% } %>
+            </div>
+
+            <% } %>
             <!--Show bool user History-->
-            <% if(selfLearnings != undefined && selfLearnings.length > 0){ %>
-            <% selfLearnings.forEach(function(selfLearning){ %>
             <div class="col-sm-6">
                 <div class="vocabulary-item">
                     <div class="info">
                         <% if(selfLearning.bookMaster != null && selfLearning.bookMaster != undefined){ %>
                         <% var bookMasterId = selfLearning.bookMaster.id %>
                         <input type="hidden" value="<%= bookMasterId %>" class="bookMaterIdClass"/>
-                        <input type="hidden" value="<%= selfLearning.startDate %>" id="startDate<%= bookMasterId %>"/>
-                        <input type="hidden" value="<%= selfLearning.finishDate %>" id="finishDate<%= bookMasterId %>"/>
+                        <input type="hidden" value="<%= selfLearning.startDate %>"
+                               id="startDate<%= bookMasterId %>"/>
+                        <input type="hidden" value="<%= selfLearning.finishDate %>"
+                               id="finishDate<%= bookMasterId %>"/>
                         <input type="hidden" value="<%= selfLearning.id %>" id="learningId<%= bookMasterId %>"/>
-                        <h4><a href="/japtool/Learning/practice/?id=<%= bookMasterId %>&learnID=<%= selfLearning.id %>"><%= selfLearning.bookMaster.name %></a></h4>
-                        <% } else{ %>
-                        <h3><a>Book name is NONE</a></h3>
+
                         <% } %>
-                        <!--Show miss following lesson-->
-                        <p>Till now you have miss following lesson</p>
+                        <p>Till now you have miss x lesson! That maybe: </p>
 
                         <div id="<%= bookMasterId %>"></div>
                         <!--Ended Show miss following lesson-->
@@ -100,12 +131,11 @@
                     </div>
                 </div>
             </div>
-            <% }); %>
-            <!--End for-->
-            <% } else { %>
-            <div><h1>No Content</h1></div>
-            <% } %>
-            <!--End if-->
+
         </div>
+        <% }); %>
+        <% } else { %>
+        <div><h1>No Content</h1></div>
+        <% } %>
     </div>
 </div>

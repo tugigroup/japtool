@@ -399,7 +399,7 @@ module.exports = {
         var pars = req.allParams();
         UserLearnHistory.findOne({
             user: pars.user,
-            learnID: pars.learnID,
+            selfLearning: pars.selfLearning,
             lesson: pars.lesson
         }).exec(function (err, data) {
             if (data == undefined) {
