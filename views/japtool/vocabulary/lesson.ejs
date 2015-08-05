@@ -106,7 +106,7 @@
   var sumPage = vocabularies.length;
   if(vocabularies == null || vocabularies.length == 0){
   %>
-  <h5 class="text-center text-danger">Không tìm thấy dữ liệu</h5>
+  <h5 class="text-center text-danger"><%=__("didn't find any data")%></h5>
   <% }else{ %>
   <div class="slider slider-for">
     <% vocabularies.forEach( function(vocabulary, index){ %>
@@ -115,11 +115,11 @@
         <div class="panel panel-default panel-paper-slide-voca">
           <div class="panel-body">
             <div class="icon-controll-prac-voca">
-              <i class="fa fa-check-circle-o fa-2x info-on" title="off informations"></i>
-              <i class="fa fa-minus-circle fa-2x info-off" title="on informations"></i>
+              <i class="fa fa-check-circle-o fa-2x info-on" title="<%=__("off informations")%>"></i>
+              <i class="fa fa-minus-circle fa-2x info-off" title="<%=__("on informations")%>"></i>
               &nbsp;
-              <i class="fa fa-volume-up mic-on" data-toggle="tooltip" title="off audio"></i>
-              <i class="fa fa-volume-off mic-off" data-toggle="tooltip" title="on audio"></i>
+              <i class="fa fa-volume-up mic-on" data-toggle="tooltip" title="<%=__("off audio")%>"></i>
+              <i class="fa fa-volume-off mic-off" data-toggle="tooltip" title="<%=__("on audio")%>"></i>
             </div>
             <div class="col-sm-12">
               <div class="card text-center">

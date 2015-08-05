@@ -10,7 +10,7 @@
                         </div>
                         <div class="col-sm-1">
                             <div class="join-learn btn label-success">
-                                <a href="/japtool/Library/getLibrary">Back</a>
+                                <a href="/japtool/Library/getLibrary"><%__("Back")%></a>
                             </div>
                         </div>
                     </div>
@@ -31,12 +31,12 @@
                                     <% } else { %>
                                  src="/images/bookicon.jpg"
                                     <% } %>
-                                 title="Click to view this library details">
+                                 title="<%=__('Click to view this library details')%>">
                         </a>
 
                         <div class="media-body">
                             <h4 class="media-heading">
-                                <a href="#" class="text-primary" title="Click to view this library details"
+                                <a href="#" class="text-primary" title="<%=__("Click to view this library details")%>"
                                    data-toggle="modal" data-target="#lib-details-<%= book.id %>">
                                     <%= book.name %>
                                 </a>
@@ -44,21 +44,21 @@
                             <ul>
                                 <li>
                                     <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
-                                    Level: <%= book.level %> -
-                                    Used: 1
+                                    <%=__("Level")%>: <%= book.level %> -
+                                    <%=__("Used")%>: 1
                                 </li>
                                 <li>
-                                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Number
-                                    Lesson: <%= book.bookDetails.length %>
+                                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                    <%=__("Number Lesson")%>: <%= book.bookDetails.length %>
                                 </li>
                                 <li>
                                     <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-                                    <a href="#" title="Click to view this library lesson." data-toggle="modal"
-                                       data-target="#lib-review-<%= book.id %>" class="text-danger">Preview</a> -
+                                    <a href="#" title="<%=__("Click to view this library lesson")%>" data-toggle="modal"
+                                       data-target="#lib-review-<%= book.id %>" class="text-danger"><%=__("Preview")%></a> -
                                     <span></span>
                                     <a onclick="loadformLib('<%= book.id %>')"
-                                       title="Click to learn this library." class="text-info">Learning
-                                        Library</a>
+                                       title="<%=__("Click to learn this library")%>" class="text-info"><%=__("Learning Library")%>
+                                        </a>
                                 </li>
                             </ul>
                         </div>
@@ -72,7 +72,7 @@
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                         aria-hidden="true">×</span></button>
-                            <h4 class="modal-title">Library - <%= book.name %></h4>
+                            <h4 class="modal-title"><%=__("Library")%> - <%= book.name %></h4>
                         </div>
                         <div class="modal-body">
                             <div class="row">
@@ -89,22 +89,22 @@
                                 </div>
                                 <div class="col-sm-9">
                                     <ul>
-                                        <h4>Details:</h4>
+                                        <h4><%=__("Details")%>:</h4>
                                         <li>
                                             <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
-                                            Level: <%= book.level %>
+                                            <%=__("Level")%>: <%= book.level %>
                                         </li>
                                         <li>
                                             <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                                            Type: <%= book.type %>
+                                            <%=__("Type")%>: <%= book.type %>
                                         </li>
                                         <li>
                                             <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
-                                            Number Lesson: <%= book.bookDetails.length %>
+                                            <%=__("Number Lesson")%>: <%= book.bookDetails.length %>
                                         </li>
                                         <li>
                                             <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
-                                            Estimate Hour:
+                                            <%=__("Estimate Hour")%>:
                                             <% if(book.hourForLearn == 'undefined'){ %>
                                             <%= 0 %>
                                             <% }else{ %>
@@ -113,7 +113,7 @@
                                         </li>
                                         <li>
                                             <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                                            Number Of Recommend:
+                                            <%=__("Number Of Recommend")%>:
                                             <% if(book.recommendNum == undefined){ %>
                                             <%= 0 %>
                                             <% }else{ %>
@@ -122,7 +122,7 @@
                                         </li>
                                         <li>
                                             <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
-                                            Used: 1
+                                            <%=__("Used")%>: 1
                                         </li>
 
                                     </ul>
@@ -137,12 +137,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <h4>Your friends are learning this library: </h4>
+                            <h4><%=__("Your friends are learning this library")%>: </h4>
 
                             <div class="row">
                                 <div class="col-sm-1">
                                     <div class="thumbnail">
-                                        <a href="#" title="Click to view profile.">
+                                        <a href="#" title="<%=__('Click to view profile')%>">
                                             <img src="../images/avatar/a01.png">
                                         </a>
                                     </div>
@@ -150,9 +150,9 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <a onclick="loadformLib('<%= book.id %>')" class="btn btn-success" role="button">Learning
-                                This Library</a>
-                            <a href="#" class="btn btn-danger" role="button" data-dismiss="modal">Close</a>
+                            <a onclick="loadformLib('<%= book.id %>')" class="btn btn-success" role="button">
+                                <%=__("Learning This Library")%></a>
+                            <a href="#" class="btn btn-danger" role="button" data-dismiss="modal"><%=__("Close")%></a>
                         </div>
                     </div>
                 </div>
@@ -165,13 +165,13 @@
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                         aria-hidden="true">×</span></button>
-                            <h4 class="modal-title">Library - <%= book.name %></h4>
+                            <h4 class="modal-title"><%=__("Library")%> - <%= book.name %></h4>
                         </div>
                         <div class="modal-body">
                             <div class="row libImg-modal">
                                 <div class="col-sm-3 invite">
                                     <div class="row">
-                                        <h3>Lesson learning</h3>
+                                        <h3><%=__("Lesson learning")%></h3>
                                     </div>
                                     <div class="row">
                                         <div id="cssmenu-learngroup">
@@ -207,9 +207,9 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <a onclick="loadformLib('<%= book.id %>')" class="btn btn-success" role="button">Learning
-                                This Library</a>
-                            <a href="#" class="btn btn-danger" role="button" data-dismiss="modal">Close</a>
+                            <a onclick="loadformLib('<%= book.id %>')" class="btn btn-success" role="button">
+                                <%=__("Learning This Library")%></a>
+                            <a href="#" class="btn btn-danger" role="button" data-dismiss="modal"><%=__("Close")%></a>
                         </div>
                     </div>
                 </div>

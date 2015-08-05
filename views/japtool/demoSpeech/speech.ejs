@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
-            <h2 class="text-primary">Speech</h2>
+            <h2 class="text-primary"><%=__("Speech")%></h2>
 
             <div class="library-page-line"></div>
             <label id="checkBrowser"></label>
@@ -16,23 +16,23 @@
                             </div>
 
                             <div class="col-sm-6">
-                                <h3 class="text-right">Receiving: </h3>
+                                <h3 class="text-right"><%=__("Receiving")%>: </h3>
                             </div>
                             <div class="col-sm-6">
-                                <h3 class="status">Not Started</h3>
+                                <h3 class="status"><%=__("Not Started")%></h3>
                             </div>
 
                             <div class="col-sm-6">
-                                <h3 class="text-right">Received: </h3>
+                                <h3 class="text-right"><%=__("Received")%>: </h3>
                             </div>
                             <div class="col-sm-6 clearfix">
-                                <h3 class="result">Watting</h3>
+                                <h3 class="result"><%=__("Watting")%></h3>
                             </div>
                             <div class="col-sm-6">
-                                <h3 class="text-right">Result: </h3>
+                                <h3 class="text-right"><%=__("Result")%>: </h3>
                             </div>
                             <div class="col-sm-6">
-                                <h3 class="check">Watting</h3>
+                                <h3 class="check"><%=__("Watting")%></h3>
                             </div>
                         </div>
 
@@ -133,10 +133,10 @@
     function addMessage(msg) {
         var question = $(".question").text();
         if (msg == question) {
-            $(".check").html("<span class='text-success'><i class='fa fa-check'></i> Correct</span>");
+            $(".check").html("<span class='text-success'><i class='fa fa-check'></i> "+__('Correct')+"</span>");
             stop();
         } else {
-            $(".check").html("<span class='text-danger'><i class='fa fa-times'></i> Incorrect</span>");
+            $(".check").html("<span class='text-danger'><i class='fa fa-times'></i> "+__('Incorrect')+"Incorrect</span>");
         }
         $(".result").html(msg);
     }
@@ -166,25 +166,25 @@
     }
 
     recognition.onsoundstart = function () {
-        $('.status').html("dang xac nhan");
+        $('.status').html(__('Processing'));
     };
 
     recognition.onnomatch = function () {
         alert("nomath");
-        $('.status').html("lai lan nua");
+        $('.status').html(__('again'));
     };
 
     recognition.onerror = function () {
-        $('.status').html("loi !!!!!");
+        $('.status').html(__("error'));
         stop();
     };
 
     recognition.onsoundend = function () {
-        $('.status').html("dang dung lai");
+        $('.status').html(__('don't stop''));
         stop();
     };
     recognition.onend = function () {
-        $('.status').html("khoi dong lai");
+        $('.status').html(__('restart'));
         stop();
     };
 
@@ -200,7 +200,7 @@
             var text = $.trim(results[i][0].transcript);
             if (results[i].isFinal) {
                 addMessage(text);
-                $('.status').html("processing");
+                $('.status').html('processing');
             } else {
                 $('.status').html(text);
             }

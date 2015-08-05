@@ -1,12 +1,17 @@
 <div class="choose-modul-learn-article text-center">
-    <h4><span class="glyphicon glyphicon-bell"></span> Choose One :</h4>
-    <button type="button" class="btn btn-danger" id="btnTestAll">Test all article</button>
-    <button type="button" class="btn btn-success" id="btnPraticle">Just Praticle</button>
+    <h4><span class="glyphicon glyphicon-bell"></span> <%=__("Choose One")%> </h4>
+    <button type="button" class="btn btn-danger" id="btnTestAll"><%=__("Test all article")%></button>
+    <button type="button" class="btn btn-success" id="btnPraticle"><%=__("Just Praticle")%></button>
 </div>
 <div class="container-do-test-article" id="do-test-articles">
-    <div class="col-sm-12 text-center">
-        <div id="div-show-Rs-test-point-1"></div>
-    </div>
+        <div id="div-show-Rs-test-point-1">
+            <hr class='hr-rs-point-mark'>
+            <p><span class="user-point-mark">Your Mark : </span><span class="details-mark-rs-user"> <span class="score-us-detail"></span>  / 10</span>
+            <p><span class="user-point-mark">The exact total : </span><span class="details-mark-rs-user"><span class="num-true-us-detail"></span> / <span class="sum-que-us-detail"> </span></span>
+            <p><span class="start-date">Start Date : </span><span class="details-start-date">  </span>
+            <p><span class="finish-date">Finish Date : </span><span class="details-finish-date">  </span>
+            <hr class='hr-rs-point-mark'>
+        </div>
     <%
     var lengthQues = 0;
     var questions = [];
@@ -28,15 +33,14 @@
         <div class="row">
             <div class="col-sm-12">
                 <h3 class="unescape"><%= article.subject %></h3>
-                <hr>
             </div>
 
             <div class="col-sm-12">
                 <div class="">
-                    <p>Level : <%= article.level %></p>
+                    <p><%=__("Level")%> : <%= article.level %></p>
 
                     <p>
-                    <h4>Content</h4>
+                    <h4><%=__("Content")%></h4>
                     </p>
                     <p class="unescape lb-content-test-article">
                         <%= article.content %>
@@ -45,7 +49,7 @@
                     if(article.image != null || article.audio != null || article.video != null) {
                     %>
                     <p>
-                    <h4>Media</h4>
+                    <h4><%=__("Media")%></h4>
                     </p>
                     <%
                     }
@@ -92,7 +96,7 @@
                         <h4 class="unescape lb-question-minion"><%= question.question %></h4>
                         <% if(question.image != null){
                         %>
-                        <h5>Image :</h5>
+                        <h5><%=__("Image")%> :</h5>
                         <img src="/media/image/?fd=<%= question.image %>"/>
                         <%
                         } %>
@@ -162,10 +166,10 @@
         <div class="col-sm-12 contain-check-btn">
             <button type="button" class="btn btn-danger btn-submit-testing" data-toggle="modal"
                     data-target="#resultModal"
-                    id="btnCheckRs">Submit Testing
+                    id="btnCheckRs"><%=__("Submit Testing")%>
             </button>
-            <button type="button" class="btn btn-success btn-submit-check" id="btnCheckQuickly">check Quickly</button>
-            <button type="button" class="btn btn-warning btn-refresh-rs-question" id="btnRefresh">Refresh this</button>
+            <button type="button" class="btn btn-success btn-submit-check" id="btnCheckQuickly"><%=__("check Quickly")%></button>
+            <button type="button" class="btn btn-warning btn-refresh-rs-question" id="btnRefresh"><%=__("Refresh this")%></button>
         </div>
         <!-- Modal -->
         <div id="resultModal" class="modal fade" role="dialog">
@@ -175,13 +179,19 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Your result</h4>
+                        <h4 class="modal-title"><%=__("Your result")%></h4>
                     </div>
-                    <div class="modal-body" id="div-show-Rs-test-point-2">
+                    <div class="modal-body">
 
+                        <div id="div-show-Rs-test-point-2">
+                                <p><span class="user-point-mark">Your Mark : </span><span class="details-mark-rs-user"> <span class="score-us-detail"></span>  / 10</span>
+                                <p><span class="user-point-mark">The exact total : </span><span class="details-mark-rs-user"><span class="num-true-us-detail"></span> / <span class="sum-que-us-detail"> </span></span>
+                                <p><span class="start-date">Start Date : </span><span class="details-start-date">  </span>
+                                <p><span class="finish-date">Finish Date : </span><span class="details-finish-date">  </span>
+                        </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><%=__("Close")%></button>
                     </div>
                 </div>
 
@@ -191,6 +201,7 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
+        $("#div-show-Rs-test-point-1").hide();
         $("#do-test-articles").hide();
         $("#btnCheckRs").hide();
         $("#btnCheckQuickly").hide();
@@ -247,9 +258,24 @@
     var dataUserAns = [];
     var lengthQues = $("#lengthQues").val();
     //module practice
+
+    // function get position article
+    function getPostionAr() {
+        var positionAr;
+        $('a[id^="do-test-articles"]').each(function () {
+            var test = $(this).parent().attr("aria-selected");
+            if (test == "true") {
+                positionAr = $(this).children();
+                return false;
+            }
+        });
+        return positionAr;
+    }
+
     $("#btnCheckQuickly").on('click', function () {
         var dataUserAnsCur = [];
         var positionAr = getPostionAr();
+        console.log("Position: "+positionAr);
         var questionListCurrent = [];
         var articleIDCurrent;
         // get current question
@@ -289,7 +315,7 @@
                 var rdPositionTrue = questionListCurrent[j].id;
                 var key = questionListCurrent[j].key;
                 $("#" + rdPositionTrue + key + "rd").html('<i class="fa fa-check fa-2x text-success"></i>');
-                $("#" + rdPositionTrue + "isEmpty").html('<span class="text-danger lb-empty-question">You do not choose any option !</span>');
+                $("#" + rdPositionTrue + "isEmpty").html('<span class="text-danger lb-empty-question">'+'You do not choose any option'+'!</span>');
             } else {
                 var rdPosition = dataUserAnsCur[j].positionRd;
                 $("#" + rdPosition + "rd").html('<i class="fa fa-times text-danger fa-2x"></i>');
@@ -374,7 +400,7 @@
                 var rdPositionTrue = questions[j].id;
                 var key = questions[j].key;
                 $("#" + rdPositionTrue + key + "rd").html('<i class="fa fa-check fa-2x text-success"></i>');
-                $("#" + rdPositionTrue + "isEmpty").html('<span class="text-danger lb-empty-question">You do not choose any option !</span>');
+                $("#" + rdPositionTrue + "isEmpty").html('<span class="text-danger lb-empty-question">'+'You do not choose any option'+' !</span>');
                 // save result data
                 dataUserTestResult.push({
                     answer: undefined,
@@ -406,20 +432,12 @@
                 + currentdate.getMinutes() + ":"
                 + currentdate.getSeconds();
         var dateStart = $("#dateStart").val();
-        $("#div-show-Rs-test-point-1").append("" +
-        "<hr class='hr-rs-point-mark'>" + "" +
-        "<p><span class='user-point-mark'>Your Mark : </span>" + "<span class='details-mark-rs-user'>" + Math.round(pointUser * 100) / 100 + " / 10</span>" +
-        "<p><span class='user-point-mark'>The exact total : </span>" + "<span class='details-mark-rs-user'>" + numAnswerTrue + "/" + countSum + "</span>" +
-        "<p><span class='start-date'>Start Date : </span>" + "<span>" + dateStart + "</span>" +
-        "<p><span class='finish-date'>Finish Date : </span>" + "<span>" + finishDate + "</span>" +
-        "<hr class='hr-rs-point-mark'>" + "" +
-        "")
-        $("#div-show-Rs-test-point-2").append("" +
-        "<p><span class='user-point-mark'>Your Mark : </span>" + "<span class='details-mark-rs-user'>" + Math.round(pointUser * 100) / 100 + " / 10</span>" +
-        "<p><span class='user-point-mark'>The exact total : </span>" + "<span class='details-mark-rs-user'>" + numAnswerTrue + "/" + countSum + "</span>" +
-        "<p><span class='start-date'>Start Date : </span>" + "<span>" + dateStart + "</span>" +
-        "<p><span class='finish-date'>Finish Date : </span>" + "<span>" + finishDate + "</span>" +
-        "");
+        $(".details-finish-date").append(finishDate);
+        $(".details-start-date").append(dateStart);
+        $(".sum-que-us-detail").append(countSum);
+        $(".score-us-detail").append(Math.round(pointUser * 100) / 100);
+        $(".num-true-us-detail").append(numAnswerTrue);
+        $("#div-show-Rs-test-point-1").show();
         var userIdOnSession = $('#userIdInSession').attr('userId');
         var bookDetail = $('#add-book-detail').attr('name');
         var selfLearning = $('#title-learning').attr('name');
@@ -439,18 +457,4 @@
         });
         $('input:radio').attr('disabled', true);
     });
-
-    // function get position article
-    function getPostionAr() {
-        var positionAr;
-        $('a[id^="do-test-articles"]').each(function () {
-            var test = $(this).parent().attr("aria-selected");
-            if (test == "true") {
-                positionAr = $(this).attr("id").slice(-1);
-                return false;
-            }
-        });
-        return positionAr;
-    }
-
 </script>

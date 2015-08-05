@@ -1,15 +1,15 @@
 <div class="modal-dialog modal-lg">
     <div class="modal-content">
         <div class="modal-header">
-            <h4 class="modal-title">Recommended Libraries For You - Step 3/3</h4>
+            <h4 class="modal-title"><%=__("Recommended Libraries For You")%> - <%=__("Step")%> 3/3</h4>
         </div>
         <% if(surveies.length <= 0){ %>
         <div class="modal-body">
-            <h2 class="text-center">Chua co survey nao`! An skip de tiep tuc!!!</h2>
+            <h2 class="text-center"><%=__("You don't have any survey , Click Skip to continue")%></h2>
         </div>
         <div class="modal-footer">
             <a href="#" class="btn btn-success" onclick="nextQuestion(-1,-1)" role="button" data-dismiss="modal"
-               data-toggle="modal">SKIP</a>
+               data-toggle="modal"><%=__("skip")%></a>
         </div>
         <% } %>
         <% if(surveies.length > 0){ %>
@@ -42,7 +42,7 @@
         </div>
         <div class="modal-footer">
             <a href="#" class="btn btn-success" role="button" data-dismiss="modal" data-toggle="modal"
-               data-target="#lib-recommend-2">Back</a>
+               data-target="#lib-recommend-2"><%=__("Back")%></a>
         </div>
         <% } %>
     </div>
