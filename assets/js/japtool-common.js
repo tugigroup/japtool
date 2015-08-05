@@ -683,7 +683,6 @@ $(document).ready(function () {
     });
 
 
-
     // localization
     $("#lang-en-option").click(function () {
         var url = window.location.href;

@@ -13,9 +13,10 @@
         <div class="modal-body">
             <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#allbook">All Books</a></li>
-                <li><a data-toggle="tab" href="#vocabulary" chooseBookCat="1" class="chosseBookItem">Vocabulary</a></li>
-                <li><a data-toggle="tab" href="#kanji" chooseBookCat="2" class="chosseBookItem">Kanji</a></li>
-                <li><a data-toggle="tab" href="#speech" chooseBookCat="3" class="chosseBookItem">Speech</a></li>
+                <li><a data-toggle="tab" href="#vocabulary" chooseBookCat="vocabulary"
+                       class="chosseBookItem">Vocabulary</a></li>
+                <li><a data-toggle="tab" href="#kanji" chooseBookCat="kanji" class="chosseBookItem">Kanji</a></li>
+                <li><a data-toggle="tab" href="#speech" chooseBookCat="speech" class="chosseBookItem">Speech</a></li>
             </ul>
             <div class="tab-content choose-book">
                 <div id="allbook" class="tab-pane fade in active">
@@ -27,22 +28,23 @@
 
                                 <div class="row">
                                     <div class="col-sm-2">
-
                                         <% if (books[i].image) { %>
-                                        <img id="imglink<%= i %>" src="/media/image/<%= books[i].image %>" width="45"
+                                        <img id="imglink<%= books[i].id %>" src="/media/image/<%= books[i].image %>"
+                                             width="45"
                                              height="45"/>
                                         <% } else { %>
-                                        <img id="imglink<%= i %>" src="/images/bookicon.jpg" width="45" height="45"/>
+                                        <img id="imglink<%= books[i].id %>" src="/images/bookicon.jpg" width="45"
+                                             height="45"/>
                                         <% } %>
 
                                     </div>
                                     <div class="col-sm-9">
-                                        <input type="hidden" id="bookid<%= i %>" value="<%= books[i].id %>">
-                                        <a onclick="addbook(<%= i %>)" id="bookname<%= i %>"
+                                        <input type="hidden" id="bookid<%= books[i].id %>" value="<%= books[i].id %>">
+                                        <a onclick="addbook('<%= books[i].id %>')" id="bookname<%= books[i].id %>"
                                            title="<%= books[i].name %>"><p
                                                     class="lbUser"><%= books[i].name %></p></a>
 
-                                        <p title="<%= books[i].level %>" id="booklv<%= i %>">Level
+                                        <p title="<%= books[i].level %>" id="booklv<%= books[i].id %>">Level
                                             : <%= books[i].level %></p>
                                     </div>
                                 </div>
@@ -86,11 +88,10 @@
             data: {
                 chooseBookCat: chooseBookCat
             },
-            dataType: 'json',
-            cache: false,
             success: function (data) {
-                $('#vocabulary').html('');
-                $('#vocabulary').html(data);
+
+                $('#' + chooseBookCat + '').html('');
+                $('#' + chooseBookCat + '').html(data);
             },
             error: function () {
                 alert('loi roi nhe');
