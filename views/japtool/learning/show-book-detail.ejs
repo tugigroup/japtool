@@ -35,7 +35,7 @@
                                             <% if(uniqueLessons[i] == bookDetail.lesson) { %>
                                             <li><a class="sub-lesson" href='javascript: void(0)'
                                                    name="<%= bookDetail.id %>"
-                                                   onclick="father('<%= bookDetail.useModule %>', <%= bookDetail.dataExtractCondition %>,'<%= bookDetail.lesson %>');"><i
+                                                   onclick="father('<%= bookDetail.useModule %>', <%= bookDetail.dataExtractCondition %>, '<%= bookDetail.id %>','<%= bookDetail.lesson %>');"><i
                                                             class="fa fa-circle-o"></i> <%= bookDetail.subLesson %></a>
                                             </li>
                                             <% } %>
@@ -57,19 +57,23 @@
                                         <h3 class="text-center text-danger"><%= nameBook %></h3>
 
                                         <div class="row">
-                                            <div class="col-sm-6 text-right"><span><%=__("Type")%>: </span></div>
+                                            <div class="col-sm-6 text-right"><span><%= __("Type") %>: </span></div>
                                             <div class="col-sm-6"><%= type %></div>
-                                            <div class="col-sm-6 text-right"><span><%=__("Level")%>: </span></div>
+                                            <div class="col-sm-6 text-right"><span><%= __("Level") %>: </span></div>
                                             <div class="col-sm-6"><%= level %></div>
-                                            <div class="col-sm-6 text-right"><span><%=__("Sort")%>: </span></div>
+                                            <div class="col-sm-6 text-right"><span><%= __("Sort") %>: </span></div>
                                             <div class="col-sm-6"><%= sort %></div>
-                                            <div class="col-sm-6 text-right"><span><%=__("Number Lesson")%>: </span></div>
+                                            <div class="col-sm-6 text-right"><span><%= __("Number Lesson") %>: </span>
+                                            </div>
                                             <div class="col-sm-6"><%= lessonNum %></div>
-                                            <div class="col-sm-6 text-right"><span><%=__("Learn Hour")%>: </span></div>
+                                            <div class="col-sm-6 text-right"><span><%= __("Learn Hour") %>: </span>
+                                            </div>
                                             <div class="col-sm-6"><%= hoursForLearn %></div>
-                                            <div class="col-sm-6 text-right"><span><%=__("Number User")%>: </span></div>
+                                            <div class="col-sm-6 text-right"><span><%= __("Number User") %>: </span>
+                                            </div>
                                             <div class="col-sm-6"><%= usedNum %></div>
-                                            <div class="col-sm-6 text-right"><span><%=__("Description")%>: </span></div>
+                                            <div class="col-sm-6 text-right"><span><%= __("Description") %>: </span>
+                                            </div>
                                             <div class="col-sm-6"><%= description %></div>
                                         </div>
                                     </div>
@@ -103,18 +107,18 @@
     </div>
 </div>
 <script>
-    function father(module, condition, lesson) {
+    function father(module, condition, detailId, lesson) {
         learn(module, condition);
-        savee(lesson);
+        savee(lesson, detailId);
     }
     function learn(module, condition) {
         var strCondition = JSON.stringify(condition);
         console.log(strCondition);
         $('#container-learn').load('/japtool/' + module + '/?condition=' + strCondition);
     }
-    function savee(lesson) {
+    function savee(lesson, detailId) {
         var learnID = $('#learnID').val();
-        var bookDetail = $('.sub-lesson').attr('name');
+        var bookDetail = detailId;
         var user = '<%= session.User.id %>';
         var startDate = new Date();
 

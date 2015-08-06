@@ -22,18 +22,23 @@ module.exports = {
                     else {
                         if (selfLearnings.length > 0) {
                             for (var i = 0; i < selfLearnings.length; i++) {
+
                                 BookMaster.findOne({id: selfLearnings[i].bookMaster.id}).populate('bookDetails', {sort: 'sort ASC'}).exec(function createCB(err, data) {
                                     if (err) {
                                         sails.log("Lois")
                                     } else {
                                         var bookDetails = data.bookDetails;
                                         var lessons = [];
-                                        bookDetails.forEach(function (item) {
+                                        bookDetails.forEach(function (item, index) {
+                                            if (index == 0) {
+                                                lessons.push(data.id);
+                                            }
                                             lessons.push(item.lesson);
                                         });
                                         var uniqueLessons = array(lessons).unique().value();
                                         b.push(uniqueLessons);
                                         if (b.length == selfLearnings.length) {
+                                            sails.log(b);
                                             res.view('japtool/home/home', {selfLearnings: selfLearnings, b: b});
                                         }
                                         else {
