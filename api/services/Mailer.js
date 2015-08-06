@@ -5,6 +5,54 @@
 module.exports = {
   sendActiveMail: function (user, activeLink) {
     var nodemailer = require('nodemailer');
+
+    var hbs = require('nodemailer-express-handlebars');
+    //email template setting
+    var options = {
+      viewEngine: {
+        extname: '.hbs',
+        layoutsDir: 'views/japtool/email/template',
+        defaultLayout: 'template',
+        partialsDir: 'views/japtool/email/template/partials/'
+      },
+      viewPath: 'views/japtool/email/',
+      extName: '.hbs'
+    };
+
+    var mailer = nodemailer.createTransport(({
+      host: Constants.smtpServer,
+      port: Constants.smtpPort,
+      auth: {
+          user: Constants.smtpUser,
+          pass: Constants.smtpPass
+      }
+    }));
+    mailer.use('compile', hbs(options));
+
+    // compose mail content
+    var mail = {
+      from: Constants.sendFrom,
+      to: user.email,
+      subject: 'Active Japanese Learning Online Tool Account ✔',
+      template: 'new',
+      context: {
+        username: user.username,
+        activelink: activeLink
+      }
+    };
+    
+    mailer.sendMail(mail, function (error) {
+      if (error) {
+        console.log('Error occured');
+        console.log(error);
+        return;
+      }
+      mailer.close(); // close the connection pool
+    });
+  },
+
+  sendActiveLinkByGmail: function (user, activeLink) {
+    var nodemailer = require('nodemailer');
     var hbs = require('nodemailer-express-handlebars');
     //email template setting
     var options = {
