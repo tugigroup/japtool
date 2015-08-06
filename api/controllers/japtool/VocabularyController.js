@@ -8,7 +8,7 @@
 module.exports = {
     lesson: function (req, res) {
         var extractDataCondition = req.param('condition');
-
+            console.log(extractDataCondition);
         //var extractDataCondition = '{"level": "N3", "tag" : {"contains":",tap1,lession5,"}}';
         Vocabulary.selectByLevel({condition: extractDataCondition}, function (err, vocabularies) {
             if (err) return res.send(err.status);

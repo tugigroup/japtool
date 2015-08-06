@@ -341,6 +341,22 @@ function Learn(id) {
     $('#formedit').addClass('fade').modal('show');
 }
 //end nam
+//XOA KHOANG TRANG TRONG CHUOI
+function trimSpace(str) {
+    str = str.replace(/\s/g, "");
+    str = str.replace(/'/g, "\"");
+    return str;
+}
+//SHOW INFO LEARNING
+$(document).ready(function(){
+    var useModule = $('#useModule').val();
+    var condition = trimSpace($('#conditionS').val());
+    console.log(useModule);
+    console.log(condition);
+    $("#container-learn").load('/japtool/' + useModule + '/?condition=' + condition);
+})
+
+
 /*end choose book*/
 //end recommend login
 

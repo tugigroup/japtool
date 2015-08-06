@@ -22,7 +22,7 @@
                             <section class="sidebar pre-scrollable">
                                 <!-- Sidebar user panel -->
                                 <ul class="sidebar-menu">
-                                    <% for(var i = 0;i < uniqueLessons.length;i++){ %>
+                                    <% for(var i = 0;i <= uniqueLessons.length;i++){ %>
                                     <input type="hidden" id="learnID" value="<%= learnID %>">
                                     <li class="treeview">
                                         <a id="lesson" href="javascript: void(0)">
@@ -54,24 +54,34 @@
                             <section class="content-wrapper-body">
                                 <div class="row">
                                     <div id="container-learn">
+                                        <% if(!lessonItem || lessonItem == undefined){ %>
                                         <h3 class="text-center text-danger"><%= nameBook %></h3>
 
                                         <div class="row">
-                                            <div class="col-sm-6 text-right"><span><%=__("Type")%>: </span></div>
+                                            <div class="col-sm-6 text-right"><span><%= __("Type") %>: </span></div>
                                             <div class="col-sm-6"><%= type %></div>
-                                            <div class="col-sm-6 text-right"><span><%=__("Level")%>: </span></div>
+                                            <div class="col-sm-6 text-right"><span><%= __("Level") %>: </span></div>
                                             <div class="col-sm-6"><%= level %></div>
-                                            <div class="col-sm-6 text-right"><span><%=__("Sort")%>: </span></div>
+                                            <div class="col-sm-6 text-right"><span><%= __("Sort") %>: </span></div>
                                             <div class="col-sm-6"><%= sort %></div>
-                                            <div class="col-sm-6 text-right"><span><%=__("Number Lesson")%>: </span></div>
+                                            <div class="col-sm-6 text-right"><span><%= __("Number Lesson") %>: </span>
+                                            </div>
                                             <div class="col-sm-6"><%= lessonNum %></div>
-                                            <div class="col-sm-6 text-right"><span><%=__("Learn Hour")%>: </span></div>
+                                            <div class="col-sm-6 text-right"><span><%= __("Learn Hour") %>: </span>
+                                            </div>
                                             <div class="col-sm-6"><%= hoursForLearn %></div>
-                                            <div class="col-sm-6 text-right"><span><%=__("Number User")%>: </span></div>
+                                            <div class="col-sm-6 text-right"><span><%= __("Number User") %>: </span>
+                                            </div>
                                             <div class="col-sm-6"><%= usedNum %></div>
-                                            <div class="col-sm-6 text-right"><span><%=__("Description")%>: </span></div>
+                                            <div class="col-sm-6 text-right"><span><%= __("Description") %>: </span>
+                                            </div>
                                             <div class="col-sm-6"><%= description %></div>
                                         </div>
+                                        <% } else{ %>
+                                        <input type="hidden" id="useModule" value="<%= useModule %>">
+                                        <input type="hidden" id="conditionS" value="<%= condition %>">
+                                        <%= condition %>
+                                        <% } %>
                                     </div>
                                 </div>
                             </section>
@@ -103,13 +113,13 @@
     </div>
 </div>
 <script>
+
     function father(module, condition, lesson) {
         learn(module, condition);
         savee(lesson);
     }
     function learn(module, condition) {
         var strCondition = JSON.stringify(condition);
-        console.log(strCondition);
         $('#container-learn').load('/japtool/' + module + '/?condition=' + strCondition);
     }
     function savee(lesson) {
@@ -136,4 +146,5 @@
     window.onload = function () {
 
     }
+
 </script>

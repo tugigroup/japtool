@@ -377,20 +377,61 @@ module.exports = {
                 });
                 var uniqueLessons = array(lessons).unique().value();
                 //uniqueLessons = array.sort(uniqueLessons);
-                res.view('japtool/learning/show-book-detail', {
-                    uniqueLessons: uniqueLessons,
+                var typeCat = data.type;
+
+                UserLearnHistory.findOne({
                     learnID: learnID,
-                    bookDetails: bookDetails,
-                    nameBook: data.name,
-                    description: data.description,
-                    type: data.type,
-                    level: data.level,
-                    sort: data.sort,
-                    lessonNum: data.lessonNum,
-                    hoursForLearn: data.hoursForLearn,
-                    usedNum: data.usedNum,
-                    layout: 'layout/layout-japtool'
+                    sort: 'createdAt DESC'
+                }).exec(function learnHistory(err, lessonItem) {
+                    if (err) {
+                        sails.log(err)
+                    }
+                    if (lessonItem || lessonItem != undefined) {
+                        var lessonH = lessonItem.lesson;
+                        var bookDetailH = lessonItem.bookDetail;
+                        var statusH = lessonItem.status;
+                        sails.log(lessonH);
+                        sails.log(bookDetailH);
+                        BookDetail.find({id:bookDetailH}).exec(function (err, lessonItemType) {
+                            if(err){
+                                 sails.log(err)
+                            }
+                            var dataExtractCondition = lessonItemType.dataExtractCondition;
+                            var useModule = lessonItemType.useModule;
+                            sails.log(useModule);
+                            res.view('japtool/learning/show-book-detail', {
+                                uniqueLessons: uniqueLessons,
+                                learnID: learnID,
+                                bookDetails: bookDetails,
+                                nameBook: data.name,
+                                type: data.type,
+                                condition: dataExtractCondition,
+                                useModule: useModule,
+                                lessonItem: lessonItem
+                            });
+                        })
+
+                    } else {
+                        res.view('japtool/learning/show-book-detail', {
+                            uniqueLessons: uniqueLessons,
+                            learnID: learnID,
+                            bookDetails: bookDetails,
+                            nameBook: data.name,
+                            description: data.description,
+                            type: data.type,
+                            level: data.level,
+                            sort: data.sort,
+                            lessonNum: data.lessonNum,
+                            hoursForLearn: data.hoursForLearn,
+                            usedNum: data.usedNum,
+                            lessonItem: lessonItem
+                        });
+                    }
+
+
                 });
+
+
             }
         })
     },
