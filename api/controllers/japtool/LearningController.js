@@ -394,7 +394,6 @@ module.exports = {
                             }
                             var dataExtractCondition = lessonItemType.dataExtractCondition;
                             var useModule = lessonItemType.useModule;
-                            console.log(dataExtractCondition);
                             res.view('japtool/learning/show-book-detail', {
                                 uniqueLessons: uniqueLessons,
                                 learnID: learnID,
