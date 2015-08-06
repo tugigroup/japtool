@@ -351,8 +351,6 @@ function trimSpace(str) {
 $(document).ready(function(){
     var useModule = $('#useModule').val();
     var condition = trimSpace($('#conditionS').val());
-    console.log(useModule);
-    console.log(condition);
     $("#container-learn").load('/japtool/' + useModule + '/?condition=' + condition);
 })
 

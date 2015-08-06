@@ -378,27 +378,23 @@ module.exports = {
                 var uniqueLessons = array(lessons).unique().value();
                 //uniqueLessons = array.sort(uniqueLessons);
                 var typeCat = data.type;
-
+                //sails.log(learnID);
                 UserLearnHistory.findOne({
-                    learnID: learnID,
+                    selfLearning: learnID,
                     sort: 'createdAt DESC'
                 }).exec(function learnHistory(err, lessonItem) {
                     if (err) {
                         sails.log(err)
                     }
                     if (lessonItem || lessonItem != undefined) {
-                        var lessonH = lessonItem.lesson;
                         var bookDetailH = lessonItem.bookDetail;
-                        var statusH = lessonItem.status;
-                        sails.log(lessonH);
-                        sails.log(bookDetailH);
-                        BookDetail.find({id:bookDetailH}).exec(function (err, lessonItemType) {
+                        BookDetail.findOne({id:bookDetailH}).exec(function (err, lessonItemType) {
                             if(err){
                                  sails.log(err)
                             }
                             var dataExtractCondition = lessonItemType.dataExtractCondition;
                             var useModule = lessonItemType.useModule;
-                            sails.log(useModule);
+                            console.log(dataExtractCondition);
                             res.view('japtool/learning/show-book-detail', {
                                 uniqueLessons: uniqueLessons,
                                 learnID: learnID,
@@ -475,7 +471,7 @@ module.exports = {
 
             }
         });
-    },
+    }
     /*getMissLesson: function (req, res) {
      var bookId = req.param('bookId');
      var learningId = req.param('learningId');
