@@ -468,15 +468,19 @@ module.exports = {
                     }
                     //Total learning Day
                     var totalDay = Math.ceil((finishDate - startDate) / 86400000) + 1;
+                    sails.log('Total day'+totalDay);
                     // Total Lesson Day
                     var lessonDay = Math.ceil(bookDetails.length / totalDay);
+                    sails.log('lessonDay '+lessonDay);
                     //Total Current Day
                     var currentTotalDay = Math.ceil((currentDate - startDate) / 86400000) + 1;
+                    sails.log('currentTotalDay '+currentTotalDay);
                     //current total Lesson Day
                     var currentTotalLessonDay = Math.ceil(currentTotalDay * lessonDay);
+                    sails.log('currentTotalLessonDay '+currentTotalLessonDay);
                     //current total lesson learning
                     var lessonLearning = selfLearning.userLearnHistories.length;
-
+                    sails.log('lessonLearning '+lessonLearning);
                     //miss total lesson
                     if (lessonDay > bookDetails.length || lessonLearning >= currentTotalLessonDay) {
                         /*sails.log("current total lesson learning: "
