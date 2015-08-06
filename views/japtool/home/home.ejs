@@ -1,35 +1,35 @@
 <script type="text/javascript">
-    /*window.onload = function () {
-     $(".bookMaterIdClass").each(function () {
-     var bookId = $(this).val();
-     var startDate = $("#startDate" + bookId).val();
-     var finishDate = $("#finishDate" + bookId).val();
-     var learningId = $("#learningId" + bookId).val();
-     var data = {
-     bookId: bookId,
-     startDate: startDate,
-     finishDate: finishDate,
-     learningId: learningId
-     };
-     $.ajax({
-     method: "GET",
-     url: "/japtool/Learning/getMissLesson",
-     data: data
-     }).done(function (data) {
-     console.log(data);
-     data.forEach(function (item) {
-     $("#" + bookId).append(
-     '<div class="col-sm-3">' +
-     '<div class="info-lesson label-warning"><a>' + item.lesson + ' </a></div>' +
-     '</div>'
-     );
-     });
+    window.onload = function () {
+        $(".bookMaterIdClass").each(function () {
+            var bookId = $(this).val();
+            var startDate = $("#startDate" + bookId).val();
+            var finishDate = $("#finishDate" + bookId).val();
+            var learningId = $("#learningId" + bookId).val();
+            var data = {
+                bookId: bookId,
+                startDate: startDate,
+                finishDate: finishDate,
+                learningId: learningId
+            };
+            $.ajax({
+                method: "GET",
+                url: "/japtool/Learning/getMissLesson",
+                data: data
+            }).done(function (data) {
+                console.log(data);
+                data.forEach(function (item) {
+                    $("#" + bookId).append(
+                            '<div class="col-sm-3">' +
+                            '<div class="info-lesson label-warning"><a>' + item.lesson + ' </a></div>' +
+                            '</div>'
+                    );
+                });
 
-     });
+            });
 
-     });
+        });
 
-     };*/
+    };
 </script>
 <div class="vocabulary content clearfix">
     <div class="container">
@@ -53,31 +53,30 @@
             <% } %>
             <% } %>
             <% } %>
-            <div class="row">
 
                 <% if(a == true){ %>
                 <% if(d == 1){ %>
-                <h6 style="color: #008800">
-                    <%= b[index][j] %></h6>
+                <div class="col-sm-3">
+                    <div class="info-lesson label-success"><a><%= b[index][j] %></a></div>
+                </div>
                 <% }else if(d == 2){ %>
-                <h6 style="color: #880000">
-                    <%= b[index][j] %></h6>
+                <div class="col-sm-3">
+                    <div class="info-lesson label-danger"><a><%= b[index][j] %></a></div>
+                </div>
                 <% }else{ %>
-                <h6 style="color: #ffff00">
-                    <%= b[index][j] %></h6>
+                <div class="col-sm-3">
+                    <div class="info-lesson label-warning"><a><%= b[index][j] %></a></div>
+                </div>
+                <% } %>
+                <% }else{ %>
+                <div class="col-sm-3">
+                    <div class="info-lesson label-primary"><a><%= b[index][j] %></a></div>
+                </div>
                 <% } %>
 
-                <% }else{ %>
-                <h6>
-                    <%= b[index][j] %></h6>
-                <% } %>
-            </div>
 
             <% } %>
 
-            <p class="text-center desc-home"><%= __("Display japanese learning group of your friend , let's join now") %></p>
-
-            <p class="text-center desc-home"><i><a><%= __("view all") %></a></i></p>
             <!--Show bool user History-->
             <div class="col-sm-6">
                 <div class="vocabulary-item">

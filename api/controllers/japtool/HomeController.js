@@ -9,12 +9,8 @@ module.exports = {
     },
 //This loads index.ejs
     index: function (req, res) {
-
         var b = new Array();
         var array = require("array-extended");
-
-        sails.log(b);
-
         try {
             SelfLearning.find({user: req.session.User.id})
                 .populate('bookMaster')
@@ -25,11 +21,7 @@ module.exports = {
                     }
                     else {
                         if (selfLearnings.length > 0) {
-
                             for (var i = 0; i < selfLearnings.length; i++) {
-                                sails.log("**********Start***********************");
-                                sails.log(selfLearnings[i]);
-                                sails.log("**********END***********************");
                                 BookMaster.findOne({id: selfLearnings[i].bookMaster.id}).populate('bookDetails', {sort: 'sort ASC'}).exec(function createCB(err, data) {
                                     if (err) {
                                         sails.log("Lois")
@@ -42,16 +34,13 @@ module.exports = {
                                         var uniqueLessons = array(lessons).unique().value();
                                         b.push(uniqueLessons);
                                         if (b.length == selfLearnings.length) {
-                                            sails.log("da du");
                                             res.view('japtool/home/home', {selfLearnings: selfLearnings, b: b});
                                         }
                                         else {
-                                            sails.log(b.length);
                                         }
                                     }
                                 })
                             }
-
                         }
                         else {
                             res.view('japtool/home/home', {selfLearnings: selfLearnings, b: b});
