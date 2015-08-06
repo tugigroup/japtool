@@ -42,12 +42,13 @@
         <h2 class="text-left clearfix"><%= selfLearning.bookMaster.name %></h2>
 
         <div class="row">
-
-            <% for(var j = 0;j < b[index].length;j++){ %>
+            <% for(var k = 0;k < b.length;k++){ %>
+            <% if(b[k][0] == selfLearning.bookMaster.id){ %>
+            <% for(var j = 1;j < b[k].length;j++){ %>
             <% var a = false; %>
             <% var d; %>
             <% for(var i = 0;i < selfLearning.userLearnHistories.length;i++){ %>
-            <% if(b[index][j] == selfLearning.userLearnHistories[i].lesson){ %>
+            <% if(b[k][j] == selfLearning.userLearnHistories[i].lesson){ %>
             <% a = true; %>
             <% if(selfLearning.userLearnHistories[i].status){ %>
             <% if(selfLearning.userLearnHistories[i].status == 'passed'){ %>
@@ -62,29 +63,32 @@
             <% if(a == true){ %>
             <% if(d == 1){ %>
             <div class="col-sm-1" style="padding-bottom: 15px">
-                <div class="info-lesson label-success"><a><%= b[index][j] %></a></div>
+                <div class="info-lesson label-success"><a><%= b[k][j] %></a></div>
             </div>
             <% }else if(d == 2){ %>
             <div class="col-sm-1" style="padding-bottom: 15px">
-                <div class="info-lesson label-danger"><a><%= b[index][j] %></a></div>
+                <div class="info-lesson label-danger"><a><%= b[k][j] %></a></div>
             </div>
             <% }else{ %>
             <div class="col-sm-1" style="padding-bottom: 15px">
-                <div class="info-lesson label-warning"><a><%= b[index][j] %></a></div>
+                <div class="info-lesson label-warning"><a><%= b[k][j] %></a></div>
             </div>
             <% } %>
             <% }else{ %>
             <div class="col-sm-1" style="padding-bottom: 15px">
-                <div class="info-lesson label-primary"><a><%= b[index][j] %></a></div>
+                <div class="info-lesson label-primary"><a><%= b[k][j] %></a></div>
             </div>
             <% } %>
 
+            <% } %>
+            <% } %>
             <% } %>
 
             <!--Show bool user History-->
 
 
         </div>
+        -------------------------------------------------------------------------------------------------------------------------------
 
         <% }); %>
         <% } else { %>
