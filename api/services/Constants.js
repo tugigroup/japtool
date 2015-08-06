@@ -9,7 +9,7 @@ module.exports = {
     maxSurveyQuestion: 5,
     maxLibraRs: 30,
     maxLibOnPage: 9,
-    isPassed: 0.5,
+    isPassed: 0.8,
     //Email
     user: 'mrbotno@gmail.com',
     clientId: '109620886904-3i95hnuu084hoc937tnoikl818kd445k.apps.googleusercontent.com',

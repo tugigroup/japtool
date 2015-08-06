@@ -35,7 +35,7 @@
                                             <% if(uniqueLessons[i] == bookDetail.lesson) { %>
                                             <li><a class="sub-lesson" href='javascript: void(0)'
                                                    name="<%= bookDetail.id %>"
-                                                   onclick="father('<%= bookDetail.useModule %>', <%= bookDetail.dataExtractCondition %>,'<%= bookDetail.lesson %>');"><i
+                                                   onclick="father('<%= bookDetail.useModule %>', <%= bookDetail.dataExtractCondition %>, '<%= bookDetail.id %>','<%= bookDetail.lesson %>');"><i
                                                             class="fa fa-circle-o"></i> <%= bookDetail.subLesson %></a>
                                             </li>
                                             <% } %>
@@ -56,7 +56,6 @@
                                     <div id="container-learn">
                                         <% if(!lessonItem || lessonItem == undefined){ %>
                                         <h3 class="text-center text-danger"><%= nameBook %></h3>
-
                                         <div class="row">
                                             <div class="col-sm-6 text-right"><span><%= __("Type") %>: </span></div>
                                             <div class="col-sm-6"><%= type %></div>
@@ -113,18 +112,17 @@
     </div>
 </div>
 <script>
-
-    function father(module, condition, lesson) {
+    function father(module, condition, detailId, lesson) {
         learn(module, condition);
-        savee(lesson);
+        savee(lesson, detailId);
     }
     function learn(module, condition) {
         var strCondition = JSON.stringify(condition);
         $('#container-learn').load('/japtool/' + module + '/?condition=' + strCondition);
     }
-    function savee(lesson) {
+    function savee(lesson, detailId) {
         var learnID = $('#learnID').val();
-        var bookDetail = $('.sub-lesson').attr('name');
+        var bookDetail = detailId;
         var user = '<%= session.User.id %>';
         var startDate = new Date();
 
@@ -134,7 +132,7 @@
             data: {
                 lesson: lesson,
                 user: user,
-                learnID: learnID,
+                selfLearning: learnID,
                 bookDetail: bookDetail,
                 startDate: startDate
             }
