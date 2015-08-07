@@ -34,17 +34,43 @@ module.exports = {
       //Long user in
       req.session.authenticated = true;
       req.session.User = user;
-      var idUser = req.session.User.id;
+      
       //Update user address
-      User.update({id: idUser}, {yourAddress: yourAddress}, function (err, updateUser) {
+      User.update({id: user.id}, {yourAddress: yourAddress}, function (err, updateUser) {
       });
+
       //after create user success, generate email include active link --> bcrypt: email + create date
-      require('bcryptjs').hash(user.email + user.createdAt.toISOString(), 10, function passwordEncypted(err, encryptedLink) {
+      require('bcryptjs').hash(user.email + user.createdAt.toISOString(), 10, function passwordEncypted(err, activeCode) {
         if (err) {
           console.log('Encrypt active link failed!');
         } else {
           //send active email
-          Mailer.sendActiveMail(user, 'http://localhost:1337/japtool/user/active?active=' + encryptedLink);
+
+          var ejs = require('ejs');
+          var fs = require('fs');
+          var path = require("path");
+
+          console.log(path.join(__dirname, '../../../views/japtool/email/activeAccount.ejs'));
+
+          fs.readFile(path.join(__dirname, '../../../views/japtool/email/activeAccount.ejs'), 'utf8', function (err, template) {
+
+            console.log(template);
+
+            var mailContent = ejs.render(template,{
+                req: req,
+                username: user.username, 
+                activelink: activeCode
+            });
+            console.log(mailContent);
+          });
+
+          // var html = res.render('/japtool/email/activeAccount', { 
+          //   "username": user.username, 
+          //   "activelink": activeCode
+          // });
+          // console.log(html);
+
+          //Mailer.sendActiveMail(user, activeCode);
           //and then, redirect to recommend page
           res.redirect('/japtool/user/');
         }
