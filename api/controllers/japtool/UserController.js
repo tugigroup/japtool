@@ -43,7 +43,7 @@ module.exports = {
       var activateUrl = homeUrl + '/japtool/user/active?activatecode=' + user.id;
       var subject = req.__('Account activate mail subject');
 
-      Mailer.sendActiveMail(user, {subject: subject, homeUrl: homeUrl, activateUrl: activateUrl} );
+      Mailer.sendActiveMail(user, {subject: subject, lang: req.session.lang, homeUrl: homeUrl, activateUrl: activateUrl} );
 
       //　go to waiting active page
       res.view('japtool/user/active-account', {code: 'waitActivate'});

@@ -17,7 +17,7 @@ module.exports = {
       }
     }));
 
-    fs.readFile(path.join(__dirname, '../../views/japtool/email/activeAccount.ejs'), 'utf8', function (err, template) {
+    fs.readFile(path.join(__dirname, '../../views/japtool/email/activeAccount_' + mailContent.lang + '.ejs'), 'utf8', function (err, template) {
 
       var body = ejs.render(template,{
           user: user,
