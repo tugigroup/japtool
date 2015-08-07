@@ -379,32 +379,49 @@ module.exports = {
                 //Search a lesson last of User and show to screen
                 UserLearnHistory.findOne({
                     selfLearning: learnID,
-                    sort: 'createdAt DESC'
+                    sort: 'updatedAt DESC'
                 }).exec(function learnHistory(err, lessonItem) {
+                    var list = new Array();
                     if (err) {
                         sails.log(err)
                     }
                     if (lessonItem || lessonItem != undefined) {
-                        var bookDetailH = lessonItem.bookDetail;
-                        BookDetail.findOne({id: bookDetailH}).exec(function (err, lessonItemType) {
+                        UserLearnHistory.find({
+                            selfLearning: learnID,
+                            user: req.session.User.id
+                        }).exec(function (err, listLearn) {
                             if (err) {
-                                sails.log(err)
+
                             }
-                            var dataExtractCondition = lessonItemType.dataExtractCondition;
-                            var useModule = lessonItemType.useModule;
-                            res.view('japtool/learning/show-book-detail', {
-                                uniqueLessons: uniqueLessons,
-                                learnID: learnID,
-                                bookDetails: bookDetails,
-                                nameBook: data.name,
-                                type: data.type,
-                                condition: dataExtractCondition,
-                                useModule: useModule,
-                                lessonItem: lessonItem
-                            });
+                            else {
+                                list = listLearn;
+                                var bookDetailH = lessonItem.bookDetail;
+                                BookDetail.findOne({id: bookDetailH}).exec(function (err, lessonItemType) {
+                                    if (err) {
+                                        sails.log(err)
+                                    }
+                                    var dataExtractCondition = lessonItemType.dataExtractCondition;
+                                    var useModule = lessonItemType.useModule;
+                                    res.view('japtool/learning/show-book-detail', {
+                                        list: list,
+                                        uniqueLessons: uniqueLessons,
+                                        learnID: learnID,
+                                        bookDetails: bookDetails,
+                                        nameBook: data.name,
+                                        type: data.type,
+                                        condition: dataExtractCondition,
+                                        useModule: useModule,
+                                        lessonItem: lessonItem
+
+
+                                    });
+                                })
+                            }
                         })
+
                     } else {
                         res.view('japtool/learning/show-book-detail', {
+                            list: list,
                             uniqueLessons: uniqueLessons,
                             learnID: learnID,
                             bookDetails: bookDetails,
