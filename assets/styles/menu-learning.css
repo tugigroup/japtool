@@ -698,7 +698,7 @@ a:focus {
 }
 .sidebar-menu > li > a {
   border-left: 3px solid transparent;
-  font-weight: 600;
+  font-weight: 400;
 }
 .sidebar-menu > li:hover > a,
 .sidebar-menu > li.active > a {
@@ -772,5 +772,7 @@ a:focus {
     border-left: 1px solid #d2d6de;
   }
 }
-
+.lesson-warning{
+  color:#DC8B02 !important;
+}
 
