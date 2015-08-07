@@ -379,7 +379,7 @@ module.exports = {
                 //Search a lesson last of User and show to screen
                 UserLearnHistory.findOne({
                     selfLearning: learnID,
-                    sort: 'createdAt DESC'
+                    sort: 'updatedAt DESC'
                 }).exec(function learnHistory(err, lessonItem) {
                     if (err) {
                         sails.log(err)
@@ -400,7 +400,10 @@ module.exports = {
                                 type: data.type,
                                 condition: dataExtractCondition,
                                 useModule: useModule,
-                                lessonItem: lessonItem
+                                lessonItem: lessonItem,
+                                bookDetailH:bookDetailH
+
+
                             });
                         })
                     } else {

@@ -79,6 +79,7 @@
                                         <% } else{ %>
                                         <input type="hidden" id="useModule" value="<%= useModule %>">
                                         <input type="hidden" id="conditionS" value="<%= condition %>">
+                                        <input type="hidden" id="bookDetailH" value="<%= bookDetailH %>">
                                         <% } %>
                                     </div>
                                 </div>
@@ -140,11 +141,20 @@
                     console.log(msg);
                 });
     }
-
+function openTreeview(bookID){
+    $('.sub-lesson').each(function(itemLessonID,index){
+        if($(this).attr('name') == bookID){
+            $(this).closest('.treeview').addClass('active');
+        }
+    });
+}
     window.onload = function () {
         var useModule = $('#useModule').val();
         var condition = trimSpace($('#conditionS').val());
         $("#container-learn").load('/japtool/' + useModule + '/?condition=' + condition);
+        $('ul.treeview-menu li.sub-lesson')
+        var bookDetailH = $('#bookDetailH').val();
+        openTreeview(bookDetailH);
     }
 
 </script>
