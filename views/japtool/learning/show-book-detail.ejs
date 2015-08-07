@@ -44,7 +44,7 @@
                                     if (passed == 1) {
                                     %>
                                     <li class="treeview">
-                                        <a class="lesson text-success" href="javascript: void(0)">
+                                        <a class="lesson lesson-success" href="javascript: void(0)">
                                             <i class="fa fa-edit"></i> <span><%= uniqueLessons[i] %></span>
                                             <i class="fa fa-angle-left pull-right"></i>
                                         </a>
@@ -70,7 +70,7 @@
                                     else if (passed == 2) {
                                     %>
                                     <li class="treeview">
-                                        <a class="lesson text-danger" href="javascript: void(0)">
+                                        <a class="lesson lesson-danger" href="javascript: void(0)">
                                             <i class="fa fa-edit"></i> <span><%= uniqueLessons[i] %></span>
                                             <i class="fa fa-angle-left pull-right"></i>
                                         </a>
@@ -208,7 +208,8 @@
                 <h4 class="modal-title" id="myModalContent"></h4>
             </div>
             <div class="modal-footer">
-                <button type="button" id="btn1" class="btn btn-default" data-dismiss="modal">OK</button>
+                <button type="button" id="btn-nextLesson" class="btn btn-primary" data-dismiss="modal">Next Lesson</button>
+                <button type="button" id="btn1" class="btn btn-success" data-dismiss="modal">Close</button>
                 <!--<button type="button" id="btn2" class="btn btn-primary">Save changes</button>-->
             </div>
         </div>
@@ -228,7 +229,6 @@
         var bookDetail = detailId;
         var user = '<%= session.User.id %>';
         var startDate = new Date();
-
         $.ajax({
             method: "POST",
             url: "/japtool/Learning/saveHistory",
@@ -244,10 +244,23 @@
                     console.log(msg);
                 });
     }
-function openTreeview(bookID){
-    $('.sub-lesson').each(function(itemLessonID,index){
-        if($(this).attr('name') == bookID){
-            $(this).closest('.treeview').addClass('active');
+    function openTreeView(bookID) {
+        $('.sub-lesson').each(function (itemLessonID, index) {
+            var lessonBookID = $(this).attr('name');
+            //add Class Active to show screen
+            if (lessonBookID == bookID) {
+                $(this).closest('.treeview').addClass('active');
+            }
+        });
+    }
+function nextLesson(){
+    $('a.lesson').each(function (index,nextLessonID) {
+        var lessonD = !$(this).hasClass('lesson-danger');
+        var lessonS = !$(this).hasClass('lesson-success');
+        if(lessonD && lessonS){
+            var a = $(this).parent(".treeview").children().children().children(".sub-lesson");
+            console.log(a);
+            return false;
         }
     });
 }
@@ -255,9 +268,8 @@ function openTreeview(bookID){
         var useModule = $('#useModule').val();
         var condition = trimSpace($('#conditionS').val());
         $("#container-learn").load('/japtool/' + useModule + '/?condition=' + condition);
-        $('ul.treeview-menu li.sub-lesson')
         var bookDetailH = $('#bookDetailH').val();
-        openTreeview(bookDetailH);
+        openTreeView(bookDetailH);
     }
 
 </script>

@@ -775,4 +775,9 @@ a:focus {
 .lesson-warning{
   color:#DC8B02 !important;
 }
-
+.lesson-success{
+  color: #008d4c !important;
+}
+.lesson-danger{
+  color: #a94442 !important;
+}
