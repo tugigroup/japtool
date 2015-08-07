@@ -726,7 +726,6 @@ $(document).ready(function () {
 
 //XOA KHOANG TRANG TRONG CHUOI
 function trimSpace(str) {
-    console.log(str);
     str = str.replace(/\s/g, "");
     str = str.replace(/'/g, "\"");
 
