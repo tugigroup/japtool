@@ -38,7 +38,6 @@ module.exports = {
                                         var uniqueLessons = array(lessons).unique().value();
                                         b.push(uniqueLessons);
                                         if (b.length == selfLearnings.length) {
-                                            sails.log(b);
                                             res.view('japtool/home/home', {selfLearnings: selfLearnings, b: b});
                                         }
                                         else {
