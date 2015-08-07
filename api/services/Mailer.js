@@ -5,21 +5,8 @@ var ejs = require('ejs');
 var fs = require('fs');
 var path = require("path");
 module.exports = {
-  sendActiveMail: function (user, activeCode) {
+  sendActiveMail: function (user, mailContent) {
     var nodemailer = require('nodemailer');
-
-    // var hbs = require('nodemailer-express-handlebars');
-    // //email template setting
-    // var options = {
-    //   viewEngine: {
-    //     extname: '.hbs',
-    //     layoutsDir: 'views/japtool/email/template',
-    //     defaultLayout: 'template',
-    //     partialsDir: 'views/japtool/email/template/partials/'
-    //   },
-    //   viewPath: 'views/japtool/email/',
-    //   extName: '.hbs'
-    // };
 
     var mailer = nodemailer.createTransport(({
       host: Constants.smtpServer,
@@ -29,42 +16,28 @@ module.exports = {
           pass: Constants.smtpPass
       }
     }));
-    // mailer.use('compile', hbs(options));
-
-    // var mailContent = new EJS({url: '/japtool/mail/activeAccount.ejs'})
-    //                        .render({username: user.username, activelink: activelink});
-
-    console.log(activeCode);
-    console.log(path.join(__dirname, '../../views/japtool/email/activeAccount.ejs'));
 
     fs.readFile(path.join(__dirname, '../../views/japtool/email/activeAccount.ejs'), 'utf8', function (err, template) {
 
-      console.log(template);
-      console.log(activeCode);
-
-      var mailContent = ejs.render(template,{
-          "username": user.username, 
-          "activelink": activeCode
+      var body = ejs.render(template,{
+          user: user,
+          mailContent: mailContent
       });
-
-
-   
 
       // compose mail content
       var mail = {
         from: Constants.sendFrom,
         to: user.email,
-        subject: 'Active Japanese Learning Online Tool Account ✔',
-        html: mailContent
+        subject: mailContent.subject,
+        html: body
       };
       
       mailer.sendMail(mail, function (error) {
         if (error) {
-          console.log('Error occured');
           console.log(error);
           return;
         }
-        mailer.close(); // close the connection pool
+        mailer.close();
       });
     });
   },

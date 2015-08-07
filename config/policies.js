@@ -35,7 +35,8 @@ module.exports.policies = {
     'japtool/user': {
         '*': ["authenticated", "generalize"],
         new: "generalize",
-        create:"generalize"
+        create:"generalize",
+        active:"generalize"
     },
     // 'japtool/auth': {
     //     '*': "generalize"

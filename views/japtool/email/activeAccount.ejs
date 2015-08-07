@@ -1,10 +1,12 @@
-Dear <%= username %>,
-<%=__("Start Date")%> 
+Xin chào <%= user.username %>
 <br/><br/>
-You recently signed up for <%=__("website name")%> .<br/>
-To complete signup click this link:<br/>
-<a href="<%= activelink %>"><%= activelink %></a><br/>
-Or, you can copy and paste the link into your browser.
+Cảm ơn bạn đã đăng kí tài khoản tại Japanese learning online tool.<br/>
+Để hoàn thành việc đăng kí, xin hãy click vào link bên dưới để kích hoạt tài khoản.
+<br/><br/>
+<a href="<%= mailContent.activateUrl %>"> <%= mailContent.activateUrl %> </a>
+<br/><br/>
+Hoặc bạn có thể copy và dán đường link này vào trình duyệt.<br/>
+Bạn sẽ không thực hiện được đăng nhập cho đến khi tài khoản được kích hoạt.
 <br/><br/>
 Thank you,<br/>
-<a href="#"><%=__("website name")%></a>
+<a href="<%= mailContent.homeUrl %>"> Japanese learning online tool </a>

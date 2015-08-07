@@ -31,78 +31,40 @@ module.exports = {
         //if error redirect back to sign-up page
         return res.redirect('/japtool/user/new');
       }
-      //Long user in
-      req.session.authenticated = true;
+
       req.session.User = user;
+      //console.log(JSON.stringify(user));
       
       //Update user address
       User.update({id: user.id}, {yourAddress: yourAddress}, function (err, updateUser) {
       });
 
-      //after create user success, generate email include active link --> bcrypt: email + create date
-      require('bcryptjs').hash(user.email + user.createdAt.toISOString(), 10, function passwordEncypted(err, activeCode) {
-        if (err) {
-          console.log('Encrypt active link failed!');
-        } else {
-          //send active email
+      var homeUrl = req.protocol + '://' + req.host + ':' + sails.config.port;
+      var activateUrl = homeUrl + '/japtool/user/active?activatecode=' + user.id;
+      var subject = req.__('Account activate mail subject');
 
-          var ejs = require('ejs');
-          var fs = require('fs');
-          var path = require("path");
+      Mailer.sendActiveMail(user, {subject: subject, homeUrl: homeUrl, activateUrl: activateUrl} );
 
-          console.log(path.join(__dirname, '../../../views/japtool/email/activeAccount.ejs'));
-
-          fs.readFile(path.join(__dirname, '../../../views/japtool/email/activeAccount.ejs'), 'utf8', function (err, template) {
-
-            console.log(template);
-
-            var mailContent = ejs.render(template,{
-                req: req,
-                username: user.username, 
-                activelink: activeCode
-            });
-            console.log(mailContent);
-          });
-
-          // var html = res.render('/japtool/email/activeAccount', { 
-          //   "username": user.username, 
-          //   "activelink": activeCode
-          // });
-          // console.log(html);
-
-          //Mailer.sendActiveMail(user, activeCode);
-          //and then, redirect to recommend page
-          res.redirect('/japtool/user/');
-        }
-      });
+      //　go to waiting active page
+      res.view('japtool/user/active-account', {code: 'waitActivate'});
     });
   },
   //active account after new user created
   active: function (req, res) {
-    var active = req.param('active');
-    //compare active link with db, if equal --> change user status = true
-    bcrypt.compare(req.session.User.email + req.session.User.createdAt, active, function (err, valid) {
-      console.log('DB: ', req.session.User.email + req.session.User.createdAt);
-      //if the active link doesn't match
-      if (err || !valid) {
-        return res.view('japtool/user/active-account-success', {code: 'fail'});
+    var userID = req.param('activatecode');
+
+    User.findOne(userID, function(err, user) {
+      if (err || !user) {
+        return res.view('japtool/user/active-account', {code: 'fail'});
       }
-      //everything is valid,change user status and save to db, session
-      else {
-        User.update(req.session.User._id, {status: true}, function (err, userUpdated) {
-          if (err) {
-            return res.view('japtool/user/active-account-success', {
-              code: 'fail'
-            });
-          } else {
-            //Luu lại status vào session
-            req.session.User.status = userUpdated[0].status;
-            return res.view('japtool/user/active-account-success', {
-              code: 'success'
-            });
-          }
-        });
-      }
+      
+      User.update(user.id, {active: true}, function (err, userUpdated) {
+        if (err) {
+          return res.view('japtool/user/active-account', {code: 'fail'});
+        } 
+
+        return res.view('japtool/user/active-account', {code: 'success'});
+      });
     });
   },
   //render the profile view (show.ejs)

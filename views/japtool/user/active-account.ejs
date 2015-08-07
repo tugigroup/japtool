@@ -15,7 +15,7 @@
     </div>
   </div>
 </div>
-<% }else{ %>
+<% } else if(code == 'fail'){ %>
 <div class="wrapper">
   <div class="container">
 
@@ -27,6 +27,23 @@
       <p><%= __('Click here to sign up') %>
         <span class="label-danger label">
           <a href="/japtool/user/new"><%= __('Sign Up') %></a>
+        </span>
+      </p>
+    </div>
+  </div>
+</div>
+<% }  else if(code == 'waitActivate'){ %>
+<div class="wrapper">
+  <div class="container">
+
+    <div class="col-sm-12 text-center success-register">
+      <h3><%= __('Thank for Your registration') %></h3>
+
+      <p><%= __('Your account registration is successful! Please check your email to get activate link for your account.') %></p>
+
+      <p><%= __('Then click here to login and enjoy') %>
+        <span class="label-success label">
+          <a href="/japtool/auth"><%= __('Sign In') %></a>
         </span>
       </p>
     </div>
