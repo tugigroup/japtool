@@ -21,11 +21,11 @@
                             <!-- sidebar: style can be found in sidebar.less -->
                             <section class="sidebar pre-scrollable">
                                 <!-- Sidebar user panel -->
+                                <input type="hidden" id="learnID" value="<%= learnID %>">
                                 <ul class="sidebar-menu">
                                     <% for(var i = 0;i <= uniqueLessons.length;i++){ %>
-                                    <input type="hidden" id="learnID" value="<%= learnID %>">
                                     <li class="treeview">
-                                        <a id="lesson" href="javascript: void(0)">
+                                        <a class="lesson" href="javascript: void(0)">
                                             <i class="fa fa-edit"></i> <span><%= uniqueLessons[i] %></span>
                                             <i class="fa fa-angle-left pull-right"></i>
                                         </a>
@@ -140,8 +140,11 @@
                     console.log(msg);
                 });
     }
-    window.onload = function () {
 
+    window.onload = function () {
+        var useModule = $('#useModule').val();
+        var condition = trimSpace($('#conditionS').val());
+        $("#container-learn").load('/japtool/' + useModule + '/?condition=' + condition);
     }
 
 </script>

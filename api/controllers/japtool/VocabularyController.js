@@ -20,7 +20,6 @@ module.exports = {
         var CVExtractDataCondition = extractDataCondition.replace('lesson', 'Bài ');
         var arr = CVExtractDataCondition.split(',');
         var lessonn = arr[3];
-        sails.log(lessonn);
         //var extractDataCondition = '{"level": "N3", "tag" : {"contains":",tap1,lession5,"}}';
         Vocabulary.selectByLevel({condition: extractDataCondition}, function (err, vocabularies) {
             if (err) return res.send(err.status);
