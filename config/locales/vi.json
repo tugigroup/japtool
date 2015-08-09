@@ -269,10 +269,14 @@
   "Choose one N":"Chọn một mức",
   "What level do you want to learn or practices":"bạn muốn chọn mức nào để học và thực hành",
 
-
+  "If you forget your login password, click here":"Nếu bị quên mật khẩu hãy click vào đây",
 
   "Account activate mail subject":"Hãy kích hoạt tài khoản của bạn ✔",
-
+  "Send Password":"Gửi mật khẩu",
+  "User Account password reset":"Thông báo mật khẩu mới",
+  "Reset password successful":"Mật khẩu tài khoản của bạn đã được tạo lại",
+  "Please check your email to get your new password. Login and change your password in the account management":"Mật khẩu mới đã được gửi đến hòm thư của bạn. Đăng nhập và thay đổi mật khẩu trên trang thông tin cá nhân",
+  "Click here to go login page":"Click vào đây để chuyển đến trang đăng nhập",
 
 
 

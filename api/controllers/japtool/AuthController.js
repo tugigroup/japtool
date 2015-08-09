@@ -8,7 +8,7 @@ var passport = require('passport');
 var bcrypt = require('bcryptjs');
 module.exports = {
     'index': function (req, res) {
-        res.view({passforget:false});
+        res.view();
     },
     login: function (req, res, next) {
         // Check for email and password in params sent via the form, if none
@@ -137,12 +137,6 @@ module.exports = {
         });
 
     },
-
-    passforget: function (req, res) {
-        res.view('/japtool/auth/index', {passforget: true});
-    },
-
-
     destroy: function (req, res, next) {
         //wipe out the session (log out)
         var lang = req.session.lang;

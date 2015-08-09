@@ -5,7 +5,7 @@ var ejs = require('ejs');
 var fs = require('fs');
 var path = require("path");
 module.exports = {
-  sendActiveMail: function (user, mailContent) {
+  send: function (mailLayoutFile, user, mailContent) {
     var nodemailer = require('nodemailer');
 
     var mailer = nodemailer.createTransport(({
@@ -17,7 +17,7 @@ module.exports = {
       }
     }));
 
-    fs.readFile(path.join(__dirname, '../../views/japtool/email/activeAccount_' + mailContent.lang + '.ejs'), 'utf8', function (err, template) {
+    fs.readFile(path.join(__dirname, '../../views/japtool/email/' + mailLayoutFile), 'utf8', function (err, template) {
 
       var body = ejs.render(template,{
           user: user,

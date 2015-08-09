@@ -276,13 +276,14 @@
   "Choose one N":"Choose one N",
   "What level do you want to learn or practices":"What level do you want to learn or practices",
 
+  "If you forget your login password, click here":"If you forget your login password, click here",
+  
   "Account activate mail subject":"Account activate mail subject ✔",
-  "Dear":"Dear",
-  "Dear":"Dear",
-  "Dear":"Dear",
-  "Dear":"Dear",
-  "Dear":"Dear",
-  "Dear":"Dear",
+  "Send Password":"Send Password",
+  "User Account password reset":"User Account password reset",
+  "Reset password successful":"Reset password successful",
+  "Please check your email to get your new password. Login and change your password in the account management":"Please check your email to get your new password. Login and change your password in the account management",
+  "Click here to go login page":"Click here to go login page",
   "Dear":"Dear",
 
 

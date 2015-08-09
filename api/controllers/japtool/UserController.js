@@ -42,8 +42,9 @@ module.exports = {
       var homeUrl = req.protocol + '://' + req.host + ':' + sails.config.port;
       var activateUrl = homeUrl + '/japtool/user/active?activatecode=' + user.id;
       var subject = req.__('Account activate mail subject');
+      var mailLayoutFile = 'activeAccount_' + req.session.lang + '.ejs';
 
-      Mailer.sendActiveMail(user, {subject: subject, lang: req.session.lang, homeUrl: homeUrl, activateUrl: activateUrl} );
+      Mailer.send(mailLayoutFile, user, {subject: subject, homeUrl: homeUrl, activateUrl: activateUrl} );
 
       //　go to waiting active page
       res.view('japtool/user/active-account', {code: 'waitActivate'});
@@ -228,6 +229,46 @@ module.exports = {
     });
     //res.send({mess: mess});
   },
+  passforget: function (req, res) {
+    if( req.method=="GET" ) {
+      res.view('japtool/user/forget-password');
+    } 
+    else if (req.method=="POST" ) {
+      var email = req.param('email');
+
+      User.findOne({email: email}).exec(function (err, user) {
+        if (!user) {
+          res.view('japtool/user/active-account', {code: 'fail'});
+        } else {
+          var newPass = Utils.randomPassword(10);
+
+          require('bcryptjs').hash(newPass, 10, function (err, encryptedPassword) {
+            if (err) {
+              console.log ('Encrypt password error');
+              res.send(400);
+            } else {
+              User.update(user.id, {encryptedPassword: encryptedPassword}, function (err, userUpdated) {
+                if (err) {
+                  res.send(400);
+                } else {
+                  // send pass to user's email
+                  var homeUrl = req.protocol + '://' + req.host + ':' + sails.config.port;
+                  var subject = req.__('User Account password reset');
+                  var mailLayoutFile = 'newPassword_' + req.session.lang + '.ejs';
+
+                  Mailer.send(mailLayoutFile, user, {subject: subject, newPassword: newPass, homeUrl: homeUrl} );
+
+                  //　go to waiting active page
+                  res.view('japtool/user/active-account', {code: 'resetPassword'});
+                }
+              });
+            }
+          });
+        }
+      });
+    }
+  },
+
   afterLogin: function (req, res) {
     res.view('japtool/user/afterLogin');
   },
