@@ -250,6 +250,7 @@
             //add Class Active to show screen
             if (lessonBookID == bookID) {
                 $(this).closest('.treeview').addClass('active');
+                $(this).closest('.treeview .treeview-menu .sub-lesson:last-child').addClass('active');
             }
         });
     }
@@ -270,6 +271,17 @@ function nextLesson(){
         $("#container-learn").load('/japtool/' + useModule + '/?condition=' + condition);
         var bookDetailH = $('#bookDetailH').val();
         openTreeView(bookDetailH);
+
+
+        $('a.lesson').each(function (index,nextLessonID) {
+            var lessonD = !$(this).hasClass('lesson-danger');
+            var lessonS = !$(this).hasClass('lesson-success');
+            if(lessonD && lessonS){
+                var a = $(this).parent(".treeview").children().children().children(".sub-lesson");
+                console.log(a);
+                return false;
+            }
+        });
     }
 
 </script>

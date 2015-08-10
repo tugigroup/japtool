@@ -40,7 +40,7 @@
         <% if(selfLearnings != undefined && selfLearnings.length > 0){ %>
         <% selfLearnings.forEach(function(selfLearning, index){ %>
         <h2 class="text-left clearfix"><%= selfLearning.bookMaster.name %></h2>
-
+        <div class="library-page-line"></div>
         <div class="row">
             <% for(var k = 0;k < b.length;k++){ %>
             <% if(b[k][0] == selfLearning.bookMaster.id){ %>
@@ -48,6 +48,8 @@
             <% var a = false; %>
             <% var d = 0; %>
             <% for(var i = 0;i < selfLearning.userLearnHistories.length;i++){ %>
+
+
             <% if(b[k][j] == selfLearning.userLearnHistories[i].lesson){ %>
             <% a = true; %>
             <% if(selfLearning.userLearnHistories[i].status == 'passed'){ %>
@@ -76,7 +78,7 @@
             <% } %>
             <% }else{ %>
             <div class="col-sm-1" style="padding-bottom: 15px">
-                <div class="info-lesson label-primary"><a><%= b[k][j] %></a></div>
+                <div class="info-lesson label-home"><a><%= b[k][j] %></a></div>
             </div>
             <% } %>
 
@@ -88,7 +90,6 @@
 
 
         </div>
-        -------------------------------------------------------------------------------------------------------------------------------
 
         <% }); %>
         <% } else { %>

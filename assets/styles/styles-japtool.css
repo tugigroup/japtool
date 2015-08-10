@@ -55,7 +55,9 @@ label {
     -webkit-box-shadow: none;
     box-shadow: none;
 }
-
+.label-home {
+    background-color: #ADADAD;
+}
 input[type=submit]:hover {
     color: #fff
 }
