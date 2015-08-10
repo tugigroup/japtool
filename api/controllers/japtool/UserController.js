@@ -261,8 +261,17 @@ module.exports = {
 
       User.findOne({email: email}).exec(function (err, user) {
         if (!user) {
-          res.view('japtool/user/active-account', {code: 'fail'});
-        } else {
+          var wrongEmail = [{
+              name: req.__('Email address is wrong'),
+              message: req.__('Your inputed email address is not correct. Check and do it again.')
+          }]
+          req.session.flash = {
+              err: wrongEmail
+          }
+
+          return res.redirect('/japtool/user/passforget');
+        } 
+        else {
           var newPass = Utils.randomPassword(10);
 
           require('bcryptjs').hash(newPass, 10, function (err, encryptedPassword) {

@@ -1,4 +1,4 @@
-<div class="wrapper clearfix auth-login">
+in<div class="wrapper clearfix auth-login">
 	<div class="container">
 		<div class="row">
 			<!--Register div-->
@@ -29,7 +29,10 @@
 								<% if(flash && flash.err) { %>
 								<ul class="alert alert-success">
 									<% Object.keys(flash.err).forEach(function(error) { %>
-									<li><%- JSON.stringify(flash.err[error]) %></li>
+										<li>
+								        	<h4> <%= flash.err[error].name %> </h4>
+								        	<%= flash.err[error].message %> 
+								    	</li>
 									<% }) %>
 								</ul>
 								<% } %>

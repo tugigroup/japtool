@@ -8,7 +8,10 @@ module.exports = function (req, res, ok) {
     }
     //User is not allowed
     else {
-        var requireLoginError = [{name: 'requireLogin', message: 'You must be sign in.'}]
+        var requireLoginError = [{
+            name: req.__('Sigin Please!'), 
+            message: req.__('You must be sign in if you want using this page.')
+        }]
         req.session.flash = {
             err: requireLoginError
         }

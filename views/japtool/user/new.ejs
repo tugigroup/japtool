@@ -21,8 +21,10 @@
     <% if(flash && flash.err) { %>
     <ul class="alert alert-danger">
       <% Object.keys(flash.err).forEach(function(error) { %>
-        <h4> <%= flash.err[error].name %> </h4>
-        <%= flash.err[error].message %> 
+        <li>
+          <h4> <%= flash.err[error].name %> </h4>
+          <%= flash.err[error].message %> 
+        </li>
       <% }) %>
     </ul>
     <% } %>
