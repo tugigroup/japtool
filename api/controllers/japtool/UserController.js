@@ -21,33 +21,56 @@ module.exports = {
       postCode: '',
       country: ''
     };
-    //Create a user with the params sent from the sign-up form new.ejs
-    User.create(req.params.all(), function userCreated(err, user) {
-      //If there's an error
-      if (err) {
-        req.session.flash = {
-          err: err
+
+    var regisInfor = req.params.all();
+
+    // check existing registed email
+    User.findOne({email: regisInfor.email}, function (err, foundUser){
+      if (err) { res.send(400); }
+      else {
+        if (foundUser){
+
+          var existingEmail = [{
+              name: req.__('Email address is being used'),
+              message: req.__('Your registing email is in using. Please use other or go to foget password page if you lost you password.')
+          }]
+          req.session.flash = {
+              err: existingEmail
+          }
+
+          return res.redirect('/japtool/user/new'); 
+        } 
+        else {
+          //Create a user with the params sent from the sign-up form new.ejs
+          User.create(req.params.all(), function userCreated(err, user) {
+            //If there's an error
+            if (err) {
+              req.session.flash = {
+                err: err
+              }
+              //if error redirect back to sign-up page
+              return res.redirect('/japtool/user/new');
+            }
+
+            req.session.User = user;
+            //console.log(JSON.stringify(user));
+            
+            //Update user address
+            User.update({id: user.id}, {yourAddress: yourAddress}, function (err, updateUser) {
+            });
+
+            var homeUrl = req.protocol + '://' + req.host + ':' + sails.config.port;
+            var activateUrl = homeUrl + '/japtool/user/active?activatecode=' + user.id;
+            var subject = req.__('Account activate mail subject');
+            var mailLayoutFile = 'activeAccount_' + req.session.lang + '.ejs';
+
+            Mailer.send(mailLayoutFile, user, {subject: subject, homeUrl: homeUrl, activateUrl: activateUrl} );
+
+            //　go to waiting active page
+            res.view('japtool/user/active-account', {code: 'waitActivate'});
+          });
         }
-        //if error redirect back to sign-up page
-        return res.redirect('/japtool/user/new');
       }
-
-      req.session.User = user;
-      //console.log(JSON.stringify(user));
-      
-      //Update user address
-      User.update({id: user.id}, {yourAddress: yourAddress}, function (err, updateUser) {
-      });
-
-      var homeUrl = req.protocol + '://' + req.host + ':' + sails.config.port;
-      var activateUrl = homeUrl + '/japtool/user/active?activatecode=' + user.id;
-      var subject = req.__('Account activate mail subject');
-      var mailLayoutFile = 'activeAccount_' + req.session.lang + '.ejs';
-
-      Mailer.send(mailLayoutFile, user, {subject: subject, homeUrl: homeUrl, activateUrl: activateUrl} );
-
-      //　go to waiting active page
-      res.view('japtool/user/active-account', {code: 'waitActivate'});
     });
   },
   //active account after new user created

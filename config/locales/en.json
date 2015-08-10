@@ -284,7 +284,14 @@
   "Reset password successful":"Reset password successful",
   "Please check your email to get your new password. Login and change your password in the account management":"Please check your email to get your new password. Login and change your password in the account management",
   "Click here to go login page":"Click here to go login page",
-  "Dear":"Dear",
+
+  "Email address is being used":"Email address is being used",
+  "Your registing email is in using. Please use other or go to foget password page if you lost you password.":"Your registing email is in using. Please use other or go to foget password page if you lost you password.",
+  "more":"more",
+  "more":"more",
+  "more":"more",
+  "more":"more",
+  "more":"more",
 
 
 
