@@ -19,9 +19,10 @@
       </div>
     </div>
     <% if(flash && flash.err) { %>
-    <ul class="alert alert-success">
+    <ul class="alert alert-danger">
       <% Object.keys(flash.err).forEach(function(error) { %>
-      <li><%- JSON.stringify(flash.err[error]) %></li>
+        <h4> <%= flash.err[error].name %> </h4>
+        <%= flash.err[error].message %> 
       <% }) %>
     </ul>
     <% } %>
