@@ -177,7 +177,7 @@ module.exports = {
                         var now = new Date();
 
                         if (finishDate > now) {
-                            var create = '<h3> __("book already") <a href = "/japtool/Learning/practice/?id=<%= book.id %>" > < /a></h3 > ';
+                            var create = '<h3> '+req.__('book already')+' <a href = "/japtool/Learning/practice/?id=<%= book.id %>" > < /a></h3 > ';
                             res.render('japtool/learning/create', {
                                 create: create,
                                 book: learning.bookMaster,
@@ -454,7 +454,7 @@ module.exports = {
                     if (err) {
                         sails.log(err)
                     } else {
-                        res.send('Create Learning history successful')
+                        res.send(req.__('Create Learning history successful'))
                     }
                 })
             } else {
@@ -471,7 +471,7 @@ module.exports = {
                             if (err) {
                                 sails.log(err)
                             } else {
-                                res.send('Record has update');
+                                res.send(req.__("Record has update"));
                             }
                         })
                     }

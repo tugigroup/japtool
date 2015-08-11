@@ -37,6 +37,7 @@ module.exports = {
                                         });
                                         var uniqueLessons = array(lessons).unique().value();
                                         b.push(uniqueLessons);
+                                        sails.log(data);
                                         if (b.length == selfLearnings.length) {
                                             res.view('japtool/home/home', {selfLearnings: selfLearnings, b: b});
                                         }

@@ -206,7 +206,7 @@
   "There's not any book":"Không có quyển sách nào",
   "view all":"Xem tất cả",
 
-  "book already":"Ban dang hoc mot learning ve quyen sach nay, ban can xoa learning do de tao 1 learningmoivenohoactieptuchoctai",
+  "book already":"bạn đang học quyển sách này, nếu muốn tạo mới bạn cần xóa quyển sách đang học",
 
   "restart":"Khởi động lại",
   "don't stop":"Đừng dừng lại",
@@ -267,5 +267,21 @@
   "How about your learning plan":"Kết hoạch học của bạn như thế nào",
   "Next":"Chuyển tiếp",
   "Choose one N":"Chọn một mức",
-  "What level do you want to learn or practices":"bạn muốn chọn mức nào để học và thực hành"
+  "What level do you want to learn or practices":"bạn muốn chọn mức nào để học và thực hành",
+
+  "Update success":"Cập nhật thành công",
+  "Update failed":"Cập nhật thất bại",
+  "Encrypt password failed":"Mã hòa mật khẩu thất bại",
+  "Your password is invalid":"Mật khẩu của bạn hợp lệ",
+  "User doesn't exit":"Người dùng không tồn tại",
+  "Record has update":"bản ghi được cập nhật",
+
+  " has logged in":" đã đăng nhập",
+  "Invalid username and password combination":"Tài Khoản và mật khẩu không tồn tại",
+  "username Password Mismatch":"Tài khoản mật khẩu không trùng",
+  " not found":" không tìm thấy",
+  "The email address ":"Địa chỉ email ",
+  "You must enter both a email and password":"Bạn phải nhập email và mật khẩu",
+  "username and Password Required":"Yêu cầu phải có tên người dùng và mật khẩu",
+  "Create Learning history successful":"Tạo lịch sử học thành công"
 }

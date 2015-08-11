@@ -724,6 +724,15 @@ $(document).ready(function () {
     });
 });
 
+// translate in javascript tag
+function translate (text) {
+    $.ajax({
+        type:"POST",
+        URL:"/japtool/Translate/translate",
+        data:text,
+        method:
+    });
+}
 //XOA KHOANG TRANG TRONG CHUOI
 function trimSpace(str) {
     str = str.replace(/\s/g, "");

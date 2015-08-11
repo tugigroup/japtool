@@ -209,7 +209,7 @@
   "There's not any book":"There's not any book",
   "view all":"view all",
 
-  "book already":"Ban dang hoc mot learning ve quyen sach nay, ban can xoa learning do de tao 1 learningmoivenohoactieptuchoctai",
+  "book already":"you have already learned this book, you must delete it to create a new book",
 
   "restart":"restart",
   "don't stop":"don't stop",
@@ -270,5 +270,21 @@
   "How about your learning plan":"How about your learning plan",
   "Next":"Next",
   "Choose one N":"Choose one N",
-  "What level do you want to learn or practices":"What level do you want to learn or practices"
+  "What level do you want to learn or practices":"What level do you want to learn or practices",
+
+  "Update success":"Update success",
+  "Update failed":"Update failed",
+  "Encrypt password failed":"Encrypt password failed",
+  "Your password is invalid":"Your password is invalid",
+  "User doesn't exit":"User doesn't exit",
+  "Record has update":"Record has update",
+
+  " has logged in":" has logged in",
+  "Invalid username and password combination":"Invalid username and password",
+  "username Password Mismatch":"username Password Mismatch",
+  " not found":" not found",
+  "The email address ":"The email address ",
+  "You must enter both a email and password":"You must enter both a email and password",
+  "username and Password Required":"username and Password Required",
+  "Create Learning history successful":"Create Learning history successful"
 }
