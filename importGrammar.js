@@ -90,6 +90,9 @@ parse(data, {delimiter : ',', comment: '#'}, function(err, grammars){
 				examples.forEach(function(example) {
 					if (example.trim() == ""){
 						insertedCount++;
+						if (insertedCount == example_array.length){
+						    callback(null, exampleInsertCount);
+						}
 					}else {
 						var items = [];
 						items = example.split(config.chars_split_insite_examples);
