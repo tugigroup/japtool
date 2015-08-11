@@ -17,6 +17,7 @@
 					</div>
 				</div>
 			</div>
+
 			<!--login div-->
 			<div class="col-sm-6 right">
 				<div class="well">
@@ -28,7 +29,10 @@
 								<% if(flash && flash.err) { %>
 								<ul class="alert alert-success">
 									<% Object.keys(flash.err).forEach(function(error) { %>
-									<li><%- JSON.stringify(flash.err[error]) %></li>
+										<li>
+								        	<h4> <%= flash.err[error].name %> </h4>
+								        	<%= flash.err[error].message %> 
+								    	</li>
 									<% }) %>
 								</ul>
 								<% } %>
@@ -42,7 +46,7 @@
 									<input type="password" name="password" value="" placeholder="<%=__('Password')%>"
 										   id="input-password" class="form-control">
 
-									<a href="forgotPassword.html"><%=__("Forgotten Password")%></a>
+									<a href="/japtool/user/passforget"><%=__("Forgotten Password")%></a>
 								</div>
 								<input type="hidden" name="_csrf" value="<%= _csrf %>" />
 							</div>

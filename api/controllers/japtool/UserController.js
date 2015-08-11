@@ -21,62 +21,74 @@ module.exports = {
       postCode: '',
       country: ''
     };
-    //Create a user with the params sent from the sign-up form new.ejs
-    User.create(req.params.all(), function userCreated(err, user) {
-      //If there's an error
-      if (err) {
-        req.session.flash = {
-          err: err
+
+    var regisInfor = req.params.all();
+
+    // check existing registed email
+    User.findOne({email: regisInfor.email}, function (err, foundUser){
+      if (err) { res.send(400); }
+      else {
+        if (foundUser){
+
+          var existingEmail = [{
+              name: req.__('Email address is being used'),
+              message: req.__('Your registing email is in using. Please use other or go to foget password page if you lost you password.')
+          }]
+          req.session.flash = {
+              err: existingEmail
+          }
+
+          return res.redirect('/japtool/user/new'); 
+        } 
+        else {
+          //Create a user with the params sent from the sign-up form new.ejs
+          User.create(req.params.all(), function userCreated(err, user) {
+            //If there's an error
+            if (err) {
+              req.session.flash = {
+                err: err
+              }
+              //if error redirect back to sign-up page
+              return res.redirect('/japtool/user/new');
+            }
+
+            req.session.User = user;
+            //console.log(JSON.stringify(user));
+            
+            //Update user address
+            User.update({id: user.id}, {yourAddress: yourAddress}, function (err, updateUser) {
+            });
+
+            var homeUrl = req.protocol + '://' + req.host + ':' + sails.config.port;
+            var activateUrl = homeUrl + '/japtool/user/active?activatecode=' + user.id;
+            var subject = req.__('Account activate mail subject');
+            var mailLayoutFile = 'activeAccount_' + req.session.lang + '.ejs';
+
+            Mailer.send(mailLayoutFile, user, {subject: subject, homeUrl: homeUrl, activateUrl: activateUrl} );
+
+            //　go to waiting active page
+            res.view('japtool/user/active-account', {code: 'waitActivate'});
+          });
         }
-        //if error redirect back to sign-up page
-        return res.redirect('/japtool/user/new');
       }
-      //Long user in
-      req.session.authenticated = true;
-      req.session.User = user;
-      var idUser = req.session.User.id;
-      //Update user address
-      User.update({id: idUser}, {yourAddress: yourAddress}, function (err, updateUser) {
-      });
-      //after create user success, generate email include active link --> bcrypt: email + create date
-      require('bcryptjs').hash(user.email + user.createdAt.toISOString(), 10, function passwordEncypted(err, encryptedLink) {
-        if (err) {
-          console.log('Encrypt active link failed!');
-        } else {
-          //send active email
-          Mailer.sendActiveMail(user, 'http://localhost:1337/japtool/user/active?active=' + encryptedLink);
-          //and then, redirect to recommend page
-          res.redirect('/japtool/user/');
-        }
-      });
     });
   },
   //active account after new user created
   active: function (req, res) {
-    var active = req.param('active');
-    //compare active link with db, if equal --> change user status = true
-    bcrypt.compare(req.session.User.email + req.session.User.createdAt, active, function (err, valid) {
-      console.log('DB: ', req.session.User.email + req.session.User.createdAt);
-      //if the active link doesn't match
-      if (err || !valid) {
-        return res.view('japtool/user/active-account-success', {code: 'fail'});
+    var userID = req.param('activatecode');
+
+    User.findOne(userID, function(err, user) {
+      if (err || !user) {
+        return res.view('japtool/user/active-account', {code: 'fail'});
       }
-      //everything is valid,change user status and save to db, session
-      else {
-        User.update(req.session.User._id, {status: true}, function (err, userUpdated) {
-          if (err) {
-            return res.view('japtool/user/active-account-success', {
-              code: 'fail'
-            });
-          } else {
-            //Luu lại status vào session
-            req.session.User.status = userUpdated[0].status;
-            return res.view('japtool/user/active-account-success', {
-              code: 'success'
-            });
-          }
-        });
-      }
+      
+      User.update(user.id, {active: true}, function (err, userUpdated) {
+        if (err) {
+          return res.view('japtool/user/active-account', {code: 'fail'});
+        } 
+
+        return res.view('japtool/user/active-account', {code: 'success'});
+      });
     });
   },
   //render the profile view (show.ejs)
@@ -240,6 +252,55 @@ module.exports = {
     });
     //res.send({mess: mess});
   },
+  passforget: function (req, res) {
+    if( req.method=="GET" ) {
+      res.view('japtool/user/forget-password');
+    } 
+    else if (req.method=="POST" ) {
+      var email = req.param('email');
+
+      User.findOne({email: email}).exec(function (err, user) {
+        if (!user) {
+          var wrongEmail = [{
+              name: req.__('Email address is wrong'),
+              message: req.__('Your inputed email address is not correct. Check and do it again.')
+          }]
+          req.session.flash = {
+              err: wrongEmail
+          }
+
+          return res.redirect('/japtool/user/passforget');
+        } 
+        else {
+          var newPass = Utils.randomPassword(10);
+
+          require('bcryptjs').hash(newPass, 10, function (err, encryptedPassword) {
+            if (err) {
+              console.log ('Encrypt password error');
+              res.send(400);
+            } else {
+              User.update(user.id, {encryptedPassword: encryptedPassword}, function (err, userUpdated) {
+                if (err) {
+                  res.send(400);
+                } else {
+                  // send pass to user's email
+                  var homeUrl = req.protocol + '://' + req.host + ':' + sails.config.port;
+                  var subject = req.__('User Account password reset');
+                  var mailLayoutFile = 'newPassword_' + req.session.lang + '.ejs';
+
+                  Mailer.send(mailLayoutFile, user, {subject: subject, newPassword: newPass, homeUrl: homeUrl} );
+
+                  //　go to waiting active page
+                  res.view('japtool/user/active-account', {code: 'resetPassword'});
+                }
+              });
+            }
+          });
+        }
+      });
+    }
+  },
+
   afterLogin: function (req, res) {
     res.view('japtool/user/afterLogin');
   },

@@ -269,6 +269,7 @@
   "Choose one N":"Chọn một mức",
   "What level do you want to learn or practices":"bạn muốn chọn mức nào để học và thực hành",
 
+
   "Update success":"Cập nhật thành công",
   "Update failed":"Cập nhật thất bại",
   "Encrypt password failed":"Mã hòa mật khẩu thất bại",
@@ -283,5 +284,31 @@
   "The email address ":"Địa chỉ email ",
   "You must enter both a email and password":"Bạn phải nhập email và mật khẩu",
   "username and Password Required":"Yêu cầu phải có tên người dùng và mật khẩu",
-  "Create Learning history successful":"Tạo lịch sử học thành công"
+  "Create Learning history successful":"Tạo lịch sử học thành công",
+
+  "If you forget your login password, click here":"Nếu bị quên mật khẩu hãy click vào đây",
+
+  "Account activate mail subject":"Hãy kích hoạt tài khoản của bạn ✔",
+  "Send Password":"Gửi mật khẩu",
+  "User Account password reset":"Thông báo mật khẩu mới",
+  "Reset password successful":"Mật khẩu tài khoản của bạn đã được tạo lại",
+  "Please check your email to get your new password. Login and change your password in the account management":"Mật khẩu mới đã được gửi đến hòm thư của bạn. Đăng nhập và thay đổi mật khẩu trên trang thông tin cá nhân",
+  "Click here to go login page":"Click vào đây để chuyển đến trang đăng nhập",
+
+  "Email address is being used":"Địa chỉ hòm thư đã được sử dụng",
+  "Your registing email is in using. Please use other or go to foget password page if you lost you password.":"Địa chỉ hòm thư bạn sử dụng đăng kí đã được sử dụng. Hãy sử dụng địa chỉ hòm thư khác hoặc dùng chức năng quyên mật khẩu để sử dụng lại tài khoản đã có.",
+  "Email address is wrong":"Nhập sai địa chỉ hòm thư",
+  "Your inputed email address is not correct. Check and do it again.":"Địa chỉ hòm thư bạn nhập không đúng. Hãy kiểm tra và thử lại.",
+  "Sigin Please!":"Hãy đăng nhập",
+  "You must be sign in if you want using this page.":"Bạn phải đăng nhập nếu muốn sử dụng chức năng này.",
+  
+
+
+  "last":"dummy",
+
+  "Account is not activated yet. Please check your mail and get activate link":"Tài Khoản của bạn chưa được kích hoạt. Làm ơn kiểm tra email và dùng đường link chúng tôi gửi tới bạn để kích hoạt",
+
+  "Thank for Your registration":"Cảm ơn bạn vì đã quan tâm tới chúng tôi",
+  "Your account registration is successful! Please check your email to get activate link for your account":"Tài khoản của bạn đã đăng ký thành công! Kiểm tra email của bạn để kích hoạt tài khoản nhé",
+  "Then click here to login and enjoy":"Sau đó nhấn vào đây để đăng nhập và cảm nhận dịch vụ tuyệt vời"
 }

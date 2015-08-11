@@ -13,6 +13,10 @@ module.exports = function(req, res, next) {
     }
 	}
 
+  if ( !req.session.lang ) {
+    req.session.lang = 'vi'; 
+  }
+
 	req.setLocale(req.session.lang);
 
 

@@ -1,5 +1,6 @@
 <script>
     var isNext;
+    var lang = $("#lang").val();
     $('.slider-for').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -105,8 +106,19 @@
                 var finishDate = new Date();
                 if (truee / total > $('#ispassed').val()) {
                     status = "passed";
-                    $('#myModalLabel').text('Xin chúc mừng! Bạn đã hoàn thành bài học! ');
-                    $('#myModalContent').text('Điểm của bạn là: ' + (truee / total) * 100);
+                    var resultPoint =  truee / total;
+                    if(lang=="vi"){
+                        $('#myModalLabel').text('Xin chúc mừng! Bạn đã hoàn thành bài học! ');
+                        $('#myModalContent').text('Điểm của bạn là: ' + Math.round(resultPoint*100 )/ 10);
+                    }
+                    if(lang=="en") {
+                        $('#myModalLabel').text('Congratulate ! You complete successfully this lesson! ');
+                        $('#myModalContent').text('Your mark: ' + Math.round(resultPoint*100 )/ 10);
+                    }
+                    if(lang=="ja"){
+                        $('#myModalLabel').text('Congratulate ! You complete successfully this lesson! ');
+                        $('#myModalContent').text('Your mark: ' + Math.round(resultPoint*100 )/ 10);
+                    }
                     $('#myModal').modal('show');
                     $.ajax({
                         method: "POST",
@@ -125,9 +137,20 @@
                             });
                 }
                 else {
-                    status = "false"
-                    $('#myModalLabel').text('Sorry! Bạn có chắc đã nắm vững lý thuyết?!');
-                    $('#myModalContent').text('Điểm của bạn chỉ là: ' + (truee / total) * 100);
+                    status = "false";
+                    var resultPoint =  truee / total;
+                    if(lang =="vi"){
+                        $('#myModalLabel').text('Your knowledge is n\'t good ! try again !');
+                        $('#myModalContent').text('Điểm của bạn chỉ là: ' + Math.round(resultPoint*100 )/ 10);
+                    }
+                    if(lang =="ja"){
+                        $('#myModalLabel').text('Kiến thức của bạn chưa vững ! hãy thử lại nhé ');
+                        $('#myModalContent').text('Your mark : ' + Math.round(resultPoint*100 )/ 10);
+                    }
+                    if(lang =="en"){
+                        $('#myModalLabel').text('Your knowledge is n\'t good ! try again !');
+                        $('#myModalContent').text('Your mark : ' + Math.round(resultPoint*100 )/ 10);
+                    }
                     $('#myModal').modal('show');
                     $.ajax({
                         method: "POST",

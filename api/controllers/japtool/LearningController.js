@@ -302,7 +302,7 @@ module.exports = {
     },
     index: function (req, res) {
         var arrTag = [];
-        SelfLearning.find().populate('bookMaster', {sort: 'startDate'}).exec(function (err, selfLearnings) {
+        SelfLearning.find({user: req.session.User.id}).populate('bookMaster', {sort: 'startDate'}).exec(function (err, selfLearnings) {
             if (err) {
                 sails.log("Err")
             }

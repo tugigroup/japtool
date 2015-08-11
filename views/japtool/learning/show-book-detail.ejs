@@ -3,6 +3,7 @@
         <div class="row">
             <div class="content">
                 <h2 id="add-book-detail"><%= nameBook %></h2>
+                <input hidden="hidden" id="lang" value="<%= session.lang %>"/>
 
                 <div id="learning-nav" class="skin-green sidebar-mini">
                     <div class="wrapper">
@@ -208,7 +209,9 @@
                 <h4 class="modal-title" id="myModalContent"></h4>
             </div>
             <div class="modal-footer">
-                <button type="button" id="btn-nextLesson" onclick="nextLesson();" class="btn btn-primary" data-dismiss="modal">Next Lesson</button>
+                <button type="button" id="btn-nextLesson" onclick="nextLesson();" class="btn btn-primary"
+                        data-dismiss="modal">Next Lesson
+                </button>
                 <button type="button" id="btn1" class="btn btn-success" data-dismiss="modal">Close</button>
                 <!--<button type="button" id="btn2" class="btn btn-primary">Save changes</button>-->
             </div>
@@ -263,7 +266,8 @@
                 $("li").removeClass("active");
                 openTreeView($(this).parent(".treeview").children().children().children(".sub-lesson").attr("name"));
                 return false;
-            } });
+            }
+        });
     }
     window.onload = function () {
         var useModule = $('#useModule').val();

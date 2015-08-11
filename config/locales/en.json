@@ -1,4 +1,8 @@
 {
+  "website name": "Japanese learning online tool",
+  "website slogan": "Make japanese trouble easy",
+  "website description": "",
+
   "Welcome": "Welcome",
   "Sign Up": "Sign Up",
   "Sign In": "Sign In",
@@ -17,7 +21,7 @@
   "kanji": "Kanji",
   "test": "Test",
   "grammar": "Grammar",
-  "If you haven't account, you can click here": "If you haven't account, you can click here",
+  "If you haven't account, you can click here": ["If you haven't account,"," <br> <a> you can click here"],
   "or you can login with other accounts follow": "or you can login with other accounts follow",
   "If you want not to register": "If you want not to register",
   "Click Here To Take Your View Tour": "Click Here To Take Your View Tour",
@@ -272,6 +276,7 @@
   "Choose one N":"Choose one N",
   "What level do you want to learn or practices":"What level do you want to learn or practices",
 
+
   "Update success":"Update success",
   "Update failed":"Update failed",
   "Encrypt password failed":"Encrypt password failed",
@@ -286,5 +291,32 @@
   "The email address ":"The email address ",
   "You must enter both a email and password":"You must enter both a email and password",
   "username and Password Required":"username and Password Required",
-  "Create Learning history successful":"Create Learning history successful"
+  "Create Learning history successful":"Create Learning history successful",
+
+  "If you forget your login password, click here":"If you forget your login password, click here",
+  
+  "Account activate mail subject":"Account activate mail subject ",
+  "Send Password":"Send Password",
+  "User Account password reset":"User Account password reset",
+  "Reset password successful":"Reset password successful",
+  "Please check your email to get your new password. Login and change your password in the account management":"Please check your email to get your new password. Login and change your password in the account management",
+  "Click here to go login page":"Click here to go login page",
+
+  "Email address is being used":"Email address is being used",
+  "Your registing email is in using. Please use other or go to foget password page if you lost you password.":"Your registing email is in using. Please use other or go to foget password page if you lost you password.",
+  "Email address is wrong":"Email address is wrong",
+  "Your inputed email address is not correct. Check and do it again.":"Your inputed email address is not correct. Check and do it again.",
+  "Sigin Please!":"Sigin Please!",
+  "You must be sign in if you want using this page.":"You must be sign in if you want using this page.",
+  "more":"more",
+
+
+
+  "last":"dummy",
+
+  "Account is not activated yet. Please check your mail and get activate link":"Account is not activated yet. Please check your mail and get activate link",
+
+  "Thank for Your registration":"Thank for Your registration",
+  "Your account registration is successful! Please check your email to get activate link for your account":"Your account registration is successful! Please check your email to get activate link for your account",
+  "Then click here to login and enjoy":"Then click here to login and enjoy"
 }

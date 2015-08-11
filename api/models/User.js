@@ -52,7 +52,7 @@ module.exports = {
         avatar: {
             type: 'string'
         },
-        status: {
+        active: {
             type: 'boolean',
             defaultsTo: false
         },

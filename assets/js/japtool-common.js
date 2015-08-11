@@ -693,7 +693,6 @@ $(document).ready(function () {
             else
                 url += "&lang=en";
         }
-
         window.location.replace(url);
     });
     $("#lang-vi-option").click(function () {
@@ -706,7 +705,6 @@ $(document).ready(function () {
             else
                 url += "&lang=vi";
         }
-
         window.location.replace(url);
     });
     $("#lang-ja-option").click(function () {
@@ -719,20 +717,10 @@ $(document).ready(function () {
             else
                 url += "&lang=ja";
         }
-
         window.location.replace(url);
     });
 });
 
-// translate in javascript tag
-function translate (text) {
-    $.ajax({
-        type:"POST",
-        URL:"/japtool/Translate/translate",
-        data:text,
-        method:
-    });
-}
 //XOA KHOANG TRANG TRONG CHUOI
 function trimSpace(str) {
     str = str.replace(/\s/g, "");

@@ -50,6 +50,19 @@ module.exports = {
                 return;
             }
 
+            // Account is not activated yet
+            if (!user.active) {
+                var inactiveError = [{
+                    name: 'inactiveAccount',
+                    message: req.__('Account is not activated yet. Please check your mail and get activate link')
+                }]
+                req.session.flash = {
+                    err: inactiveError
+                }
+                res.redirect('/japtool/auth');
+                return;
+            }
+
             // Compare password from the form params to the encrypted password of the user found.
             bcrypt.compare(req.param('password'), user.encryptedPassword, function (err, valid) {
                 if (err) return next(err);
@@ -124,7 +137,6 @@ module.exports = {
         });
 
     },
-
     destroy: function (req, res, next) {
         //wipe out the session (log out)
         var lang = req.session.lang;

@@ -37,6 +37,24 @@ module.exports = {
         return Math.floor(Math.random() * (high - low + 1) + low);
     },
 
+    // generate random password
+    randomPassword: function (length) {
+
+        var baseString = 'qwertyuiopasdfghjklzxcvbnm1234567890QWERTYUIOPASDFGHJKLZXCVBNM';
+        var baseStringLen = baseString.length;
+
+        var randomPass = '';
+        var i, index;
+
+        for (i = 0; i < length; i++) {
+            index = (Math.random() * (baseStringLen - 1)).toFixed(0);
+            randomPass += baseString[index];
+        }
+
+        return randomPass;
+    },
+
+
     /* EXAMPLE:
      Let's create an array and populate it with random numbers from range: [1, 10].
      var numbers = new Array(10);
