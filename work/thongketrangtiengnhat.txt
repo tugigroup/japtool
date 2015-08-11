@@ -38,3 +38,6 @@ http://daytiengnhatban.com/ngu-phap-n5-mau-cau-41-50
 
 2. Thu tu cach viet kanji
 http://kakijun.jp/page/12226200.html
+
+3. Giai phap phat am cho tu va example
+http://www.ai-j.jp/aitalk-ajax/php/auto-audio.js
