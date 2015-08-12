@@ -292,24 +292,47 @@ module.exports = {
     getItemsBooks: function (req, res) {
         var type = req.param('chooseBookCat');
         var level = req.param('level');
-        if (level == 0) {
-            BookMaster.find({type: type}).exec(function (err, books) {
-                if (err) {
-                    console.log(err)
-                } else {
-                    res.render('japtool/learning/BookItem', {books: books});
-                }
-            })
+        if (type == "allbook") {
+            if (level == 0) {
+                BookMaster.find({}).exec(function (err, books) {
+                    if (err) {
+                        console.log(err)
+                    } else {
+                        res.render('japtool/learning/BookItem', {books: books});
+                    }
+                })
+            }
+            else {
+                BookMaster.find({level: level}).exec(function (err, books) {
+                    if (err) {
+                        console.log(err)
+                    } else {
+                        res.render('japtool/learning/BookItem', {books: books});
+                    }
+                })
+            }
         }
         else {
-            BookMaster.find({type: type, level: level}).exec(function (err, books) {
-                if (err) {
-                    console.log(err)
-                } else {
-                    res.render('japtool/learning/BookItem', {books: books});
-                }
-            })
+            if (level == 0) {
+                BookMaster.find({type: type}).exec(function (err, books) {
+                    if (err) {
+                        console.log(err)
+                    } else {
+                        res.render('japtool/learning/BookItem', {books: books});
+                    }
+                })
+            }
+            else {
+                BookMaster.find({type: type, level: level}).exec(function (err, books) {
+                    if (err) {
+                        console.log(err)
+                    } else {
+                        res.render('japtool/learning/BookItem', {books: books});
+                    }
+                })
+            }
         }
+
 
     },
     index: function (req, res) {

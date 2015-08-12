@@ -24,7 +24,8 @@
         </div>
         <div class="modal-body">
             <ul class="nav nav-tabs">
-                <li class="active"><a data-toggle="tab" href="#allbook">All Books</a></li>
+                <li><a data-toggle="tab" href="#allbook" chooseBookCat="allbook" class="chosseBookItem">All Books</a>
+                </li>
                 <li><a data-toggle="tab" href="#vocabulary" chooseBookCat="vocabulary"
                        class="chosseBookItem">Vocabulary</a></li>
                 <li><a data-toggle="tab" href="#kanji" chooseBookCat="kanji" class="chosseBookItem">Kanji</a></li>
@@ -88,9 +89,20 @@
     </div>
 </div>
 <script type="text/javascript">
+    var chooseBookCat;
     $(".chosseBookItem").on('click', function () {
         var level = $('#sel1').val();
-        var chooseBookCat = $(this).attr('chooseBookCat');
+        chooseBookCat = $(this).attr('chooseBookCat');
+        filrBook(level, chooseBookCat);
+    });
+    $("#sel1").each(function () {
+        $(this).on('change', function () {
+            var level = $('#sel1').val();
+            filrBook(level, chooseBookCat);
+        });
+    });
+
+    function filrBook(level, chooseBookCat) {
         $.ajax({
             url: '/japtool/learning/getItemsBooks',
             type: 'POST',
@@ -100,7 +112,6 @@
 
             },
             success: function (data) {
-
                 $('#' + chooseBookCat + '').html('');
                 $('#' + chooseBookCat + '').html(data);
             },
@@ -108,7 +119,5 @@
                 alert('Error');
             }
         });
-
-
-    });
+    }
 </script>
