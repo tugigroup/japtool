@@ -307,7 +307,7 @@ module.exports = {
                     if (err) {
                         console.log(err)
                     } else {
-                        res.render('japtool/learning/BookItem', {books: books});
+                        res.render('japtool/learning/BookItem', {books: books, level: level});
                     }
                 })
             }
@@ -316,7 +316,7 @@ module.exports = {
                     if (err) {
                         console.log(err)
                     } else {
-                        res.render('japtool/learning/BookItem', {books: books});
+                        res.render('japtool/learning/BookItem', {books: books, level: level});
                     }
                 })
             }
@@ -327,7 +327,7 @@ module.exports = {
                     if (err) {
                         console.log(err)
                     } else {
-                        res.render('japtool/learning/BookItem', {books: books});
+                        res.render('japtool/learning/BookItem', {books: books, level: level});
                     }
                 })
             }
@@ -336,7 +336,7 @@ module.exports = {
                     if (err) {
                         console.log(err)
                     } else {
-                        res.render('japtool/learning/BookItem', {books: books});
+                        res.render('japtool/learning/BookItem', {books: books, level: level, level: level});
                     }
                 })
             }
