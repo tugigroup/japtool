@@ -24,7 +24,8 @@
         </div>
         <div class="modal-body">
             <ul class="nav nav-tabs">
-                <li><a data-toggle="tab" href="#allbook" chooseBookCat="allbook" class="chosseBookItem">All Books</a>
+                <li><a data-toggle="tab" href="#allbook" chooseBookCat="allbook" class="chosseBookItem active">All
+                        Books</a>
                 </li>
                 <li><a data-toggle="tab" href="#vocabulary" chooseBookCat="vocabulary"
                        class="chosseBookItem">Vocabulary</a></li>
@@ -89,7 +90,7 @@
     </div>
 </div>
 <script type="text/javascript">
-    var chooseBookCat;
+    var chooseBookCat = '';
     $(".chosseBookItem").on('click', function () {
         var level = $('#sel1').val();
         chooseBookCat = $(this).attr('chooseBookCat');
@@ -98,7 +99,18 @@
     $("#sel1").each(function () {
         $(this).on('change', function () {
             var level = $('#sel1').val();
-            filrBook(level, chooseBookCat);
+            var check = false;
+            if (chooseBookCat == null || chooseBookCat == '') {
+                chooseBookCat = "allbook";
+                check = true;
+            }
+            else {
+                check = true;
+
+            }
+            if (check == true) {
+                filrBook(level, chooseBookCat);
+            }
         });
     });
 
