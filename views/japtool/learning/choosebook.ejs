@@ -4,28 +4,29 @@
             <button type="button" class="close" data-dismiss="modal"></button>
             <div class="row">
                 <div class="col-sm-3">
-                    <h4 class="modal-title"><%=__("Book Library")%></h4>
-                    <%=__("Choose a book")%>
+                    <h4 class="modal-title"><%= __("Book Library") %></h4>
+                    <%= __("Choose a book") %>
                 </div>
                 <div class="col-sm-offset-6 col-sm-3 col-xs-12">
                     <div class="form-group form-horizontal">
                         <select class="form-control" id="sel1">
-                            <option> Filter Level Select </option>
-                            <option value="">Level 1</option>
-                            <option value="">Level 2</option>
-                            <option value="">Level 3</option>
-                            <option value="">Level 4</option>
-                            <option value="">Level 5</option>
+                            <option value="0"> Filter Level Select</option>
+                            <option value="N1">Level 1</option>
+                            <option value="N2">Level 2</option>
+                            <option value="N3">Level 3</option>
+                            <option value="N4">Level 4</option>
+                            <option value="N5">Level 5</option>
                         </select>
 
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="modal-body">
             <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#allbook">All Books</a></li>
-                <li><a data-toggle="tab" href="#vocabulary" chooseBookCat="vocabulary" class="chosseBookItem">Vocabulary</a></li>
+                <li><a data-toggle="tab" href="#vocabulary" chooseBookCat="vocabulary"
+                       class="chosseBookItem">Vocabulary</a></li>
                 <li><a data-toggle="tab" href="#kanji" chooseBookCat="kanji" class="chosseBookItem">Kanji</a></li>
                 <li><a data-toggle="tab" href="#grammar" chooseBookCat="grammar" class="chosseBookItem">Grammar</a></li>
                 <li><a data-toggle="tab" href="#speech" chooseBookCat="speech" class="chosseBookItem">Speech</a></li>
@@ -55,6 +56,7 @@
                                         <a onclick="addbook('<%= books[i].id %>')" id="bookname<%= books[i].id %>"
                                            title="<%= books[i].name %>"><p
                                                     class="lbUser"><%= books[i].name %></p></a>
+
                                         <p title="<%= books[i].level %>" id="booklv<%= books[i].id %>">Level
                                             : <%= books[i].level %></p>
                                     </div>
@@ -81,18 +83,21 @@
                    onclick="addbook()"
                    class="btn btn-warning"
                    role="button"
-                   value="<%=__('Close')%>"/>
+                   value="<%= __('Close') %>"/>
         </div>
     </div>
 </div>
 <script type="text/javascript">
     $(".chosseBookItem").on('click', function () {
+        var level = $('#sel1').val();
         var chooseBookCat = $(this).attr('chooseBookCat');
         $.ajax({
             url: '/japtool/learning/getItemsBooks',
             type: 'POST',
             data: {
-                chooseBookCat: chooseBookCat
+                chooseBookCat: chooseBookCat,
+                level: level
+
             },
             success: function (data) {
 
@@ -103,5 +108,7 @@
                 alert('Error');
             }
         });
+
+
     });
 </script>

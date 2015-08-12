@@ -177,7 +177,7 @@ module.exports = {
                         var now = new Date();
 
                         if (finishDate > now) {
-                            var create = '<h3> '+req.__('book already')+' <a href = "/japtool/Learning/practice/?id=<%= book.id %>" > < /a></h3 > ';
+                            var create = '<h3> ' + req.__('book already') + ' <a href = "/japtool/Learning/practice/?id=<%= book.id %>" > < /a></h3 > ';
                             res.render('japtool/learning/create', {
                                 create: create,
                                 book: learning.bookMaster,
@@ -291,14 +291,26 @@ module.exports = {
     },
     getItemsBooks: function (req, res) {
         var type = req.param('chooseBookCat');
+        var level = req.param('level');
+        if (level == 0) {
+            BookMaster.find({type: type}).exec(function (err, books) {
+                if (err) {
+                    console.log(err)
+                } else {
+                    res.render('japtool/learning/BookItem', {books: books});
+                }
+            })
+        }
+        else {
+            BookMaster.find({type: type, level: level}).exec(function (err, books) {
+                if (err) {
+                    console.log(err)
+                } else {
+                    res.render('japtool/learning/BookItem', {books: books});
+                }
+            })
+        }
 
-        BookMaster.find({type: type}).exec(function (err, books) {
-            if (err) {
-                console.log(err)
-            } else {
-                res.render('japtool/learning/BookItem', {books: books});
-            }
-        })
     },
     index: function (req, res) {
         var arrTag = [];
@@ -412,7 +424,7 @@ module.exports = {
                                         condition: dataExtractCondition,
                                         useModule: useModule,
                                         lessonItem: lessonItem,
-                                        bookDetailH:bookDetailH
+                                        bookDetailH: bookDetailH
 
 
                                     });
