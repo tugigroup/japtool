@@ -660,8 +660,6 @@
 "","","","","","","","","","Bài 29","Luyện tập","659","kanji/practice","kanji","{'level': 'N1', 'tag' : {'contains':',newkanjimaster,lesson29,'}}"
 "","","","","","","","","","Bài 30","Kanji","660","kanji/lesson","kanji","{'level': 'N1', 'tag' : {'contains':',newkanjimaster,lesson30,'}}"
 "","","","","","","","","","Bài 30","Luyện tập","661","kanji/practice","kanji","{'level': 'N1', 'tag' : {'contains':',newkanjimaster,lesson30,'}}"
-"","","","","","","","","","Bài 31","Kanji","662","kanji/lesson","kanji","{'level': 'N1', 'tag' : {'contains':',newkanjimaster,lesson31,'}}"
-"","","","","","","","","","Bài 31","Luyện tập","663","kanji/practice","kanji","{'level': 'N1', 'tag' : {'contains':',newkanjimaster,lesson31,'}}"
 "Speech N4","Luyện nói level N4","speech","N4","4500","1","1","","","Bài 1","自己紹介","664","speech","sentence","{'level': 'N4', 'tag' : {'contains':',speechN4,lesson1,'}}"
 "","","","","","","","","","Bài 2","それは何ですか？","665","speech","sentence","{'level': 'N4', 'tag' : {'contains':',speechN4,lesson2,'}}"
 "","","","","","","","","","Bài 3","はい、わかりました","666","speech","sentence","{'level': 'N4', 'tag' : {'contains':',speechN4,lesson3,'}}"
