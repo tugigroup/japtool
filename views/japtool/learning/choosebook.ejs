@@ -27,11 +27,11 @@
                 <li><a data-toggle="tab" href="#allbook" chooseBookCat="allbook" class="chosseBookItem active">All
                         Books</a>
                 </li>
-                <li><a data-toggle="tab" href="#vocabulary" chooseBookCat="vocabulary"
-                       class="chosseBookItem">Vocabulary</a></li>
-                <li><a data-toggle="tab" href="#kanji" chooseBookCat="kanji" class="chosseBookItem">Kanji</a></li>
-                <li><a data-toggle="tab" href="#grammar" chooseBookCat="grammar" class="chosseBookItem">Grammar</a></li>
-                <li><a data-toggle="tab" href="#speech" chooseBookCat="speech" class="chosseBookItem">Speech</a></li>
+                <% uniqueType.forEach(function(type){ %>
+
+                <li><a data-toggle="tab" href="#<%= type %>" chooseBookCat="<%= type %>"
+                       class="chosseBookItem"><%= type %></a></li>
+                <% }) %>
             </ul>
             <div class="tab-content choose-book">
                 <div id="allbook" class="tab-pane fade in active">
@@ -71,11 +71,9 @@
                         <!--finish three book info-->
                     </div>
                 </div>
-                <div id="vocabulary" class="tab-pane fade"></div>
-                <div id="kanji" class="tab-pane fade"></div>
-                <div id="grammar" class="tab-pane fade"></div>
-                <div id="speech" class="tab-pane fade"></div>
-
+                <% uniqueType.forEach(function(type){ %>
+                <div id="<%= type %>" class="tab-pane fade"></div>
+                <% }) %>
             </div>
 
 

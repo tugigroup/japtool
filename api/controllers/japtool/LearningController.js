@@ -279,13 +279,22 @@ module.exports = {
         BookMaster.find()
             .sort('sort asc')
             .exec(function (err, books) {
+                var arrTag = [];
                 if (err) {
 
                 }
                 else {
-                    res.render('japtool/learning/choosebook', {
-                        books: books
-                    });
+                    books.forEach(function (item, index) {
+                        arrTag.push(item.type);
+                        if (index == (books.length - 1)) {
+                            var array = require("array-extended");
+                            var uniqueType = array(arrTag).unique().value();
+                            res.render('japtool/learning/choosebook', {
+                                books: books,
+                                uniqueType: uniqueType,
+                            });
+                        }
+                    })
                 }
             })
     },
