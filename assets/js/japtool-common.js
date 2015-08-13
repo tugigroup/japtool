@@ -4,6 +4,7 @@ var answer1;
 var answer2;
 var answer3 = new Array();
 var listIdSurvey = new Array();
+var lang = $("#lang").val();
 $(document).ready(function () {
     var lv = $("#lv").val();
     var crt = $("#crt").val();
@@ -135,7 +136,15 @@ function addbook(i) {
     }
 }
 function deleteLearning(id) {
-    var a = confirm("Ban co thuc su muon xoa learning nay k?");
+    var a ;
+    if(lang="en"){
+        a = confirm("Are you sure that you want to delete it ?");
+    }else if(lang="ja"){
+        a = confirm("Are you sure that you want to delete it ?");
+    }else if(lang="vi"){
+        a = confirm("Bạn có chắn chắn muốn xóa nó không ?");
+    }
+
     if (a) {
         $('#lib-' + id + '').removeClass('fade').modal('hide');
         $('#editform').load('/japtool/Learning/deleteLearning?id=' + id, function (res, status) {
