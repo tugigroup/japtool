@@ -692,7 +692,6 @@ $(document).ready(function () {
             else
                 url += "&lang=en";
         }
-
         window.location.replace(url);
     });
     $("#lang-vi-option").click(function () {
@@ -705,7 +704,6 @@ $(document).ready(function () {
             else
                 url += "&lang=vi";
         }
-
         window.location.replace(url);
     });
     $("#lang-ja-option").click(function () {
@@ -718,7 +716,6 @@ $(document).ready(function () {
             else
                 url += "&lang=ja";
         }
-
         window.location.replace(url);
     });
 });

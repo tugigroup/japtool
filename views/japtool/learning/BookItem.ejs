@@ -18,9 +18,13 @@
                 <a onclick="addbook('<%= books[i].id %>')" id="bookname<%= i %>"
                    title="<%= books[i].name %>"><p
                             class="lbUser"><%= books[i].name %></p></a>
-
+                <% if(level == 0){
+                %>
                 <p title="<%= books[i].level %>" id="booklv<%= books[i].id %>">Level
                     : <%= books[i].level %></p>
+                <%
+                } %>
+
             </div>
         </div>
     </div>

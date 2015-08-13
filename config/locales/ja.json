@@ -17,7 +17,7 @@
   "kanji": "漢字",
   "test": "テスト",
   "grammar": "文法",
-  "If you haven't account, you can click here": "アカウントを持っていない場合, you can click here",
+  "If you haven't account, you can click here": ["If you haven't account,"," <br> <a> you can click here"],
   "or you can login with other accounts follow": "or you can login with other accounts follow",
   "If you want not to register": "If you want not to register",
   "Click Here To Take Your View Tour": "Click Here To Take Your View Tour",
@@ -104,9 +104,7 @@
   "Edit": "Edit",
 
 
-
-
-  "Lesson":"授業",
+  "Lesson":"Lesson",
 
   "off audio":"off audio",
   "on audio":"on audio",
@@ -115,7 +113,6 @@
 
   "off informations":"off informations",
   "on informations":"on informations",
-
 
   "Listening":"Listening",
   "Not Started":"Not Started",
@@ -131,6 +128,7 @@
   "answered":"answered",
   "Result Lesson":"Result Lesson",
   "Total of lesson":"Total of lesson",
+
 
   "Web site don't have data":"Web site don't have data ! sorry about this",
   "About Page":"About Page",
@@ -152,7 +150,9 @@
   "Close":"Close",
 
   "You don't have any survey , Click Skip to continue":"You don't have any survey , Click Skip to continue",
+
   "Contact Page":"Contact Page",
+
   "Guide Page":"Guide Page",
   "Preview":"Preview",
   "We are so sorry! Now we haven't any library":"We are so sorry! Now we haven't any library",
@@ -168,6 +168,7 @@
   "here":"here",
   "Studying finished . if you want to learn more click":"Studying finished . if you want to learn more click",
   "Studying has not yet begun":"Studying has not yet begun",
+
 
   "Choose One":"Choose One",
   "Test all article":"Test all article",
@@ -194,7 +195,7 @@
 
   "Notes":"Notes",
   "To":"To",
-  "notice coincidence":"you have already learned this book . If you want to learn , you must delete it . you can continue learning",
+  "notice coincidence":"you have already learned this book . If you want to learn , you must delete it . you can continue learning ",
   "Book Library":"Book Library",
   "Choose a book":"Choose a book",
   "Example":"Example",
@@ -208,7 +209,7 @@
   "There's not any book":"There's not any book",
   "view all":"view all",
 
-  "book already":"Ban dang hoc mot learning ve quyen sach nay, ban can xoa learning do de tao 1 learningmoivenohoactieptuchoctai",
+  "book already":"you have already learned this book, you must delete it to create a new book",
 
   "restart":"restart",
   "don't stop":"don't stop",
@@ -258,7 +259,7 @@
   "Schedule":"Schedule",
   "Author":"Author",
   "Infomation about learning groups from friends":"Infomation about learning groups from friends",
-  "person":"person",
+  "on about learning gro":"person",
 
   "Step":"Step",
   "I would like system support best course":"I would like system support best course",
@@ -269,5 +270,50 @@
   "How about your learning plan":"How about your learning plan",
   "Next":"Next",
   "Choose one N":"Choose one N",
-  "What level do you want to learn or practices":"What level do you want to learn or practices"
+  "What level do you want to learn or practices":"What level do you want to learn or practices",
+
+
+  "Update success":"Update success",
+  "Update failed":"Update failed",
+  "Encrypt password failed":"Encrypt password failed",
+  "Your password is invalid":"Your password is invalid",
+  "User doesn't exit":"User doesn't exit",
+  "Record has update":"Record has update",
+
+  " has logged in":" has logged in",
+  "Invalid username and password combination":"Invalid username and password",
+  "username Password Mismatch":"username Password Mismatch",
+  " not found":" not found",
+  "The email address ":"The email address ",
+  "You must enter both a email and password":"You must enter both a email and password",
+  "username and Password Required":"username and Password Required",
+  "Create Learning history successful":"Create Learning history successful",
+
+  "If you forget your login password, click here":"If you forget your login password, click here",
+
+  "Account activate mail subject":"Account activate mail subject ",
+  "Send Password":"Send Password",
+  "User Account password reset":"User Account password reset",
+  "Reset password successful":"Reset password successful",
+  "Please check your email to get your new password. Login and change your password in the account management":"Please check your email to get your new password. Login and change your password in the account management",
+  "Click here to go login page":"Click here to go login page",
+
+  "Email address is being used":"Email address is being used",
+  "Your registing email is in using. Please use other or go to foget password page if you lost you password.":"Your registing email is in using. Please use other or go to foget password page if you lost you password.",
+  "Email address is wrong":"Email address is wrong",
+  "Your inputed email address is not correct. Check and do it again.":"Your inputed email address is not correct. Check and do it again.",
+  "Sigin Please!":"Sigin Please!",
+  "You must be sign in if you want using this page.":"You must be sign in if you want using this page.",
+  "more":"more",
+
+
+
+  "last":"dummy",
+
+  "Account is not activated yet. Please check your mail and get activate link":"Account is not activated yet. Please check your mail and get activate link",
+
+  "Thank for Your registration":"Thank for Your registration",
+  "Your account registration is successful! Please check your email to get activate link for your account":"Your account registration is successful! Please check your email to get activate link for your account",
+  "Then click here to login and enjoy":"Then click here to login and enjoy"
+
 }

@@ -16,9 +16,9 @@ module.exports = {
 
         if (!req.param('email') || !req.param('password')) {
             var usernamePasswordRequiredError = [{
-                name: 'usernamePasswordRequired',
+                name: req.__('username and Password Required'),
 
-                message: 'You must enter both a email and password.'
+                message: req.__('You must enter both a email and password')
 
             }]
 
@@ -41,7 +41,7 @@ module.exports = {
             if (!user) {
                 var noAccountError = [{
                     name: 'noAccount',
-                    message: 'The email address ' + req.param('email') + ' not found.'
+                    message: req.__('The email address ') + req.param('email') + req.__(' not found')
                 }]
                 req.session.flash = {
                     err: noAccountError
@@ -54,7 +54,7 @@ module.exports = {
             if (!user.active) {
                 var inactiveError = [{
                     name: 'inactiveAccount',
-                    message: 'Account is not activated yet. Please check your mail and get activate link'
+                    message: req.__('Account is not activated yet. Please check your mail and get activate link')
                 }]
                 req.session.flash = {
                     err: inactiveError
@@ -70,8 +70,8 @@ module.exports = {
                 // If the password from the form doesn't match the password from the database...
                 if (!valid) {
                     var usernamePasswordMismatchError = [{
-                        name: 'usernamePasswordMismatch',
-                        message: 'Invalid username and password combination.'
+                        name: req.__('username Password Mismatch'),
+                        message: req.__('Invalid username and password combination')
                     }]
                     req.session.flash = {
                         err: usernamePasswordMismatchError
@@ -100,7 +100,7 @@ module.exports = {
                         loggedIn: true,
                         id: user.id,
                         name: user.name,
-                        action: ' has logged in.'
+                        action: req.__(' has logged in')
                     });
 
                     // If the user is also an admin redirect to the user list (e.g. /views/user/index.ejs)
