@@ -7,6 +7,7 @@
   "dependencies": {
     "angular": "^1.4.0",
     "array-extended": "0.0.11",
+    "async": "^1.4.0",
     "bcryptjs": "^2.1.0",
     "connect-mongo": "^0.8.1",
     "date-format": "0.0.2",
