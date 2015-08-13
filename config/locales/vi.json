@@ -175,7 +175,7 @@
   "Image":"Ảnh",
   "Refresh this":"Làm sạch trang",
   "Your result":"Kết quả của bạn",
-  "Your Mark":"Điểm của bạn",
+  "Your Mark":"Điểm của bạn ",
   "The exact total":"Tổng số câu chính xác",
   "Start Date":"Bắt đầu lúc",
   "Finish Date":"Kết thúc lúc",
@@ -310,5 +310,19 @@
 
   "Thank for Your registration":"Cảm ơn bạn vì đã quan tâm tới chúng tôi",
   "Your account registration is successful! Please check your email to get activate link for your account":"Tài khoản của bạn đã đăng ký thành công! Kiểm tra email của bạn để kích hoạt tài khoản nhé",
-  "Then click here to login and enjoy":"Sau đó nhấn vào đây để đăng nhập và cảm nhận dịch vụ tuyệt vời"
+  "Then click here to login and enjoy":"Sau đó nhấn vào đây để đăng nhập và cảm nhận dịch vụ tuyệt vời của chúng tôi",
+
+  "Your knowledge is n't good ! try again":"Kiến thức của bạn chưa vững , đừng nản , hãy thử lại",
+  "Next Lesson":"Chuyển bài",
+
+  "All field is required":"Tất cả các thông tin phải bắt buộc",
+  "Current pass and the new one are the same":"Mật khẩu mới và mật khẩu cũ không khớp",
+  "Something is wrong, please try again later":"xảy ra lỗi , hãy thử lại",
+
+  "You must choose a book":"Bạn chưa chọn sách",
+  "Finish date must be greater than today":"Thời gian kết thúc phải lớn hơn hiện tại",
+  "Finish date must be greater than start date":"Thời gian kết thúc thúc phải lớn hơn Thời gian bắt đầu",
+  "Finish date is Invalid":"Thời gian kết thúc không hợp lệ",
+  "Start date must be greater than today":"Thời gian bắt đầu phải lớn hơn hôm nay",
+  "Start date is Invalid":"Thời gian bắt đầu không hợp lệ"
 }

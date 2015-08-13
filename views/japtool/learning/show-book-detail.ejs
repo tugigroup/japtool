@@ -201,14 +201,18 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel"></h4>
+                <h4 class="modal-title" id="myModalLabel">
+                    <%=__("Your knowledge is n't good ! try again")%>
+                </h4>
             </div>
             <div class="modal-body">
-                <h4 class="modal-title" id="myModalContent"></h4>
+                <h4 class="modal-title" id="myModalContent">
+                    <%=__("Your Mark")%><lable id="mark-view"></lable>
+                </h4>
             </div>
             <div class="modal-footer">
                 <button type="button" id="btn-nextLesson" onclick="nextLesson();" class="btn btn-primary"
-                        data-dismiss="modal">Next Lesson
+                        data-dismiss="modal"><%=__("Next Lesson")%>
                 </button>
                 <button type="button" id="btn1" class="btn btn-success" data-dismiss="modal">Close</button>
                 <!--<button type="button" id="btn2" class="btn btn-primary">Save changes</button>-->

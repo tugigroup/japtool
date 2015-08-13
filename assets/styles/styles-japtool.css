@@ -2529,3 +2529,17 @@ ul.timeline li .timeline-panel:after {
 .choose-book{
     padding-top: 10px;
 }
+
+/*validate*/
+.message-date-validate {
+    display: none;
+    color: #d82824;
+}
+#choose-book-validator{
+    display: none;
+    color: #d82824;
+}
+.change-pass-mess-err{
+    display: none;
+    color: #d82824;
+}

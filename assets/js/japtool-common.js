@@ -200,46 +200,50 @@ function validateCreatLearning() {
     var validateStartDate;
     var validateFinishDate;
     if (checkStartDate == "" || checkStartDate == null) {
-        $('#mesagestartDate').html("<i><p style='color: #d82824'>Start date is Invalid!!</p></i>");
+        $('#messDateInvalid').show();
         validateStartDate = false;
     }
     else {
         if (starDate < now) {
-            $('#mesagestartDate').html("<i><p style='color: #d82824'>Start date must be greater than today!!!</p></i>");
+            $('#messDateGreater').show();
             validateStartDate = false;
         }
         else {
+            // ok
+            $(".message-date-validate").hide();
             validateStartDate = true;
-            $('#mesagestartDate').empty();
         }
     }
     if (checkFinishDate == "" || checkFinishDate == null) {
-        $('#mesagefinishDate').html("<i><p style='color: #d82824'>Finish date is Invalid!!</p></i>");
+        //ok
+        $('#messFinishDateIsInvalid').show();
         validateFinishDate = false;
     }
     else {
         if (finishDate < now) {
-            $('#mesagefinishDate').html("<i><p style='color: #dc302c'>Finish date must be greater than today!!!</p></i>");
+            $('#messFinishDateGreater').show();
             validateFinishDate = false;
         }
         else {
             if (finishDate < starDate) {
-                $('#mesagefinishDate').html("<i><p style='color: #dc302c'>Finish date must be greater than start date!!!</p></i>");
+                //ok
+                $('#messFinishDateGreaterStart').show();
                 validateFinishDate = false;
             }
             else {
-                $('#mesagefinishDate').empty();
+                $(".message-date-validate").hide();
                 validateFinishDate = true;
             }
         }
     }
     if ($('#idbook').val() == null) {
-        $('#mesageBook').html("<i><p style='color: #e32d29'>You must choose a book</p></i>");
+        //ok
+        $('#choose-book-validator').show();
         validateBook = false;
     }
     else {
         validateBook = true;
-        $('#mesageBook').empty();
+        $('#mesageBook').hide();
     }
 
 
@@ -256,14 +260,17 @@ function validateEditLearning() {
     finishDate.setHours(23, 59, 59);
     var validateFinishDate;
     if (finishDate < now) {
-        $('#mesagefinishDate').html("<i><p style='color: #dc302c'>Finish date must be greater than today!</p></i>");
+        console.log("1 shit");
+        $('#messFinishDateGreaterToday').show();
         validateFinishDate = false;
     }
     else {
-        $('#mesagefinishDate').empty();
+        console.log("2 fuck");
+        $('#message-date-validate').hide();
         validateFinishDate = true;
     }
     if (validateFinishDate) {
+        console.log("4 ffff");
         return true;
     }
     else {
@@ -287,7 +294,7 @@ $(".chosseBookItem").on('click', function () {
             $('#vocabulary').html(data);
         },
         error: function () {
-            alert('loi roi nhe');
+            console.log("error");
         }
     });
 });
@@ -353,26 +360,26 @@ function Learn(id) {
 //end nam
 /*end choose book*/
 //end recommend login
-//ICON
-$(function () {
-    var all_classes = "";
-    var timer = undefined;
-    $.each($('li', '.social-class'), function (index, element) {
-        all_classes += " btn-" + $(element).data("code");
-    });
-    $('li', '.social-class').mouseenter(function () {
-        var icon_name = $(this).data("code");
-        if ($(this).data("icon")) {
-            icon_name = $(this).data("icon");
-        }
-        var icon = "<i class='fa fa-" + icon_name + "'></i>";
-        $('.btn-social', '.social-sizes').html(icon + "Sign in with " + $(this).data("name"));
-        $('.btn-social-icon', '.social-sizes').html(icon);
-        $('.btn', '.social-sizes').removeClass(all_classes);
-        $('.btn', '.social-sizes').addClass("btn-" + $(this).data('code'));
-    });
-    $($('li', '.social-class')[Math.floor($('li', '.social-class').length * Math.random())]).mouseenter();
-});
+////ICON
+//$(function () {
+//    var all_classes = "";
+//    var timer = undefined;
+//    $.each($('li', '.social-class'), function (index, element) {
+//        all_classes += " btn-" + $(element).data("code");
+//    });
+//    $('li', '.social-class').mouseenter(function () {
+//        var icon_name = $(this).data("code");
+//        if ($(this).data("icon")) {
+//            icon_name = $(this).data("icon");
+//        }
+//        var icon = "<i class='fa fa-" + icon_name + "'></i>";
+//        $('.btn-social', '.social-sizes').html(icon + "Sign in with " + $(this).data("name"));
+//        $('.btn-social-icon', '.social-sizes').html(icon);
+//        $('.btn', '.social-sizes').removeClass(all_classes);
+//        $('.btn', '.social-sizes').addClass("btn-" + $(this).data('code'));
+//    });
+//    $($('li', '.social-class')[Math.floor($('li', '.social-class').length * Math.random())]).mouseenter();
+//});
 
 
 //CustomScrollbar
