@@ -1,0 +1,12 @@
+<% _.each(listItems, function (listItemsL) { %>
+<% _.each(bookMasterId, function (masterId) { %>
+<h1><%= masterId %></h1>
+<% _.each(listItemsL, function (item) { %>
+<% if(masterId == item.bookMaster){ %>
+<div class="col-sm-2">
+    <div class="info-lesson label-danger"><a href="<%= item.id %>"><%= item.lesson %></a></div>
+</div>
+<% } %>
+<% }) %>
+<% }) %>
+<% }) %>
