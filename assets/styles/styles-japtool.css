@@ -843,7 +843,9 @@ a:hover {
     padding: 11px;
     border-bottom: 1px solid #D2D6DE;
 }
-
+.font-weight-sub-lesson{
+    font-weight: 700;
+}
 /** timeline box structure **/
 .timeline {
     list-style: none;
