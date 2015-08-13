@@ -590,7 +590,7 @@ label.valid, p.valid {
 .info-desc {
     margin-bottom: 1rem
 }
-.info .col-sm-2,.info .col-sm-3{
+.info .col-sm-1,.info .col-md-1,.info .col-sm-3{
     margin-top: 10px;
 }
 .info-learning p {

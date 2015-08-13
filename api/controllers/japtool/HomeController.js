@@ -11,9 +11,17 @@ module.exports = {
 //This loads index.ejs
     index: function (req, res) {
         userId = req.session.User.id;
+        var limitLesson;
+        var limitValue = req.param('loadValue');
+        if(!limitValue || limitValue == undefined){
+            limitLesson = 3;
+        }else{
+            limitLesson = limitValue;
+        }
+        console.log(limitValue);
         SelfLearning.find({
             where: {user: userId},
-            limit: 2,
+            limit: limitLesson,
             sort: 'createdAt DESC'
         }).populate('bookMaster').exec(function (err, listLessons) {
             if (err) {
@@ -98,22 +106,18 @@ module.exports = {
         var listItems_array = [];
         var count = 0;
         for (i = 0; i < bookMasterIdL; i++) {
-            BookDetail.find({
-                bookMaster: bookMasterId[i],
+            BookMaster.find({id: bookMasterId[i],sort: 'createdAt DESC'}).populate('bookDetails', {
                 subLesson: {'!': 'Luyện tập'},
                 sort: 'createdAt ASC'
-            }).exec(function (err, listItems) {
+            }).exec(function(err, listItems) {
                 if (err) {
-                    callback(err);
+                    console.log(err);
                 } else {
                     count++;
                     listItems_array.push(listItems);
-                    if (count == bookMasterIdL) {
-                        console.log(bookMasterId);
-                        console.log(listItems_array);
+                    if (count== bookMasterIdL) {
                         res.render('japtool/home/lessonHome', {
-                            listItems: listItems_array,
-                            bookMasterId: bookMasterId
+                            listItems: listItems_array
                         });
                     }
                 }

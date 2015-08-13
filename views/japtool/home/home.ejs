@@ -8,32 +8,11 @@
             </div>
             <div class="vocabulary-item">
                 <% _.each(listLessons, function (listLesson, index) { %>
-                <div class="info">
-                    <div class="col-sm-12">
-                        <h3><a class="text-primary homeBookMaster"
-                               bookMasterId= "<%= listLesson.bookMaster.id %>"><%= listLesson.bookMaster.name %></a></h3>
-                    </div>
-                    <div class="col-sm-2">
-                        <p>Category: <%= listLesson.bookMaster.type %></p>
-                    </div>
-                    <div class="col-sm-2">
-                        <p>Level: <%= listLesson.bookMaster.level %></p>
-                    </div>
-                    <div class="col-sm-2">
-                        <p>Lessoned: 3 Lesson</p>
-                    </div>
-                    <div class="col-sm-2">
-                        <p>Pass: 2 Lesson</p>
-                    </div>
-                    <div class="col-sm-2">
-                        <p>Failed: 1 Lesson</p>
-                    </div>
-                    <div class="col-sm-2">
-                        <p>Tổng có: <%= listLesson.bookMaster.lessonNum %></p>
-                    </div>
-                    <div class="info-desc clearfix"></div>
-                </div>
-                <% }) %>
+                <input type="hidden" class="homeBookMaster" bookMasterId= "<%= listLesson.bookMaster.id %>">
+                <%})%>
+
+                <div class="info"></div>
+
 
                 <!--More book master-->
                 <!--<div class="info-book-more">-->
@@ -94,7 +73,7 @@
 
                 <!--</div>-->
                 <div class="col-sm-offset-4 col-sm-4">
-                    <div class="info-lesson label-primary loadmore"><a>Load View More</a></div>
+                    <div class="info-lesson label-primary loadmore" loadValue="5"><a>Load View More</a></div>
                 </div>
             </div>
         </div>
@@ -123,12 +102,32 @@
             async: false,
             success: function (data) {
 
-                $('.info-desc').html('');
-                $('.info-desc').html(data);
+                $('.info').html('');
+                $('.info').html(data);
             },
             error: function () {
                 alert('Error')
             }
+        })
+        $(".loadmore").on('click', function () {
+            var loadValue = $(this).attr('loadValue');
+                alert(loadValue);
+            $.ajax({
+                url: '/japtool/home/index',
+                type: 'GET',
+                data: {
+                    loadValue:loadValue
+                },
+                cache: false,
+                async: false,
+                success: function (data) {
+                    alert('OK');
+
+                },
+                error: function () {
+                    alert('Error')
+                }
+            })
         })
     }
 </script>
