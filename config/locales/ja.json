@@ -329,6 +329,10 @@
   "Finish date must be greater than start date":"Finish date must be greater than start date",
   "Finish date is Invalid":"Finish date is Invalid",
   "Start date must be greater than today":"Start date must be greater than today",
-  "Start date is Invalid":"Start date is Invalid"
+  "Start date is Invalid":"Start date is Invalid",
+
+  "Something is wrong, please try again later":"Something is wrong, please try again later",
+  "Current pass and the new one are the same":"Current pass and the new one are the same",
+  "All field is required":"All field is required"
 
 }
