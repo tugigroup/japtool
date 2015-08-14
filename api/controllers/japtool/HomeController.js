@@ -28,7 +28,7 @@ module.exports = {
                                         sails.log("Lois")
                                     } else {
                                         var bookDetails = data.bookDetails;
-                                        var dataExtractCondition = data.dataExtractCondition;
+                                        //var dataExtractCondition = data.dataExtractCondition;
                                         var lessons = [];
                                         bookDetails.forEach(function (item, index) {
                                             if (index == 0) {
@@ -36,10 +36,10 @@ module.exports = {
                                             }
                                             lessons.push(item.lesson);
                                         });
-                                        sails.log(data);
+                                        //sails.log(data);
                                         var uniqueLessons = array(lessons).unique().value();
                                         b.push(uniqueLessons);
-                                        sails.log(data);
+                                        //sails.log(data);
                                         if (b.length == selfLearnings.length) {
                                             res.view('japtool/home/home', {selfLearnings: selfLearnings, b: b});
                                         }

@@ -314,6 +314,12 @@
 
   "Thank for Your registration":"Thank for Your registration",
   "Your account registration is successful! Please check your email to get activate link for your account":"Your account registration is successful! Please check your email to get activate link for your account",
-  "Then click here to login and enjoy":"Then click here to login and enjoy"
+  "Then click here to login and enjoy":"Then click here to login and enjoy",
+
+  "Library Category":"Book Category",
+  "Library Level":"Library Level",
+  "Select key Search":"Select key Search",
+  "Select group type":"Select group type",
+  "Select level type":"Select level type"
 
 }
