@@ -273,7 +273,7 @@
   "Update success":"Cập nhật thành công",
   "Update failed":"Cập nhật thất bại",
   "Encrypt password failed":"Mã hòa mật khẩu thất bại",
-  "Your password is invalid":"Mật khẩu của bạn hợp lệ",
+  "Your password is invalid":"Mật khẩu của bạn không hợp lệ",
   "User doesn't exit":"Người dùng không tồn tại",
   "Record has update":"bản ghi được cập nhật",
 
@@ -333,5 +333,9 @@
   "Finish date must be greater than start date":"Thời gian kết thúc thúc phải lớn hơn Thời gian bắt đầu",
   "Finish date is Invalid":"Thời gian kết thúc không hợp lệ",
   "Start date must be greater than today":"Thời gian bắt đầu phải lớn hơn hôm nay",
-  "Start date is Invalid":"Thời gian bắt đầu không hợp lệ"
+  "Start date is Invalid":"Thời gian bắt đầu không hợp lệ",
+
+  "Something is wrong, please try again later":"Có lỗi xảy ra , vui lòng thử lại",
+  "Current pass and the new one are the same":"mật khẩu cũ bị sai",
+  "All field is required":"không được nhập thiếu bất kỳ ô nào"
 }
