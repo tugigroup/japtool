@@ -503,6 +503,7 @@ label.valid, p.valid {
 .vocabulary-item .info h3 {
     border-bottom: 1px solid rgba(189, 189, 189, 0.44);
     padding-bottom: 1rem;
+    margin-top: 2rem;
 }
 
 .vocabulary-item .info h3:after {
@@ -571,7 +572,7 @@ label.valid, p.valid {
 
 .vocabulary-item .info h3 a {
     font-size: 26px;
-    color: #333333;
+    color: #000000;
     font-weight: 300;
 }
 
@@ -589,7 +590,9 @@ label.valid, p.valid {
 .info-desc {
     margin-bottom: 1rem
 }
-
+.info .col-sm-1,.info .col-md-1,.info .col-sm-3{
+    margin-top: 10px;
+}
 .info-learning p {
     line-height: 30px
 }
@@ -601,7 +604,25 @@ label.valid, p.valid {
 .join-learn {
     color: #fff
 }
-
+.info-book{
+    border: 1px solid #D6D6D6;
+    padding: 10px 0px;
+    background-color: #E4E4E4;
+    margin-top: 2rem;
+}
+.info-book h3{
+    margin: 0;
+    font-size: 15px;
+    font-weight: 500;
+}
+.info-book .col-sm-2{
+    margin-top: 1rem;
+}
+.loadmore a{
+    margin-top: 2rem;
+}
+.disactive{display: none}
+.active{display: block}
 /*Library*/
 /*.modal-header, h4, .close {*/
 /*background-color: #5cb85c;*/
@@ -843,7 +864,9 @@ a:hover {
     padding: 11px;
     border-bottom: 1px solid #D2D6DE;
 }
-
+.font-weight-sub-lesson{
+    font-weight: 700;
+}
 /** timeline box structure **/
 .timeline {
     list-style: none;
@@ -2505,4 +2528,18 @@ ul.timeline li .timeline-panel:after {
 }
 .choose-book{
     padding-top: 10px;
+}
+
+/*validate*/
+.message-date-validate {
+    display: none;
+    color: #d82824;
+}
+#choose-book-validator{
+    display: none;
+    color: #d82824;
+}
+.change-pass-mess-err{
+    display: none;
+    color: #d82824;
 }

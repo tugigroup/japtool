@@ -14,7 +14,13 @@
                         <div class="col-sm-4">
                             <input type="date" class="form-control" name="startDate" id="startDate"><br>
 
-                            <div id="mesagestartDate"></div>
+                            <div>
+                                <i class="message-date-validate" id="messDateInvalid"><p><%=__("Start date is Invalid")%>!!</p></i>
+                                <i class="message-date-validate" id="messDateGreater"><p><%=__("Start date must be greater than today")%>!!!</p></i>
+                                <i class="message-date-validate" id="messFinishDateIsInvalid"><p><%=__("Finish date is Invalid")%></p></i>
+                                <i class="message-date-validate" id="messFinishDateGreater"><p><%=__("Finish date must be greater than today")%>!!!</p></i>
+                                <i class="message-date-validate" id="messFinishDateGreaterStart"><p><%=__("Finish date must be greater than start date")%>!!!</p></i>
+                            </div>
                         </div>
 
                         <div class="col-sm-2">
@@ -23,7 +29,9 @@
                         <div class="col-sm-4">
                             <input type="date" class="form-control" name="finishDate" id="finishDate"><br>
 
-                            <div id="mesagefinishDate"></div>
+                            <div id="mesagefinishDate">
+                                <i class="message-date-validate" id="messFinishDateGreaterToday"><p><%=__("Finish date must be greater than today")%>!</p></i>
+                            </div>
                         </div>
 
                     </div>
@@ -81,7 +89,9 @@
             </div>
             <!-- Trigger the modal with a button -->
 
-            <div id="mesageBook"></div>
+            <div id="mesageBook">
+                <i id="choose-book-validator"><p><%=__("You must choose a book")%></p></i>
+            </div>
             <div style="padding-left: 150px">
                 <% if(!book){ %>
                 <input type="button"

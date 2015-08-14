@@ -1,99 +1,134 @@
-<!--<script type="text/javascript">
-    window.onload = function () {
-        $(".bookMaterIdClass").each(function () {
-            var bookId = $(this).val();
-            var startDate = $("#startDate" + bookId).val();
-            var finishDate = $("#finishDate" + bookId).val();
-            var learningId = $("#learningId" + bookId).val();
-            var listLesson = $("listLesson" + bookId).val();
-            alert(listLesson);
-            var data = {
-                bookId: bookId,
-
-                startDate: startDate,
-                finishDate: finishDate,
-                learningId: learningId
-            };
-            $.ajax({
-                method: "GET",
-                url: "/japtool/Learning/getMissLesson",
-                data: data
-            }).done(function (data) {
-                console.log(data);
-                data.forEach(function (item) {
-                    $("#" + bookId).append(
-                            '<div class="col-sm-3">' +
-                            '<div class="info-lesson label-warning"><a>' + item.lesson + ' </a></div>' +
-                            '</div>'
-                    );
-                });
-
-            });
-
-        });
-
-    };
-</script>-->
-
 <div class="vocabulary content clearfix">
     <div class="container">
-        <% if(selfLearnings != undefined && selfLearnings.length > 0){ %>
-        <% selfLearnings.forEach(function(selfLearning, index){ %>
-        <h2 class="text-left clearfix"><%= selfLearning.bookMaster.name %></h2>
-        <div class="library-page-line"></div>
         <div class="row">
-            <% for(var k = 0;k < b.length;k++){ %>
-            <% if(b[k][0] == selfLearning.bookMaster.id){ %>
-            <% for(var j = 1;j < b[k].length;j++){ %>
-            <% var a = false; %>
-            <% var d = 0; %>
-            <% for(var i = 0;i < selfLearning.userLearnHistories.length;i++){ %>
+            <div class="col-sm-12">
+                <h2 class="text-center clearfix">Learning Your Self</h2>
 
-
-            <% if(b[k][j] == selfLearning.userLearnHistories[i].lesson){ %>
-            <% a = true; %>
-            <% if(selfLearning.userLearnHistories[i].status == 'passed'){ %>
-            <% d = 1; %>
-            <% }else if(selfLearning.userLearnHistories[i].status == 'false'){ %>
-            <% d = 2; %>
-            <% }else{ %>
-            <% d = 3; %>
-            <% } %>
-            <% } %>
-            <% } %>
-
-            <% if(a == true){ %>
-            <% if(d == 1){ %>
-            <div class="col-sm-1" style="padding-bottom: 15px">
-                <div class="info-lesson label-success"><a><%= b[k][j] %></a></div>
+                <p class="text-center desc-home">Hiển thị những bài học của thành viên</p>
             </div>
-            <% }else if(d == 2){ %>
-            <div class="col-sm-1" style="padding-bottom: 15px">
-                <div class="info-lesson label-danger"><a><%= b[k][j] %></a></div>
+            <div class="vocabulary-item">
+                <% _.each(listLessons, function (listLesson, index) { %>
+                <input type="hidden" class="homeBookMaster" bookMasterId= "<%= listLesson.bookMaster.id %>">
+                <%})%>
+
+                <div class="info"></div>
+
+
+                <!--More book master-->
+                <!--<div class="info-book-more">-->
+                    <!--<div class="col-sm-12">-->
+                        <!--<div class="info-book clearfix">-->
+                            <!--<div class="col-sm-4">-->
+                                <!--<h3>Bộ từ vựng N3 tập 2</h3>-->
+                            <!--</div>-->
+                            <!--<div class="col-sm-4">-->
+                                <!--7/10 Bài đã học-->
+                            <!--</div>-->
+                            <!--<div class="col-sm-4">-->
+                                <!--Pass 5/ 10 Bài-->
+                            <!--</div>-->
+                            <!--<div class="info-desc disactive clearfix">-->
+
+                                <!--&lt;!&ndash;<div class="col-sm-2">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<div class="info-lesson label-danger"><a>Lesson 2</a></div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<div class="col-sm-2">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<div class="info-lesson label-success"><a>Lesson 3</a></div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<div class="col-sm-2">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<div class="info-lesson label-warning"><a>Lesson 4</a></div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<div class="col-sm-2">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<div class="info-lesson label-home"><a>Lesson 1</a></div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<div class="col-sm-2">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<div class="info-lesson label-home"><a>Lesson 2</a></div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<div class="col-sm-2">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<div class="info-lesson label-home"><a>Lesson 3</a></div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<div class="col-sm-2">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<div class="info-lesson label-home"><a>Lesson 4</a></div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<div class="col-sm-2">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<div class="info-lesson label-home"><a>Lesson 1</a></div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<div class="col-sm-2">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<div class="info-lesson label-home"><a>Lesson 2</a></div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<div class="col-sm-2">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<div class="info-lesson label-home"><a>Lesson 3</a></div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<div class="col-sm-2">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<div class="info-lesson label-home"><a>Lesson 4</a></div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                            <!--</div>-->
+                            <!--<div class="col-sm-12">-->
+                                <!--<a class="view-detail-lesson view-detail-lesson-active pull-right">View Detail</a>-->
+                                <!--<a class="view-detail-lesson view-detail-lesson-hide pull-right disactive">Hide-->
+                                    <!--Detail</a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                <!--</div>-->
+                <div class="col-sm-offset-4 col-sm-4">
+                    <div class="info-lesson label-primary loadmore" loadValue="5"><a>Load View More</a></div>
+                </div>
             </div>
-            <% }else{ %>
-            <div class="col-sm-1" style="padding-bottom: 15px">
-                <div class="info-lesson label-warning"><a><%= b[k][j] %></a></div>
-            </div>
-            <% } %>
-            <% }else{ %>
-            <div class="col-sm-1" style="padding-bottom: 15px">
-                <div class="info-lesson label-home"><a><%= b[k][j] %></a></div>
-            </div>
-            <% } %>
-
-            <% } %>
-            <% } %>
-            <% } %>
-
-            <!--Show bool user History-->
-
-
         </div>
-
-        <% }); %>
-        <% } else { %>
-        <div><h1><%= __("No Content") %></h1></div>
-        <% } %>
     </div>
 </div>
+<form action="/japtool/learning/edit" method="post" id="edit-learning-japtool"
+      onsubmit="return validateEditLearning()">
+    <div class="modal fade" id="formedit" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-lg" id="editform"></div>
+    </div>
+</form>
+
+<script type="text/javascript">
+    window.onload = function () {
+        var bookMasterId = [];
+        $('.homeBookMaster').each(function(){
+            bookMasterId.push($(this).attr('bookMasterId'));
+        })
+        $.ajax({
+            url: '/japtool/home/lessonHome',
+            type: 'GET',
+            data: {
+                bookMasterId: bookMasterId
+            },
+            cache: false,
+            async: false,
+            success: function (data) {
+
+                $('.info').html('');
+                $('.info').html(data);
+            },
+            error: function () {
+                alert('Error')
+            }
+        })
+        $(".loadmore").on('click', function () {
+            var loadValue = $(this).attr('loadValue');
+                alert(loadValue);
+            $.ajax({
+                url: '/japtool/home/index',
+                type: 'GET',
+                data: {
+                    loadValue:loadValue
+                },
+                cache: false,
+                async: false,
+                success: function (data) {
+                  $('.vocabulary-item').html('');
+                  $('.vocabulary-item').html(data);
+
+                },
+                error: function () {
+                    alert('Error')
+                }
+            })
+        })
+    }
+</script>

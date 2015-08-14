@@ -107,16 +107,18 @@
         draggable: false,
         accessibility: true,
         touchMove: false,
+        infinite:false,
         prevArrow: '<button type="button" data-role="none" class="btn btn-show-list btn-arrow-left" aria-label="Previous" tabindex="0" role="button"><i class="fa fa-chevron-left"></i></button>',
         nextArrow: '<button type="button" data-role="none" class="btn btn-show-list btn-arrow-right" aria-label="Next" tabindex="0" role="button"><i class="fa fa-chevron-right"></i></button>'
     });
     $('.slider-nav').slick({
         slidesToShow: 5,
-        slidesToScroll: 5,
+        slidesToScroll:1,
         asNavFor: '.slider-for',
+        accessibility: true,
+        draggable: false,
         dots: false,
         touchMove: false,
-        centerMode: true,
         focusOnSelect: true
     });
     function showExample(index) {
@@ -148,6 +150,9 @@
             //Show current slide details
             showDetails(current_slide);
         });
+        $('.slider-for').on('edge', function(event, slick, direction){
+            alert('ok');
+        });
     });
     // count page
     var $status = $('.pagingCnt');
@@ -171,6 +176,21 @@
         $('.card-image').hide();
         $('.card-text').removeClass("card-text-click");
     });
+    // On before slide change slide
+//    $('.slider-for').on('afterChange', function (event, slick, currentSlide) {
+//        console.log(event);
+//        if(slick.slideCount==currentSlide+1){
+//
+//        }
+//    });
+//    $('#kanji-List .btn-arrow-right').on('click' , function(){
+//        // check slider is finish
+//        var currentSlide = $('.slider-for').slick('getSlick').currentSlide;
+//        var nextSlide = $('.slider-for').slick('getSlick').$slides[currentSlide+1];
+//        if(!nextSlide && nextSlide==undefined){
+//            $('.slider-for').slick('slickAdd','<div><h3> ABC </h3></div>');
+//        }
+//    });
     $('span').tooltip();
     (function () {
         //Show details of first voca

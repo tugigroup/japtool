@@ -88,8 +88,9 @@
                 var finishDate = new Date();
                 if (truee / total > $('#ispassed').val()) {
                     status = "passed";
-                    $('#myModalLabel').text('Xin chúc mừng! Bạn đã hoàn thành bài học!  ');
-                    $('#myModalContent').text('Điểm của bạn là: ' + (truee / total) * 100);
+                    var resultPoint =  truee / total;
+                    // result view
+                    $("#mark-view").text(Math.round(resultPoint*100 )/ 10);
                     $('#myModal').modal('show');
                     $.ajax({
                         method: "POST",
@@ -111,8 +112,9 @@
                 }
                 else {
                     status = "false";
-                    $('#myModalLabel').text('Sorry! Bạn có chắc đã nắm vững lý thuyết?!!');
-                    $('#myModalContent').text('Điểm của bạn chỉ là: ' + (truee / total) * 100);
+                    var resultPoint =  truee / total;
+                    // result view
+                    $("#mark-view").text(Math.round(resultPoint*100 )/ 10);
                     $('#myModal').modal('show');
                     $.ajax({
                         method: "POST",
