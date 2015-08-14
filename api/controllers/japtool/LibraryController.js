@@ -32,6 +32,7 @@ module.exports = {
     },
 
     fillLibrary: function (req, res) {
+        //******************Build condition****************************
         var condition ='';
         var comma = '';
         var groupSearch = req.param('groupSearch');
@@ -52,6 +53,7 @@ module.exports = {
             condition += comma + "\"name\":\"%"+textSearch + "%\"";
         }
         condition ="{"+condition +"}";
+        //******************Ended Build condition***********************
         BookMaster.find({where:JSON.parse(condition)})
             .sort('sort asc')
             .populate('bookDetails', {sort: 'sort ASC'}).exec(function createCB(err, data) {
@@ -83,7 +85,7 @@ module.exports = {
                         if (index == (data.length - 1)) {
                             var array = require("array-extended");
                             var uniqueType = array(arrTag).unique().value();
-                            res.render('japtool/library/libraryByGroup', {
+                            res.render('japtool/library/libraryContent', {
                                 data: data,
                                 uniqueType: uniqueType,
                                 arrAllLesson: arrAllLesson,
