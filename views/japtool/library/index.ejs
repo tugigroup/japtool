@@ -34,11 +34,13 @@
         <div class="col-sm-1 col-xs-12">
             <div class="form-group form-horizontal">
                 <label for="executeSearch"></label>
-                <button onclick="fillLibrary();" class="btn btn-primary form-control" id="executeSearch"><%=__("Search") %></button>
+                <button onclick="fillLibrary();" class="btn btn-primary form-control"
+                        id="executeSearch"><%= __("Search") %></button>
             </div>
         </div>
     </div>
     <div id="libraryContent"></div>
+    <div id="error" style="display: none"></div>
 </div>
 <script>
     window.onload = function () {
@@ -53,14 +55,25 @@
             levelSearch: levelSearch,
             textSearch: textSearch
         };
-        $.ajax({
-            method: "GET",
-            url: "/japtool/Library/fillLibrary",
-            data: data
-        }).done(function (data) {
-            $("#libraryContent").html("");
-            $("#libraryContent").html(data);
-            pagingInit();
-        })
+        /*$.ajax({
+         method: "GET",
+         url: "/japtool/Library/fillLibrary",
+         data: data
+         }).done(function (data) {
+         $("#libraryContent").html("");
+         $("#libraryContent").html(data);
+         })*/
+        $("#libraryContent").load("/japtool/Library/fillLibrary/", data, function (response, status, xhr) {
+            if (status == "error") {
+                var msg = "Sorry but there was an error: ";
+                $("#error").prop('disabled',true);
+                $("#error").html(msg + xhr.status + " " + xhr.statusText);
+            }
+            else {
+                $("#error").prop('disabled',false);
+                console.log(response);
+                pagingInit();
+            }
+        });
     }
 </script>
