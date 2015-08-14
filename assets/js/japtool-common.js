@@ -744,25 +744,6 @@ function trimSpace(str) {
     return str;
 }
 
-/*
- * Home after login
- * Add Class to div when click view detail
- * author: tuyentv1@fsoft.com.vn
- */
-$('.info-book-more .view-detail-lesson-active').click(function(){
-    $('.info-book-more .info-desc').removeClass('disactive');
-    $('.info-book-more .info-desc').addClass('active');
-    $('.view-detail-lesson-hide').removeClass('disactive');
-    $('.view-detail-lesson-hide').addClass('active');
-    $(this).addClass('disactive');
-})
-$('.info-book-more .view-detail-lesson-hide').click(function(){
-    $('.info-book-more .info-desc').addClass('disactive');
-    $('.info-book-more .info-desc').removeClass('active');
-    $('.view-detail-lesson-active').removeClass('disactive');
-    $('.view-detail-lesson-hide').removeClass('active');
-    $(this).addClass('disactive');
-})
 
 
 
