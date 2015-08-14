@@ -8,94 +8,15 @@
             </div>
             <div class="vocabulary-item">
                 <% _.each(listLessons, function (listLesson, index) { %>
-                <div class="info">
-                    <div class="col-sm-12">
-                        <h3><a class="text-primary homeBookMaster"
-                               bookMasterId= "<%= listLesson.bookMaster.id %>"><%= listLesson.bookMaster.name %></a></h3>
-                    </div>
-                    <div class="col-sm-2">
-                        <p>Category: <%= listLesson.bookMaster.type %></p>
-                    </div>
-                    <div class="col-sm-2">
-                        <p>Level: <%= listLesson.bookMaster.level %></p>
-                    </div>
-                    <div class="col-sm-2">
-                        <p>Lessoned: 3 Lesson</p>
-                    </div>
-                    <div class="col-sm-2">
-                        <p>Pass: 2 Lesson</p>
-                    </div>
-                    <div class="col-sm-2">
-                        <p>Failed: 1 Lesson</p>
-                    </div>
-                    <div class="col-sm-2">
-                        <p>Tổng có: <%= listLesson.bookMaster.lessonNum %></p>
-                    </div>
-                    <div class="info-desc clearfix"></div>
-                </div>
-                <% }) %>
+                <input type="hidden" class="homeBookMaster" bookMasterId= "<%= listLesson.bookMaster.id %>">
+                <%})%>
 
-                <!--More book master-->
-                <!--<div class="info-book-more">-->
-                    <!--<div class="col-sm-12">-->
-                        <!--<div class="info-book clearfix">-->
-                            <!--<div class="col-sm-4">-->
-                                <!--<h3>Bộ từ vựng N3 tập 2</h3>-->
-                            <!--</div>-->
-                            <!--<div class="col-sm-4">-->
-                                <!--7/10 Bài đã học-->
-                            <!--</div>-->
-                            <!--<div class="col-sm-4">-->
-                                <!--Pass 5/ 10 Bài-->
-                            <!--</div>-->
-                            <!--<div class="info-desc disactive clearfix">-->
-
-                                <!--&lt;!&ndash;<div class="col-sm-2">&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<div class="info-lesson label-danger"><a>Lesson 2</a></div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;<div class="col-sm-2">&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<div class="info-lesson label-success"><a>Lesson 3</a></div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;<div class="col-sm-2">&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<div class="info-lesson label-warning"><a>Lesson 4</a></div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;<div class="col-sm-2">&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<div class="info-lesson label-home"><a>Lesson 1</a></div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;<div class="col-sm-2">&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<div class="info-lesson label-home"><a>Lesson 2</a></div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;<div class="col-sm-2">&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<div class="info-lesson label-home"><a>Lesson 3</a></div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;<div class="col-sm-2">&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<div class="info-lesson label-home"><a>Lesson 4</a></div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;<div class="col-sm-2">&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<div class="info-lesson label-home"><a>Lesson 1</a></div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;<div class="col-sm-2">&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<div class="info-lesson label-home"><a>Lesson 2</a></div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;<div class="col-sm-2">&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<div class="info-lesson label-home"><a>Lesson 3</a></div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;<div class="col-sm-2">&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<div class="info-lesson label-home"><a>Lesson 4</a></div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                            <!--</div>-->
-                            <!--<div class="col-sm-12">-->
-                                <!--<a class="view-detail-lesson view-detail-lesson-active pull-right">View Detail</a>-->
-                                <!--<a class="view-detail-lesson view-detail-lesson-hide pull-right disactive">Hide-->
-                                    <!--Detail</a>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-
-                <!--</div>-->
-                <div class="col-sm-offset-4 col-sm-4">
-                    <div class="info-lesson label-primary loadmore"><a>Load View More</a></div>
-                </div>
+                <div class="info"></div>
+            </div>
+            <div class="lesson-more-item"></div>
+            <div class="info-more"></div>
+            <div class="col-sm-offset-4 col-sm-4">
+                <div class="info-lesson label-primary loadmore" loadValue="3"><a>Load View More</a></div>
             </div>
         </div>
     </div>
@@ -122,13 +43,54 @@
             cache: false,
             async: false,
             success: function (data) {
-
-                $('.info-desc').html('');
-                $('.info-desc').html(data);
+                $('.info').html('');
+                $('.info').html(data);
             },
             error: function () {
                 alert('Error')
             }
+        })
+
+
+        $(".loadmore").on('click', function () {
+            var loadValue = parseInt($(this).attr('loadValue'));
+            $.ajax({
+                url: '/japtool/home/loadMore',
+                type: 'GET',
+                data: {
+                    loadValue:loadValue
+                },
+                cache: false,
+                async: false,
+                success: function (data) {
+                  var htmlText =$('.lesson-more-item').html();
+                    $('.lesson-more-item').html(htmlText + data);
+                    loadValue = loadValue + 1;
+                    $(".loadmore").attr("loadValue",loadValue);
+                    var bookMasterMoreId = [];
+                    $('.homeBookMasterMore').each(function(){
+                        bookMasterMoreId.push($(this).attr('bookMasterMoreId'));
+                    })
+                    $.ajax({
+                        url: '/japtool/home/lessonMoreHome',
+                        type: 'GET',
+                        data: {
+                            bookMasterId: bookMasterMoreId
+                        },
+                        cache: false,
+                        async: false,
+                        success: function (data) {
+                            $('.info-more').html(data);
+                        },
+                        error: function () {
+                            alert('Error')
+                        }
+                    })
+                },
+                error: function () {
+                    alert('Error')
+                }
+            })
         })
     }
 </script>

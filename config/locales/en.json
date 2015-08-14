@@ -320,6 +320,15 @@
   "Your account registration is successful! Please check your email to get activate link for your account":"Your account registration is successful! Please check your email to get activate link for your account",
   "Then click here to login and enjoy":"Then click here to login and enjoy",
 
+
+  "Library Category":"Library Category",
+  "Library Level":"Library Level",
+  "Select key Search":"Select key Search",
+  "Select group type":"Select group type",
+  "Select level type":"Select level type",
+  "Search":"Search",
+  "Error when get and process BookMaster data":"Error when get and process BookMaster data",
+
   "Your knowledge is n't good ! try again":"Your knowledge is n't good ! try again",
   "Next Lesson":"Next Lesson",
 
@@ -332,5 +341,12 @@
   "Finish date must be greater than start date":"Finish date must be greater than start date",
   "Finish date is Invalid":"Finish date is Invalid",
   "Start date must be greater than today":"Start date must be greater than today",
-  "Start date is Invalid":"Start date is Invalid"
+
+  "Start date is Invalid":"Start date is Invalid",
+
+  "Something is wrong, please try again later":"Something is wrong, please try again later",
+  "Current pass and the new one are the same":"Current pass and the new one are the same",
+  "All field is required":"All field is required"
+
+
 }

@@ -196,14 +196,14 @@ function validateCreatLearning() {
     starDate.setSeconds(now.getSeconds() + 1);
     var finishDate = new Date($("#finishDate").val());
     finishDate.setHours(23, 59, 59);
-    var validateBook;
-    var validateStartDate;
-    var validateFinishDate;
+    var validateBook = true;
+    var validateStartDate = true;
+    var validateFinishDate  = true;
     if (checkStartDate == "" || checkStartDate == null) {
         $('#messDateInvalid').show();
         validateStartDate = false;
     }
-    else {
+    /*else {
         if (starDate < now) {
             $('#messDateGreater').show();
             validateStartDate = false;
@@ -213,7 +213,7 @@ function validateCreatLearning() {
             $(".message-date-validate").hide();
             validateStartDate = true;
         }
-    }
+    }*/
     if (checkFinishDate == "" || checkFinishDate == null) {
         //ok
         $('#messFinishDateIsInvalid').show();
@@ -628,6 +628,9 @@ $(document).ready(function () {
         } else if (newPass === oldPass) {
             //New pass and old are same
             mess.addClass('error').text('Current pass and the new one are the same!').show();
+        /*} else if (newPass != newPassCf) {
+            //Password doesn\'t match the confirmation
+            mess.addClass('error').text('Password doesn\'t match the confirmation').show();*/
         }
         else {
             //Ajax change pass function
@@ -744,25 +747,6 @@ function trimSpace(str) {
     return str;
 }
 
-/*
- * Home after login
- * Add Class to div when click view detail
- * author: tuyentv1@fsoft.com.vn
- */
-$('.info-book-more .view-detail-lesson-active').click(function(){
-    $('.info-book-more .info-desc').removeClass('disactive');
-    $('.info-book-more .info-desc').addClass('active');
-    $('.view-detail-lesson-hide').removeClass('disactive');
-    $('.view-detail-lesson-hide').addClass('active');
-    $(this).addClass('disactive');
-})
-$('.info-book-more .view-detail-lesson-hide').click(function(){
-    $('.info-book-more .info-desc').addClass('disactive');
-    $('.info-book-more .info-desc').removeClass('active');
-    $('.view-detail-lesson-active').removeClass('disactive');
-    $('.view-detail-lesson-hide').removeClass('active');
-    $(this).addClass('disactive');
-})
 
 
 

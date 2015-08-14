@@ -11,86 +11,21 @@ module.exports = {
 //This loads index.ejs
     index: function (req, res) {
         userId = req.session.User.id;
+        var limitLesson = 3;
         SelfLearning.find({
             where: {user: userId},
-            limit: 2,
-            sort: 'createdAt DESC'
+            limit: limitLesson,
+            sort: 'updatedAt DESC'
         }).populate('bookMaster').exec(function (err, listLessons) {
             if (err) {
                 if (err) return res.serverError(err);
             } else {
+
                 res.view('japtool/home/home', {listLessons: listLessons});
-                //var count = 0;
-                //var listItems_array = [];
-                //async.series([
-                //    function (callback) {
-                //        listLessons.forEach(function (item) {
-                //            var bookMasterId = item.bookMaster.id;
-                //            BookDetail.find({
-                //                bookMaster: bookMasterId,
-                //                subLesson: {'!': 'Luyện tập'},
-                //                sort: 'createdAt ASC'
-                //            }).exec(function (err, listItems) {
-                //                if (err) {
-                //                    callback(err);
-                //                } else {
-                //                    count++;
-                //                    var listLessonsL = listLessons.length;
-                //                    listItems_array.push(listItems)
-                //                    if (count == listLessonsL) {
-                //                        callback(null, res.view('japtool/home/home', {
-                //                            listItems: listItems_array,
-                //                            listLessons: listLessons
-                //                        }));
-                //                    }
-                //                }
-                //            })
-                //        });
-                //    }
-                //])
 
 
             }
         })
-        //SelfLearning.find({
-        //    where: {user: userId},
-        //    limit: 5,
-        //    skip: 2
-        //}).populate('bookMaster').exec(function (err, listLessonsSkip) {
-        //    if (err) {
-        //        if (err) return res.serverError(err);
-        //    } else {
-        //        var count = 0;
-        //        var listItems_array = [];
-        //        async.series([
-        //            function (callback) {
-        //                listLessonsSkip.forEach(function (itemSkip) {
-        //                    var bookMasterId = itemSkip.bookMaster.id;
-        //                    BookDetail.find({
-        //                        bookMaster: bookMasterId,
-        //                        subLesson: {'!': 'Luyện tập'},
-        //                        sort: 'createdAt ASC'
-        //                    }).exec(function (err, listItemsSkip) {
-        //                        if (err) {
-        //                            callback(err);
-        //                        } else {
-        //                            count++;
-        //                            var listLessonsL = listItemsSkip.length;
-        //                            console.log(listItemsSkip);
-        //                            listItems_array.push(listItemsSkip)
-        //                            if (count == listLessonsL) {
-        //                                callback(null, res.view('japtool/home/home', {
-        //                                    listItemsSkip: listItems_array,
-        //                                    listLessonsSkips: listLessonsSkip
-        //                                }));
-        //                            }
-        //                        }
-        //                    })
-        //                });
-        //            }
-        //        ])
-        //    }
-        //})
     },
     lessonHome: function (req, res) {
         var bookMasterId = req.param('bookMasterId');
@@ -98,23 +33,72 @@ module.exports = {
         var listItems_array = [];
         var count = 0;
         for (i = 0; i < bookMasterIdL; i++) {
-            BookDetail.find({
-                bookMaster: bookMasterId[i],
+            BookMaster.find({id: bookMasterId[i],sort: 'createdAt DESC'}).populate('bookDetails', {
                 subLesson: {'!': 'Luyện tập'},
                 sort: 'createdAt ASC'
-            }).exec(function (err, listItems) {
+            }).exec(function(err, listItems) {
                 if (err) {
-                    callback(err);
+                    console.log(err);
                 } else {
                     count++;
                     listItems_array.push(listItems);
-                    if (count == bookMasterIdL) {
-                        console.log(bookMasterId);
-                        console.log(listItems_array);
-                        res.render('japtool/home/lessonHome', {
-                            listItems: listItems_array,
-                            bookMasterId: bookMasterId
+                    if (count== bookMasterIdL) {
+
+                            res.render('japtool/home/lessonHome', {
+                                listItems: listItems_array
+                            });
+
+
+                    }
+                }
+            })
+        }
+
+    },
+    loadMore: function (req, res) {
+        userId = req.session.User.id;
+        var limitLesson = 0;
+        var limitValue = parseInt(req.param('loadValue'));
+        if(limitValue || limitValue != undefined){
+            limitLesson = limitLesson + limitValue;
+        }
+        SelfLearning.find({
+            where: {user: userId},
+            limit: 1,
+            sort: 'createdAt DESC',
+            skip: limitLesson
+        }).populate('bookMaster').exec(function (err, listLessons) {
+            if (err) {
+                if (err) return res.serverError(err);
+            } else {
+                console.log(listLessons);
+                res.render('japtool/home/limitLesson', {
+                    listLessons: listLessons
+                });
+            }
+        })
+    },
+    lessonMoreHome: function (req, res) {
+        var bookMasterId = req.param('bookMasterId');
+        var bookMasterIdL = bookMasterId.length;
+        var listItems_array = [];
+        var limitLesson = req.param('loadValue');
+        var count = 0;
+        for (i = 0; i < bookMasterIdL; i++) {
+            BookMaster.find({id: bookMasterId[i],sort: 'createdAt DESC'}).populate('bookDetails', {
+                subLesson: {'!': 'Luyện tập'},
+                sort: 'createdAt ASC'
+            }).exec(function(err, listItems) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    count++;
+                    listItems_array.push(listItems);
+                    if (count== bookMasterIdL) {
+                        res.render('japtool/home/lessonHomeLimit', {
+                            listItemsMore: listItems_array
                         });
+
                     }
                 }
             })
