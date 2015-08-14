@@ -628,6 +628,9 @@ $(document).ready(function () {
         } else if (newPass === oldPass) {
             //New pass and old are same
             mess.addClass('error').text('Current pass and the new one are the same!').show();
+        /*} else if (newPass != newPassCf) {
+            //New pass and old are same
+            mess.addClass('error').text('Password doesn\'t match the confirmation').show();*/
         }
         else {
             //Ajax change pass function
