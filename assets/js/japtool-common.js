@@ -260,14 +260,17 @@ function validateEditLearning() {
     finishDate.setHours(23, 59, 59);
     var validateFinishDate;
     if (finishDate < now) {
+        console.log("1 shit");
         $('#messFinishDateGreaterToday').show();
         validateFinishDate = false;
     }
     else {
+        console.log("2 fuck");
         $('#message-date-validate').hide();
         validateFinishDate = true;
     }
     if (validateFinishDate) {
+        console.log("4 ffff");
         return true;
     }
     else {
@@ -602,7 +605,7 @@ $(document).ready(function () {
                     $('#default-show').html(data);
                 },
                 error: function () {
-                    console.log('error');
+                    alert('loi roi nhe');
                 }
             });
         }
@@ -616,19 +619,20 @@ $(document).ready(function () {
         var oldPass = $('#input-OldPassword').val();
         var newPass = $('#input-NewPassword').val();
         var newPassCf = $('#input-PasswordCf').val();
+        var mess = $('#change-pass-mess').removeClass();
 
         //Vì dùng ajax nên jquery không b?t ???c các l?i này (nó d?a trên s? ki?n submit form)
         if (oldPass == "" || oldPass == null || newPass == "" || newPass == null || newPassCf == "" || newPassCf == null) {
             //All field required
-            $("#change-pass-mess-all-field").show();
+            mess.addClass('error').text('All field is required!').show();
         } else if (newPass === oldPass) {
             //New pass and old are same
-            $("#change-pass-mess-old-new").show();
+            mess.addClass('error').text('Current pass and the new one are the same!').show();
+        /*} else if (newPass != newPassCf) {
+            //Password doesn\'t match the confirmation
+            mess.addClass('error').text('Password doesn\'t match the confirmation').show();*/
         }
         else {
-            //hide all error message
-            $("#change-pass-mess-all-field").hide();
-            $("#change-pass-mess-old-new").hide();
             //Ajax change pass function
             $.ajax({
                 url: '/japtool/user/changePass',
@@ -641,18 +645,16 @@ $(document).ready(function () {
                 },
                 cache: false,
                 success: function (data) {
-                    //hide error message
-                    $("#change-pass-mess-common").hide();
                     if (data.code == 'error') {
-                        $("#change-pass-mess-server").addClass('error').text(data.mess).show();
+                        mess.addClass('error').text(data.mess).show();
                     } else {
-                        $("#change-pass-mess-server").addClass('valid').text(data.mess).show();
+                        mess.addClass('valid').text(data.mess).show();
                         //reset form when update success
                         $('#change-pass')[0].reset();
                     }
                 },
                 error: function () {
-                    $("#change-pass-mess-common").show();
+                    mess.addClass('error').text('Something is wrong, please try again later.').show();
                 }
             })
         }
@@ -681,7 +683,7 @@ $(document).ready(function () {
     $('#submitAvatar').click(function () {
         var avatarValue = $('#uploadAvatar').val();
         if (avatarValue == null || avatarValue.length == 0) {
-            alert('error !!! ')
+            alert('Vui lòng chọn ảnh.')
             return false;
         }
     })
