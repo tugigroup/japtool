@@ -18,7 +18,6 @@ module.exports = {
         }else{
             limitLesson = limitValue;
         }
-        console.log(limitValue);
         SelfLearning.find({
             where: {user: userId},
             limit: limitLesson,
@@ -27,7 +26,15 @@ module.exports = {
             if (err) {
                 if (err) return res.serverError(err);
             } else {
+              if(!limitValue || limitValue == undefined){
                 res.view('japtool/home/home', {listLessons: listLessons});
+              }
+              else{
+                res.render('japtool/home/limitLesson', {
+                  listLessons: listLessons
+                });
+              }
+
                 //var count = 0;
                 //var listItems_array = [];
                 //async.series([

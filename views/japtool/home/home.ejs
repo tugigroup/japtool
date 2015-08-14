@@ -121,7 +121,8 @@
                 cache: false,
                 async: false,
                 success: function (data) {
-                    alert('OK');
+                  $('.vocabulary-item').html('');
+                  $('.vocabulary-item').html(data);
 
                 },
                 error: function () {
