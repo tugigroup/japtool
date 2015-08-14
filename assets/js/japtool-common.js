@@ -196,14 +196,14 @@ function validateCreatLearning() {
     starDate.setSeconds(now.getSeconds() + 1);
     var finishDate = new Date($("#finishDate").val());
     finishDate.setHours(23, 59, 59);
-    var validateBook;
-    var validateStartDate;
-    var validateFinishDate;
+    var validateBook = true;
+    var validateStartDate = true;
+    var validateFinishDate  = true;
     if (checkStartDate == "" || checkStartDate == null) {
         $('#messDateInvalid').show();
         validateStartDate = false;
     }
-    else {
+    /*else {
         if (starDate < now) {
             $('#messDateGreater').show();
             validateStartDate = false;
@@ -213,7 +213,7 @@ function validateCreatLearning() {
             $(".message-date-validate").hide();
             validateStartDate = true;
         }
-    }
+    }*/
     if (checkFinishDate == "" || checkFinishDate == null) {
         //ok
         $('#messFinishDateIsInvalid').show();
