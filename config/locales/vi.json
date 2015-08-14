@@ -273,7 +273,7 @@
   "Update success":"Cập nhật thành công",
   "Update failed":"Cập nhật thất bại",
   "Encrypt password failed":"Mã hòa mật khẩu thất bại",
-  "Your password is invalid":"Mật khẩu của bạn hợp lệ",
+  "Your password is invalid":"Mật khẩu của bạn không hợp lệ",
   "User doesn't exit":"Người dùng không tồn tại",
   "Record has update":"bản ghi được cập nhật",
 
@@ -310,6 +310,15 @@
 
   "Thank for Your registration":"Cảm ơn bạn vì đã quan tâm tới chúng tôi",
   "Your account registration is successful! Please check your email to get activate link for your account":"Tài khoản của bạn đã đăng ký thành công! Kiểm tra email của bạn để kích hoạt tài khoản nhé",
+
+  "Library Category":"Loai thư viện",
+  "Library Level":"Trình độ",
+  "Select key Search":"Từ khóa tìm kiếm",
+  "Select group type":"Chọn nhóm cần lọc",
+  "Select level type":"Chọn level cần lọc",
+  "Search":"Tìm kiếm",
+  "Error when get and process BookMaster data":"Lỗi xảy ra trong quá trình lấy thư viện sách trong hệ thống",
+
   "Then click here to login and enjoy":"Sau đó nhấn vào đây để đăng nhập và cảm nhận dịch vụ tuyệt vời của chúng tôi",
 
   "Your knowledge is n't good ! try again":"Kiến thức của bạn chưa vững , đừng nản , hãy thử lại",
@@ -324,5 +333,9 @@
   "Finish date must be greater than start date":"Thời gian kết thúc thúc phải lớn hơn Thời gian bắt đầu",
   "Finish date is Invalid":"Thời gian kết thúc không hợp lệ",
   "Start date must be greater than today":"Thời gian bắt đầu phải lớn hơn hôm nay",
-  "Start date is Invalid":"Thời gian bắt đầu không hợp lệ"
+  "Start date is Invalid":"Thời gian bắt đầu không hợp lệ",
+
+  "Something is wrong, please try again later":"Có lỗi xảy ra , vui lòng thử lại",
+  "Current pass and the new one are the same":"mật khẩu cũ bị sai",
+  "All field is required":"không được nhập thiếu bất kỳ ô nào"
 }
