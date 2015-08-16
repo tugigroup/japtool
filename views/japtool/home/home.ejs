@@ -1,134 +1,113 @@
 <div class="vocabulary content clearfix">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <h2 class="text-center clearfix">Learning Your Self</h2>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h2 class="text-center clearfix">Learning Your Self</h2>
 
-                <p class="text-center desc-home">Hiển thị những bài học của thành viên</p>
-            </div>
-            <div class="vocabulary-item">
-                <% _.each(listLessons, function (listLesson, index) { %>
-                <input type="hidden" class="homeBookMaster" bookMasterId= "<%= listLesson.bookMaster.id %>">
-                <%})%>
+        <p class="text-center desc-home">Hiển thị những bài học của thành viên</p>
+      </div>
+      <div class="vocabulary-item">
+        <% _.each(listLessons, function (listLesson, index) { %>
+        <input type="hidden" class="homeBookMaster" bookMasterId="<%= listLesson.bookMaster.id %>" selfLearning ="<%= listLesson.id %>">
+        <% }) %>
 
-                <div class="info"></div>
+        <div class="info"></div>
+      </div>
+      <div class="bookMasterMore"></div>
+      <div class="info-book-more"></div>
 
-
-                <!--More book master-->
-                <!--<div class="info-book-more">-->
-                    <!--<div class="col-sm-12">-->
-                        <!--<div class="info-book clearfix">-->
-                            <!--<div class="col-sm-4">-->
-                                <!--<h3>Bộ từ vựng N3 tập 2</h3>-->
-                            <!--</div>-->
-                            <!--<div class="col-sm-4">-->
-                                <!--7/10 Bài đã học-->
-                            <!--</div>-->
-                            <!--<div class="col-sm-4">-->
-                                <!--Pass 5/ 10 Bài-->
-                            <!--</div>-->
-                            <!--<div class="info-desc disactive clearfix">-->
-
-                                <!--&lt;!&ndash;<div class="col-sm-2">&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<div class="info-lesson label-danger"><a>Lesson 2</a></div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;<div class="col-sm-2">&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<div class="info-lesson label-success"><a>Lesson 3</a></div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;<div class="col-sm-2">&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<div class="info-lesson label-warning"><a>Lesson 4</a></div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;<div class="col-sm-2">&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<div class="info-lesson label-home"><a>Lesson 1</a></div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;<div class="col-sm-2">&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<div class="info-lesson label-home"><a>Lesson 2</a></div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;<div class="col-sm-2">&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<div class="info-lesson label-home"><a>Lesson 3</a></div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;<div class="col-sm-2">&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<div class="info-lesson label-home"><a>Lesson 4</a></div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;<div class="col-sm-2">&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<div class="info-lesson label-home"><a>Lesson 1</a></div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;<div class="col-sm-2">&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<div class="info-lesson label-home"><a>Lesson 2</a></div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;<div class="col-sm-2">&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<div class="info-lesson label-home"><a>Lesson 3</a></div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;<div class="col-sm-2">&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<div class="info-lesson label-home"><a>Lesson 4</a></div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                            <!--</div>-->
-                            <!--<div class="col-sm-12">-->
-                                <!--<a class="view-detail-lesson view-detail-lesson-active pull-right">View Detail</a>-->
-                                <!--<a class="view-detail-lesson view-detail-lesson-hide pull-right disactive">Hide-->
-                                    <!--Detail</a>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-
-                <!--</div>-->
-                <div class="col-sm-offset-4 col-sm-4">
-                    <div class="info-lesson label-primary loadmore" loadValue="5"><a>Load View More</a></div>
-                </div>
-            </div>
-        </div>
+      <div class="col-sm-offset-4 col-sm-4">
+        <div class="info-lesson label-primary loadmore"><a>Load View More</a></div>
+      </div>
     </div>
+  </div>
 </div>
-<form action="/japtool/learning/edit" method="post" id="edit-learning-japtool"
-      onsubmit="return validateEditLearning()">
-    <div class="modal fade" id="formedit" data-backdrop="static" data-keyboard="false">
-        <div class="modal-dialog modal-lg" id="editform"></div>
-    </div>
-</form>
 
 <script type="text/javascript">
-    window.onload = function () {
-        var bookMasterId = [];
-        $('.homeBookMaster').each(function(){
-            bookMasterId.push($(this).attr('bookMasterId'));
-        })
+  window.onload = function () {
+    var bookMasterId = [];
+    var selfLearning = [];
+    $('.homeBookMaster').each(function () {
+      bookMasterId.push($(this).attr('bookMasterId'));
+      selfLearning.push($(this).attr('selfLearning'));
+    })
+    $.ajax({
+      url: '/japtool/home/lessonHome',
+      type: 'GET',
+      data: {
+        bookMasterId: bookMasterId,
+        selfLearning:selfLearning
+      },
+      cache: false,
+      async: false,
+      success: function (data) {
+
+        $('.info').html('');
+        $('.info').html(data);
+      },
+      error: function () {
+        alert('Error')
+      }
+    })
+    var loadMore = $(".loadmore");
+    var start = 3; //Mac dinh 3 ket qua dau dien khi load page
+    loadMore.on('click', function () {
+      if(!$(this).hasClass('clicked')){
+        $(this).addClass('clicked');
         $.ajax({
-            url: '/japtool/home/lessonHome',
-            type: 'GET',
-            data: {
-                bookMasterId: bookMasterId
-            },
-            cache: false,
-            async: false,
-            success: function (data) {
+          url: '/japtool/home/limitMasterBook',
+          type: 'GET',
+          data: {
+            start: start
+          },
+          cache: false,
+          async: false,
+          success: function (data) {
+            if(data){
+              console.log(data);
+              $('.bookMasterMore').html('');
+              $('.bookMasterMore').html(data);
+              loadMore.removeClass('clicked');
+              start += 1; //Cong them 10 gia tri tiep theo
+              var moreBookMasterId = [];
+              $('.homeMoreBookMaster').each(function () {
+                moreBookMasterId.push($(this).attr('moreBookMasterId'));
+              })
+              console.log(moreBookMasterId);
 
-                $('.info').html('');
-                $('.info').html(data);
-            },
-            error: function () {
-                alert('Error')
-            }
-        })
-        $(".loadmore").on('click', function () {
-            var loadValue = $(this).attr('loadValue');
-                alert(loadValue);
-            $.ajax({
-                url: '/japtool/home/index',
-                type: 'GET',
-                data: {
-                    loadValue:loadValue
-                },
-                cache: false,
-                async: false,
-                success: function (data) {
-                  $('.vocabulary-item').html('');
-                  $('.vocabulary-item').html(data);
-
-                },
-                error: function () {
+              if(moreBookMasterId.length > 0){
+                console.log('OK');
+                $.ajax({
+                  url: '/japtool/home/lessonHome',
+                  type: 'GET',
+                  data: {
+                    moreBookMasterId: moreBookMasterId
+                  },
+                  cache: false,
+                  async: false,
+                  success: function (data) {
+                    $('.info-book-more').append(data);
+                  },
+                  error: function () {
                     alert('Error')
-                }
-            })
+                  }
+                })
+              }else{
+                loadMore.remove();
+              }
+
+            }else{
+              loadMore.remove();
+            }
+
+
+          },
+          error: function () {
+            alert('Error')
+          }
         })
-    }
+      }
+
+    })
+  }
 </script>

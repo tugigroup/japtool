@@ -569,7 +569,7 @@ label.valid, p.valid {
 .info h3 {
     margin: 0;
 }
-
+.info p{padding: 10px 0px; font-weight:500}
 .vocabulary-item .info h3 a {
     font-size: 26px;
     color: #000000;

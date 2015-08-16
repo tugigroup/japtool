@@ -4,22 +4,22 @@
             <h3><a class="text-primary"><%= item.name %></a></h3>
         </div>
         <div class="col-sm-2">
-            <p>Category: <%= item.type %></p>
+            <p class="text-primary">Category: <%= item.type %></p>
         </div>
         <div class="col-sm-2">
-            <p>Level: <%= item.level %></p>
+            <p class="text-info">Level: <%= item.level %></p>
         </div>
         <div class="col-sm-2">
-            <p>Lessoned: 3 Lesson</p>
+            <p class="text-success">Lessoned: 3 Lesson</p>
         </div>
         <div class="col-sm-2">
-            <p>Pass: 2 Lesson</p>
+            <p class="text-success">Pass: 2 Lesson</p>
         </div>
         <div class="col-sm-2">
-            <p>Failed: 1 Lesson</p>
+            <p class="text-danger">Failed: 1 Lesson</p>
         </div>
         <div class="col-sm-2">
-            <p>Tổng có: <%= item.lessonNum %></p>
+            <p class="text-primary">Tổng có: <%= item.lessonNum %></p>
         </div>
         <div class="info-desc clearfix">
             <% _.each(item.bookDetails, function (itemLesson) { %>
