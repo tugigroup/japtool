@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="content">
-                <h2 id="add-book-detail"><%= book.name %></h2>
+                <h2 id="add-book-detail"><%= book.name %> <span id ="lessonName"></span></h2>
                 <div id="learning-nav" class="skin-green sidebar-mini">
                     <div class="wrapper">
                         <header class="main-header">
@@ -78,7 +78,7 @@
                                                         <li><a class="sub-lesson <%= status%>" href='javascript: void(0)'
                                                                name="<%= lessonList[i].id %>"
                                                                onclick="father('<%= lessonList[i].useModule %>', <%=
-                                                                   lessonList[i].dataExtractCondition %>, '<%= lessonList[i].id %>','<%= lessonList[i].lesson %>');"><i
+                                                                   lessonList[i].dataExtractCondition %>, '<%= lessonList[i].id %>','<%= lessonList[i].lesson %>','<%= lessonList[i].subLesson %>');"><i
                                                                         class="fa fa-circle-o"></i> <%= lessonList[i].subLesson
                                                                 %></a>
                                                         </li>
@@ -103,6 +103,44 @@
                             <!-- /.sidebar -->
                         </aside>
                         
+                        <!-- Content Wrapper. Contains page content -->
+                        <div class="content-wrapper content-lesson">
+                            <section class="content-wrapper-body">
+                                <div class="row">
+                                    <div id="container-learn">
+                                        <% if( !lastLearn ){ %>
+                                        <h3 class="text-center text-danger"><%= book.name %></h3>
+
+                                        <div class="row">
+                                            <div class="col-sm-6 text-right"><span><%= __("Type") %>: </span></div>
+                                            <div class="col-sm-6"><%= book.type %></div>
+                                            <div class="col-sm-6 text-right"><span><%= __("Level") %>: </span></div>
+                                            <div class="col-sm-6"><%= book.level %></div>
+                                            <div class="col-sm-6 text-right"><span><%= __("Sort") %>: </span></div>
+                                            <div class="col-sm-6"><%= book.sort %></div>
+                                            <div class="col-sm-6 text-right"><span><%= __("Number Lesson") %>: </span>
+                                            </div>
+                                            <div class="col-sm-6"><%= book.lessonNum %></div>
+                                            <div class="col-sm-6 text-right"><span><%= __("Learn Hour") %>: </span>
+                                            </div>
+                                            <div class="col-sm-6"><%= book.hoursForLearn %></div>
+                                            <div class="col-sm-6 text-right"><span><%= __("Number User") %>: </span>
+                                            </div>
+                                            <div class="col-sm-6"><%= book.usedNum %></div>
+                                            <div class="col-sm-6 text-right"><span><%= __("Description") %>: </span>
+                                            </div>
+                                            <div class="col-sm-6"><%= book.description %></div>
+                                        </div>
+                                        <% } else{ %>
+                                        <input type="hidden" id="lessonName" value="<%= lastLearn.lesson %>">
+                                        <input type="hidden" id="useModule" value="<%= lastLearn.useModule %>">
+                                        <input type="hidden" id="conditionS" value="<%= lastLearn.dataExtractCondition %>">
+                                        <input type="hidden" id="lessionID" value="<%= lastLearn.id %>">
+                                        <% } %>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
 
 
 
@@ -141,9 +179,10 @@
     </div>
 </div>
 <script>
-    function father(module, condition, detailId, lesson) {
+    function father(module, condition, detailId, lesson, subLesson) {
         learn(module, condition);
         savee(lesson, detailId);
+        $('#lessonName').html('&nbsp;/&nbsp;' + lesson + '-' + subLesson);
     }
     function learn(module, condition) {
         var strCondition = JSON.stringify(condition);
@@ -169,11 +208,11 @@
                     console.log(msg);
                 });
     }
-    function openTreeView(bookID) {
+    function openTreeView(lessionID) {
         $('.sub-lesson').each(function (itemLessonID, index) {
             var lessonBookID = $(this).attr('name');
             //add Class Active to show screen
-            if (lessonBookID == bookID) {
+            if (lessonBookID == lessionID) {
                 $(this).closest('.treeview').addClass('active');
 //                $(this).closest('.treeview .treeview-menu .sub-lesson:last-child').addClass('active');
             }
@@ -201,8 +240,8 @@
         var useModule = $('#useModule').val();
         var condition = trimSpace($('#conditionS').val());
         $("#container-learn").load('/japtool/' + useModule + '/?condition=' + condition);
-        var bookDetailH = $('#bookDetailH').val();
-        openTreeView(bookDetailH);
+        var lessionID = $('#lessionID').val();
+        openTreeView(lessionID);
         paintClickedSublesson();
     }
 

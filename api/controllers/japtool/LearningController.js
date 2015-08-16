@@ -420,6 +420,7 @@ module.exports = {
                 var bookDetails = book.bookDetails;
 
                 var lessonList = [];
+                var lastLearn , lastLearnDate = 0;
 
                 UserLearnHistory.find({selfLearning: learnID, sort: 'updatedAt DESC'}).
                 exec(function (err, learnedLessions){
@@ -428,7 +429,12 @@ module.exports = {
                          bookDetails.forEach(function (lession) {
 
                             learnedLessions.forEach(function (learnedItem) {
-                                if (lession.id == learnedItem.id) {
+                                if (lession.id == learnedItem.bookDetail) {
+                                    if (learnedItem.startDate && learnedItem.startDate > lastLearnDate) {
+                                        lastLearnDate = learnedItem.startDate;
+                                        lastLearn = lession;
+                                    }
+
                                     lession.learnHistory = learnedItem;
                                     return false;
                                 } else { 
@@ -448,7 +454,8 @@ module.exports = {
                     res.view('japtool/learning/show-book-detail', {
                         learnID: learnID,
                         book: book,
-                        lessonList: lessonList
+                        lessonList: lessonList,
+                        lastLearn: lastLearn
                     });
                 });
 
