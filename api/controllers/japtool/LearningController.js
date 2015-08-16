@@ -409,84 +409,138 @@ module.exports = {
     },
 
     practice: function (req, res) {
-        var id = req.param('id');
+        var bookID = req.param('id');
         var learnID = req.param('learnID');
         var array = require("array-extended");
-        BookMaster.findOne({id: id}).populate('bookDetails', {sort: 'sort ASC'}).exec(function createCB(err, data) {
-            if (err) {
-                sails.log(err)
-            } else {
-                var bookDetails = data.bookDetails;
-                var lessons = [];
-                bookDetails.forEach(function (item) {
-                    lessons.push(item.lesson);
-                });
-                var uniqueLessons = array(lessons).unique().value();
-                //Search a lesson last of User and show to screen
-                UserLearnHistory.findOne({
-                    selfLearning: learnID,
-                    sort: 'updatedAt DESC'
-                }).exec(function learnHistory(err, lessonItem) {
-                    var list = new Array();
-                    if (err) {
-                        sails.log(err)
-                    }
-                    if (lessonItem || lessonItem != undefined) {
-                        UserLearnHistory.find({
-                            selfLearning: learnID,
-                            user: req.session.User.id
-                        }).exec(function (err, listLearn) {
-                            if (err) {
 
-                            }
-                            else {
-                                list = listLearn;
-                                var bookDetailH = lessonItem.bookDetail;
-                                BookDetail.findOne({id: bookDetailH}).exec(function (err, lessonItemType) {
-                                    if (err) {
-                                        sails.log(err)
+        BookMaster.findOne({id: bookID}).populate('bookDetails', {sort: 'sort ASC'}).
+        exec(function createCB(err, book) {
+            if (err) { sails.log(err) }
+            else {
+                var bookDetails = book.bookDetails;
+
+                var lessonList = [];
+                var lastLearn , lastLearnDate = 0;
+
+                UserLearnHistory.find({selfLearning: learnID, sort: 'updatedAt DESC'}).
+                exec(function (err, learnedLessions){
+                    if (err) { sails.log(err) }
+                    else {
+                         bookDetails.forEach(function (lession) {
+
+                            learnedLessions.forEach(function (learnedItem) {
+                                if (lession.id == learnedItem.bookDetail) {
+                                    if (learnedItem.startDate && learnedItem.startDate > lastLearnDate) {
+                                        lastLearnDate = learnedItem.startDate;
+                                        lastLearn = lession;
                                     }
-                                    var dataExtractCondition = lessonItemType.dataExtractCondition;
-                                    var useModule = lessonItemType.useModule;
-                                    res.view('japtool/learning/show-book-detail', {
-                                        list: list,
-                                        uniqueLessons: uniqueLessons,
-                                        learnID: learnID,
-                                        bookDetails: bookDetails,
-                                        nameBook: data.name,
-                                        type: data.type,
-                                        condition: dataExtractCondition,
-                                        useModule: useModule,
-                                        lessonItem: lessonItem,
-                                        bookDetailH: bookDetailH
 
+                                    lession.learnHistory = learnedItem;
+                                    return false;
+                                } else { 
+                                    return true;
+                                }
+                            });
 
-                                    });
-                                })
-                            }
-                        })
+                            lessonList.push(lession);
 
-                    } else {
-                        res.view('japtool/learning/show-book-detail', {
-                            list: list,
-                            uniqueLessons: uniqueLessons,
-                            learnID: learnID,
-                            bookDetails: bookDetails,
-                            nameBook: data.name,
-                            description: data.description,
-                            type: data.type,
-                            level: data.level,
-                            sort: data.sort,
-                            lessonNum: data.lessonNum,
-                            hoursForLearn: data.hoursForLearn,
-                            usedNum: data.usedNum,
-                            lessonItem: lessonItem
+                            
                         });
                     }
+
+                    //console.log('book: ' + JSON.stringify(book));
+                    //console.log('lessonList: ' + JSON.stringify(lessonList));
+
+                    res.view('japtool/learning/show-book-detail', {
+                        learnID: learnID,
+                        book: book,
+                        lessonList: lessonList,
+                        lastLearn: lastLearn
+                    });
                 });
+
             }
-        })
+        });
     },
+
+
+
+
+
+        //             }
+        //         });
+
+
+        //         var lessons = [];
+        //         bookDetails.forEach(function (item) {
+        //             lessons.push(item.lesson);
+        //         });
+        //         var uniqueLessons = array(lessons).unique().value();
+        //         //Search a lesson last of User and show to screen
+        //         UserLearnHistory.findOne({
+        //             selfLearning: learnID,
+        //             sort: 'updatedAt DESC'
+        //         }).exec(function learnHistory(err, lessonItem) {
+        //             var list = new Array();
+        //             if (err) {
+        //                 sails.log(err)
+        //             }
+        //             if (lessonItem || lessonItem != undefined) {
+        //                 UserLearnHistory.find({
+        //                     selfLearning: learnID,
+        //                     user: req.session.User.id
+        //                 }).exec(function (err, listLearn) {
+        //                     if (err) {
+
+        //                     }
+        //                     else {
+        //                         list = listLearn;
+        //                         var bookDetailH = lessonItem.bookDetail;
+        //                         BookDetail.findOne({id: bookDetailH}).exec(function (err, lessonItemType) {
+        //                             if (err) {
+        //                                 sails.log(err)
+        //                             }
+        //                             var dataExtractCondition = lessonItemType.dataExtractCondition;
+        //                             var useModule = lessonItemType.useModule;
+        //                             res.view('japtool/learning/show-book-detail', {
+        //                                 list: list,
+        //                                 uniqueLessons: uniqueLessons,
+        //                                 learnID: learnID,
+        //                                 bookDetails: bookDetails,
+        //                                 nameBook: data.name,
+        //                                 type: data.type,
+        //                                 condition: dataExtractCondition,
+        //                                 useModule: useModule,
+        //                                 lessonItem: lessonItem,
+        //                                 bookDetailH: bookDetailH
+
+
+        //                             });
+        //                         })
+        //                     }
+        //                 })
+
+        //             } else {
+        //                 res.view('japtool/learning/show-book-detail', {
+        //                     list: list,
+        //                     uniqueLessons: uniqueLessons,
+        //                     learnID: learnID,
+        //                     bookDetails: bookDetails,
+        //                     nameBook: data.name,
+        //                     description: data.description,
+        //                     type: data.type,
+        //                     level: data.level,
+        //                     sort: data.sort,
+        //                     lessonNum: data.lessonNum,
+        //                     hoursForLearn: data.hoursForLearn,
+        //                     usedNum: data.usedNum,
+        //                     lessonItem: lessonItem
+        //                 });
+        //             }
+        //         });
+        //     }
+        // })
+    // },
 
     saveHistory: function (req, res) {
         var pars = req.allParams();

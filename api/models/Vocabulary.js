@@ -57,7 +57,11 @@ module.exports = {
     //select vocabulary by Level
     selectByLevel: function (opts, cb) {
         var condition = opts.condition;
+        sails.log("condition 1:")
+        sails.log(condition)
         var jsonObj = JSON.parse(condition);
+        sails.log("jsonObj 1:")
+        sails.log(jsonObj)
 
         Vocabulary.find({where: jsonObj, sort: 'sort'})
             .populate('examples')

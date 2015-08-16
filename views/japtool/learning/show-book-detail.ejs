@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="content">
-                <h2 id="add-book-detail"><%= nameBook %></h2>
+                <h2 id="add-book-detail"><%= book.name %> <span id ="lessonName"></span></h2>
                 <div id="learning-nav" class="skin-green sidebar-mini">
                     <div class="wrapper">
                         <header class="main-header">
@@ -22,171 +22,129 @@
                                 <!-- Sidebar user panel -->
                                 <input type="hidden" id="learnID" value="<%= learnID %>">
                                 <ul class="sidebar-menu">
-                                    <% for (var i = 0; i <= uniqueLessons.length; i++) {
-                                        var check = false;
-                                        var passed = 0;
-                                        for (var j = 0; j < list.length; j++) {
-                                            if (list[j].lesson == uniqueLessons[i]) {
-                                                check = true;
-                                                if (list[j].status == 'passed') {
-                                                    passed = 1;
+                                    <% 
+                                    var lessionName = '';
+
+                                    for (var i = 0; i < lessonList.length; i++) {
+                                        
+                                        lessionName = lessonList[i].lesson;
+
+                                        // pre-check status
+                                        var status = "lesson-success";
+                                        var noHis = true;
+                                        for (var subIdx = i; subIdx < lessonList.length; subIdx++) {
+                                            if (lessionName == lessonList[subIdx].lesson) {
+                                                if (lessonList[subIdx].learnHistory) {
+                                                    noHis = false;
+
+                                                    if (!lessonList[subIdx].learnHistory.status || lessonList[subIdx].learnHistory.status == 'false'){
+                                                        status = 'lesson-danger';
+                                                    }
                                                 }
-                                                else if (list[j].status == 'false') {
-                                                    passed = 2;
-                                                }
-                                                else {
-                                                    passed = 3;
-                                                }
+                                                
+                                            } else {
+                                                break;
                                             }
                                         }
-                                    if (check == true) {
-                                    if (passed == 1) {
-                                    %>
-                                    <li class="treeview">
-                                        <a class="lesson lesson-success" href="javascript: void(0)">
-                                            <i class="fa fa-edit"></i> <span><%= uniqueLessons[i] %></span>
-                                            <i class="fa fa-angle-left pull-right"></i>
-                                        </a>
-                                        <% if(bookDetails){ %>
-                                        <ul class="treeview-menu">
-                                            <% bookDetails.forEach(function(bookDetail){ %>
-                                            <% if(uniqueLessons[i] == bookDetail.lesson) { %>
-                                            <li><a class="sub-lesson" href='javascript: void(0)'
-                                                   name="<%= bookDetail.id %>"
-                                                   onclick="father('<%= bookDetail.useModule %>', <%=
-                                                       bookDetail.dataExtractCondition %>, '<%= bookDetail.id %>','<%= bookDetail.lesson %>');"><i
-                                                            class="fa fa-circle-o"></i> <%= bookDetail.subLesson
-                                                    %></a>
-                                            </li>
-                                            <% } %>
-                                            <% }) %>
-                                        </ul>
-                                        <% } %>
 
-                                    </li>
+                                        if (noHis){
+                                             status = '';
+                                        }
+
+
+                                        %>
+                                        
+                                        <li class="treeview">
+                                            <a class="lesson <%= status%>" href="javascript: void(0)">
+                                                <i class="fa fa-edit"></i> <span><%= lessonList[i].lesson %></span>
+                                                <i class="fa fa-angle-left pull-right"></i>
+                                            </a>
+
+                                            <ul class="treeview-menu">
+
+                                            <%
+                                            for (subIdx = i; subIdx < lessonList.length; subIdx++) {
+                                                if (lessionName == lessonList[i].lesson) {
+
+                                                    if (!lessonList[subIdx].learnHistory || !lessonList[subIdx].learnHistory.status) {
+                                                        status = '';
+                                                    } else if ( !lessonList[subIdx].learnHistory.status || lessonList[subIdx].learnHistory.status == 'false') {
+                                                        status = 'lesson-danger';
+                                                    } else {
+                                                        status = 'lesson-success';
+                                                    }
+
+                                                    %>
+                                                        <li><a class="sub-lesson <%= status%>" href='javascript: void(0)'
+                                                               name="<%= lessonList[i].id %>"
+                                                               onclick="father('<%= lessonList[i].useModule %>', <%=
+                                                                   lessonList[i].dataExtractCondition %>, '<%= lessonList[i].id %>','<%= lessonList[i].lesson %>','<%= lessonList[i].subLesson %>');"><i
+                                                                        class="fa fa-circle-o"></i> <%= lessonList[i].subLesson
+                                                                %></a>
+                                                        </li>
+                                                    <%
+                                                    i += 1;
+
+                                                } else { 
+                                                    i -= 1;
+
+                                                    break;
+                                                }
+                                            }
+                                            %>
+
+                                            </ul>
+                                        </li>
                                     <%
                                     }
-                                    else if (passed == 2) {
-                                    %>
-                                    <li class="treeview">
-                                        <a class="lesson lesson-danger" href="javascript: void(0)">
-                                            <i class="fa fa-edit"></i> <span><%= uniqueLessons[i] %></span>
-                                            <i class="fa fa-angle-left pull-right"></i>
-                                        </a>
-                                        <% if(bookDetails){ %>
-                                        <ul class="treeview-menu">
-                                            <% bookDetails.forEach(function(bookDetail){ %>
-                                            <% if(uniqueLessons[i] == bookDetail.lesson) { %>
-                                            <li><a class="sub-lesson" href='javascript: void(0)'
-                                                   name="<%= bookDetail.id %>"
-                                                   onclick="father('<%= bookDetail.useModule %>', <%=
-                                                       bookDetail.dataExtractCondition %>, '<%= bookDetail.id %>','<%= bookDetail.lesson %>');"><i
-                                                            class="fa fa-circle-o"></i> <%= bookDetail.subLesson
-                                                    %></a>
-                                            </li>
-                                            <% } %>
-                                            <% }) %>
-                                        </ul>
-                                        <% } %>
-
-                                    </li>
-                                    <%
-                                    }
-                                    else {
-                                    %>
-                                    <li class="treeview">
-                                        <a class="lesson lesson-warning" href="javascript: void(0)">
-                                            <i class="fa fa-edit"></i> <span><%= uniqueLessons[i] %></span>
-                                            <i class="fa fa-angle-left pull-right"></i>
-                                        </a>
-                                        <% if(bookDetails){ %>
-                                        <ul class="treeview-menu">
-                                            <% bookDetails.forEach(function(bookDetail){ %>
-                                            <% if(uniqueLessons[i] == bookDetail.lesson) { %>
-                                            <li><a class="sub-lesson" href='javascript: void(0)'
-                                                   name="<%= bookDetail.id %>"
-                                                   onclick="father('<%= bookDetail.useModule %>', <%=
-                                                       bookDetail.dataExtractCondition %>, '<%= bookDetail.id %>','<%= bookDetail.lesson %>');"><i
-                                                            class="fa fa-circle-o"></i> <%= bookDetail.subLesson
-                                                    %></a>
-                                            </li>
-                                            <% } %>
-                                            <% }) %>
-                                        </ul>
-                                        <% } %>
-
-                                    </li>
-                                    <%
-                                    }
-                                    }
-                                    else {
-                                    %>
-                                    <li class="treeview">
-                                        <a class="lesson" href="javascript: void(0)">
-                                            <i class="fa fa-edit"></i> <span><%= uniqueLessons[i] %></span>
-                                            <i class="fa fa-angle-left pull-right"></i>
-                                        </a>
-                                        <% if(bookDetails){ %>
-                                        <ul class="treeview-menu">
-                                            <% bookDetails.forEach(function(bookDetail){ %>
-                                            <% if(uniqueLessons[i] == bookDetail.lesson) { %>
-                                            <li><a class="sub-lesson" href='javascript: void(0)'
-                                                   name="<%= bookDetail.id %>"
-                                                   onclick="father('<%= bookDetail.useModule %>', <%=
-                                                       bookDetail.dataExtractCondition %>, '<%= bookDetail.id %>','<%= bookDetail.lesson %>');"><i
-                                                            class="fa fa-circle-o"></i> <%= bookDetail.subLesson
-                                                    %></a>
-                                            </li>
-                                            <% } %>
-                                            <% }) %>
-                                        </ul>
-                                        <% } %>
-
-                                    </li>
-                                    <%
-                                    }
-                                    } %>
+                                    %>                                    
                                 </ul>
                             </section>
                             <!-- /.sidebar -->
                         </aside>
+                        
                         <!-- Content Wrapper. Contains page content -->
                         <div class="content-wrapper content-lesson">
                             <section class="content-wrapper-body">
                                 <div class="row">
                                     <div id="container-learn">
-                                        <% if(!lessonItem || lessonItem == undefined){ %>
-                                        <h3 class="text-center text-danger"><%= nameBook %></h3>
+                                        <% if( !lastLearn ){ %>
+                                        <h3 class="text-center text-danger"><%= book.name %></h3>
 
                                         <div class="row">
                                             <div class="col-sm-6 text-right"><span><%= __("Type") %>: </span></div>
-                                            <div class="col-sm-6"><%= type %></div>
+                                            <div class="col-sm-6"><%= book.type %></div>
                                             <div class="col-sm-6 text-right"><span><%= __("Level") %>: </span></div>
-                                            <div class="col-sm-6"><%= level %></div>
+                                            <div class="col-sm-6"><%= book.level %></div>
                                             <div class="col-sm-6 text-right"><span><%= __("Sort") %>: </span></div>
-                                            <div class="col-sm-6"><%= sort %></div>
+                                            <div class="col-sm-6"><%= book.sort %></div>
                                             <div class="col-sm-6 text-right"><span><%= __("Number Lesson") %>: </span>
                                             </div>
-                                            <div class="col-sm-6"><%= lessonNum %></div>
+                                            <div class="col-sm-6"><%= book.lessonNum %></div>
                                             <div class="col-sm-6 text-right"><span><%= __("Learn Hour") %>: </span>
                                             </div>
-                                            <div class="col-sm-6"><%= hoursForLearn %></div>
+                                            <div class="col-sm-6"><%= book.hoursForLearn %></div>
                                             <div class="col-sm-6 text-right"><span><%= __("Number User") %>: </span>
                                             </div>
-                                            <div class="col-sm-6"><%= usedNum %></div>
+                                            <div class="col-sm-6"><%= book.usedNum %></div>
                                             <div class="col-sm-6 text-right"><span><%= __("Description") %>: </span>
                                             </div>
-                                            <div class="col-sm-6"><%= description %></div>
+                                            <div class="col-sm-6"><%= book.description %></div>
                                         </div>
                                         <% } else{ %>
-                                        <input type="hidden" id="useModule" value="<%= useModule %>">
-                                        <input type="hidden" id="conditionS" value="<%= condition %>">
-                                        <input type="hidden" id="bookDetailH" value="<%= bookDetailH %>">
+                                        <input type="hidden" id="lessonName" value="<%= lastLearn.lesson %>">
+                                        <input type="hidden" id="useModule" value="<%= lastLearn.useModule %>">
+                                        <input type="hidden" id="conditionS" value="<%= lastLearn.dataExtractCondition %>">
+                                        <input type="hidden" id="lessionID" value="<%= lastLearn.id %>">
                                         <% } %>
                                     </div>
                                 </div>
                             </section>
                         </div>
+
+
+
+
                     </div>
                     <!-- ./wrapper -->
                 </div>
@@ -221,9 +179,10 @@
     </div>
 </div>
 <script>
-    function father(module, condition, detailId, lesson) {
+    function father(module, condition, detailId, lesson, subLesson) {
         learn(module, condition);
         savee(lesson, detailId);
+        $('#lessonName').html('&nbsp;/&nbsp;' + lesson + '-' + subLesson);
     }
     function learn(module, condition) {
         var strCondition = JSON.stringify(condition);
@@ -249,11 +208,11 @@
                     console.log(msg);
                 });
     }
-    function openTreeView(bookID) {
+    function openTreeView(lessionID) {
         $('.sub-lesson').each(function (itemLessonID, index) {
             var lessonBookID = $(this).attr('name');
             //add Class Active to show screen
-            if (lessonBookID == bookID) {
+            if (lessonBookID == lessionID) {
                 $(this).closest('.treeview').addClass('active');
 //                $(this).closest('.treeview .treeview-menu .sub-lesson:last-child').addClass('active');
             }
@@ -281,8 +240,8 @@
         var useModule = $('#useModule').val();
         var condition = trimSpace($('#conditionS').val());
         $("#container-learn").load('/japtool/' + useModule + '/?condition=' + condition);
-        var bookDetailH = $('#bookDetailH').val();
-        openTreeView(bookDetailH);
+        var lessionID = $('#lessionID').val();
+        openTreeView(lessionID);
         paintClickedSublesson();
     }
 

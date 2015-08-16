@@ -2543,3 +2543,8 @@ ul.timeline li .timeline-panel:after {
     display: none;
     color: #d82824;
 }
+#checkBrowser{
+    display: none;
+    color: darkred;
+    font-size: 18px;
+}
