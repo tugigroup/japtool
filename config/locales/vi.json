@@ -337,5 +337,6 @@
 
   "Something is wrong, please try again later":"Có lỗi xảy ra , vui lòng thử lại",
   "Current pass and the new one are the same":"mật khẩu cũ bị sai",
-  "All field is required":"không được nhập thiếu bất kỳ ô nào"
+  "All field is required":"không được nhập thiếu bất kỳ ô nào",
+  "Password does not match the confirmation" : "Mật khẩu và xác nhận mật khẩu không trùng nhau"
 }

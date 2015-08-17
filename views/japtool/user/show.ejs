@@ -473,12 +473,16 @@
 
                                         <div class="col-sm-9 pull-left">
                                             <!--Change pass message-->
+                                            <label class="change-pass-mess-err" id="change-pass-mess">
+                                                <%=__("All field is required")%></label>
                                             <label class="change-pass-mess-err" id="change-pass-mess-all-field">
                                                 <%=__("All field is required")%></label>
                                             <label class="change-pass-mess-err" id="change-pass-mess-old-new">
                                                 <%=__("Current pass and the new one are the same")%></label>
                                             <label class="change-pass-mess-err" id="change-pass-mess-common">
                                                 <%=__("Something is wrong, please try again later")%></label>
+                                            <label class="change-pass-mess-err" id="change-pass-mess-does-not-match">
+                                                <%=__("Password does not match the confirmation")%></label>
                                             <label class="change-pass-mess-err" id="change-pass-mess-server"></label>
                                             <button type="button" class="btn btn-sm btn-edit pull-right"
                                                     id="btnSaveChangePass">

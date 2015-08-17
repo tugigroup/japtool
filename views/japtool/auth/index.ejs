@@ -1,23 +1,6 @@
 <div class="wrapper clearfix auth-login">
 	<div class="container">
 		<div class="row">
-			<!--Register div-->
-			<div class="col-sm-6 left">
-				<div class="well">
-					<div class="register">
-						<h2 class="secondary-title"><%=__("Register Account")%></h2>
-						<hr>
-						<div class="login-wrap">
-
-
-							<p> <%=__("If you don't have account . By creating an account you will be able to learn faster, join to group learning, and follow your learning process")%>.</p>
-						</div>
-
-						<a href="/japtool/user/new" class="btn sd-learn-more login-page" ><%=__("Sign Up")%></a>
-					</div>
-				</div>
-			</div>
-
 			<!--login div-->
 			<div class="col-sm-6 right">
 				<div class="well">
@@ -29,10 +12,10 @@
 								<% if(flash && flash.err) { %>
 								<ul class="alert alert-success">
 									<% Object.keys(flash.err).forEach(function(error) { %>
-										<li>
-								        	<h4> <%= flash.err[error].name %> </h4>
-								        	<%= flash.err[error].message %> 
-								    	</li>
+									<li>
+										<h4> <%= flash.err[error].name %> </h4>
+										<%= flash.err[error].message %>
+									</li>
 									<% }) %>
 								</ul>
 								<% } %>
@@ -56,6 +39,23 @@
 					</div>
 				</div>
 			</div>
+			<!--Register div-->
+			<div class="col-sm-6 left">
+				<div class="well">
+					<div class="register">
+						<h2 class="secondary-title"><%=__("Register Account")%></h2>
+						<hr>
+						<div class="login-wrap">
+
+
+							<p> <%=__("If you don't have account . By creating an account you will be able to learn faster, join to group learning, and follow your learning process")%>.</p>
+						</div>
+
+						<a href="/japtool/user/new" class="btn sd-learn-more login-page" ><%=__("Sign Up")%></a>
+					</div>
+				</div>
+			</div>
+
 		</div>
 	</div>
 </div>
