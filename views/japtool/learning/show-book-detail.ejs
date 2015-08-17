@@ -205,13 +205,13 @@
                     console.log(msg);
                 });
     }
-    function openTreeView(lessionID) {
+    function openTreeView(lessonID) {
         $('.sub-lesson').each(function (itemLessonID, index) {
-            var lessonBookID = $(this).attr('name');
+            var lessonBookID = $(this).attr('id');
             //add Class Active to show screen
-            if (lessonBookID == lessionID) {
+            if (lessonBookID == lessonID) {
+                $(".treeview").removeClass("active");
                 $(this).closest('.treeview').addClass('active');
-//                $(this).closest('.treeview .treeview-menu .sub-lesson:last-child').addClass('active');
             }
         });
     }
@@ -222,7 +222,7 @@
             if (lessonD && lessonS) {
                 $(this).parent(".treeview").children().children().children(".sub-lesson").click();
                 $("li").removeClass("active");
-                openTreeView($(this).parent(".treeview").children().children().children(".sub-lesson").attr("name"));
+                openTreeView($(this).parent(".treeview").children().children().children(".sub-lesson").attr("id"));
                 return false;
             }
         });
