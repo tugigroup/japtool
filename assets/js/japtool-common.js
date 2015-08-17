@@ -624,13 +624,13 @@ $(document).ready(function () {
         //Vì dùng ajax nên jquery không b?t ???c các l?i này (nó d?a trên s? ki?n submit form)
         if (oldPass == "" || oldPass == null || newPass == "" || newPass == null || newPassCf == "" || newPassCf == null) {
             //All field required
-            mess.addClass('error').text('All field is required!').show();
+            mess.addClass('error').text($('#change-pass-mess-all-field').val()).show();
         } else if (newPass === oldPass) {
             //New pass and old are same
-            mess.addClass('error').text('Current pass and the new one are the same!').show();
-        /*} else if (newPass != newPassCf) {
+            mess.addClass('error').text($('#change-pass-mess-old-new').val()).show();
+        } else if (newPass != newPassCf) {
             //Password doesn\'t match the confirmation
-            mess.addClass('error').text('Password doesn\'t match the confirmation').show();*/
+            mess.addClass('error').text($('#change-pass-mess-does-not-match').val()).show();
         }
         else {
             //Ajax change pass function
@@ -654,7 +654,7 @@ $(document).ready(function () {
                     }
                 },
                 error: function () {
-                    mess.addClass('error').text('Something is wrong, please try again later.').show();
+                    mess.addClass('error').text($('#change-pass-mess-common').val()).show();
                 }
             })
         }

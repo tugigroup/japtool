@@ -411,6 +411,7 @@ module.exports = {
     practice: function (req, res) {
         var bookID = req.param('id');
         var learnID = req.param('learnID');
+        var lessonID = req.param('lessonID');
         var array = require("array-extended");
 
         BookMaster.findOne({id: bookID}).populate('bookDetails', {sort: 'sort ASC'}).
@@ -420,7 +421,7 @@ module.exports = {
                 var bookDetails = book.bookDetails;
 
                 var lessonList = [];
-                var lastLearn , lastLearnDate = 0;
+                // var lastLearn , lastLearnDate = 0;
 
                 UserLearnHistory.find({selfLearning: learnID, sort: 'updatedAt DESC'}).
                 exec(function (err, learnedLessions){
@@ -430,10 +431,10 @@ module.exports = {
 
                             learnedLessions.forEach(function (learnedItem) {
                                 if (lession.id == learnedItem.bookDetail) {
-                                    if (learnedItem.startDate && learnedItem.startDate > lastLearnDate) {
-                                        lastLearnDate = learnedItem.startDate;
-                                        lastLearn = lession;
-                                    }
+                                    // if (learnedItem.startDate && learnedItem.startDate > lastLearnDate) {
+                                    //     lastLearnDate = learnedItem.startDate;
+                                    //     lastLearn = lession;
+                                    // }
 
                                     lession.learnHistory = learnedItem;
                                     return false;
@@ -448,6 +449,14 @@ module.exports = {
                         });
                     }
 
+                    // console.log('req.param(lessonID): ' + lessonID);
+
+                    if (!lessonID) {
+                        if (learnedLessions[0]) { lessonID = learnedLessions[0].bookDetail; }
+                        // console.log('learnedLessions[0].bookDetail: ' + lessonID);
+                    }
+
+
                     //console.log('book: ' + JSON.stringify(book));
                     //console.log('lessonList: ' + JSON.stringify(lessonList));
 
@@ -455,7 +464,7 @@ module.exports = {
                         learnID: learnID,
                         book: book,
                         lessonList: lessonList,
-                        lastLearn: lastLearn
+                        goLessonID: lessonID
                     });
                 });
 
