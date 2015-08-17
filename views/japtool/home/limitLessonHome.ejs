@@ -14,7 +14,7 @@
     <div class="info-desc info-desc-<%= item.id %> disactive clearfix">
       <% _.each(item.bookDetails, function (itemLesson) { %>
       <div class="col-sm-2 col-xs-3 col-md-1">
-        <div class="info-lesson label-danger"><a><%= itemLesson.lesson %></a></div>
+        <div class="info-lesson-home label-home" id="<%= itemLesson.id %>"><a><%= itemLesson.lesson %></a></div>
       </div>
       <%})%>
     </div>
@@ -56,5 +56,26 @@
     <% }) %>
     <% }) %>
 
+    /*
+     * Home after login
+     * Add Class color
+     * author: tuyentv1@fsoft.com.vn
+     */
+    <% _.each(moreSelfLesson, function (moreSelfLessonL) { %>
+    <% _.each(moreSelfLessonL, function (moreItemSelfLessonL) { %>
+    <% if(moreItemSelfLessonL.status){ %>
+    <% if(moreItemSelfLessonL.status == 'passed'){ %>
+    $("#<%= moreItemSelfLessonL.bookDetail %>").removeClass('label-home');
+    $("#<%= moreItemSelfLessonL.bookDetail %>").addClass('label-success');
+    <% }else{ %>
+    $("#<%= moreItemSelfLessonL.bookDetail %>").removeClass('label-home');
+    $("#<%= moreItemSelfLessonL.bookDetail %>").addClass('label-danger');
+    <% } %>
+    <% } else{ %>
+    $("#<%= moreItemSelfLessonL.bookDetail %>").removeClass('label-home');
+    $("#<%= moreItemSelfLessonL.bookDetail %>").addClass('label-warning');
+    <%}%>
+    <%})%>
+    <%})%>
 </script>
 

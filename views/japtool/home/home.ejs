@@ -70,18 +70,18 @@
               loadMore.removeClass('clicked');
               start += 1; //Cong them 10 gia tri tiep theo
               var moreBookMasterId = [];
+              var moreSelfLearning = [];
               $('.homeMoreBookMaster').each(function () {
                 moreBookMasterId.push($(this).attr('moreBookMasterId'));
+                moreSelfLearning.push($(this).attr('moreSelfLearning'));
               })
-              console.log(moreBookMasterId);
-
               if(moreBookMasterId.length > 0){
-                console.log('OK');
                 $.ajax({
                   url: '/japtool/home/lessonHome',
                   type: 'GET',
                   data: {
-                    moreBookMasterId: moreBookMasterId
+                    moreBookMasterId: moreBookMasterId,
+                    moreSelfLearning: moreSelfLearning
                   },
                   cache: false,
                   async: false,
