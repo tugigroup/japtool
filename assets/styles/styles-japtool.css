@@ -586,7 +586,15 @@ label.valid, p.valid {
     display: block;
     padding: 10px;
 }
-
+.info-lesson-home{
+    text-align: center;
+}
+.info-lesson-home a{
+    color: #fff;
+    width: 100%;
+    display: block;
+    padding: 3px;
+}
 .info-desc {
     margin-bottom: 1rem
 }
