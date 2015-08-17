@@ -338,5 +338,12 @@
   "Something is wrong, please try again later":"Có lỗi xảy ra , vui lòng thử lại",
   "Current pass and the new one are the same":"mật khẩu cũ bị sai",
   "All field is required":"không được nhập thiếu bất kỳ ô nào",
-  "Password does not match the confirmation" : "Mật khẩu và xác nhận mật khẩu không trùng nhau"
+  "Password does not match the confirmation" : "Mật khẩu và xác nhận mật khẩu không trùng nhau",
+
+  "Next Lesson":"Bài tiếp theo",
+  "Learn Again":"Học lại",
+  "Learn missed lesson or new lesson":"Học bài bỏ lỡ hoặc bài mới",
+  "Learn this sublesson again":"Học lại bài tập này",
+  "your flashcard finish":"Bài học của bạn đã kết thúc",
+  "finish":"Kết Thúc"
 }

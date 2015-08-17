@@ -347,7 +347,12 @@
   "Something is wrong, please try again later":"Something is wrong, please try again later",
   "Current pass and the new one are the same":"Current pass and the new one are the same",
   "All field is required":"All field is required",
-  "Password does not match the confirmation" : "Password does not match the confirmation"
+  "Password does not match the confirmation" : "Password does not match the confirmation",
 
-
+  "Next Lesson":"Next Lesson",
+  "Learn Again":"Learn Again",
+  "Learn missed lesson or new lesson":"Learn missed lesson or new lesson",
+  "Learn this sublesson again":"Learn this sublesson again",
+  "your flashcard finish":"your flashcard finish",
+  "finish":"finish"
 }

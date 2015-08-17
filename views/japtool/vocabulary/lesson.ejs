@@ -217,14 +217,15 @@
                 <div class="col-sm-offset-2 col-sm-8 lastSlide text-center">
                     <div class="col-sm-6 last-left">
                         <div class="col-sm-12 description">
-                            <i class="fa fa-child fa-2x icon"></i><strong>You Finish !</strong>
-                            <p class="text-left">Learn Again : Learn this sublesson again</p>
-                            <p class="text-left">Next Lesson : Learn missed lesson or new lesson</p>
+                            <i class="fa fa-child fa-2x icon"></i><strong><%=__("your flashcard finish")%> !</strong>
+                            <br><br>
+                            <p class="text-left"><%=__("Learn Again")%> : <%=__("Learn this sublesson again")%></p>
+                            <p class="text-left"><%=__("Next Lesson")%> : <%=__("Learn missed lesson or new lesson")%></p>
                         </div>
                     </div>
                     <div class="col-sm-6 last-right">
-                        <p><a onclick="learnAgain();" class="btn">Learn Again</a>
-                        <p><a class="btn">Next Lesson</a>
+                        <p><a onclick="learnAgain();" class="btn"><%=__("Learn Again")%></a>
+                        <p><a class="btn"><%=__("Next Lesson")%></a>
                     </div>
                 </div>
             </div>
@@ -235,7 +236,7 @@
                 <% vocabularies.forEach( function(vocabulary){ %>
                 <div><h3><%= vocabulary.item %></h3></div>
                 <% }) %>
-                <div class="finish"><h3>FINISH</h3></div>
+                <div class="finish"><h3><%=__("finish")%></h3></div>
             </div>
         </div>
     </div>
