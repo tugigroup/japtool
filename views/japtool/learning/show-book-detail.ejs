@@ -76,7 +76,7 @@
 
                                                     %>
                                                         <li><a class="sub-lesson <%= status%>" href='javascript: void(0)'
-                                                               name="<%= lessonList[i].id %>"
+                                                               id="<%= lessonList[i].id %>"
                                                                onclick="father('<%= lessonList[i].useModule %>', <%=
                                                                    lessonList[i].dataExtractCondition %>, '<%= lessonList[i].id %>','<%= lessonList[i].lesson %>','<%= lessonList[i].subLesson %>');"><i
                                                                         class="fa fa-circle-o"></i> <%= lessonList[i].subLesson
@@ -108,7 +108,7 @@
                             <section class="content-wrapper-body">
                                 <div class="row">
                                     <div id="container-learn">
-                                        <% if( !lastLearn ){ %>
+                                        <% if( !goLessonID ){ %>
                                         <h3 class="text-center text-danger"><%= book.name %></h3>
 
                                         <div class="row">
@@ -132,10 +132,7 @@
                                             <div class="col-sm-6"><%= book.description %></div>
                                         </div>
                                         <% } else{ %>
-                                        <input type="hidden" id="lessonName" value="<%= lastLearn.lesson %>">
-                                        <input type="hidden" id="useModule" value="<%= lastLearn.useModule %>">
-                                        <input type="hidden" id="conditionS" value="<%= lastLearn.dataExtractCondition %>">
-                                        <input type="hidden" id="lessionID" value="<%= lastLearn.id %>">
+                                        <input type="hidden" id="goLessonID" value="<%= goLessonID %>">
                                         <% } %>
                                     </div>
                                 </div>
@@ -237,11 +234,12 @@
         });
     }
     window.onload = function () {
-        var useModule = $('#useModule').val();
-        var condition = trimSpace($('#conditionS').val());
-        $("#container-learn").load('/japtool/' + useModule + '/?condition=' + condition);
-        var lessionID = $('#lessionID').val();
-        openTreeView(lessionID);
+        // var useModule = $('#useModule').val();
+        // var condition = trimSpace($('#conditionS').val());
+        // $("#container-learn").load('/japtool/' + useModule + '/?condition=' + condition);
+        var goLessonID = $('#goLessonID').val();
+        $("#"+goLessonID).trigger("click");
+        openTreeView(goLessonID);
         paintClickedSublesson();
     }
 
