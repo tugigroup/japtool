@@ -80,12 +80,29 @@
                         </div>
                         <div class="pull-right count-page">
                             <span class="pagingCnt"> 1/<%= sumPage %></span>
+                            <span id="countPage" style="display:none;"><%= sumPage %></span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <% }) %>
+        <div class="learn-kanji">
+            <div class="col-sm-offset-2 col-sm-8 lastSlide text-center">
+                <div class="col-sm-6 last-left">
+                    <div class="col-sm-12 description">
+                        <i class="fa fa-child fa-2x icon"></i><strong><%=__("your flashcard finish")%> !</strong>
+                        <br><br>
+                        <p class="text-left"><%=__("Learn Again")%> : <%=__("Learn this sublesson again")%></p>
+                        <p class="text-left"><%=__("Next Lesson")%> : <%=__("Learn missed lesson or new lesson")%></p>
+                    </div>
+                </div>
+                <div class="col-sm-6 last-right">
+                    <p><a onclick="learnAgain();" class="btn"><%=__("Learn Again")%></a>
+                    <p><a class="btn"><%=__("Next Lesson")%></a>
+                </div>
+            </div>
+        </div>
     </div>
     <% } %>
     <!--6-->
@@ -94,6 +111,7 @@
             <% kanjis.forEach( function(kanji){ %>
             <div><h3><%= kanji.item %></h3></div>
             <% }) %>
+            <div class="finish"><h3><%=__("finish")%></h3></div>
         </div>
     </div>
     <!--end 6-->
@@ -105,21 +123,49 @@
         fade: false,
         asNavFor: '.slider-nav',
         draggable: false,
-        accessibility: true,
+        accessibility: false,
         touchMove: false,
         infinite:false,
         prevArrow: '<button type="button" data-role="none" class="btn btn-show-list btn-arrow-left" aria-label="Previous" tabindex="0" role="button"><i class="fa fa-chevron-left"></i></button>',
         nextArrow: '<button type="button" data-role="none" class="btn btn-show-list btn-arrow-right" aria-label="Next" tabindex="0" role="button"><i class="fa fa-chevron-right"></i></button>'
     });
     $('.slider-nav').slick({
-        slidesToShow: 5,
+        slidesToShow: 4,
         slidesToScroll:1,
         asNavFor: '.slider-for',
         accessibility: true,
         draggable: false,
         dots: false,
         touchMove: false,
-        focusOnSelect: true
+        centerMode:true,
+        focusOnSelect: true,
+        infinite:false
+    });
+    var infoconfig = true;
+    // when slide is last slide
+    $('.slider-for').on('afterChange', function (event, slick, currentSlide, nextSlide) {
+        var slideCount = $("#countPage").text();
+        if(slideCount==(currentSlide+3)){
+            infoconfig=false;
+        }
+        if(slideCount==(currentSlide)){
+            infoconfig=false;
+            $("#kanji-List .btn-arrow-right").hide();
+            $("#kanji-List .slider-nav").hide();
+        }
+    });
+    $("#kanji-List .btn-arrow-left").on("click",function(){
+        $("#kanji-List .btn-arrow-right").show();
+        $("#kanji-List .slider-nav").show();
+        infoconfig=true;
+    });
+    $("#kanji-List .slick-prev").on("click",function(){
+        $("#kanji-List .btn-arrow-right").show();
+        $("#kanji-List .slider-nav").show();
+        infoconfig=true;
+    });
+    $("#kanji-List .slider-nav .finish").on("click",function(){
+        infoconfig=false;
     });
     function showExample(index) {
         $('.exam-' + index).delay(1000).slideDown();
@@ -132,7 +178,12 @@
     function alwaysShowDetails(index) {
         $('.info-item-' + index).slideDown();
     }
-    var infoconfig = true;
+    function learnAgain(){
+        $(".slider-for").slick('slickGoTo',-1);
+        $("#kanji-List .btn-arrow-right").show();
+        $("#kanji-List .slider-nav").show();
+        infoconfig=true;
+    }
     var current_slide = 0;
     $(document).ready(function () {
         $('.info-off').hide();
@@ -149,9 +200,6 @@
             infoconfig = true;
             //Show current slide details
             showDetails(current_slide);
-        });
-        $('.slider-for').on('edge', function(event, slick, direction){
-            alert('ok');
         });
     });
     // count page

@@ -1,5 +1,64 @@
-<% _.each(listLessons, function (listLesson, index) { %>
-<input type="hidden" class="homeMoreBookMaster" moreBookMasterId= "<%= listLesson.bookMaster.id %>" moreSelfLearning ="<%= listLesson.id %>">
-<%})%>
+<% _.each(loadMorelistLessons, function (item) { %>
+<div class="col-sm-12">
+    <div class="info-book clearfix">
+        <div class="col-sm-4">
+            <h3><%= item.bookMaster.name %></h3>
+        </div>
+        <div class="col-sm-4">
+            7/10 Bài đã học
+        </div>
+        <div class="col-sm-4">
+            Pass 5/ 10 Bài
+        </div>
+        <div id="<%= item.id %>" class="disactive clearfix"></div>
+        <div class="col-sm-12">
+            <a class="view-detail-lesson view-detail-lesson-active-<%= item.id %> pull-right"
+               id="<%= item.bookMaster.id %>">View Detail</a>
+            <a class="view-detail-lesson view-detail-lesson-hide-<%= item.id %> pull-right disactive">Hide
+                Detail</a>
+        </div>
+    </div>
+</div>
 
-<div class="info"></div>
+<% }) %>
+<div class="info-book-more"></div>
+
+<script type="text/javascript">
+    <% _.each(loadMorelistLessons, function (item) { %>
+    $('#<%= item.bookMaster.id %>').on('click', function () {
+        $.ajax({
+            url: '/japtool/home/lessonHome',
+            type: 'GET',
+            data: {
+                bookMasterId: '<%= item.bookMaster.id %>',
+                moreSelfLesson: '<%= item.id %>'
+            },
+            cache: false,
+            async: false,
+            success: function (data) {
+                $('#<%= item.id %>').html(data);
+            },
+            error: function () {
+                alert('Error')
+            }
+        })
+    })
+    <%})%>
+
+    <% _.each(loadMorelistLessons, function (item) { %>
+    $('.view-detail-lesson-active-<%= item.id %>').click(function () {
+        $('#<%= item.id %>').removeClass('disactive');
+        $('#<%= item.id %>').addClass('active');
+        $('.view-detail-lesson-hide-<%= item.id %>').removeClass('disactive');
+        $('.view-detail-lesson-hide-<%= item.id %>').addClass('active');
+        $(this).addClass('disactive');
+    })
+    $('.view-detail-lesson-hide-<%= item.id %>').click(function () {
+        $('#<%= item.id %>').addClass('disactive');
+        $('#<%= item.id %>').removeClass('active');
+        $('.view-detail-lesson-active-<%= item.id %>').removeClass('disactive');
+        $('.view-detail-lesson-hide-<%= item.id %>').removeClass('active');
+        $(this).addClass('disactive');
+    })
+    <% }) %>
+</script>

@@ -1383,7 +1383,20 @@ ul.timeline li .timeline-panel:after {
 .content-lesson {
     min-height: 675px !important;
 }
-
+.library-page .form-horizontal #executeSearch{
+    margin-top: 6%;
+}
+.body-manager-learning #default-show .btn-danger{
+    position: absolute;
+    margin-top: 30px;
+    margin-left: 1009px;
+}
+.row-pagination-mng-learning{
+    padding-right: 45px;
+}
+.library-page .form-horizontal .btn-danger{
+    border-radius: 0px;
+}
 /*END LEARNING GROUP*/
 
 /*css by duongtd2*/
@@ -2023,7 +2036,7 @@ ul.timeline li .timeline-panel:after {
 }
 
 .excercise-kanji .panel-paper-slide-exe {
-    min-height: 389px;
+    min-height: 402px;
     margin-bottom: 0px;
 }
 
@@ -2102,6 +2115,33 @@ ul.timeline li .timeline-panel:after {
     margin-top: 3%;
 }
 #vocabularyList .lastSlide {
+    margin-top: 11%;
+}
+#kanji-List .lastSlide .last-right .btn{
+    background: linear-gradient(to bottom,#3a83e3,#1f6fd9);
+    border-radius: 4px;
+    clear: left;
+    display: block;
+    margin: 0 0 16px 0;
+    padding: 16px 10px 16px 20px;
+    position: relative;
+    top: 0;
+    left: 0;
+    color: #ffffff;
+}
+#kanji-List .lastSlide .last-left .description{
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.1);
+    padding: 16px;
+}
+#kanji-List .lastSlide .last-left .description .icon{
+    color: rgb(56, 202, 126);
+}
+#kanji-List .lastSlide .last-right{
+    margin-top: 3%;
+}
+#kanji-List .lastSlide {
     margin-top: 11%;
 }
 /*END slide*/

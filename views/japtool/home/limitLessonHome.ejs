@@ -1,81 +1,22 @@
-<% _.each(listItems, function (listItemsL) { %>
-<% _.each(listItemsL, function (item) { %>
-<div class="col-sm-12">
-  <div class="info-book clearfix">
-    <div class="col-sm-4">
-      <h3><%= item.name %></h3>
-    </div>
-    <div class="col-sm-4">
-      7/10 Bài đã học
-    </div>
-    <div class="col-sm-4">
-      Pass 5/ 10 Bài
-    </div>
-    <div class="info-desc info-desc-<%= item.id %> disactive clearfix">
-      <% _.each(item.bookDetails, function (itemLesson) { %>
+<% _.each(listItems, function (listItem) { %>
       <div class="col-sm-2 col-xs-3 col-md-1">
-        <div class="info-lesson-home label-home" id="<%= itemLesson.id %>"><a><%= itemLesson.lesson %></a></div>
+        <div class="info-lesson-home label-home" id="<%= listItem.id %>"><a><%= listItem.lesson %></a></div>
       </div>
-      <%})%>
-    </div>
-    <div class="col-sm-12">
-      <a class="view-detail-lesson view-detail-lesson-active-<%= item.id %> pull-right">View Detail</a>
-      <a class="view-detail-lesson view-detail-lesson-hide-<%= item.id %> pull-right disactive">Hide
-        Detail</a>
-    </div>
-  </div>
-</div>
-
 <% }) %>
-<% }) %>
-
 
 <script type="text/javascript">
-
-    /*
-     * Home after login
-     * Add Class to div when click view detail
-     * author: tuyentv1@fsoft.com.vn
-     */
-    <% _.each(listItems, function (listItemsL) { %>
-    <% _.each(listItemsL, function (item) { %>
-    $('.view-detail-lesson-active-<%= item.id %>').click(function () {
-      $('.info-book-more .info-desc-<%= item.id %>').removeClass('disactive');
-      $('.info-book-more .info-desc-<%= item.id %>').addClass('active');
-      $('.view-detail-lesson-hide-<%= item.id %>').removeClass('disactive');
-      $('.view-detail-lesson-hide-<%= item.id %>').addClass('active');
-      $(this).addClass('disactive');
-    })
-    $('.view-detail-lesson-hide-<%= item.id %>').click(function () {
-      $('.info-book-more .info-desc-<%= item.id %>').addClass('disactive');
-      $('.info-book-more .info-desc-<%= item.id %>').removeClass('active');
-      $('.view-detail-lesson-active-<%= item.id %>').removeClass('disactive');
-      $('.view-detail-lesson-hide-<%= item.id %>').removeClass('active');
-      $(this).addClass('disactive');
-    })
-    <% }) %>
-    <% }) %>
-
-    /*
-     * Home after login
-     * Add Class color
-     * author: tuyentv1@fsoft.com.vn
-     */
-    <% _.each(moreSelfLesson, function (moreSelfLessonL) { %>
-    <% _.each(moreSelfLessonL, function (moreItemSelfLessonL) { %>
-    <% if(moreItemSelfLessonL.status){ %>
-    <% if(moreItemSelfLessonL.status == 'passed'){ %>
-    $("#<%= moreItemSelfLessonL.bookDetail %>").removeClass('label-home');
-    $("#<%= moreItemSelfLessonL.bookDetail %>").addClass('label-success');
-    <% }else{ %>
-    $("#<%= moreItemSelfLessonL.bookDetail %>").removeClass('label-home');
-    $("#<%= moreItemSelfLessonL.bookDetail %>").addClass('label-danger');
-    <% } %>
-    <% } else{ %>
-    $("#<%= moreItemSelfLessonL.bookDetail %>").removeClass('label-home');
-    $("#<%= moreItemSelfLessonL.bookDetail %>").addClass('label-warning');
-    <%}%>
-    <%})%>
-    <%})%>
+<% _.each(moreSelfLesson, function (moreSelfLessonItem) { %>
+<% if(moreSelfLessonItem.status){ %>
+<% if(moreSelfLessonItem.status == 'passed'){ %>
+$("#<%= moreSelfLessonItem.bookDetail %>").removeClass('label-home');
+$("#<%= moreSelfLessonItem.bookDetail %>").addClass('label-success');
+<% }else{ %>
+$("#<%= moreSelfLessonItem.bookDetail %>").removeClass('label-home');
+$("#<%= moreSelfLessonItem.bookDetail %>").addClass('label-danger');
+<% } %>
+<% } else{ %>
+$("#<%= moreSelfLessonItem.bookDetail %>").removeClass('label-home');
+$("#<%= moreSelfLessonItem.bookDetail %>").addClass('label-warning');
+<%}%>
+<%})%>
 </script>
-
