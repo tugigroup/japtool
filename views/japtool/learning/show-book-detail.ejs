@@ -77,7 +77,7 @@
                                                     %>
                                                         <li><a class="sub-lesson <%= status%>" href='javascript: void(0)'
                                                                id="<%= lessonList[i].id %>"
-                                                               onclick="father('<%= lessonList[i].useModule %>', <%=
+                                                               onclick="loadLesson('<%= lessonList[i].useModule %>', <%=
                                                                    lessonList[i].dataExtractCondition %>, '<%= lessonList[i].id %>','<%= lessonList[i].lesson %>','<%= lessonList[i].subLesson %>');"><i
                                                                         class="fa fa-circle-o"></i> <%= lessonList[i].subLesson
                                                                 %></a>
@@ -105,6 +105,7 @@
                         
                         <!-- Content Wrapper. Contains page content -->
                         <div class="content-wrapper content-lesson">
+                            <input type="hidden" id="currentLessonID">
                             <section class="content-wrapper-body">
                                 <div class="row">
                                     <div id="container-learn">
@@ -176,71 +177,109 @@
     </div>
 </div>
 <script>
-    function father(module, condition, detailId, lesson, subLesson) {
-        learn(module, condition);
-        savee(lesson, detailId);
-        $('#lessonName').html('&nbsp;/&nbsp;' + lesson + '-' + subLesson);
+    function loadLesson(module, condition, subLessonID, lesson, subLesson) {
+
+        loadContent(module, condition);
+
+        setCurrentStatus(subLessonID, lesson, subLesson);
+
+        logStart(subLessonID);
     }
-    function learn(module, condition) {
+    function loadContent(module, condition) {
         var strCondition = JSON.stringify(condition);
         $('#container-learn').load('/japtool/' + module + '/?condition=' + strCondition);
     }
-    function savee(lesson, detailId) {
+
+    function setCurrentStatus(subLessonID, lesson, subLesson){
+        $('#currentLessonID').val(subLessonID);
+
+        $("a.sub-lesson").removeClass("font-weight-sub-lesson");
+        $('#' + subLessonID).addClass("font-weight-sub-lesson");
+
+        $('#lessonName').html('&nbsp;/&nbsp;' + lesson + '-' + subLesson);
+    }
+
+    function logStart(subLessonID) {
         var learnID = $('#learnID').val();
-        var bookDetail = detailId;
-        var user = '<%= session.User.id %>';
-        var startDate = new Date();
         $.ajax({
             method: "POST",
             url: "/japtool/Learning/saveHistory",
             data: {
-                lesson: lesson,
-                user: user,
                 selfLearning: learnID,
-                bookDetail: bookDetail,
-                startDate: startDate
+                bookDetail: subLessonID,
             }
         })
-                .done(function (msg) {
-                    console.log(msg);
-                });
+        .done(function (msg) {
+            console.log(msg);
+        });
+    }
+    function logFinish(status, mark) {
+        var learnID = $('#learnID').val();
+        var subLessonID = $('#currentLessonID').val();
+        
+        updateTreeViewStatus(subLessonID, mark);
+
+        $.ajax({
+            method: "POST",
+            url: "/japtool/Learning/saveHistory",
+            data: {
+                selfLearning: learnID,
+                bookDetail: subLessonID,
+                status: status,
+                mark: mark
+            }
+        })
+        .done(function (msg) {
+            console.log(msg);
+        });
+    }
+    function updateTreeViewStatus(subLessonID, mark){
+        var currentItem = $('#' + subLessonID);
+        if (mark && mark < 70){
+            currentItem.removeClass("lesson-success").addClass("lesson-danger");
+        }else {
+            currentItem.removeClass("lesson-danger").addClass("lesson-success");
+        }
+
+        var success = true; 
+        currentItem.siblings().each(function (index) {
+            if (!$(this).hasClass("lesson-success")) success = false;
+        });
+
+        if (success){
+            currentItem.closest('.treeview').removeClass("lesson-danger").addClass("lesson-success");
+        }else {
+            currentItem.closest('.treeview').removeClass("lesson-success").addClass("lesson-danger");
+        }
     }
     function openTreeView(lessonID) {
-        $('.sub-lesson').each(function (itemLessonID, index) {
-            var lessonBookID = $(this).attr('id');
-            //add Class Active to show screen
-            if (lessonBookID == lessonID) {
-                $(".treeview").removeClass("active");
-                $(this).closest('.treeview').addClass('active');
-            }
-        });
+        $(".treeview").removeClass("active");
+        $("#" + lessonID).closest('.treeview').addClass('active');
     }
     function nextLesson() {
-        $('a.lesson').each(function (index, nextLessonID) {
-            var lessonD = !$(this).hasClass('lesson-danger');
-            var lessonS = !$(this).hasClass('lesson-success');
-            if (lessonD && lessonS) {
-                $(this).parent(".treeview").children().children().children(".sub-lesson").click();
-                $("li").removeClass("active");
-                openTreeView($(this).parent(".treeview").children().children().children(".sub-lesson").attr("id"));
+        var nextIndex = -1;
+        var currentItemID = $('#currentLessonID').val();
+
+        $("a.sub-lesson").each(function (index) {
+            if (index == nextIndex) {
+                var nextItemID = $(this).prop('id');
+                openTreeView(nextItemID);
+                $("#"+nextItemID).trigger("click");
                 return false;
+            }
+            if ( $(this).prop('id') == currentItemID ){
+                nextIndex = index + 1;
             }
         });
     }
-    function paintClickedSublesson(){
-        $("a.sub-lesson").click(function () {
-            $("a.sub-lesson").removeClass("font-weight-sub-lesson");
-            $(this).addClass("font-weight-sub-lesson");
-        });
-    }
+   
     window.onload = function () {
-        // var useModule = $('#useModule').val();
-        // var condition = trimSpace($('#conditionS').val());
-        // $("#container-learn").load('/japtool/' + useModule + '/?condition=' + condition);
         var goLessonID = $('#goLessonID').val();
-        $("#"+goLessonID).trigger("click");
-        openTreeView(goLessonID);
-        paintClickedSublesson();
+
+        if (goLessonID) {
+            $("#"+goLessonID).trigger("click");
+            openTreeView(goLessonID);
+        }
     }
 
 </script>

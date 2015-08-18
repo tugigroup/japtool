@@ -125,7 +125,7 @@
         $slickElement.on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
             //currentSlide is undefined on init -- set it to 0 in this case (currentSlide is 0 based)
             var i = (currentSlide ? currentSlide : 0) + 1;
-            $status.text(i + '/' + slick.slideCount);
+            $status.text(i + '/' + (slick.slideCount - 1));
             current_slide = currentSlide;
         });
         $('.slider-for').on('afterChange', function (event, slick, currentSlide) {
@@ -224,8 +224,8 @@
                         </div>
                     </div>
                     <div class="col-sm-6 last-right">
-                        <p><a onclick="learnAgain();" class="btn"><%=__("Learn Again")%></a>
-                        <p><a class="btn"><%=__("Next Lesson")%></a>
+                        <p><a onclick="logFinish('done', 100); learnAgain();" class="btn"><%=__("Learn Again")%></a>
+                        <p><a onclick="logFinish('done', 100); nextLesson();"class="btn"><%=__("Next Lesson")%></a>
                     </div>
                 </div>
             </div>

@@ -412,7 +412,7 @@ module.exports = {
         var bookID = req.param('id');
         var learnID = req.param('learnID');
         var lessonID = req.param('lessonID');
-        var array = require("array-extended");
+        // var array = require("array-extended");
 
         BookMaster.findOne({id: bookID}).populate('bookDetails', {sort: 'sort ASC'}).
         exec(function createCB(err, book) {
@@ -467,7 +467,6 @@ module.exports = {
                         goLessonID: lessonID
                     });
                 });
-
             }
         });
     },
@@ -553,12 +552,15 @@ module.exports = {
 
     saveHistory: function (req, res) {
         var pars = req.allParams();
+        pars.user = req.session.User.id;
+
         UserLearnHistory.findOne({
             user: pars.user,
             selfLearning: pars.selfLearning,
-            lesson: pars.lesson
+            bookDetail: pars.bookDetail
         }).exec(function (err, data) {
-            if (data == undefined) {
+            if (!data) {
+                pars.startDate = new Date();
                 UserLearnHistory.create(pars).exec(function createCB(err, history) {
                     if (err) {
                         sails.log(err)
