@@ -5,18 +5,25 @@
 <% }) %>
 
 <script type="text/javascript">
+    var lessonSum = 0;
 <% _.each(moreSelfLesson, function (moreSelfLessonItem) { %>
 <% if(moreSelfLessonItem.status){ %>
 <% if(moreSelfLessonItem.status == 'passed'){ %>
 $("#<%= moreSelfLessonItem.bookDetail %>").removeClass('label-home');
 $("#<%= moreSelfLessonItem.bookDetail %>").addClass('label-success');
+    lessonSum++;
+    $(".lesson-pass-<%= moreSelfLessonItem.selfLearning %>").text(lessonSum);
 <% }else{ %>
 $("#<%= moreSelfLessonItem.bookDetail %>").removeClass('label-home');
 $("#<%= moreSelfLessonItem.bookDetail %>").addClass('label-danger');
+    lessonSum++;
+    $(".lesson-pass-<%= moreSelfLessonItem.selfLearning %>").text(lessonSum);
 <% } %>
 <% } else{ %>
 $("#<%= moreSelfLessonItem.bookDetail %>").removeClass('label-home');
 $("#<%= moreSelfLessonItem.bookDetail %>").addClass('label-warning');
+    lessonSum++;
+    $(".lesson-pass-<%= moreSelfLessonItem.selfLearning %>").text(lessonSum);
 <%}%>
 <%})%>
 </script>

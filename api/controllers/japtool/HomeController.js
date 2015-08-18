@@ -62,10 +62,6 @@ module.exports = {
                     })
                 }
             }
-
-
-
-
         })
     },
     loadMoreIndex: function (req, res) {
@@ -80,9 +76,12 @@ module.exports = {
             if (err) {
                 if (err) return res.serverError(err);
             } else {
-                res.render('japtool/home/limitLesson', {
-                    loadMorelistLessons: listLessons
-                });
+
+                    res.render('japtool/home/limitLesson', {
+                        loadMorelistLessons: listLessons
+                    });
+
+
             }
         })
 
