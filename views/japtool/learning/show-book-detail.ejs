@@ -3,6 +3,9 @@
         <div class="row">
             <div class="content">
                 <h2 id="add-book-detail"><%= book.name %> <span id ="lessonName"></span></h2>
+                <input type="hidden" id="learnID" value="<%= learnID %>">
+                <input type="hidden" id="currentLessonID">
+                <input type="hidden" id="passMark" value="<%= Constants.passMark %>">
                 <div id="learning-nav" class="skin-green sidebar-mini">
                     <div class="wrapper">
                         <header class="main-header">
@@ -20,7 +23,6 @@
                             <!-- sidebar: style can be found in sidebar.less -->
                             <section class="sidebar pre-scrollable">
                                 <!-- Sidebar user panel -->
-                                <input type="hidden" id="learnID" value="<%= learnID %>">
                                 <ul class="sidebar-menu">
                                     <% 
                                     var lessionName = '';
@@ -37,7 +39,7 @@
                                                 if (lessonList[subIdx].learnHistory) {
                                                     noHis = false;
 
-                                                    if (!lessonList[subIdx].learnHistory.status || lessonList[subIdx].learnHistory.status == 'false'){
+                                                    if (!lessonList[subIdx].learnHistory.status || lessonList[subIdx].learnHistory.status != 'passed'){
                                                         status = 'lesson-danger';
                                                     }
                                                 }
@@ -68,7 +70,7 @@
 
                                                     if (!lessonList[subIdx].learnHistory || !lessonList[subIdx].learnHistory.status) {
                                                         status = '';
-                                                    } else if ( !lessonList[subIdx].learnHistory.status || lessonList[subIdx].learnHistory.status == 'false') {
+                                                    } else if ( !lessonList[subIdx].learnHistory.status || lessonList[subIdx].learnHistory.status != 'passed') {
                                                         status = 'lesson-danger';
                                                     } else {
                                                         status = 'lesson-success';
@@ -105,7 +107,6 @@
                         
                         <!-- Content Wrapper. Contains page content -->
                         <div class="content-wrapper content-lesson">
-                            <input type="hidden" id="currentLessonID">
                             <section class="content-wrapper-body">
                                 <div class="row">
                                     <div id="container-learn">
@@ -206,16 +207,17 @@
             url: "/japtool/Learning/saveHistory",
             data: {
                 selfLearning: learnID,
-                bookDetail: subLessonID,
+                bookDetail: subLessonID
             }
         })
         .done(function (msg) {
             console.log(msg);
         });
     }
-    function logFinish(status, mark) {
+    function logFinish(mark) {
         var learnID = $('#learnID').val();
         var subLessonID = $('#currentLessonID').val();
+        mark = Number(mark);
         
         updateTreeViewStatus(subLessonID, mark);
 
@@ -225,7 +227,6 @@
             data: {
                 selfLearning: learnID,
                 bookDetail: subLessonID,
-                status: status,
                 mark: mark
             }
         })
@@ -235,21 +236,25 @@
     }
     function updateTreeViewStatus(subLessonID, mark){
         var currentItem = $('#' + subLessonID);
-        if (mark && mark < 70){
-            currentItem.removeClass("lesson-success").addClass("lesson-danger");
-        }else {
+        var passMark = $('#passMark').val();
+
+        if (mark >= passMark){
             currentItem.removeClass("lesson-danger").addClass("lesson-success");
+        }else {
+            currentItem.removeClass("lesson-success").addClass("lesson-danger");
         }
 
         var success = true; 
-        currentItem.siblings().each(function (index) {
-            if (!$(this).hasClass("lesson-success")) success = false;
+        currentItem.closest(".treeview").find(".sub-lesson").each(function (index) {
+            if (!$(this).hasClass("lesson-success")) {
+                success = false;
+            }
         });
 
         if (success){
-            currentItem.closest('.treeview').removeClass("lesson-danger").addClass("lesson-success");
+            currentItem.closest(".treeview").find(".lesson").removeClass("lesson-danger").addClass("lesson-success");
         }else {
-            currentItem.closest('.treeview').removeClass("lesson-success").addClass("lesson-danger");
+            currentItem.closest(".treeview").find(".lesson").removeClass("lesson-success").addClass("lesson-danger");
         }
     }
     function openTreeView(lessonID) {

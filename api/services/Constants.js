@@ -9,7 +9,7 @@ module.exports = {
     maxSurveyQuestion: 5,
     maxLibraRs: 30,
     maxLibOnPage: 9,
-    isPassed: 0.8,
+    passMark: 70,   // 70/100 point is pass
     //Email
     smtpServer: '52.68.197.24',
     smtpPort: 587,

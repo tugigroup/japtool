@@ -561,6 +561,8 @@ module.exports = {
         }).exec(function (err, data) {
             if (!data) {
                 pars.startDate = new Date();
+                pars.status = 'started';
+                pars.mark = 0;
                 UserLearnHistory.create(pars).exec(function createCB(err, history) {
                     if (err) {
                         sails.log(err)
@@ -569,27 +571,20 @@ module.exports = {
                     }
                 })
             } else {
-                if (!pars.status) {
-                    sails.log("khong co status");
+                if (pars.mark) {
+                    pars.status = pars.mark < Constants.passMark? "failed" : "passed";
+                    pars.finishDate = new Date();
+                   
+                    UserLearnHistory.update({id: data.id}, {
+                        status: pars.status, mark: pars.mark, finishDate: pars.finishDate
+                    }).exec(function (err, updated) {
+                        if (err) {
+                            sails.log(err)
+                        } else {
+                            res.send(req.__("Record has update"));
+                        }
+                    })
                 }
-                else {
-                    if (data.status == "passed") {
-                    }
-                    else {
-                        UserLearnHistory.update({id: data.id}, {
-                            status: pars.status, mark: pars.mark, finishDate: pars.finishDate
-                        }).exec(function (err, updated) {
-                            if (err) {
-                                sails.log(err)
-                            } else {
-                                res.send(req.__("Record has update"));
-                            }
-                        })
-                    }
-                    sails.log(pars.status);
-                }
-
-
             }
         });
     }

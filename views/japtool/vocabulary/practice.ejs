@@ -127,58 +127,12 @@
                     setTimeout(function () {
                         $el.css("background", originalColor);
                     }, x);
-                }());
+                });
             }
-            if (total == sum) {
-                var status;
-                var lesson = $('#lessonn').val();
+            if (sum == total) {
                 var mark = (truee / total) * 100;
-                var learnID = $('#learnID').val();
-                var bookDetail = $('.sub-lesson').attr('name');
-                var user = '<%= session.User.id %>';
-                var finishDate = new Date();
-                if (truee / total > $('#ispassed').val()) {
-                    status = "passed";
-                    var resultPoint = truee / total;
-                    // result view
-                    $("#mark-view").text(Math.round(resultPoint * 100) / 10);
-                    $.ajax({
-                        method: "POST",
-                        url: "/japtool/Learning/saveHistory",
-                        data: {
-                            user: user,
-                            status: status,
-                            lesson: lesson,
-                            mark: mark,
-                            selfLearning: learnID,
-                            bookDetail: bookDetail,
-                            finishDate: finishDate
-                        }
-                    }).done(function (msg) {
-                        console.log(msg);
-                    });
-                }
-                else {
-                    status = "false";
-                    var resultPoint = truee / total;
-                    // result view
-                    $("#mark-view").text(Math.round(resultPoint * 100) / 10);
-                    $.ajax({
-                        method: "POST",
-                        url: "/japtool/Learning/saveHistory",
-                        data: {
-                            user: user,
-                            selfLearning: learnID,
-                            status: status,
-                            mark: mark,
-                            lesson: lesson,
-                            bookDetail: bookDetail
-                        }
-                    })
-                            .done(function (msg) {
-                                console.log(msg);
-                            });
-                }
+
+                $("#mark-view").text(Math.round(mark));
             }
         }
         else {
@@ -228,12 +182,16 @@
     $slickElement.on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
         //currentSlide is undefined on init -- set it to 0 in this case (currentSlide is 0 based)
         var i = (currentSlide ? currentSlide : 0) + 1;
-        $status.text(i + '/' + slick.slideCount);
+        $status.text(i + '/' + (slick.slideCount-1));
     });
+    function logMark(){
+        var mark = $("#mark-view").text();
+        logFinish(mark);
+    }
 </script>
 <input type="hidden" id="sum" value="<%= vocabularies.length %>">
 <input type="hidden" id="lessonn" value="<%= lessonn %>">
-<input type="hidden" id="ispassed" value="<%= Constants.isPassed %>">
+<input type="hidden" id="passMark" value="<%= Constants.passMark %>">
 <div class="exe-voca">
     <!--div audio-->
     <audio id="audioTrue">
@@ -299,8 +257,8 @@
                     </div>
                 </div>
                 <div class="col-sm-6 last-right">
-                    <p><a onclick="logFinish('done', 100); learnAgain();" class="btn"><%=__("Learn Again")%></a>
-                    <p><a onclick="logFinish('done', 100); nextLesson();"class="btn"><%=__("Next Lesson")%></a>
+                    <p><a onclick="logMark(); learnAgain();" class="btn"><%=__("Learn Again")%></a>
+                    <p><a onclick="logMark(); nextLesson();"class="btn"><%=__("Next Lesson")%></a>
                 </div>
             </div>
         </div>
