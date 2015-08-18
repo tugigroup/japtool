@@ -3,18 +3,7 @@
   "version": "1.0.0",
   "description": "tools for manapulate data for japtool",
   "main": " ",
-  "dependencies": {
-    "async": "^1.3.0",
-    "csv-parse": "^0.1.3",
-    "csv-stringify": "0.0.8",
-    "gridfs-stream": "^1.1.1",
-    "jquery": "^2.1.4",
-    "jsdom": "3.1.2",
-    "mongoose": "^4.0.6",
-    "querystring": "^0.2.0",
-    "request": "^2.60.0",
-    "string": "^3.3.0"
-  },
+  "dependencies": {},
   "devDependencies": {},
   "scripts": {
     "test": " "
