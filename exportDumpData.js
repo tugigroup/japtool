@@ -8,9 +8,8 @@ command = 'mongodump --host ' 	+ config.dbhost   +
           ' --port ' 			+ config.dbport   +
           ' --db ' 				+ config.database +
           ' --out '				+ config.dbexport ;
-console.log(command);
-exportDumpData = exec(command,
-  function (error, stdout, stderr) {
+
+exportDumpData = exec(command, function (error, stdout, stderr) {
   	if (stdout){
   		console.log('stdout: ' + stdout);
   	}

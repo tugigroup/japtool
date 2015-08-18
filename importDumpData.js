@@ -8,7 +8,7 @@ command = 'mongorestore --host ' 	+ config.dbhost   +
           ' --port ' 				+ config.dbport   +
           ' --db ' 					+ config.database +
           ' '						+ config.dbimport ;
-console.log(command);
+
 importDumpData = exec(command, function (error, stdout, stderr) {
     if (stdout){
   		console.log('stdout: ' + stdout);

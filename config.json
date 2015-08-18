@@ -1,7 +1,7 @@
 {
 	"dbhost" : "localhost",
-    "dbport" : 27017,
+	"dbport" : 27017,
 	"database" : "japtool",
-    "dbexport" : "work/",
-    "dbimport" : "work/japtool"
+	"dbexport" : "work/",
+	"dbimport" : "work/japtool"
 }
