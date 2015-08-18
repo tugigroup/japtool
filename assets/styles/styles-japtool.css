@@ -2144,6 +2144,60 @@ ul.timeline li .timeline-panel:after {
 #kanji-List .lastSlide {
     margin-top: 11%;
 }
+.pratice-voca .lastSlide .last-right .btn{
+    background: linear-gradient(to bottom,#3a83e3,#1f6fd9);
+    border-radius: 4px;
+    clear: left;
+    display: block;
+    margin: 0 0 16px 0;
+    padding: 16px 10px 16px 20px;
+    position: relative;
+    top: 0;
+    left: 0;
+    color: #ffffff;
+}
+.pratice-voca .lastSlide .last-left .description{
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.1);
+    padding: 16px;
+}
+.pratice-voca .lastSlide .last-left .description .icon{
+    color: rgb(56, 202, 126);
+}
+.pratice-voca .lastSlide .last-right{
+    margin-top: 3%;
+}
+.pratice-voca .lastSlide {
+    margin-top: 11%;
+}
+.exe-kanji .lastSlide .last-right .btn{
+    background: linear-gradient(to bottom,#3a83e3,#1f6fd9);
+    border-radius: 4px;
+    clear: left;
+    display: block;
+    margin: 0 0 16px 0;
+    padding: 16px 10px 16px 20px;
+    position: relative;
+    top: 0;
+    left: 0;
+    color: #ffffff;
+}
+.exe-kanji .lastSlide .last-left .description{
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.1);
+    padding: 16px;
+}
+.exe-kanji .lastSlide .last-left .description .icon{
+    color: rgb(56, 202, 126);
+}
+.exe-kanji .lastSlide .last-right{
+    margin-top: 3%;
+}
+.exe-kanji .lastSlide {
+    margin-top: 11%;
+}
 /*END slide*/
 
 /*responsive lesson kanji*/

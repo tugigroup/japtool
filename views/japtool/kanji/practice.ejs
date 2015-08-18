@@ -6,17 +6,20 @@
         fade: false,
         touchMove: false,
         draggable: false,
-        accessibility: true,
+        accessibility: false,
+        infinite: false,
         asNavFor: '.slider-nav',
         prevArrow: '<button type="button" data-role="none" class="btn btn-show-list btn-arrow-left-exe" aria-label="Previous" tabindex="0" role="button"><i class="fa fa-chevron-left"></i></button>',
         nextArrow: '<button type="button" data-role="none" class="btn btn-show-list btn-arrow-right-exe" aria-label="Next" tabindex="0" role="button"><i class="fa fa-chevron-right"></i></button>'
     });
     $('.slider-nav').slick({
-        slidesToShow: 5,
-        slidesToScroll: 5,
+        slidesToShow: 4,
+        slidesToScroll: 1,
         asNavFor: '.slider-for',
         dots: false,
         centerMode: true,
+        infinite: false,
+        accessibility: false,
         focusOnSelect: true
     });
     //set isNext when next slide
@@ -172,6 +175,30 @@
         }
     }
     var infoconfig = true;
+    // when slide is last slide
+    $('.slider-for').on('afterChange', function (event, slick, currentSlide, nextSlide) {
+        var slideCount = $("#countPage").text();
+        console.log(currentSlide);
+        console.log(slideCount);
+        if(slideCount==(currentSlide)){
+            infoconfig=false;
+            $(".exe-kanji .btn-arrow-right-exe").hide();
+            $(".exe-kanji .slider-nav").hide();
+        }
+    });
+    $(".exe-kanji .btn-arrow-left-exe").on("click",function(){
+        $(".exe-kanji .btn-arrow-right").show();
+        $(".exe-kanji .slider-nav").show();
+        infoconfig=true;
+    });
+    $(".exe-kanji .slick-prev").on("click",function(){
+        $(".exe-kanji .btn-arrow-right-exe").show();
+        $(".exe-kanji .slider-nav").show();
+        infoconfig=true;
+    });
+    $(".exe-kanji .slider-nav .finish").on("click",function(){
+        infoconfig=false;
+    });
     var current_slide = 0;
     $(document).ready(function () {
         $('.info-off').hide();
@@ -197,6 +224,12 @@
     }
     function alwaysShowDetails(index) {
         $('.info-item-' + index).slideDown();
+    }
+    function learnAgain(){
+        $(".slider-for").slick('slickGoTo',-1);
+        $(".exe-kanji .btn-arrow-right-exe").show();
+        $(".exe-kanji .slider-nav").show();
+        infoconfig=true;
     }
     // count page
     var $status = $('.pagingCnt');
@@ -281,18 +314,37 @@
                         </div>
                         <div class="count-page-exe-kanji">
                             <span class="pagingCnt">1/<%= sumPage %></span>
+                            <span id="countPage" style="display:none;"><%= sumPage %></span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <% }) %>
+        <div class="excercise-kanji">
+            <div class="col-sm-offset-2 col-sm-8 lastSlide text-center">
+                <div class="col-sm-6 last-left">
+                    <div class="col-sm-12 description">
+                        <i class="fa fa-child fa-2x icon"></i><strong><%=__("You finish exercise")%> !</strong>
+                        <br><br>
+                        <p class="text-left text-danger"><%=__("Your Mark")%> : <label id="mark-view"></label></p>
+                        <p class="text-left"><%=__("Learn Again")%> : <%=__("Learn this sublesson again")%></p>
+                        <p class="text-left"><%=__("Next Lesson")%> : <%=__("Learn missed lesson or new lesson")%></p>
+                    </div>
+                </div>
+                <div class="col-sm-6 last-right">
+                    <p><a onclick="logFinish('done', 100); learnAgain();" class="btn"><%=__("Learn Again")%></a>
+                    <p><a onclick="logFinish('done', 100); nextLesson();"class="btn"><%=__("Next Lesson")%></a>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="col-sm-offset-2 col-sm-8">
         <div class="slider slider-nav">
             <% kanjis.forEach( function(kanji){ %>
             <div><h3><%= kanji.item %></h3></div>
             <% }) %>
+            <div class="finish"><h3><%=__("finish")%></h3></div>
         </div>
     </div>
     <% } %>

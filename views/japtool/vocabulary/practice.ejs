@@ -8,7 +8,8 @@
         asNavFor: '.slider-nav',
         draggable: false,
         touchMove: false,
-        accessibility: true,
+        accessibility: false,
+        infinite: false,
         prevArrow: '<button type="button" data-role="none" class="btn btn-show-list btn-arrow-left" aria-label="Previous" tabindex="0" role="button"><i class="fa fa-chevron-left"></i></button>',
         nextArrow: '<button type="button" data-role="none" class="btn btn-show-list btn-arrow-right" aria-label="Next" tabindex="0" role="button"><i class="fa fa-chevron-right"></i></button>'
     });
@@ -18,9 +19,41 @@
         asNavFor: '.slider-for',
         dots: false,
         centerMode: true,
-        focusOnSelect: true
+        focusOnSelect: true,
+        accessibility: false,
+        infinite: false
     });
     var audioconfig = true;
+    // when slide is last slide
+    $('.slider-for').on('afterChange', function (event, slick, currentSlide, nextSlide) {
+        var slideCount = $("#countPage").text();
+        console.log(currentSlide);
+        if(slideCount==(currentSlide)){
+            audioconfig=false;
+            $(".exe-voca .btn-arrow-right").hide();
+            $(".exe-voca .slider-nav").hide();
+        }
+    });
+    $(".exe-voca .btn-arrow-left").on("click",function(){
+        $(".exe-voca .btn-arrow-right").show();
+        $(".exe-voca .slider-nav").show();
+        audioconfig=true;
+    });
+    $(".exe-voca .slick-prev").on("click",function(){
+        $(".exe-voca .btn-arrow-right").show();
+        $(".exe-voca .slider-nav").show();
+        audioconfig=true;
+    });
+    $(".exe-voca .slider-nav .finish").on("click",function(){
+        audioconfig=false;
+    });
+
+    function learnAgain(){
+        $(".slider-for").slick('slickGoTo',-1);
+        $(".exe-voca .btn-arrow-right").show();
+        $(".exe-voca .slider-nav").show();
+        audioconfig=true;
+    }
     //    on or off sound
     $('.mic-off').hide();
     $('.mic-on').on('click', function () {
@@ -106,10 +139,9 @@
                 var finishDate = new Date();
                 if (truee / total > $('#ispassed').val()) {
                     status = "passed";
-                    var resultPoint =  truee / total;
+                    var resultPoint = truee / total;
                     // result view
-                    $("#mark-view").text(Math.round(resultPoint*100 )/ 10);
-                    $('#myModal').modal('show');
+                    $("#mark-view").text(Math.round(resultPoint * 100) / 10);
                     $.ajax({
                         method: "POST",
                         url: "/japtool/Learning/saveHistory",
@@ -123,15 +155,14 @@
                             finishDate: finishDate
                         }
                     }).done(function (msg) {
-                                console.log(msg);
-                            });
+                        console.log(msg);
+                    });
                 }
                 else {
                     status = "false";
-                    var resultPoint =  truee / total;
+                    var resultPoint = truee / total;
                     // result view
-                    $("#mark-view").text(Math.round(resultPoint*100 )/ 10);
-                    $('#myModal').modal('show');
+                    $("#mark-view").text(Math.round(resultPoint * 100) / 10);
                     $.ajax({
                         method: "POST",
                         url: "/japtool/Learning/saveHistory",
@@ -213,7 +244,7 @@
     </audio>
     <!--finish div audio-->
     <% if(vocabularies == null || vocabularies.length == 0){ %>
-    <h5 class="text-center text-danger"><%=__("didn't find any data")%></h5>
+    <h5 class="text-center text-danger"><%= __("didn't find any data") %></h5>
     <% }else{ %>
     <div class="slider slider-for">
         <%
@@ -224,8 +255,8 @@
                 <div class="panel panel-default panel-paper-slide">
                     <div class="panel-body panel-bd-all">
                         <div class="mics-audio-practice-voca">
-                            <i class="fa fa-volume-up mic-on" data-toggle="tooltip" title='<%=__("off audio")%>'></i>
-                            <i class="fa fa-volume-off mic-off" data-toggle="tooltip" title="<%=__("on audio")%>"></i>
+                            <i class="fa fa-volume-up mic-on" data-toggle="tooltip" title='<%= __("off audio") %>'></i>
+                            <i class="fa fa-volume-off mic-off" data-toggle="tooltip" title="<%= __("on audio") %>"></i>
                         </div>
                         <div class="col-sm-12">
                             <div class="voca-prac-txt-cntr text-center">
@@ -249,18 +280,37 @@
                         <% }) %>
                         <div class="col-sm-offset-10 col-sm-1">
                             <span class="pagingCnt">1/<%= sumPage %></span>
+                            <span id="countPage" style="display:none;"><%= sumPage %></span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <% }) %>
+        <div class="pratice-voca">
+            <div class="col-sm-offset-2 col-sm-8 lastSlide text-center">
+                <div class="col-sm-6 last-left">
+                    <div class="col-sm-12 description">
+                        <i class="fa fa-child fa-2x icon"></i><strong><%=__("You finish exercise*")%> !</strong>
+                        <br><br>
+                        <p class="text-left text-danger"><%=__("Your Mark")%> : <label id="mark-view"></label></p>
+                        <p class="text-left"><%=__("Learn Again")%> : <%=__("Learn this sublesson again")%></p>
+                        <p class="text-left"><%=__("Next Lesson")%> : <%=__("Learn missed lesson or new lesson")%></p>
+                    </div>
+                </div>
+                <div class="col-sm-6 last-right">
+                    <p><a onclick="logFinish('done', 100); learnAgain();" class="btn"><%=__("Learn Again")%></a>
+                    <p><a onclick="logFinish('done', 100); nextLesson();"class="btn"><%=__("Next Lesson")%></a>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="col-sm-offset-2 col-sm-8">
         <div class="slider slider-nav">
             <% vocabularies.forEach( function(vocabulary){ %>
             <div><h3><%= vocabulary.item %></h3></div>
             <% }) %>
+            <div class="finish"><h3><%=__("finish")%></h3></div>
         </div>
     </div>
     <% } %>
