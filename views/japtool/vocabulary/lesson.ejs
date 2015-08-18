@@ -19,8 +19,10 @@
         centerMode: true,
         focusOnSelect: true,
         infinite: false,
-        accessibility: false,
+        accessibility: false
     });
+    var audioconfig = true;
+    var infoconfig = true;
     // when slide is last slide
     $('.slider-for').on('afterChange', function (event, slick, currentSlide, nextSlide) {
         var slideCount = $("#countPage").text();
@@ -52,8 +54,6 @@
         audioconfig=false;
         infoconfig=false;
     });
-    var audioconfig = true;
-    var infoconfig = true;
     var current_slide = 0;
     $(document).ready(function () {
         $('.info-off').hide();

@@ -3,9 +3,7 @@
         <div class="row">
             <div id="default-show" class="clearfix">
                 <div class="default-show">
-                    <div class="col-md-offset-10 col-sm-2">
-                        <button onclick="loadform(2)" class="btn btn-danger"><%=__("Create New Learning")%></button>
-                    </div>
+                    <button onclick="loadform(2)" class="btn btn-danger"><%=__("Create New Learning")%></button>
                 </div>
             </div>
         </div>
@@ -162,8 +160,11 @@
         <div class="modal fade" id="show-books" data-keyboard="false">
 
         </div>
+
     </div>
-    <ul id="pagination-demo" class="pagination-sm row text-center pull-right"></ul>
+    <div class="col-sm-offset-9 col-sm-3 row-pagination-mng-learning">
+        <ul id="pagination-demo" class="pagination-sm row text-center pull-right"></ul>
+    </div>
     <script type="text/javascript">
         window.onload = function () {
             $('.content').hide();
