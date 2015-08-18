@@ -4,10 +4,10 @@ var config = require('./config.json');
 var exportDumpData;
 var command;
 
-command = 'mongodump --host ' 	+ config.dbhost   +
-          ' --port ' 			+ config.dbport   +
-          ' --db ' 				+ config.database +
-          ' --out '				+ config.dbexport ;
+command = 'mongodump --host ' + config.dbhost   +
+          ' --port '          + config.dbport   +
+          ' --db '            + config.database +
+          ' --out '           + config.dbexport ;
 
 exportDumpData = exec(command, function (error, stdout, stderr) {
   	if (stdout){

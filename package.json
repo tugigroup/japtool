@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "tools for manapulate data for japtool",
   "main": " ",
-  "dependencies": {},
+  "dependencies": {
+    "mongodb": "^2.0.41"
+  },
   "devDependencies": {},
   "scripts": {
     "test": " "
