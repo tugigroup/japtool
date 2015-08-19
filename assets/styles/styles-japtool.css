@@ -1827,26 +1827,29 @@ ul.timeline li .timeline-panel:after {
 /*END CONTENT*/
 /*FOOTER*/
 .footer {
-    background: #232627;
-    color: #fff;
-    padding: 5rem 0;
+    background: #E6E3E3;
+    color: #947B6A;
+    padding: 2rem 0;
+    text-align: center;
 }
-
+.split-footer {
+    background:  #1F6FD9;
+    height:2px;  
+}
 .logo-footer img {
     margin-bottom: 2rem
 }
 
 .footer a {
-    color: #fff
+    color: #1f6fd9
 }
 
-.footer h3 {
-    font-size: 20px;
-    font-weight: 400;
+.footer li a {
+    margin: 7px;
 }
 
-.copyright .text-center {
-    padding: 10px 0px
+.copyright {
+    padding-top: 25px;
 }
 
 .join-learn {
