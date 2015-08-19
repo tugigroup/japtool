@@ -54,6 +54,7 @@ label {
     text-shadow: none;
     -webkit-box-shadow: none;
     box-shadow: none;
+    border-radius: 0px;
 }
 .label-home {
     background-color: #ADADAD;
@@ -2119,7 +2120,7 @@ ul.timeline li .timeline-panel:after {
 }
 #kanji-List .lastSlide .last-right .btn{
     background: linear-gradient(to bottom,#3a83e3,#1f6fd9);
-    border-radius: 4px;
+    border-radius: 0px;
     clear: left;
     display: block;
     margin: 0 0 16px 0;
@@ -2171,7 +2172,7 @@ ul.timeline li .timeline-panel:after {
 .pratice-voca .lastSlide {
     margin-top: 11%;
 }
-.exe-kanji .lastSlide .last-right .btn{
+.exe-kanji .excercise-kanji .lastSlide .btn-ls{
     background: linear-gradient(to bottom,#3a83e3,#1f6fd9);
     border-radius: 4px;
     clear: left;
@@ -2183,20 +2184,31 @@ ul.timeline li .timeline-panel:after {
     left: 0;
     color: #ffffff;
 }
-.exe-kanji .lastSlide .last-left .description{
+.exe-kanji .excercise-kanji .description{
     background: #fff;
-    border-radius: 3px;
+    border-radius: 0px;
     box-shadow: 3px 3px 0 rgba(0,0,0,0.1);
     padding: 16px;
 }
-.exe-kanji .lastSlide .last-left .description .icon{
+.exe-kanji .lastSlide .last-left .icon{
     color: rgb(56, 202, 126);
 }
 .exe-kanji .lastSlide .last-right{
-    margin-top: 3%;
+    min-height: 217px;
 }
 .exe-kanji .lastSlide {
     margin-top: 11%;
+}
+.exe-kanji .excercise-kanji .lastSlide .btn-primary:hover{
+    background-color: #2595ce;
+    border:none;
+}
+.exe-kanji .excercise-kanji .lastSlide .btn-primary{
+    background-color: #23aaef;
+    border: none;
+    width: 112px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 /*END slide*/
 
@@ -2676,4 +2688,74 @@ ul.timeline li .timeline-panel:after {
     display: none;
     color: darkred;
     font-size: 18px;
+}
+/* Pie Chart */
+.progress-pie-chart {
+    width:200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #E5E5E5;
+    position: relative;
+    margin: 0 auto;
+}
+.progress-pie-chart.gt-50 {
+    background-color: #81CE97;
+}
+
+.ppc-progress {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    left: calc(50% - 100px);
+    top: calc(50% - 100px);
+    width: 200px;
+    height: 200px;
+    clip: rect(0, 200px, 200px, 100px);
+}
+.ppc-progress .ppc-progress-fill {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    left: calc(50% - 100px);
+    top: calc(50% - 100px);
+    width: 200px;
+    height: 200px;
+    clip: rect(0, 100px, 200px, 0);
+    background: #81CE97;
+    transform: rotate(60deg);
+}
+.gt-50 .ppc-progress {
+    clip: rect(0, 100px, 200px, 0);
+}
+.gt-50 .ppc-progress .ppc-progress-fill {
+    clip: rect(0, 200px, 200px, 100px);
+    background: #E5E5E5;
+}
+
+.ppc-percents {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    left: calc(50% - 173.91304px/2);
+    top: calc(50% - 173.91304px/2);
+    width: 173.91304px;
+    height: 173.91304px;
+    background: #fff;
+    text-align: center;
+    display: table;
+}
+.ppc-percents span {
+    display: block;
+    font-size: 2.6em;
+    font-weight: bold;
+    color: #81CE97;
+}
+
+.pcc-percents-wrapper {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.progress-pie-chart {
+    /*margin: 50px auto 0;*/
 }

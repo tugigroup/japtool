@@ -50,10 +50,6 @@
         audioconfig=true;
         infoconfig=true;
     });
-    $("#vocabularyList .slider-nav .finish").on("click",function(){
-        audioconfig=false;
-        infoconfig=false;
-    });
     var current_slide = 0;
     $(document).ready(function () {
         $('.info-off').hide();
@@ -112,11 +108,7 @@
         $('.info-item-' + index).slideDown();
     }
     function learnAgain(){
-        $(".slider-for").slick('slickGoTo',-1);
-        $("#vocabularyList .btn-arrow-right").show();
-        $("#vocabularyList .slider-nav").show();
-        audioconfig=true;
-        infoconfig=true;
+        window.location.replace(window.location.href);
     }
     $(document).ready(function () {
         // count page
@@ -236,7 +228,6 @@
                 <% vocabularies.forEach( function(vocabulary){ %>
                 <div><h3><%= vocabulary.item %></h3></div>
                 <% }) %>
-                <div class="finish"><h3><%=__("finish")%></h3></div>
             </div>
         </div>
     </div>
