@@ -4,7 +4,7 @@
             <div class="form-group form-horizontal">
                 <label for="groupSearch"><%= __("Library Category") %>:</label>
                 <select class="form-control" id="groupSearch">
-                    <option value="0"><%= __("Select group type") %></option>
+                    <option value="0"><%= __("Choose category") %></option>
                     <% uniqueType.forEach(function(item, indexLibrary){ %>
                     <option value="<%= item %>"><%= item %></option>
                     <% }) %>
@@ -16,12 +16,12 @@
             <div class="form-group form-horizontal">
                 <label for="levelSearch"><%= __("Library Level") %>:</label>
                 <select class="form-control" id="levelSearch">
-                    <option value="0"><%= __("Select level type") %></option>
-                    <option value="N1">Level 1</option>
-                    <option value="N2">Level 2</option>
-                    <option value="N3">Level 3</option>
-                    <option value="N4">Level 4</option>
-                    <option value="N5">Level 5</option>
+                    <option value="0"><%= __("Choose level") %></option>
+                    <option value="N1">N1</option>
+                    <option value="N2">N2</option>
+                    <option value="N3">N3</option>
+                    <option value="N4">N4</option>
+                    <option value="N5">N5</option>
                 </select>
             </div>
         </div>
