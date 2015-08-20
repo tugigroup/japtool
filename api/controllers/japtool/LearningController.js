@@ -462,15 +462,15 @@ module.exports = {
 
     saveHistory: function (req, res) {
         var pars = req.allParams();
-        pars.user = req.session.User.id;
         // console.log('pars: ' + JSON.stringify(pars));
 
         UserLearnHistory.findOne({
-            user: pars.user,
+            user: req.session.User.id,
             selfLearning: pars.selfLearning,
             bookDetail: pars.bookDetail
         }).exec(function (err, data) {
             if (!data) {
+                pars.user = req.session.User.id;
                 pars.startDate = new Date();
                 pars.status = 'started';
                 pars.mark = 0;

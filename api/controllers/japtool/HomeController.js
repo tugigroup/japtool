@@ -12,13 +12,73 @@ module.exports = {
         userId = req.session.User.id;
         SelfLearning.find({
             where: {user: userId},
-            limit: 3,
-            sort: 'createdAt DESC'
-        }).populate('bookMaster').exec(function (err, listLessons) {
+            limit: Constants.bookNumOnHome,
+            sort: {finishDate: 0, startDate: 0}
+        }).populate('bookMaster').exec(function (err, listLearnings) {
             if (err) {
                 if (err) return res.serverError(err);
             } else {
-                res.view('japtool/home/home', {listLessons: listLessons});
+
+                // listLearnings.forEach(function (learning){
+                //     BookDetail.find({bookMaster: learning.bookMaster.id}).sort({sort: 'sort ASC'}).
+                //     exec(function(err, bookDetails){
+                        
+                //     })
+
+                // });
+
+                // BookMaster.findOne({id: bookID}).populate('bookDetails', {sort: 'sort ASC'}).
+                // exec(function createCB(err, book) {
+                //     if (err) { sails.log(err) }
+                //     else {
+                //         var bookDetails = book.bookDetails;
+
+                //         var lessonList = [];
+
+                //         UserLearnHistory.find({selfLearning: learnID, sort: 'updatedAt DESC'}).
+                //         exec(function (err, learnedLessions){
+                //             if (err) { sails.log(err) }
+                //             else {
+                //                  bookDetails.forEach(function (lession) {
+
+                //                     learnedLessions.forEach(function (learnedItem) {
+                //                         if (lession.id == learnedItem.bookDetail) {
+                //                             lession.learnHistory = learnedItem;
+                //                             return false;
+                //                         } 
+                //                         else { 
+                //                             return true;
+                //                         }
+                //                     });
+
+                //                     lessonList.push(lession);
+                //                 });
+                //             }
+                //             // console.log('req.param(lessonID): ' + lessonID);
+
+                //             if (!lessonID) {
+                //                 if (learnedLessions[0]) { lessonID = learnedLessions[0].bookDetail; }
+                //                 // console.log('learnedLessions[0].bookDetail: ' + lessonID);
+                //             }
+                //             //console.log('book: ' + JSON.stringify(book));
+                //             //console.log('lessonList: ' + JSON.stringify(lessonList));
+
+                //             res.view('japtool/learning/show-book-detail', {
+                //                 learnID: learnID,
+                //                 book: book,
+                //                 lessonList: lessonList,
+                //                 goLessonID: lessonID
+                //             });
+                //         });
+                //     }
+                // });
+
+
+
+
+
+
+                res.view('japtool/home/home', {listLearnings: listLearnings});
 
             }
         })
@@ -100,9 +160,9 @@ module.exports = {
         var start = parseInt(req.param('start'));
         SelfLearning.find({
             where: {user: userId},
-            limit: 1,
+            limit: Constants.bookNumOnHomeMore,
             skip: start,
-            sort: 'createdAt DESC'
+            sort: {finishDate: 0, startDate: 0}
         }).populate('bookMaster').exec(function (err, listLessons) {
             if (err) {
                 if (err) return res.serverError(err);

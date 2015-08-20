@@ -8,28 +8,28 @@
             </div>
             <div class="vocabulary-item clearfix">
                 <div class="info clearfix">
-                    <% _.each(listLessons, function (listLesson) { %>
+                    <% _.each(listLearnings, function (learning) { %>
                     <div class="col-sm-12 clearfix">
-                        <h3><a class="text-primary"><%= listLesson.bookMaster.name %></a></h3>
+                        <h3><a class="text-primary"><%= learning.bookMaster.name %></a></h3>
                     </div>
                     <div class="col-sm-2">
-                        <p class="text-primary">Category: <%= listLesson.bookMaster.type %></p>
+                        <p class="text-primary">Category: <%= learning.bookMaster.type %></p>
                     </div>
                     <div class="col-sm-2">
-                        <p class="text-info">Level: <%= listLesson.bookMaster.level %></p>
+                        <p class="text-info">Level: <%= learning.bookMaster.level %></p>
                     </div>
                     <div class="col-sm-2">
                     </div>
                     <div class="col-sm-2">
-                        <p class="text-success">Pass: <span class="lesson-pass-<%= listLesson.id %>"></span> Lesson</p>
+                        <p class="text-success">Pass: <span class="lesson-pass-<%= learning.id %>"></span> Lesson</p>
                     </div>
                     <div class="col-sm-2">
-                        <p class="text-danger">Failed: <span class="lesson-danger-<%= listLesson.id %>"></span> Lesson</p>
+                        <p class="text-danger">Failed: <span class="lesson-danger-<%= learning.id %>"></span> Lesson</p>
                     </div>
                     <div class="col-sm-2">
-                        <p class="text-primary">Tổng có: <%= listLesson.bookMaster.lessonNum %></p>
+                        <p class="text-primary">Tổng có: <%= learning.bookMaster.lessonNum %></p>
                     </div>
-                    <div id="<%= listLesson.bookMaster.id %>" class="clearfix"></div>
+                    <div id="<%= learning.bookMaster.id %>" class="clearfix"></div>
                     <% }) %>
                 </div>
             </div>
@@ -42,19 +42,19 @@
 </div>
 <script type="text/javascript">
     window.onload = function () {
-        <% _.each(listLessons, function (listLesson) { %>
+        <% _.each(listLearnings, function (learning) { %>
             $.ajax({
                 url: '/japtool/home/lessonHome',
                 type: 'GET',
                 data: {
-                    bookMasterId: '<%= listLesson.bookMaster.id %>',
-                    selfLesson: '<%= listLesson.id %>'
+                    bookMasterId: '<%= learning.bookMaster.id %>',
+                    selfLesson: '<%= learning.id %>'
                 },
                 cache: false,
                 async: false,
                 success: function (data) {
-                    $('#<%= listLesson.bookMaster.id %>').html('');
-                    $('#<%= listLesson.bookMaster.id %>').html(data);
+                    $('#<%= learning.bookMaster.id %>').html('');
+                    $('#<%= learning.bookMaster.id %>').html(data);
                 },
                 error: function () {
                     alert('Error')
