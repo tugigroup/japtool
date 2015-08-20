@@ -26,36 +26,67 @@ module.exports = {
     },
     lessonHome: function (req, res) {
         var bookMasterId = req.param('bookMasterId');
-        var selfLesson = req.param('selfLesson');
-        var moreSelfLesson = req.param('moreSelfLesson');
+        var selfLearningId = req.param('selfLesson');
+        var moreSelfLearningId = req.param('moreSelfLesson');
         BookDetail.find({
             bookMaster: bookMasterId,
-            sort: 'sort ASC',
-            subLesson: {'!': 'Từ vựng'}
+            sort: 'sort ASC'
+
         }).exec(function (err, listItems) {
             if (err) {
                 console.log(err);
             } else {
-                if(!moreSelfLesson || moreSelfLesson == undefined) {
-                    UserLearnHistory.find({selfLearning: selfLesson}).exec(function (err, selfLesson) {
+                if(!moreSelfLearningId || moreSelfLearningId == undefined) {
+                    var lessonList = [];
+                    UserLearnHistory.find({selfLearning: selfLearningId}).exec(function (err, selfLesson) {
                         if (err) {
                             console.log(err);
                         } else {
+
+                                listItems.forEach(function (lesson) {
+                                    selfLesson.forEach(function (learnedItem) {
+                                        if (lesson.id == learnedItem.bookDetail) {
+                                            lesson.learnHistory = learnedItem;
+                                            return false;
+                                        } else {
+                                            return true;
+                                        }
+
+                                    });
+                                    lessonList.push(lesson);
+
+                                });
+
                             res.render('japtool/home/lessonHome', {
-                                listItems: listItems,
-                                selfLesson: selfLesson
+                                lessonList: lessonList,
+                                selfLesson: selfLesson,
+                                selfLearningId:selfLearningId
                             });
 
                         }
                     })
                 }else{
-                    UserLearnHistory.find({selfLearning: moreSelfLesson}).exec(function (err, selfLesson) {
+                    UserLearnHistory.find({selfLearning: moreSelfLearningId}).exec(function (err, selfLesson) {
                         if (err) {
                             console.log(err);
                         } else {
+                            var lessonList = [];
+                            listItems.forEach(function (lesson) {
+                                selfLesson.forEach(function (learnedItem) {
+                                    if (lesson.id == learnedItem.bookDetail) {
+                                        lesson.learnHistory = learnedItem;
+                                        return false;
+                                    } else {
+                                        return true;
+                                    }
+
+                                });
+                                lessonList.push(lesson);
+                            });
                             res.render('japtool/home/limitLessonHome', {
-                                listItems: listItems,
-                                moreSelfLesson: selfLesson
+                                lessonList: lessonList,
+                                moreSelfLesson: selfLesson,
+                                moreSelfLearningId:moreSelfLearningId
                             });
 
                         }
@@ -76,10 +107,14 @@ module.exports = {
             if (err) {
                 if (err) return res.serverError(err);
             } else {
-
+                if(listLessons.length == '' || listLessons.length == null){
+                    res.ok();
+                }else{
                     res.render('japtool/home/limitLesson', {
                         loadMorelistLessons: listLessons
                     });
+                }
+
 
 
             }

@@ -57,7 +57,6 @@ module.exports = {
     checkLearning: function (req, res) {
 
         var learnId = req.param('learnID');
-        console.log(learnId);
         SelfLearning.findOne({
             id: learnId
         }).populate('bookMaster', {sort: 'startDate'}).exec(function (err, learning) {
@@ -293,7 +292,7 @@ module.exports = {
                             var uniqueType = array(arrTag).unique().value();
                             res.render('japtool/learning/choosebook', {
                                 books: books,
-                                uniqueType: uniqueType,
+                                uniqueType: uniqueType
                             });
                         }
                     })

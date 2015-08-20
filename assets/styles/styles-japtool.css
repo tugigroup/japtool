@@ -58,6 +58,10 @@ label {
 .label-home {
     background-color: #ADADAD;
 }
+.label-danger {
+    background-color: #d9534f;
+}
+.label-success{background-color:#5cb85c}
 input[type=submit]:hover {
     color: #fff
 }

@@ -345,7 +345,7 @@ function loadformLib(id) {
     $('#formedit').addClass('fade').modal('show');
 }
 function Learn(id) {
-     $('#lib-1').removeClass('fade').modal('hide');
+    $('#lib-1').removeClass('fade').modal('hide');
     $('#editform').load('/japtool/learning/checkLearning/?learnID=' + id, function (res, status) {
         var arr = res.split("/");
         if (arr[3] == "practice") {

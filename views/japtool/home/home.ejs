@@ -9,7 +9,7 @@
             <div class="vocabulary-item clearfix">
                 <div class="info clearfix">
                     <% _.each(listLessons, function (listLesson) { %>
-                    <div class="col-sm-12">
+                    <div class="col-sm-12 clearfix">
                         <h3><a class="text-primary"><%= listLesson.bookMaster.name %></a></h3>
                     </div>
                     <div class="col-sm-2">
@@ -19,7 +19,6 @@
                         <p class="text-info">Level: <%= listLesson.bookMaster.level %></p>
                     </div>
                     <div class="col-sm-2">
-                        <p class="text-warning">Warning: <span class="lesson-warning-<%= listLesson.id %>"></span> Lesson</p>
                     </div>
                     <div class="col-sm-2">
                         <p class="text-success">Pass: <span class="lesson-pass-<%= listLesson.id %>"></span> Lesson</p>
@@ -30,7 +29,7 @@
                     <div class="col-sm-2">
                         <p class="text-primary">Tổng có: <%= listLesson.bookMaster.lessonNum %></p>
                     </div>
-                    <div id="<%= listLesson.bookMaster.id %>"></div>
+                    <div id="<%= listLesson.bookMaster.id %>" class="clearfix"></div>
                     <% }) %>
                 </div>
             </div>
