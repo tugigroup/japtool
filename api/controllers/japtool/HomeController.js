@@ -107,6 +107,7 @@ module.exports = {
             if (err) {
                 if (err) return res.serverError(err);
             } else {
+
                 if(listLessons.length == '' || listLessons.length == null){
                     res.ok();
                 }else{
@@ -115,8 +116,13 @@ module.exports = {
                     });
                 }
 
-
-
+                //if (listLessons.length > 0) {
+                //    res.render('japtool/home/limitLesson', {
+                //        loadMorelistLessons: listLessons
+                //    });
+                //} else {
+                //    res.send(null);
+                //}
             }
         })
 

@@ -420,7 +420,6 @@ module.exports = {
                 var bookDetails = book.bookDetails;
 
                 var lessonList = [];
-                // var lastLearn , lastLearnDate = 0;
 
                 UserLearnHistory.find({selfLearning: learnID, sort: 'updatedAt DESC'}).
                 exec(function (err, learnedLessions){
@@ -430,32 +429,23 @@ module.exports = {
 
                             learnedLessions.forEach(function (learnedItem) {
                                 if (lession.id == learnedItem.bookDetail) {
-                                    // if (learnedItem.startDate && learnedItem.startDate > lastLearnDate) {
-                                    //     lastLearnDate = learnedItem.startDate;
-                                    //     lastLearn = lession;
-                                    // }
-
                                     lession.learnHistory = learnedItem;
                                     return false;
-                                } else { 
+                                } 
+                                else { 
                                     return true;
                                 }
                             });
 
                             lessonList.push(lession);
-
-                            
                         });
                     }
-
                     // console.log('req.param(lessonID): ' + lessonID);
 
                     if (!lessonID) {
                         if (learnedLessions[0]) { lessonID = learnedLessions[0].bookDetail; }
                         // console.log('learnedLessions[0].bookDetail: ' + lessonID);
                     }
-
-
                     //console.log('book: ' + JSON.stringify(book));
                     //console.log('lessonList: ' + JSON.stringify(lessonList));
 
@@ -470,88 +460,10 @@ module.exports = {
         });
     },
 
-
-
-
-
-        //             }
-        //         });
-
-
-        //         var lessons = [];
-        //         bookDetails.forEach(function (item) {
-        //             lessons.push(item.lesson);
-        //         });
-        //         var uniqueLessons = array(lessons).unique().value();
-        //         //Search a lesson last of User and show to screen
-        //         UserLearnHistory.findOne({
-        //             selfLearning: learnID,
-        //             sort: 'updatedAt DESC'
-        //         }).exec(function learnHistory(err, lessonItem) {
-        //             var list = new Array();
-        //             if (err) {
-        //                 sails.log(err)
-        //             }
-        //             if (lessonItem || lessonItem != undefined) {
-        //                 UserLearnHistory.find({
-        //                     selfLearning: learnID,
-        //                     user: req.session.User.id
-        //                 }).exec(function (err, listLearn) {
-        //                     if (err) {
-
-        //                     }
-        //                     else {
-        //                         list = listLearn;
-        //                         var bookDetailH = lessonItem.bookDetail;
-        //                         BookDetail.findOne({id: bookDetailH}).exec(function (err, lessonItemType) {
-        //                             if (err) {
-        //                                 sails.log(err)
-        //                             }
-        //                             var dataExtractCondition = lessonItemType.dataExtractCondition;
-        //                             var useModule = lessonItemType.useModule;
-        //                             res.view('japtool/learning/show-book-detail', {
-        //                                 list: list,
-        //                                 uniqueLessons: uniqueLessons,
-        //                                 learnID: learnID,
-        //                                 bookDetails: bookDetails,
-        //                                 nameBook: data.name,
-        //                                 type: data.type,
-        //                                 condition: dataExtractCondition,
-        //                                 useModule: useModule,
-        //                                 lessonItem: lessonItem,
-        //                                 bookDetailH: bookDetailH
-
-
-        //                             });
-        //                         })
-        //                     }
-        //                 })
-
-        //             } else {
-        //                 res.view('japtool/learning/show-book-detail', {
-        //                     list: list,
-        //                     uniqueLessons: uniqueLessons,
-        //                     learnID: learnID,
-        //                     bookDetails: bookDetails,
-        //                     nameBook: data.name,
-        //                     description: data.description,
-        //                     type: data.type,
-        //                     level: data.level,
-        //                     sort: data.sort,
-        //                     lessonNum: data.lessonNum,
-        //                     hoursForLearn: data.hoursForLearn,
-        //                     usedNum: data.usedNum,
-        //                     lessonItem: lessonItem
-        //                 });
-        //             }
-        //         });
-        //     }
-        // })
-    // },
-
     saveHistory: function (req, res) {
         var pars = req.allParams();
         pars.user = req.session.User.id;
+        // console.log('pars: ' + JSON.stringify(pars));
 
         UserLearnHistory.findOne({
             user: pars.user,
@@ -562,11 +474,13 @@ module.exports = {
                 pars.startDate = new Date();
                 pars.status = 'started';
                 pars.mark = 0;
+                // console.log('pars: ' + JSON.stringify(pars));
                 UserLearnHistory.create(pars).exec(function createCB(err, history) {
                     if (err) {
                         sails.log(err)
                     } else {
-                        res.send(req.__('Create Learning history successful'))
+                        res.send(req.__('Create Learning history successful'));
+                        // console.log('history: ' + JSON.stringify(history));
                     }
                 })
             } else {

@@ -48,7 +48,9 @@
             AnsweredArr.push(numOfQuestion);
             if (hanviet == hanviet2) {
                 truee++;
-                $("#audioTrue").trigger('play');
+                if(soundConfig){
+                    $("#audioTrue").trigger('play');
+                }
                 // set color
                 var $el = $('#' + optionID),
                         x = 100,
@@ -68,7 +70,9 @@
                             }
                         }, 1000);
             } else {
-                $("#audioFalse").trigger('play');
+                if(soundConfig){
+                    $("#audioFalse").trigger('play');
+                }
                 // set color
                 var $el = $('#' + optionID),
                         x = 100,
@@ -83,13 +87,26 @@
             }
             if (total == sum) {
                 var mark = (truee / total) * 100;
-
                 $("#mark-view").text(Math.round(mark));
+                //pie chart
+                $(".excercise-kanji .last-right .progress-pie-chart").attr("data-percent",mark);
+                $('.ppc-percents span').html(Math.round(mark)+'%');
+                var $ppc = $('.progress-pie-chart'),
+                        percent = parseInt($ppc.data('percent')),
+                        deg = 360*percent/100;
+                if (percent > 50) {
+                    $ppc.addClass('gt-50');
+                }
+                $('.ppc-progress-fill').css('transform','rotate('+ deg +'deg)');
+                // log mark for run time
+                logMark();
             }
         }
         else {
             if (hanviet == hanviet2) {
-                $("#audioTrue").trigger('play');
+                if(soundConfig){
+                    $("#audioTrue").trigger('play');
+                }
                 // set color
                 var $el = $('#' + optionID),
                         x = 100,
@@ -109,7 +126,9 @@
                             }
                         }, 1000);
             } else {
-                $("#audioFalse").trigger('play');
+                if(soundConfig){
+                    $("#audioFalse").trigger('play');
+                }
                 // set color
                 var $el = $('#' + optionID),
                         x = 100,
@@ -125,33 +144,40 @@
         }
     }
     var infoconfig = true;
+    var soundConfig = true;
     // when slide is last slide
     $('.slider-for').on('afterChange', function (event, slick, currentSlide, nextSlide) {
+        // enable slide-nav
+        enableActiveSlide(currentSlide);
         var slideCount = $("#countPage").text();
         console.log(currentSlide);
         console.log(slideCount);
         if(slideCount==(currentSlide)){
             infoconfig=false;
+            soundConfig=false;
             $(".exe-kanji .btn-arrow-right-exe").hide();
+            $(".exe-kanji .btn-arrow-left-exe").hide();
             $(".exe-kanji .slider-nav").hide();
         }
     });
     $(".exe-kanji .btn-arrow-left-exe").on("click",function(){
-        $(".exe-kanji .btn-arrow-right").show();
+        $(".exe-kanji .btn-arrow-right-exe").show();
         $(".exe-kanji .slider-nav").show();
         infoconfig=true;
+        soundConfig=true;
     });
     $(".exe-kanji .slick-prev").on("click",function(){
         $(".exe-kanji .btn-arrow-right-exe").show();
         $(".exe-kanji .slider-nav").show();
         infoconfig=true;
-    });
-    $(".exe-kanji .slider-nav .finish").on("click",function(){
-        infoconfig=false;
+        soundConfig=true;
     });
     var current_slide = 0;
     $(document).ready(function () {
+        disbleAllSlideNav();
+        enableActiveSlide(0);
         $('.info-off').hide();
+        $('.mic-off').hide();
         $('.info-on').on('click', function () {
             $('.info-off').show();
             $('.info-on').hide();
@@ -166,6 +192,16 @@
             //Show current slide details
             showDetails(current_slide);
         });
+        $('.mic-on').on('click', function () {
+            $('.mic-off').show();
+            $('.mic-on').hide();
+            soundConfig = false;
+        });
+        $('.mic-off').on('click', function () {
+            $('.mic-on').show();
+            $('.mic-off').hide();
+            soundConfig = true;
+        });
     });
     function showDetails(index) {
         if (infoconfig) {
@@ -176,10 +212,18 @@
         $('.info-item-' + index).slideDown();
     }
     function learnAgain(){
-        $(".slider-for").slick('slickGoTo',-1);
-        $(".exe-kanji .btn-arrow-right-exe").show();
-        $(".exe-kanji .slider-nav").show();
-        infoconfig=true;
+        window.location.replace(window.location.href);
+    }
+    //disable all slide-nav
+    function disbleAllSlideNav(){
+        // diable slide-nav
+        var sl_nav = $(".slider-nav .slick-slide");
+        $(sl_nav).addClass("disable-slide-element");
+    }
+    // enable slide-nav
+    function enableActiveSlide(index){
+        var sl_nav = $(".slider-nav .slick-slide")[index];
+        $(sl_nav).removeClass("disable-slide-element");
     }
     // count page
     var $status = $('.pagingCnt');
@@ -187,7 +231,8 @@
     $slickElement.on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
         //currentSlide is undefined on init -- set it to 0 in this case (currentSlide is 0 based)
         var i = (currentSlide ? currentSlide : 0) + 1;
-        $status.text(i + '/' + slick.slideCount);
+        $status.text(i + '/' + (slick.slideCount-1));
+
         current_slide = currentSlide;
         //Show Details
         showDetails(currentSlide);
@@ -201,7 +246,6 @@
 <input type="hidden" id="lessonn" value="<%= lessonn %>">
 <input type="hidden" id="passMark" value="<%= Constants.passMark %>">
 <div class="exe-kanji">
-
     <!--div audio-->
     <audio id="audioTrue">
         <source src="/sound/true.wav" type="audio/wav">
@@ -225,6 +269,8 @@
                         <div class="col-sm-1">
                             <i class="fa fa-check-circle-o  fa-2x  info-on" title="<%=__('off informations')%>"></i>
                             <i class="fa fa-minus-circle  fa-2x  info-off" title="<%=__('on informations')%>"></i>
+                            <i class="fa fa-volume-up fa-2x mic-on" data-toggle="tooltip" title="<%= __("off audio") %>"></i>
+                            <i class="fa fa-volume-off fa-2x mic-off" data-toggle="tooltip" title="<%= __("on audio") %>"></i>
                         </div>
                         <div class="col-sm-11">
                             <% if(kanji.kunyomi){ %>
@@ -276,9 +322,9 @@
         </div>
         <% }) %>
         <div class="excercise-kanji">
-            <div class="col-sm-offset-2 col-sm-8 lastSlide text-center">
+            <div class="col-sm-offset-2 col-sm-8 lastSlide description">
                 <div class="col-sm-6 last-left">
-                    <div class="col-sm-12 description">
+                    <div class="col-sm-12 ">
                         <i class="fa fa-child fa-2x icon"></i><strong><%=__("You finish exercise")%> !</strong>
                         <br><br>
                         <p class="text-left text-danger"><%=__("Your Mark")%> : <label id="mark-view"></label></p>
@@ -287,8 +333,22 @@
                     </div>
                 </div>
                 <div class="col-sm-6 last-right">
-                    <p><a onclick="logMark(); learnAgain();" class="btn"><%=__("Learn Again")%></a>
-                    <p><a onclick="logMark(); nextLesson();"class="btn"><%=__("Next Lesson")%></a>
+                    <!--Pie Chart -->
+                    <div class="progress-pie-chart" data-percent="">
+                        <div class="ppc-progress">
+                            <div class="ppc-progress-fill"></div>
+                        </div>
+                        <div class="ppc-percents">
+                            <div class="pcc-percents-wrapper">
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End Chart -->
+                </div>
+                <div class="col-sm-12 text-center">
+                    <button onclick="learnAgain();" class="btn btn-primary"><%=__("Learn Again")%></button>
+                    <button onclick="nextLesson();"class="btn btn-primary"><%=__("Next Lesson")%></button>
                 </div>
             </div>
         </div>
@@ -298,7 +358,6 @@
             <% kanjis.forEach( function(kanji){ %>
             <div><h3><%= kanji.item %></h3></div>
             <% }) %>
-            <div class="finish"><h3><%=__("finish")%></h3></div>
         </div>
     </div>
     <% } %>

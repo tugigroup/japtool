@@ -26,11 +26,14 @@
     var audioconfig = true;
     // when slide is last slide
     $('.slider-for').on('afterChange', function (event, slick, currentSlide, nextSlide) {
+        // enable slide
+        enableActiveSlide(currentSlide);
         var slideCount = $("#countPage").text();
         console.log(currentSlide);
         if(slideCount==(currentSlide)){
             audioconfig=false;
             $(".exe-voca .btn-arrow-right").hide();
+            $(".exe-voca .btn-arrow-left").hide();
             $(".exe-voca .slider-nav").hide();
         }
     });
@@ -44,34 +47,42 @@
         $(".exe-voca .slider-nav").show();
         audioconfig=true;
     });
-    $(".exe-voca .slider-nav .finish").on("click",function(){
-        audioconfig=false;
-    });
-
     function learnAgain(){
-        $(".slider-for").slick('slickGoTo',-1);
-        $(".exe-voca .btn-arrow-right").show();
-        $(".exe-voca .slider-nav").show();
-        audioconfig=true;
+        window.location.replace(window.location.href);
     }
-    //    on or off sound
-    $('.mic-off').hide();
-    $('.mic-on').on('click', function () {
-        $('.mic-off').show();
-        $('.mic-on').hide();
-        audioconfig = false;
-    });
-    $('.mic-off').on('click', function () {
-        $('.mic-on').show();
+    //disable all slide-nav
+    function disbleAllSlideNav(){
+        // diable slide-nav
+        var sl_nav = $(".slider-nav .slick-slide");
+        $(sl_nav).addClass("disable-slide-element");
+    }
+    // enable slide-nav
+    function enableActiveSlide(index){
+        var sl_nav = $(".slider-nav .slick-slide")[index];
+        $(sl_nav).removeClass("disable-slide-element");
+    }
+    $(document).ready(function(){
+        disbleAllSlideNav();
+        enableActiveSlide(0);
+        //    on or off sound
         $('.mic-off').hide();
-        audioconfig = true;
-    });
-    //set isNext when next slide
-    $('.slider-for').on('afterChange', function (event, slick, currentSlide, nextSlide) {
-        isNext = false;
-    });
-    $('.ans-box').on('click', function () {
-        isNext = true;
+        $('.mic-on').on('click', function () {
+            $('.mic-off').show();
+            $('.mic-on').hide();
+            audioconfig = false;
+        });
+        $('.mic-off').on('click', function () {
+            $('.mic-on').show();
+            $('.mic-off').hide();
+            audioconfig = true;
+        });
+        //set isNext when next slide
+        $('.slider-for').on('afterChange', function (event, slick, currentSlide, nextSlide) {
+            isNext = false;
+        });
+        $('.ans-box').on('click', function () {
+            isNext = true;
+        });
     });
     var truee = 0;
     var total = 0;
@@ -133,6 +144,9 @@
                 var mark = (truee / total) * 100;
 
                 $("#mark-view").text(Math.round(mark));
+
+                // log mark for run time
+                logMark();
             }
         }
         else {
@@ -249,7 +263,7 @@
             <div class="col-sm-offset-2 col-sm-8 lastSlide text-center">
                 <div class="col-sm-6 last-left">
                     <div class="col-sm-12 description">
-                        <i class="fa fa-child fa-2x icon"></i><strong><%=__("You finish exercise*")%> !</strong>
+                        <i class="fa fa-child fa-2x icon"></i><strong><%=__("You finish exercise")%> !</strong>
                         <br><br>
                         <p class="text-left text-danger"><%=__("Your Mark")%> : <label id="mark-view"></label></p>
                         <p class="text-left"><%=__("Learn Again")%> : <%=__("Learn this sublesson again")%></p>
@@ -257,8 +271,8 @@
                     </div>
                 </div>
                 <div class="col-sm-6 last-right">
-                    <p><a onclick="logMark(); learnAgain();" class="btn"><%=__("Learn Again")%></a>
-                    <p><a onclick="logMark(); nextLesson();"class="btn"><%=__("Next Lesson")%></a>
+                    <p><a onclick="learnAgain();" class="btn"><%=__("Learn Again")%></a>
+                    <p><a onclick="nextLesson();"class="btn"><%=__("Next Lesson")%></a>
                 </div>
             </div>
         </div>
@@ -268,7 +282,6 @@
             <% vocabularies.forEach( function(vocabulary){ %>
             <div><h3><%= vocabulary.item %></h3></div>
             <% }) %>
-            <div class="finish"><h3><%=__("finish")%></h3></div>
         </div>
     </div>
     <% } %>

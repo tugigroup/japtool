@@ -98,8 +98,8 @@
                     </div>
                 </div>
                 <div class="col-sm-6 last-right">
-                    <p><a onclick="logFinish(100); learnAgain();" class="btn"><%=__("Learn Again")%></a>
-                    <p><a onclick="logFinish(100); nextLesson();" class="btn"><%=__("Next Lesson")%></a>
+                    <p><a onclick="learnAgain();" class="btn"><%=__("Learn Again")%></a>
+                    <p><a onclick="nextLesson();" class="btn"><%=__("Next Lesson")%></a>
                 </div>
             </div>
         </div>
@@ -111,7 +111,6 @@
             <% kanjis.forEach( function(kanji){ %>
             <div><h3><%= kanji.item %></h3></div>
             <% }) %>
-            <div class="finish"><h3><%=__("finish")%></h3></div>
         </div>
     </div>
     <!--end 6-->
@@ -151,7 +150,9 @@
         if(slideCount==(currentSlide)){
             infoconfig=false;
             $("#kanji-List .btn-arrow-right").hide();
+            $("#kanji-List .btn-arrow-left").hide();
             $("#kanji-List .slider-nav").hide();
+            logFinish(100);
         }
     });
     $("#kanji-List .btn-arrow-left").on("click",function(){
@@ -163,9 +164,6 @@
         $("#kanji-List .btn-arrow-right").show();
         $("#kanji-List .slider-nav").show();
         infoconfig=true;
-    });
-    $("#kanji-List .slider-nav .finish").on("click",function(){
-        infoconfig=false;
     });
     function showExample(index) {
         $('.exam-' + index).delay(1000).slideDown();
