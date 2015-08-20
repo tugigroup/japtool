@@ -19,13 +19,15 @@
         asNavFor: '.slider-for',
         dots: false,
         centerMode: true,
-        focusOnSelect: false,
+        focusOnSelect: true,
         accessibility: false,
         infinite: false
     });
     var audioconfig = true;
     // when slide is last slide
     $('.slider-for').on('afterChange', function (event, slick, currentSlide, nextSlide) {
+        // enable slide
+        enableActiveSlide(currentSlide);
         var slideCount = $("#countPage").text();
         console.log(currentSlide);
         if(slideCount==(currentSlide)){
@@ -45,28 +47,42 @@
         $(".exe-voca .slider-nav").show();
         audioconfig=true;
     });
-
     function learnAgain(){
         window.location.replace(window.location.href);
     }
-    //    on or off sound
-    $('.mic-off').hide();
-    $('.mic-on').on('click', function () {
-        $('.mic-off').show();
-        $('.mic-on').hide();
-        audioconfig = false;
-    });
-    $('.mic-off').on('click', function () {
-        $('.mic-on').show();
+    //disable all slide-nav
+    function disbleAllSlideNav(){
+        // diable slide-nav
+        var sl_nav = $(".slider-nav .slick-slide");
+        $(sl_nav).addClass("disable-slide-element");
+    }
+    // enable slide-nav
+    function enableActiveSlide(index){
+        var sl_nav = $(".slider-nav .slick-slide")[index];
+        $(sl_nav).removeClass("disable-slide-element");
+    }
+    $(document).ready(function(){
+        disbleAllSlideNav();
+        enableActiveSlide(0);
+        //    on or off sound
         $('.mic-off').hide();
-        audioconfig = true;
-    });
-    //set isNext when next slide
-    $('.slider-for').on('afterChange', function (event, slick, currentSlide, nextSlide) {
-        isNext = false;
-    });
-    $('.ans-box').on('click', function () {
-        isNext = true;
+        $('.mic-on').on('click', function () {
+            $('.mic-off').show();
+            $('.mic-on').hide();
+            audioconfig = false;
+        });
+        $('.mic-off').on('click', function () {
+            $('.mic-on').show();
+            $('.mic-off').hide();
+            audioconfig = true;
+        });
+        //set isNext when next slide
+        $('.slider-for').on('afterChange', function (event, slick, currentSlide, nextSlide) {
+            isNext = false;
+        });
+        $('.ans-box').on('click', function () {
+            isNext = true;
+        });
     });
     var truee = 0;
     var total = 0;

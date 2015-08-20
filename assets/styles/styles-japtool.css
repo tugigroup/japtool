@@ -1382,7 +1382,7 @@ ul.timeline li .timeline-panel:after {
 }
 
 .content-lesson {
-    min-height: 675px !important;
+    min-height: 726px !important;
 }
 .library-page .form-horizontal #executeSearch{
     margin-top: 6%;
@@ -1943,17 +1943,25 @@ ul.timeline li .timeline-panel:after {
 .btn-arrow-right {
     right: 14%;
 }
-
+.btn-arrow-right .fa-chevron-right{
+    outline: none;
+    background: none;
+    color: #000000;
+}
 .btn-arrow-left {
     left: 14%;
 }
 
-.btn-show-list:hover {
-    color: #2BA9E1;
+.btn-arrow-left .fa-chevron-left{
+    outline: none;
+    background: none;
+    color: #000000;
 }
 
 .btn-show-list:hover {
     color: #2BA9E1;
+    outline: none;
+    background: none;
 }
 
 .details-voca {
@@ -2030,11 +2038,19 @@ ul.timeline li .timeline-panel:after {
 .btn-arrow-left-exe {
     left: 15%;
 }
-
+.btn-arrow-left-exe .fa-chevron-left{
+    outline: none;
+    background: none;
+    color: #000000;
+}
 .btn-arrow-right-exe {
     right: 15%;
 }
-
+.btn-arrow-right-exe .fa-chevron-right{
+    outline: none;
+    background: none;
+    color: #000000;
+}
 .panel-paper-slide {
     min-height: 489px;
 }
@@ -2212,6 +2228,14 @@ ul.timeline li .timeline-panel:after {
     width: 112px;
     padding-top: 10px;
     padding-bottom: 10px;
+}
+.disable-slide-element{
+    opacity: 0.5;
+    pointer-events: none;
+}
+.enable-slide-element{
+    opacity: 1;
+    pointer-events: all;
 }
 /*END slide*/
 
