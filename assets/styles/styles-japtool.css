@@ -6,6 +6,10 @@ body {
     background-color: #fff;
 }
 
+body .body-content{
+    min-height: 610px;
+}
+
 a:hover {
     text-decoration: none;
     cursor: pointer;
@@ -1522,7 +1526,6 @@ ul.timeline li .timeline-panel:after {
 .slick-track .slick-current h3 {
     background: rgb(43, 169, 225);
 }
-
 .main-sidebar .pre-scrollable {
     max-height: 675px;
 }
@@ -1536,10 +1539,7 @@ ul.timeline li .timeline-panel:after {
 .body-manager-learning #default-show .btn-danger{
     position: absolute;
     margin-top: 30px;
-    margin-left: 1009px;
-}
-.row-pagination-mng-learning{
-    padding-right: 45px;
+    margin-left: 1003px;
 }
 .library-page .form-horizontal .btn-danger{
     border-radius: 0px;
@@ -2234,6 +2234,12 @@ ul.timeline li .timeline-panel:after {
 .ans-kanji-exe{
     bottom: 0px;
 }
+#kanji-List .slider-nav .slick-track {
+    text-align: center;
+}
+.exe-kanji .slider-nav .slick-track {
+    text-align: center;
+}
 /*END KANJI*/
 
 /*slide*/
@@ -2333,9 +2339,6 @@ ul.timeline li .timeline-panel:after {
 .pratice-voca .lastSlide .last-left .description .icon{
     color: rgb(56, 202, 126);
 }
-.pratice-voca .lastSlide .last-right{
-    margin-top: 3%;
-}
 .pratice-voca .lastSlide {
     margin-top: 11%;
 }
@@ -2371,6 +2374,32 @@ ul.timeline li .timeline-panel:after {
     border:none;
 }
 .exe-kanji .excercise-kanji .lastSlide .btn-primary{
+    background-color: #23aaef;
+    border: none;
+    width: 112px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.exe-voca .description{
+    background: #fff;
+    border-radius: 0px;
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.1);
+    padding: 16px;
+}
+.exe-voca .lastSlide .last-left .icon{
+    color: rgb(56, 202, 126);
+}
+.exe-voca .lastSlide .last-right{
+    min-height: 217px;
+}
+.exe-voca .lastSlide {
+    margin-top: 11%;
+}
+.exe-voca .lastSlide .btn-primary:hover{
+    background-color: #2595ce;
+    border:none;
+}
+.exe-voca .lastSlide .btn-primary{
     background-color: #23aaef;
     border: none;
     width: 112px;
@@ -2767,6 +2796,9 @@ ul.timeline li .timeline-panel:after {
 /*END responsive layout lesson vocabulary*/
 
 /*SPEECH*/
+.speech-learning{
+    margin-top: 110px;
+}
 #one-time h2 {
     font-size: 60px
 }

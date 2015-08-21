@@ -1,20 +1,20 @@
-<div class="body-manager-learning" style="padding-bottom: 150px">
+<div class="body-manager-learning">
     <div class="container">
-        <div class="row">
-            <div id="default-show" class="clearfix">
-                <div class="default-show">
-                    <button onclick="loadform(2)" class="btn btn-danger"><%=__("Create New Learning")%></button>
-                </div>
-            </div>
-        </div>
         <% if(learnList.length <= 0){ %>
         <div class="container">
-            <div class="row" style="height: 200px">
+            <div class="row">
                 <h2 class="text-center"><%=__("You don't have any learning , Click")%> <u><a
                                 onclick="loadform(2)"><%=__("here")%></a></u> <%=__("or cancle")%></h2>
             </div>
         </div>
-        <% } %>
+        <% }%>
+        <div class="row">
+            <div id="default-show" class="clearfix">
+                <div class="default-show">
+                    <button onclick="loadform(2)" id="btn-create-learning" class="btn btn-danger"><%=__("Create New Learning")%></button>
+                </div>
+            </div>
+        </div>
         <% for(var j = 0;j < uniqueType.length;j++){ %>
         <div class="row content library-<%= j %>" id="">
             <div class="row">
@@ -161,9 +161,9 @@
 
         </div>
 
-    </div>
-    <div class="col-sm-offset-9 col-sm-3 row-pagination-mng-learning">
-        <ul id="pagination-demo" class="pagination-sm row text-center pull-right"></ul>
+        <div class="col-sm-offset-8 col-sm-4 row-pagination-mng-learning">
+            <ul id="pagination-demo" class="pagination-sm row text-center pull-right"></ul>
+        </div>
     </div>
     <script type="text/javascript">
         window.onload = function () {

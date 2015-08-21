@@ -10,6 +10,8 @@ module.exports = {
     maxLibraRs: 30,
     maxLibOnPage: 9,
     passMark: 70,   // 70/100 point is pass
+    bookNumOnHome: 3,
+    bookNumOnHomeMore: 2,
     //Email
     smtpServer: '52.68.197.24',
     smtpPort: 587,
