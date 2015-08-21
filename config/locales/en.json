@@ -357,5 +357,9 @@
   "finish":"finish",
 
   "all books":"all books",
-  "You finish exercise":"You finish exercise"
+  "You finish exercise":"You finish exercise",
+
+  "Try again":"Try again",
+  "Browser is":"Browser is",
+  "not supported Must using":"not supported Must using"
 }

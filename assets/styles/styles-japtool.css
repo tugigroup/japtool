@@ -6,6 +6,10 @@ body {
     background-color: #fff;
 }
 
+body .body-content{
+    min-height: 610px;
+}
+
 a:hover {
     text-decoration: none;
     cursor: pointer;
@@ -1380,7 +1384,6 @@ ul.timeline li .timeline-panel:after {
 .slick-track .slick-current h3 {
     background: rgb(43, 169, 225);
 }
-
 .main-sidebar .pre-scrollable {
     max-height: 675px;
 }
@@ -1394,10 +1397,7 @@ ul.timeline li .timeline-panel:after {
 .body-manager-learning #default-show .btn-danger{
     position: absolute;
     margin-top: 30px;
-    margin-left: 1009px;
-}
-.row-pagination-mng-learning{
-    padding-right: 45px;
+    margin-left: 1003px;
 }
 .library-page .form-horizontal .btn-danger{
     border-radius: 0px;
@@ -2090,6 +2090,12 @@ ul.timeline li .timeline-panel:after {
 .ans-kanji-exe{
     bottom: 0px;
 }
+#kanji-List .slider-nav .slick-track {
+    text-align: center;
+}
+.exe-kanji .slider-nav .slick-track {
+    text-align: center;
+}
 /*END KANJI*/
 
 /*slide*/
@@ -2646,6 +2652,9 @@ ul.timeline li .timeline-panel:after {
 /*END responsive layout lesson vocabulary*/
 
 /*SPEECH*/
+.speech-learning{
+    margin-top: 110px;
+}
 #one-time h2 {
     font-size: 60px
 }
