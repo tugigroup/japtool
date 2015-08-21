@@ -1,4 +1,4 @@
-<div class="row" id="books">
+<div class="clearfix" id="books">
     <% uniqueType.forEach(function(item, indexLibrary){ %>
     <div class="row content library-<%= indexLibrary %>" id="">
         <div class="media">
@@ -36,7 +36,7 @@
                 index++;
             %>
             <div class="col-sm-4 lib-cell">
-                <div class="row">
+                <div class="">
                     <div class="media libMaster">
                         <div class="hidden-xs">
                             <a href="#" data-toggle="modal" data-target="#lib-details-<%= book.id %>">

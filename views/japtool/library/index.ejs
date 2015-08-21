@@ -2,7 +2,7 @@
     <div class="row" style="margin-top: 20px">
         <div class="col-sm-offset-1 col-sm-3 col-xs-12">
             <div class="form-group form-horizontal">
-                <label for="groupSearch"><%= __("Library Category") %>:</label>
+                <!--<label for="groupSearch"><%= __("Library Category") %>:</label>-->
                 <select class="form-control" id="groupSearch">
                     <option value="0"><%= __("Choose category") %></option>
                     <% uniqueType.forEach(function(item, indexLibrary){ %>
@@ -14,7 +14,7 @@
         </div>
         <div class="col-sm-3 col-xs-12">
             <div class="form-group form-horizontal">
-                <label for="levelSearch"><%= __("Library Level") %>:</label>
+                <!--<label for="levelSearch"><%= __("Library Level") %>:</label>-->
                 <select class="form-control" id="levelSearch">
                     <option value="0"><%= __("Choose level") %></option>
                     <option value="N1">N1</option>
@@ -27,13 +27,13 @@
         </div>
         <div class="col-sm-3 col-xs-12">
             <div class="form-group form-horizontal">
-                <label for="textSearch"><%= __("Select key Search") %>:</label>
+                <!--<label for="textSearch"><%= __("Select key Search") %>:</label>-->
                 <input type="text" class="form-control" id="textSearch">
             </div>
         </div>
         <div class="col-sm-1 col-xs-12">
             <div class="form-group form-horizontal">
-                <label for="executeSearch"></label>
+                <!--<label for="executeSearch"></label>-->
                 <button onclick="fillLibrary();" class="btn btn-danger"
                         id="executeSearch"><%= __("Search") %></button>
             </div>

@@ -805,6 +805,7 @@ label.valid, p.valid {
 
 .libImg {
     height: auto;
+
 }
 
 .libImg-modal {
@@ -1534,7 +1535,7 @@ ul.timeline li .timeline-panel:after {
     min-height: 726px !important;
 }
 .library-page .form-horizontal #executeSearch{
-    margin-top: 6%;
+    /*margin-top: 6%;*/
 }
 .body-manager-learning #default-show .btn-danger{
     position: absolute;
@@ -2965,4 +2966,9 @@ ul.timeline li .timeline-panel:after {
 
 .progress-pie-chart {
     /*margin: 50px auto 0;*/
+}
+@media (max-width: 768px){
+    .lib-cell:nth-child(2n-1) {
+        background: #E2E2E2;
+    }
 }
