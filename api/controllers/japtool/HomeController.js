@@ -21,7 +21,34 @@ module.exports = {
 
                 // listLearnings.forEach(function (learning){
                 //     BookDetail.find({bookMaster: learning.bookMaster.id}).sort({sort: 'sort ASC'}).
-                //     exec(function(err, bookDetails){
+                //     exec(function(err, lessons){
+
+                //         UserLearnHistory.find({
+                //             user: req.session.User.id,
+                //             selfLearning: learning.id
+                //         }).exec(function(err, learnedLessons){
+
+                //             var lessonList = [];
+
+                //             lessons.forEach(function(lesson){
+                //                 lesson.learnedInfo = learnedLessons.filter(function(learnedLesson){
+                //                     return learnedLesson.bookDetail == lesson.id;
+                //                 });
+
+                //                 lessonList.push(lesson);
+                //             });
+
+                //             var passedNum = 0;
+                //             var fasledNum = 0;
+                //             var allPass = true;
+
+                //             for (var i = 0; i < lessonList.length; ++i){
+
+
+
+                //             }
+
+                //         });
                         
                 //     })
 
