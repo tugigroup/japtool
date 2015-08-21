@@ -98,7 +98,7 @@
                     </div>
                 </div>
                 <div class="col-sm-6 last-right">
-                    <p><a onclick="learnAgain();" class="btn"><%=__("Learn Again")%></a>
+                    <p><a onclick="learnAgain();" id="btn-learn-again" class="btn"><%=__("Learn Again")%></a>
                     <p><a onclick="nextLesson();" class="btn"><%=__("Next Lesson")%></a>
                 </div>
             </div>
@@ -179,6 +179,7 @@
     function learnAgain(){
         $(".slider-for").slick('slickGoTo',-1);
         $("#kanji-List .btn-arrow-right").show();
+        $("#kanji-List .btn-arrow-left").show();
         $("#kanji-List .slider-nav").show();
         infoconfig=true;
     }
@@ -222,21 +223,6 @@
         $('.card-image').hide();
         $('.card-text').removeClass("card-text-click");
     });
-    // On before slide change slide
-//    $('.slider-for').on('afterChange', function (event, slick, currentSlide) {
-//        console.log(event);
-//        if(slick.slideCount==currentSlide+1){
-//
-//        }
-//    });
-//    $('#kanji-List .btn-arrow-right').on('click' , function(){
-//        // check slider is finish
-//        var currentSlide = $('.slider-for').slick('getSlick').currentSlide;
-//        var nextSlide = $('.slider-for').slick('getSlick').$slides[currentSlide+1];
-//        if(!nextSlide && nextSlide==undefined){
-//            $('.slider-for').slick('slickAdd','<div><h3> ABC </h3></div>');
-//        }
-//    });
     $('span').tooltip();
     (function () {
         //Show details of first voca

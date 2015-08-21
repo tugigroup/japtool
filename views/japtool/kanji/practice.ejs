@@ -20,7 +20,7 @@
         centerMode: true,
         infinite: false,
         accessibility: false,
-        focusOnSelect: false
+        focusOnSelect: true
     });
     //set isNext when next slide
     $('.slider-for').on('afterChange', function (event, slick, currentSlide, nextSlide) {
@@ -147,6 +147,8 @@
     var soundConfig = true;
     // when slide is last slide
     $('.slider-for').on('afterChange', function (event, slick, currentSlide, nextSlide) {
+        // enable slide-nav
+        enableActiveSlide(currentSlide);
         var slideCount = $("#countPage").text();
         console.log(currentSlide);
         console.log(slideCount);
@@ -172,6 +174,8 @@
     });
     var current_slide = 0;
     $(document).ready(function () {
+        disbleAllSlideNav();
+        enableActiveSlide(0);
         $('.info-off').hide();
         $('.mic-off').hide();
         $('.info-on').on('click', function () {
@@ -209,6 +213,17 @@
     }
     function learnAgain(){
         window.location.replace(window.location.href);
+    }
+    //disable all slide-nav
+    function disbleAllSlideNav(){
+        // diable slide-nav
+        var sl_nav = $(".slider-nav .slick-slide");
+        $(sl_nav).addClass("disable-slide-element");
+    }
+    // enable slide-nav
+    function enableActiveSlide(index){
+        var sl_nav = $(".slider-nav .slick-slide")[index];
+        $(sl_nav).removeClass("disable-slide-element");
     }
     // count page
     var $status = $('.pagingCnt');

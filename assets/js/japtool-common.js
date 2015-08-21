@@ -345,7 +345,7 @@ function loadformLib(id) {
     $('#formedit').addClass('fade').modal('show');
 }
 function Learn(id) {
-     $('#lib-1').removeClass('fade').modal('hide');
+    $('#lib-1').removeClass('fade').modal('hide');
     $('#editform').load('/japtool/learning/checkLearning/?learnID=' + id, function (res, status) {
         var arr = res.split("/");
         if (arr[3] == "practice") {
@@ -747,7 +747,20 @@ function trimSpace(str) {
     return str;
 }
 
-
-
-
-
+// Only use when ejs is difficult to use jquery show , hide function
+function  translateText (text){
+    var textTran;
+    $.ajax({
+        type: "GET",
+        url: "/japtool/Translate/translate",
+        data: "text="+ text , // giá trị post
+        async:false,
+        success: function(text){
+            textTran= text;
+        },
+        error:function(error){
+            console.log("error server !!!",error);
+        }
+    });
+    return textTran;
+}

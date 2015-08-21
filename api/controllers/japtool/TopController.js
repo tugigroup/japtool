@@ -2,7 +2,6 @@
  * Created by NamMH on 7/29/2015.
  */
 module.exports = {
-
     index: function (req, res) {
         var user;
         var library;
@@ -37,7 +36,7 @@ module.exports = {
                             voca = v;
                         }
                         res.view({
-                            layout: false,
+                            layout: 'layout/layout-japtool',
                             user: user,
                             library: library,
                             group: group,
@@ -49,4 +48,6 @@ module.exports = {
         })
 
     }
+
+
 }

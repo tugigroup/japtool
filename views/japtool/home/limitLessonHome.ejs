@@ -1,29 +1,36 @@
-<% _.each(listItems, function (listItem) { %>
-      <div class="col-sm-2 col-xs-3 col-md-1">
-        <div class="info-lesson-home label-home" id="<%= listItem.id %>"><a><%= listItem.lesson %></a></div>
-      </div>
-<% }) %>
+<%
+var lessionName = '';
+var lesson = '';
+for (var i = 0; i < lessonList.length; i++) {
+    lessionName = lessonList[i].lesson;
+    // pre-check status
+    var status = "label-success";
+    var noHis = true;
+    for (var subIdx = i; subIdx < lessonList.length; subIdx++) {
+        if (lessionName == lessonList[subIdx].lesson) {
+            if (lessonList[subIdx].learnHistory) {
+                noHis = false;
 
-<script type="text/javascript">
-    var lessonSum = 0;
-<% _.each(moreSelfLesson, function (moreSelfLessonItem) { %>
-<% if(moreSelfLessonItem.status){ %>
-<% if(moreSelfLessonItem.status == 'passed'){ %>
-$("#<%= moreSelfLessonItem.bookDetail %>").removeClass('label-home');
-$("#<%= moreSelfLessonItem.bookDetail %>").addClass('label-success');
-    lessonSum++;
-    $(".lesson-pass-<%= moreSelfLessonItem.selfLearning %>").text(lessonSum);
-<% }else{ %>
-$("#<%= moreSelfLessonItem.bookDetail %>").removeClass('label-home');
-$("#<%= moreSelfLessonItem.bookDetail %>").addClass('label-danger');
-    lessonSum++;
-    $(".lesson-pass-<%= moreSelfLessonItem.selfLearning %>").text(lessonSum);
-<% } %>
-<% } else{ %>
-$("#<%= moreSelfLessonItem.bookDetail %>").removeClass('label-home');
-$("#<%= moreSelfLessonItem.bookDetail %>").addClass('label-warning');
-    lessonSum++;
-    $(".lesson-pass-<%= moreSelfLessonItem.selfLearning %>").text(lessonSum);
-<%}%>
-<%})%>
-</script>
+                if (!lessonList[subIdx].learnHistory.status || lessonList[subIdx].learnHistory.status != 'passed'){
+                    status = 'label-danger';
+                }
+            }
+        } else {
+            break;
+        }
+    }
+
+    if (noHis){
+        status = '';
+    }
+if(lesson != lessonList[i].lesson) {
+    lesson = lessonList[i].lesson;
+%>
+<div class="col-sm-2 col-xs-3 col-md-1">
+    <div class="info-lesson-home label-home <%= status %>" id="<%= lessonList[i].id %>">
+        <a href="/japtool/Learning/practice/?id=<%= lessonList[i].bookMaster %>&learnID=<%= moreSelfLearningId %>&lessonID=<%= lessonList[i].id%>"> <%= lessonList[i].lesson %> </a>
+    </div>
+</div>
+
+<% }%>
+<% }%>

@@ -19,13 +19,15 @@
         asNavFor: '.slider-for',
         dots: false,
         centerMode: true,
-        focusOnSelect: false,
+        focusOnSelect: true,
         accessibility: false,
         infinite: false
     });
     var audioconfig = true;
     // when slide is last slide
     $('.slider-for').on('afterChange', function (event, slick, currentSlide, nextSlide) {
+        // enable slide
+        enableActiveSlide(currentSlide);
         var slideCount = $("#countPage").text();
         console.log(currentSlide);
         if(slideCount==(currentSlide)){
@@ -45,28 +47,42 @@
         $(".exe-voca .slider-nav").show();
         audioconfig=true;
     });
-
     function learnAgain(){
         window.location.replace(window.location.href);
     }
-    //    on or off sound
-    $('.mic-off').hide();
-    $('.mic-on').on('click', function () {
-        $('.mic-off').show();
-        $('.mic-on').hide();
-        audioconfig = false;
-    });
-    $('.mic-off').on('click', function () {
-        $('.mic-on').show();
+    //disable all slide-nav
+    function disbleAllSlideNav(){
+        // diable slide-nav
+        var sl_nav = $(".slider-nav .slick-slide");
+        $(sl_nav).addClass("disable-slide-element");
+    }
+    // enable slide-nav
+    function enableActiveSlide(index){
+        var sl_nav = $(".slider-nav .slick-slide")[index];
+        $(sl_nav).removeClass("disable-slide-element");
+    }
+    $(document).ready(function(){
+        disbleAllSlideNav();
+        enableActiveSlide(0);
+        //    on or off sound
         $('.mic-off').hide();
-        audioconfig = true;
-    });
-    //set isNext when next slide
-    $('.slider-for').on('afterChange', function (event, slick, currentSlide, nextSlide) {
-        isNext = false;
-    });
-    $('.ans-box').on('click', function () {
-        isNext = true;
+        $('.mic-on').on('click', function () {
+            $('.mic-off').show();
+            $('.mic-on').hide();
+            audioconfig = false;
+        });
+        $('.mic-off').on('click', function () {
+            $('.mic-on').show();
+            $('.mic-off').hide();
+            audioconfig = true;
+        });
+        //set isNext when next slide
+        $('.slider-for').on('afterChange', function (event, slick, currentSlide, nextSlide) {
+            isNext = false;
+        });
+        $('.ans-box').on('click', function () {
+            isNext = true;
+        });
     });
     var truee = 0;
     var total = 0;
@@ -129,6 +145,16 @@
 
                 $("#mark-view").text(Math.round(mark));
 
+                //pie chart
+                $(".excercise-kanji .last-right .progress-pie-chart").attr("data-percent",mark);
+                $('.ppc-percents span').html(Math.round(mark)+'%');
+                var $ppc = $('.progress-pie-chart'),
+                        percent = parseInt($ppc.data('percent')),
+                        deg = 360*percent/100;
+                if (percent > 50) {
+                    $ppc.addClass('gt-50');
+                }
+                $('.ppc-progress-fill').css('transform','rotate('+ deg +'deg)');
                 // log mark for run time
                 logMark();
             }
@@ -244,9 +270,9 @@
         </div>
         <% }) %>
         <div class="pratice-voca">
-            <div class="col-sm-offset-2 col-sm-8 lastSlide text-center">
+            <div class="col-sm-offset-2 col-sm-8 lastSlide description">
                 <div class="col-sm-6 last-left">
-                    <div class="col-sm-12 description">
+                    <div class="col-sm-12 ">
                         <i class="fa fa-child fa-2x icon"></i><strong><%=__("You finish exercise")%> !</strong>
                         <br><br>
                         <p class="text-left text-danger"><%=__("Your Mark")%> : <label id="mark-view"></label></p>
@@ -255,8 +281,22 @@
                     </div>
                 </div>
                 <div class="col-sm-6 last-right">
-                    <p><a onclick="learnAgain();" class="btn"><%=__("Learn Again")%></a>
-                    <p><a onclick="nextLesson();"class="btn"><%=__("Next Lesson")%></a>
+                    <!--Pie Chart -->
+                    <div class="progress-pie-chart" data-percent="">
+                        <div class="ppc-progress">
+                            <div class="ppc-progress-fill"></div>
+                        </div>
+                        <div class="ppc-percents">
+                            <div class="pcc-percents-wrapper">
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End Chart -->
+                </div>
+                <div class="col-sm-12 text-center">
+                    <button onclick="learnAgain();" class="btn btn-primary"><%=__("Learn Again")%></button>
+                    <button onclick="nextLesson();"class="btn btn-primary"><%=__("Next Lesson")%></button>
                 </div>
             </div>
         </div>
