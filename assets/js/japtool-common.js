@@ -747,7 +747,20 @@ function trimSpace(str) {
     return str;
 }
 
-
-
-
-
+// Only use when ejs is difficult to use jquery show , hide function
+function  translateText (text){
+    var textTran;
+    $.ajax({
+        type: "GET",
+        url: "/japtool/Translate/translate",
+        data: "text="+ text , // giá trị post
+        async:false,
+        success: function(text){
+            textTran= text;
+        },
+        error:function(error){
+            console.log("error server !!!",error);
+        }
+    });
+    return textTran;
+}

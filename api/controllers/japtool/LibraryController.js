@@ -45,7 +45,7 @@ module.exports = {
             condition += comma + "\"level\":\"" + levelSearch + "\"";
         }
         var textSearch = req.param('textSearch');
-        if (textSearch != undefined && textSearch == "") {
+        if (textSearch != undefined && textSearch != "") {
             if (condition != '')
                 comma = ",";
             else
