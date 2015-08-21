@@ -294,7 +294,7 @@
   "Create Learning history successful":"Create Learning history successful",
 
   "If you forget your login password, click here":"If you forget your login password, click here",
-  
+
   "Account activate mail subject":"Account activate mail subject ",
   "Send Password":"Send Password",
   "User Account password reset":"User Account password reset",
@@ -357,5 +357,8 @@
   "finish":"finish",
 
   "all books":"all books",
-  "You finish exercise":"You finish exercise"
+  "You finish exercise":"You finish exercise",
+
+  "WHO ARE WE":"WHO ARE WE",
+  "Kantan bring an one and only mission is to teach Japanese language for people around the world. To achieve this mission, we have provided a lesson system according to Japanese standards with a rich vocabulary and a great curriculum.":"Kantan bring an one and only mission is to teach Japanese language for people around the world. To achieve this mission, we have provided a lesson system according to Japanese standards with a rich vocabulary and a great curriculum."
 }
